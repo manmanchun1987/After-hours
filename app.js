@@ -544,6 +544,7 @@ function show(name) {
   Object.entries(screens).forEach(([key, el]) => {
     el.classList.toggle("active", key === name);
   });
+  document.body.classList.toggle("mode-play", name === "play");
   if (name === "play" || name === "ending") {
     AudioEngine.sfxTransition();
   }

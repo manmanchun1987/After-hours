@@ -81,44 +81,52 @@
     </section>
 
     <section id="screen-play" class="screen" aria-label="遊玩">
-      <div class="topbar">
-        <p id="play-label" class="play-label"></p>
-        <div class="play-actions">
-          <button id="btn-replay-voice" class="btn btn-ghost btn-tiny" type="button" title="重聽對白">重聽</button>
-          <span id="speaking-indicator" class="speaking-pill" hidden aria-live="polite">語音中</span>
-          <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
-        </div>
-      </div>
-      <div class="play-layout">
-        <div class="portrait-wrap">
-          <div class="portrait-vignette" aria-hidden="true"></div>
+      <div class="play-stage">
+        <!-- Full-bleed portrait background (identity-locked alex.png) -->
+        <div class="play-bg" aria-hidden="true">
           <div class="portrait-stack" id="alex-portrait-stack">
-            <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="Alex" />
+            <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
           </div>
-          <div class="portrait-frame" aria-hidden="true"></div>
+          <div class="play-bg-vignette"></div>
+          <div class="play-bg-scrim"></div>
         </div>
-        <div class="play-side">
-          <div class="card glass play-card">
-            <p id="play-text" class="narrative"></p>
+
+        <!-- Floating overlay UI — kept clear of face (~upper 42%) -->
+        <div class="play-overlay">
+          <div class="topbar play-topbar">
+            <p id="play-label" class="play-label"></p>
+            <div class="play-actions">
+              <button id="btn-replay-voice" class="btn btn-ghost btn-tiny" type="button" title="重聽對白">重聽</button>
+              <span id="speaking-indicator" class="speaking-pill" hidden aria-live="polite">語音中</span>
+              <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
+            </div>
           </div>
-          <div class="chat-panel card glass" aria-label="同 Alex 傾偈">
-            <div class="chat-header">
-              <span class="chat-title">私下對白</span>
-              <span class="chat-hint">唔影響劇情</span>
+
+          <div class="play-face-gap" aria-hidden="true"></div>
+
+          <div class="play-lower">
+            <div class="card glass play-card narrative-bubble">
+              <p id="play-text" class="narrative"></p>
             </div>
-            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
-            <div id="chat-typing" class="chat-typing" hidden>
-              <span></span><span></span><span></span>
-              <em>Alex 打緊字…</em>
+            <div id="choices" class="stack choices" aria-label="選擇"></div>
+            <div class="chat-panel card glass" aria-label="同 Alex 傾偈">
+              <div class="chat-header">
+                <span class="chat-title">私下對白</span>
+                <span class="chat-hint">唔影響劇情</span>
+              </div>
+              <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+              <div id="chat-typing" class="chat-typing" hidden>
+                <span></span><span></span><span></span>
+                <em>Alex 打緊字…</em>
+              </div>
+              <form id="chat-form" class="chat-form" autocomplete="off">
+                <input id="chat-input" type="text" maxlength="120" placeholder="同 Alex 講句嘢…" aria-label="輸入訊息" />
+                <button class="btn btn-primary btn-send" type="submit">送</button>
+              </form>
             </div>
-            <form id="chat-form" class="chat-form" autocomplete="off">
-              <input id="chat-input" type="text" maxlength="120" placeholder="同 Alex 講句嘢…" aria-label="輸入訊息" />
-              <button class="btn btn-primary btn-send" type="submit">送</button>
-            </form>
           </div>
         </div>
       </div>
-      <div id="choices" class="stack choices" aria-label="選擇"></div>
     </section>
 
     <section id="screen-ending" class="screen" aria-label="結局">
