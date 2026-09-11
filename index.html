@@ -4,19 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#080b12" />
   <title>加班之後 After Hours</title>
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
+  <div class="atm-layer" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
   <main class="app">
+    <div class="global-controls" aria-label="音訊控制">
+      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂" aria-pressed="false">
+        <span class="icon-label" data-on="♪" data-off="♪̸">♪</span>
+        <span class="sr-only">BGM</span>
+      </button>
+      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音" aria-pressed="false">
+        <span class="icon-label" data-on="聲" data-off="靜">聲</span>
+        <span class="sr-only">語音</span>
+      </button>
+      <button id="btn-mute-master" class="icon-btn" type="button" title="全部靜音" aria-pressed="false">
+        <span class="icon-label" data-on="🔊" data-off="🔇">🔊</span>
+        <span class="sr-only">全部靜音</span>
+      </button>
+    </div>
+
     <section id="screen-gate" class="screen active" aria-label="年齡確認">
-      <p class="brand">AFTER HOURS</p>
-      <h1>加班之後</h1>
-      <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
-      <div class="card stack">
+      <div class="gate-hero">
+        <p class="brand brand-glow">AFTER HOURS</p>
+        <h1>加班之後</h1>
+        <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
+      </div>
+      <div class="card glass stack gate-card">
         <p class="fine">18+ 職場權力感文字互動。所有角色均為虛構成年人。第一期免費、無廣告。</p>
-        <button id="enter-btn" class="btn btn-primary" type="button">我已年滿 18 歲，進入</button>
-        <p class="fine"><a href="#">條款</a> · <a href="#">私隱</a></p>
+        <button id="enter-btn" class="btn btn-primary btn-glow" type="button">我已年滿 18 歲，進入</button>
+        <p class="fine links"><a href="#">條款</a> · <a href="#">私隱</a></p>
       </div>
     </section>
 
@@ -24,13 +45,16 @@
       <div class="topbar">
         <div>
           <p class="brand">加班之後</p>
-          <h1 style="font-size:1.5rem;margin-top:4px">選擇角色</h1>
+          <h1 class="h-cast">選擇角色</h1>
         </div>
         <span class="chip">訪客 · 免費</span>
       </div>
       <div class="chars">
-        <article class="card char-card">
-          <img class="char-thumb" src="./assets/alex.png" alt="Alex" />
+        <article class="card glass char-card char-card-featured">
+          <div class="char-thumb-wrap">
+            <img class="char-thumb" src="./assets/alex.png" alt="Alex" />
+            <div class="char-thumb-glow" aria-hidden="true"></div>
+          </div>
           <h2>Alex</h2>
           <div class="role">部門主管</div>
           <p class="hook">「Deadline 可以改。態度唔可以。」</p>
@@ -39,13 +63,15 @@
             <button id="resume-alex" class="btn btn-ghost" type="button" hidden>繼續上次</button>
           </div>
         </article>
-        <article class="card char-card" aria-disabled="true">
+        <article class="card glass char-card char-locked" aria-disabled="true">
+          <div class="lock-badge">即將</div>
           <h2>Morgan</h2>
           <div class="role">客戶負責人</div>
           <p class="hook">大單前夜，酒廊「只係傾生意」。</p>
           <button class="btn btn-ghost" type="button" disabled>即將推出</button>
         </article>
-        <article class="card char-card" aria-disabled="true">
+        <article class="card glass char-card char-locked" aria-disabled="true">
+          <div class="lock-badge">即將</div>
           <h2>Sam</h2>
           <div class="role">前輩同事</div>
           <p class="hook">教你「潛規則」嘅宵夜加班。</p>
@@ -57,25 +83,48 @@
     <section id="screen-play" class="screen" aria-label="遊玩">
       <div class="topbar">
         <p id="play-label" class="play-label"></p>
-        <button id="back-cast" class="btn btn-ghost" type="button" style="padding:8px 12px">角色</button>
+        <div class="play-actions">
+          <button id="btn-replay-voice" class="btn btn-ghost btn-tiny" type="button" title="重聽對白">重聽</button>
+          <span id="speaking-indicator" class="speaking-pill" hidden aria-live="polite">語音中</span>
+          <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
+        </div>
       </div>
       <div class="play-layout">
         <div class="portrait-wrap">
+          <div class="portrait-vignette" aria-hidden="true"></div>
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="Alex" />
           </div>
+          <div class="portrait-frame" aria-hidden="true"></div>
         </div>
-        <div class="card play-card">
-          <p id="play-text" class="narrative"></p>
+        <div class="play-side">
+          <div class="card glass play-card">
+            <p id="play-text" class="narrative"></p>
+          </div>
+          <div class="chat-panel card glass" aria-label="同 Alex 傾偈">
+            <div class="chat-header">
+              <span class="chat-title">私下對白</span>
+              <span class="chat-hint">唔影響劇情</span>
+            </div>
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+            <div id="chat-typing" class="chat-typing" hidden>
+              <span></span><span></span><span></span>
+              <em>Alex 打緊字…</em>
+            </div>
+            <form id="chat-form" class="chat-form" autocomplete="off">
+              <input id="chat-input" type="text" maxlength="120" placeholder="同 Alex 講句嘢…" aria-label="輸入訊息" />
+              <button class="btn btn-primary btn-send" type="submit">送</button>
+            </form>
+          </div>
         </div>
       </div>
-      <div id="choices" class="stack" aria-label="選擇"></div>
+      <div id="choices" class="stack choices" aria-label="選擇"></div>
     </section>
 
     <section id="screen-ending" class="screen" aria-label="結局">
-      <p id="ending-kicker" class="brand"></p>
+      <p id="ending-kicker" class="brand brand-glow"></p>
       <h2 id="ending-title" class="ending-title"></h2>
-      <div class="card">
+      <div class="card glass">
         <p id="ending-text" class="narrative"></p>
       </div>
       <div class="stack">
@@ -85,12 +134,7 @@
       </div>
     </section>
   </main>
-  <script>
-  if (window.speechSynthesis) {
-    speechSynthesis.getVoices();
-    speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-  }
-</script>
+
   <script src="./app.js"></script>
 </body>
 </html>
