@@ -111,26 +111,29 @@ body.mode-play .global-controls {
   width: 38px;
   height: 38px;
   border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(14, 20, 32, 0.75);
+  border: 1px solid rgba(201, 164, 106, 0.35);
+  background: rgba(14, 20, 32, 0.82);
   backdrop-filter: blur(10px);
   color: var(--accent);
   cursor: pointer;
   font-size: 0.85rem;
   display: grid;
   place-items: center;
-  transition: border-color 0.2s, background 0.2s, transform 0.15s;
-  box-shadow: var(--shadow-soft);
+  transition: border-color 0.2s, background 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: var(--shadow-soft), 0 0 0 1px rgba(0,0,0,0.2);
 }
 
 .icon-btn:hover {
-  border-color: var(--line-strong);
-  background: rgba(22, 30, 44, 0.9);
+  border-color: rgba(255, 220, 160, 0.65);
+  background: rgba(28, 24, 16, 0.92);
+  box-shadow: 0 0 14px rgba(201,164,106,0.25);
 }
 
 .icon-btn[aria-pressed="true"] {
   color: var(--muted);
-  opacity: 0.7;
+  opacity: 0.72;
+  border-color: rgba(90, 110, 145, 0.45);
+  box-shadow: none;
 }
 
 .icon-btn:active { transform: scale(0.94); }
@@ -1074,12 +1077,14 @@ body.mode-call .play-bg-scrim {
   font-style: italic;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+  animation: fadeIn 0.28s ease both;
 }
 .thought-bubble {
-  color: #e8eef8;
-  background: rgba(16, 24, 40, 0.9);
-  border: 1px dashed rgba(180, 200, 230, 0.6);
+  color: #eef4fc;
+  background: rgba(14, 22, 38, 0.94);
+  border: 1px dashed rgba(160, 190, 230, 0.75);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.4), 0 0 16px rgba(100,140,200,0.12);
 }
 .thought-bubble::before {
   content: "內心 · ";
@@ -1087,11 +1092,13 @@ body.mode-call .play-bg-scrim {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   color: #9bb6d8;
+  font-weight: 700;
 }
 .aside-bubble {
-  color: #f3d7a4;
-  background: rgba(42, 30, 12, 0.9);
-  border: 1px solid rgba(201, 164, 106, 0.5);
+  color: #f7dfb0;
+  background: rgba(42, 30, 12, 0.94);
+  border: 1px solid rgba(201, 164, 106, 0.62);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.4), 0 0 16px rgba(201,164,106,0.15);
 }
 .aside-bubble::before {
   content: "旁白 · ";
@@ -1099,6 +1106,7 @@ body.mode-call .play-bg-scrim {
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   color: var(--accent);
+  font-weight: 700;
 }
 @media (prefers-reduced-motion: reduce) {
   .call-dot { animation: none !important; }
