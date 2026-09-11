@@ -599,19 +599,24 @@ function triggerBlink() {
   mask.classList.remove("on");
   void mask.offsetWidth;
   mask.classList.add("on");
-  setTimeout(() => mask.classList.remove("on"), 160);
+  setTimeout(() => mask.classList.remove("on"), 240);
 }
 
 function startLifeMotion() {
+  // first blink soon so hard-refresh users "一眼見到"
+  setTimeout(() => {
+    const play = $("#screen-play");
+    if (play && play.classList.contains("active")) triggerBlink();
+  }, 700);
   const loop = () => {
     const play = $("#screen-play");
-    if (play && play.classList.contains("active") && Math.random() < 0.85) {
+    if (play && play.classList.contains("active")) {
       triggerBlink();
-      if (Math.random() < 0.25) setTimeout(triggerBlink, 160);
+      if (Math.random() < 0.4) setTimeout(triggerBlink, 220);
     }
-    setTimeout(loop, 2400 + Math.random() * 3400);
+    setTimeout(loop, 1600 + Math.random() * 1800);
   };
-  setTimeout(loop, 1800);
+  setTimeout(loop, 1600);
 }
 
 function setUnread(n) {
