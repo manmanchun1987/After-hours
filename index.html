@@ -86,6 +86,7 @@
         <div class="play-bg" aria-hidden="true">
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
+            <div id="blink-mask" class="blink-mask" aria-hidden="true"></div>
           </div>
           <div class="play-bg-vignette"></div>
           <div class="play-bg-scrim"></div>
@@ -108,9 +109,18 @@
               <span class="call-label">通話中</span>
               <span id="call-timer" class="call-timer">00:00</span>
             </div>
-            <div id="memory-strip" class="memory-strip" hidden>
+            <button type="button" id="memory-strip" class="memory-strip" hidden aria-expanded="false" title="打開記憶面板">
               <span class="memory-title">今晚記得</span>
               <div id="memory-chips" class="memory-chips"></div>
+              <span class="memory-open-hint">面板</span>
+            </button>
+            <div id="memory-panel" class="memory-panel card glass" hidden>
+              <div class="memory-panel-head">
+                <strong>今晚記得</strong>
+                <button type="button" id="memory-panel-close" class="btn btn-ghost btn-tiny">收起</button>
+              </div>
+              <ul id="memory-panel-list" class="memory-panel-list"></ul>
+              <p class="memory-panel-empty" id="memory-panel-empty" hidden>暫時未記住嘢。</p>
             </div>
             <div id="thought-slot" class="thought-slot" hidden>
               <p id="play-thought" class="thought-bubble"></p>
@@ -129,9 +139,13 @@
             <div id="choices" class="stack choices" aria-label="選擇"></div>
             <div class="chat-panel card glass" aria-label="同 Vera 傾偈">
               <div class="chat-header">
-                <span class="chat-title">私下對白</span>
+                <span class="chat-title">私下對白 <span id="chat-unread" class="chat-unread" hidden>1</span></span>
                 <span class="chat-hint">唔影響劇情</span>
               </div>
+              <button type="button" id="incoming-toast" class="incoming-toast" hidden>
+                <span class="incoming-dot" aria-hidden="true"></span>
+                <span id="incoming-toast-text">Vera 傳咗訊息</span>
+              </button>
               <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
               <div id="chat-typing" class="chat-typing" hidden>
                 <span></span><span></span><span></span>

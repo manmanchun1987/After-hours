@@ -13,6 +13,9 @@ const state = {
   callMode: false,
   callTimerId: null,
   callSeconds: 0,
+  incomingTimerId: null,
+  unreadCount: 0,
+  memoryPanelOpen: false,
 };
 
 const audioPrefs = {
@@ -263,9 +266,11 @@ let speaking = false;
 
 function setSpeaking(on) {
   speaking = !!on;
+  document.body.classList.toggle("mode-speaking", speaking);
   const el = $("#speaking-indicator");
   if (el) {
-    el.hidden = !speaking;
+    if (speaking) el.removeAttribute("hidden");
+    else el.setAttribute("hidden", "");
     el.textContent = state.callMode ? "通話中" : "語音中";
   }
 }
@@ -576,6 +581,158 @@ function applyNodeMeta(node) {
   renderThoughtAside(node);
 }
 
+
+/* ============================================================
+   P1) Blink mask, incoming pings, memory panel
+   ============================================================ */
+const INCOMING_LINES = [
+  "……你仲喺度？",
+  "簡報改到邊？回我。",
+  "唔好裝忙。我睇到你仲 online。",
+  "抬頭。",
+  "我記得今晚啲事——你呢？",
+];
+
+function triggerBlink() {
+  const mask = $("#blink-mask");
+  if (!mask) return;
+  mask.classList.remove("on");
+  void mask.offsetWidth;
+  mask.classList.add("on");
+  setTimeout(() => mask.classList.remove("on"), 160);
+}
+
+function startLifeMotion() {
+  const loop = () => {
+    const play = $("#screen-play");
+    if (play && play.classList.contains("active") && Math.random() < 0.85) {
+      triggerBlink();
+      if (Math.random() < 0.25) setTimeout(triggerBlink, 160);
+    }
+    setTimeout(loop, 2400 + Math.random() * 3400);
+  };
+  setTimeout(loop, 1800);
+}
+
+function setUnread(n) {
+  state.unreadCount = Math.max(0, n);
+  const badge = $("#chat-unread");
+  if (!badge) return;
+  if (state.unreadCount > 0) {
+    badge.textContent = String(state.unreadCount);
+    badge.removeAttribute("hidden");
+  } else {
+    badge.setAttribute("hidden", "");
+  }
+}
+
+function showIncomingToast(text) {
+  const toast = $("#incoming-toast");
+  const label = $("#incoming-toast-text");
+  if (!toast) return;
+  if (label) label.textContent = text || "Vera 傳咗訊息";
+  toast.removeAttribute("hidden");
+}
+
+function hideIncomingToast() {
+  const toast = $("#incoming-toast");
+  if (toast) toast.setAttribute("hidden", "");
+}
+
+function pushIncomingPing() {
+  const play = $("#screen-play");
+  if (!play || !play.classList.contains("active") || state.chatBusy) return;
+  const line = INCOMING_LINES[Math.floor(Math.random() * INCOMING_LINES.length)];
+  appendChat("alex", line);
+  setUnread(state.unreadCount + 1);
+  showIncomingToast(line);
+  try { AudioEngine.sfxClick(); } catch (_) {}
+  // soft speak if voice unmuted
+  try { speakChat(line); } catch (_) {}
+}
+
+function startIncomingRhythm() {
+  stopIncomingRhythm();
+  const tick = () => {
+    state.incomingTimerId = setTimeout(() => {
+      const play = $("#screen-play");
+      if (play && play.classList.contains("active") && Math.random() < 0.55) {
+        pushIncomingPing();
+      }
+      tick();
+    }, 14000 + Math.random() * 16000);
+  };
+  tick();
+}
+
+function stopIncomingRhythm() {
+  if (state.incomingTimerId) {
+    clearTimeout(state.incomingTimerId);
+    state.incomingTimerId = null;
+  }
+  hideIncomingToast();
+}
+
+function renderMemoryPanel() {
+  const list = $("#memory-panel-list");
+  const empty = $("#memory-panel-empty");
+  if (!list) return;
+  list.innerHTML = "";
+  if (!state.memories.length) {
+    if (empty) empty.removeAttribute("hidden");
+    return;
+  }
+  if (empty) empty.setAttribute("hidden", "");
+  state.memories.forEach((id) => {
+    const li = document.createElement("li");
+    li.textContent = memoryLabel(id);
+    list.appendChild(li);
+  });
+}
+
+function setMemoryPanelOpen(on) {
+  state.memoryPanelOpen = !!on;
+  const panel = $("#memory-panel");
+  const strip = $("#memory-strip");
+  if (!panel) return;
+  if (state.memoryPanelOpen) {
+    renderMemoryPanel();
+    panel.removeAttribute("hidden");
+    if (strip) strip.setAttribute("aria-expanded", "true");
+  } else {
+    panel.setAttribute("hidden", "");
+    if (strip) strip.setAttribute("aria-expanded", "false");
+  }
+}
+
+function wireMemoryPanel() {
+  const strip = $("#memory-strip");
+  const close = $("#memory-panel-close");
+  if (strip) {
+    strip.addEventListener("click", () => {
+      setMemoryPanelOpen(!state.memoryPanelOpen);
+      try { AudioEngine.sfxClick(); } catch (_) {}
+    });
+  }
+  if (close) {
+    close.addEventListener("click", () => setMemoryPanelOpen(false));
+  }
+  const toast = $("#incoming-toast");
+  if (toast) {
+    toast.addEventListener("click", () => {
+      hideIncomingToast();
+      setUnread(0);
+      const box = $("#chat-messages");
+      if (box) box.scrollTop = box.scrollHeight;
+      try { AudioEngine.sfxClick(); } catch (_) {}
+    });
+  }
+  const chatForm = $("#chat-form");
+  if (chatForm) {
+    chatForm.addEventListener("focusin", () => setUnread(0));
+  }
+}
+
 function moodBucketBoost(bucket) {
   const mood = state.currentMood || "cold";
   if (mood === "tense" && bucket === "default") return "challenge";
@@ -677,6 +834,9 @@ function show(name) {
     el.classList.toggle("active", key === name);
   });
   document.body.classList.toggle("mode-play", name === "play");
+  if (name === "play") startIncomingRhythm();
+  else stopIncomingRhythm();
+  if (name !== "play") setMemoryPanelOpen(false);
   if (name === "play" || name === "ending") {
     AudioEngine.sfxTransition();
   }
@@ -825,6 +985,8 @@ async function init() {
   waitForVoices();
   wireAudioControls();
   wireChat();
+  wireMemoryPanel();
+  startLifeMotion();
 
   const res = await fetch("./data/alex.json");
   state.story = await res.json();
