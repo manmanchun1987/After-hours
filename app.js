@@ -45,7 +45,7 @@ const AudioEngine = (() => {
   let started = false;
   let bgmPlaying = false;
   let manifest = null;
-  let buffers = { bgm: null, click: null, choice: null, transition: null };
+  let buffers = { bgm: null, click: null, choice: null, transition: null, ping: null, call: null };
   let loadPromise = null;
 
   function ensure() {
@@ -96,7 +96,7 @@ const AudioEngine = (() => {
         if (manifest.bgm && manifest.bgm.src) {
           buffers.bgm = await decodeUrl(manifest.bgm.src);
         }
-        for (const key of ["click", "choice", "transition"]) {
+        for (const key of ["click", "choice", "transition", "ping", "call"]) {
           const item = manifest.sfx && manifest.sfx[key];
           if (item && item.src) buffers[key] = await decodeUrl(item.src);
         }
@@ -277,6 +277,22 @@ const AudioEngine = (() => {
     }
   }
 
+  function sfxPing() {
+    const vol = (manifest && manifest.sfx && manifest.sfx.ping && manifest.sfx.ping.volume) || 0.45;
+    if (!playBuffer(buffers.ping, vol)) {
+      beep({ freq: 880, dur: 0.08, type: "sine", vol: 0.22, slide: 120 });
+      setTimeout(() => beep({ freq: 1200, dur: 0.05, type: "triangle", vol: 0.12 }), 50);
+    }
+  }
+
+  function sfxCall() {
+    const vol = (manifest && manifest.sfx && manifest.sfx.call && manifest.sfx.call.volume) || 0.45;
+    if (!playBuffer(buffers.call, vol)) {
+      beep({ freq: 520, dur: 0.12, type: "sine", vol: 0.2, slide: 40 });
+      setTimeout(() => beep({ freq: 640, dur: 0.1, type: "sine", vol: 0.16 }), 140);
+    }
+  }
+
   function refresh() {
     applyVolumes();
     if (!started) return;
@@ -294,6 +310,8 @@ const AudioEngine = (() => {
     sfxClick,
     sfxChoice,
     sfxTransition,
+    sfxPing,
+    sfxCall,
     get started() { return started; },
   };
 })();
@@ -614,7 +632,7 @@ function setCallMode(on) {
   }
   if (state.callMode && !was) {
     startCallTimer();
-    try { AudioEngine.sfxChoice(); } catch (_) {}
+    try { AudioEngine.sfxCall(); } catch (_) {}
   } else if (!state.callMode) {
     stopCallTimer();
   }
@@ -726,7 +744,7 @@ function pushIncomingPing() {
   appendChat("alex", line);
   setUnread(state.unreadCount + 1);
   showIncomingToast(line);
-  try { AudioEngine.sfxClick(); } catch (_) {}
+  try { AudioEngine.sfxPing(); } catch (_) {}
   // don't steal story TTS while speaking
   if (!speaking) {
     try { speakChat(line); } catch (_) {}
