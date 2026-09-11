@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "note": "Procedural original audio (no third-party samples). Low volume; wire in app.js AudioEngine. Keep Web Audio as fallback.",
+  "bgm": {
+    "src": "./assets/audio/bgm-loop.mp3",
+    "loop": true,
+    "volume": 0.35
+  },
+  "sfx": {
+    "click": { "src": "./assets/audio/sfx-click.mp3", "volume": 0.55 },
+    "choice": { "src": "./assets/audio/sfx-choice.mp3", "volume": 0.55 },
+    "transition": { "src": "./assets/audio/sfx-transition.mp3", "volume": 0.5 }
+  }
+}
