@@ -194,57 +194,8 @@ function speakStoryBeats(text) {
 }
 
 function startIdleLife() {
-  const closed = document.getElementById("alex-portrait-blink");
-  const idles = [
-    document.getElementById("alex-idle-pen"),
-    document.getElementById("alex-idle-adjust"),
-    document.getElementById("alex-idle-phone"),
-    document.getElementById("alex-idle-twirl"),
-  ].filter(Boolean);
-  if (!closed && !idles.length) return;
-
-  let busy = false;
-
-  const blinkOnce = () => {
-    if (!closed || busy) return;
-    closed.classList.add("on");
-    setTimeout(() => closed.classList.remove("on"), 90 + Math.random() * 50);
-  };
-
-  const scheduleBlink = () => {
-    setTimeout(() => {
-      blinkOnce();
-      if (Math.random() < 0.22) setTimeout(blinkOnce, 180);
-      scheduleBlink();
-    }, 2200 + Math.random() * 3200);
-  };
-
-  const playIdleAction = () => {
-    if (busy || !idles.length) return;
-    const el = idles[Math.floor(Math.random() * idles.length)];
-    busy = true;
-    if (closed) closed.classList.remove("on");
-    el.classList.add("on");
-    const hold = 1400 + Math.random() * 1600;
-    setTimeout(() => {
-      el.classList.remove("on");
-      setTimeout(() => { busy = false; }, 480);
-    }, hold);
-  };
-
-  const scheduleIdle = () => {
-    setTimeout(() => {
-      // only fidget while play screen is active
-      const play = document.getElementById("screen-play");
-      if (play && play.classList.contains("active") && Math.random() < 0.7) {
-        playIdleAction();
-      }
-      scheduleIdle();
-    }, 4500 + Math.random() * 5500);
-  };
-
-  scheduleBlink();
-  scheduleIdle();
+  // Identity-safe: only CSS micro-motion on the locked master portrait.
+  // No blink/idle image swaps (those drifted hairstyle/face).
 }
 
 startIdleLife();
