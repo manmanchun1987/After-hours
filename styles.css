@@ -190,6 +190,8 @@ h1 {
 .h-cast {
   font-size: 1.45rem;
   margin-top: 4px;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 18px rgba(201, 164, 106, 0.25);
 }
 
 .slogan {
@@ -205,9 +207,36 @@ h1 {
   flex-direction: column;
   gap: 12px;
   padding: 28px 4px 8px;
+  position: relative;
 }
-
-.gate-card { margin-top: 8px; }
+.gate-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 40%;
+  bottom: -4px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(201,164,106,0.55), transparent);
+  pointer-events: none;
+}
+#screen-gate .brand-glow {
+  letter-spacing: 0.22em;
+  text-shadow: 0 0 22px rgba(201, 164, 106, 0.45);
+}
+#screen-gate h1 {
+  font-size: clamp(1.8rem, 5vw, 2.35rem);
+  text-shadow: 0 4px 28px rgba(0,0,0,0.55), 0 0 24px rgba(201,164,106,0.2);
+}
+.gate-card {
+  margin-top: 14px;
+  border-color: rgba(201, 164, 106, 0.35);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.42), 0 0 0 1px rgba(201,164,106,0.12);
+}
+#screen-gate .btn-primary {
+  min-height: 48px;
+  font-size: 1.02rem;
+  letter-spacing: 0.02em;
+}
 
 /* —— Cards / glass —— */
 .card {
@@ -377,15 +406,36 @@ h1 {
   animation: fadeIn 0.48s ease both;
   position: relative;
   overflow: hidden;
+  border-color: rgba(90, 110, 145, 0.4);
 }
 
 .char-card:nth-child(1) { animation-delay: 0.05s; }
 .char-card:nth-child(2) { animation-delay: 0.12s; }
 .char-card:nth-child(3) { animation-delay: 0.19s; }
 
+.char-card-featured {
+  border-color: rgba(201, 164, 106, 0.42);
+  box-shadow: 0 0 0 1px rgba(201, 164, 106, 0.14), var(--shadow);
+}
+.char-card-featured::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(201,164,106,0.1), transparent 28%);
+  z-index: 1;
+}
 .char-card-featured:hover {
-  border-color: var(--line-strong);
-  box-shadow: 0 0 0 1px rgba(201, 164, 106, 0.12), var(--shadow);
+  border-color: rgba(255, 220, 160, 0.65);
+  box-shadow: 0 0 0 1px rgba(201, 164, 106, 0.28), 0 0 28px rgba(201, 164, 106, 0.22), var(--shadow);
+  transform: translateY(-2px);
+}
+#screen-cast .topbar {
+  margin-bottom: 6px;
+}
+#screen-cast .chip {
+  border-color: rgba(201, 164, 106, 0.4);
+  color: var(--accent);
 }
 
 .char-card h2 {
