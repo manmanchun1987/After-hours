@@ -93,12 +93,14 @@ const AudioEngine = (() => {
         const res = await fetch("./assets/audio/manifest.json");
         if (!res.ok) return false;
         manifest = await res.json();
+        const ver = manifest.version != null ? String(manifest.version) : "1";
+        const bust = (src) => src + (src.includes("?") ? "&" : "?") + "v=" + encodeURIComponent(ver);
         if (manifest.bgm && manifest.bgm.src) {
-          buffers.bgm = await decodeUrl(manifest.bgm.src);
+          buffers.bgm = await decodeUrl(bust(manifest.bgm.src));
         }
         for (const key of ["click", "choice", "transition", "ping", "call"]) {
           const item = manifest.sfx && manifest.sfx[key];
-          if (item && item.src) buffers[key] = await decodeUrl(item.src);
+          if (item && item.src) buffers[key] = await decodeUrl(bust(item.src));
         }
         return true;
       } catch (err) {
@@ -753,16 +755,20 @@ function pushIncomingPing() {
 
 function startIncomingRhythm() {
   stopIncomingRhythm();
-  const tick = () => {
+  const schedule = () => {
+    const wait = state.callMode
+      ? 22000 + Math.random() * 18000
+      : 14000 + Math.random() * 16000;
     state.incomingTimerId = setTimeout(() => {
       const play = $("#screen-play");
-      if (play && play.classList.contains("active") && Math.random() < 0.55) {
+      const chance = state.callMode ? 0.28 : 0.55;
+      if (play && play.classList.contains("active") && Math.random() < chance) {
         pushIncomingPing();
       }
-      tick();
-    }, 14000 + Math.random() * 16000);
+      schedule();
+    }, wait);
   };
-  tick();
+  schedule();
 }
 
 function stopIncomingRhythm() {
@@ -811,6 +817,7 @@ function wireMemoryPanel() {
   if (strip) {
     strip.addEventListener("click", () => {
       setMemoryPanelOpen(!state.memoryPanelOpen);
+      if (state.memoryPanelOpen) setUnread(0);
       try { AudioEngine.sfxClick(); } catch (_) {}
     });
   }
