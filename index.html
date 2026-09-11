@@ -102,26 +102,27 @@
             </div>
           </div>
 
-          <div id="call-chrome" class="call-chrome" hidden aria-live="polite">
-            <span class="call-dot" aria-hidden="true"></span>
-            <span class="call-label">通話中</span>
-            <span id="call-timer" class="call-timer">00:00</span>
-          </div>
-
-          <div id="memory-strip" class="memory-strip" hidden>
-            <span class="memory-title">今晚記得</span>
-            <div id="memory-chips" class="memory-chips"></div>
-          </div>
-
-          <div class="play-face-gap" aria-hidden="true"></div>
-
-          <div class="play-lower">
+          <div class="play-hud" id="play-hud">
+            <div id="call-chrome" class="call-chrome" hidden aria-live="polite">
+              <span class="call-dot" aria-hidden="true"></span>
+              <span class="call-label">通話中</span>
+              <span id="call-timer" class="call-timer">00:00</span>
+            </div>
+            <div id="memory-strip" class="memory-strip" hidden>
+              <span class="memory-title">今晚記得</span>
+              <div id="memory-chips" class="memory-chips"></div>
+            </div>
             <div id="thought-slot" class="thought-slot" hidden>
               <p id="play-thought" class="thought-bubble"></p>
             </div>
             <div id="aside-slot" class="aside-slot" hidden>
               <p id="play-aside" class="aside-bubble"></p>
             </div>
+          </div>
+
+          <div class="play-face-gap" aria-hidden="true"></div>
+
+          <div class="play-lower">
             <div class="card glass play-card narrative-bubble">
               <p id="play-text" class="narrative"></p>
             </div>

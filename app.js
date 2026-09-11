@@ -488,10 +488,10 @@ function renderMemoryStrip() {
   if (!strip || !chips) return;
   chips.innerHTML = "";
   if (!state.memories.length) {
-    strip.hidden = true;
+    strip.setAttribute("hidden", "");
     return;
   }
-  strip.hidden = false;
+  strip.removeAttribute("hidden");
   state.memories.forEach((id) => {
     const span = document.createElement("span");
     span.className = "memory-chip";
@@ -528,13 +528,13 @@ function setCallMode(on) {
   state.callMode = !!on;
   document.body.classList.toggle("mode-call", state.callMode);
   const chrome = $("#call-chrome");
-  if (chrome) chrome.hidden = !state.callMode;
+  if (chrome) {
+    if (state.callMode) chrome.removeAttribute("hidden");
+    else chrome.setAttribute("hidden", "");
+  }
   if (state.callMode && !was) {
     startCallTimer();
-    try {
-      AudioEngine.beep({ freq: 520, dur: 0.12, type: "sine", vol: 0.2, slide: 40 });
-      setTimeout(() => AudioEngine.beep({ freq: 640, dur: 0.1, type: "sine", vol: 0.16 }), 140);
-    } catch (_) {}
+    try { AudioEngine.sfxChoice(); } catch (_) {}
   } else if (!state.callMode) {
     stopCallTimer();
   }
@@ -548,20 +548,20 @@ function renderThoughtAside(node) {
   if (thoughtSlot && thoughtEl) {
     if (node.thought) {
       thoughtEl.textContent = node.thought;
-      thoughtSlot.hidden = false;
+      thoughtSlot.removeAttribute("hidden");
       pulseIn(thoughtSlot);
     } else {
-      thoughtSlot.hidden = true;
+      thoughtSlot.setAttribute("hidden", "");
       thoughtEl.textContent = "";
     }
   }
   if (asideSlot && asideEl) {
     if (node.aside) {
       asideEl.textContent = node.aside;
-      asideSlot.hidden = false;
+      asideSlot.removeAttribute("hidden");
       pulseIn(asideSlot);
     } else {
-      asideSlot.hidden = true;
+      asideSlot.setAttribute("hidden", "");
       asideEl.textContent = "";
     }
   }
