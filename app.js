@@ -9,6 +9,10 @@ const state = {
   lastSpokenLines: [],
   currentMood: "cold",
   chatBusy: false,
+  memories: [],
+  callMode: false,
+  callTimerId: null,
+  callSeconds: 0,
 };
 
 const audioPrefs = {
@@ -260,7 +264,10 @@ let speaking = false;
 function setSpeaking(on) {
   speaking = !!on;
   const el = $("#speaking-indicator");
-  if (el) el.hidden = !speaking;
+  if (el) {
+    el.hidden = !speaking;
+    el.textContent = state.callMode ? "通話中" : "語音中";
+  }
 }
 
 function waitForVoices() {
@@ -340,9 +347,9 @@ function speakLines(lines, { force = false } = {}) {
     const u = new SpeechSynthesisUtterance(line);
     u.lang = (voice && voice.lang) || "zh-HK";
     if (voice) u.voice = voice;
-    // cold, measured boss — slightly slower, lower pitch
-    u.rate = 0.88;
-    u.pitch = 0.92;
+    // cold, measured boss — call mode slightly slower
+    u.rate = state.callMode ? 0.82 : 0.88;
+    u.pitch = state.callMode ? 0.9 : 0.92;
     u.volume = audioPrefs.masterMute ? 0 : 1;
     u.onend = () => {
       pending -= 1;
@@ -454,6 +461,121 @@ const CHAT_RULES = [
   { keys: ["拜拜", "走先", "再見", "bye", "收工"], bucket: "bye" },
 ];
 
+
+/* ============================================================
+   P0) Call mode + thoughts + memories
+   ============================================================ */
+const MAX_MEMORIES = 8;
+
+function memoryLabel(id) {
+  const map = (state.story && state.story.memoryLabels) || {};
+  return map[id] || id;
+}
+
+function addMemories(ids) {
+  if (!ids || !ids.length) return;
+  const next = state.memories.slice();
+  ids.forEach((id) => {
+    if (!id) return;
+    if (!next.includes(id)) next.push(id);
+  });
+  state.memories = next.slice(-MAX_MEMORIES);
+}
+
+function renderMemoryStrip() {
+  const strip = $("#memory-strip");
+  const chips = $("#memory-chips");
+  if (!strip || !chips) return;
+  chips.innerHTML = "";
+  if (!state.memories.length) {
+    strip.hidden = true;
+    return;
+  }
+  strip.hidden = false;
+  state.memories.forEach((id) => {
+    const span = document.createElement("span");
+    span.className = "memory-chip";
+    span.textContent = memoryLabel(id);
+    chips.appendChild(span);
+  });
+}
+
+function stopCallTimer() {
+  if (state.callTimerId) {
+    clearInterval(state.callTimerId);
+    state.callTimerId = null;
+  }
+}
+
+function startCallTimer() {
+  stopCallTimer();
+  state.callSeconds = 0;
+  const el = $("#call-timer");
+  const tick = () => {
+    state.callSeconds += 1;
+    if (el) {
+      const m = String(Math.floor(state.callSeconds / 60)).padStart(2, "0");
+      const s = String(state.callSeconds % 60).padStart(2, "0");
+      el.textContent = `${m}:${s}`;
+    }
+  };
+  if (el) el.textContent = "00:00";
+  state.callTimerId = setInterval(tick, 1000);
+}
+
+function setCallMode(on) {
+  const was = state.callMode;
+  state.callMode = !!on;
+  document.body.classList.toggle("mode-call", state.callMode);
+  const chrome = $("#call-chrome");
+  if (chrome) chrome.hidden = !state.callMode;
+  if (state.callMode && !was) {
+    startCallTimer();
+    try {
+      AudioEngine.beep({ freq: 520, dur: 0.12, type: "sine", vol: 0.2, slide: 40 });
+      setTimeout(() => AudioEngine.beep({ freq: 640, dur: 0.1, type: "sine", vol: 0.16 }), 140);
+    } catch (_) {}
+  } else if (!state.callMode) {
+    stopCallTimer();
+  }
+}
+
+function renderThoughtAside(node) {
+  const thoughtSlot = $("#thought-slot");
+  const asideSlot = $("#aside-slot");
+  const thoughtEl = $("#play-thought");
+  const asideEl = $("#play-aside");
+  if (thoughtSlot && thoughtEl) {
+    if (node.thought) {
+      thoughtEl.textContent = node.thought;
+      thoughtSlot.hidden = false;
+      pulseIn(thoughtSlot);
+    } else {
+      thoughtSlot.hidden = true;
+      thoughtEl.textContent = "";
+    }
+  }
+  if (asideSlot && asideEl) {
+    if (node.aside) {
+      asideEl.textContent = node.aside;
+      asideSlot.hidden = false;
+      pulseIn(asideSlot);
+    } else {
+      asideSlot.hidden = true;
+      asideEl.textContent = "";
+    }
+  }
+}
+
+function applyNodeMeta(node) {
+  const tags = Array.isArray(node.tags) ? node.tags : [];
+  const call = node.mode === "call" || tags.includes("call");
+  setCallMode(call);
+  addMemories(node.remember || []);
+  renderMemoryStrip();
+  renderThoughtAside(node);
+}
+
 function moodBucketBoost(bucket) {
   const mood = state.currentMood || "cold";
   if (mood === "tense" && bucket === "default") return "challenge";
@@ -474,6 +596,17 @@ function inferMoodFromNode(node) {
 
 function pickReply(userText) {
   const t = (userText || "").toLowerCase();
+  const askMem = /記得|之前|頭先|今晚|你知/.test(t);
+  if (state.memories.length && (askMem || Math.random() < 0.28)) {
+    const id = state.memories[state.memories.length - 1];
+    const label = memoryLabel(id);
+    const lines = [
+      `……我記得。${label}。唔好當我善忘。`,
+      `${label}——你以為我會刪低？`,
+      `你而家先問？${label}，我一路記住。`,
+    ];
+    return lines[Math.floor(Math.random() * lines.length)];
+  }
   let bucket = "default";
   for (const rule of CHAT_RULES) {
     if (rule.keys.some((k) => t.includes(k.toLowerCase()))) {
@@ -483,7 +616,6 @@ function pickReply(userText) {
   }
   bucket = moodBucketBoost(bucket);
   const pool = CHAT_REPLIES[bucket] || CHAT_REPLIES.default;
-  // light variety: avoid immediate repeat via random
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -565,6 +697,7 @@ function save() {
       ageOk: state.ageOk,
       nodeId: state.nodeId,
       path: state.path,
+      memories: state.memories,
     })
   );
 }
@@ -574,6 +707,9 @@ function clearProgress() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify({ ageOk }));
   state.nodeId = null;
   state.path = [];
+  state.memories = [];
+  setCallMode(false);
+  renderMemoryStrip();
 }
 
 function renderCast() {
@@ -603,6 +739,7 @@ function renderNode() {
 
   if (node.ending) {
     cancelSpeech();
+    setCallMode(false);
     $("#ending-kicker").textContent = node.label || "結局";
     $("#ending-title").textContent = node.endingTitle || "";
     $("#ending-text").textContent = node.text;
@@ -614,6 +751,7 @@ function renderNode() {
     return;
   }
 
+  applyNodeMeta(node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;
   speakStoryBeats(node.text);
@@ -628,6 +766,7 @@ function renderNode() {
     btn.addEventListener("click", () => {
       cancelSpeech();
       AudioEngine.sfxChoice();
+      if (choice.remember) addMemories(choice.remember);
       state.nodeId = choice.next;
       state.path.push(choice.next);
       save();
@@ -693,6 +832,7 @@ async function init() {
   state.ageOk = !!saved.ageOk;
   state.nodeId = saved.nodeId || null;
   state.path = Array.isArray(saved.path) ? saved.path : [];
+  state.memories = Array.isArray(saved.memories) ? saved.memories.slice(0, MAX_MEMORIES) : [];
 
   $("#enter-btn").addEventListener("click", async () => {
     await AudioEngine.unlock();
@@ -707,6 +847,7 @@ async function init() {
 
   $("#back-cast").addEventListener("click", () => {
     cancelSpeech();
+    setCallMode(false);
     AudioEngine.sfxClick();
     show("cast");
   });
