@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>加班之後 After Hours</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="screen-gate" class="screen active" aria-label="年齡確認">
+      <p class="brand">AFTER HOURS</p>
+      <h1>加班之後</h1>
+      <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
+      <div class="card stack">
+        <p class="fine">18+ 職場權力感文字互動。所有角色均為虛構成年人。第一期免費、無廣告。</p>
+        <button id="enter-btn" class="btn btn-primary" type="button">我已年滿 18 歲，進入</button>
+        <p class="fine"><a href="#">條款</a> · <a href="#">私隱</a></p>
+      </div>
+    </section>
+
+    <section id="screen-cast" class="screen" aria-label="角色選擇">
+      <div class="topbar">
+        <div>
+          <p class="brand">加班之後</p>
+          <h1 style="font-size:1.5rem;margin-top:4px">選擇角色</h1>
+        </div>
+        <span class="chip">訪客 · 免費</span>
+      </div>
+      <div class="chars">
+        <article class="card char-card">
+          <h2>Alex</h2>
+          <div class="role">部門主管</div>
+          <p class="hook">「Deadline 可以改。態度唔可以。」</p>
+          <div class="stack">
+            <button id="start-alex" class="btn btn-primary" type="button">開始</button>
+            <button id="resume-alex" class="btn btn-ghost" type="button" hidden>繼續上次</button>
+          </div>
+        </article>
+        <article class="card char-card" aria-disabled="true">
+          <h2>Morgan</h2>
+          <div class="role">客戶負責人</div>
+          <p class="hook">大單前夜，酒廊「只係傾生意」。</p>
+          <button class="btn btn-ghost" type="button" disabled>即將推出</button>
+        </article>
+        <article class="card char-card" aria-disabled="true">
+          <h2>Sam</h2>
+          <div class="role">前輩同事</div>
+          <p class="hook">教你「潛規則」嘅宵夜加班。</p>
+          <button class="btn btn-ghost" type="button" disabled>即將推出</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="screen-play" class="screen" aria-label="遊玩">
+      <div class="topbar">
+        <p id="play-label" class="play-label"></p>
+        <button id="back-cast" class="btn btn-ghost" type="button" style="padding:8px 12px">角色</button>
+      </div>
+      <div class="card">
+        <p id="play-text" class="narrative"></p>
+      </div>
+      <div id="choices" class="stack" aria-label="選擇"></div>
+    </section>
+
+    <section id="screen-ending" class="screen" aria-label="結局">
+      <p id="ending-kicker" class="brand"></p>
+      <h2 id="ending-title" class="ending-title"></h2>
+      <div class="card">
+        <p id="ending-text" class="narrative"></p>
+      </div>
+      <div class="stack">
+        <button id="ending-replay" class="btn btn-primary" type="button">再玩一次（其他選擇）</button>
+        <button id="ending-cast" class="btn btn-ghost" type="button">返回角色選擇</button>
+        <p class="fine">Morgan 即將登場。</p>
+      </div>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+</body>
+</html>
