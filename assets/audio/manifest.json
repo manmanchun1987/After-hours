@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "note": "Procedural original audio v2. Low volume. Wire new ping/call in app.js when ready; keep Web Audio fallback.",
+  "version": 3,
+  "note": "Procedural original audio v3. Louder ping/call for at-a-glance hearability; Web Audio fallback.",
   "bgm": {
     "src": "./assets/audio/bgm-loop.mp3",
     "loop": true,
@@ -21,11 +21,11 @@
     },
     "ping": {
       "src": "./assets/audio/sfx-ping.mp3",
-      "volume": 0.45
+      "volume": 0.75
     },
     "call": {
       "src": "./assets/audio/sfx-call.mp3",
-      "volume": 0.45
+      "volume": 0.72
     }
   }
 }
