@@ -33,7 +33,7 @@ const screens = {
 };
 
 /* ============================================================
-   A) Web Audio — soft late-night BGM + SFX
+   A) Web Audio — file assets + soft synth fallback
    ============================================================ */
 const AudioEngine = (() => {
   let ctx = null;
@@ -41,8 +41,12 @@ const AudioEngine = (() => {
   let bgmGain = null;
   let sfxGain = null;
   let bgmNodes = [];
+  let bgmSource = null;
   let started = false;
   let bgmPlaying = false;
+  let manifest = null;
+  let buffers = { bgm: null, click: null, choice: null, transition: null };
+  let loadPromise = null;
 
   function ensure() {
     if (ctx) return ctx;
@@ -60,11 +64,50 @@ const AudioEngine = (() => {
   }
 
   function applyVolumes() {
-    if (!masterGain) return;
+    if (!masterGain || !ctx) return;
     const master = audioPrefs.masterMute ? 0 : 1;
+    const bgmVol = (manifest && manifest.bgm && manifest.bgm.volume) || 0.35;
     masterGain.gain.setTargetAtTime(master, ctx.currentTime, 0.05);
-    bgmGain.gain.setTargetAtTime(audioPrefs.bgmMute || audioPrefs.masterMute ? 0 : 0.045, ctx.currentTime, 0.08);
-    sfxGain.gain.setTargetAtTime(audioPrefs.masterMute ? 0 : 0.22, ctx.currentTime, 0.05);
+    bgmGain.gain.setTargetAtTime(
+      audioPrefs.bgmMute || audioPrefs.masterMute ? 0 : bgmVol * 0.22,
+      ctx.currentTime,
+      0.08
+    );
+    sfxGain.gain.setTargetAtTime(audioPrefs.masterMute ? 0 : 0.55, ctx.currentTime, 0.05);
+  }
+
+  async function decodeUrl(url) {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error("audio fetch " + url);
+    const arr = await res.arrayBuffer();
+    return await new Promise((resolve, reject) => {
+      ctx.decodeAudioData(arr.slice(0), resolve, reject);
+    });
+  }
+
+  async function loadAssets() {
+    if (loadPromise) return loadPromise;
+    loadPromise = (async () => {
+      if (!ensure()) return false;
+      try {
+        const res = await fetch("./assets/audio/manifest.json");
+        if (!res.ok) return false;
+        manifest = await res.json();
+        if (manifest.bgm && manifest.bgm.src) {
+          buffers.bgm = await decodeUrl(manifest.bgm.src);
+        }
+        for (const key of ["click", "choice", "transition"]) {
+          const item = manifest.sfx && manifest.sfx[key];
+          if (item && item.src) buffers[key] = await decodeUrl(item.src);
+        }
+        return true;
+      } catch (err) {
+        console.warn("Audio assets load failed, using synth fallback", err);
+        manifest = null;
+        return false;
+      }
+    })();
+    return loadPromise;
   }
 
   function makeNoiseBuffer(seconds) {
@@ -74,7 +117,6 @@ const AudioEngine = (() => {
     const data = buf.getChannelData(0);
     let last = 0;
     for (let i = 0; i < len; i++) {
-      // soft brown-ish noise
       const white = Math.random() * 2 - 1;
       last = (last + 0.02 * white) / 1.02;
       data[i] = last * 3.5;
@@ -82,12 +124,8 @@ const AudioEngine = (() => {
     return buf;
   }
 
-  function startBgm() {
-    if (!ensure() || bgmPlaying) return;
-    bgmPlaying = true;
+  function startBgmSynth() {
     const t = ctx.currentTime;
-
-    // deep soft drone
     const o1 = ctx.createOscillator();
     const g1 = ctx.createGain();
     o1.type = "sine";
@@ -97,7 +135,6 @@ const AudioEngine = (() => {
     g1.connect(bgmGain);
     o1.start(t);
 
-    // airy fifth
     const o2 = ctx.createOscillator();
     const g2 = ctx.createGain();
     o2.type = "sine";
@@ -107,7 +144,6 @@ const AudioEngine = (() => {
     g2.connect(bgmGain);
     o2.start(t);
 
-    // slow shimmer LFO on a high sine
     const o3 = ctx.createOscillator();
     const g3 = ctx.createGain();
     const lfo = ctx.createOscillator();
@@ -124,7 +160,6 @@ const AudioEngine = (() => {
     o3.start(t);
     lfo.start(t);
 
-    // filtered noise bed
     const noise = ctx.createBufferSource();
     noise.buffer = makeNoiseBuffer(4);
     noise.loop = true;
@@ -139,7 +174,6 @@ const AudioEngine = (() => {
     ng.connect(bgmGain);
     noise.start(t);
 
-    // very slow pulse on master bed
     const pulse = ctx.createOscillator();
     const pulseG = ctx.createGain();
     pulse.type = "sine";
@@ -152,12 +186,30 @@ const AudioEngine = (() => {
     bgmNodes = [o1, o2, o3, lfo, noise, pulse];
   }
 
+  function startBgmFile() {
+    const src = ctx.createBufferSource();
+    src.buffer = buffers.bgm;
+    src.loop = !!(manifest && manifest.bgm && manifest.bgm.loop !== false);
+    src.connect(bgmGain);
+    src.start(0);
+    bgmSource = src;
+    bgmNodes = [src];
+  }
+
+  function startBgm() {
+    if (!ensure() || bgmPlaying) return;
+    bgmPlaying = true;
+    if (buffers.bgm) startBgmFile();
+    else startBgmSynth();
+  }
+
   function stopBgm() {
     bgmNodes.forEach((n) => {
       try { n.stop(); } catch (_) {}
       try { n.disconnect(); } catch (_) {}
     });
     bgmNodes = [];
+    bgmSource = null;
     bgmPlaying = false;
   }
 
@@ -168,8 +220,9 @@ const AudioEngine = (() => {
       try { await c.resume(); } catch (_) {}
     }
     started = true;
-    if (!audioPrefs.bgmMute && !audioPrefs.masterMute) startBgm();
+    await loadAssets();
     applyVolumes();
+    if (!audioPrefs.bgmMute && !audioPrefs.masterMute) startBgm();
   }
 
   function beep({ freq = 440, dur = 0.06, type = "sine", vol = 0.4, slide = 0 } = {}) {
@@ -189,25 +242,45 @@ const AudioEngine = (() => {
     o.stop(t + dur + 0.02);
   }
 
+  function playBuffer(buf, volScale = 1) {
+    if (!started || !ensure() || audioPrefs.masterMute || !buf) return false;
+    const src = ctx.createBufferSource();
+    const g = ctx.createGain();
+    src.buffer = buf;
+    g.gain.value = volScale;
+    src.connect(g);
+    g.connect(sfxGain);
+    src.start(0);
+    return true;
+  }
+
   function sfxClick() {
-    beep({ freq: 620, dur: 0.045, type: "triangle", vol: 0.28, slide: -80 });
+    const vol = (manifest && manifest.sfx && manifest.sfx.click && manifest.sfx.click.volume) || 0.55;
+    if (!playBuffer(buffers.click, vol)) {
+      beep({ freq: 620, dur: 0.045, type: "triangle", vol: 0.28, slide: -80 });
+    }
   }
 
   function sfxChoice() {
-    beep({ freq: 380, dur: 0.08, type: "sine", vol: 0.32, slide: 40 });
-    setTimeout(() => beep({ freq: 520, dur: 0.06, type: "triangle", vol: 0.18 }), 40);
+    const vol = (manifest && manifest.sfx && manifest.sfx.choice && manifest.sfx.choice.volume) || 0.55;
+    if (!playBuffer(buffers.choice, vol)) {
+      beep({ freq: 380, dur: 0.08, type: "sine", vol: 0.32, slide: 40 });
+      setTimeout(() => beep({ freq: 520, dur: 0.06, type: "triangle", vol: 0.18 }), 40);
+    }
   }
 
   function sfxTransition() {
-    beep({ freq: 180, dur: 0.22, type: "sine", vol: 0.2, slide: 60 });
-    setTimeout(() => beep({ freq: 90, dur: 0.28, type: "sine", vol: 0.12, slide: -20 }), 50);
+    const vol = (manifest && manifest.sfx && manifest.sfx.transition && manifest.sfx.transition.volume) || 0.5;
+    if (!playBuffer(buffers.transition, vol)) {
+      beep({ freq: 180, dur: 0.22, type: "sine", vol: 0.2, slide: 60 });
+      setTimeout(() => beep({ freq: 90, dur: 0.28, type: "sine", vol: 0.12, slide: -20 }), 50);
+    }
   }
 
   function refresh() {
     applyVolumes();
     if (!started) return;
     if (audioPrefs.bgmMute || audioPrefs.masterMute) {
-      // keep nodes but silence via gain — or restart cleanly when unmuted
       if (bgmPlaying) applyVolumes();
     } else if (!bgmPlaying) {
       startBgm();
