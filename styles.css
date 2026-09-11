@@ -986,6 +986,7 @@ body.mode-call .play-bg-scrim {
 
 
 /* —— P1: blink mask / speaking / incoming / memory panel —— */
+/* blink3: lids over eyes (was too high/thin); stronger contrast for 一眼見到 */
 .blink-mask {
   position: absolute;
   inset: 0;
@@ -995,29 +996,31 @@ body.mode-call .play-bg-scrim {
 }
 .blink-lid {
   position: absolute;
-  top: 15.5%;
-  width: 17%;
-  height: 5.5%;
-  border-radius: 50% 50% 40% 40%;
-  background: linear-gradient(180deg, rgba(12,8,10,0.92), rgba(28,18,22,0.78));
-  box-shadow: 0 2px 4px rgba(0,0,0,0.35);
-  transform: scaleY(0.08);
+  top: 22.5%;
+  width: 21%;
+  height: 9.5%;
+  border-radius: 48% 48% 42% 42%;
+  background: linear-gradient(180deg, rgba(6,4,6,0.98), rgba(22,12,16,0.92) 55%, rgba(10,6,8,0.88));
+  box-shadow:
+    0 3px 8px rgba(0,0,0,0.55),
+    inset 0 -2px 4px rgba(0,0,0,0.35);
+  transform: scaleY(0.06);
   transform-origin: top center;
-  opacity: 0.95;
+  opacity: 1;
 }
-.blink-lid-l { left: 31%; }
-.blink-lid-r { right: 31%; left: auto; }
+.blink-lid-l { left: 29%; }
+.blink-lid-r { right: 29%; left: auto; }
 .blink-mask.on {
   opacity: 1;
 }
 .blink-mask.on .blink-lid {
-  animation: lidClose 0.2s ease-in-out;
+  animation: lidClose 0.22s ease-in-out;
 }
 @keyframes lidClose {
-  0% { transform: scaleY(0.08); }
-  35% { transform: scaleY(1); }
-  55% { transform: scaleY(1); }
-  100% { transform: scaleY(0.08); }
+  0% { transform: scaleY(0.06); opacity: 0.85; }
+  28% { transform: scaleY(1); opacity: 1; }
+  62% { transform: scaleY(1); opacity: 1; }
+  100% { transform: scaleY(0.06); opacity: 0.85; }
 }
 
 body.mode-speaking .portrait-stack {
