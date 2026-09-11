@@ -290,6 +290,7 @@ const AudioEngine = (() => {
   return {
     unlock,
     refresh,
+    loadAssets,
     sfxClick,
     sfxChoice,
     sfxTransition,
@@ -567,15 +568,16 @@ function renderMemoryStrip() {
   chips.innerHTML = "";
   if (!state.memories.length) {
     strip.setAttribute("hidden", "");
-    return;
+  } else {
+    strip.removeAttribute("hidden");
+    state.memories.forEach((id) => {
+      const span = document.createElement("span");
+      span.className = "memory-chip";
+      span.textContent = memoryLabel(id);
+      chips.appendChild(span);
+    });
   }
-  strip.removeAttribute("hidden");
-  state.memories.forEach((id) => {
-    const span = document.createElement("span");
-    span.className = "memory-chip";
-    span.textContent = memoryLabel(id);
-    chips.appendChild(span);
-  });
+  if (state.memoryPanelOpen) renderMemoryPanel();
 }
 
 function stopCallTimer() {
@@ -725,8 +727,10 @@ function pushIncomingPing() {
   setUnread(state.unreadCount + 1);
   showIncomingToast(line);
   try { AudioEngine.sfxClick(); } catch (_) {}
-  // soft speak if voice unmuted
-  try { speakChat(line); } catch (_) {}
+  // don't steal story TTS while speaking
+  if (!speaking) {
+    try { speakChat(line); } catch (_) {}
+  }
 }
 
 function startIncomingRhythm() {
@@ -1065,6 +1069,10 @@ async function init() {
   wireChat();
   wireMemoryPanel();
   startLifeMotion();
+  // warm decode early (still needs unlock/gesture to hear)
+  try {
+    AudioEngine.loadAssets && AudioEngine.loadAssets();
+  } catch (_) {}
 
   const res = await fetch("./data/alex.json");
   state.story = await res.json();
