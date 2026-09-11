@@ -246,10 +246,14 @@ const AudioEngine = (() => {
 
   function playBuffer(buf, volScale = 1) {
     if (!started || !ensure() || audioPrefs.masterMute || !buf) return false;
+    if (ctx.state === "suspended") {
+      try { ctx.resume(); } catch (_) {}
+    }
     const src = ctx.createBufferSource();
     const g = ctx.createGain();
     src.buffer = buf;
-    g.gain.value = volScale;
+    // sfxGain sits ~0.55; bump so manifest vols stay audible
+    g.gain.value = Math.min(1.8, volScale * 1.35);
     src.connect(g);
     g.connect(sfxGain);
     src.start(0);
@@ -280,19 +284,32 @@ const AudioEngine = (() => {
   }
 
   function sfxPing() {
-    const vol = (manifest && manifest.sfx && manifest.sfx.ping && manifest.sfx.ping.volume) || 0.45;
-    if (!playBuffer(buffers.ping, vol)) {
-      beep({ freq: 880, dur: 0.08, type: "sine", vol: 0.22, slide: 120 });
-      setTimeout(() => beep({ freq: 1200, dur: 0.05, type: "triangle", vol: 0.12 }), 50);
+    const play = () => {
+      const vol = (manifest && manifest.sfx && manifest.sfx.ping && manifest.sfx.ping.volume) || 0.75;
+      if (playBuffer(buffers.ping, vol)) return;
+      beep({ freq: 980, dur: 0.12, type: "sine", vol: 0.42, slide: 160 });
+      setTimeout(() => beep({ freq: 1320, dur: 0.09, type: "triangle", vol: 0.28 }), 55);
+    };
+    if (buffers.ping || !started) {
+      play();
+      return;
     }
+    loadAssets().then(play).catch(() => play());
   }
 
   function sfxCall() {
-    const vol = (manifest && manifest.sfx && manifest.sfx.call && manifest.sfx.call.volume) || 0.45;
-    if (!playBuffer(buffers.call, vol)) {
-      beep({ freq: 520, dur: 0.12, type: "sine", vol: 0.2, slide: 40 });
-      setTimeout(() => beep({ freq: 640, dur: 0.1, type: "sine", vol: 0.16 }), 140);
+    const play = () => {
+      const vol = (manifest && manifest.sfx && manifest.sfx.call && manifest.sfx.call.volume) || 0.72;
+      if (playBuffer(buffers.call, vol)) return;
+      beep({ freq: 480, dur: 0.16, type: "sine", vol: 0.4, slide: 60 });
+      setTimeout(() => beep({ freq: 620, dur: 0.14, type: "sine", vol: 0.32 }), 150);
+      setTimeout(() => beep({ freq: 720, dur: 0.1, type: "triangle", vol: 0.22 }), 300);
+    };
+    if (buffers.call || !started) {
+      play();
+      return;
     }
+    loadAssets().then(play).catch(() => play());
   }
 
   function refresh() {
@@ -755,13 +772,17 @@ function pushIncomingPing() {
 
 function startIncomingRhythm() {
   stopIncomingRhythm();
+  let first = true;
   const schedule = () => {
-    const wait = state.callMode
-      ? 22000 + Math.random() * 18000
-      : 14000 + Math.random() * 16000;
+    const wait = first
+      ? 4500 + Math.random() * 2500
+      : state.callMode
+        ? 22000 + Math.random() * 18000
+        : 14000 + Math.random() * 16000;
     state.incomingTimerId = setTimeout(() => {
       const play = $("#screen-play");
-      const chance = state.callMode ? 0.28 : 0.55;
+      const chance = first ? 0.95 : state.callMode ? 0.28 : 0.55;
+      first = false;
       if (play && play.classList.contains("active") && Math.random() < chance) {
         pushIncomingPing();
       }
@@ -1115,8 +1136,14 @@ async function init() {
     show("cast");
   });
 
-  $("#start-alex").addEventListener("click", () => startAlex(true));
-  $("#resume-alex").addEventListener("click", () => startAlex(false));
+  $("#start-alex").addEventListener("click", async () => {
+    await AudioEngine.unlock();
+    startAlex(true);
+  });
+  $("#resume-alex").addEventListener("click", async () => {
+    await AudioEngine.unlock();
+    startAlex(false);
+  });
 
   $("#back-cast").addEventListener("click", () => {
     cancelSpeech();
