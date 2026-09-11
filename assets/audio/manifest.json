@@ -1,14 +1,31 @@
 {
-  "version": 1,
-  "note": "Procedural original audio (no third-party samples). Low volume; wire in app.js AudioEngine. Keep Web Audio as fallback.",
+  "version": 2,
+  "note": "Procedural original audio v2. Low volume. Wire new ping/call in app.js when ready; keep Web Audio fallback.",
   "bgm": {
     "src": "./assets/audio/bgm-loop.mp3",
     "loop": true,
     "volume": 0.35
   },
   "sfx": {
-    "click": { "src": "./assets/audio/sfx-click.mp3", "volume": 0.55 },
-    "choice": { "src": "./assets/audio/sfx-choice.mp3", "volume": 0.55 },
-    "transition": { "src": "./assets/audio/sfx-transition.mp3", "volume": 0.5 }
+    "click": {
+      "src": "./assets/audio/sfx-click.mp3",
+      "volume": 0.55
+    },
+    "choice": {
+      "src": "./assets/audio/sfx-choice.mp3",
+      "volume": 0.55
+    },
+    "transition": {
+      "src": "./assets/audio/sfx-transition.mp3",
+      "volume": 0.5
+    },
+    "ping": {
+      "src": "./assets/audio/sfx-ping.mp3",
+      "volume": 0.45
+    },
+    "call": {
+      "src": "./assets/audio/sfx-call.mp3",
+      "volume": 0.45
+    }
   }
 }
