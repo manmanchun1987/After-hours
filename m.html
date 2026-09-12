@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=m7" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="./styles.css?v=lock1" />
   <style>
     #chars{display:grid;gap:12px;padding:12px 0 32px}
-    #live2d-stage{position:absolute;inset:0;z-index:2;pointer-events:none}
-    #live2d-stage canvas{width:100%!important;height:100%!important}
-    #waifu{z-index:50!important}
-    #screen-play.active .play-bg{background:#07090e url("./assets/alex.png") center 12%/cover no-repeat}
+    #waifu,#live2d-widget,#live2d-stage{display:none!important}
+    #alex-portrait{opacity:1!important}
+    #screen-play.active .play-bg{
+      background:#07090e url("./assets/alex.png") center 12%/cover no-repeat;
+    }
   </style>
 </head>
 <body>
@@ -25,7 +25,6 @@
     </section>
     <section id="screen-cast" class="screen">
       <h1 class="h-cast">選擇角色</h1>
-      <p class="fine">二次元 Live2D 在左下角；遊玩頁係 Vera 相 + 動畫模型。</p>
       <div class="chars" id="chars">
         <article class="card glass char-card"><h2>Vera</h2><button class="btn btn-primary" type="button" data-start="alex">開始</button></article>
         <article class="card glass char-card"><h2>Morgan</h2><button class="btn btn-primary" type="button" data-start="morgan">開始</button></article>
@@ -37,7 +36,6 @@
         <div class="play-bg">
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
-            <div id="live2d-stage"></div>
           </div>
           <div class="play-bg-scrim"></div>
         </div>
@@ -62,6 +60,5 @@
     </section>
   </main>
   <script src="./life.js"></script>
-  <script src="https://fastly.jsdelivr.net/npm/live2d-widgets@1.0.1/dist/autoload.js"></script>
 </body>
 </html>
