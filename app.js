@@ -1,9 +1,16 @@
-const STORAGE_KEY = "after-hours-v1";
+const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
+
+const STORY_FILES = {
+  alex: "./data/alex.json",
+  morgan: "./data/morgan.json",
+  sam: "./data/sam.json",
+};
 
 const state = {
   ageOk: false,
   story: null,
+  storyId: null,
   nodeId: null,
   path: [],
   lastSpokenLines: [],
@@ -16,6 +23,8 @@ const state = {
   incomingTimerId: null,
   unreadCount: 0,
   memoryPanelOpen: false,
+  heat: 20,
+  tension: 15,
 };
 
 const audioPrefs = {
@@ -565,6 +574,73 @@ const CHAT_REPLIES = {
   ],
 };
 
+const CAST_VOICE = {
+  alex: {
+    name: "Vera",
+    toast: "Vera 傳咗訊息",
+    greeting: "……有事？講。",
+    incoming: [
+      "……你仲喺度？",
+      "簡報改到邊？回我。",
+      "唔好裝忙。我睇到你仲 online。",
+      "抬頭。",
+      "我記得今晚啲事——你呢？",
+    ],
+    replies: null,
+    rules: null,
+  },
+  morgan: {
+    name: "Morgan",
+    toast: "Morgan 傳咗訊息",
+    greeting: "夜晚先傾人。你想講邊條？",
+    incoming: [
+      "合約……定你？",
+      "酒杯空咗。你仲喺度？",
+      "聽日董事會。你準備好未？",
+      "房卡仲喺枱面。",
+      "數字我朝早發——除非你今晚另有答覆。",
+    ],
+    replies: {
+      greet: ["嗯。坐低。", "你嚟得啱。酒未完。", "講。我聽。"],
+      work: ["數字日頭講完。而家唔覆盤。", "單可以假寐。人唔可以。", "條款我朝早發。今晚唔簽。"],
+      sorry: ["道歉好平。房卡貴啲。", "我唔收『誤會』。我收決定。", "……知就好。再斟？"],
+      flirt: ["大膽。酒廊有耳。", "危險答案。我鍾意——但唔鍾意賴帳。", "距離。除非你想縮。"],
+      tired: ["夜深。董事會聽朝。", "攰就飲水。唔好攤喺窗前。", "你仲未走？定唔想走？"],
+      praise: ["偶爾準一次，唔代表你贏。", "收到。繼續維持呢個價。", "少見。我接受。"],
+      challenge: ["你頂嘴之前，先睇清楚邊個簽大單。", "哦。你教我談價？", "好。你想清楚——定係想我幫你清楚。"],
+      help: ["講邊條條款。我唔猜。", "自己諗五分鐘。諗唔到再問。", "我可以教。代價你自己知。"],
+      bye: ["走之前想清楚。房卡唔等人。", "早啲返。聽朝我仲喺董事會。", "……晚安。數字另計。"],
+      default: ["講清楚啲。", "我聽到。然後呢？", "……哼。", "你想我點答？", "再講一次。簡短。"],
+    },
+    rules: null,
+  },
+  sam: {
+    name: "Sam",
+    toast: "Sam 傳咗訊息",
+    greeting: "杯麵未涼。有事？",
+    incoming: [
+      "你仲未走？",
+      "影印機卡紙。要唔要我幫手？",
+      "潛規則：餓嘅人簽錯字。",
+      "天台風涼。你喺邊？",
+      "我留低……唔係勤力。",
+    ],
+    replies: {
+      greet: ["喺。杯麵重熱。", "你嚟得啱。老闆唔喺度。", "講啦。唔使排隊。"],
+      work: ["slide 我可以幫你改。呢頁寫唔入共享。", "Deadline 係真。潛規則都係真。", "先食完。簽錯字好核突。"],
+      sorry: ["唔使對唔住。食完再算。", "知錯就好。匙羹我都未收。", "……得。我等得。"],
+      flirt: ["……你知唔知自己講緊咩。", "監控盲區喺樓梯。呢度唔係。", "我可以只做前輩。都可以唔只係。"],
+      tired: ["夜深。門禁 23:15 要拍兩次卡。", "攰就食。唔好空肚頂。", "我都未走。你有理由留？"],
+      praise: ["偶爾準一次，唔代表你叻——不過呢次準。", "收到。繼續。", "嗯。終於似樣。"],
+      challenge: ["頂嘴留俾樓上。我呢度只教路。", "哦。你教前輩？", "好。你想慢慢嚟，定想清楚？"],
+      help: ["講邊頁。我唔猜。", "自己諗五分鐘。諗唔到我喺茶水間。", "我可以教。第三條之後先講。"],
+      bye: ["走得啲，先有下一次。", "拍卡兩次。第一次我幫你。", "……晚安。聽朝 slide 我睇。"],
+      default: ["講清楚啲。", "我聽到。然後呢？", "……嗯。", "你想我點答？", "再講一次。我聽。"],
+    },
+    rules: null,
+  },
+};
+
 const CHAT_RULES = [
   { keys: ["你好", "早晨", "晚安", "嗨", "hi", "hello", "hey", "早晨", "午安"], bucket: "greet" },
   { keys: ["deadline", "交", "報告", "簡報", "工作", "改", "會議", "project", "加班", "檔"], bucket: "work" },
@@ -582,6 +658,67 @@ const CHAT_RULES = [
    P0) Call mode + thoughts + memories
    ============================================================ */
 const MAX_MEMORIES = 8;
+
+function getCastId() {
+  return state.storyId || (state.story && state.story.id) || "alex";
+}
+
+function getCast() {
+  const id = getCastId();
+  const pack = CAST_VOICE[id] || CAST_VOICE.alex;
+  return {
+    id,
+    name: (state.story && (state.story.chatName || state.story.name)) || pack.name,
+    toast: pack.toast,
+    greeting: pack.greeting,
+    incoming: pack.incoming,
+    replies: pack.replies || CHAT_REPLIES,
+    rules: pack.rules || CHAT_RULES,
+  };
+}
+
+function clampMeter(n) {
+  const v = Number(n);
+  if (!Number.isFinite(v)) return 0;
+  return Math.max(0, Math.min(100, v));
+}
+
+function portraitSrc(story) {
+  if (story && story.portrait) return story.portrait;
+  const id = (story && story.id) || state.storyId;
+  if (id === "morgan") return "./assets/morgan.jpg";
+  if (id === "sam") return "./assets/sam.jpg";
+  return "./assets/alex.png";
+}
+
+function applyStoryArt(story) {
+  const src = portraitSrc(story);
+  const img = $("#alex-portrait");
+  if (img && img.getAttribute("src") !== src) img.setAttribute("src", src);
+  document.documentElement.style.setProperty("--play-portrait", 'url("' + src + '")');
+  const tint = (story && story.tint) || "";
+  if (tint) document.body.setAttribute("data-tint", tint);
+  else document.body.removeAttribute("data-tint");
+  const cast = getCast();
+  const who = $("#chat-who");
+  if (who) who.textContent = cast.name;
+  const toastDefault = $("#incoming-toast-text");
+  if (toastDefault && !state.unreadCount) toastDefault.textContent = cast.toast;
+  const mask = $("#blink-mask");
+  if (mask) {
+    if (getCastId() === "alex") mask.removeAttribute("hidden");
+    else mask.setAttribute("hidden", "");
+  }
+}
+
+function renderMeters() {
+  const heatEl = $("#meter-heat");
+  const tenEl = $("#meter-tension");
+  if (heatEl) heatEl.style.width = clampMeter(state.heat) + "%";
+  if (tenEl) tenEl.style.width = clampMeter(state.tension) + "%";
+  document.body.classList.toggle("heat-high", state.heat >= 55);
+  document.body.classList.toggle("tension-high", state.tension >= 50);
+}
 
 function memoryLabel(id) {
   const map = (state.story && state.story.memoryLabels) || {};
@@ -650,6 +787,8 @@ function setCallMode(on) {
     else chrome.setAttribute("hidden", "");
   }
   if (state.callMode && !was) {
+    const who = $("#call-who");
+    if (who) who.textContent = "通話中 · " + getCast().name;
     startCallTimer();
     try { AudioEngine.sfxCall(); } catch (_) {}
   } else if (!state.callMode) {
@@ -691,20 +830,13 @@ function applyNodeMeta(node) {
   addMemories(node.remember || []);
   renderMemoryStrip();
   renderThoughtAside(node);
+  renderMeters();
 }
 
 
 /* ============================================================
    P1) Blink mask, incoming pings, memory panel
    ============================================================ */
-const INCOMING_LINES = [
-  "……你仲喺度？",
-  "簡報改到邊？回我。",
-  "唔好裝忙。我睇到你仲 online。",
-  "抬頭。",
-  "我記得今晚啲事——你呢？",
-];
-
 function triggerBlink() {
   const mask = $("#blink-mask");
   if (!mask) return;
@@ -747,7 +879,7 @@ function showIncomingToast(text) {
   const toast = $("#incoming-toast");
   const label = $("#incoming-toast-text");
   if (!toast) return;
-  if (label) label.textContent = text || "Vera 傳咗訊息";
+  if (label) label.textContent = text || getCast().toast;
   toast.removeAttribute("hidden");
 }
 
@@ -759,7 +891,8 @@ function hideIncomingToast() {
 function pushIncomingPing() {
   const play = $("#screen-play");
   if (!play || !play.classList.contains("active") || state.chatBusy) return;
-  const line = INCOMING_LINES[Math.floor(Math.random() * INCOMING_LINES.length)];
+  const lines = getCast().incoming;
+  const line = lines[Math.floor(Math.random() * lines.length)];
   appendChat("alex", line);
   setUnread(state.unreadCount + 1);
   showIncomingToast(line);
@@ -892,15 +1025,16 @@ function pickReply(userText) {
     ];
     return lines[Math.floor(Math.random() * lines.length)];
   }
+  const cast = getCast();
   let bucket = "default";
-  for (const rule of CHAT_RULES) {
+  for (const rule of cast.rules) {
     if (rule.keys.some((k) => t.includes(k.toLowerCase()))) {
       bucket = rule.bucket;
       break;
     }
   }
   bucket = moodBucketBoost(bucket);
-  const pool = CHAT_REPLIES[bucket] || CHAT_REPLIES.default;
+  const pool = cast.replies[bucket] || cast.replies.default || CHAT_REPLIES.default;
   return pool[Math.floor(Math.random() * pool.length)];
 }
 
@@ -944,7 +1078,7 @@ function resetChat() {
   if (box) box.innerHTML = "";
   setChatTyping(false);
   state.chatBusy = false;
-  appendChat("alex", "……有事？講。");
+  appendChat("alex", getCast().greeting);
 }
 
 /* ============================================================
@@ -983,37 +1117,52 @@ function save() {
     STORAGE_KEY,
     JSON.stringify({
       ageOk: state.ageOk,
+      storyId: state.storyId,
       nodeId: state.nodeId,
       path: state.path,
       memories: state.memories,
+      heat: state.heat,
+      tension: state.tension,
     })
   );
 }
 
 function clearProgress() {
   const ageOk = state.ageOk;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ageOk }));
+  const storyId = state.storyId;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ageOk, storyId }));
   state.nodeId = null;
   state.path = [];
   state.memories = [];
+  state.heat = 20;
+  state.tension = 15;
   setCallMode(false);
   renderMemoryStrip();
+  renderMeters();
 }
 
 function renderCast() {
-  const canResume =
-    state.nodeId &&
-    state.story.nodes[state.nodeId] &&
-    !state.story.nodes[state.nodeId].ending;
-  $("#resume-alex").hidden = !canResume;
+  const node = state.story && state.nodeId && state.story.nodes
+    ? state.story.nodes[state.nodeId]
+    : null;
+  const canResume = !!(node && !node.ending);
+  const resume = $("#resume-alex");
+  if (resume) resume.hidden = !canResume;
 }
 
 function startAlex(fresh) {
   AudioEngine.sfxChoice();
+  if (!state.story || !state.story.nodes) return;
+  state.storyId = state.story.id || state.storyId || "alex";
   if (fresh || !state.nodeId || !state.story.nodes[state.nodeId]) {
     state.nodeId = state.story.start;
     state.path = [state.nodeId];
+    state.heat = 20;
+    state.tension = 15;
+    state.memories = [];
   }
+  applyStoryArt(state.story);
+  renderMeters();
   save();
   resetChat();
   renderNode();
@@ -1050,16 +1199,26 @@ function renderNode() {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn btn-choice";
-    btn.textContent = choice.label;
-    btn.addEventListener("click", () => {
-      cancelSpeech();
-      AudioEngine.sfxChoice();
-      if (choice.remember) addMemories(choice.remember);
-      state.nodeId = choice.next;
-      state.path.push(choice.next);
-      save();
-      renderNode();
-    });
+    const need = Number(choice.requireHeat) || 0;
+    if (state.heat < need) {
+      btn.disabled = true;
+      btn.classList.add("is-locked");
+      btn.textContent = (choice.label || "") + "（熱度不足）";
+    } else {
+      btn.textContent = choice.label;
+      btn.addEventListener("click", () => {
+        cancelSpeech();
+        AudioEngine.sfxChoice();
+        if (choice.heat) state.heat = clampMeter(state.heat + choice.heat);
+        if (choice.tension) state.tension = clampMeter(state.tension + choice.tension);
+        if (choice.remember) addMemories(choice.remember);
+        state.nodeId = choice.next;
+        state.path.push(choice.next);
+        renderMeters();
+        save();
+        renderNode();
+      });
+    }
     box.appendChild(btn);
   });
 
@@ -1120,13 +1279,31 @@ async function init() {
     AudioEngine.loadAssets && AudioEngine.loadAssets();
   } catch (_) {}
 
-  const res = await fetch("./data/alex.json");
-  state.story = await res.json();
   const saved = loadSave();
   state.ageOk = !!saved.ageOk;
+  state.storyId = saved.storyId && STORY_FILES[saved.storyId] ? saved.storyId : null;
   state.nodeId = saved.nodeId || null;
   state.path = Array.isArray(saved.path) ? saved.path : [];
   state.memories = Array.isArray(saved.memories) ? saved.memories.slice(0, MAX_MEMORIES) : [];
+  state.heat = saved.heat == null ? 20 : clampMeter(saved.heat);
+  state.tension = saved.tension == null ? 15 : clampMeter(saved.tension);
+
+  if (state.storyId) {
+    try {
+      const res = await fetch(STORY_FILES[state.storyId]);
+      if (res.ok) {
+        state.story = await res.json();
+        applyStoryArt(state.story);
+      }
+    } catch (_) {
+      state.story = null;
+      state.storyId = null;
+    }
+  }
+  if (state.story && state.nodeId && !state.story.nodes[state.nodeId]) {
+    state.nodeId = null;
+    state.path = [];
+  }
 
   $("#enter-btn").addEventListener("click", async () => {
     await AudioEngine.unlock();

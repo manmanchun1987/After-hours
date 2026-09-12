@@ -1,15 +1,18 @@
 (function () {
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var CAST = [
-    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。" },
-    { id: "morgan", name: "Morgan", role: "客戶負責人", hook: "大單前夜，酒廊只係傾生意。" },
-    { id: "sam", name: "Sam", role: "前輩同事", hook: "教你潛規則嘅肝夜加班。" }
+    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。", portrait: "./assets/alex.png" },
+    { id: "morgan", name: "Morgan", role: "客戶負責人", hook: "大單前夜，酒廊只係傾生意。", portrait: "./assets/morgan.jpg" },
+    { id: "sam", name: "Sam", role: "前輩同事", hook: "教你潛規則嘅肝夜加班。", portrait: "./assets/sam.jpg" }
   ];
-  function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
   function meters() {
     if (typeof state === "undefined") return;
     if (typeof state.heat !== "number") state.heat = 20;
     if (typeof state.tension !== "number") state.tension = 15;
+    if (typeof renderMeters === "function") {
+      renderMeters();
+      return;
+    }
     var heatEl = document.getElementById("meter-heat");
     var tenEl = document.getElementById("meter-tension");
     if (heatEl) heatEl.style.width = state.heat + "%";
@@ -24,7 +27,8 @@
       art.className = "card glass char-card";
       var img = document.createElement("img");
       img.className = "char-thumb";
-      img.src = "./assets/alex.png";
+      img.src = c.portrait;
+      img.alt = c.name;
       var wrap = document.createElement("div");
       wrap.className = "char-thumb-wrap";
       wrap.appendChild(img);
@@ -58,7 +62,8 @@
       state.memories = [];
       state.heat = 20;
       state.tension = 15;
-      if (typeof startAlex === "function") startAlex(false);
+      if (typeof applyStoryArt === "function") applyStoryArt(story);
+      if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
       meters();
     });
