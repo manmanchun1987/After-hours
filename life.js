@@ -9,44 +9,6 @@
       el.classList.toggle("active", id === "screen-" + name);
     });
     document.body.classList.toggle("mode-play", name === "play");
-    if (name === "play") startLife();
-  }
-  function startLife() {
-    var img = $("alex-portrait"), stack = $("alex-portrait-stack");
-    if (!img || !stack || stack.dataset.life === "1") return;
-    var c = document.createElement("canvas");
-    c.id = "life-canvas";
-    c.style.cssText = "position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1";
-    stack.appendChild(c);
-    var ctx = c.getContext("2d"), t = 0, started = false;
-    function fit() {
-      var w = stack.clientWidth || innerWidth, h = stack.clientHeight || innerHeight;
-      if (c.width !== w) c.width = w;
-      if (c.height !== h) c.height = h;
-    }
-    function frame() {
-      t += 0.016; fit();
-      var w = c.width, h = c.height;
-      if (!w || !img.naturalWidth) { requestAnimationFrame(frame); return; }
-      var ir = img.naturalWidth / img.naturalHeight, cr = w / h, dw, dh;
-      if (ir > cr) { dh = h * 1.04; dw = dh * ir; } else { dw = w * 1.04; dh = dw / ir; }
-      var dx = (w - dw) / 2 + Math.sin(t * 0.55) * 18;
-      var dy = (h - dh) * 0.02 + Math.sin(t * 0.9) * 12;
-      ctx.clearRect(0, 0, w, h);
-      ctx.drawImage(img, dx, dy, dw, dh);
-      if ((t % 3.6) > 3.38) {
-        ctx.fillStyle = "#2a1c18";
-        var ey = dy + dh * 0.215, ex = dx + dw * 0.492;
-        ctx.beginPath();
-        ctx.ellipse(ex - dw * 0.017, ey, dw * 0.015, dh * 0.007, 0, 0, Math.PI * 2);
-        ctx.ellipse(ex + dw * 0.019, ey, dw * 0.015, dh * 0.007, 0, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      if (!started) { started = true; stack.dataset.life = "1"; img.style.opacity = "0"; }
-      requestAnimationFrame(frame);
-    }
-    if (img.complete && img.naturalWidth) requestAnimationFrame(frame);
-    else img.addEventListener("load", function () { requestAnimationFrame(frame); }, { once: true });
   }
   function render() {
     if (!story || !story.nodes) return;
@@ -63,7 +25,8 @@
       box.innerHTML = "";
       (node.choices || []).forEach(function (ch) {
         var b = document.createElement("button");
-        b.className = "btn btn-choice"; b.type = "button"; b.textContent = ch.label || "繼續";
+        b.className = "btn btn-choice"; b.type = "button";
+        b.textContent = ch.label || "繼續";
         b.onclick = function () { nodeId = ch.to || ch.next; render(); };
         box.appendChild(b);
       });
