@@ -4,45 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=m4" />
+  <link rel="stylesheet" href="./styles.css?v=m5" />
   <style>
     #chars{display:grid;gap:12px;padding:12px 0 32px}
-    #alex-portrait{opacity:1!important;animation:none!important}
-    #screen-play.active .play-bg{
-      background:#0b0d12 url("./assets/alex.png") center 12%/cover no-repeat!important;
-      animation:womanMove 3.2s ease-in-out infinite;
-      transform-origin:center 30%;
-    }
-    #screen-play.active .portrait-stack{
-      animation:womanMove 3.2s ease-in-out infinite;
-      transform-origin:center 28%;
-    }
-    @keyframes womanMove{
-      0%,100%{transform:scale(1.06) translate3d(0,0,0)}
-      40%{transform:scale(1.14) translate3d(-8px,-20px,0)}
-      70%{transform:scale(1.1) translate3d(8px,-8px,0)}
-    }
-    @media (prefers-reduced-motion:reduce){
-      #screen-play.active .play-bg,
-      #screen-play.active .portrait-stack{animation:womanMove 3.2s ease-in-out infinite!important}
-    }
+    #alex-portrait{opacity:1}
+    #screen-play.active .portrait-stack{animation:none!important}
+    #screen-play.active .play-bg{animation:none!important;background:#05070c}
+    .portrait-stack{position:absolute;inset:0}
   </style>
 </head>
 <body>
-  <div class="atm-layer"></div>
   <main class="app">
     <section id="screen-gate" class="screen active">
       <div class="gate-hero">
         <p class="brand">AFTER HOURS</p>
         <h1>加班之後</h1>
-        <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
-      </div>
-      <div class="card glass stack gate-card">
         <button id="enter-btn" class="btn btn-primary" type="button">我已年滿 18 歲，進入</button>
       </div>
     </section>
     <section id="screen-cast" class="screen">
-      <div class="topbar"><h1 class="h-cast">選擇角色</h1></div>
+      <h1 class="h-cast">選擇角色</h1>
       <div class="chars" id="chars">
         <article class="card glass char-card"><h2>Vera</h2><button class="btn btn-primary" type="button" data-start="alex">開始</button></article>
         <article class="card glass char-card"><h2>Morgan</h2><button class="btn btn-primary" type="button" data-start="morgan">開始</button></article>
@@ -72,11 +53,11 @@
     </section>
     <section id="screen-ending" class="screen">
       <h2 id="ending-title"></h2>
-      <div class="card glass"><p id="ending-text" class="narrative"></p></div>
+      <p id="ending-text" class="narrative"></p>
       <button id="ending-replay" class="btn btn-primary" type="button">再玩</button>
       <button id="ending-cast" class="btn btn-ghost" type="button">返回</button>
     </section>
   </main>
-  <script src="./play-engine.js?v=m3"></script>
+  <script src="./play-engine.js?v=m5"></script>
 </body>
 </html>
