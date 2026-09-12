@@ -9,3 +9,29 @@ body[data-tint="amber"] .portrait{filter:sepia(.25) saturate(1.1)}
 body[data-tint="teal"] .portrait{filter:hue-rotate(28deg) saturate(.92)}
 .btn-choice.is-locked{opacity:.45;cursor:not-allowed}
 #screen-play .meters{pointer-events:none}
+
+/* life2: motion you can see on a phone */
+#screen-play.active .portrait-stack{
+  animation: lifeBreathe 3.2s ease-in-out infinite !important;
+}
+@keyframes lifeBreathe{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  40%{transform:translate3d(0,-14px,0) scale(1.06)}
+  70%{transform:translate3d(-6px,-6px,0) scale(1.03)}
+}
+.blink-mask{
+  position:absolute;inset:0;pointer-events:none;z-index:2;
+}
+.blink-lid{
+  position:absolute;top:22%;width:18%;height:7%;
+  background:#1a120ccc;border-radius:40%;
+  opacity:0;transform:scaleY(.2);
+  animation:lifeBlink 3.4s ease-in-out infinite;
+}
+.blink-lid-l{left:31%}
+.blink-lid-r{right:31%;left:auto;animation-delay:.04s}
+@keyframes lifeBlink{
+  0%,86%,100%{opacity:0;transform:scaleY(.2)}
+  90%,93%{opacity:.92;transform:scaleY(2.4)}
+}
+.char-thumb{animation:lifeBreathe 3.6s ease-in-out infinite !important}
