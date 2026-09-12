@@ -3,55 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#080b12" />
   <title>加班之後 After Hours</title>
   <link rel="stylesheet" href="./styles.css?v=bar1" />
-  <link rel="stylesheet" href="./styles-compete.css?v=comp1" />
+  <link rel="stylesheet" href="./styles-compete.css?v=life2" />
 </head>
 <body>
   <div class="atm-layer" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <button id="start-alex" type="button" hidden>start</button>
   <button id="resume-alex" type="button" hidden>resume</button>
-
   <main class="app">
-    <div class="global-controls" aria-label="音訊控制">
-      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂" aria-pressed="false">
-        <span class="icon-label">♪</span><span class="sr-only">BGM</span>
-      </button>
-      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音" aria-pressed="false">
-        <span class="icon-label">聲</span><span class="sr-only">語音</span>
-      </button>
-      <button id="btn-mute-master" class="icon-btn" type="button" title="全部靜音" aria-pressed="false">
-        <span class="icon-label">🔊</span><span class="sr-only">全部靜音</span>
-      </button>
+    <div class="global-controls">
+      <button id="btn-mute-bgm" class="icon-btn" type="button"><span class="icon-label">♪</span></button>
+      <button id="btn-mute-voice" class="icon-btn" type="button"><span class="icon-label">聲</span></button>
+      <button id="btn-mute-master" class="icon-btn" type="button"><span class="icon-label">🔊</span></button>
     </div>
-
-    <section id="screen-gate" class="screen active" aria-label="年齡確認">
+    <section id="screen-gate" class="screen active">
       <div class="gate-hero">
         <p class="brand brand-glow">AFTER HOURS</p>
         <h1>加班之後</h1>
         <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
       </div>
       <div class="card glass stack gate-card">
-        <p class="fine">18+ 職場權力感文字互動。所有角色均為虛構成年人。免費、無廣告。</p>
+        <p class="fine">18+ 。免費、無廣告。</p>
         <button id="enter-btn" class="btn btn-primary btn-glow" type="button">我已年滿 18 歲，進入</button>
       </div>
     </section>
-
-    <section id="screen-cast" class="screen" aria-label="角色選擇">
-      <div class="topbar">
-        <div>
-          <p class="brand">加班之後</p>
-          <h1 class="h-cast">選擇角色</h1>
-        </div>
-        <span class="chip">訪客 · 免費</span>
-      </div>
+    <section id="screen-cast" class="screen">
+      <div class="topbar"><div><p class="brand">加班之後</p><h1 class="h-cast">選擇角色</h1></div><span class="chip">訪客 · 免費</span></div>
       <div class="chars" id="chars"></div>
     </section>
-
-    <section id="screen-play" class="screen" aria-label="遊玩">
+    <section id="screen-play" class="screen">
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
           <div class="portrait-stack" id="alex-portrait-stack">
@@ -74,27 +56,15 @@
             </div>
           </div>
           <div class="play-hud" id="play-hud">
-            <div class="meters" aria-label="關係指標">
+            <div class="meters">
               <div class="meter"><span>熱度</span><i><b id="meter-heat"></b></i></div>
               <div class="meter"><span>張力</span><i><b id="meter-tension"></b></i></div>
             </div>
-            <div id="call-chrome" class="call-chrome" hidden>
-              <span class="call-dot" aria-hidden="true"></span>
-              <span class="call-label">通話中</span>
-              <span id="call-timer" class="call-timer">00:00</span>
-            </div>
-            <button type="button" id="memory-strip" class="memory-strip" hidden>
-              <span class="memory-title">今晚記得</span>
-              <div id="memory-chips" class="memory-chips"></div>
-              <span class="memory-open-hint">面板</span>
-            </button>
+            <div id="call-chrome" class="call-chrome" hidden><span class="call-dot"></span><span class="call-label">通話中</span><span id="call-timer" class="call-timer">00:00</span></div>
+            <button type="button" id="memory-strip" class="memory-strip" hidden><span class="memory-title">今晚記得</span><div id="memory-chips" class="memory-chips"></div></button>
             <div id="memory-panel" class="memory-panel card glass" hidden>
-              <div class="memory-panel-head">
-                <strong>今晚記得</strong>
-                <button type="button" id="memory-panel-close" class="btn btn-ghost btn-tiny">收起</button>
-              </div>
+              <div class="memory-panel-head"><strong>今晚記得</strong><button type="button" id="memory-panel-close" class="btn btn-ghost btn-tiny">收起</button></div>
               <ul id="memory-panel-list" class="memory-panel-list"></ul>
-              <p class="memory-panel-empty" id="memory-panel-empty" hidden>暫時未記住嘢。</p>
             </div>
             <div id="thought-slot" class="thought-slot" hidden><p id="play-thought" class="thought-bubble"></p></div>
             <div id="aside-slot" class="aside-slot" hidden><p id="play-aside" class="aside-bubble"></p></div>
@@ -102,40 +72,28 @@
           <div class="play-face-gap" aria-hidden="true"></div>
           <div class="play-lower">
             <div class="card glass play-card narrative-bubble"><p id="play-text" class="narrative"></p></div>
-            <div id="choices" class="stack choices" aria-label="選擇"></div>
+            <div id="choices" class="stack choices"></div>
             <div class="chat-panel card glass">
-              <div class="chat-header">
-                <span class="chat-title">私下對白 <span id="chat-unread" class="chat-unread" hidden>1</span></span>
-                <span class="chat-hint">唔影響主線</span>
-              </div>
-              <button type="button" id="incoming-toast" class="incoming-toast" hidden>
-                <span class="incoming-dot" aria-hidden="true"></span>
-                <span id="incoming-toast-text">傳咗訊息</span>
-              </button>
-              <div id="chat-messages" class="chat-messages" role="log"></div>
-              <div id="chat-typing" class="chat-typing" hidden><span></span><span></span><span></span><em>打緊字…</em></div>
-              <form id="chat-form" class="chat-form" autocomplete="off">
-                <input id="chat-input" type="text" maxlength="120" placeholder="講句嘢…" />
-                <button class="btn btn-primary btn-send" type="submit">送</button>
-              </form>
+              <div class="chat-header"><span class="chat-title">私下對白</span></div>
+              <button type="button" id="incoming-toast" class="incoming-toast" hidden><span id="incoming-toast-text">傳咗訊息</span></button>
+              <div id="chat-messages" class="chat-messages"></div>
+              <div id="chat-typing" class="chat-typing" hidden><em>打緊字…</em></div>
+              <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
             </div>
           </div>
         </div>
       </div>
     </section>
-
-    <section id="screen-ending" class="screen" aria-label="結局">
+    <section id="screen-ending" class="screen">
       <p id="ending-kicker" class="brand brand-glow"></p>
       <h2 id="ending-title" class="ending-title"></h2>
       <div class="card glass"><p id="ending-text" class="narrative"></p></div>
       <div class="stack">
         <button id="ending-replay" class="btn btn-primary" type="button">再玩一次</button>
         <button id="ending-cast" class="btn btn-ghost" type="button">返回角色選擇</button>
-        <p class="fine">Vera / Morgan / Sam 三線可重玩。</p>
       </div>
     </section>
   </main>
-
   <script src="./app.js?v=sfx4"></script>
   <script src="./compete-boot.js?v=comp1"></script>
 </body>
