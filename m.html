@@ -4,18 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=hud2" />
+  <link rel="stylesheet" href="./styles.css?v=hud3" />
   <style>
     #chars{display:grid;gap:14px;padding:12px 0 32px}
     .char-card img{width:100%;height:140px;object-fit:cover;object-position:center 18%;border-radius:12px}
     #vera-vid,#alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 16%}
-    #vera-vid{z-index:1}
     .portrait-stack{position:absolute;inset:0;overflow:hidden}
-    #thought-slot,#aside-slot{margin:0 16px 8px}
-    #play-thought,#play-aside{margin:0;font-size:13px;opacity:.85}
-    #play-thought{font-style:italic}
+    #thought-slot,#aside-slot,#memory-strip{margin:0 16px 8px}
+    #play-thought{font-style:italic;margin:0;font-size:13px;opacity:.9}
+    #play-aside{margin:0;font-size:12px;opacity:.7}
+    #memory-chips{display:flex;flex-wrap:wrap;gap:6px}
+    #memory-chips .chip{font-size:11px;padding:4px 8px;border:1px solid #d4b48355;border-radius:99px}
     .meters{display:flex;gap:10px;padding:0 16px 8px}
-    .meter{flex:1;font-size:11px;letter-spacing:.04em}
+    .meter{flex:1;font-size:11px}
     .meter i{display:block;height:4px;background:#ffffff22;border-radius:99px;margin-top:4px;overflow:hidden}
     .meter b{display:block;height:100%;width:20%;background:#d4b483}
   </style>
@@ -52,6 +53,7 @@
             <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
           </div>
           <div class="meters"><div class="meter">熱度<i><b id="meter-heat"></b></i></div><div class="meter">張力<i><b id="meter-tension"></b></i></div></div>
+          <div id="memory-strip" hidden><div id="memory-chips"></div></div>
           <div id="thought-slot" hidden><p id="play-thought"></p></div>
           <div id="aside-slot" hidden><p id="play-aside"></p></div>
           <div class="play-face-gap"></div>
