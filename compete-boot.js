@@ -1,89 +1,77 @@
-/* compete-1 boot: three routes + meters. No canvas overlay. */
 (function () {
-  const FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
-  const CAST = [
-    { id: "alex", name: "Vera", role: "部門主管", hook: "「Deadline 可以改。態度唔可以。」", featured: true },
-    { id: "morgan", name: "Morgan", role: "客戶負責人", hook: "大單前夜，酒廊「只係傾生意」。" },
-    { id: "sam", name: "Sam", role: "前輩同事", hook: "教你「潛規則」嘅肝夜加班。" }
+  var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
+  var CAST = [
+    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。" },
+    { id: "morgan", name: "Morgan", role: "客戶負責人", hook: "大單前夜，酒廊只係傾生意。" },
+    { id: "sam", name: "Sam", role: "前輩同事", hook: "教你潛規則嘅肝夜加班。" }
   ];
-  const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+  function clamp(n, a, b) { return Math.max(a, Math.min(b, n)); }
   function meters() {
+    if (typeof state === "undefined") return;
     if (typeof state.heat !== "number") state.heat = 20;
     if (typeof state.tension !== "number") state.tension = 15;
-    const heatEl = document.querySelector("#meter-heat");
-    const tenEl = document.querySelector("#meter-tension");
+    var heatEl = document.getElementById("meter-heat");
+    var tenEl = document.getElementById("meter-tension");
     if (heatEl) heatEl.style.width = state.heat + "%";
     if (tenEl) tenEl.style.width = state.tension + "%";
-    document.body.classList.toggle("heat-high", state.heat >= 55);
-    document.body.classList.toggle("tension-high", state.tension >= 55);
-    document.body.dataset.tint = (state.story && state.story.tint) || "cold";
-  }
-  function applyChoiceStats(choice) {
-    if (!choice) return;
-    if (choice.heat) state.heat = clamp(state.heat + choice.heat, 0, 100);
-    if (choice.tension) state.tension = clamp(state.tension + choice.tension, 0, 100);
-    meters();
   }
   function paintCast() {
-    const root = document.querySelector("#chars");
+    var root = document.getElementById("chars");
     if (!root) return;
     root.innerHTML = "";
-    CAST.forEach((c) => {
-      const canResume = state.storyId === c.id && state.nodeId && state.story && state.story.nodes[state.nodeId] && !state.story.nodes[state.nodeId].ending;
-      const art = document.createElement("article");
-      art.className = "card glass char-card" + (c.featured ? " char-card-featured" : "");
-      art.innerHTML = '<div class="char-thumb-wrap"><img class="char-thumb" src="./assets/alex.png" alt=""></div><h2>' + c.name + "</h2><div class=\"role\">" + c.role + '</div><p class="hook">' + c.hook + '</p><div class="stack"><button class="btn btn-primary" type="button" data-start="' + c.id + '">開始</button><button class="btn btn-ghost" type="button" data-resume="' + c.id + '"' + (canResume ? "" : " hidden") + ">繼續上次</button></div>';
+    CAST.forEach(function (c) {
+      var art = document.createElement("article");
+      art.className = "card glass char-card";
+      var img = document.createElement("img");
+      img.className = "char-thumb";
+      img.src = "./assets/alex.png";
+      var wrap = document.createElement("div");
+      wrap.className = "char-thumb-wrap";
+      wrap.appendChild(img);
+      var h = document.createElement("h2");
+      h.textContent = c.name;
+      var role = document.createElement("div");
+      role.className = "role";
+      role.textContent = c.role;
+      var hook = document.createElement("p");
+      hook.className = "hook";
+      hook.textContent = c.hook;
+      var start = document.createElement("button");
+      start.className = "btn btn-primary";
+      start.type = "button";
+      start.textContent = "開始";
+      start.addEventListener("click", function () { bootStart(c.id, true); });
+      art.appendChild(wrap);
+      art.appendChild(h);
+      art.appendChild(role);
+      art.appendChild(hook);
+      art.appendChild(start);
       root.appendChild(art);
     });
-    root.querySelectorAll("[data-start]").forEach((btn) => btn.addEventListener("click", () => bootStart(btn.getAttribute("data-start"), true)));
-    root.querySelectorAll("[data-resume]").forEach((btn) => btn.addEventListener("click", () => bootStart(btn.getAttribute("data-resume"), false)));
   }
-  async function bootStart(id, fresh) {
-    try { if (typeof AudioEngine !== "undefined" && AudioEngine.unlock) await AudioEngine.unlock(); } catch (_) {}
-    const res = await fetch(FILES[id]);
-    state.story = await res.json();
-    state.storyId = id;
-    if (fresh || !state.nodeId || !state.story.nodes[state.nodeId]) {
-      state.nodeId = state.story.start; state.path = [state.nodeId]; state.memories = []; state.heat = 20; state.tension = 15;
-    }
-    const img = document.querySelector("#alex-portrait");
-    if (img) img.style.opacity = "";
-    const dead = document.querySelector("#l2d-canvas");
-    if (dead) dead.remove();
-    if (typeof startAlex === "function") startAlex(false);
-    else if (typeof renderNode === "function") renderNode();
-    meters();
-  }
-  const prevRender = window.renderNode;
-  window.renderNode = function () {
-    const node = state.story && state.story.nodes[state.nodeId];
-    if (prevRender) prevRender();
-    if (!node) return;
-    meters();
-    const box = document.querySelector("#choices");
-    if (!box) return;
-    box.querySelectorAll("button").forEach((btn, i) => {
-      const choice = (node.choices || [])[i];
-      if (!choice) return;
-      if (state.heat < (choice.requireHeat || 0)) {
-        btn.disabled = true; btn.classList.add("is-locked"); btn.textContent = choice.label + "（熱度不足）"; return;
-      }
-      btn.addEventListener("click", function () { applyChoiceStats(choice); });
+  function bootStart(id, fresh) {
+    fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
+      state.story = story;
+      state.storyId = id;
+      state.nodeId = story.start;
+      state.path = [story.start];
+      state.memories = [];
+      state.heat = 20;
+      state.tension = 15;
+      if (typeof startAlex === "function") startAlex(false);
+      else if (typeof renderNode === "function") renderNode();
+      meters();
     });
-  };
+  }
   function ready() {
-    try {
-      const saved = JSON.parse(localStorage.getItem("after-hours-v1") || "{}");
-      if (saved.storyId) state.storyId = saved.storyId;
-      if (Number.isFinite(saved.heat)) state.heat = saved.heat;
-      if (Number.isFinite(saved.tension)) state.tension = saved.tension;
-    } catch (_) {}
-    paintCast(); meters();
-    ["#enter-btn", "#back-cast", "#ending-cast"].forEach((sel) => {
-      const el = document.querySelector(sel);
-      if (el) el.addEventListener("click", () => setTimeout(paintCast, 80));
-    });
+    paintCast();
+    var enter = document.getElementById("enter-btn");
+    if (enter) enter.addEventListener("click", function () { setTimeout(paintCast, 100); });
+    var back = document.getElementById("back-cast");
+    if (back) back.addEventListener("click", function () { setTimeout(paintCast, 100); });
+    var toCast = document.getElementById("ending-cast");
+    if (toCast) toCast.addEventListener("click", function () { setTimeout(paintCast, 100); });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ready);
-  else setTimeout(ready, 0);
+  else ready();
 })();
