@@ -1,0 +1,6 @@
+#l2d-canvas{display:none!important}
+#alex-portrait{opacity:1!important;visibility:visible!important;display:block!important}
+#screen-play.active .play-bg{
+  background:#0b0d12 url("./assets/alex.png") center 12% / cover no-repeat!important;
+}
+#screen-play.active .portrait-stack{opacity:1!important}
