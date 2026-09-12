@@ -4,12 +4,12 @@ Beat MiraiMind on crafted story + identity, not catalog size.
 
 Owner locked 2026-09-13 01:23 HKT. Do not add motion until P0 is real.
 
-## Now (P0)
+## Done (P0) — 2026-09-13 01:32 HKT
 
 1. Play HUD — thought / aside / heat-tension / locked choices.
-   Heat and tension must change on choice. `requireHeat` must lock at least one Vera choice.
-   Wire this in `app.js` only. No third engine.
-2. Save `storyId`. Cast + play portraits must differ per route (Vera / Morgan / Sam).
+   Heat and tension change on choice. `requireHeat` locks Vera / Morgan / Sam paths.
+   Wired in `app.js` only.
+2. Save `storyId`. Cast + play portraits differ per route (Vera / Morgan / Sam).
 
 ## Frozen
 
@@ -18,6 +18,6 @@ Owner locked 2026-09-13 01:23 HKT. Do not add motion until P0 is real.
 
 ## After P0
 
-3. Cast page with role + hook, same night-glass look. (hooks exist; unique art still open)
-5. Deepen three routes so each has a distinct ending tone.
+3. Cast page with role + hook, same night-glass look. (hooks + unique art now exist)
+5. Deepen three routes so each has a distinct ending tone. **Next.**
 6. Voice later. No anime widget. No Ken Burns.
