@@ -4,10 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=hud3" />
+  <link rel="stylesheet" href="./styles.css?v=cast4" />
   <style>
-    #chars{display:grid;gap:14px;padding:12px 0 32px}
-    .char-card img{width:100%;height:140px;object-fit:cover;object-position:center 18%;border-radius:12px}
+    #chars{display:grid;gap:14px;padding:12px 0 40px}
+    .char-card{padding:12px}
+    .char-card img{width:100%;height:150px;object-fit:cover;object-position:center 18%;border-radius:12px;margin-bottom:8px}
+    .char-card .role{opacity:.7;margin:0 0 6px;font-size:12px}
+    .char-card .hook{margin:0 0 12px;font-size:13px;line-height:1.45}
     #vera-vid,#alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 16%}
     .portrait-stack{position:absolute;inset:0;overflow:hidden}
     #thought-slot,#aside-slot,#memory-strip{margin:0 16px 8px}
@@ -33,9 +36,25 @@
     <section id="screen-cast" class="screen">
       <h1 class="h-cast">選擇角色</h1>
       <div class="chars" id="chars">
-        <article class="card glass char-card"><img src="./assets/alex.png" alt=""><h2>Vera</h2><p class="role">部門主管</p><button class="btn btn-primary" type="button" data-start="alex">開始</button></article>
-        <article class="card glass char-card"><h2>Morgan</h2><p class="role">客戶負責人</p><button class="btn btn-primary" type="button" data-start="morgan">開始</button></article>
-        <article class="card glass char-card"><h2>Sam</h2><p class="role">前輩同事</p><button class="btn btn-primary" type="button" data-start="sam">開始</button></article>
+        <article class="card glass char-card">
+          <img src="./assets/alex.png" alt="">
+          <h2>Vera</h2>
+          <p class="role">部門主管 · 週五 23:47</p>
+          <p class="hook">Deadline 可以改。態度唔可以。整層淨剩會議室燈。</p>
+          <button class="btn btn-primary" type="button" data-start="alex">開始</button>
+        </article>
+        <article class="card glass char-card">
+          <h2>Morgan</h2>
+          <p class="role">客戶負責人 · 酒廊 21:10</p>
+          <p class="hook">大單前夜。數字日頭講完，夜晚講人。</p>
+          <button class="btn btn-primary" type="button" data-start="morgan">開始</button>
+        </article>
+        <article class="card glass char-card">
+          <h2>Sam</h2>
+          <p class="role">前輩同事 · 茶水間 22:40</p>
+          <p class="hook">兩個杯麵。潛規則第一條：餓嘅人簽錯字。</p>
+          <button class="btn btn-primary" type="button" data-start="sam">開始</button>
+        </article>
       </div>
     </section>
     <section id="screen-play" class="screen">
