@@ -1,13 +1,32 @@
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
-  var story = null, nodeId = null, heat = 20, tension = 15;
+  var MEM_NODE = {
+    n2a: "stayed_late", n2b: "pushed_back", n2c: "got_close",
+    n4a: "review_room", n6a: "chose_stay", n6b: "wanted_equal",
+    n7: "called_out_plan"
+  };
+  var story = null, nodeId = null, heat = 20, tension = 15, path = [], mem = [];
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
   function meters() {
     var h = $("meter-heat"), t = $("meter-tension");
     if (h) h.style.width = heat + "%";
     if (t) t.style.width = tension + "%";
+  }
+  function chips() {
+    var box = $("memory-chips");
+    var strip = $("memory-strip");
+    if (!box || !strip) return;
+    box.innerHTML = "";
+    var labels = (story && story.memoryLabels) || {};
+    mem.forEach(function (id) {
+      var s = document.createElement("span");
+      s.className = "chip";
+      s.textContent = labels[id] || id;
+      box.appendChild(s);
+    });
+    strip.hidden = mem.length === 0;
   }
   function slot(wrapId, textId, val) {
     var w = $(wrapId), p = $(textId);
@@ -22,9 +41,14 @@
     });
     document.body.classList.toggle("mode-play", name === "play");
   }
+  function remember(id) {
+    var key = MEM_NODE[id];
+    if (key && mem.indexOf(key) < 0) mem.push(key);
+  }
   function render() {
     if (!story || !story.nodes) return;
     var node = story.nodes[nodeId]; if (!node) return;
+    remember(nodeId);
     if (node.ending) {
       if ($("ending-title")) $("ending-title").textContent = node.title || "結局";
       if ($("ending-text")) $("ending-text").textContent = node.text || "";
@@ -34,7 +58,7 @@
     if ($("play-text")) $("play-text").textContent = node.text || "";
     slot("thought-slot", "play-thought", node.thought);
     slot("aside-slot", "play-aside", node.aside);
-    meters();
+    meters(); chips();
     var box = $("choices");
     if (box) {
       box.innerHTML = "";
@@ -51,6 +75,7 @@
             if (ch.heat) heat = clamp(heat + ch.heat);
             if (ch.tension) tension = clamp(tension + ch.tension);
             nodeId = ch.to || ch.next;
+            path.push(nodeId);
             render();
           };
         }
@@ -62,7 +87,7 @@
   function start(id) {
     fetch(FILES[id] || FILES.alex).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (s) {
-        story = s; nodeId = s.start; heat = 20; tension = 15; render();
+        story = s; nodeId = s.start; heat = 20; tension = 15; path = [nodeId]; mem = []; render();
       })
       .catch(function () { show("cast"); });
   }
@@ -73,7 +98,7 @@
     });
     if ($("back-cast")) $("back-cast").onclick = function () { show("cast"); };
     if ($("ending-replay")) $("ending-replay").onclick = function () {
-      if (story) { nodeId = story.start; heat = 20; tension = 15; render(); }
+      if (story) { nodeId = story.start; heat = 20; tension = 15; path = [nodeId]; mem = []; render(); }
     };
     if ($("ending-cast")) $("ending-cast").onclick = function () { show("cast"); };
   }
