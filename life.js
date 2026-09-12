@@ -1,14 +1,14 @@
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
-  var MEM_NODE = {
-    n2a: "stayed_late", n2b: "pushed_back", n2c: "got_close",
-    n4a: "review_room", n6a: "chose_stay", n6b: "wanted_equal",
-    n7: "called_out_plan"
-  };
-  var story = null, nodeId = null, heat = 20, tension = 15, path = [], mem = [];
+  var story = null, nodeId = null, heat = 20, tension = 15, mem = [];
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
+  function addMem(list) {
+    (list || []).forEach(function (id) {
+      if (id && mem.indexOf(id) < 0) mem.push(id);
+    });
+  }
   function meters() {
     var h = $("meter-heat"), t = $("meter-tension");
     if (h) h.style.width = heat + "%";
@@ -41,16 +41,12 @@
     });
     document.body.classList.toggle("mode-play", name === "play");
   }
-  function remember(id) {
-    var key = MEM_NODE[id];
-    if (key && mem.indexOf(key) < 0) mem.push(key);
-  }
   function render() {
     if (!story || !story.nodes) return;
     var node = story.nodes[nodeId]; if (!node) return;
-    remember(nodeId);
+    addMem(node.remember);
     if (node.ending) {
-      if ($("ending-title")) $("ending-title").textContent = node.title || "結局";
+      if ($("ending-title")) $("ending-title").textContent = node.endingTitle || node.title || node.label || "結局";
       if ($("ending-text")) $("ending-text").textContent = node.text || "";
       show("ending"); return;
     }
@@ -74,8 +70,8 @@
           b.onclick = function () {
             if (ch.heat) heat = clamp(heat + ch.heat);
             if (ch.tension) tension = clamp(tension + ch.tension);
+            addMem(ch.remember);
             nodeId = ch.to || ch.next;
-            path.push(nodeId);
             render();
           };
         }
@@ -87,7 +83,7 @@
   function start(id) {
     fetch(FILES[id] || FILES.alex).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (s) {
-        story = s; nodeId = s.start; heat = 20; tension = 15; path = [nodeId]; mem = []; render();
+        story = s; nodeId = s.start; heat = 20; tension = 15; mem = []; render();
       })
       .catch(function () { show("cast"); });
   }
@@ -98,7 +94,7 @@
     });
     if ($("back-cast")) $("back-cast").onclick = function () { show("cast"); };
     if ($("ending-replay")) $("ending-replay").onclick = function () {
-      if (story) { nodeId = story.start; heat = 20; tension = 15; path = [nodeId]; mem = []; render(); }
+      if (story) { nodeId = story.start; heat = 20; tension = 15; mem = []; render(); }
     };
     if ($("ending-cast")) $("ending-cast").onclick = function () { show("cast"); };
   }
