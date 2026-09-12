@@ -4,14 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=lock1" />
+  <link rel="stylesheet" href="./styles.css?v=vid1" />
   <style>
     #chars{display:grid;gap:12px;padding:12px 0 32px}
-    #waifu,#live2d-widget,#live2d-stage{display:none!important}
-    #alex-portrait{opacity:1!important}
-    #screen-play.active .play-bg{
-      background:#07090e url("./assets/alex.png") center 12%/cover no-repeat;
+    #vera-vid{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;object-position:center 18%;z-index:1;
+      background:#07090e;
     }
+    #alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 12%;z-index:0}
+    #screen-play.active .play-bg{background:#07090e}
+    .portrait-stack{position:absolute;inset:0;overflow:hidden}
   </style>
 </head>
 <body>
@@ -36,6 +39,7 @@
         <div class="play-bg">
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
+            <video id="vera-vid" muted loop playsinline preload="auto" poster="./assets/alex.png"></video>
           </div>
           <div class="play-bg-scrim"></div>
         </div>
