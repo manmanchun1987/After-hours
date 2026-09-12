@@ -4,11 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=m3" />
+  <link rel="stylesheet" href="./styles.css?v=m4" />
   <style>
     #chars{display:grid;gap:12px;padding:12px 0 32px}
-    #alex-portrait{opacity:1!important}
-    #screen-play.active .play-bg{background:#0b0d12 url("./assets/alex.png") center 12%/cover no-repeat!important}
+    #alex-portrait{opacity:1!important;animation:none!important}
+    #screen-play.active .play-bg{
+      background:#0b0d12 url("./assets/alex.png") center 12%/cover no-repeat!important;
+      animation:womanMove 3.2s ease-in-out infinite;
+      transform-origin:center 30%;
+    }
+    #screen-play.active .portrait-stack{
+      animation:womanMove 3.2s ease-in-out infinite;
+      transform-origin:center 28%;
+    }
+    @keyframes womanMove{
+      0%,100%{transform:scale(1.06) translate3d(0,0,0)}
+      40%{transform:scale(1.14) translate3d(-8px,-20px,0)}
+      70%{transform:scale(1.1) translate3d(8px,-8px,0)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      #screen-play.active .play-bg,
+      #screen-play.active .portrait-stack{animation:womanMove 3.2s ease-in-out infinite!important}
+    }
   </style>
 </head>
 <body>
