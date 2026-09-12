@@ -4,12 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後</title>
-  <link rel="stylesheet" href="./styles.css?v=m5" />
+  <link rel="stylesheet" href="./styles.css?v=m6" />
   <style>
     #chars{display:grid;gap:12px;padding:12px 0 32px}
-    #alex-portrait{opacity:1}
-    #screen-play.active .portrait-stack{animation:none!important}
-    #screen-play.active .play-bg{animation:none!important;background:#05070c}
+    #screen-play.active .portrait-stack,#screen-play.active .play-bg{animation:none!important}
     .portrait-stack{position:absolute;inset:0}
   </style>
 </head>
@@ -53,11 +51,11 @@
     </section>
     <section id="screen-ending" class="screen">
       <h2 id="ending-title"></h2>
-      <p id="ending-text" class="narrative"></p>
+      <p id="ending-text"></p>
       <button id="ending-replay" class="btn btn-primary" type="button">再玩</button>
       <button id="ending-cast" class="btn btn-ghost" type="button">返回</button>
     </section>
   </main>
-  <script src="./play-engine.js?v=m5"></script>
+  <script src="./life.js"></script>
 </body>
 </html>
