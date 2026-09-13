@@ -24,7 +24,7 @@
       "id": "m2a",
       "label": "交易口吻",
       "remember": ["named_the_deal"],
-      "text": "Morgan 笑得短。\n\n「聰明。單可以拖，人唔可以。你今晚代表公司，定代表你自已？」",
+      "text": "Morgan 笑得短。\n\n「聰明。單可以拖，人唔可以。你今晚代表公司，定代表你自己？」",
       "thought": "問句像開標，等你出價。",
       "aside": "杯一轉，像倒數投標時間。代價寫喺眼神，唔寫喺紙。",
       "choices": [
@@ -38,7 +38,7 @@
       "remember": ["kept_professional"],
       "text": "「惱。」Morgan 靠後。「不過惱嘅人，有時最穩。」",
       "thought": "靠後唔等於退。佢在等你跟唔跟。",
-      "aside": "靠後嘅距離，反而更近——像留你自已追價，條款先掛空。",
+      "aside": "靠後嘅距離，反而更近——像留你自己追價，條款先掛空。",
       "choices": [
         {"label": "「線唔好再伸。」", "next": "m3", "tension": 10},
         {"label": "（唔縮手）", "next": "m3", "heat": 12}
@@ -85,7 +85,7 @@
       "mode": "call",
       "text": "電梯鏡面映住兩個不應一齊上樓嘅人。門開。Morgan 問：\n\n「仲可唔可以？」",
       "thought": "問句輕，決定重。",
-      "aside": "鏡裏兩個影子。同層公司唔會承認。",
+      "aside": "鏡裏兩個影子。同層公司唔會承認。條款未寫，但位次已在問句裏面。",
       "choices": [
         {"label": "「可以。」", "next": "m5", "heat": 14, "requireHeat": 35},
         {"label": "「停啲呢度就夠。」", "next": "ending_m_c"}
@@ -122,7 +122,7 @@
       "ending": true,
       "label": "結局 · 離席",
       "endingTitle": "只傾生意",
-      "text": "你離開酒廊。電話震：Morgan「數字我朝早發。」單會過。人停在門檻外。"
+      "text": "你離開酒廊。電話震：Morgan「數字我朝早發。」單會過。人停在門檻外。\n\n走廊冷氣仍開，像提醒你：條款已結，餘下只係生意。"
     }
   },
   "memoryLabels": {
