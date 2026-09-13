@@ -14,7 +14,7 @@
       "text": "落地玻璃外係維港夜燈。Elise 轉酒杯，戒指敲一下杯壁。\n\n「合約數字我哋日頭講完。夜晚……講人。」",
       "thought": "佢望住你，唔望海。",
       "aside": "爵士樂壓得好低。",
-      "mid": "杯沿反光掠過佢眼。",
+      "mid": "杯沿反光掠過佢眼。酒杯轉半圈，像在等你開標。",
       "choices": [
         {"label": "「人同單，邊樣先成交？」", "next": "m2a", "heat": 8, "tension": 6, "cg": true},
         {"label": "「我嚟係收條款。」", "next": "m2b", "tension": 10},
@@ -28,7 +28,7 @@
       "text": "Elise 笑得短。\n\n「聰明。單可以拖，人唔可以。你今晚代表公司，定代表你自己？」",
       "thought": "問句像開標。",
       "aside": "杯一轉。",
-      "mid": "佢話「人」時聲線放低半度。",
+      "mid": "佢話「人」時聲線放低半度。戒指再敲一下，節奏慢。",
       "choices": [
         {"label": "「代表我想贏。」", "next": "m3", "heat": 10, "cg": true},
         {"label": "「代表公司。其他唔講。」", "next": "m3", "tension": 8}
@@ -41,7 +41,7 @@
       "text": "「惱。」Elise 靠後。「不過惱嘅人，有時最穩。」",
       "thought": "靠後唔等於退。",
       "aside": "距離反而更近。",
-      "mid": "靠後之後，佢仍望住你手。",
+      "mid": "靠後之後，佢仍望住你手。袖口滑落一寸，露出腕骨。",
       "choices": [
         {"label": "「線唔好再伸。」", "next": "m3", "tension": 10},
         {"label": "（唔縮手）", "next": "m3", "heat": 12, "cg": true}
@@ -55,7 +55,7 @@
       "text": "距離縮短之後，香水同威士忌一齊近。\n\n「危險答案。」Elise 聲好輕。「我鐘意危險，但唔鐘意賴帳。」",
       "thought": "危險同賴帳可以分開計。",
       "aside": "酒氣壓過來。",
-      "mid": "香水同酒氣一齊落。",
+      "mid": "香水同酒氣一齊落。佢睫毛低垂一秒，再抬起。",
       "choices": [
         {"label": "「我唔賴。」", "next": "m3", "heat": 12, "cg": true},
         {"label": "「……當我衝動。」", "next": "m3", "heat": 6, "tension": 6}
@@ -67,11 +67,12 @@
       "text": "帳單來。Elise 唔望價錢，只把一張房卡推到中間。\n\n「樓上有安靜位。簽唔簽，你決定。」",
       "thought": "房卡比報價更直接。",
       "aside": "卡面反光。",
-      "mid": "卡推過來時，戒指擦過桌面。",
+      "mid": "卡推過來時，戒指擦過桌面。卡邊停在你指節旁半寸。",
       "choices": [
         {"label": "收下", "next": "m3x", "heat": 16, "remember": ["took_key"], "cg": true},
         {"label": "推返去", "next": "ending_m_c", "tension": 4},
-        {"label": "「先講清楚樓上規則。」", "next": "m3y", "heat": 10, "tension": 6, "cg": true}
+        {"label": "「先講清楚樓上規則。」", "next": "m3y", "heat": 10, "tension": 6, "cg": true},
+        {"label": "「你想我點決定？」", "next": "m3z", "heat": 12, "cg": true}
       ]
     },
     "m3y": {
@@ -80,10 +81,22 @@
       "text": "Elise 指尖按住卡不放。\n\n「規則簡單：上樓就唔好再提公司。落樓之後，我當今晚只傾過價。」",
       "thought": "價同人，分兩本帳。",
       "aside": "卡邊壓住你指節。",
-      "mid": "佢聲線平，像已經算定你會問。",
+      "mid": "佢聲線平，像已經算定你會問。指尖溫度透過卡傳過嚟。",
       "choices": [
         {"label": "「我收下。」", "next": "m3x", "heat": 14, "remember": ["took_key"], "cg": true},
         {"label": "「咁我推返。」", "next": "ending_m_c", "tension": 4}
+      ]
+    },
+    "m3z": {
+      "id": "m3z",
+      "label": "反問",
+      "text": "Elise 笑意更深半格。\n\n「我想睇你自己擇。唔係我推，係你伸手。」",
+      "thought": "伸手同被推，差在主動。",
+      "aside": "卡仍停中間。",
+      "mid": "佢後退半寸，把決定完全交你。酒廊燈光在卡面跳。",
+      "choices": [
+        {"label": "伸手收下", "next": "m3x", "heat": 15, "remember": ["took_key"], "cg": true},
+        {"label": "推返", "next": "ending_m_c", "tension": 4}
       ]
     },
     "m3x": {
@@ -92,7 +105,7 @@
       "text": "Elise 按開，唔轉頭。\n\n「去到樓已經算簽。你而家收回，我都當唔見過。」",
       "thought": "仲有一次反悔。",
       "aside": "電梯鍵紅著。",
-      "mid": "鍵燈紅，像倒數。",
+      "mid": "鍵燈紅，像倒數。走廊地毯吸走腳步聲。",
       "choices": [
         {"label": "按樓層", "next": "m4", "heat": 8, "cg": true},
         {"label": "「我收回。」", "next": "ending_m_c"}
@@ -105,7 +118,7 @@
       "text": "門開。Elise 問：\n\n「仲可唔可以？」",
       "thought": "問句輕，決定重。",
       "aside": "鏡裏兩個影子。",
-      "mid": "走廊燈暗半格，影子疊埋。",
+      "mid": "走廊燈暗半格，影子疊埋。空氣裏只剩香水尾調。",
       "choices": [
         {"label": "「可以。」", "next": "m5", "heat": 14, "requireHeat": 35, "cg": true},
         {"label": "「停啲呢度就夠。」", "next": "ending_m_c"},
@@ -118,7 +131,7 @@
       "text": "Elise 跟你去窗。維港燈在下面。\n\n「你停喺呢度，係想確認，定想拖？」",
       "thought": "拖同確認，差在心。",
       "aside": "玻璃涼。",
-      "mid": "佢袖口擦過你手背一下。",
+      "mid": "佢袖口擦過你手背一下。窗外燈火像遠方報價板。",
       "choices": [
         {"label": "「確認完再入。」", "next": "m5", "heat": 12, "requireHeat": 30, "cg": true},
         {"label": "「夠喇。」", "next": "ending_m_c"}
@@ -130,7 +143,7 @@
       "text": "Elise 語氣仍像談價。\n\n「今晚唔寫電郵。聽日董事會，你坐邊邊——我記得。」",
       "thought": "記得兩字比條款重。",
       "aside": "記得落在玻璃上。",
-      "mid": "窗外維港燈一閃一閃。",
+      "mid": "窗外維港燈一閃一閃。佢側臉在燈光裏半明半暗。",
       "choices": [
         {"label": "「我要對等。唔好當籌碼。」", "next": "ending_m_b", "heat": 8, "remember": ["wanted_equal"], "requireHeat": 36, "cg": true},
         {"label": "「你話點。」", "next": "ending_m_a", "heat": 10, "requireHeat": 40, "cg": true},
@@ -142,21 +155,24 @@
       "ending": true,
       "endingTitle": "酒廊之上",
       "text": "天亮前 Elise：「條款照舊。人——另計。」",
-      "aside": "窗縫透入第一道灰。"
+      "aside": "窗縫透入第一道灰。",
+      "mid": "天亮前最後一聲呼吸。"
     },
     "ending_m_b": {
       "id": "ending_m_b",
       "ending": true,
       "endingTitle": "唔做籌碼",
       "text": "Elise：「少見。我接受。對等先有下一單。」",
-      "aside": "戒指敲杯，像蓋章。"
+      "aside": "戒指敲杯，像蓋章。",
+      "mid": "對等兩字落定，像成交。"
     },
     "ending_m_c": {
       "id": "ending_m_c",
       "ending": true,
       "endingTitle": "只傾生意",
       "text": "電話：Elise「數字我朝早發。」單會過。人停在門檻外。",
-      "aside": "酒廊爵士樂繼續播。"
+      "aside": "酒廊爵士樂繼續播。",
+      "mid": "門關上，只剩音樂。"
     }
   },
   "memoryLabels": {

@@ -1,14 +1,14 @@
 # 而家進度
 
-最後更新：2026-09-14 03:04 HKT
+最後更新：2026-09-14 03:14 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
 
 ## 已交
-- data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside）
+- data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside + m3z 新支 + mid 加長）
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
-- data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己）
+- data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長）
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live18；hideVid 統一守門；styles?v=cast5
 - m.html data-scene grades 再 refine 對齊 STORYBOARD shot list（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
@@ -64,3 +64,6 @@ morgan 全線 mid + cg:true 補完。Canon photoreal + alex.png 未動。Anime I
 
 ## 劇本 2026-09-14 01:04 HKT
 Elise m3y/m4b 新支 + mid；Sammi s2y 新支 + 全線 mid。Vera 未動。Photoreal soul 繼續。
+
+## 劇本 2026-09-14 03:14 HKT
+Elise m3z 新支 + 全線 mid 加長；Sammi s3z 新支 + 全線 mid 加長。Vera 未動。Photoreal soul。
