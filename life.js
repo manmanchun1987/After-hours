@@ -2,7 +2,12 @@
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
   var CLIP = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
-  var story = null, nodeId = null, heat = 20, tension = 15, mem = [];
+  var FACE = {
+    alex: BASE + "/assets/alex.png",
+    morgan: BASE + "/assets/IMG_1411.jpeg",
+    sam: BASE + "/assets/IMG_1410.jpeg"
+  };
+  var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
   function addMem(list) {
@@ -16,9 +21,24 @@
     if ((ch.heat || 0) >= 8) return true;
     return false;
   }
+  function setFace() {
+    var img = $("alex-portrait");
+    var v = $("vera-vid");
+    if (img) img.src = FACE[route] || FACE.alex;
+    if (!v) return;
+    if (route === "alex") {
+      v.style.display = "";
+      playClip();
+    } else {
+      v.setAttribute("data-fail", "1");
+      v.style.display = "none";
+      v.pause && v.pause();
+    }
+  }
   function playClip() {
     var v = $("vera-vid");
     if (!v) return;
+    if (route !== "alex") return;
     if (v.getAttribute("data-fail") === "1") return;
     if (v.getAttribute("data-ready") !== "1") {
       v.src = CLIP;
@@ -71,7 +91,7 @@
       el.classList.toggle("active", id === "screen-" + name);
     });
     document.body.classList.toggle("mode-play", name === "play");
-    if (name === "play") playClip();
+    if (name === "play") setFace();
   }
   function render() {
     if (!story || !story.nodes) return;
@@ -115,6 +135,9 @@
     show("play");
   }
   function start(id) {
+    route = id || "alex";
+    var v = $("vera-vid");
+    if (v) { v.removeAttribute("data-fail"); v.removeAttribute("data-ready"); }
     fetch(FILES[id] || FILES.alex).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (s) {
         story = s; nodeId = s.start; heat = 20; tension = 15; mem = []; render();
