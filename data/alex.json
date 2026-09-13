@@ -3,12 +3,23 @@
   "name": "Vera",
   "title": "部門主管",
   "hook": "Deadline 可以改。態度唔可以。",
-  "start": "n1",
+  "start": "n0",
   "nodes": {
+    "n0": {
+      "id": "n0",
+      "label": "走廊 23:44",
+      "text": "尾班電梯門開過一次。你冇入。\n\n會議室現出一條燈縫。Vera 嘅聲線隔住門：「入嚟。唔好在廊作樣。」",
+      "thought": "佢知你仲未走。",
+      "aside": "監控紅點照住你後腦。走廊空調比會議室更冷。",
+      "choices": [
+        {"label": "推門", "next": "n1"},
+        {"label": "（停一秒）再推", "next": "n1", "tension": 2}
+      ]
+    },
     "n1": {
       "id": "n1",
       "label": "週五 23:47",
-      "text": "整層只剩會議室燈。你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自己都知呢份嘢……未夠。」",
+      "text": "整層只剩會議室燈。你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自已都知呢份嘢……未夠。」",
       "thought": "今晚你走唔到。空氣似凍過空調。",
       "aside": "影印機燈一閃。錶針幾乎停。",
       "choices": [
@@ -57,9 +68,9 @@
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "你們改簡報。伸手搄杯時指尖碰上。\n\n「手震。驚我，定驚你自己？」",
+      "text": "你們改簡報。伸手搄杯時指尖碰上。\n\n「手震。驚我，定驚你自已？」",
       "thought": "指尖碰上。唔好裝睇唔到。控制權仍在佢度。",
-      "aside": "螢幕藍光把兩人影子拉長。空調風再冷一度，似提醒你：規矩未改。指尖一碰，控制權仍穩穩喺佢側。",
+      "aside": "螢幕藍光把兩人影子拉長。",
       "choices": [
         {"label": "「驚交唔到差。」", "next": "n4a"},
         {"label": "「……你話呢？」", "next": "n4b", "heat": 8}
@@ -70,8 +81,8 @@
       "label": "臨界",
       "mode": "call",
       "text": "「公司監控只覆走廊，唔覆呢間。」唔係威脅，係邀請。",
-      "thought": "邀請同命令，差在語氣。控制仍喺佢口。",
-      "aside": "走廊盡頭，監控紅點一眨。冷光切過門縫，似提醒你：例外只係佢開，唔係你搶。",
+      "thought": "邀請同命令，差在語氣。",
+      "aside": "走廊盡頭，監控紅點一眨。",
       "choices": [
         {"label": "「所以你先留我？」", "next": "n4b", "heat": 8},
         {"label": "「我仲係員工。」", "next": "n4a"},
@@ -83,7 +94,7 @@
       "label": "靠近",
       "text": "「你要清楚嘅係簡報，定係我想對你點？」",
       "thought": "要清楚？靠近講。",
-      "aside": "問句落在桌面，似多一張空白頁。",
+      "aside": "問句落在桌面。",
       "choices": [
         {"label": "「兩者都要。」", "next": "n4b", "heat": 8},
         {"label": "「只要簡報。」", "next": "n4a", "tension": 4}
@@ -106,7 +117,7 @@
       "remember": ["chose_stay"],
       "text": "手指抬起你下巴。\n\n「留低，就唔好再扮只係改簡報。」",
       "thought": "留低，就唔好再扮公事。",
-      "aside": "燈管微顫，像替你答。",
+      "aside": "燈管微顫。",
       "choices": [
         {"label": "留低", "next": "n5", "heat": 8},
         {"label": "離開", "next": "ending_c"}
@@ -140,7 +151,7 @@
       "label": "交出控制",
       "text": "每一次升級前佢都問：「仲可唔可以？」權力來自秩序。",
       "thought": "秩序比衝動更危險。",
-      "aside": "會議桌邊緣冰涼，指節按實。",
+      "aside": "會議桌邊緣冰涼。",
       "choices": [
         {"label": "迎向天亮", "next": "ending_a"}
       ]
@@ -193,22 +204,21 @@
       "ending": true,
       "label": "結局 C",
       "endingTitle": "抽身",
-      "text": "走廊好長。電話：Vera「檔案我等。」\n\
-你冇回。電梯門合上，空調風仍凍——規則喺佢度，你選擇離場。"
+      "text": "走廊好長。電話：Vera「檔案我等。」你冇回。電梯門合上。"
     },
     "ending_a_lock": {
       "id": "ending_a_lock",
       "ending": true,
       "label": "結局 A",
       "endingTitle": "越界・規則內",
-      "text": "評核室的門，你今次唔推開。走廊燈仍亮，Vera 聲線從門縫傳來：「檔案準時。其他——當未發生。」你知，控制權從來喺佢度，你只係擇離場。"
+      "text": "評核室的門，你今次唔推開。Vera：「檔案準時。其他——當未發生。」"
     },
     "ending_b_lock": {
       "id": "ending_b_lock",
       "ending": true,
       "label": "結局 B",
       "endingTitle": "對等一晚",
-      "text": "秘密同盟。評核室可以下週再去。電話震一下，Vera：「週一我照樣評。呢晚唔入紙。」你收起，對等只係一晚，規則仍在。"
+      "text": "Vera：「週一我照樣評。呢晚唔入紙。」對等只係一晚。"
     },
     "n7": {
       "id": "n7",
@@ -217,7 +227,7 @@
       "remember": ["review_room"],
       "text": "百葉簾拉死。空白評核表壓住你手背。\n\n「上週五。寫定性，定寫量化？」",
       "thought": "評核表壓住手背，像另一種合約。",
-      "aside": "筆帽咕一聲，像倒數。",
+      "aside": "筆帽咕一聲。",
       "choices": [
         {"label": "「寫你想寫嘅。」", "next": "n8a", "heat": 10, "requireHeat": 40},
         {"label": "「寫事實。包括你留我。」", "next": "n8b", "tension": 12, "requireHeat": 28},
@@ -229,7 +239,7 @@
       "label": "交權",
       "text": "評語：可造。「我會再留。你怕唔怕？」",
       "thought": "怕同想，原來可以並存。",
-      "aside": "評語兩字，比任何甜言重。",
+      "aside": "評語兩字比任何甜言重。",
       "choices": [
         {"label": "「怕。但我留。」", "next": "ending_e", "heat": 12, "requireHeat": 50},
         {"label": "「所以我走。」", "next": "ending_d"}
@@ -240,8 +250,8 @@
       "label": "寫事實",
       "mode": "call",
       "text": "「我可以毀你，都可以抬你。你擇。」",
-      "thought": "選擇落在紙上，比簽字更重。",
-      "aside": "選擇落在紙上，比簽字更重。",
+      "thought": "選擇落在紙上。",
+      "aside": "選擇落在紙上。",
       "choices": [
         {"label": "「抬我。對等。」", "next": "ending_e", "heat": 8, "requireHeat": 45},
         {"label": "「你毀唔到我。」", "next": "ending_f", "tension": 14, "requireHeat": 30}
@@ -252,21 +262,21 @@
       "ending": true,
       "label": "結局 D",
       "endingTitle": "白紙",
-      "text": "「聰明。無趣。」那晚唔入檔。Vera 合上筆，轉身：「下週一準時。其他當白紙。」你離開時，空調風仍凍，控制權從未放手。"
+      "text": "「聰明。無趣。」Vera：「下週一準時。其他當白紙。」"
     },
     "ending_e": {
       "id": "ending_e",
       "ending": true,
       "label": "結局 E",
       "endingTitle": "評核室規則",
-      "text": "外面走廊開始算人。Vera 收起筆，聲線平。\n\n「Deadline 照舊。態度可以再傾。但評核表上面——仍係我寫。」\n\n你推門時，佢冇記你低頭。規則唔係關燈就消失。"
+      "text": "Vera：「Deadline 照舊。態度可以再傾。但評核表上面——仍係我寫。」"
     },
     "ending_f": {
       "id": "ending_f",
       "ending": true,
       "label": "結局 F",
       "endingTitle": "對峙存檔",
-      "text": "「有種。小心。」下季未完。Vera 把評核表推開，眼神冷：「你敢寫事實，我記得。對峙可以存檔，但位次由我定。」"
+      "text": "「有種。小心。」位次由我定。"
     }
   },
   "memoryLabels": {
