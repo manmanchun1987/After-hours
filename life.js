@@ -3,7 +3,7 @@
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
   var CLIP = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
   var FACE = {
-    alex: BASE + "/IMG_1412.jpeg",
+    alex: BASE + "/assets/IMG_1412.jpeg",
     morgan: BASE + "/assets/IMG_1411.jpeg",
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
@@ -21,6 +21,13 @@
     if ((ch.heat || 0) >= 8) return true;
     return false;
   }
+  function hideVid(v) {
+    if (!v) return;
+    v.setAttribute("data-fail", "1");
+    v.style.display = "none";
+    try { v.pause && v.pause(); } catch (e) {}
+    try { v.removeAttribute("src"); v.load && v.load(); } catch (e2) {}
+  }
   function setFace() {
     var img = $("alex-portrait");
     var v = $("vera-vid");
@@ -30,17 +37,8 @@
       v.style.display = "";
       playClip();
     } else {
-      v.setAttribute("data-fail", "1");
-      v.style.display = "none";
-      v.pause && v.pause();
+      hideVid(v);
     }
-  }
-  function hideVid(v) {
-    if (!v) return;
-    v.setAttribute("data-fail", "1");
-    v.style.display = "none";
-    try { v.pause && v.pause(); } catch (e) {}
-    try { v.removeAttribute("src"); v.load && v.load(); } catch (e2) {}
   }
   function playClip() {
     var v = $("vera-vid");
