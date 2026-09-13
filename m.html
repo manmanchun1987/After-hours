@@ -25,12 +25,13 @@
     .meter b{display:block;height:100%;width:20%;background:#d4b483}
     .btn-cg{border-color:#e8a0b8;color:#f3c6d4}
     body.mode-cg .play-bg-scrim{background:linear-gradient(180deg,transparent 15%,#2a0814dd 85%)}
-    body[data-scene="hall"] #vera-vid,body[data-scene="hall"] #alex-portrait{filter:saturate(.7) brightness(.82) hue-rotate(12deg)}
-    body[data-scene="meet"] #vera-vid,body[data-scene="meet"] #alex-portrait{filter:saturate(.95) contrast(1.05)}
-    body[data-scene="close"] #vera-vid,body[data-scene="close"] #alex-portrait{filter:saturate(1.12) contrast(1.1) hue-rotate(-6deg)}
-    body[data-scene="dark"] #vera-vid,body[data-scene="dark"] #alex-portrait{filter:brightness(.45) saturate(.8) contrast(1.2)}
-    body[data-scene="review"] #vera-vid,body[data-scene="review"] #alex-portrait{filter:saturate(.55) brightness(1.08) contrast(1.15)}
-    body[data-scene="dawn"] #vera-vid,body[data-scene="dawn"] #alex-portrait{filter:sepia(.25) brightness(1.12)}
+    /* STORYBOARD grades: hall cold fluoro+red CCTV; meet blue monitor; close warmer; dark 40%; review harsh white; dawn sepia */
+    body[data-scene="hall"] #vera-vid,body[data-scene="hall"] #alex-portrait{filter:saturate(.55) brightness(.72) contrast(1.08) hue-rotate(18deg)}
+    body[data-scene="meet"] #vera-vid,body[data-scene="meet"] #alex-portrait{filter:saturate(.88) brightness(.92) contrast(1.06) hue-rotate(8deg)}
+    body[data-scene="close"] #vera-vid,body[data-scene="close"] #alex-portrait{filter:saturate(1.18) brightness(1.02) contrast(1.12) hue-rotate(-8deg)}
+    body[data-scene="dark"] #vera-vid,body[data-scene="dark"] #alex-portrait{filter:brightness(.38) saturate(.7) contrast(1.28)}
+    body[data-scene="review"] #vera-vid,body[data-scene="review"] #alex-portrait{filter:saturate(.42) brightness(1.15) contrast(1.22)}
+    body[data-scene="dawn"] #vera-vid,body[data-scene="dawn"] #alex-portrait{filter:sepia(.32) brightness(1.18) saturate(.9)}
   </style>
 </head>
 <body>
