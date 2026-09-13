@@ -8,48 +8,53 @@
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
-  var sfx, bgm, bgmKey = "";
+  var sfxChoice, sfxCall, sfxTrans, bgm, lastScene = "";
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
+  function ping(a) {
+    if (!a) return;
+    try { a.currentTime = 0; a.play(); } catch (e) {}
+  }
   function tap() {
-    try {
-      if (!sfx) { sfx = new Audio(BASE + "/assets/audio/sfx-choice.mp3"); sfx.volume = 0.35; }
-      sfx.currentTime = 0;
-      sfx.play();
-    } catch (e) {}
+    if (!sfxChoice) {
+      sfxChoice = new Audio(BASE + "/assets/audio/sfx-click.mp3");
+      sfxChoice.volume = 0.4;
+    }
+    ping(sfxChoice);
   }
   function sceneOf(id) {
     if (id === "n0" || id === "n0b") return "hall";
-    if (id === "n4x" || id === "n5") return "dark";
+    if (id === "n4x" || id === "n5" || id === "n6a" || id === "n6b" || id === "n6c") return "dark";
     if (id === "n7" || id === "n8a" || id === "n8b") return "review";
     if (id && id.indexOf("ending") === 0) return "dawn";
     if (id === "n3b" || id === "n4b" || id === "n4c") return "close";
     return "meet";
   }
-  function cueFor(node) {
-    if (node && node.mode === "call") return "call";
-    if (route === "morgan") return "lounge";
-    if (route === "sam") return "pantry";
-    return "office";
-  }
-  function playBgm(key) {
-    if (key === bgmKey && bgm) {
-      var p = bgm.play(); if (p && p.catch) p.catch(function () {});
-      return;
-    }
-    bgmKey = key;
-    var prefer = BASE + "/assets/audio/bgm-" + key + ".mp3";
-    var fallback = BASE + "/assets/audio/bgm-loop.mp3";
-    if (bgm) { try { bgm.pause(); } catch (e) {} }
-    bgm = new Audio(prefer);
+  function ensureBgm() {
+    if (bgm) return;
+    bgm = new Audio(BASE + "/assets/audio/bgm-loop.mp3");
     bgm.loop = true;
-    bgm.volume = 0.22;
-    bgm.onerror = function () {
-      if (bgm.src.indexOf("bgm-loop") >= 0) return;
-      bgm.src = fallback;
-      bgm.play().catch(function () {});
-    };
-    bgm.play().catch(function () {});
+    bgm.volume = 0.18;
+  }
+  function playBgm(scene) {
+    ensureBgm();
+    if (scene === "dark") bgm.volume = 0.1;
+    else if (scene === "close") bgm.volume = 0.16;
+    else if (scene === "dawn") bgm.volume = 0.2;
+    else bgm.volume = 0.18;
+    var p = bgm.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+  function sceneEnter(scene) {
+    if (scene === lastScene) return;
+    lastScene = scene;
+    if (scene === "dark" || scene === "close") {
+      if (!sfxCall) { sfxCall = new Audio(BASE + "/assets/audio/sfx-call.mp3"); sfxCall.volume = 0.45; }
+      ping(sfxCall);
+    } else {
+      if (!sfxTrans) { sfxTrans = new Audio(BASE + "/assets/audio/sfx-transition.mp3"); sfxTrans.volume = 0.3; }
+      ping(sfxTrans);
+    }
   }
   function addMem(list) {
     (list || []).forEach(function (id) {
@@ -135,9 +140,11 @@
     if (!story || !story.nodes) return;
     var node = story.nodes[nodeId]; if (!node) return;
     addMem(node.remember);
+    var scene = sceneOf(nodeId);
     document.body.classList.toggle("mode-cg", !!(node && node.mode === "call"));
-    document.body.setAttribute("data-scene", sceneOf(nodeId));
-    playBgm(cueFor(node));
+    document.body.setAttribute("data-scene", scene);
+    sceneEnter(scene);
+    playBgm(scene);
     if (node.ending) {
       if ($("ending-title")) $("ending-title").textContent = node.endingTitle || node.title || node.label || "結局";
       if ($("ending-text")) $("ending-text").textContent = node.text || "";
@@ -177,6 +184,7 @@
   }
   function start(id) {
     tap();
+    lastScene = "";
     route = id || "alex";
     var v = $("vera-vid");
     if (v) { v.removeAttribute("data-fail"); v.removeAttribute("data-ready"); }
@@ -187,13 +195,14 @@
       .catch(function () { show("cast"); });
   }
   function bind() {
-    if ($("enter-btn")) $("enter-btn").onclick = function () { tap(); show("cast"); playBgm("office"); };
+    if ($("enter-btn")) $("enter-btn").onclick = function () { tap(); show("cast"); playBgm("meet"); };
     document.querySelectorAll("[data-start]").forEach(function (btn) {
       btn.onclick = function () { start(btn.getAttribute("data-start")); };
     });
     if ($("back-cast")) $("back-cast").onclick = function () { tap(); show("cast"); };
     if ($("ending-replay")) $("ending-replay").onclick = function () {
       tap();
+      lastScene = "";
       if (story) { nodeId = story.start; heat = 20; tension = 15; mem = []; render(); }
     };
     if ($("ending-cast")) $("ending-cast").onclick = function () { tap(); show("cast"); };
