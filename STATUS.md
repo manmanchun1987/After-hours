@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-14 00:04 HKT
+最後更新：2026-09-14 00:19 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -10,9 +10,13 @@
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
 - data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己）
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live13；hideVid 統一守門
+- m.html data-scene grades 對齊 STORYBOARD（hall 冷白+CCTV / meet 藍監 / close 暖 / dark 40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## ART 2026-09-14 00:19 HKT
+m.html grades 改完：hall cooler fluoro、meet blue monitor、close warmer、dark ~38%、review harsh desat、dawn sepia。Photoreal Vera only。無新臉。無 Imagine / Pollinations swap。
 
 ## 總監 note 2026-09-14 00:04
 問題：無 anime-as-main drift。全部 task prompt 仍 photoreal soul clip；CG 只 category。督工已停、無重複。
