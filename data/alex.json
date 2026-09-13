@@ -8,7 +8,7 @@
     "n1": {
       "id": "n1",
       "label": "週五 23:47",
-      "text": "整層只剩會議室燈。你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自己都知呢份嘢……未夠。」",
+      "text": "整層只剩會議室燈。你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自已都知呢份嘢……未夠。」",
       "thought": "今晚你走唔到。空氣似凍過空調。",
       "aside": "影印機燈一閃。錶針幾乎停。",
       "choices": [
@@ -57,7 +57,7 @@
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "你們改簡報。伸手擱杯時指尖碰上。\n\n「手震。驚我，定驚你自己？」",
+      "text": "你們改簡報。伸手搄杯時指尖碰上。\n\n「手震。驚我，定驚你自已？」",
       "thought": "指尖碰上。唔好裝睇唔到。控制權仍在佢度。",
       "aside": "螢幕藍光把兩人影子拉長。空調風再冷一度，似提醒你：規矩未改。指尖一碰，控制權仍穩穩喺佢側。",
       "choices": [
@@ -126,9 +126,9 @@
       "id": "n5",
       "label": "燈關之後",
       "mode": "call",
-      "text": "燈暗。規則喺佢度——但要你親口講想要咩。",
-      "thought": "規則喺我度。你講想要咩。",
-      "aside": "黑暗裡只剩呼吸同錶聲。",
+      "text": "燈暗。規則喺佢度——但要你親口講想要咧。",
+      "thought": "規則喺我度。你講想要咧。",
+      "aside": "黑暗裏只剩呼吸同錶聲。",
       "choices": [
         {"label": "「你話點就點。」", "next": "n6a", "heat": 8, "requireHeat": 36},
         {"label": "「平等。今晚先。」", "next": "n6b", "heat": 8},
@@ -162,7 +162,7 @@
       "remember": ["called_out_plan"],
       "text": "deadline 可以早講。佢擇今晚。「仲留唔留？」",
       "thought": "選擇權忽然回到你手。",
-      "aside": "deadline 可以早講——佢揀今晚。",
+      "aside": "deadline 可以早講——佢擇今晚。",
       "choices": [
         {"label": "「留。」", "next": "ending_a", "heat": 8},
         {"label": "「走。」", "next": "ending_c"}
@@ -193,7 +193,8 @@
       "ending": true,
       "label": "結局 C",
       "endingTitle": "抽身",
-      "text": "走廊好長。電話：Vera「檔案我等。」\n\n你冇回。電梯門合上，空調風仍凍——規則喺佢度，你選擇離場。"
+      "text": "走廊好長。電話：Vera「檔案我等。」\n\
+你冇回。電梯門合上，空調風仍凍——規則喺佢度，你選擇離場。"
     },
     "ending_a_lock": {
       "id": "ending_a_lock",
@@ -216,7 +217,7 @@
       "remember": ["review_room"],
       "text": "百葉簾拉死。空白評核表壓住你手背。\n\n「上週五。寫定性，定寫量化？」",
       "thought": "評核表壓住手背，像另一種合約。",
-      "aside": "筆帽咔一聲，像倒數。",
+      "aside": "筆帽咕一聲，像倒數。",
       "choices": [
         {"label": "「寫你想寫嘅。」", "next": "n8a", "heat": 10, "requireHeat": 40},
         {"label": "「寫事實。包括你留我。」", "next": "n8b", "tension": 12, "requireHeat": 28},
@@ -258,7 +259,7 @@
       "ending": true,
       "label": "結局 E",
       "endingTitle": "評核室規則",
-      "text": "辦公室外先算人。Deadline 照舊。態度可以再傾。"
+      "text": "外面走廊開始算人。Vera 收起筆，聲線平。\n\n「Deadline 照舊。態度可以再傾。但評核表上面——仍係我寫。」\n\n你推門時，佢冇記你低頭。規則唔係關燈就消失。"
     },
     "ending_f": {
       "id": "ending_f",
