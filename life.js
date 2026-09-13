@@ -8,7 +8,7 @@
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
-  var sfx;
+  var sfx, bgm, bgmKey = "";
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
   function tap() {
@@ -17,6 +17,31 @@
       sfx.currentTime = 0;
       sfx.play();
     } catch (e) {}
+  }
+  function cueFor(node) {
+    if (node && node.mode === "call") return "call";
+    if (route === "morgan") return "lounge";
+    if (route === "sam") return "pantry";
+    return "office";
+  }
+  function playBgm(key) {
+    if (key === bgmKey && bgm) {
+      var p = bgm.play(); if (p && p.catch) p.catch(function () {});
+      return;
+    }
+    bgmKey = key;
+    var prefer = BASE + "/assets/audio/bgm-" + key + ".mp3";
+    var fallback = BASE + "/assets/audio/bgm-loop.mp3";
+    if (bgm) { try { bgm.pause(); } catch (e) {} }
+    bgm = new Audio(prefer);
+    bgm.loop = true;
+    bgm.volume = 0.22;
+    bgm.onerror = function () {
+      if (bgm.src.indexOf("bgm-loop") >= 0) return;
+      bgm.src = fallback;
+      bgm.play().catch(function () {});
+    };
+    bgm.play().catch(function () {});
   }
   function addMem(list) {
     (list || []).forEach(function (id) {
@@ -103,6 +128,7 @@
     var node = story.nodes[nodeId]; if (!node) return;
     addMem(node.remember);
     document.body.classList.toggle("mode-cg", !!(node && node.mode === "call"));
+    playBgm(cueFor(node));
     if (node.ending) {
       if ($("ending-title")) $("ending-title").textContent = node.endingTitle || node.title || node.label || "結局";
       if ($("ending-text")) $("ending-text").textContent = node.text || "";
@@ -152,7 +178,7 @@
       .catch(function () { show("cast"); });
   }
   function bind() {
-    if ($("enter-btn")) $("enter-btn").onclick = function () { tap(); show("cast"); };
+    if ($("enter-btn")) $("enter-btn").onclick = function () { tap(); show("cast"); playBgm("office"); };
     document.querySelectorAll("[data-start]").forEach(function (btn) {
       btn.onclick = function () { start(btn.getAttribute("data-start")); };
     });
