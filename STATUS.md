@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-14 00:19 HKT
+最後更新：2026-09-14 01:04 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -44,3 +44,6 @@ CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail →
 
 ## 劇本 2026-09-13 23:04 HKT
 morgan 全線 mid + cg:true 補完。Canon photoreal + alex.png 未動。Anime InstantID 繼續 pause。
+
+## 劇本 2026-09-14 01:04 HKT
+Elise m3y/m4b 新支 + mid；Sammi s2y 新支 + 全線 mid。Vera 未動。Photoreal soul 繼續。

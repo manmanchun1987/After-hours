@@ -25,7 +25,7 @@
       "id": "m2a",
       "remember": ["named_the_deal"],
       "label": "交易口吻",
-      "text": "Elise 笑得短。\n\n「聰明。單可以拖，人唔可以。你今晚代表公司，定代表你自已？」",
+      "text": "Elise 笑得短。\n\n「聰明。單可以拖，人唔可以。你今晚代表公司，定代表你自己？」",
       "thought": "問句像開標。",
       "aside": "杯一轉。",
       "mid": "佢話「人」時聲線放低半度。",
@@ -70,7 +70,20 @@
       "mid": "卡推過來時，戒指擦過桌面。",
       "choices": [
         {"label": "收下", "next": "m3x", "heat": 16, "remember": ["took_key"], "cg": true},
-        {"label": "推返去", "next": "ending_m_c", "tension": 4}
+        {"label": "推返去", "next": "ending_m_c", "tension": 4},
+        {"label": "「先講清楚樓上規則。」", "next": "m3y", "heat": 10, "tension": 6, "cg": true}
+      ]
+    },
+    "m3y": {
+      "id": "m3y",
+      "label": "規則先",
+      "text": "Elise 指尖按住卡不放。\n\n「規則簡單：上樓就唔好再提公司。落樓之後，我當今晚只傾過價。」",
+      "thought": "價同人，分兩本帳。",
+      "aside": "卡邊壓住你指節。",
+      "mid": "佢聲線平，像已經算定你會問。",
+      "choices": [
+        {"label": "「我收下。」", "next": "m3x", "heat": 14, "remember": ["took_key"], "cg": true},
+        {"label": "「咁我推返。」", "next": "ending_m_c", "tension": 4}
       ]
     },
     "m3x": {
@@ -95,7 +108,20 @@
       "mid": "走廊燈暗半格，影子疊埋。",
       "choices": [
         {"label": "「可以。」", "next": "m5", "heat": 14, "requireHeat": 35, "cg": true},
-        {"label": "「停啲呢度就夠。」", "next": "ending_m_c"}
+        {"label": "「停啲呢度就夠。」", "next": "ending_m_c"},
+        {"label": "「先睇窗外。」", "next": "m4b", "heat": 10, "cg": true}
+      ]
+    },
+    "m4b": {
+      "id": "m4b",
+      "label": "窗邊停",
+      "text": "Elise 跟你去窗。維港燈在下面。\n\n「你停喺呢度，係想確認，定想拖？」",
+      "thought": "拖同確認，差在心。",
+      "aside": "玻璃涼。",
+      "mid": "佢袖口擦過你手背一下。",
+      "choices": [
+        {"label": "「確認完再入。」", "next": "m5", "heat": 12, "requireHeat": 30, "cg": true},
+        {"label": "「夠喇。」", "next": "ending_m_c"}
       ]
     },
     "m5": {
