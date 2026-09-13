@@ -8,8 +8,16 @@
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
+  var sfx;
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
+  function tap() {
+    try {
+      if (!sfx) { sfx = new Audio(BASE + "/assets/audio/sfx-choice.mp3"); sfx.volume = 0.35; }
+      sfx.currentTime = 0;
+      sfx.play();
+    } catch (e) {}
+  }
   function addMem(list) {
     (list || []).forEach(function (id) {
       if (id && mem.indexOf(id) < 0) mem.push(id);
@@ -119,6 +127,7 @@
         } else {
           b.textContent = (isCgChoice(ch) ? "CG · " : "") + (ch.label || "繼續");
           b.onclick = function () {
+            tap();
             if (ch.heat) heat = clamp(heat + ch.heat);
             if (ch.tension) tension = clamp(tension + ch.tension);
             addMem(ch.remember);
@@ -132,6 +141,7 @@
     show("play");
   }
   function start(id) {
+    tap();
     route = id || "alex";
     var v = $("vera-vid");
     if (v) { v.removeAttribute("data-fail"); v.removeAttribute("data-ready"); }
@@ -142,15 +152,16 @@
       .catch(function () { show("cast"); });
   }
   function bind() {
-    if ($("enter-btn")) $("enter-btn").onclick = function () { show("cast"); };
+    if ($("enter-btn")) $("enter-btn").onclick = function () { tap(); show("cast"); };
     document.querySelectorAll("[data-start]").forEach(function (btn) {
       btn.onclick = function () { start(btn.getAttribute("data-start")); };
     });
-    if ($("back-cast")) $("back-cast").onclick = function () { show("cast"); };
+    if ($("back-cast")) $("back-cast").onclick = function () { tap(); show("cast"); };
     if ($("ending-replay")) $("ending-replay").onclick = function () {
+      tap();
       if (story) { nodeId = story.start; heat = 20; tension = 15; mem = []; render(); }
     };
-    if ($("ending-cast")) $("ending-cast").onclick = function () { show("cast"); };
+    if ($("ending-cast")) $("ending-cast").onclick = function () { tap(); show("cast"); };
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bind);
   else bind();
