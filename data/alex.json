@@ -4,12 +4,12 @@
   "title": "部門主管",
   "hook": "Deadline 可以改。態度唔可以。",
   "start": "n0",
-  "portrait": "./assets/alex.png",
+  "portrait": "./assets/IMG_1412.jpeg",
   "nodes": {
     "n0": {
       "id": "n0",
       "label": "走廊 23:44",
-      "text": "尾班電梯門開過一次。你冇入。\n\n會議室現出一條燈縫。Vera 隔門：「入嚟。唔好在廊作樣。」",
+      "text": "尾班電梯門開過一次。你冇入。\n\nVera 隔門：「入嚟。唔好在廊作樣。」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -21,17 +21,15 @@
       "id": "n0b",
       "label": "門後",
       "remember": ["door_shut"],
-      "text": "門在你後面筆嚟一聲。Vera 唔望你，只望螢幕。\n\n「鎖唔鎖唔重要。重要係你推門之前已經知道結果。」",
+      "text": "門在你後面筆嚟一聲。Vera 唔望你。\n\n「鎖唔鎖唔重要。重要係你推門之前已經知道結果。」",
       "thought": "結果兩字比 deadline 更早落。",
-      "aside": "門縫消失。走廊燈隔絖。",
-      "choices": [
-        {"label": "走去桌前", "next": "n1"}
-      ]
+      "aside": "門縫消失。",
+      "choices": [{"label": "走去桌前", "next": "n1"}]
     },
     "n1": {
       "id": "n1",
       "label": "週五 23:47",
-      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自己都知呢份嘢……未夠。」",
+      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自已都知呢份嘢……未夠。」",
       "thought": "今晚你走唔到。",
       "aside": "錶針幾乎停。",
       "choices": [
@@ -44,7 +42,7 @@
       "id": "n2a",
       "remember": ["stayed_late"],
       "label": "配合",
-      "text": "Vera 拉椅到你側邊。\n\n「坐低。我講，你改。唔好打斷。」",
+      "text": "Vera 拉椅到你側邊。「坐低。我講，你改。唔好打斷。」",
       "thought": "距離近到聽得見呼吸。",
       "aside": "袖口冷香水擦過手腕。",
       "choices": [
@@ -80,10 +78,10 @@
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "伸手搄杯時指尖碰上。「手震。驚我，定驚你自己？」",
+      "text": "指尖碰上。「手震。驚我，定驚你自已？」",
       "thought": "控制權仍在佢度。",
-      "aside": "螢幕藍光拉長影子。冷氣出風口輕輕響。",
-      "mid": "佢指尖停半秒，像測試你會唔會縮。",
+      "aside": "螢幕藍光拉長影子。",
+      "mid": "佢指尖停半秒。",
       "choices": [
         {"label": "「驚交唔到差。」", "next": "n4a"},
         {"label": "「……你話呢？」", "next": "n4b", "heat": 8, "cg": true}
@@ -95,7 +93,7 @@
       "label": "臨界",
       "text": "「公司監控只覆走廊，唔覆呢間。」",
       "thought": "邀請同命令，差在語氣。",
-      "aside": "監控紅點一眨。控制感比香水更近。",
+      "aside": "監控紅點一眨。",
       "mid": "佢語氣平，像已經算定你會留。",
       "choices": [
         {"label": "「所以你先留我？」", "next": "n4b", "heat": 8, "cg": true},
@@ -120,9 +118,7 @@
       "text": "「明智。檔案丟 shared drive。下週一評核——我記得。」",
       "thought": "記得兩字比承諾長。",
       "aside": "電梯燈亮一下又熄。",
-      "choices": [
-        {"label": "離開", "next": "ending_c", "tension": 4}
-      ]
+      "choices": [{"label": "離開", "next": "ending_c", "tension": 4}]
     },
     "n4b": {
       "id": "n4b",
@@ -131,11 +127,23 @@
       "label": "承認",
       "text": "手指抬起你下巴。「留低，就唔好再扮只係改簡報。」",
       "thought": "唔好再扮公事。",
-      "aside": "燈管微顫。冷同熱同時壓住。",
-      "mid": "下巴被抬起嗰下，規則已經改。",
+      "aside": "燈管微顫。",
+      "mid": "下巴被抬起喺下，規則已經改。",
       "choices": [
-        {"label": "留低", "next": "n5", "heat": 8, "cg": true},
+        {"label": "留低", "next": "n4x", "heat": 8, "cg": true},
         {"label": "離開", "next": "ending_c"}
+      ]
+    },
+    "n4x": {
+      "id": "n4x",
+      "mode": "call",
+      "label": "燈掣",
+      "text": "Vera 走去牆邊，手按在掣上，未推落。\n\n「最後一次問。燈熄之後，你就唔好話自己不知道。」",
+      "thought": "掣仲未落。你仲可以走。",
+      "aside": "燈管音細過呼吸。",
+      "choices": [
+        {"label": "「熄。」", "next": "n5", "heat": 6, "cg": true},
+        {"label": "「我收回。」", "next": "ending_c"}
       ]
     },
     "n4c": {
@@ -144,9 +152,7 @@
       "text": "「記住。係你先開始。」",
       "thought": "再唔係單方面。",
       "aside": "簡報白光一跳。",
-      "choices": [
-        {"label": "繼續", "next": "n5", "heat": 8, "cg": true}
-      ]
+      "choices": [{"label": "繼續", "next": "n4x", "heat": 8, "cg": true}]
     },
     "n5": {
       "id": "n5",
@@ -195,7 +201,6 @@
       "ending": false,
       "label": "天亮",
       "text": "「簡報。一小時內。其他——當唔發生。」",
-      "aside": "窗邊天光滲入，規則暫時凍住。",
       "choices": [
         {"label": "去週一評核室", "next": "n7", "heat": 6},
         {"label": "到此為止", "next": "ending_a_lock"}
@@ -206,7 +211,6 @@
       "ending": false,
       "label": "同盟",
       "text": "「你呢晚表現……離職信我都可能批。」",
-      "aside": "同盟兩字比評核更耐。",
       "choices": [
         {"label": "去週一評核室", "next": "n7", "heat": 6},
         {"label": "到此為止", "next": "ending_b_lock"}
