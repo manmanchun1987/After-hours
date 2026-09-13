@@ -3,7 +3,7 @@
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
   var CLIP = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
   var FACE = {
-    alex: BASE + "/assets/alex.png",
+    alex: BASE + "/IMG_1412.jpeg",
     morgan: BASE + "/assets/IMG_1411.jpeg",
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
