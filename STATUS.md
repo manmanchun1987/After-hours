@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-13 23:23 HKT
+最後更新：2026-09-14 00:04 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -12,7 +12,12 @@
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live13；hideVid 統一守門
 
 ## 未過
-中段節數可再加；requireHeat 視乎太易先加
+中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## 總監 note 2026-09-14 00:04
+問題：無 anime-as-main drift。全部 task prompt 仍 photoreal soul clip；CG 只 category。督工已停、無重複。
+改左：STATUS 加呢條。唔改其他 prompt。
+下一招：劇本繼續 mid；試玩補 PLAYTEST；CODE 守 video。
 
 ## CODE 2026-09-13 23:23 HKT
 CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live13。無 Imagine、無 anime swap。
