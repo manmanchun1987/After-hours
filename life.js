@@ -1,14 +1,20 @@
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
-  var CLIP = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
+  var IDLE = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
+  var LINE = {
+    n1: BASE + "/assets/vera-line-n1.mp4",
+    n2c: BASE + "/assets/vera-line-n2c.mp4",
+    n4x: BASE + "/assets/vera-line-n4x.mp4",
+    n5: BASE + "/assets/vera-line-n5.mp4"
+  };
   var FACE = {
     alex: BASE + "/assets/IMG_1412.jpeg",
     morgan: BASE + "/assets/IMG_1411.jpeg",
     sam: BASE + "/assets/IMG_1410.jpeg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
-  var sfxChoice, sfxCall, sfxTrans, bgm, lastScene = "";
+  var sfxChoice, sfxCall, sfxTrans, bgm, lastScene = "", linePlayed = {};
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
   function ping(a) {
@@ -38,10 +44,7 @@
   }
   function playBgm(scene) {
     ensureBgm();
-    if (scene === "dark") bgm.volume = 0.1;
-    else if (scene === "close") bgm.volume = 0.16;
-    else if (scene === "dawn") bgm.volume = 0.2;
-    else bgm.volume = 0.18;
+    bgm.volume = scene === "dark" ? 0.1 : 0.18;
     var p = bgm.play();
     if (p && p.catch) p.catch(function () {});
   }
@@ -56,6 +59,51 @@
       ping(sfxTrans);
     }
   }
+  function hideVid(v) {
+    if (!v) return;
+    v.setAttribute("data-fail", "1");
+    v.style.display = "none";
+    try { v.pause && v.pause(); } catch (e) {}
+  }
+  function playIdle() {
+    var v = $("vera-vid");
+    if (!v || route !== "alex" || v.getAttribute("data-fail") === "1") return;
+    v.loop = true;
+    v.muted = true;
+    v.playsInline = true;
+    if (v.getAttribute("data-src") !== "idle") {
+      v.src = IDLE;
+      v.setAttribute("data-src", "idle");
+    }
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { hideVid(v); });
+  }
+  function playLine(id) {
+    var v = $("vera-vid");
+    var src = LINE[id];
+    if (!v || !src || linePlayed[id]) { playIdle(); return; }
+    linePlayed[id] = true;
+    v.loop = false;
+    v.muted = true;
+    v.playsInline = true;
+    v.onended = function () { playIdle(); };
+    v.onerror = function () { playIdle(); };
+    v.src = src;
+    v.setAttribute("data-src", "line");
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { playIdle(); });
+  }
+  function setFace() {
+    var img = $("alex-portrait");
+    var v = $("vera-vid");
+    if (img) img.src = FACE[route] || FACE.alex;
+    if (!v) return;
+    if (route !== "alex") { hideVid(v); return; }
+    v.style.display = "";
+    v.onerror = function () { hideVid(v); };
+    if (LINE[nodeId] && !linePlayed[nodeId]) playLine(nodeId);
+    else playIdle();
+  }
   function addMem(list) {
     (list || []).forEach(function (id) {
       if (id && mem.indexOf(id) < 0) mem.push(id);
@@ -66,42 +114,6 @@
     if (ch.cg === true || ch.mode === "call") return true;
     if ((ch.heat || 0) >= 8) return true;
     return false;
-  }
-  function hideVid(v) {
-    if (!v) return;
-    v.setAttribute("data-fail", "1");
-    v.style.display = "none";
-    try { v.pause && v.pause(); } catch (e) {}
-    try { v.removeAttribute("src"); v.load && v.load(); } catch (e2) {}
-  }
-  function setFace() {
-    var img = $("alex-portrait");
-    var v = $("vera-vid");
-    if (img) img.src = FACE[route] || FACE.alex;
-    if (!v) return;
-    if (route === "alex") {
-      v.style.display = "";
-      playClip();
-    } else {
-      hideVid(v);
-    }
-  }
-  function playClip() {
-    var v = $("vera-vid");
-    if (!v) return;
-    if (route !== "alex") return;
-    if (v.getAttribute("data-fail") === "1") return;
-    if (v.getAttribute("data-ready") !== "1") {
-      v.src = CLIP;
-      v.setAttribute("data-ready", "1");
-      v.onerror = function () { hideVid(v); };
-    }
-    v.muted = true;
-    v.loop = true;
-    v.setAttribute("playsinline", "");
-    v.playsInline = true;
-    var p = v.play();
-    if (p && p.catch) p.catch(function () { hideVid(v); });
   }
   function meters() {
     var h = $("meter-heat"), t = $("meter-tension");
@@ -185,9 +197,10 @@
   function start(id) {
     tap();
     lastScene = "";
+    linePlayed = {};
     route = id || "alex";
     var v = $("vera-vid");
-    if (v) { v.removeAttribute("data-fail"); v.removeAttribute("data-ready"); }
+    if (v) { v.removeAttribute("data-fail"); v.removeAttribute("data-src"); }
     fetch(FILES[id] || FILES.alex).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
       .then(function (s) {
         story = s; nodeId = s.start; heat = 20; tension = 15; mem = []; render();
@@ -203,6 +216,7 @@
     if ($("ending-replay")) $("ending-replay").onclick = function () {
       tap();
       lastScene = "";
+      linePlayed = {};
       if (story) { nodeId = story.start; heat = 20; tension = 15; mem = []; render(); }
     };
     if ($("ending-cast")) $("ending-cast").onclick = function () { tap(); show("cast"); };
