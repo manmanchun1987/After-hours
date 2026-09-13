@@ -10,6 +10,12 @@
       if (id && mem.indexOf(id) < 0) mem.push(id);
     });
   }
+  function isCgChoice(ch) {
+    if (!ch) return false;
+    if (ch.cg === true || ch.mode === "call") return true;
+    if ((ch.heat || 0) >= 8) return true;
+    return false;
+  }
   function playClip() {
     var v = $("vera-vid");
     if (!v) return;
@@ -71,6 +77,7 @@
     if (!story || !story.nodes) return;
     var node = story.nodes[nodeId]; if (!node) return;
     addMem(node.remember);
+    document.body.classList.toggle("mode-cg", !!(node && node.mode === "call"));
     if (node.ending) {
       if ($("ending-title")) $("ending-title").textContent = node.endingTitle || node.title || node.label || "結局";
       if ($("ending-text")) $("ending-text").textContent = node.text || "";
@@ -87,12 +94,13 @@
       (node.choices || []).forEach(function (ch) {
         var need = ch.requireHeat || 0;
         var b = document.createElement("button");
-        b.className = "btn btn-choice"; b.type = "button";
+        b.className = "btn btn-choice" + (isCgChoice(ch) ? " btn-cg" : "");
+        b.type = "button";
         if (heat < need) {
           b.disabled = true;
           b.textContent = (ch.label || "") + "（熱度不足）";
         } else {
-          b.textContent = ch.label || "繼續";
+          b.textContent = (isCgChoice(ch) ? "CG · " : "") + (ch.label || "繼續");
           b.onclick = function () {
             if (ch.heat) heat = clamp(heat + ch.heat);
             if (ch.tension) tension = clamp(tension + ch.tension);
