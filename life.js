@@ -1,6 +1,7 @@
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
+  var CLIP = BASE + "/assets/vera-live.mp4?v=1";
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [];
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
@@ -8,6 +9,20 @@
     (list || []).forEach(function (id) {
       if (id && mem.indexOf(id) < 0) mem.push(id);
     });
+  }
+  function playClip() {
+    var v = $("vera-vid");
+    if (!v) return;
+    if (v.getAttribute("data-ready") !== "1") {
+      v.src = CLIP;
+      v.setAttribute("data-ready", "1");
+    }
+    v.muted = true;
+    v.loop = true;
+    v.setAttribute("playsinline", "");
+    v.playsInline = true;
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
   }
   function meters() {
     var h = $("meter-heat"), t = $("meter-tension");
@@ -40,6 +55,7 @@
       el.classList.toggle("active", id === "screen-" + name);
     });
     document.body.classList.toggle("mode-play", name === "play");
+    if (name === "play") playClip();
   }
   function render() {
     if (!story || !story.nodes) return;
