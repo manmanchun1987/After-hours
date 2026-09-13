@@ -11,9 +11,11 @@
     .char-card img{width:100%;height:150px;object-fit:cover;object-position:center 18%;border-radius:12px;margin-bottom:8px}
     .char-card .role{opacity:.7;margin:0 0 6px;font-size:12px}
     .char-card .hook{margin:0 0 12px;font-size:13px;line-height:1.45}
-    #vera-vid,#alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;transition:filter .4s,opacity .4s}
+    #vera-vid,#alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
     #vera-vid{z-index:1;background:#000}
     .portrait-stack{position:absolute;inset:0;overflow:hidden}
+    #grade-veil,#grade-vignette{position:absolute;inset:0;pointer-events:none;z-index:2;transition:background .45s ease,opacity .45s ease}
+    #grade-vignette{z-index:3;box-shadow:inset 0 0 80px 24px #00000088}
     #thought-slot,#aside-slot,#memory-strip{margin:0 16px 8px}
     #play-thought{font-style:italic;margin:0;font-size:13px;opacity:.9}
     #play-aside{margin:0;font-size:12px;opacity:.7}
@@ -24,14 +26,14 @@
     .meter i{display:block;height:4px;background:#ffffff22;border-radius:99px;margin-top:4px;overflow:hidden}
     .meter b{display:block;height:100%;width:20%;background:#d4b483}
     .btn-cg{border-color:#e8a0b8;color:#f3c6d4}
-    body.mode-cg .play-bg-scrim{background:linear-gradient(180deg,transparent 15%,#2a0814dd 85%)}
-    /* STORYBOARD grades: hall cold fluoro+red CCTV; meet blue monitor; close warmer; dark 40%; review harsh white; dawn sepia */
-    body[data-scene="hall"] #vera-vid,body[data-scene="hall"] #alex-portrait{filter:saturate(.55) brightness(.72) contrast(1.08) hue-rotate(18deg)}
-    body[data-scene="meet"] #vera-vid,body[data-scene="meet"] #alex-portrait{filter:saturate(.88) brightness(.92) contrast(1.06) hue-rotate(8deg)}
-    body[data-scene="close"] #vera-vid,body[data-scene="close"] #alex-portrait{filter:saturate(1.18) brightness(1.02) contrast(1.12) hue-rotate(-8deg)}
-    body[data-scene="dark"] #vera-vid,body[data-scene="dark"] #alex-portrait{filter:brightness(.38) saturate(.7) contrast(1.28)}
-    body[data-scene="review"] #vera-vid,body[data-scene="review"] #alex-portrait{filter:saturate(.42) brightness(1.15) contrast(1.22)}
-    body[data-scene="dawn"] #vera-vid,body[data-scene="dawn"] #alex-portrait{filter:sepia(.32) brightness(1.18) saturate(.9)}
+    body[data-scene="hall"] #grade-veil{background:linear-gradient(180deg,#0a1a2ecc 0%,#08101899 40%,#000000aa 100%)}
+    body[data-scene="hall"] #grade-vignette{box-shadow:inset 0 0 90px 30px #02060e}
+    body[data-scene="meet"] #grade-veil{background:linear-gradient(180deg,transparent 20%,#0b1420aa 100%)}
+    body[data-scene="close"] #grade-veil{background:linear-gradient(180deg,#3a101055 0%,transparent 35%,#1a080ccc 100%)}
+    body[data-scene="dark"] #grade-veil{background:radial-gradient(ellipse at 50% 35%,transparent 12%,#000000dd 70%)}
+    body[data-scene="dark"] #grade-vignette{box-shadow:inset 0 0 120px 50px #000}
+    body[data-scene="review"] #grade-veil{background:linear-gradient(180deg,#c8d0d833 0%,transparent 30%,#12161ccc 100%)}
+    body[data-scene="dawn"] #grade-veil{background:linear-gradient(180deg,#c4a07044 0%,transparent 40%,#2a1c10aa 100%)}
   </style>
 </head>
 <body>
@@ -75,6 +77,8 @@
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/IMG_1412.jpeg" alt="" />
             <video id="vera-vid" muted loop playsinline poster="./assets/IMG_1412.jpeg"></video>
+            <div id="grade-veil"></div>
+            <div id="grade-vignette"></div>
           </div>
           <div class="play-bg-scrim"></div>
         </div>
