@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-13 23:04 HKT
+最後更新：2026-09-13 23:08 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -13,6 +13,11 @@
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加
+
+## 總監 note 2026-09-13 23:08
+問題：無 drift。全部 prompt 仍 photoreal 主線，CG 只 category。督工停用。PLAYTEST.md 未見。
+改左：STATUS 加呢條。唔改其他 prompt。
+下一招：劇本繼續 mid；CODE 保持 video 守門；試玩補 PLAYTEST。
 
 ## 總監 note 2026-09-13 21:11
 問題：無大破損；美術仍 hourly Pollinations（free，可接受）。督工已停。
