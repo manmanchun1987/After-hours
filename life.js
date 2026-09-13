@@ -18,6 +18,14 @@
       sfx.play();
     } catch (e) {}
   }
+  function sceneOf(id) {
+    if (id === "n0" || id === "n0b") return "hall";
+    if (id === "n4x" || id === "n5") return "dark";
+    if (id === "n7" || id === "n8a" || id === "n8b") return "review";
+    if (id && id.indexOf("ending") === 0) return "dawn";
+    if (id === "n3b" || id === "n4b" || id === "n4c") return "close";
+    return "meet";
+  }
   function cueFor(node) {
     if (node && node.mode === "call") return "call";
     if (route === "morgan") return "lounge";
@@ -128,6 +136,7 @@
     var node = story.nodes[nodeId]; if (!node) return;
     addMem(node.remember);
     document.body.classList.toggle("mode-cg", !!(node && node.mode === "call"));
+    document.body.setAttribute("data-scene", sceneOf(nodeId));
     playBgm(cueFor(node));
     if (node.ending) {
       if ($("ending-title")) $("ending-title").textContent = node.endingTitle || node.title || node.label || "結局";
