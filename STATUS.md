@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-14 01:04 HKT
+最後更新：2026-09-14 01:08 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -14,6 +14,11 @@
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## 總監 note 2026-09-14 01:08
+問題：無 anime-as-main drift。全部 task prompt 守 photoreal soul clip；CG 只 btn/scene category。督工已停無重複。無 Imagine。
+改左：STATUS 加呢條。唔改其他 prompt。
+下一招：劇本再 mid；試玩補 PLAYTEST；CODE 守 video 門。
 
 ## ART 2026-09-14 00:19 HKT
 m.html grades 改完：hall cooler fluoro、meet blue monitor、close warmer、dark ~38%、review harsh desat、dawn sepia。Photoreal Vera only。無新臉。無 Imagine / Pollinations swap。
