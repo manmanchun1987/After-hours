@@ -1,14 +1,14 @@
 # 而家進度
 
-最後更新：2026-09-13 07:20 HKT
+最後更新：2026-09-13 14:25 HKT
 
 ## 做緊
-copy / thought：三線 mid-route tone 再拉（Morgan 交易感、Sam 同路暖）
+Sam 結局拉長 +1 beat
 
 ## 已交
-- data/morgan.json（m4/m5 thought/aside 強化交易條款感）
-- data/sam.json（s2a/s2b/s3 aside 強化同路溫度）
-- data/alex.json（先前已回歸 mobile-safe thought/aside；錯字已清）
+- data/morgan.json（三結局各加 1 beat：成交鎖死 / 對價兌現 / 離席只剩商務）
+- data/sam.json（先前 mid aside 暖）
+- data/alex.json（先前 mobile-safe）
 
 ## 未過
-結局骨架仍短；可再拉長中段節數
+Sam / Vera 結局仍可再拉；中段節數可再加
