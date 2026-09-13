@@ -31,13 +31,13 @@
     "n1": {
       "id": "n1",
       "label": "週五 23:47",
-      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自已都知呢份嘢……未夠。」",
+      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自己都知呢份嘢……未夠。」",
       "thought": "今晚你走唔到。",
       "aside": "錶針幾乎停。",
       "choices": [
         {"label": "「我可以而家改。」", "next": "n2a"},
         {"label": "「邊部分未夠？講清楚。」", "next": "n2b", "tension": 6},
-        {"label": "（站近）「你特登留到而家先講？」", "next": "n2c", "heat": 8}
+        {"label": "（站近）「你特登留到而家先講？」", "next": "n2c", "heat": 8, "cg": true}
       ]
     },
     "n2a": {
@@ -49,7 +49,7 @@
       "aside": "袖口冷香水擦過手腕。",
       "choices": [
         {"label": "「……係，我聽緊。」", "next": "n3a"},
-        {"label": "（對視）「你咁近，我改唔到字。」", "next": "n3b", "heat": 8}
+        {"label": "（對視）「你咁近，我改唔到字。」", "next": "n3b", "heat": 8, "cg": true}
       ]
     },
     "n2b": {
@@ -73,19 +73,20 @@
       "thought": "例外兩字比評語重。",
       "aside": "呼吸擦過耳側。",
       "choices": [
-        {"label": "（再近啲）", "next": "n3b", "heat": 8},
+        {"label": "（再近啲）", "next": "n3b", "heat": 8, "cg": true},
         {"label": "「我專心改。」", "next": "n3a"}
       ]
     },
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "伸手搄杯時指尖碰上。「手震。驚我，定驚你自已？」",
+      "text": "伸手搄杯時指尖碰上。「手震。驚我，定驚你自己？」",
       "thought": "控制權仍在佢度。",
-      "aside": "螢幕藍光拉長影子。",
+      "aside": "螢幕藍光拉長影子。冷氣出風口輕輕響。",
+      "mid": "佢指尖停半秒，像測試你會唔會縮。",
       "choices": [
         {"label": "「驚交唔到差。」", "next": "n4a"},
-        {"label": "「……你話呢？」", "next": "n4b", "heat": 8}
+        {"label": "「……你話呢？」", "next": "n4b", "heat": 8, "cg": true}
       ]
     },
     "n3b": {
@@ -94,11 +95,12 @@
       "label": "臨界",
       "text": "「公司監控只覆走廊，唔覆呢間。」",
       "thought": "邀請同命令，差在語氣。",
-      "aside": "監控紅點一眨。",
+      "aside": "監控紅點一眨。控制感比香水更近。",
+      "mid": "佢語氣平，像已經算定你會留。",
       "choices": [
-        {"label": "「所以你先留我？」", "next": "n4b", "heat": 8},
+        {"label": "「所以你先留我？」", "next": "n4b", "heat": 8, "cg": true},
         {"label": "「我仲係員工。」", "next": "n4a"},
-        {"label": "（主動拉近）", "next": "n4c", "heat": 10}
+        {"label": "（主動拉近）", "next": "n4c", "heat": 10, "cg": true}
       ]
     },
     "n3c": {
@@ -108,7 +110,7 @@
       "thought": "要清楚？靠近講。",
       "aside": "問句落在桌面。",
       "choices": [
-        {"label": "「兩者都要。」", "next": "n4b", "heat": 8},
+        {"label": "「兩者都要。」", "next": "n4b", "heat": 8, "cg": true},
         {"label": "「只要簡報。」", "next": "n4a", "tension": 4}
       ]
     },
@@ -129,9 +131,10 @@
       "label": "承認",
       "text": "手指抬起你下巴。「留低，就唔好再扮只係改簡報。」",
       "thought": "唔好再扮公事。",
-      "aside": "燈管微顫。",
+      "aside": "燈管微顫。冷同熱同時壓住。",
+      "mid": "下巴被抬起嗰下，規則已經改。",
       "choices": [
-        {"label": "留低", "next": "n5", "heat": 8},
+        {"label": "留低", "next": "n5", "heat": 8, "cg": true},
         {"label": "離開", "next": "ending_c"}
       ]
     },
@@ -142,7 +145,7 @@
       "thought": "再唔係單方面。",
       "aside": "簡報白光一跳。",
       "choices": [
-        {"label": "繼續", "next": "n5", "heat": 8}
+        {"label": "繼續", "next": "n5", "heat": 8, "cg": true}
       ]
     },
     "n5": {
@@ -153,8 +156,8 @@
       "thought": "規則喺我度。",
       "aside": "只剩呼吸同錶聲。",
       "choices": [
-        {"label": "「你話點就點。」", "next": "n6a", "heat": 8, "requireHeat": 36},
-        {"label": "「平等。今晚先。」", "next": "n6b", "heat": 8},
+        {"label": "「你話點就點。」", "next": "n6a", "heat": 8, "requireHeat": 36, "cg": true},
+        {"label": "「平等。今晚先。」", "next": "n6b", "heat": 8, "cg": true},
         {"label": "「你早計劃今晚。」", "next": "n6c", "tension": 8}
       ]
     },
@@ -183,7 +186,7 @@
       "thought": "選擇權回到你手。",
       "aside": "佢擇今晚。",
       "choices": [
-        {"label": "「留。」", "next": "ending_a", "heat": 8},
+        {"label": "「留。」", "next": "ending_a", "heat": 8, "cg": true},
         {"label": "「走。」", "next": "ending_c"}
       ]
     },
@@ -192,6 +195,7 @@
       "ending": false,
       "label": "天亮",
       "text": "「簡報。一小時內。其他——當唔發生。」",
+      "aside": "窗邊天光滲入，規則暫時凍住。",
       "choices": [
         {"label": "去週一評核室", "next": "n7", "heat": 6},
         {"label": "到此為止", "next": "ending_a_lock"}
@@ -202,6 +206,7 @@
       "ending": false,
       "label": "同盟",
       "text": "「你呢晚表現……離職信我都可能批。」",
+      "aside": "同盟兩字比評核更耐。",
       "choices": [
         {"label": "去週一評核室", "next": "n7", "heat": 6},
         {"label": "到此為止", "next": "ending_b_lock"}
@@ -234,7 +239,7 @@
       "thought": "另一種合約。",
       "aside": "筆帽咕一聲。",
       "choices": [
-        {"label": "「寫你想寫嘅。」", "next": "n8a", "heat": 10, "requireHeat": 40},
+        {"label": "「寫你想寫嘅。」", "next": "n8a", "heat": 10, "requireHeat": 40, "cg": true},
         {"label": "「寫事實。包括你留我。」", "next": "n8b", "tension": 12, "requireHeat": 28},
         {"label": "「當唔發生。」", "next": "ending_d"}
       ]
@@ -246,7 +251,7 @@
       "thought": "怕同想可以並存。",
       "aside": "評語兩字很重。",
       "choices": [
-        {"label": "「怕。但我留。」", "next": "ending_e", "heat": 12, "requireHeat": 50},
+        {"label": "「怕。但我留。」", "next": "ending_e", "heat": 12, "requireHeat": 50, "cg": true},
         {"label": "「所以我走。」", "next": "ending_d"}
       ]
     },
@@ -258,7 +263,7 @@
       "thought": "選擇落在紙上。",
       "aside": "選擇落在紙上。",
       "choices": [
-        {"label": "「抬我。對等。」", "next": "ending_e", "heat": 8, "requireHeat": 45},
+        {"label": "「抬我。對等。」", "next": "ending_e", "heat": 8, "requireHeat": 45, "cg": true},
         {"label": "「你毀唔到我。」", "next": "ending_f", "tension": 14, "requireHeat": 30}
       ]
     },
