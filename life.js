@@ -137,7 +137,7 @@
     if ($("play-label")) $("play-label").textContent = node.label || story.name || "";
     if ($("play-text")) $("play-text").textContent = node.text || "";
     slot("thought-slot", "play-thought", node.thought);
-    slot("aside-slot", "play-aside", node.aside);
+    slot("aside-slot", "play-aside", [node.aside, node.mid].filter(Boolean).join(" · "));
     meters(); chips();
     var box = $("choices");
     if (box) {
