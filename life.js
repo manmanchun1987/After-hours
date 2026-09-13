@@ -1,7 +1,7 @@
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
-  var CLIP = BASE + "/assets/vera-live.mp4?v=1";
+  var CLIP = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_d5a81d01-c1cb-4424-bf8e-ea90625f5047_generated_video.mp4";
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [];
   function $(id) { return document.getElementById(id); }
   function clamp(n) { return Math.max(0, Math.min(100, n)); }
