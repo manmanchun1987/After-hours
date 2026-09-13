@@ -13,16 +13,26 @@
   function playClip() {
     var v = $("vera-vid");
     if (!v) return;
+    if (v.getAttribute("data-fail") === "1") return;
     if (v.getAttribute("data-ready") !== "1") {
       v.src = CLIP;
       v.setAttribute("data-ready", "1");
+      v.onerror = function () {
+        v.setAttribute("data-fail", "1");
+        v.style.display = "none";
+        v.removeAttribute("src");
+        v.load && v.load();
+      };
     }
     v.muted = true;
     v.loop = true;
     v.setAttribute("playsinline", "");
     v.playsInline = true;
     var p = v.play();
-    if (p && p.catch) p.catch(function () {});
+    if (p && p.catch) p.catch(function () {
+      v.setAttribute("data-fail", "1");
+      v.style.display = "none";
+    });
   }
   function meters() {
     var h = $("meter-heat"), t = $("meter-tension");
