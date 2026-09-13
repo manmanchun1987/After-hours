@@ -1,14 +1,14 @@
 # 而家進度
 
-最後更新：2026-09-13 22:17 HKT
+最後更新：2026-09-13 23:04 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
 
 ## 已交
+- data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside）
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
 - data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己）
-- data/morgan.json（三結局各加 1 beat + m3 mid deal/terms；m4 mid aside deal/terms + ending_m_c 加 beat）
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live9；hideVid 統一守門
 
 ## 未過
@@ -25,5 +25,5 @@ Pollinations free img2img 得圖；drift 已記 ART.md（face soft / outfit flat
 ## CODE 2026-09-13 22:05 HKT
 CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live9。
 
-## 劇本 2026-09-13 22:17 HKT
-alex n3a/n3b/n4 mid aside cold-control；heat choices 標 cg:true；typo 修完。Canon photoreal + alex.png 未動。
+## 劇本 2026-09-13 23:04 HKT
+morgan 全線 mid + cg:true 補完。Canon photoreal + alex.png 未動。Anime InstantID 繼續 pause。
