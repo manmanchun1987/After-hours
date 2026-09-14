@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-14 23:21 HKT
+最後更新：2026-09-14 23:25 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -10,10 +10,13 @@
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
 - data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長 + s4y 新支 + s5y 新支 + mid 再加長 + s5z 新支 + mid 再加深）
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live26；hideVid 統一守門；styles?v=cast7
-- m.html data-scene grades 再 refine 對齊 STORYBOARD shot list（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
+- m.html data-scene grades 再 refine 對齊 STORYBOARD（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## ART 2026-09-14 23:25 HKT
+m.html grades 再 lock 對齊 STORYBOARD shot list。Photoreal Vera only。無新臉。無 Imagine。無 vera-*.jpg。
 
 ## CODE 2026-09-14 23:21 HKT
 CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live26。無 Imagine、無 anime swap、無 CSS zoom 當主生命。
