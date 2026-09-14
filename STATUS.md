@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-14 10:08 HKT
+最後更新：2026-09-14 13:09 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -9,11 +9,14 @@
 - data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside + m3z 新支 + mid 加長 + m4c 新支）
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
 - data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長 + s4y 新支）
-- life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live23；hideVid 統一守門；styles?v=cast7
+- life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live24；hideVid 統一守門；styles?v=cast7
 - m.html data-scene grades 再 refine 對齊 STORYBOARD shot list（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## CODE 2026-09-14 13:09 HKT
+CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live24。無 Imagine、無 anime swap、無 CSS zoom 當主生命。
 
 ## CODE 2026-09-14 10:08 HKT
 CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live23。無 Imagine、無 anime swap、無 CSS zoom 當主生命。
