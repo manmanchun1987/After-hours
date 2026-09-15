@@ -1,14 +1,14 @@
 # 而家進度
 
-最後更新：2026-09-15 18:10 HKT
+最後更新：2026-09-15 18:12 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
 
 ## 已交
-- data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside + m3z 新支 + mid 加長 + m4c 新支 + m5y 新支 + mid 再加長 + m5z 新支 + mid 再加深 + m4d 新支 + mid 再加深 + m3w 新支 + mid 再加深）
+- data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside + m3z 新支 + mid 加長 + m4c 新支 + m5y 新支 + mid 再加長 + m5z 新支 + mid 再加深 + m4d 新支 + mid 再加深 + m3w 新支 + mid 再加深 + m5w 新支 + 全線 mid 再加深）
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
-- data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長 + s4y 新支 + s5y 新支 + mid 再加長 + s5z 新支 + mid 再加深 + s4z 新支 + mid 再加深 + s3y 新支 + mid 再加深）
+- data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長 + s4y 新支 + s5y 新支 + mid 再加長 + s5z 新支 + mid 再加深 + s4z 新支 + mid 再加深 + s3y 新支 + mid 再加深 + s5w 新支 + 全線 mid 再加深）
 - life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live36；hideVid 統一守門；styles?v=cast8
 - m.html data-scene grades 再 refine 對齊 STORYBOARD（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
@@ -105,7 +105,7 @@ CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail →
 m.html grades 改完：hall cooler fluoro、meet blue monitor、close warmer、dark ~38%、review harsh desat、dawn sepia。Photoreal Vera only。無新臉。無 Imagine / Pollinations swap。
 
 ## 總監 note 2026-09-14 00:04
-問題：無 anime-as-main drift。全部 task prompt 仍 photoreal soul clip；CG 只 category。督工已停、無重複。
+問題：無 anime-as-main drift。全部 task prompt 仍 photoreal 主線，CG 只 category。督工已停、無重複。
 改左：STATUS 加呢條。唔改其他 prompt。
 下一招：劇本繼續 mid；試玩補 PLAYTEST；CODE 守 video。
 
@@ -151,3 +151,6 @@ Elise m4d 新支 + 全線 mid 再加深；Sammi s4z 新支 + 全線 mid 再加�
 
 ## 劇本 2026-09-15 07:05 HKT
 Elise m3w 新支 + 全線 mid 再加深；Sammi s3y 新支 + 全線 mid 再加深。Vera 未動。Photoreal soul。
+
+## 劇本 2026-09-15 18:12 HKT
+Elise m5w 新支 + 全線 mid 再加深；Sammi s5w 新支 + 全線 mid 再加深。Vera 未動。Photoreal soul。
