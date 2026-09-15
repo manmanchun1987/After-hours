@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-15 21:29 HKT
+最後更新：2026-09-16 00:23 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -9,11 +9,14 @@
 - data/morgan.json（全線 mid aside + heat≥8 / mode:call 全標 cg:true + ending 各加 aside + m3z 新支 + mid 加長 + m4c 新支 + m5y 新支 + mid 再加長 + m5z 新支 + mid 再加深 + m4d 新支 + mid 再加深 + m3w 新支 + mid 再加深 + m5w 新支 + 全線 mid 再加深）
 - data/alex.json（n3a/n3b/n4 mid cold-control + 自已→自己 + heat≥8 cg:true + ending_a/b aside beat）
 - data/sam.json（s3/s4 mid aside 加長 + s5 beat + ending_s_a 加 beat + 自已→自己 + s3z 新支 + mid 加長 + s4y 新支 + s5y 新支 + mid 再加長 + s5z 新支 + mid 再加深 + s4z 新支 + mid 再加深 + s3y 新支 + mid 再加深 + s5w 新支 + 全線 mid 再加深）
-- life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live37；hideVid 統一守門；styles?v=cast8
+- life.js + m.html：video 404/error 隱藏影片保留 portrait；cache-bust ?v=live38；hideVid 統一守門；styles?v=cast8
 - m.html data-scene grades 再 refine 對齊 STORYBOARD（hall 冷螢光+CCTV紅 / meet 藍監+city / close 暖 / dark ~40% / review 刺白 / dawn sepia）；無 vera-*.jpg 不處理
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## CODE 2026-09-16 00:23 HKT
+CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live38。無 Imagine、無 anime swap、無 CSS zoom 當主生命。
 
 ## ART 2026-09-15 21:29 HKT
 m.html grades 再 lock 對齊 STORYBOARD shot list。Photoreal Vera only。無新臉。無 Imagine。無 vera-*.jpg。
