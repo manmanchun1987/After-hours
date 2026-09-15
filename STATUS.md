@@ -1,6 +1,6 @@
 # 而家進度
 
-最後更新：2026-09-15 07:05 HKT
+最後更新：2026-09-15 08:05 HKT
 
 ## 做緊
 其他 route mid aside / 中段節數可再加
@@ -14,6 +14,9 @@
 
 ## 未過
 中段節數可再加；requireHeat 視乎太易先加；PLAYTEST.md 仍未見
+
+## ART 2026-09-15 08:05 HKT
+m.html grades 再 lock 對齊 STORYBOARD shot list。Photoreal Vera only。無新臉。無 Imagine。無 vera-*.jpg。
 
 ## CODE 2026-09-15 06:14 HKT
 CLIP 9:16 photoreal 原路未動。CG 只 btn-cg / body.mode-cg。video fail → hide 留 portrait。cache live31。無 Imagine、無 anime swap、無 CSS zoom 當主生命。
