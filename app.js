@@ -53,6 +53,7 @@ const AudioEngine = (() => {
   let bgmSource = null;
   let started = false;
   let bgmPlaying = false;
+  let bgmDuck = false;
   let manifest = null;
   let buffers = { bgm: null, click: null, choice: null, transition: null, ping: null, call: null };
   let loadPromise = null;
@@ -76,13 +77,15 @@ const AudioEngine = (() => {
     if (!masterGain || !ctx) return;
     const master = audioPrefs.masterMute ? 0 : 1;
     const bgmVol = (manifest && manifest.bgm && manifest.bgm.volume) || 0.35;
+    const bgmTarget = audioPrefs.bgmMute || audioPrefs.masterMute || bgmDuck ? 0 : bgmVol * 0.22;
     masterGain.gain.setTargetAtTime(master, ctx.currentTime, 0.05);
-    bgmGain.gain.setTargetAtTime(
-      audioPrefs.bgmMute || audioPrefs.masterMute ? 0 : bgmVol * 0.22,
-      ctx.currentTime,
-      0.08
-    );
+    bgmGain.gain.setTargetAtTime(bgmTarget, ctx.currentTime, 0.08);
     sfxGain.gain.setTargetAtTime(audioPrefs.masterMute ? 0 : 0.55, ctx.currentTime, 0.05);
+  }
+
+  function setBgmDuck(on) {
+    bgmDuck = !!on;
+    applyVolumes();
   }
 
   async function decodeUrl(url) {
@@ -340,6 +343,7 @@ const AudioEngine = (() => {
     sfxTransition,
     sfxPing,
     sfxCall,
+    setBgmDuck,
     get started() { return started; },
   };
 })();
