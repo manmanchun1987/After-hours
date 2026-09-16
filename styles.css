@@ -779,6 +779,37 @@ h1 {
 .chat-hint {
   font-size: 0.7rem;
   color: var(--muted);
+  margin: 2px 0 0;
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+.chat-hint[data-mode="soft"] { color: rgba(201, 164, 106, 0.85); }
+.chat-hint[data-mode="wary"] { color: rgba(220, 190, 140, 0.75); }
+.chat-hint[data-mode="cold"] { color: rgba(180, 140, 140, 0.9); }
+.chat-hint[data-mode="idle"] { color: var(--muted); opacity: 0.9; }
+
+.chat-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+#choices.freechat-hidden {
+  opacity: 0;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.35s ease, max-height 0.35s ease, transform 0.35s ease;
+}
+#choices:not(.freechat-hidden) {
+  opacity: 1;
+  max-height: 240px;
+  transition: opacity 0.35s ease, max-height 0.35s ease, transform 0.35s ease;
 }
 
 .chat-messages {
