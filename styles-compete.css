@@ -35,3 +35,7 @@ body[data-tint="teal"] .portrait{filter:hue-rotate(28deg) saturate(.92)}
   0%,88%,100%{opacity:0;transform:scaleY(.3)}
   91%,94%{opacity:.85;transform:scaleY(1.8)}
 }
+
+/* onescreen compete sync */
+body.mode-play .meter{font-size:.62rem}
+body.mode-play .meter i{height:.32rem}
