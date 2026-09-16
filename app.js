@@ -1218,9 +1218,10 @@ function renderCast() {
   const node = state.story && state.nodeId && state.story.nodes
     ? state.story.nodes[state.nodeId]
     : null;
-  const canResume = !!(node && !node.ending);
   const resume = $("#resume-alex");
-  if (resume) resume.hidden = !canResume;
+  if (resume) resume.hidden = true; // cast cards own the resume CTA; keep debug btn buried
+  const start = $("#start-alex");
+  if (start) start.hidden = true;
 }
 
 function startAlex(fresh) {

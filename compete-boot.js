@@ -22,16 +22,20 @@
     var root = document.getElementById("chars");
     if (!root) return;
     root.innerHTML = "";
+    var save = {};
+    try { save = JSON.parse(localStorage.getItem("after-hours-v2") || "{}"); } catch (e) {}
     CAST.forEach(function (c) {
       var art = document.createElement("article");
-      art.className = "card glass char-card";
+      art.className = "card glass char-card char-card--" + c.id;
       var img = document.createElement("img");
-      img.className = "char-thumb";
+      img.className = "char-thumb char-thumb--" + c.id;
       img.src = c.portrait;
       img.alt = c.name;
       var wrap = document.createElement("div");
       wrap.className = "char-thumb-wrap";
       wrap.appendChild(img);
+      var body = document.createElement("div");
+      body.className = "char-body";
       var h = document.createElement("h2");
       h.textContent = c.name;
       var role = document.createElement("div");
@@ -40,16 +44,29 @@
       var hook = document.createElement("p");
       hook.className = "hook";
       hook.textContent = c.hook;
+      var actions = document.createElement("div");
+      actions.className = "char-actions";
       var start = document.createElement("button");
       start.className = "btn btn-primary";
       start.type = "button";
       start.textContent = "開始";
       start.addEventListener("click", function () { bootStart(c.id, true); });
+      actions.appendChild(start);
+      var canResume = save && save.storyId === c.id && save.nodeId;
+      if (canResume) {
+        var resume = document.createElement("button");
+        resume.className = "btn btn-ghost";
+        resume.type = "button";
+        resume.textContent = "繼續";
+        resume.addEventListener("click", function () { bootStart(c.id, false); });
+        actions.appendChild(resume);
+      }
+      body.appendChild(h);
+      body.appendChild(role);
+      body.appendChild(hook);
+      body.appendChild(actions);
       art.appendChild(wrap);
-      art.appendChild(h);
-      art.appendChild(role);
-      art.appendChild(hook);
-      art.appendChild(start);
+      art.appendChild(body);
       root.appendChild(art);
     });
   }
@@ -57,11 +74,30 @@
     fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
       state.story = story;
       state.storyId = id;
-      state.nodeId = story.start;
-      state.path = [story.start];
-      state.memories = [];
-      state.heat = 20;
-      state.tension = 15;
+      if (fresh) {
+        state.nodeId = story.start;
+        state.path = [story.start];
+        state.memories = [];
+        state.heat = 20;
+        state.tension = 15;
+      } else {
+        try {
+          var save = JSON.parse(localStorage.getItem("after-hours-v2") || "{}");
+          if (save && save.storyId === id && save.nodeId && story.nodes[save.nodeId]) {
+            state.nodeId = save.nodeId;
+            state.path = save.path || [save.nodeId];
+            state.memories = save.memories || [];
+            state.heat = typeof save.heat === "number" ? save.heat : 20;
+            state.tension = typeof save.tension === "number" ? save.tension : 15;
+          } else {
+            state.nodeId = story.start;
+            state.path = [story.start];
+          }
+        } catch (e) {
+          state.nodeId = story.start;
+          state.path = [story.start];
+        }
+      }
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();

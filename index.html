@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=polish1" />
-  <link rel="stylesheet" href="./styles-compete.css?v=qa1" />
-  <link rel="stylesheet" href="./safari-fix.css?v=qa1" />
+  <link rel="stylesheet" href="./styles.css?v=polish2" />
+  <link rel="stylesheet" href="./styles-compete.css?v=polish2" />
+  <link rel="stylesheet" href="./safari-fix.css?v=polish2" />
   <style>
     :root { --play-portrait: url("./assets/alex.png"); }
     #l2d-canvas{display:none!important}
@@ -23,13 +23,13 @@
 <body>
   <div class="atm-layer" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
-  <button id="start-alex" type="button" hidden>start</button>
-  <button id="resume-alex" type="button" hidden>resume</button>
+  <button id="start-alex" type="button" hidden aria-hidden="true" tabindex="-1">start</button>
+  <button id="resume-alex" type="button" hidden aria-hidden="true" tabindex="-1">resume</button>
   <main class="app">
     <div class="global-controls">
-      <button id="btn-mute-bgm" class="icon-btn" type="button"><span class="icon-label">♪</span></button>
-      <button id="btn-mute-voice" class="icon-btn" type="button"><span class="icon-label">聲</span></button>
-      <button id="btn-mute-master" class="icon-btn" type="button"><span class="icon-label">🔊</span></button>
+      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂" aria-label="背景音樂"><span class="icon-label">♪</span></button>
+      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音" aria-label="語音"><span class="icon-label">聲</span></button>
+      <button id="btn-mute-master" class="icon-btn" type="button" title="全部靜音" aria-label="全部靜音"><span class="icon-label">音</span></button>
     </div>
     <section id="screen-gate" class="screen active">
       <div class="gate-hero">
@@ -85,11 +85,11 @@
               <ul id="memory-panel-list" class="memory-panel-list"></ul>
               <p id="memory-panel-empty" hidden></p>
             </div>
-            <div id="thought-slot" class="thought-slot" hidden><p id="play-thought" class="thought-bubble"></p></div>
-            <div id="aside-slot" class="aside-slot" hidden><p id="play-aside" class="aside-bubble"></p></div>
           </div>
           <div class="play-face-gap" aria-hidden="true"></div>
           <div class="play-lower">
+            <div id="thought-slot" class="thought-slot" hidden><p id="play-thought" class="thought-bubble"></p></div>
+            <div id="aside-slot" class="aside-slot" hidden><p id="play-aside" class="aside-bubble"></p></div>
             <div class="card glass play-card narrative-bubble"><p id="play-text" class="narrative"></p></div>
             <div id="choices" class="stack choices"></div>
             <div class="chat-panel card glass">
@@ -113,7 +113,7 @@
       </div>
     </section>
   </main>
-  <script src="./app.js?v=polish1"></script>
-  <script src="./compete-boot.js?v=qa1"></script>
+  <script src="./app.js?v=polish2"></script>
+  <script src="./compete-boot.js?v=polish2"></script>
 </body>
 </html>
