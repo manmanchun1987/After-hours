@@ -206,3 +206,42 @@ body.mode-play .app {
   min-height: 0 !important;
   flex: 1 1 auto !important;
 }
+
+/* keyboard1 — override phone lock when virtual keyboard open */
+body.keyboard-open.mode-play .play-face-gap {
+  height: 10vh !important;
+  min-height: 56px !important;
+  max-height: 12vh !important;
+}
+body.keyboard-open.mode-play .narrative-bubble,
+body.keyboard-open.mode-play .zone-story.narrative-bubble {
+  max-height: 9vh !important;
+  padding: 8px 10px !important;
+}
+body.keyboard-open.mode-play .chat-panel,
+body.keyboard-open.mode-play .chat-panel.zone-chat {
+  display: flex !important;
+  max-height: none !important;
+  min-height: 64px !important;
+  flex: 1 1 auto !important;
+}
+body.keyboard-open.mode-play .zone-chat .chat-composer {
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 8 !important;
+}
+body.keyboard-open.mode-play #screen-play.active,
+body.keyboard-open.mode-play .play-stage,
+body.keyboard-open.mode-play .play-overlay,
+body.keyboard-open.mode-play .app {
+  height: var(--app-vh) !important;
+  max-height: var(--app-vh) !important;
+  overflow: hidden !important;
+  overflow-x: hidden !important;
+}
+@media (max-height: 620px) {
+  /* keep chat visible when keyboard open even on short screens */
+  body.keyboard-open.mode-play .chat-panel {
+    display: flex !important;
+  }
+}

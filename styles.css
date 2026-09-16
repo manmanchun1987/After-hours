@@ -2100,3 +2100,67 @@ body.mode-call .play-face-gap {
   .zone-story .narrative { font-size: 1rem !important; }
   .zone-story.narrative-bubble { max-height: clamp(92px, 18vh, 160px) !important; }
 }
+
+/* ============================================================
+   keyboard1 — iPhone virtual keyboard: keep UI in --app-vh
+   Works with uichat1 three zones; body.keyboard-open from index script
+   ============================================================ */
+html, body {
+  overflow-x: hidden !important;
+}
+body.mode-play #screen-play.active,
+body.mode-play .play-stage,
+body.mode-play .play-overlay {
+  height: var(--app-vh) !important;
+  max-height: var(--app-vh) !important;
+  overflow: hidden !important;
+}
+body.keyboard-open.mode-play .play-face-gap {
+  height: 10vh !important;
+  min-height: 64px !important;
+  max-height: 12vh !important;
+  flex: 0 0 auto !important;
+}
+body.keyboard-open.mode-play .zone-story.narrative-bubble,
+body.keyboard-open.mode-play .narrative-bubble {
+  max-height: clamp(52px, 10vh, 88px) !important;
+  padding: 8px 12px !important;
+}
+body.keyboard-open.mode-play .zone-story .narrative {
+  font-size: 0.88rem !important;
+  line-height: 1.4 !important;
+}
+body.keyboard-open.mode-play .action-zone {
+  max-height: 28vh;
+  overflow-y: auto;
+}
+body.keyboard-open.mode-play .play-hud {
+  max-height: 18vh;
+  overflow: hidden;
+}
+body.keyboard-open.mode-play .chat-panel.zone-chat,
+body.keyboard-open.mode-play .chat-panel {
+  flex: 1 1 auto !important;
+  min-height: 72px !important;
+  max-height: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+body.keyboard-open.mode-play .zone-chat .chat-messages {
+  flex: 1 1 auto !important;
+  min-height: 28px !important;
+  max-height: 18vh !important;
+}
+body.keyboard-open.mode-play .zone-chat .chat-composer,
+body.keyboard-open.mode-play .chat-composer {
+  position: sticky !important;
+  bottom: 0 !important;
+  z-index: 6 !important;
+  flex: 0 0 auto !important;
+  background: rgba(4, 6, 12, 0.98) !important;
+  padding-bottom: max(6px, env(safe-area-inset-bottom)) !important;
+}
+body.keyboard-open.mode-play .global-controls {
+  opacity: 0.35;
+  pointer-events: none;
+}
