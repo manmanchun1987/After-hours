@@ -2074,3 +2074,29 @@ body.mode-call .play-face-gap {
   .chat-panel.zone-chat { max-height: 24vh !important; }
   .zone-story.narrative-bubble { max-height: clamp(72px, 13vh, 120px) !important; }
 }
+
+/* uichat1 follow-up: cancel hint window; story card dominates */
+.chat-hint,
+.chat-hint-cancelled,
+#chat-hint {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+.zone-story.narrative-bubble {
+  max-height: clamp(100px, 20vh, 180px) !important;
+  flex: 0 1 auto !important;
+}
+.zone-story .narrative {
+  font-size: 1.06rem !important;
+  line-height: 1.65 !important;
+}
+@media (max-width: 420px) {
+  .zone-story .narrative { font-size: 1rem !important; }
+  .zone-story.narrative-bubble { max-height: clamp(92px, 18vh, 160px) !important; }
+}
