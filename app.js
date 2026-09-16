@@ -684,6 +684,22 @@ function clampMeter(n) {
 }
 
 
+
+function duckBgmForVideo(on) {
+  try {
+    if (window.AudioEngine && typeof AudioEngine.setBgmDuck === "function") {
+      AudioEngine.setBgmDuck(!!on);
+      return;
+    }
+  } catch (e) {}
+  // Fallback: lower HTMLAudio / gain if present on state
+  try {
+    if (state && state.bgmAudio) {
+      state.bgmAudio.volume = on ? 0.05 : (state.bgmVol != null ? state.bgmVol : 0.35);
+    }
+  } catch (e) {}
+}
+
 function portraitVideoSrc(story) {
   const id = (story && story.id) || state.storyId || "alex";
   // Use already-uploaded clips in assets/ (Vera / default cast only)
@@ -721,6 +737,8 @@ function applyStoryArt(story) {
   const vsrc = portraitVideoSrc(story);
   if (vid) {
     if (vsrc) {
+      vid.muted = false;
+      vid.volume = 1;
       if (vid.getAttribute("src") !== vsrc) {
         vid.setAttribute("src", vsrc);
         vid.load();
@@ -728,10 +746,23 @@ function applyStoryArt(story) {
       vid.removeAttribute("hidden");
       if (stack) stack.classList.add("has-video");
       if (bg) bg.classList.add("has-video");
+      duckBgmForVideo(true);
+      // Prefer clip audio over TTS while portrait video is active
+      try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
       const playPromise = vid.play();
-      if (playPromise && playPromise.catch) playPromise.catch(function () {});
+      if (playPromise && playPromise.catch) {
+        playPromise.catch(function () {
+          // Autoplay-with-sound may need a gesture; retry muted then unmute after click
+          vid.muted = true;
+          vid.play().then(function () {
+            vid.muted = false;
+            duckBgmForVideo(true);
+          }).catch(function () {});
+        });
+      }
       if (mask) mask.setAttribute("hidden", "");
     } else {
+      duckBgmForVideo(false);
       vid.removeAttribute("src");
       vid.load();
       vid.setAttribute("hidden", "");
@@ -1133,6 +1164,7 @@ function show(name) {
     el.classList.toggle("active", key === name);
   });
   document.body.classList.toggle("mode-play", name === "play");
+  if (name !== "play") duckBgmForVideo(false);
   if (name === "play") startIncomingRhythm();
   else stopIncomingRhythm();
   if (name !== "play") setMemoryPanelOpen(false);
