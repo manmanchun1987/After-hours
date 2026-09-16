@@ -1285,3 +1285,23 @@ body.mode-speaking .speaking-pill {
 @media (prefers-reduced-motion: reduce) {
   .blink-mask.on, body.mode-speaking .speaking-pill, .incoming-toast, .incoming-dot { animation: none !important; }
 }
+
+
+/* Existing uploaded clip as play portrait (Vera) */
+.portrait-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  z-index: 1;
+  background: #0a0e14;
+}
+.portrait-stack.has-video #alex-portrait { opacity: 0; }
+.portrait-stack.has-video .blink-mask { display: none !important; }
+.portrait-stack.has-video .portrait-video { display: block; }
+body.mode-play .play-bg.has-video {
+  background-image: none !important;
+}

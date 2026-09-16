@@ -683,6 +683,16 @@ function clampMeter(n) {
   return Math.max(0, Math.min(100, v));
 }
 
+
+function portraitVideoSrc(story) {
+  const id = (story && story.id) || state.storyId || "alex";
+  // Use already-uploaded clips in assets/ (Vera / default cast only)
+  if (id === "alex") {
+    return "./assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
+  }
+  return null;
+}
+
 function portraitSrc(story) {
   if (story && story.portrait) return story.portrait;
   const id = (story && story.id) || state.storyId;
@@ -705,7 +715,34 @@ function applyStoryArt(story) {
   const toastDefault = $("#incoming-toast-text");
   if (toastDefault && !state.unreadCount) toastDefault.textContent = cast.toast;
   const mask = $("#blink-mask");
-  if (mask) {
+  const stack = $("#alex-portrait-stack");
+  const bg = document.querySelector("#screen-play .play-bg");
+  const vid = $("#play-portrait-video");
+  const vsrc = portraitVideoSrc(story);
+  if (vid) {
+    if (vsrc) {
+      if (vid.getAttribute("src") !== vsrc) {
+        vid.setAttribute("src", vsrc);
+        vid.load();
+      }
+      vid.removeAttribute("hidden");
+      if (stack) stack.classList.add("has-video");
+      if (bg) bg.classList.add("has-video");
+      const playPromise = vid.play();
+      if (playPromise && playPromise.catch) playPromise.catch(function () {});
+      if (mask) mask.setAttribute("hidden", "");
+    } else {
+      vid.removeAttribute("src");
+      vid.load();
+      vid.setAttribute("hidden", "");
+      if (stack) stack.classList.remove("has-video");
+      if (bg) bg.classList.remove("has-video");
+      if (mask) {
+        if (getCastId() === "alex") mask.removeAttribute("hidden");
+        else mask.setAttribute("hidden", "");
+      }
+    }
+  } else if (mask) {
     if (getCastId() === "alex") mask.removeAttribute("hidden");
     else mask.setAttribute("hidden", "");
   }
