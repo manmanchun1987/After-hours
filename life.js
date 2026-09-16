@@ -1,18 +1,18 @@
-/* live43 cache */
+/* live44 cache */
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
-  var IDLE = BASE + "/assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
+  var IDLE = BASE + "/assets/video/vera-loop.mp4";
   var LINE = {
-    n1: BASE + "/assets/vera-line-n1.mp4",
-    n2c: BASE + "/assets/vera-line-n2c.mp4",
-    n4x: BASE + "/assets/vera-line-n4x.mp4",
-    n5: BASE + "/assets/vera-line-n5.mp4"
+    n1: BASE + "/assets/video/vera-loop.mp4",
+    n2c: BASE + "/assets/video/vera-alt.mp4",
+    n4x: BASE + "/assets/video/vera-loop.mp4",
+    n5: BASE + "/assets/video/vera-alt.mp4"
   };
   var FACE = {
-    alex: BASE + "/assets/IMG_1412.jpeg",
-    morgan: BASE + "/assets/IMG_1411.jpeg",
-    sam: BASE + "/assets/IMG_1410.jpeg"
+    alex: BASE + "/assets/alex.png",
+    morgan: BASE + "/assets/morgan.jpg",
+    sam: BASE + "/assets/sam.jpg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
   var sfxChoice, sfxCall, sfxTrans, bgm, lastScene = "", linePlayed = {};
