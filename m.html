@@ -26,24 +26,24 @@
     .meter i{display:block;height:4px;background:#ffffff22;border-radius:99px;margin-top:4px;overflow:hidden}
     .meter b{display:block;height:100%;width:20%;background:#d4b483}
     .btn-cg{border-color:#e8a0b8;color:#f3c6d4}
-    /* hall: cold fluorescent + red CCTV */
-    body[data-scene="hall"] #grade-veil{background:linear-gradient(180deg,#061828fa 0%,#040c18f0 40%,#2e0408e8 100%)}
-    body[data-scene="hall"] #grade-vignette{box-shadow:inset 0 0 180px 72px #000208, inset 0 -100px 140px -10px #c0101860}
-    /* meet: blue monitor + city */
-    body[data-scene="meet"] #grade-veil{background:linear-gradient(180deg,#000e20c0 0%,transparent 18%,#001428f5 100%)}
-    body[data-scene="meet"] #grade-vignette{box-shadow:inset 0 0 140px 52px #00020acc}
-    /* close: warmer side */
-    body[data-scene="close"] #grade-veil{background:linear-gradient(180deg,#c8505060 0%,transparent 22%,#4a1418f8 100%)}
-    body[data-scene="close"] #grade-vignette{box-shadow:inset 0 0 100px 32px #1a080abb}
-    /* dark: ~40% brightness */
-    body[data-scene="dark"] #grade-veil{background:radial-gradient(ellipse at 50% 28%,#00000028 0%,#000000fc 75%);opacity:.96}
-    body[data-scene="dark"] #grade-vignette{box-shadow:inset 0 0 220px 100px #000}
-    /* review: harsh white */
-    body[data-scene="review"] #grade-veil{background:linear-gradient(180deg,#f8fafcc0 0%,transparent 12%,#04080ef8 100%)}
-    body[data-scene="review"] #grade-vignette{box-shadow:inset 0 0 90px 28px #020406ee}
-    /* dawn: sepia dawn */
-    body[data-scene="dawn"] #grade-veil{background:linear-gradient(180deg,#f0d8b890 0%,transparent 26%,#4a2818e8 100%)}
-    body[data-scene="dawn"] #grade-vignette{box-shadow:inset 0 0 100px 28px #180e08bb}
+    /* hall: cold fluorescent + red CCTV, corridor sliver */
+    body[data-scene="hall"] #grade-veil{background:linear-gradient(180deg,#05141ef8 0%,#030a14f2 35%,#1a0206f0 100%)}
+    body[data-scene="hall"] #grade-vignette{box-shadow:inset 0 0 200px 80px #000104, inset 0 -120px 160px -8px #b0081455, inset 40% 0 60px -20px #ff1a2030}
+    /* meet: blue monitor + city glow */
+    body[data-scene="meet"] #grade-veil{background:linear-gradient(180deg,#000c1cc8 0%,transparent 20%,#00122af8 100%)}
+    body[data-scene="meet"] #grade-vignette{box-shadow:inset 0 0 150px 56px #000208cc, inset 0 40px 80px -30px #0a3a8a40}
+    /* close: warmer side light, perfume/ear height */
+    body[data-scene="close"] #grade-veil{background:linear-gradient(165deg,#d0605048 0%,transparent 25%,#3a1014fa 100%)}
+    body[data-scene="close"] #grade-vignette{box-shadow:inset 0 0 110px 36px #140608bb, inset -30% 20% 90px -20px #c8785040}
+    /* dark: ~40% brightness, lights out */
+    body[data-scene="dark"] #grade-veil{background:radial-gradient(ellipse at 48% 26%,#0a0a0a35 0%,#000000fd 70%);opacity:.97}
+    body[data-scene="dark"] #grade-vignette{box-shadow:inset 0 0 240px 110px #000000}
+    /* review: harsh white overhead, blinds */
+    body[data-scene="review"] #grade-veil{background:linear-gradient(180deg,#f4f6f8c8 0%,transparent 14%,#02060cf8 100%)}
+    body[data-scene="review"] #grade-vignette{box-shadow:inset 0 0 100px 32px #010305f0, inset 0 60px 40px -20px #ffffff30}
+    /* dawn: sepia window leak */
+    body[data-scene="dawn"] #grade-veil{background:linear-gradient(180deg,#e8c8a088 0%,transparent 28%,#3a2010f0 100%)}
+    body[data-scene="dawn"] #grade-vignette{box-shadow:inset 0 0 110px 30px #140c08bb, inset 30% -10% 80px -15px #d4a06035}
   </style>
 </head>
 <body>
