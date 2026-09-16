@@ -33,6 +33,8 @@ const state = {
   offTopicStreak: 0,
   freeChatChoicesVisible: false,
   freeChatNodeId: null,
+  stashedNodeThought: null,
+  guidanceThoughtActive: false,
   chatTone: "cold",
   proactiveCooldownUntil: 0,
   proactiveCountOnNode: 0,
@@ -1308,6 +1310,8 @@ function resetChatSessionMemory() {
   state.offTopicStreak = 0;
   state.freeChatChoicesVisible = false;
   state.freeChatNodeId = null;
+  state.guidanceThoughtActive = false;
+  state.stashedNodeThought = null;
   state.proactiveCountOnNode = 0;
   state.proactiveNodeId = state.nodeId;
   state.proactiveCooldownUntil = 0;
@@ -1499,6 +1503,8 @@ function applyStoryArt(story) {
   const cast = getCast();
   const who = $("#chat-who");
   if (who) who.textContent = cast.name;
+  const chatInput = $("#chat-input");
+  if (chatInput) chatInput.placeholder = "傳訊俾 " + cast.name + "…";
   const toastDefault = $("#incoming-toast-text");
   if (toastDefault && !state.unreadCount) toastDefault.textContent = cast.toast;
   const mask = $("#blink-mask");
@@ -1640,6 +1646,8 @@ function renderThoughtAside(node) {
   const asideSlot = $("#aside-slot");
   const thoughtEl = $("#play-thought");
   const asideEl = $("#play-aside");
+  state.stashedNodeThought = node && node.thought ? String(node.thought) : "";
+  state.guidanceThoughtActive = false;
   if (thoughtSlot && thoughtEl) {
     if (node.thought) {
       thoughtEl.textContent = node.thought;
@@ -1893,48 +1901,66 @@ function detectRepeat(userText) {
   return last === t || (last.length >= 2 && t.includes(last) && last.includes(t.slice(0, Math.min(6, t.length))));
 }
 
+function setThoughtVoice(line) {
+  const thoughtSlot = $("#thought-slot");
+  const thoughtEl = $("#play-thought");
+  if (!thoughtSlot || !thoughtEl) return;
+  const text = String(line || "").trim();
+  if (!text) {
+    thoughtSlot.setAttribute("hidden", "");
+    thoughtEl.textContent = "";
+    return;
+  }
+  thoughtEl.textContent = text;
+  thoughtSlot.removeAttribute("hidden");
+  state.guidanceThoughtActive = true;
+}
+
+function restoreNodeThought() {
+  const thoughtSlot = $("#thought-slot");
+  const thoughtEl = $("#play-thought");
+  if (!thoughtSlot || !thoughtEl) return;
+  state.guidanceThoughtActive = false;
+  const saved = state.stashedNodeThought;
+  if (saved) {
+    thoughtEl.textContent = saved;
+    thoughtSlot.removeAttribute("hidden");
+  } else {
+    thoughtSlot.setAttribute("hidden", "");
+    thoughtEl.textContent = "";
+  }
+}
+
+/** Former chat-hint guidance → thought-slot as character inner voice (not CS tone). */
 function updateChatHint(bucket, advanced) {
-  const el = document.getElementById("chat-hint");
-  if (!el) return;
   const streak = state.offTopicStreak || 0;
   const node = state.story && state.story.nodes && state.nodeId
     ? state.story.nodes[state.nodeId]
     : null;
   const free = !!(node && node.freeChat);
+  let line = "";
   if (advanced) {
-    el.textContent = "……門後。繼續。";
-    el.dataset.mode = "soft";
-    return;
-  }
-  if (free && state.freeChatChoicesVisible) {
-    el.textContent = "行動已亮。可撳：推門／停低——或打字推門。";
-    el.dataset.mode = "soft";
-    return;
-  }
-  if (bucket && !isOffTopicBucket(bucket)) {
-    el.textContent = free
-      ? "對白得。想行動就提門／推門。"
-      : (streak >= 2 ? "……好。望住主題。" : "嗯。繼續。");
-    el.dataset.mode = "soft";
-    return;
-  }
-  if (streak >= 4) {
-    el.textContent = free ? "離題夠。提門——或等行動選擇。" : "離題夠。推門——定講工作。";
-    el.dataset.mode = "cold";
+    line = "……門後。繼續。";
+  } else if (free && state.freeChatChoicesVisible) {
+    line = "……門把就喺度。你推，定停？";
+  } else if (bucket && !isOffTopicBucket(bucket)) {
+    line = free
+      ? "……門就喺前面。"
+      : (streak >= 2 ? "……好。望住主題。" : "……嗯。");
+  } else if (streak >= 4) {
+    line = free ? "……夠喇。門——定你仲喺度拖？" : "……夠喇。推門——定講工作。";
   } else if (streak >= 2) {
-    el.textContent = "第二次離題。短啲。返主題。";
-    el.dataset.mode = "cold";
+    line = "……仲喺度拖？";
   } else if (streak === 1) {
-    el.textContent = free
-      ? "偏離主題。可以講門、檔——近門口會亮選擇。"
-      : "偏離主題。可以講門、檔、定你想留。";
-    el.dataset.mode = "wary";
+    line = free ? "……偏咗。門就喺前面。" : "……偏咗。門、檔——定你想留。";
+  } else if (free) {
+    line = "……走廊。門就喺前面。";
   } else {
-    el.textContent = free
-      ? "走廊 · 先對白試探；講到門／推門會亮行動選擇。"
-      : "私下對白 · 對住講就得。";
-    el.dataset.mode = "idle";
+    // non-freeChat idle: keep story thought, do not overwrite with system tone
+    restoreNodeThought();
+    return;
   }
+  setThoughtVoice(line);
 }
 
 function matchFreeChatIntent(userText) {
@@ -1987,7 +2013,7 @@ function syncFreeChatChoices(node) {
   setChoicesDeferred(!state.freeChatChoicesVisible);
 }
 
-function unlockFreeChatChoices(reason) {
+function unlockFreeChatChoices(_reason) {
   const node = state.story && state.story.nodes && state.nodeId
     ? state.story.nodes[state.nodeId]
     : null;
@@ -1995,11 +2021,7 @@ function unlockFreeChatChoices(reason) {
   if (state.freeChatChoicesVisible) return false;
   state.freeChatChoicesVisible = true;
   setChoicesDeferred(false);
-  const el = document.getElementById("chat-hint");
-  if (el) {
-    el.textContent = reason || "可以揀行動：推門／停低。";
-    el.dataset.mode = "soft";
-  }
+  setThoughtVoice("……門把就喺度。你推，定停？");
   return true;
 }
 
@@ -2302,14 +2324,10 @@ function renderNode() {
 
   syncFreeChatChoices(node);
   if (node.freeChat) {
+    // guidance inner voice during freeChat idle/streak; story thought already stashed
     updateChatHint(null, false);
-  } else {
-    const hint = document.getElementById("chat-hint");
-    if (hint && (state.offTopicStreak || 0) === 0) {
-      hint.textContent = "私下對白 · 對住講就得。";
-      hint.dataset.mode = "idle";
-    }
   }
+  // else: keep node.thought from renderThoughtAside (no system idle line)
 
   show("play");
   pulseIn($("#play-label"));
