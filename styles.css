@@ -1308,19 +1308,18 @@ body.mode-play .play-bg.has-video {
 
 
 /* ============================================================
-   One-screen UI system — all screens scale to 100dvh
+   UI polish pass — one viewport, neat hierarchy, all screens
    ============================================================ */
 :root {
-  --ui-pad: clamp(8px, 1.8vh, 14px);
-  --ui-gap: clamp(6px, 1.2vh, 12px);
-  --ui-radius: 12px;
-  --ui-title: clamp(1.35rem, 4.2vh, 2.1rem);
-  --ui-body: clamp(0.82rem, 1.7vh, 1.02rem);
-  --ui-btn-pad-y: clamp(8px, 1.5vh, 13px);
-  --ui-btn-pad-x: clamp(10px, 2.2vw, 16px);
-  --ui-chip: clamp(0.68rem, 1.4vh, 0.8rem);
-  --ui-safe-top: max(var(--ui-pad), env(safe-area-inset-top));
-  --ui-safe-bottom: max(var(--ui-pad), env(safe-area-inset-bottom));
+  --ui-pad: 12px;
+  --ui-gap: 10px;
+  --ui-radius: 14px;
+  --ui-title: clamp(1.45rem, 3.8vh, 2rem);
+  --ui-body: clamp(0.86rem, 1.65vh, 1rem);
+  --ui-muted: clamp(0.75rem, 1.4vh, 0.86rem);
+  --ui-btn-y: 11px;
+  --gold-line: rgba(201, 164, 106, 0.38);
+  --panel: rgba(10, 14, 22, 0.78);
 }
 
 html, body {
@@ -1328,110 +1327,132 @@ html, body {
   max-height: 100dvh;
   overflow: hidden;
 }
-body {
-  display: flex;
-  justify-content: center;
-}
+body { display: flex; justify-content: center; }
 .app {
-  width: min(520px, 100%);
+  width: min(440px, 100%);
   height: 100%;
   max-height: 100dvh;
   min-height: 0 !important;
-  padding: var(--ui-safe-top) var(--ui-pad) var(--ui-safe-bottom);
+  padding: max(12px, env(safe-area-inset-top)) var(--ui-pad) max(12px, env(safe-area-inset-bottom));
   gap: var(--ui-gap);
   overflow: hidden;
   box-sizing: border-box;
 }
 body.mode-play .app {
+  width: min(440px, 100%);
   padding: 0 !important;
   gap: 0 !important;
-  width: min(520px, 100%);
 }
 
-.screen {
-  min-height: 0 !important;
-}
 .screen.active {
   height: 100%;
   max-height: 100%;
+  min-height: 0 !important;
   overflow: hidden !important;
   gap: var(--ui-gap) !important;
-  padding: 0;
-  box-sizing: border-box;
 }
 
-/* Shared type / controls densify */
-h1, .h-cast { font-size: var(--ui-title) !important; line-height: 1.2 !important; margin: 0 !important; }
-.slogan, .fine, .narrative, .hook { font-size: var(--ui-body) !important; line-height: 1.45 !important; }
-.brand { font-size: var(--ui-chip) !important; }
-.chip { font-size: var(--ui-chip) !important; padding: 4px 8px !important; }
+h1, .h-cast { font-size: var(--ui-title) !important; line-height: 1.18 !important; letter-spacing: 0.01em; }
+.brand { font-size: var(--ui-muted) !important; letter-spacing: 0.14em !important; }
+.slogan, .fine, .narrative, .hook { font-size: var(--ui-body) !important; line-height: 1.5 !important; }
+.chip {
+  font-size: 0.72rem !important;
+  padding: 5px 10px !important;
+  border-radius: 999px !important;
+  border-color: var(--gold-line) !important;
+  background: rgba(201,164,106,0.08);
+}
 .btn {
-  padding: var(--ui-btn-pad-y) var(--ui-btn-pad-x) !important;
-  font-size: var(--ui-body) !important;
-  border-radius: var(--ui-radius) !important;
+  padding: var(--ui-btn-y) 14px !important;
+  font-size: 0.92rem !important;
+  border-radius: 12px !important;
+  letter-spacing: 0.01em;
 }
-.btn-tiny { padding: 6px 10px !important; font-size: 0.78rem !important; }
-.card { padding: clamp(10px, 1.8vh, 16px) !important; border-radius: var(--ui-radius) !important; }
-.topbar { gap: 8px !important; align-items: center !important; flex-shrink: 0; }
-.icon-btn { width: 34px !important; height: 34px !important; font-size: 0.8rem !important; }
-.global-controls { top: var(--ui-safe-top) !important; gap: 6px !important; }
+.btn-primary {
+  box-shadow: 0 8px 24px rgba(201,164,106,0.22);
+}
+.btn-tiny { padding: 6px 10px !important; font-size: 0.75rem !important; }
+.card {
+  padding: 14px !important;
+  border-radius: var(--ui-radius) !important;
+  border-color: var(--gold-line) !important;
+}
+.card.glass {
+  background: linear-gradient(165deg, rgba(255,255,255,0.07), transparent 42%), var(--panel) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.topbar { gap: 10px; flex-shrink: 0; }
+.icon-btn {
+  width: 36px !important; height: 36px !important;
+  border-color: var(--gold-line) !important;
+  background: var(--panel) !important;
+}
+.global-controls { z-index: 50; }
 
-/* —— Gate —— */
+/* Gate: calm center stack */
 #screen-gate.active {
   justify-content: center;
-  align-items: stretch;
-  text-align: left;
-  gap: clamp(8px, 1.6vh, 14px) !important;
+  max-width: 100%;
 }
-#screen-gate h1 { font-size: clamp(1.5rem, 5vh, 2.2rem) !important; }
-#screen-gate .slogan { margin: 0 !important; max-width: 36ch; }
-#screen-gate .card { margin-top: 0 !important; }
-#screen-gate .btn-primary { width: 100%; min-height: clamp(42px, 6.5vh, 50px); }
+#screen-gate .brand { margin-bottom: 6px; }
+#screen-gate h1 { margin: 0 0 8px !important; }
+#screen-gate .slogan { margin: 0 0 14px !important; color: var(--muted); max-width: 34ch; }
+#screen-gate .card { margin: 0; }
+#screen-gate .fine { margin: 10px 0 0 !important; text-align: center; }
+#screen-gate .btn-primary { width: 100%; min-height: 48px; font-weight: 650; }
 
-/* —— Cast —— */
-#screen-cast.active { gap: clamp(6px, 1.2vh, 10px) !important; }
+/* Cast: equal cards, tidy thumbs */
+#screen-cast.active { gap: 10px !important; }
+#screen-cast .topbar { margin-bottom: 2px; }
 #screen-cast .chars {
-  flex: 1 1 auto;
+  flex: 1;
   min-height: 0;
   display: grid !important;
   grid-template-columns: 1fr !important;
-  gap: clamp(6px, 1.2vh, 10px) !important;
+  gap: 8px !important;
   overflow: hidden;
+  align-content: start;
 }
-@media (min-width: 640px) {
+@media (min-width: 560px) {
   #screen-cast .chars { grid-template-columns: repeat(3, 1fr) !important; }
 }
 #screen-cast .char-card {
+  padding: 10px !important;
   display: flex;
   flex-direction: column;
   min-height: 0;
-  padding: clamp(8px, 1.4vh, 12px) !important;
-  overflow: hidden;
 }
 #screen-cast .char-thumb {
   width: 100%;
-  max-height: clamp(72px, 14vh, 140px) !important;
-  aspect-ratio: 3 / 2;
+  height: clamp(88px, 16vh, 130px) !important;
+  max-height: 130px !important;
+  aspect-ratio: auto !important;
   object-fit: cover;
-  object-position: center top;
-  margin-bottom: 6px !important;
-  border-radius: 10px !important;
+  object-position: center 15%;
+  margin-bottom: 8px !important;
+  border-radius: 11px !important;
+  border: 1px solid var(--gold-line);
 }
-#screen-cast .char-card h2 { font-size: clamp(1rem, 2.2vh, 1.15rem) !important; margin: 0 0 2px !important; }
-#screen-cast .char-card .role { font-size: var(--ui-chip) !important; margin-bottom: 4px !important; }
-#screen-cast .char-card .hook {
+#screen-cast .char-card h2 { font-size: 1.05rem !important; margin: 0 0 2px !important; }
+#screen-cast .role { font-size: 0.75rem !important; margin-bottom: 4px !important; }
+#screen-cast .hook {
   min-height: 0 !important;
-  margin: 0 0 8px !important;
+  margin: 0 0 10px !important;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  color: var(--muted);
 }
-#screen-cast .char-card .stack { gap: 6px !important; margin-top: auto; }
-#screen-cast .btn { min-height: clamp(36px, 5.5vh, 44px); }
+#screen-cast .stack { margin-top: auto; gap: 6px !important; }
+#screen-cast .btn { min-height: 40px; text-align: center; }
 
-/* —— Play —— */
-body.mode-play .app,
+/* Play: face + story + choices; chat secondary */
+body.mode-play .global-controls {
+  top: max(8px, env(safe-area-inset-top)) !important;
+  right: max(8px, calc(50% - 220px + 8px)) !important;
+}
 #screen-play.active,
 .play-stage,
 .play-overlay {
@@ -1443,121 +1464,147 @@ body.mode-play .app,
 .play-overlay {
   display: flex !important;
   flex-direction: column !important;
-  padding:
-    max(6px, env(safe-area-inset-top))
-    10px
-    max(8px, env(safe-area-inset-bottom))
-    10px !important;
-  gap: 4px !important;
+  padding: max(8px, env(safe-area-inset-top)) 12px max(10px, env(safe-area-inset-bottom)) !important;
+  gap: 6px !important;
 }
 .play-topbar {
-  flex-shrink: 0;
-  min-height: 34px !important;
-  padding: 2px 100px 2px 2px !important;
+  min-height: 38px !important;
+  padding: 4px 96px 4px 2px !important;
+  align-items: center;
 }
-.play-label { font-size: var(--ui-chip) !important; margin: 0 !important; }
+.play-label {
+  font-size: 0.78rem !important;
+  opacity: 0.95;
+}
+.play-actions { gap: 6px; }
 .play-hud {
-  flex: 0 0 auto;
-  gap: 3px !important;
-  padding: 0 0 2px !important;
-  max-height: 20vh;
-  overflow: hidden;
+  gap: 4px !important;
+  max-height: none;
+  overflow: visible;
 }
-.meters { gap: 4px !important; }
-.meter { font-size: 0.62rem !important; }
-.meter i { height: 0.32rem !important; }
-.call-chrome { padding: 5px 10px !important; font-size: 0.72rem !important; }
-.memory-strip { padding: 4px 8px !important; }
-.memory-title, .memory-chip { font-size: 0.64rem !important; }
-.thought-bubble, .aside-bubble { font-size: 0.78rem !important; padding: 6px 10px !important; }
+.meters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid rgba(201,164,106,0.2);
+}
+.meter { font-size: 0.65rem !important; letter-spacing: 0.06em; }
+.meter i { height: 0.34rem !important; }
+.call-chrome {
+  align-self: flex-start;
+  border-radius: 999px !important;
+  padding: 6px 12px !important;
+  font-size: 0.74rem !important;
+  background: rgba(0,0,0,0.45) !important;
+  border: 1px solid rgba(120,220,160,0.35);
+}
+.memory-strip {
+  border-radius: 10px !important;
+  padding: 6px 10px !important;
+  background: rgba(0,0,0,0.4) !important;
+}
+.thought-bubble, .aside-bubble {
+  border-radius: 12px !important;
+  max-width: 92%;
+}
 .play-face-gap {
   flex: 0 0 auto !important;
-  height: clamp(14vh, 20vh, 26vh) !important;
-  min-height: 14vh !important;
-  max-height: 26vh !important;
+  height: clamp(20vh, 26vh, 30vh) !important;
+  min-height: 20vh !important;
+  max-height: 30vh !important;
 }
 body.mode-call .play-face-gap {
-  height: clamp(10vh, 15vh, 18vh) !important;
-  min-height: 10vh !important;
+  height: clamp(14vh, 18vh, 22vh) !important;
+  min-height: 14vh !important;
 }
 .play-lower {
   flex: 1 1 auto !important;
   min-height: 0 !important;
   max-height: none !important;
   overflow: hidden !important;
-  gap: 5px !important;
+  gap: 8px !important;
   display: flex;
   flex-direction: column;
 }
 .narrative-bubble {
-  flex: 0 1 auto;
-  max-height: clamp(72px, 15vh, 140px) !important;
-  padding: 8px 11px !important;
+  flex: 0 0 auto;
+  max-height: clamp(84px, 17vh, 150px) !important;
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
   overflow-y: auto;
 }
 .narrative-bubble .narrative {
-  font-size: clamp(0.8rem, 1.6vh, 0.92rem) !important;
-  line-height: 1.4 !important;
+  font-size: 0.92rem !important;
+  line-height: 1.55 !important;
 }
-#screen-play .choices { gap: 4px !important; flex-shrink: 0; }
+#screen-play .choices { gap: 6px !important; flex: 0 0 auto; }
 #screen-play .btn-choice {
-  padding: 7px 10px !important;
-  font-size: clamp(0.78rem, 1.55vh, 0.9rem) !important;
+  padding: 11px 12px !important;
+  font-size: 0.88rem !important;
+  border-radius: 12px !important;
+  text-align: left;
 }
 .chat-panel {
   flex: 1 1 auto !important;
-  min-height: 0 !important;
-  max-height: none !important;
-  padding: 6px 8px !important;
-  gap: 4px !important;
-  display: flex;
-  flex-direction: column;
+  min-height: 72px !important;
+  max-height: 28vh !important;
+  padding: 8px 10px 10px !important;
+  gap: 6px !important;
+  border-radius: 14px !important;
 }
-.chat-title { font-size: 0.7rem !important; }
+.chat-header { margin-bottom: 2px; }
+.chat-title { font-size: 0.72rem !important; letter-spacing: 0.1em; }
 .chat-messages {
   flex: 1 1 auto;
   min-height: 0 !important;
   max-height: none !important;
   overflow-y: auto;
-  gap: 5px !important;
 }
-.chat-bubble { font-size: 0.8rem !important; padding: 6px 9px !important; }
+.chat-bubble {
+  font-size: 0.82rem !important;
+  padding: 7px 10px !important;
+  border-radius: 12px !important;
+}
 .chat-form { gap: 6px !important; }
-.chat-form input { padding: 7px 9px !important; font-size: 0.82rem !important; }
-.btn-send { padding: 7px 12px !important; }
+.chat-form input {
+  border-radius: 10px !important;
+  padding: 9px 11px !important;
+  font-size: 0.85rem !important;
+  background: rgba(0,0,0,0.35) !important;
+  border: 1px solid rgba(201,164,106,0.25) !important;
+  color: var(--text);
+}
+.btn-send { border-radius: 10px !important; padding: 9px 14px !important; }
 
-/* —— Ending —— */
+/* Ending */
 #screen-ending.active {
   justify-content: center;
-  gap: clamp(8px, 1.5vh, 14px) !important;
-  overflow: hidden !important;
+  gap: 12px !important;
+  padding: 8px 0;
 }
 #screen-ending .ending-title {
-  font-size: clamp(1.1rem, 3vh, 1.35rem) !important;
-  margin: 0 !important;
+  font-size: clamp(1.15rem, 2.8vh, 1.4rem) !important;
+  text-align: center;
 }
 #screen-ending .card {
-  max-height: 42vh;
+  max-height: 38vh;
   overflow-y: auto;
 }
-#screen-ending .stack { gap: 8px !important; }
-#screen-ending .btn { min-height: clamp(40px, 6vh, 48px); }
+#screen-ending .stack { gap: 8px !important; width: 100%; }
+#screen-ending .btn { width: 100%; min-height: 46px; text-align: center; }
+#screen-ending .fine { text-align: center; margin: 0 !important; }
 
-@media (max-height: 640px) {
-  :root {
-    --ui-pad: 8px;
-    --ui-gap: 6px;
-    --ui-title: 1.35rem;
-    --ui-body: 0.8rem;
-  }
-  .play-face-gap { height: 12vh !important; min-height: 10vh !important; }
-  .narrative-bubble { max-height: 12vh !important; }
-  #screen-cast .char-thumb { max-height: 10vh !important; }
+@media (max-height: 700px) {
+  .play-face-gap { height: 18vh !important; min-height: 16vh !important; }
+  .narrative-bubble { max-height: 14vh !important; padding: 10px 12px !important; }
+  .chat-panel { max-height: 24vh !important; }
+  #screen-cast .char-thumb { height: 72px !important; }
 }
-@media (max-height: 560px) {
-  .chat-panel { max-height: 28% !important; }
-  #screen-cast .hook { -webkit-line-clamp: 1; }
-}
-@media (min-width: 640px) and (max-height: 720px) {
-  #screen-cast .char-thumb { max-height: 12vh !important; }
+@media (max-height: 600px) {
+  .chat-panel { display: none !important; }
+  .play-face-gap { height: 14vh !important; }
+  #screen-play .btn-choice { padding: 9px 10px !important; }
 }
