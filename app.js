@@ -708,7 +708,7 @@ function portraitVideoSrc(story) {
   const id = (story && story.id) || state.storyId || "alex";
   // Use already-uploaded clips in assets/ (Vera / default cast only)
   if (id === "alex") {
-    return "./assets/_users_69f5aaea-27d3-48b5-b7c8-1861432a31ce_generated_b8e9107f-e582-4175-86e7-de5bf918a8da_generated_video.mp4";
+    return "./assets/video/vera-loop.mp4"; // alt: ./assets/video/vera-alt.mp4
   }
   return null;
 }
