@@ -24,33 +24,10 @@
 </head>
 <body>
   <script>
+  /* keyboard1 bootstrap: early --app-vh only. Full logic + listeners in app.js (avoid double handlers). */
   (function () {
-    function setAppVh() {
-      var vv = window.visualViewport;
-      var h = vv ? vv.height : window.innerHeight;
-      document.documentElement.style.setProperty("--app-vh", h + "px");
-      /* iOS keyboard: visualViewport shrinks while layout viewport stays tall */
-      var gap = window.innerHeight - h;
-      if (gap > 120) document.body.classList.add("keyboard-open");
-      else document.body.classList.remove("keyboard-open");
-    }
-    setAppVh();
-    window.addEventListener("resize", setAppVh);
-    window.addEventListener("orientationchange", setAppVh);
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", setAppVh);
-      window.visualViewport.addEventListener("scroll", setAppVh);
-    }
-    document.addEventListener("focusin", function (e) {
-      if (e.target && (e.target.id === "chat-input" || e.target.closest && e.target.closest(".chat-form"))) {
-        setTimeout(setAppVh, 50);
-        setTimeout(setAppVh, 300);
-      }
-    });
-    document.addEventListener("focusout", function () {
-      setTimeout(setAppVh, 50);
-      setTimeout(setAppVh, 300);
-    });
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty("--app-vh", h + "px");
   })();
   </script>
   <div class="atm-layer" aria-hidden="true"></div>
@@ -152,7 +129,7 @@
       </div>
     </section>
   </main>
-  <script src="./app.js?v=uichat1"></script>
+  <script src="./app.js?v=keyboard1"></script>
   <script src="./compete-boot.js?v=chathuman1"></script>
 </body>
 </html>

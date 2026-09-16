@@ -2375,7 +2375,177 @@ function wireChat() {
   });
 }
 
+
+/* -------------------------------------------------------------------------- */
+/* keyboard1 — iPhone Safari visualViewport → --app-vh + keyboard-open        */
+/* Owns listeners (index.html only sets early --app-vh, no duplicate handlers) */
+/* CSS vars for 畫面活感: --app-vh, --vv-offset-top, --keyboard-inset          */
+/* -------------------------------------------------------------------------- */
+function wireKeyboardViewport() {
+  const root = document.documentElement;
+  const KEYBOARD_GAP_PX = 120;
+  const KEYBOARD_RATIO = 0.82;
+  let baseline = 0;
+  let keyboardOpen = false;
+  let chatFocused = false;
+  let lockScrollHandler = null;
+  let pendingTimers = [];
+
+  function later(fn, ms) {
+    const id = setTimeout(fn, ms);
+    pendingTimers.push(id);
+    return id;
+  }
+
+  function captureBaseline() {
+    const vv = window.visualViewport;
+    const h = vv ? vv.height : window.innerHeight;
+    // Only refresh baseline when keyboard is closed / not focused
+    if (!keyboardOpen && !chatFocused) {
+      baseline = Math.max(h, window.innerHeight);
+    } else if (!baseline) {
+      baseline = Math.max(h, window.innerHeight);
+    }
+  }
+
+  function pinComposerIntoView() {
+    const form = document.getElementById("chat-form");
+    const panel = document.querySelector(".chat-panel");
+    const target = form || panel;
+    if (!target) return;
+    try {
+      target.scrollIntoView({ block: "end", inline: "nearest", behavior: "auto" });
+    } catch (_) {
+      try {
+        target.scrollIntoView(false);
+      } catch (__) {}
+    }
+    // Re-lock page scroll after scrollIntoView (Safari may nudge document)
+    window.scrollTo(0, 0);
+    if (root.scrollTop) root.scrollTop = 0;
+    if (document.body.scrollTop) document.body.scrollTop = 0;
+  }
+
+  function setScrollLock(on) {
+    if (on) {
+      if (lockScrollHandler) return;
+      lockScrollHandler = () => {
+        if (window.scrollY || root.scrollTop || document.body.scrollTop) {
+          window.scrollTo(0, 0);
+          root.scrollTop = 0;
+          document.body.scrollTop = 0;
+        }
+      };
+      window.addEventListener("scroll", lockScrollHandler, { passive: true });
+      document.addEventListener("scroll", lockScrollHandler, { passive: true, capture: true });
+      window.scrollTo(0, 0);
+    } else if (lockScrollHandler) {
+      window.removeEventListener("scroll", lockScrollHandler);
+      document.removeEventListener("scroll", lockScrollHandler, { capture: true });
+      lockScrollHandler = null;
+    }
+  }
+
+  function setKeyboardOpen(open) {
+    if (keyboardOpen === open) {
+      if (open) pinComposerIntoView();
+      return;
+    }
+    keyboardOpen = open;
+    document.body.classList.toggle("keyboard-open", open);
+    root.classList.toggle("keyboard-open", open);
+    setScrollLock(open);
+    if (open) {
+      pinComposerIntoView();
+      later(pinComposerIntoView, 50);
+      later(pinComposerIntoView, 280);
+    }
+  }
+
+  function syncViewport() {
+    const vv = window.visualViewport;
+    const height = vv ? vv.height : window.innerHeight;
+    const offsetTop = vv ? vv.offsetTop : 0;
+    const layoutH = window.innerHeight;
+    const inset = Math.max(0, layoutH - height - offsetTop);
+
+    root.style.setProperty("--app-vh", `${height}px`);
+    root.style.setProperty("--vv-offset-top", `${offsetTop}px`);
+    /* alias for styles that prefer shorter name */
+    root.style.setProperty("--vv-top", `${offsetTop}px`);
+    root.style.setProperty("--keyboard-inset", `${inset}px`);
+    /* translate fix left to CSS via --vv-offset-top / --vv-top (畫面活感) */
+
+    if (!baseline) captureBaseline();
+
+    const gap = layoutH - height;
+    const shrunkVsBaseline = baseline > 0 && height < baseline * KEYBOARD_RATIO;
+    const openBySize = gap >= KEYBOARD_GAP_PX || shrunkVsBaseline;
+    // While chat focused, treat moderate shrink as keyboard (iOS timing lag)
+    const open = chatFocused ? openBySize || gap >= 80 : openBySize;
+
+    setKeyboardOpen(open);
+
+    if (!open && !chatFocused) {
+      // Restore baseline once viewport is back
+      baseline = Math.max(height, layoutH);
+    }
+  }
+
+  function onOrientation() {
+    // Keyboard dismisses on rotate; refresh baseline after layout settles
+    chatFocused = false;
+    setKeyboardOpen(false);
+    later(() => {
+      baseline = 0;
+      captureBaseline();
+      syncViewport();
+    }, 120);
+    later(syncViewport, 400);
+  }
+
+  captureBaseline();
+  syncViewport();
+
+  window.addEventListener("resize", syncViewport);
+  window.addEventListener("orientationchange", onOrientation);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", syncViewport);
+    window.visualViewport.addEventListener("scroll", syncViewport);
+  }
+
+  document.addEventListener("focusin", (e) => {
+    const t = e.target;
+    if (!t) return;
+    const isChat =
+      t.id === "chat-input" ||
+      (t.closest && t.closest("#chat-form, .chat-form"));
+    if (!isChat) return;
+    chatFocused = true;
+    later(syncViewport, 50);
+    later(syncViewport, 300);
+    later(pinComposerIntoView, 320);
+  });
+
+  document.addEventListener("focusout", (e) => {
+    const t = e.target;
+    if (!t) return;
+    const isChat =
+      t.id === "chat-input" ||
+      (t.closest && t.closest("#chat-form, .chat-form"));
+    if (!isChat) return;
+    chatFocused = false;
+    // Wait for visualViewport to restore after blur
+    later(syncViewport, 50);
+    later(() => {
+      syncViewport();
+      if (!keyboardOpen) captureBaseline();
+    }, 300);
+  });
+}
+
 async function init() {
+  wireKeyboardViewport();
   waitForVoices();
   wireAudioControls();
   wireChat();
