@@ -1305,3 +1305,142 @@ body.mode-speaking .speaking-pill {
 body.mode-play .play-bg.has-video {
   background-image: none !important;
 }
+
+
+/* ============================================================
+   One-screen fit: no page scroll (play / cast / gate / ending)
+   ============================================================ */
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+body .app {
+  height: 100%;
+  max-height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+}
+.screen.active {
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* Play: lock stage to viewport */
+body.mode-play {
+  overflow: hidden;
+}
+body.mode-play .app,
+#screen-play.active,
+.play-stage,
+.play-overlay {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+.play-overlay {
+  display: flex;
+  flex-direction: column;
+  padding-top: max(6px, env(safe-area-inset-top)) !important;
+  padding-bottom: max(8px, env(safe-area-inset-bottom)) !important;
+  gap: 4px;
+}
+.play-topbar {
+  min-height: 36px !important;
+  padding-top: 2px !important;
+  padding-bottom: 0 !important;
+}
+.play-hud {
+  gap: 3px !important;
+  padding-bottom: 2px !important;
+  max-height: 22vh;
+  overflow: hidden;
+}
+.play-face-gap {
+  flex: 0 0 auto !important;
+  min-height: 18vh !important;
+  max-height: 26vh !important;
+  height: 22vh !important;
+}
+body.mode-call .play-face-gap {
+  min-height: 14vh !important;
+  max-height: 20vh !important;
+  height: 16vh !important;
+}
+.play-lower {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  gap: 5px !important;
+}
+.narrative-bubble {
+  flex: 0 1 auto;
+  max-height: 16vh !important;
+  padding: 8px 11px !important;
+  overflow-y: auto;
+}
+.narrative-bubble .narrative {
+  font-size: 0.86rem !important;
+  line-height: 1.45 !important;
+}
+#screen-play .choices {
+  gap: 5px !important;
+  flex-shrink: 0;
+}
+#screen-play .btn-choice {
+  padding: 8px 10px !important;
+  font-size: 0.84rem !important;
+  border-radius: 10px;
+}
+.chat-panel {
+  flex: 1 1 auto;
+  min-height: 0 !important;
+  max-height: none !important;
+  padding: 6px 8px 8px !important;
+  gap: 4px !important;
+}
+.chat-messages {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none !important;
+  overflow-y: auto;
+}
+.chat-form input {
+  padding: 8px 10px !important;
+  font-size: 0.85rem !important;
+}
+.meters { transform: scale(0.92); transform-origin: left center; }
+
+/* Cast / gate / ending also one screen */
+#screen-gate.active,
+#screen-cast.active,
+#screen-ending.active {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+#screen-cast .chars {
+  gap: 8px !important;
+}
+#screen-cast .char-card {
+  padding: 10px 12px !important;
+}
+#screen-cast .char-thumb {
+  max-height: 18vh;
+  object-fit: cover;
+}
+@media (max-height: 700px) {
+  .play-face-gap { height: 16vh !important; min-height: 14vh !important; max-height: 18vh !important; }
+  .narrative-bubble { max-height: 13vh !important; }
+  #screen-play .btn-choice { padding: 7px 9px !important; font-size: 0.8rem !important; }
+}
+@media (max-height: 580px) {
+  .play-face-gap { height: 12vh !important; min-height: 10vh !important; }
+  .chat-panel { display: none; } /* ultra-short: hide chat, keep story+choices */
+}
