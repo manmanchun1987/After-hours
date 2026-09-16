@@ -1,9 +1,9 @@
 # 而家進度
 
-最後更新：2026-09-17 06:15 HKT
+最後更新：2026-09-17 07:04 HKT
 
 ## 做緊
-cache-bust live53，保持 photoreal 9:16
+cache-bust live54，保持 photoreal 9:16
 
 ## 已交
 - Elise/Sammi mid 加深 + 私下 branch
@@ -13,5 +13,5 @@ cache-bust live53，保持 photoreal 9:16
 ## 未過
 vera-hall still 未有
 
-## CODE 2026-09-17 06:15 HKT
-hourly cache-bust live53。CG 只靠 btn-cg / body.mode-cg。photoreal 原路。
+## CODE 2026-09-17 07:04 HKT
+hourly cache-bust live54。CG 只靠 btn-cg / body.mode-cg。photoreal 原路。
