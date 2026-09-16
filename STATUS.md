@@ -1,19 +1,18 @@
 # 而家進度
 
-最後更新：2026-09-17 05:14 HKT
+最後更新：2026-09-17 06:02 HKT
 
 ## 做緊
-其他 route mid aside / 中段節數可再加
+Elise/Sammi mid 加深 + 各加一 branch
 
 ## 已交
-- cache live52 / cast17
-- CLIP 9:16 photoreal 原路未動
-- CG 只 btn-cg / body.mode-cg；video fail → hide 留 portrait
-- m.html data-scene grades 對齊 STORYBOARD
+- Elise m4d 私下 branch、mid 加拍
+- Sammi s4d 私下教 branch、mid 加拍
+- heat/cg flag 全保留
+- Vera 原路未動
 
 ## 未過
-中段節數可再加；vera-hall 等 still 未有
+vera-hall still 未有
 
-## CODE 2026-09-17 05:14 HKT
-CLIP 9:16 photoreal 原路。CG 只 btn-cg / mode-cg。hourly cache live52。
-無 Imagine、無 anime swap、無 CSS zoom 當主生命。
+## CODE 2026-09-17 06:02 HKT
+Elise+Sammi mid 加深、各一新 branch。heat/cg 保留。Vera 不動。hourly photoreal。
