@@ -13,8 +13,7 @@ body[data-tint="teal"] .portrait{filter:hue-rotate(28deg) saturate(.92)}
 #screen-play.active .portrait-stack{
   animation: lifeBreathe 4s ease-in-out infinite !important;
 }
-@keyframes lifeBreathe{
-  0%,100%{transform:translate3d(0,0,0) scale(1.02)}
+@keyframes lifeBreathe{0%,100%{transform:translate3d(0,0,0) scale(1.02)}50%{transform:translate3d(0,-4px,0) scale(1.035)}}
   50%{transform:translate3d(0,-10px,0) scale(1.055)}
 }
 /* alex.png is a mid-shot: eyes sit ~48%/22% of frame, not a close-up */
@@ -39,3 +38,6 @@ body[data-tint="teal"] .portrait{filter:hue-rotate(28deg) saturate(.92)}
 /* onescreen compete sync */
 body.mode-play .meter{font-size:.62rem}
 body.mode-play .meter i{height:.32rem}
+
+/* phone-safe breathe amplitude */
+#screen-play.active .portrait-stack{animation-name:lifeBreathe}

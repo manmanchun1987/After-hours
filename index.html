@@ -2,11 +2,13 @@
 <html lang="zh-HK">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>加班之後 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=polish2" />
-  <link rel="stylesheet" href="./styles-compete.css?v=polish2" />
-  <link rel="stylesheet" href="./safari-fix.css?v=polish2" />
+  <link rel="stylesheet" href="./styles.css?v=phone1" />
+  <link rel="stylesheet" href="./styles-compete.css?v=phone1" />
+  <link rel="stylesheet" href="./safari-fix.css?v=phone1" />
   <style>
     :root { --play-portrait: url("./assets/alex.png"); }
     #l2d-canvas{display:none!important}
@@ -21,6 +23,21 @@
   </style>
 </head>
 <body>
+  <script>
+  (function () {
+    function setAppVh() {
+      var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+      document.documentElement.style.setProperty("--app-vh", h + "px");
+    }
+    setAppVh();
+    window.addEventListener("resize", setAppVh);
+    window.addEventListener("orientationchange", setAppVh);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", setAppVh);
+      window.visualViewport.addEventListener("scroll", setAppVh);
+    }
+  })();
+  </script>
   <div class="atm-layer" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
   <button id="start-alex" type="button" hidden aria-hidden="true" tabindex="-1">start</button>
@@ -113,7 +130,7 @@
       </div>
     </section>
   </main>
-  <script src="./app.js?v=polish2"></script>
-  <script src="./compete-boot.js?v=polish2"></script>
+  <script src="./app.js?v=phone1"></script>
+  <script src="./compete-boot.js?v=phone1"></script>
 </body>
 </html>

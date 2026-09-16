@@ -690,7 +690,7 @@ h1 {
 /* Keeps upper ~40–45% clear for face (MiraiMind torso-overlay feel) */
 .play-face-gap {
   flex: 1 1 auto;
-  min-height: clamp(36vh, 42vh, 46vh);
+  min-height: clamp(18vh, 26vh, 34vh);
   pointer-events: none;
 }
 
@@ -699,11 +699,10 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: min(58vh, 520px);
+  max-height: none;
   min-height: 0;
   overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow-y: hidden;
   scrollbar-width: thin;
 }
 
