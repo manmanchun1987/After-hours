@@ -245,3 +245,30 @@ body.keyboard-open.mode-play .app {
     display: flex !important;
   }
 }
+
+/* uichat2 — keep action buttons visible on iPhone when choices show */
+body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
+  height: 16vh !important;
+  min-height: 12vh !important;
+  max-height: 20vh !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel,
+body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel.zone-chat {
+  flex: 0 1 auto !important;
+  max-height: min(14vh, 110px) !important;
+  min-height: 48px !important;
+  z-index: 1 !important;
+}
+body.mode-play .action-zone {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 6 !important;
+}
+@media (max-height: 620px) {
+  /* never hide chat by eating action — prefer smaller chat */
+  body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel {
+    display: flex !important;
+    max-height: 12vh !important;
+  }
+}
