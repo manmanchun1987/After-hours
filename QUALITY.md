@@ -1,20 +1,6 @@
-# QUALITY bar — chase this, free only
+# QUALITY bar
 
-## Must
-- Face lock (CAST.lock).
-- Chat is the main verb; ≤2 fallback buttons.
-- Each node has `scene` + typed intent.
-- Success / fail has a visible AND audible beat (`fx-play` + `AHAudio.cue`).
-- Enter unlocks BGM (`bgm-loop.mp3` or synth bed). Mute ♪ works.
-- Scene layer matches route.
-- No black screen, no 404 portraits, no Sam/Morgan labels.
-- Safari / iPhone safe. Cantonese copy.
-
-## Should
-- Distinct lighting per scene.
-- Heat/tension readable.
-- Route length ≥30 nodes.
-- Send-chat has a short tick.
-
-## Never
-Imagine new faces. Hotlink blocked CDNs. Stolen Live2D. Ask user to upload. Silent advances.
+Read TASTE.md. Every hour score pillars STORY / PICTURE / SOUND / FEEL 1-5.
+Write tickets for the lowest pillar first, then the next, max 5.
+Must still: CAST.lock, chat-first, scene ids, audible+visible advance, BGM on enter, Safari, Cantonese.
+Never: Imagine faces, hotlink CDNs, stolen Live2D, user upload, silent jumps, Ken Burns as soul.
