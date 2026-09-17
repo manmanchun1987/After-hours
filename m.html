@@ -7,23 +7,23 @@
   <link rel="stylesheet" href="./styles.css?v=cast24" />
   <style>
     /* hall: cold fluorescent + red CCTV, corridor sliver */
-    body[data-scene="hall"] .portrait-wrap { filter: brightness(0.82) contrast(1.15) saturate(0.68) hue-rotate(8deg); }
-    body[data-scene="hall"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,20,20,0.18),transparent 20%), linear-gradient(180deg,rgba(140,175,200,0.1),transparent 42%); pointer-events:none; }
+    body[data-scene="hall"] .portrait-wrap { filter: brightness(0.78) contrast(1.18) saturate(0.62) hue-rotate(12deg); }
+    body[data-scene="hall"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,15,15,0.22),transparent 18%), linear-gradient(180deg,rgba(130,165,195,0.14),transparent 40%); pointer-events:none; }
     /* meet: blue monitor + city night */
-    body[data-scene="meet"] .portrait-wrap { filter: brightness(0.94) contrast(1.08) hue-rotate(-18deg) saturate(1.18); }
-    body[data-scene="meet"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 75% 35%,rgba(25,85,175,0.16),transparent 55%); pointer-events:none; }
+    body[data-scene="meet"] .portrait-wrap { filter: brightness(0.92) contrast(1.1) hue-rotate(-22deg) saturate(1.22); }
+    body[data-scene="meet"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 78% 32%,rgba(20,75,165,0.2),transparent 52%); pointer-events:none; }
     /* close: warmer perfume / side light */
-    body[data-scene="close"] .portrait-wrap { filter: brightness(1.14) contrast(1.12) saturate(1.22) sepia(0.14); }
-    body[data-scene="close"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,185,140,0.14),transparent 40%); pointer-events:none; }
+    body[data-scene="close"] .portrait-wrap { filter: brightness(1.16) contrast(1.14) saturate(1.26) sepia(0.16); }
+    body[data-scene="close"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,190,145,0.16),transparent 38%); pointer-events:none; }
     /* dark: ~40% brightness, idle face */
-    body[data-scene="dark"] .portrait-wrap { filter: brightness(0.4) contrast(1.2) saturate(0.82); }
-    body[data-scene="dark"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 55%,transparent 25%,rgba(0,0,0,0.35) 100%); pointer-events:none; }
+    body[data-scene="dark"] .portrait-wrap { filter: brightness(0.4) contrast(1.22) saturate(0.78); }
+    body[data-scene="dark"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 55%,transparent 22%,rgba(0,0,0,0.4) 100%); pointer-events:none; }
     /* review: harsh white overhead */
-    body[data-scene="review"] .portrait-wrap { filter: brightness(1.25) contrast(1.32) saturate(0.55) hue-rotate(2deg); }
-    body[data-scene="review"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,0.18),transparent 30%); pointer-events:none; }
+    body[data-scene="review"] .portrait-wrap { filter: brightness(1.28) contrast(1.35) saturate(0.5) hue-rotate(3deg); }
+    body[data-scene="review"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,0.22),transparent 28%); pointer-events:none; }
     /* dawn: sepia window leak */
-    body[data-scene="dawn"] .portrait-wrap { filter: brightness(1.1) sepia(0.5) contrast(0.88) saturate(0.85); }
-    body[data-scene="dawn"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(215,160,90,0.15),transparent 35%); pointer-events:none; }
+    body[data-scene="dawn"] .portrait-wrap { filter: brightness(1.12) sepia(0.55) contrast(0.86) saturate(0.8); }
+    body[data-scene="dawn"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(220,165,95,0.18),transparent 32%); pointer-events:none; }
     /* CG mode: soft vignette + warmer rim only via btn-cg / mode-cg, no zoom-as-life */
     body.mode-cg .portrait-wrap { filter: brightness(1.05) contrast(1.14) saturate(1.15); }
     body.mode-cg .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 42%,transparent 32%,rgba(0,0,0,0.22) 100%), linear-gradient(180deg,rgba(255,180,140,0.06),transparent 40%); pointer-events:none; }

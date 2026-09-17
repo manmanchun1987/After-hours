@@ -1,5 +1,14 @@
 # ART hourly log
 
+2026-09-17 13:10 HKT m.html grades tighter to STORYBOARD shot list (free CSS only)
+- hall: colder fluo + stronger red CCTV edge + cool wash
+- meet: deeper blue monitor radial + city pull
+- close: warmer side amber + higher sat
+- dark: exact 0.4 + deeper vignette
+- review: harsher white overhead glare
+- dawn: stronger sepia window leak
+- no new face / no still invent / no Pollinations / no Imagine
+
 2026-09-17 11:14 HKT m.html grades align STORYBOARD (free CSS only)
 - hall: colder fluorescent + stronger red CCTV edge + cool wash
 - meet: deeper blue monitor radial + city pull
