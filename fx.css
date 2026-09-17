@@ -4,11 +4,11 @@
 #fx-layer .fx-sweep2{background:linear-gradient(75deg,transparent 0%,rgba(255,240,200,0) 40%,rgba(255,220,160,.4) 50%,rgba(255,200,120,0) 60%,transparent 100%);transform:translateX(130%);opacity:0}
 #fx-layer.is-win .fx-sweep{animation:fxSweep .85s cubic-bezier(.2,.8,.2,1) forwards}
 #fx-layer.is-win .fx-sweep2{animation:fxSweepRev .95s cubic-bezier(.25,.7,.2,1) .08s forwards}
-#fx-layer .fx-flash{background:radial-gradient(circle at 50% 28%,rgba(255,236,200,.42),transparent 58%);opacity:0}
-#fx-layer.is-win .fx-flash{animation:fxBloom .75s ease-out}
+#fx-layer .fx-flash{background:radial-gradient(circle at 50% 28%,rgba(255,236,200,.5),transparent 58%);opacity:0}
+#fx-layer.is-win .fx-flash{animation:fxBloom .8s ease-out}
 #fx-layer .fx-rim{box-shadow:inset 0 0 0 0 rgba(180,40,40,0);opacity:0}
-#fx-layer.is-fail .fx-rim{animation:fxRim .85s ease-out}
-#fx-layer.is-fail{animation:fxShake .65s cubic-bezier(.36,.07,.19,.97)}
+#fx-layer.is-fail .fx-rim{animation:fxRim 1s ease-out}
+#fx-layer.is-fail{animation:fxShake .7s cubic-bezier(.36,.07,.19,.97)}
 #fx-layer .spark{position:absolute;width:5px;height:5px;border-radius:50%;background:#ffe7b0;box-shadow:0 0 14px 5px rgba(255,210,140,.85);opacity:0;will-change:transform,opacity}
 #fx-layer.is-win .spark{animation:fxSpark .95s ease-out forwards}
 #fx-layer.is-win .spark:nth-child(4){left:18%;top:36%;animation-delay:.04s}
@@ -19,18 +19,18 @@
 #fx-layer.is-win .spark:nth-child(9){left:78%;top:42%;animation-delay:.12s}
 #fx-layer.is-win .spark:nth-child(10){left:25%;top:22%;animation-delay:.18s}
 #fx-layer.is-win .spark:nth-child(11){left:55%;top:58%;animation-delay:.28s}
-#fx-layer .spark-fail{position:absolute;width:4px;height:4px;border-radius:50%;background:#ff6b6b;box-shadow:0 0 10px 3px rgba(200,40,40,.7);opacity:0}
-#fx-layer.is-fail .spark-fail{animation:fxSparkFail .7s ease-out forwards}
+#fx-layer .spark-fail{position:absolute;width:5px;height:5px;border-radius:50%;background:#ff6b6b;box-shadow:0 0 12px 4px rgba(200,40,40,.8);opacity:0}
+#fx-layer.is-fail .spark-fail{animation:fxSparkFail .75s ease-out forwards}
 #fx-layer.is-fail .spark-fail:nth-child(12){left:30%;top:40%;animation-delay:.05s}
 #fx-layer.is-fail .spark-fail:nth-child(13){left:55%;top:35%;animation-delay:.12s}
 #fx-layer.is-fail .spark-fail:nth-child(14){left:45%;top:55%;animation-delay:.18s}
 @keyframes fxSweep{0%{transform:translateX(-130%);opacity:0}20%{opacity:1}100%{transform:translateX(130%);opacity:0}}
 @keyframes fxSweepRev{0%{transform:translateX(130%);opacity:0}22%{opacity:.85}100%{transform:translateX(-130%);opacity:0}}
-@keyframes fxBloom{0%{opacity:0;transform:scale(.92)}28%{opacity:1;transform:scale(1.05)}100%{opacity:0;transform:scale(1.12)}}
-@keyframes fxRim{0%{opacity:1;box-shadow:inset 0 0 0 0 rgba(200,40,40,0)}35%{box-shadow:inset 0 0 100px 32px rgba(180,30,30,.62)}70%{box-shadow:inset 0 0 60px 18px rgba(160,20,20,.4)}100%{opacity:0}}
-@keyframes fxShake{0%,100%{transform:translate(0)}12%{transform:translate(-14px,5px) rotate(-.4deg)}28%{transform:translate(12px,-4px) rotate(.35deg)}45%{transform:translate(-9px,3px)}62%{transform:translate(7px,-2px)}80%{transform:translate(-4px,1px)}}
+@keyframes fxBloom{0%{opacity:0;transform:scale(.92)}25%{opacity:1;transform:scale(1.06)}100%{opacity:0;transform:scale(1.14)}}
+@keyframes fxRim{0%{opacity:1;box-shadow:inset 0 0 0 0 rgba(200,40,40,0)}30%{box-shadow:inset 0 0 120px 40px rgba(190,25,25,.72)}65%{box-shadow:inset 0 0 70px 22px rgba(160,20,20,.45)}100%{opacity:0}}
+@keyframes fxShake{0%,100%{transform:translate(0)}12%{transform:translate(-16px,6px) rotate(-.5deg)}28%{transform:translate(14px,-5px) rotate(.4deg)}45%{transform:translate(-10px,4px)}62%{transform:translate(8px,-3px)}80%{transform:translate(-5px,2px)}}
 @keyframes fxSpark{0%{opacity:0;transform:translateY(12px) scale(.3)}25%{opacity:1}100%{opacity:0;transform:translateY(-55px) scale(1.35)}}
-@keyframes fxSparkFail{0%{opacity:0;transform:scale(.4)}30%{opacity:.9}100%{opacity:0;transform:translateY(28px) scale(.6)}}
+@keyframes fxSparkFail{0%{opacity:0;transform:scale(.4)}30%{opacity:1}100%{opacity:0;transform:translateY(32px) scale(.55)}}
 #screen-play.is-advancing .play-card{animation:fxCard .55s ease}
 @keyframes fxCard{0%{transform:translateY(18px);opacity:.4}100%{transform:none;opacity:1}}
 #play-aside,#play-thought,.aside-slot,.thought-slot{display:none!important}
