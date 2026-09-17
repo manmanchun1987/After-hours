@@ -1,0 +1,30 @@
+/* beauty pass — locked stills only */
+#screen-play.active .play-bg{
+  filter: contrast(1.08) saturate(1.12);
+}
+#screen-play .play-bg-vignette{
+  background: radial-gradient(ellipse at 50% 30%, transparent 28%, rgba(0,0,0,.55) 100%);
+}
+#screen-play .play-bg-scrim{
+  background: linear-gradient(180deg, rgba(8,10,16,.15) 0%, rgba(8,10,16,.08) 40%, rgba(8,10,16,.72) 100%);
+}
+#screen-play .narrative-bubble{
+  backdrop-filter: blur(10px);
+  background: rgba(10,12,18,.62);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 10px 40px rgba(0,0,0,.35);
+}
+#screen-play .chat-panel{
+  backdrop-filter: blur(12px);
+  background: rgba(8,10,16,.55);
+  border-color: rgba(201,164,106,.22);
+}
+#screen-play .btn-choice,
+#screen-play .choices .btn{
+  letter-spacing: .02em;
+}
+body[data-tint="amber"] #screen-play .play-bg{ filter: contrast(1.1) saturate(1.18) sepia(.12); }
+body[data-tint="teal"] #screen-play .play-bg{ filter: contrast(1.08) saturate(1.05) hue-rotate(8deg); }
+#screen-cast .char-thumb{
+  filter: contrast(1.06) saturate(1.08);
+}
