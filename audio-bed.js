@@ -71,16 +71,18 @@
     a.muted = muted;
     var p = a.play();
     if (p && p.catch) p.catch(function () {
-      /* retry once after short delay on autoplay block */
       setTimeout(function () {
         try { a.play().catch(function () {}); } catch (e) {}
       }, 120);
     });
   }
   function playCue(kind) {
+    if (muted) return;
     if (kind === "fail") { beep(180, 0.28, "sawtooth", 0.1, 70); noiseBurst(0.2, 0.06); }
     else if (kind === "win") { beep(523, 0.12, "triangle", 0.1); setTimeout(function () { beep(784, 0.18, "sine", 0.09); }, 90); }
     else if (kind === "send") { beep(640, 0.06, "square", 0.05); }
+    else if (kind === "choice") { beep(380, 0.07, "sine", 0.1, 40); setTimeout(function () { beep(520, 0.05, "triangle", 0.07); }, 35); }
+    else if (kind === "tick") { beep(420, 0.04, "sine", 0.05); }
     else { beep(420, 0.05, "sine", 0.04); }
   }
   function setMuted(v) {
@@ -88,21 +90,24 @@
     if (window.__ahBgmEl) window.__ahBgmEl.muted = muted;
     if (master && ctx) master.gain.setTargetAtTime(muted ? 0 : 0.7, ctx.currentTime, 0.05);
   }
-  window.AHAudio = { start: startBed, cue: playCue, unlock: function () { ensure(); startBed(); }, setMuted: setMuted };
+  window.AHAudio = {
+    start: startBed,
+    cue: playCue,
+    unlock: function () { ensure(); startBed(); },
+    setMuted: setMuted,
+    get muted() { return muted; }
+  };
+  /* unlock only — mute ownership stays with AudioEngine / wireAudioControls */
   document.addEventListener("click", function (e) {
     var id = e.target && e.target.id;
     if (id === "enter-btn" || id === "btn-mute-bgm" || id === "btn-mute-master") {
       ensure(); startBed();
-    }
-    if (id === "btn-mute-master" || id === "btn-mute-bgm") {
-      setMuted(!muted);
     }
     if (id === "enter-btn") playCue("win");
   }, true);
   document.addEventListener("submit", function (e) {
     if (e.target && e.target.id === "chat-form") playCue("send");
   }, true);
-  /* unlock on any first gesture; keep resume listener so post-enter never silent */
   function gestureUnlock() {
     ensure(); startBed();
   }
