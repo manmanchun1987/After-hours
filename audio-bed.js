@@ -48,7 +48,7 @@
   }
   function startBed() {
     if (!ensure()) return;
-    try { ctx.resume(); } catch (e) {}
+    try { if (ctx.state === "suspended") ctx.resume(); } catch (e) {}
     if (!started) {
       started = true;
       var o = ctx.createOscillator();
@@ -70,7 +70,12 @@
     var a = window.__ahBgmEl;
     a.muted = muted;
     var p = a.play();
-    if (p && p.catch) p.catch(function () {});
+    if (p && p.catch) p.catch(function () {
+      /* retry once after short delay on autoplay block */
+      setTimeout(function () {
+        try { a.play().catch(function () {}); } catch (e) {}
+      }, 120);
+    });
   }
   function playCue(kind) {
     if (kind === "fail") { beep(180, 0.28, "sawtooth", 0.1, 70); noiseBurst(0.2, 0.06); }
@@ -97,9 +102,10 @@
   document.addEventListener("submit", function (e) {
     if (e.target && e.target.id === "chat-form") playCue("send");
   }, true);
-  /* also unlock on any first gesture to kill silent jump */
-  document.addEventListener("pointerdown", function once() {
+  /* unlock on any first gesture; keep resume listener so post-enter never silent */
+  function gestureUnlock() {
     ensure(); startBed();
-    document.removeEventListener("pointerdown", once, true);
-  }, true);
+  }
+  document.addEventListener("pointerdown", gestureUnlock, true);
+  document.addEventListener("touchstart", gestureUnlock, { capture: true, passive: true });
 })();
