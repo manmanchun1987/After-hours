@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="./styles.css?v=uichat2" />
   <link rel="stylesheet" href="./styles-compete.css?v=phone1" />
   <link rel="stylesheet" href="./safari-fix.css?v=uichat2" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=1" />
+  <link rel="stylesheet" href="./fx.css?v=1" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -93,12 +93,10 @@
           </div>
           <div class="play-face-gap" aria-hidden="true"></div>
           <div class="play-lower">
-            <div id="thought-slot" class="thought-slot" hidden><p id="play-thought" class="thought-bubble"></p></div>
-            <div id="aside-slot" class="aside-slot" hidden><p id="play-aside" class="aside-bubble"></p></div>
             <div class="play-card narrative-bubble zone-story"><p id="play-text" class="narrative"></p></div>
-            <div class="action-zone" id="action-zone">
+            <div class="action-zone is-chat-first" id="action-zone">
               <div class="zone-label action-label">行動</div>
-              <div id="choices" class="stack choices"></div>
+              <div id="choices" class="stack choices freechat-hidden"></div>
             </div>
             <div class="chat-panel zone-chat">
               <div class="chat-header"><span class="chat-title">私下對白 · <span id="chat-who">Vera</span> <span id="chat-unread" hidden>1</span></span></div>
@@ -106,7 +104,7 @@
               <div id="chat-messages" class="chat-messages"></div>
               <div id="chat-typing" class="chat-typing" hidden></div>
               <div class="chat-composer">
-                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="傳訊…" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
+                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="對佢講…推劇" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
               </div>
             </div>
           </div>
@@ -126,5 +124,6 @@
   <script src="./app.js?v=keyboard1"></script>
   <script src="./cast-lock.js?v=1"></script>
   <script src="./compete-boot.js?v=stills5"></script>
+  <script src="./fx-play.js?v=1"></script>
 </body>
 </html>
