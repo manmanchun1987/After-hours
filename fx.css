@@ -39,8 +39,11 @@
 #action-zone.is-chat-first .action-label::after{content:" · 對白推劇"}
 
 #scene-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-#scene-bg .city{position:absolute;inset:0;background:linear-gradient(180deg,#07080e 0%,#121526 42%,#1a1420 100%)}
-#scene-bg .windows{position:absolute;inset:8% 6% 38% 6%;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(10,1fr);gap:6px;opacity:.55}
+#scene-bg .city{position:absolute;inset:0;background:#07080e center/cover no-repeat}
+#scene-bg.office .city{background-image:url("./assets/bg/office.svg")}
+#scene-bg.lounge .city{background-image:url("./assets/bg/lounge.svg")}
+#scene-bg.pantry .city{background-image:url("./assets/bg/pantry.svg")}
+#scene-bg .windows{position:absolute;inset:8% 6% 38% 6%;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(10,1fr);gap:6px;opacity:.35}
 #scene-bg .windows i{background:rgba(255,214,140,.12);box-shadow:0 0 8px rgba(255,200,120,.15)}
 #scene-bg .windows i.on{background:rgba(255,220,150,.55);animation:winFlicker 3.6s ease-in-out infinite}
 #scene-bg.lounge .windows i.on{background:rgba(255,180,90,.6)}
