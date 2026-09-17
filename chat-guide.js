@@ -43,6 +43,10 @@
     });
     return out.slice(0, 3);
   }
+  function clip(s) {
+    s = String(s || "").replace(/\s+/g, "").slice(0, 12);
+    return s || "呢句";
+  }
   function hideChoices() {
     document.body.classList.remove("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = false;
@@ -60,9 +64,7 @@
     var n = node();
     if (!el || !n) return;
     var body = String(n.text || "");
-    if (lastAck && body.indexOf(lastAck) !== 0) {
-      el.textContent = lastAck + "\n\n" + body;
-    }
+    if (lastAck && body.indexOf(lastAck) !== 0) el.textContent = lastAck + "\n\n" + body;
     var want = document.getElementById("want-line");
     if (!want) {
       want = document.createElement("p");
@@ -70,61 +72,13 @@
       if (el.parentNode) el.parentNode.insertBefore(want, el.nextSibling);
     }
     var p = poles(n);
-    want.textContent = n.ending ? "" : (p.length ? "佢而家等你答：「" + p.join("」定「") + "」。講「好」=靠近。" : "");
+    want.textContent = n.ending || !p.length ? "" : "佢等你答：「" + p.join("」定「") + "」。";
   }
   function wrap() {
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var hit = orig(userText);
-        if (hit) { misses = 0; hideChoices(); lastAck = hit.ack || ""; return hit; }
-        var n = node();
-        var t = String(userText || "").trim();
-        if (YES.test(t)) {
-          var h = heatIntent(n);
+        if (hit) {
           misses = 0; hideChoices();
-          if (h) lastAck = h.ack || "……好。跟住講。";
-          return h;
-        }
-        misses += 1;
-        if (misses >= 2) showChoices();
-        return null;
-      };
-      window.matchFreeChatIntent.__guided = true;
-    }
-    if (typeof window.renderNode === "function" && !window.renderNode.__guided) {
-      var rn = window.renderNode;
-      window.renderNode = function () {
-        if (typeof state !== "undefined" && state.story) stampChat(state.story);
-        rn.apply(this, arguments);
-        misses = 0;
-        hideChoices();
-        glueText();
-        hint();
-      };
-      window.renderNode.__guided = true;
-    }
-    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
-      var un = window.unlockFreeChatChoices;
-      window.unlockFreeChatChoices = function () {
-        if (misses < 2) return false;
-        return un.apply(this, arguments);
-      };
-      window.unlockFreeChatChoices.__guided = true;
-    }
-    if (typeof state !== "undefined" && state.story) stampChat(state.story);
-  }
-  function hint() {
-    var n = node();
-    var input = document.getElementById("chat-input");
-    if (!input || !n) return;
-    var p = poles(n);
-    input.placeholder = p.length ? "答佢：「" + p.join("」／「") + "」" : "對佢講…";
-  }
-  document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
-  var ticks = 0;
-  var t = setInterval(function () {
-    wrap(); hideChoices(); glueText(); hint();
-    if (++ticks > 80) clearInterval(t);
-  }, 300);
-})();
+          hit.ack = "你講「" + clip(userText) + 
