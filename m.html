@@ -4,15 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>加班之後 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=cast27" />
+  <link rel="stylesheet" href="./styles.css?v=cast26" />
   <style>
     .cast-card img{width:100%;height:140px;object-fit:cover;object-position:center 18%;border-radius:10px;margin-bottom:8px}
     body[data-scene="hall"] .portrait-wrap { filter: brightness(0.68) contrast(1.28) saturate(0.50) hue-rotate(-12deg); }
+    body[data-scene="hall"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,10,10,0.32),transparent 15%), linear-gradient(180deg,rgba(100,145,180,0.20),transparent 36%); pointer-events:none; }
     body[data-scene="meet"] .portrait-wrap { filter: brightness(0.88) contrast(1.14) hue-rotate(-28deg) saturate(1.30); }
+    body[data-scene="meet"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 82% 26%,rgba(12,60,150,0.28),transparent 48%); pointer-events:none; }
     body[data-scene="close"] .portrait-wrap { filter: brightness(1.20) contrast(1.18) saturate(1.32) sepia(0.20); }
+    body[data-scene="close"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,180,130,0.22),transparent 34%); pointer-events:none; }
     body[data-scene="dark"] .portrait-wrap { filter: brightness(0.38) contrast(1.26) saturate(0.70); }
-    body[data-scene="review"] .portrait-wrap { filter: brightness(1.34) contrast(1.42) saturate(0.42); }
-    body[data-scene="dawn"] .portrait-wrap { filter: brightness(1.12) sepia(0.65) contrast(0.82); }
+    body[data-scene="dark"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 55%,transparent 16%,rgba(0,0,0,0.52) 100%); pointer-events:none; }
+    body[data-scene="review"] .portrait-wrap { filter: brightness(1.34) contrast(1.42) saturate(0.42) hue-rotate(2deg); }
+    body[data-scene="review"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(255,255,255,0.30),transparent 24%); pointer-events:none; }
+    body[data-scene="dawn"] .portrait-wrap { filter: brightness(1.12) sepia(0.65) contrast(0.82) saturate(0.72); }
+    body[data-scene="dawn"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(230,155,85,0.24),transparent 28%); pointer-events:none; }
+    body.mode-cg .portrait-wrap { filter: brightness(1.06) contrast(1.15) saturate(1.16); }
+    body.mode-cg .portrait-wrap::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 42%,transparent 30%,rgba(0,0,0,0.24) 100%), linear-gradient(180deg,rgba(255,175,135,0.07),transparent 38%); pointer-events:none; }
+    body.mode-cg .btn-cg { border-color: rgba(201,164,106,0.68); box-shadow: 0 0 0 1px rgba(201,164,106,0.28), 0 0 18px rgba(201,164,106,0.20); }
   </style>
 </head>
 <body>
@@ -24,32 +33,34 @@
       <button type="button" id="enter-btn" class="btn btn-primary">進入</button>
     </div>
   </div>
+
   <div id="screen-cast" class="screen">
     <h2 class="cast-title">選擇角色</h2>
     <div class="cast-grid">
       <button type="button" class="cast-card" data-start="alex">
-        <img src="./assets/stills/vera-03.jpg" alt="Vera">
+        <img src="./assets/stills/vera-03.jpg" alt="">
         <div class="cast-name">Vera</div>
         <div class="cast-role">部門主管 · 週五 23:47</div>
-        <div class="cast-line">Deadline 可以改。態度唔可以。</div>
+        <div class="cast-line">Deadline 可以改。<br/>態度唔可以。</div>
         <span class="cast-start">開始</span>
       </button>
       <button type="button" class="cast-card" data-start="morgan">
-        <img src="./assets/stills/vera-02.jpg" alt="Elise">
+        <img src="./assets/stills/vera-02.jpg" alt="">
         <div class="cast-name">Elise</div>
         <div class="cast-role">客戶負責人 · 酒廊 21:10</div>
-        <div class="cast-line">大單前夜。夜晚講人。</div>
+        <div class="cast-line">大單前夜。<br/>夜晚講人。</div>
         <span class="cast-start">開始</span>
       </button>
       <button type="button" class="cast-card" data-start="sam">
-        <img src="./assets/stills/vera-01.jpg" alt="Sammi">
+        <img src="./assets/stills/vera-01.jpg" alt="">
         <div class="cast-name">Sammi</div>
         <div class="cast-role">前輩同事 · 茶水間 22:40</div>
-        <div class="cast-line">兩個杯麵。餓嘅人簽錯字。</div>
+        <div class="cast-line">兩個杯麵。<br/>餓嘅人簽錯字。</div>
         <span class="cast-start">開始</span>
       </button>
     </div>
   </div>
+
   <div id="screen-play" class="screen">
     <div class="play-top">
       <div class="meters">
@@ -73,6 +84,7 @@
       <div id="choices" class="choices"></div>
     </div>
   </div>
+
   <div id="screen-ending" class="screen">
     <div class="ending-card">
       <h2 id="ending-title">結局</h2>
@@ -83,6 +95,7 @@
       </div>
     </div>
   </div>
+
   <script src="./life.js?v=live65"></script>
 </body>
 </html>
