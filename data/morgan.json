@@ -17,97 +17,55 @@
       "aside": "爵士樂壓得好低。",
       "choices": [
         {"label": "「人同單，邊樣先成交？」", "next": "m2a", "heat": 8, "tension": 6, "cg": true},
-        {"label": "「我嚟係收條款。」", "next": "m2b", "tension": 10}
+        {"label": "「我嚅係收條款。」", "next": "m2b", "tension": 10}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近"],
-          "next": "m2a",
-          "heat": 8,
-          "bucket": "heat",
-          "ack": "……你問成交。我聽。"
-        },
-        {
-          "keys": ["條款", "收條款", "紙", "合約", "簽", "生意"],
-          "next": "m2b",
-          "tension": 10,
-          "bucket": "leave",
-          "ack": "……條款。好。推紙過嚟。"
-        },
-        {
-          "keys": ["坐近", "近一格", "靠近", "想聽邊種"],
-          "next": "m2c",
-          "heat": 14,
-          "bucket": "heat",
-          "ack": "……你坐近。我當答咗一半。"
-        }
+        {"keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近"], "next": "m2a", "heat": 8, "bucket": "heat", "ack": "……你問成交。我聽。"},
+        {"keys": ["條款", "收條款", "紙", "合約", "簽", "生意"], "next": "m2b", "tension": 10, "bucket": "leave", "ack": "……條款。好。推紙過嚅。"},
+        {"keys": ["坐近", "近一格", "靠近", "想聽邊種"], "next": "m2c", "heat": 14, "bucket": "heat", "ack": "……你坐近。我當答咗一半。"}
       ]
     },
     "m2a": {
       "id": "m2a",
-      "label": "開標",
+      "label": "交你講",
       "scene": "lounge",
       "text": "Elise 笑得淡。「成交？你先講你想要邊樣。人，定條款。」",
-      "thought": "開標權交返你。",
+      "thought": "話事權交返你。",
       "aside": "杯壁再敲一聲。",
       "choices": [
-        {"label": "「兩者都要。」", "next": "m3a", "heat": 10, "cg": true},
+        {"label": "「兩樣都要。」", "next": "m3a", "heat": 10, "cg": true},
         {"label": "「先條款。」", "next": "m3b", "tension": 6}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["兩者", "都要", "人先", "只量人", "溫度", "齊量"],
-          "next": "m3a",
-          "heat": 10,
-          "bucket": "heat",
-          "ack": "……兩者。大膽。"
-        },
-        {
-          "keys": ["先條款", "條款", "紙"],
-          "next": "m3b",
-          "tension": 6,
-          "bucket": "leave",
-          "ack": "……先條款。得。"
-        }
+        {"keys": ["兩者", "都要", "人先", "溫度"], "next": "m3a", "heat": 10, "bucket": "heat", "ack": "……兩樣。大膽。"},
+        {"keys": ["先條款", "條款", "紙"], "next": "m3b", "tension": 6, "bucket": "leave", "ack": "……先條款。得。"}
       ]
     },
     "m2b": {
       "id": "m2b",
       "label": "收條款",
       "scene": "lounge",
-      "text": "「條款？得。你推紙過嚟。我簽之前，你要先答一條。」",
-      "thought": "紙喺中間，人喺對面。",
+      "text": "「條款？得。你推紙過嚅。我簽之前，你要先答一條。」",
+      "thought": "紙喇中間，人喇對面。",
       "aside": "筆帽未開。",
       "choices": [
         {"label": "「問。」", "next": "m3b", "tension": 8},
-        {"label": "（推近）「你先講你想要咩。」", "next": "m3a", "heat": 12, "cg": true}
+        {"label": "（推近）「你先講你想要乜。」", "next": "m3a", "heat": 12, "cg": true}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["問", "答", "講"],
-          "next": "m3b",
-          "tension": 8,
-          "bucket": "leave",
-          "ack": "……問。你答。"
-        },
-        {
-          "keys": ["推近", "想要咩", "人", "近"],
-          "next": "m3a",
-          "heat": 12,
-          "bucket": "heat",
-          "ack": "……你推近。好。"
-        }
+        {"keys": ["問", "答", "講"], "next": "m3b", "tension": 8, "bucket": "leave", "ack": "……問。你答。"},
+        {"keys": ["推近", "想要乜", "人", "近"], "next": "m3a", "heat": 12, "bucket": "heat", "ack": "……你推近。好。"}
       ]
     },
     "m2c": {
       "id": "m2c",
       "label": "坐近",
       "scene": "lounge",
-      "text": "「你坐近，我當你已經答咗一半。」Elise 轉杯，目光落在你手。",
-      "thought": "距離縮咗，規則未寫。",
+      "text": "「你坐近，我當你已經答咗一半。」Elise 轉杯，眼光落喇你手上。",
+      "thought": "距離縮咗，規矩未寫。",
       "aside": "爵士低音再近一格。",
       "choices": [
         {"label": "「另一半你講。」", "next": "m3a", "heat": 12, "cg": true},
@@ -115,27 +73,15 @@
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["另一半", "你講", "講"],
-          "next": "m3a",
-          "heat": 12,
-          "bucket": "heat",
-          "ack": "……另一半。我講。"
-        },
-        {
-          "keys": ["聽清楚", "只係", "坐近"],
-          "next": "m3b",
-          "tension": 4,
-          "bucket": "leave",
-          "ack": "……聽清楚。好。"
-        }
+        {"keys": ["另一半", "你講", "講"], "next": "m3a", "heat": 12, "bucket": "heat", "ack": "……另一半。我講。"},
+        {"keys": ["聽清楚", "只係", "坐近"], "next": "m3b", "tension": 4, "bucket": "leave", "ack": "……聽清楚。好。"}
       ]
     },
     "m3a": {
       "id": "m3a",
-      "label": "兩者",
+      "label": "兩樣",
       "scene": "lounge",
-      "text": "「好膽。大單前夜，人同條款一齊要。」Elise 指尖輕點你手背。",
+      "text": "「夠膽。大單前夜，人同條款一齊要。」Elise 指尖輕點你手背。",
       "thought": "點一下，比簽字重。",
       "aside": "窗外燈火慢閃。",
       "choices": [
@@ -144,27 +90,15 @@
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["再近", "近啲", "點完", "私下", "指尖", "溫度"],
-          "next": "m4b",
-          "heat": 14,
-          "bucket": "heat",
-          "ack": "……再近。得。"
-        },
-        {
-          "keys": ["只簽", "簽紙", "紙"],
-          "next": "m4c",
-          "tension": 8,
-          "bucket": "leave",
-          "ack": "……只簽紙。明智。"
-        }
+        {"keys": ["再近", "近啲", "私下", "指尖", "溫度"], "next": "m4b", "heat": 14, "bucket": "heat", "ack": "……再近。得。"},
+        {"keys": ["只簽", "簽紙", "紙"], "next": "m4c", "tension": 8, "bucket": "leave", "ack": "……只簽紙。明智。"}
       ]
     },
     "m3b": {
       "id": "m3b",
       "label": "先條款",
       "scene": "lounge",
-      "text": "「條款清楚。人呢？你仲未答。」Elise 把筆推到你面前。",
+      "text": "「條款清楚。人呢？你仲未答。」Elise 將筆推到你面前。",
       "thought": "筆比問題更近。",
       "aside": "杯底餘溫。",
       "choices": [
@@ -173,61 +107,37 @@
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["後補", "人可以", "之後"],
-          "next": "m4c",
-          "tension": 6,
-          "bucket": "leave",
-          "ack": "……後補。得。"
-        },
-        {
-          "keys": ["而家", "人而家", "補", "人"],
-          "next": "m4b",
-          "heat": 12,
-          "bucket": "heat",
-          "ack": "……而家補。好。"
-        }
+        {"keys": ["後補", "人可以", "之後"], "next": "m4c", "tension": 6, "bucket": "leave", "ack": "……後補。得。"},
+        {"keys": ["而家", "人而家", "補", "人"], "next": "m4b", "heat": 12, "bucket": "heat", "ack": "……而家補。好。"}
       ]
     },
     "m4b": {
       "id": "m4b",
       "label": "再近",
       "scene": "lounge",
-      "text": "「再近？酒廊監控只覆大堂，唔覆呢角。」Elise 聲低。",
+      "text": "「再近？酒廊鏡頭得大堂有，呢角無。」Elise 聲低。",
       "thought": "角位比合約安全。",
       "aside": "爵士蓋過呼吸。",
       "choices": [
-        {"label": "「量溫度。」", "next": "m5v", "heat": 14, "cg": true},
+        {"label": "「我自己碰下。」", "next": "m5v", "heat": 14, "cg": true},
         {"label": "「簽完再近。」", "next": "m4a", "heat": 8}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["量", "溫度", "量溫度", "近"],
-          "next": "m5v",
-          "heat": 14,
-          "bucket": "heat",
-          "ack": "……量。你自己。"
-        },
-        {
-          "keys": ["簽", "簽完", "紙"],
-          "next": "m4a",
-          "heat": 8,
-          "bucket": "leave",
-          "ack": "……簽完。再近。"
-        }
+        {"keys": ["碰", "溫度", "量", "近"], "next": "m5v", "heat": 14, "bucket": "heat", "ack": "……你自己碰。"},
+        {"keys": ["簽", "簽完", "紙"], "next": "m4a", "heat": 8, "bucket": "leave", "ack": "……簽完。再近。"}
       ]
     },
     "m4a": {
       "id": "m4a",
       "label": "點完簽",
       "scene": "lounge",
-      "text": "「簽之前，你量一次溫度。」Elise 把你手拉到玻璃。",
+      "text": "「簽之前，你先碰一下燈是否熱。」Elise 拉你隻手去玻璃度。",
       "thought": "玻璃涼，手熱。",
       "aside": "霧開始起。",
       "choices": [
-        {"label": "「量完。」", "next": "m5v", "heat": 12, "cg": true},
-        {"label": "「夠喇，簽。」", "next": "ending_m_c", "tension": 4}
+        {"label": "「碰完。」", "next": "m5v", "heat": 12, "cg": true},
+        {"label": "「夠啦，簽。」", "next": "ending_m_c", "tension": 4}
       ]
     },
     "m4c": {
@@ -238,7 +148,7 @@
       "thought": "距離重新拉開。",
       "aside": "筆帽蓋返。",
       "choices": [
-        {"label": "「下晝見。」", "next": "ending_m_c", "tension": 4},
+        {"label": "「聽日見。」", "next": "ending_m_c", "tension": 4},
         {"label": "「……再傾一次人。」", "next": "m4b", "heat": 10, "cg": true}
       ]
     },
@@ -246,36 +156,18 @@
       "id": "m5v",
       "label": "玻璃涼",
       "scene": "lounge",
-      "text": "Elise 指尖輕觸玻璃。\n\n「涼？你自己量。量完就唔好再問溫度。」",
+      "text": "Elise 指尖輕觸玻璃。\n\n「涼？你自己碰。碰完就唔好再問熱唔熱。」",
       "thought": "涼同熱，分開計。",
       "aside": "玻璃上霧再濃。",
       "choices": [
-        {"label": "「我量完。簽。」", "next": "ending_m_a", "heat": 14, "requireHeat": 35, "cg": true},
-        {"label": "「夠喇。」", "next": "ending_m_c", "tension": 4}
+        {"label": "「我碰完。簽。」", "next": "ending_m_a", "heat": 14, "requireHeat": 35, "cg": true},
+        {"label": "「夠啦。」", "next": "ending_m_c", "tension": 4}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": ["量完", "簽", "我量完"],
-          "next": "ending_m_a",
-          "heat": 14,
-          "bucket": "heat",
-          "ack": "……量完。簽。"
-        },
-        {
-          "keys": ["夠", "夠喇", "走", "返"],
-          "next": "ending_m_c",
-          "tension": 4,
-          "bucket": "leave",
-          "ack": "……夠。好。"
-        },
-        {
-          "keys": ["再量", "再一次"],
-          "next": "ending_m_b",
-          "heat": 16,
-          "bucket": "heat",
-          "ack": "……再量一次。你記得。"
-        }
+        {"keys": ["碰完", "簽", "我碰完", "量完"], "next": "ending_m_a", "heat": 14, "bucket": "heat", "ack": "……碰完。簽。"},
+        {"keys": ["夠", "夠啦", "走", "返"], "next": "ending_m_c", "tension": 4, "bucket": "leave", "ack": "……夠。好。"},
+        {"keys": ["再碰", "再一次", "再量"], "next": "ending_m_b", "heat": 16, "bucket": "heat", "ack": "……再碰一次。你記得。"}
       ]
     },
     "ending_m_a": {
@@ -287,8 +179,8 @@
     "ending_m_b": {
       "id": "ending_m_b",
       "ending": true,
-      "endingTitle": "再量一次",
-      "text": "Elise：「溫度你自己記得。下晝紙上見。」"
+      "endingTitle": "再碰一次",
+      "text": "Elise：「熱唔熱你自己記得。聽日紙上見。」"
     },
     "ending_m_c": {
       "id": "ending_m_c",
