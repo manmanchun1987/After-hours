@@ -1,3 +1,3 @@
-最後更新：2026-09-18 01:20 HKT
+最後更新：2026-09-18 02:10 HKT
 STORY 4 · PICTURE 3 · SOUND 2 · FEEL 3
-STORY ACT2 加深 · 粵語字串修補 34
+SOUND 最低 · BGM/SFX/語音仍未穩
