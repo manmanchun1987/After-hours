@@ -1,121 +1,95 @@
 <!DOCTYPE html>
-<html lang="zh-HK">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>加班之後</title>
+  <title>加班之後 After Hours</title>
   <link rel="stylesheet" href="./styles.css?v=cast18" />
   <style>
-    #chars{display:grid;gap:14px;padding:12px 0 40px}
-    .char-card{padding:12px}
-    .char-card img{width:100%;height:150px;object-fit:cover;object-position:center 18%;border-radius:12px;margin-bottom:8px}
-    .char-card .role{opacity:.7;margin:0 0 6px;font-size:12px}
-    .char-card .hook{margin:0 0 12px;font-size:13px;line-height:1.45}
-    #vera-vid,#alex-portrait{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%}
-    #vera-vid{z-index:1;background:#000}
-    .portrait-stack{position:absolute;inset:0;overflow:hidden}
-    #grade-veil,#grade-vignette{position:absolute;inset:0;pointer-events:none;z-index:2;transition:background .45s ease,opacity .45s ease}
-    #grade-vignette{z-index:3;box-shadow:inset 0 0 80px 24px #00000088}
-    #thought-slot,#aside-slot,#memory-strip{margin:0 16px 8px}
-    #play-thought{font-style:italic;margin:0;font-size:13px;opacity:.9}
-    #play-aside{margin:0;font-size:12px;opacity:.7}
-    #memory-chips{display:flex;flex-wrap:wrap;gap:6px}
-    #memory-chips .chip{font-size:11px;padding:4px 8px;border:1px solid #d4b48355;border-radius:99px}
-    .meters{display:flex;gap:10px;padding:0 16px 8px}
-    .meter{flex:1;font-size:11px}
-    .meter i{display:block;height:4px;background:#ffffff22;border-radius:99px;margin-top:4px;overflow:hidden}
-    .meter b{display:block;height:100%;width:20%;background:#d4b483}
-    .btn-cg{border-color:#e8a0b8;color:#f3c6d4}
     /* hall: corridor sliver cold fluorescent + red CCTV */
-    body[data-scene="hall"] #grade-veil{background:linear-gradient(185deg,#031018f8 0%,#01060cf5 35%,#0e0106f8 100%)}
-    body[data-scene="hall"] #grade-vignette{box-shadow:inset 0 0 240px 100px #000102, inset 0 -160px 200px -20px #b0081455, inset 58% 0 60px -20px #ff1a2530}
-    /* meet: blue monitor + city glow, deck on table */
-    body[data-scene="meet"] #grade-veil{background:linear-gradient(180deg,#000816cc 0%,transparent 20%,#000c20f8 100%)}
-    body[data-scene="meet"] #grade-vignette{box-shadow:inset 0 0 170px 65px #000105d0, inset 0 55px 100px -30px #0a4a9c45}
-    /* close: warmer side light, perfume / ear / chin */
-    body[data-scene="close"] #grade-veil{background:linear-gradient(155deg,#d0604848 0%,transparent 26%,#280a0ef8 100%)}
-    body[data-scene="close"] #grade-vignette{box-shadow:inset 0 0 110px 35px #100408b8, inset -38% 12% 110px -20px #c8785040}
-    /* dark: ~40% brightness lights out, desk edge */
-    body[data-scene="dark"] #grade-veil{background:radial-gradient(ellipse at 50% 26%,#0a0a0a28 0%,#000000fe 65%);opacity:.97}
-    body[data-scene="dark"] #grade-vignette{box-shadow:inset 0 0 280px 130px #000000}
-    /* review: harsh white overhead, blinds shut */
-    body[data-scene="review"] #grade-veil{background:linear-gradient(180deg,#f2f4f6c8 0%,transparent 10%,#000408f8 100%)}
-    body[data-scene="review"] #grade-vignette{box-shadow:inset 0 0 95px 30px #000204f0, inset 0 75px 55px -20px #ffffff40}
-    /* dawn: sepia window leak, pull back to work */
-    body[data-scene="dawn"] #grade-veil{background:linear-gradient(180deg,#e4c49a88 0%,transparent 28%,#2a160cf0 100%)}
-    body[data-scene="dawn"] #grade-vignette{box-shadow:inset 0 0 110px 30px #100a08b0, inset 28% -10% 80px -10px #c8985535}
+    body[data-scene="hall"] .portrait-wrap { filter: brightness(0.92) contrast(1.05) saturate(0.85); }
+    body[data-scene="hall"] .portrait-wrap::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,rgba(255,40,40,0.08),transparent 30%); pointer-events:none; }
+    /* meet: blue monitor + city night */
+    body[data-scene="meet"] .portrait-wrap { filter: brightness(1) contrast(1.02) hue-rotate(-8deg) saturate(1.05); }
+    /* close: warmer perfume side light */
+    body[data-scene="close"] .portrait-wrap { filter: brightness(1.08) contrast(1.06) saturate(1.12) sepia(0.08); }
+    /* dark: ~40% brightness idle */
+    body[data-scene="dark"] .portrait-wrap { filter: brightness(0.42) contrast(1.1); }
+    /* review: harsh white overhead */
+    body[data-scene="review"] .portrait-wrap { filter: brightness(1.15) contrast(1.2) saturate(0.7); }
+    /* dawn: sepia leak */
+    body[data-scene="dawn"] .portrait-wrap { filter: brightness(1.05) sepia(0.35) contrast(0.95); }
   </style>
 </head>
 <body>
-  <main class="app">
-    <section id="screen-gate" class="screen active">
-      <div class="gate-hero">
-        <p class="brand">AFTER HOURS</p>
-        <h1>加班之後</h1>
-        <button id="enter-btn" class="btn btn-primary" type="button">我已年滿 18 歲，進入</button>
+  <div id="screen-gate" class="screen active">
+    <div class="gate-card">
+      <h1>加班之後</h1>
+      <p class="gate-sub">AFTER HOURS</p>
+      <p class="gate-note">我已年滿 18 歲，進入</p>
+      <button type="button" id="enter-btn" class="btn btn-primary">進入</button>
+    </div>
+  </div>
+
+  <div id="screen-cast" class="screen">
+    <h2 class="cast-title">選擇角色</h2>
+    <div class="cast-grid">
+      <button type="button" class="cast-card" data-start="alex">
+        <div class="cast-name">Vera</div>
+        <div class="cast-role">部門主管 · 週五 23:47</div>
+        <div class="cast-line">Deadline 可以改。<br/>態度唔可以。</div>
+        <span class="cast-start">開始</span>
+      </button>
+      <button type="button" class="cast-card" data-start="morgan">
+        <div class="cast-name">Elise</div>
+        <div class="cast-role">客戶負責人 · 酒廊 21:10</div>
+        <div class="cast-line">大單前夜。<br/>夜晚講人。</div>
+        <span class="cast-start">開始</span>
+      </button>
+      <button type="button" class="cast-card" data-start="sam">
+        <div class="cast-name">Sammi</div>
+        <div class="cast-role">前輩同事 · 茶水間 22:40</div>
+        <div class="cast-line">兩個杯麵。<br/>餓嘅人簽錯字。</div>
+        <span class="cast-start">開始</span>
+      </button>
+    </div>
+  </div>
+
+  <div id="screen-play" class="screen">
+    <div class="play-top">
+      <div class="meters">
+        <div class="meter"><span>熱度</span><div class="bar"><i id="meter-heat"></i></div></div>
+        <div class="meter"><span>張力</span><div class="bar"><i id="meter-tension"></i></div></div>
       </div>
-    </section>
-    <section id="screen-cast" class="screen">
-      <h1 class="h-cast">選擇角色</h1>
-      <div class="chars" id="chars">
-        <article class="card glass char-card">
-          <img src="./assets/alex.png" alt="">
-          <h2>Vera</h2>
-          <p class="role">部門主管 · 週五 23:47</p>
-          <p class="hook">Deadline 可以改。態度唔可以。</p>
-          <button class="btn btn-primary" type="button" data-start="alex">開始</button>
-        </article>
-        <article class="card glass char-card">
-          <img src="./assets/morgan.jpg" alt="">
-          <h2>Elise</h2>
-          <p class="role">客戶負責人 · 酒廊 21:10</p>
-          <p class="hook">大單前夜。夜晚講人。</p>
-          <button class="btn btn-primary" type="button" data-start="morgan">開始</button>
-        </article>
-        <article class="card glass char-card">
-          <img src="./assets/sam.jpg" alt="">
-          <h2>Sammi</h2>
-          <p class="role">前輩同事 · 茶水間 22:40</p>
-          <p class="hook">兩個杯麵。餓嘅人簽錯字。</p>
-          <button class="btn btn-primary" type="button" data-start="sam">開始</button>
-        </article>
+      <button type="button" id="back-cast" class="btn btn-ghost">返回</button>
+    </div>
+    <div class="portrait-wrap">
+      <img id="alex-portrait" class="portrait" alt="" />
+      <video id="vera-vid" class="portrait-vid" playsinline muted loop></video>
+    </div>
+    <div class="play-body">
+      <div id="play-label" class="play-label"></div>
+      <div id="play-text" class="play-text"></div>
+      <div id="thought-slot" class="slot thought" hidden><p id="play-thought"></p></div>
+      <div id="aside-slot" class="slot aside" hidden><p id="play-aside"></p></div>
+      <div id="memory-strip" class="memory-strip" hidden>
+        <div id="memory-chips" class="chips"></div>
       </div>
-    </section>
-    <section id="screen-play" class="screen">
-      <div class="play-stage">
-        <div class="play-bg">
-          <div class="portrait-stack" id="alex-portrait-stack">
-            <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
-            <video id="vera-vid" muted loop playsinline poster="./assets/alex.png"></video>
-            <div id="grade-veil"></div>
-            <div id="grade-vignette"></div>
-          </div>
-          <div class="play-bg-scrim"></div>
-        </div>
-        <div class="play-overlay">
-          <div class="topbar play-topbar">
-            <p id="play-label" class="play-label"></p>
-            <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
-          </div>
-          <div class="meters"><div class="meter">熱度<i><b id="meter-heat"></b></i></div><div class="meter">張力<i><b id="meter-tension"></b></i></div></div>
-          <div id="memory-strip" hidden><div id="memory-chips"></div></div>
-          <div id="thought-slot" hidden><p id="play-thought"></p></div>
-          <div id="aside-slot" hidden><p id="play-aside"></p></div>
-          <div class="play-face-gap"></div>
-          <div class="play-lower">
-            <div class="card glass narrative-bubble"><p id="play-text" class="narrative"></p></div>
-            <div id="choices" class="stack choices"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section id="screen-ending" class="screen">
-      <h2 id="ending-title"></h2>
+      <div id="choices" class="choices"></div>
+    </div>
+  </div>
+
+  <div id="screen-ending" class="screen">
+    <div class="ending-card">
+      <h2 id="ending-title">結局</h2>
       <p id="ending-text"></p>
-      <button id="ending-replay" class="btn btn-primary" type="button">再玩</button>
-      <button id="ending-cast" class="btn btn-ghost" type="button">返回</button>
-    </section>
-  </main>
-  <script src="./life.js?v=live54"></script>
+      <div class="ending-actions">
+        <button type="button" id="ending-replay" class="btn btn-primary">再玩</button>
+        <button type="button" id="ending-cast" class="btn btn-ghost">返回</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="./life.js?v=live55"></script>
 </body>
 </html>
