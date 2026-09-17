@@ -1,4 +1,4 @@
-/* live64 cache */
+/* live65 stills */
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
   var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
@@ -10,9 +10,9 @@
     n5: BASE + "/assets/video/vera-alt.mp4"
   };
   var FACE = {
-    alex: BASE + "/assets/alex.png",
-    morgan: BASE + "/assets/morgan.jpg",
-    sam: BASE + "/assets/sam.jpg"
+    alex: BASE + "/assets/stills/vera-03.jpg",
+    morgan: BASE + "/assets/stills/vera-02.jpg",
+    sam: BASE + "/assets/stills/vera-01.jpg"
   };
   var story = null, nodeId = null, heat = 20, tension = 15, mem = [], route = "alex";
   var sfxChoice, sfxCall, sfxTrans, bgm, lastScene = "", linePlayed = {};
