@@ -1,4 +1,5 @@
 (function () {
+  var wrapped = false;
   function layer() {
     var el = document.getElementById("fx-layer");
     if (el) return el;
@@ -31,12 +32,7 @@
     var node = (typeof state !== "undefined" && state.story && state.story.nodes && state.story.nodes[nodeId]) || null;
     var sceneKey = (node && node.scene) || "";
     var allowed = { office:1, lounge:1, pantry:1, review:1, roof:1, lift:1 };
-    var cls;
-    if (allowed[sceneKey]) cls = sceneKey;
-    else if (/^n7|^n8|ending_/.test(nodeId)) cls = "review";
-    else if (storyId === "morgan") cls = "lounge";
-    else if (storyId === "sam") cls = "pantry";
-    else cls = "office";
+    var cls = allowed[sceneKey] ? sceneKey : (storyId === "morgan" ? "lounge" : storyId === "sam" ? "pantry" : "office");
     el.className = cls;
   }
   function play(kind) {
@@ -53,59 +49,36 @@
     }
     setTimeout(function () { el.classList.remove("is-win", "is-fail"); }, 1100);
   }
-  function enableChatFirst(story) {
-    if (!story || !story.nodes) return;
-    Object.keys(story.nodes).forEach(function (id) {
-      var n = story.nodes[id];
-      if (n.ending) return;
-      n.freeChat = true;
-      if (!Array.isArray(n.intents) || !n.intents.length) {
-        n.intents = (n.choices || []).map(function (c) {
-          var lab = String(c.label || "");
-          var keys = [lab, lab.replace(/[\u300c\u300d\s]/g, "")];
-          lab.replace(/[\u4e00-\u9fff]{1,3}/g, function (w) { keys.push(w); return w; });
-          return { keys: keys.filter(Boolean), next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "flirt" : "work", ack: lab };
-        });
-      }
-      if ((n.choices || []).length > 2) n.choices = n.choices.slice(0, 2);
-    });
-  }
-  var _render = window.renderNode;
-  if (typeof _render === "function") {
+  function hookEngine() {
+    if (wrapped) return;
+    if (typeof window.renderNode !== "function") return;
+    wrapped = true;
+    var _render = window.renderNode;
     window.renderNode = function () {
       _render.apply(this, arguments);
       setScene();
-      var zone = document.getElementById("action-zone");
-      if (zone) zone.classList.add("is-chat-first");
-      var box = document.getElementById("choices");
-      if (box) {
-        box.querySelectorAll(".is-locked").forEach(function (btn) {
-          btn.addEventListener("click", function () { play("fail"); }, { once: true });
-        });
-        box.querySelectorAll(".btn-choice:not(.is-locked)").forEach(function (btn) {
-          btn.addEventListener("click", function () { play("win"); }, { once: true });
-        });
-      }
     };
-  }
-  var _adv = window.applyFreeChatAdvance;
-  if (typeof _adv === "function") {
-    window.applyFreeChatAdvance = function (intent) {
-      var ok = _adv.apply(this, arguments);
-      play(ok ? "win" : "fail");
-      return ok;
-    };
-  }
-  function wrapStory() {
-    if (typeof state !== "undefined" && state.story) enableChatFirst(state.story);
-    setScene();
+    if (typeof window.applyFreeChatAdvance === "function") {
+      var _adv = window.applyFreeChatAdvance;
+      window.applyFreeChatAdvance = function () {
+        var ok = _adv.apply(this, arguments);
+        play(ok ? "win" : "fail");
+        return ok;
+      };
+    }
   }
   document.addEventListener("click", function (e) {
-    if (e.target && e.target.id === "enter-btn") setTimeout(wrapStory, 200);
-  });
+    var btn = e.target && e.target.closest && e.target.closest("button, .btn, .btn-choice");
+    if (!btn) return;
+    if (btn.classList.contains("is-locked")) play("fail");
+    else if (btn.classList.contains("btn-choice") || btn.id === "enter-btn" || btn.classList.contains("btn-primary")) play("win");
+    hookEngine();
+    setScene();
+  }, true);
+  var n = 0;
   var t = setInterval(function () {
-    if (typeof state !== "undefined" && state.story) { enableChatFirst(state.story); wrapStory(); clearInterval(t); }
-  }, 400);
+    hookEngine();
+    if (wrapped || ++n > 40) clearInterval(t);
+  }, 250);
   layer();
-  scene();
 })();
