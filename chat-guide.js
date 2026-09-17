@@ -44,8 +44,7 @@
     return out.slice(0, 3);
   }
   function clip(s) {
-    s = String(s || "").replace(/\s+/g, "").slice(0, 12);
-    return s || "呢句";
+    return String(s || "").replace(/\s+/g, "").slice(0, 12) || "呢句";
   }
   function hideChoices() {
     document.body.classList.remove("show-choices");
@@ -80,5 +79,76 @@
       window.matchFreeChatIntent = function (userText) {
         var hit = orig(userText);
         if (hit) {
-          misses = 0; hideChoices();
-          hit.ack = "你講「" + clip(userText) + 
+          misses = 0;
+          hideChoices();
+          hit.ack = "你講「" + clip(userText) + "」。" + (hit.ack || "我接。");
+          lastAck = hit.ack;
+          return hit;
+        }
+        var n = node();
+        var t = String(userText || "").trim();
+        if (YES.test(t)) {
+          var h = heatIntent(n);
+          misses = 0;
+          hideChoices();
+          if (h) {
+            h.ack = "好。" + (h.ack || "靠近呢邊。");
+            lastAck = h.ack;
+          }
+          return h;
+        }
+        misses += 1;
+        if (misses >= 2) showChoices();
+        return null;
+      };
+      window.matchFreeChatIntent.__guided = true;
+    }
+    if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
+      var pr = window.pickReply;
+      window.pickReply = function (userText) {
+        var n = node();
+        var p = poles(n);
+        var ask = p.length ? p.join("定") : "重點";
+        return "你講「" + clip(userText) + "」。我要聽嘅係" + ask + "。";
+      };
+      window.pickReply.__guided = true;
+    }
+    if (typeof window.renderNode === "function" && !window.renderNode.__guided) {
+      var rn = window.renderNode;
+      window.renderNode = function () {
+        if (typeof state !== "undefined" && state.story) stampChat(state.story);
+        rn.apply(this, arguments);
+        misses = 0;
+        hideChoices();
+        glueText();
+        hint();
+      };
+      window.renderNode.__guided = true;
+    }
+    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
+      var un = window.unlockFreeChatChoices;
+      window.unlockFreeChatChoices = function () {
+        if (misses < 2) return false;
+        return un.apply(this, arguments);
+      };
+      window.unlockFreeChatChoices.__guided = true;
+    }
+    if (typeof state !== "undefined" && state.story) stampChat(state.story);
+  }
+  function hint() {
+    var n = node();
+    var input = document.getElementById("chat-input");
+    if (!input || !n) return;
+    var p = poles(n);
+    input.placeholder = p.length ? "答佢：「" + p.join("」／「") + "」" : "對佢講…";
+  }
+  document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
+  var ticks = 0;
+  var t = setInterval(function () {
+    wrap();
+    hideChoices();
+    glueText();
+    hint();
+    if (++ticks > 80) clearInterval(t);
+  }, 300);
+})();
