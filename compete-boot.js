@@ -1,9 +1,9 @@
 (function () {
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var CAST = [
-    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。", portrait: "./assets/alex.png" },
-    { id: "morgan", name: "Morgan", role: "客戶負責人", hook: "大單前夜，酒廊只係傾生意。", portrait: "./assets/morgan.jpg" },
-    { id: "sam", name: "Sam", role: "前輩同事", hook: "教你潛規則嘅肝夜加班。", portrait: "./assets/sam.jpg" }
+    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。", portrait: "./assets/stills/vera-03.jpg" },
+    { id: "morgan", name: "Elise", role: "客戶負責人", hook: "大單前夜。夜晚講人。", portrait: "./assets/stills/vera-02.jpg" },
+    { id: "sam", name: "Sammi", role: "前輩同事", hook: "兩個杯麵。餓嘅人簽錯字。", portrait: "./assets/stills/vera-01.jpg" }
   ];
   function meters() {
     if (typeof state === "undefined") return;
