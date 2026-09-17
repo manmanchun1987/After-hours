@@ -1,12 +1,14 @@
-# CANTONESE — spoken Hong Kong, not written Mandarin
+# CANTONESE — spoken Hong Kong
 
-Check every `text` / `thought` / `aside` / `ack` / `label` / `hook` / ending.
+Scan ALL player-visible lines:
+- story JSON: text thought aside ack label hook endingTitle
+- fake AI chat in app.js / compete-boot.js: bot replies, off-topic, guidance, incoming toast, CAST_VOICE.toast
 
 ## Must
-- 喇、喎、啲、呀、喂、嚟、啱；唔用咩、把字句、在+地點
-- 自己（唔好自己）、握（唔好擇）、聽日／星期一（唔好用下晝當第二日）
-- 閃門：噁／砲一聲（唔好筆嚅一聲）
-- 人講人話，唔好洗集術語（升級、位次、定性量化、開標權）
+- hai (location) not zai; no Mandarin ba-disposal; zi6gei2 spelled 自己
+- choose = gaan2 not zaak6; next day = ting1jat6 not haa6zau3
+- no particle lie; no game jargon upgrade
+- names: Vera / Elise / Sammi (never Sam, never Morgan on screen)
 
 ## Voice
-Vera: 短、冷、命令句。Elise: 細、商。Sammi: 靜、前輩教。
+Vera short cold command. Elise fine commercial. Sammi quiet senior.
