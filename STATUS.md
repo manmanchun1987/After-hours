@@ -1,1 +1,1 @@
-最後更新：2026-09-17 18:09 HKT — review.svg 空景已加；setScene n7/n8/ending→review；chat-first 維持；無 index 改
+最後更新：2026-09-17 18:21 HKT — 手動加 roof/lift 空景並接 fx.css。剩下 STORY 改 portrait + chat-first；CODE 接 setScene。
