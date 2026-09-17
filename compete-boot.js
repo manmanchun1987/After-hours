@@ -10,10 +10,16 @@
     if (id === "morgan" || id === "elise") return "./assets/stills/vera-02.jpg?v=2";
     return "./assets/stills/vera-03.jpg?v=2";
   }
-  window.AH_faceOf = faceOf;
-  function meters() {
-    if (typeof state === "undefined") return;
-    if (typeof renderMeters === "function") { renderMeters(); return; }
+  function fixVoice() {
+    if (typeof CAST_VOICE === "undefined") return;
+    if (CAST_VOICE.sam) {
+      CAST_VOICE.sam.name = "Sammi";
+      CAST_VOICE.sam.toast = "Sammi 傳咗訊息";
+    }
+    if (CAST_VOICE.morgan) {
+      CAST_VOICE.morgan.name = "Elise";
+      CAST_VOICE.morgan.toast = "Elise 傳咗訊息";
+    }
   }
   function paintCast() {
     var root = document.getElementById("chars");
@@ -69,6 +75,8 @@
   function bootStart(id, fresh) {
     fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
       story.portrait = faceOf(id);
+      story.name = id === "sam" ? "Sammi" : id === "morgan" ? "Elise" : "Vera";
+      story.chatName = story.name;
       state.story = story;
       state.storyId = id;
       if (fresh) {
@@ -98,10 +106,10 @@
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
-      meters();
     });
   }
   function ready() {
+    fixVoice();
     if (typeof portraitSrc === "function") {
       portraitSrc = function (story) {
         var id = (story && story.id) || (typeof state !== "undefined" && state.storyId) || "alex";
@@ -110,7 +118,7 @@
     }
     paintCast();
     var enter = document.getElementById("enter-btn");
-    if (enter) enter.addEventListener("click", function () { setTimeout(paintCast, 50); });
+    if (enter) enter.addEventListener("click", function () { setTimeout(function () { fixVoice(); paintCast(); }, 50); });
     var back = document.getElementById("back-cast");
     if (back) back.addEventListener("click", function () { setTimeout(paintCast, 50); });
     var toCast = document.getElementById("ending-cast");
