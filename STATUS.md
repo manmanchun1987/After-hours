@@ -1,1 +1,1 @@
-最後更新：2026-09-17 17:00 HKT — 成功/失敗電影級 overlay（雙掃光、粒子、shake、紅rim）已加強，CAST.lock 不變
+最後更新：2026-09-17 18:00 HKT — 鎖臉仍s OK、無404、chat可推、choices runtime≤2、bg office/lounge/pantry 齊；缺 review 空景已開 ticket
