@@ -4,7 +4,7 @@
   "title": "客戶負責人",
   "hook": "大單前夜，酒廊「只係傾生意」。",
   "start": "m1",
-  "portrait": "./assets/morgan.jpg",
+  "portrait": "./assets/stills/vera-02.jpg",
   "tint": "amber",
   "chatName": "Elise",
   "nodes": {

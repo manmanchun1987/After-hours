@@ -4,7 +4,7 @@
   "title": "前輩同事",
   "hook": "教你「潛規則」嘅深夜加班。",
   "start": "s1",
-  "portrait": "./assets/sam.jpg",
+  "portrait": "./assets/stills/vera-01.jpg",
   "tint": "teal",
   "chatName": "Sammi",
   "nodes": {
