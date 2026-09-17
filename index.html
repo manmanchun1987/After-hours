@@ -29,13 +29,13 @@
   </script>
   <div class="atm-layer" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
-  <button id="start-alex" type="button" hidden aria-hidden="true" tabindex="-1">start</button>
-  <button id="resume-alex" type="button" hidden aria-hidden="true" tabindex="-1">resume</button>
+  <button id="start-alex" type="button" hidden></button>
+  <button id="resume-alex" type="button" hidden></button>
   <main class="app">
     <div class="global-controls">
-      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂"><span class="icon-label">♪</span></button>
-      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音"><span class="icon-label">聲</span></button>
-      <button id="btn-mute-master" class="icon-btn" type="button" title="靜音"><span class="icon-label">音</span></button>
+      <button id="btn-mute-bgm" class="icon-btn" type="button"><span class="icon-label">♪</span></button>
+      <button id="btn-mute-voice" class="icon-btn" type="button"><span class="icon-label">聲</span></button>
+      <button id="btn-mute-master" class="icon-btn" type="button"><span class="icon-label">音</span></button>
     </div>
     <section id="screen-gate" class="screen active">
       <div class="gate-hero">
@@ -81,9 +81,7 @@
               <div class="meter"><span>張力</span><i><b id="meter-tension"></b></i></div>
             </div>
             <div id="call-chrome" class="call-chrome" hidden>
-              <span class="call-dot"></span>
-              <span id="call-who">通話中</span>
-              <span class="call-timer" id="call-timer">00:00</span>
+              <span class="call-dot"></span><span id="call-who">通話中</span><span class="call-timer" id="call-timer">00:00</span>
             </div>
             <button type="button" id="memory-strip" class="memory-strip" hidden><span class="memory-title">今晚記得</span><div id="memory-chips" class="memory-chips"></div></button>
             <div id="memory-panel" class="memory-panel card glass" hidden>
@@ -96,20 +94,18 @@
           <div class="play-lower">
             <div id="thought-slot" class="thought-slot" hidden><p id="play-thought" class="thought-bubble"></p></div>
             <div id="aside-slot" class="aside-slot" hidden><p id="play-aside" class="aside-bubble"></p></div>
-            <div class="play-card narrative-bubble zone-story" role="region" aria-label="劇情"><p id="play-text" class="narrative"></p></div>
-            <div class="action-zone" id="action-zone" aria-label="行動">
+            <div class="play-card narrative-bubble zone-story"><p id="play-text" class="narrative"></p></div>
+            <div class="action-zone" id="action-zone">
               <div class="zone-label action-label">行動</div>
               <div id="choices" class="stack choices"></div>
             </div>
-            <div class="chat-panel zone-chat" role="region" aria-label="私下對白">
-              <div class="chat-header">
-                <span class="chat-title">私下對白 · <span id="chat-who">Vera</span> <span id="chat-unread" hidden>1</span></span>
-              </div>
+            <div class="chat-panel zone-chat">
+              <div class="chat-header"><span class="chat-title">私下對白 · <span id="chat-who">Vera</span> <span id="chat-unread" hidden>1</span></span></div>
               <button type="button" id="incoming-toast" class="incoming-toast" hidden><span id="incoming-toast-text">傳咗訊息</span></button>
               <div id="chat-messages" class="chat-messages"></div>
               <div id="chat-typing" class="chat-typing" hidden></div>
               <div class="chat-composer">
-                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="傳訊係 Vera…" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
+                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="傳訊…" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
               </div>
             </div>
           </div>
@@ -127,6 +123,6 @@
     </section>
   </main>
   <script src="./app.js?v=keyboard1"></script>
-  <script src="./compete-boot.js?v=stills3"></script>
+  <script src="./compete-boot.js?v=stills4"></script>
 </body>
 </html>
