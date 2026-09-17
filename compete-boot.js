@@ -5,6 +5,10 @@
     { id: "morgan", name: "Elise", role: "客戶負責人", hook: "大單前夜。夜晚講人。", portrait: "./assets/stills/vera-02.jpg" },
     { id: "sam", name: "Sammi", role: "前輩同事", hook: "兩個杯麵。餓嘅人簽錯字。", portrait: "./assets/stills/vera-01.jpg" }
   ];
+  function faceOf(id) {
+    for (var i = 0; i < CAST.length; i++) if (CAST[i].id === id) return CAST[i].portrait;
+    return "./assets/stills/vera-03.jpg";
+  }
   function meters() {
     if (typeof state === "undefined") return;
     if (typeof state.heat !== "number") state.heat = 20;
@@ -72,6 +76,7 @@
   }
   function bootStart(id, fresh) {
     fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
+      story.portrait = faceOf(id);
       state.story = story;
       state.storyId = id;
       if (fresh) {
