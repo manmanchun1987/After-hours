@@ -23,9 +23,6 @@
     host.insertBefore(el, host.firstChild);
     return el;
   }
-  function hasReview() {
-    return true; // review.svg shipped; fallback kept in class resolve
-  }
   function setScene() {
     var el = scene();
     if (!el) return;
@@ -33,18 +30,13 @@
     var nodeId = (typeof state !== "undefined" && state.nodeId) || "";
     var node = (typeof state !== "undefined" && state.story && state.story.nodes && state.story.nodes[nodeId]) || null;
     var sceneKey = (node && node.scene) || "";
+    var allowed = { office:1, lounge:1, pantry:1, review:1, roof:1, lift:1 };
     var cls;
-    if (sceneKey === "review" || sceneKey === "lounge" || sceneKey === "pantry" || sceneKey === "office") {
-      cls = sceneKey;
-    } else if (/^n7|^n8|ending_/.test(nodeId) || (node && node.remember && node.remember.indexOf("review_room") >= 0)) {
-      cls = hasReview() ? "review" : "office";
-    } else if (storyId === "morgan") {
-      cls = "lounge";
-    } else if (storyId === "sam") {
-      cls = "pantry";
-    } else {
-      cls = "office";
-    }
+    if (allowed[sceneKey]) cls = sceneKey;
+    else if (/^n7|^n8|ending_/.test(nodeId)) cls = "review";
+    else if (storyId === "morgan") cls = "lounge";
+    else if (storyId === "sam") cls = "pantry";
+    else cls = "office";
     el.className = cls;
   }
   function play(kind) {
@@ -52,6 +44,7 @@
     el.classList.remove("is-win", "is-fail");
     void el.offsetWidth;
     el.classList.add(kind === "fail" ? "is-fail" : "is-win");
+    if (window.AHAudio && window.AHAudio.cue) window.AHAudio.cue(kind === "fail" ? "fail" : "win");
     var playEl = document.getElementById("screen-play");
     if (playEl && kind !== "fail") {
       playEl.classList.remove("is-advancing");
@@ -69,8 +62,8 @@
       if (!Array.isArray(n.intents) || !n.intents.length) {
         n.intents = (n.choices || []).map(function (c) {
           var lab = String(c.label || "");
-          var keys = [lab, lab.replace(/[「」\s]/g, "")];
-          lab.replace(/[一-鿿]{1,3}/g, function (w) { keys.push(w); return w; });
+          var keys = [lab, lab.replace(/[\u300c\u300d\s]/g, "")];
+          lab.replace(/[\u4e00-\u9fff]{1,3}/g, function (w) { keys.push(w); return w; });
           return { keys: keys.filter(Boolean), next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "flirt" : "work", ack: lab };
         });
       }
