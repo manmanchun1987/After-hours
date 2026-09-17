@@ -7,9 +7,8 @@ STORY 4 · PICTURE 3 · SOUND 3 · FEEL 3
 
 ## Done this hour
 - 讀 TASTE/QUALITY/METHODS/CAST.lock
-- CODE F+I harden audio-bed：enter + pointerdown/touch 必播 bgm-loop + synth bed，retry play 殺 silent
-- CODE I+J：advance/choice 必有 cue（file+synth），master mute 同時 duck AudioEngine + AHAudio bed
-- ACT2/CAST 上小時已合
+- 確認 CAST.lock stills · audio-bed enter+cue+mute · fx-play win/fail
+- 無新 Imagine/upload
 
 ## Open (lowest first)
 1. SOUND · Spoken line · method G · 關鍵 narrative 用 zh-HK speechSynthesis，禁 English VO
