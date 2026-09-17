@@ -1,5 +1,6 @@
 (function () {
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
+  var clickEl, choiceEl;
   function AC() { return window.AudioContext || window.webkitAudioContext; }
   function ensure() {
     if (ctx) return ctx;
@@ -11,11 +12,31 @@
     sfxGain = ctx.createGain();
     master.gain.value = 0.7;
     bedGain.gain.value = 0.18;
-    sfxGain.gain.value = 0.5;
+    sfxGain.gain.value = 0.55;
     bedGain.connect(master);
     sfxGain.connect(master);
     master.connect(ctx.destination);
     return ctx;
+  }
+  function fileCue(which) {
+    try {
+      if (!clickEl) {
+        clickEl = new Audio("./assets/audio/sfx-click.mp3");
+        clickEl.preload = "auto";
+      }
+      if (!choiceEl) {
+        choiceEl = new Audio("./assets/audio/sfx-choice.mp3");
+        choiceEl.preload = "auto";
+      }
+      var a = which === "choice" ? choiceEl : clickEl;
+      a.currentTime = 0;
+      a.volume = muted ? 0 : 0.7;
+      var p = a.play();
+      if (p && p.catch) p.catch(function () {});
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
   function beep(freq, dur, type, vol, slide) {
     if (!ensure() || muted) return;
@@ -70,26 +91,31 @@
     var a = window.__ahBgmEl;
     a.muted = muted;
     var p = a.play();
-    if (p && p.catch) p.catch(function () {
-      setTimeout(function () {
-        try { a.play().catch(function () {}); } catch (e) {}
-      }, 120);
-    });
+    if (p && p.catch) p.catch(function () {});
   }
   function playCue(kind) {
     if (muted) return;
     if (kind === "fail") {
       beep(165, 0.32, "sawtooth", 0.14, 55);
       noiseBurst(0.24, 0.09);
-      setTimeout(function () { beep(110, 0.18, "square", 0.08, 70); }, 80);
     } else if (kind === "win") {
+      fileCue("choice");
       beep(523, 0.14, "triangle", 0.13);
       setTimeout(function () { beep(784, 0.2, "sine", 0.11); }, 80);
-      setTimeout(function () { beep(1046, 0.16, "sine", 0.08); }, 170);
-    } else if (kind === "send") { beep(640, 0.06, "square", 0.05); }
-    else if (kind === "choice") { beep(380, 0.07, "sine", 0.1, 40); setTimeout(function () { beep(520, 0.05, "triangle", 0.07); }, 35); }
-    else if (kind === "tick") { beep(420, 0.04, "sine", 0.05); }
-    else { beep(420, 0.05, "sine", 0.04); }
+    } else if (kind === "send") {
+      fileCue("click");
+      beep(640, 0.06, "square", 0.05);
+    } else if (kind === "choice") {
+      fileCue("choice");
+      beep(380, 0.07, "sine", 0.1, 40);
+      setTimeout(function () { beep(520, 0.05, "triangle", 0.07); }, 35);
+    } else if (kind === "tick" || kind === "click") {
+      fileCue("click");
+      beep(420, 0.04, "sine", 0.05);
+    } else {
+      fileCue("click");
+      beep(420, 0.05, "sine", 0.04);
+    }
   }
   function setMuted(v) {
     muted = !!v;
@@ -103,20 +129,27 @@
     setMuted: setMuted,
     get muted() { return muted; }
   };
-  /* unlock only — mute ownership stays with AudioEngine / wireAudioControls */
   document.addEventListener("click", function (e) {
-    var id = e.target && e.target.id;
-    if (id === "enter-btn" || id === "btn-mute-bgm" || id === "btn-mute-master") {
-      ensure(); startBed();
+    var t = e.target;
+    if (!t) return;
+    var id = t.id || (t.closest && t.closest("[id]") && t.closest("[id]").id);
+    var btn = t.closest ? t.closest("button, .btn, .btn-choice") : t;
+    if (id === "btn-mute-master" || id === "btn-mute-bgm" || id === "btn-mute-voice") {
+      ensure();
+      startBed();
+      return;
     }
-    if (id === "enter-btn") playCue("win");
+    if (id === "enter-btn") {
+      ensure(); startBed(); playCue("win");
+      return;
+    }
+    if (btn && (btn.classList && (btn.classList.contains("btn") || btn.classList.contains("btn-choice") || btn.tagName === "BUTTON"))) {
+      ensure(); startBed();
+      playCue(btn.classList.contains("btn-primary") || btn.classList.contains("btn-choice") ? "choice" : "click");
+    }
   }, true);
   document.addEventListener("submit", function (e) {
     if (e.target && e.target.id === "chat-form") playCue("send");
   }, true);
-  function gestureUnlock() {
-    ensure(); startBed();
-  }
-  document.addEventListener("pointerdown", gestureUnlock, true);
-  document.addEventListener("touchstart", gestureUnlock, { capture: true, passive: true });
+  document.addEventListener("pointerdown", function () { ensure(); startBed(); }, true);
 })();
