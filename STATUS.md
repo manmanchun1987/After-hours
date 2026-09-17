@@ -1,1 +1,1 @@
-最後更新：2026-09-17 18:00 HKT — 鎖臉仍s OK、無404、chat可推、choices runtime≤2、bg office/lounge/pantry 齊；缺 review 空景已開 ticket
+最後更新：2026-09-17 18:09 HKT — review.svg 空景已加；setScene n7/n8/ending→review；chat-first 維持；無 index 改

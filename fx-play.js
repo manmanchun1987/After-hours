@@ -23,11 +23,29 @@
     host.insertBefore(el, host.firstChild);
     return el;
   }
+  function hasReview() {
+    return true; // review.svg shipped; fallback kept in class resolve
+  }
   function setScene() {
     var el = scene();
     if (!el) return;
-    var id = (typeof state !== "undefined" && state.story && state.story.id) || "alex";
-    el.className = id === "morgan" ? "lounge" : id === "sam" ? "pantry" : "office";
+    var storyId = (typeof state !== "undefined" && state.story && state.story.id) || "alex";
+    var nodeId = (typeof state !== "undefined" && state.nodeId) || "";
+    var node = (typeof state !== "undefined" && state.story && state.story.nodes && state.story.nodes[nodeId]) || null;
+    var sceneKey = (node && node.scene) || "";
+    var cls;
+    if (sceneKey === "review" || sceneKey === "lounge" || sceneKey === "pantry" || sceneKey === "office") {
+      cls = sceneKey;
+    } else if (/^n7|^n8|ending_/.test(nodeId) || (node && node.remember && node.remember.indexOf("review_room") >= 0)) {
+      cls = hasReview() ? "review" : "office";
+    } else if (storyId === "morgan") {
+      cls = "lounge";
+    } else if (storyId === "sam") {
+      cls = "pantry";
+    } else {
+      cls = "office";
+    }
+    el.className = cls;
   }
   function play(kind) {
     var el = layer();
