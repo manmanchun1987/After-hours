@@ -44,12 +44,16 @@
 #scene-bg.lounge .city{background-image:url("./assets/bg/lounge.svg")}
 #scene-bg.pantry .city{background-image:url("./assets/bg/pantry.svg")}
 #scene-bg.review .city{background-image:url("./assets/bg/review.svg")}
+#scene-bg.roof .city{background-image:url("./assets/bg/roof.svg")}
+#scene-bg.lift .city{background-image:url("./assets/bg/lift.svg")}
 #scene-bg .windows{position:absolute;inset:8% 6% 38% 6%;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(10,1fr);gap:6px;opacity:.35}
 #scene-bg .windows i{background:rgba(255,214,140,.12);box-shadow:0 0 8px rgba(255,200,120,.15)}
 #scene-bg .windows i.on{background:rgba(255,220,150,.55);animation:winFlicker 3.6s ease-in-out infinite}
 #scene-bg.lounge .windows i.on{background:rgba(255,180,90,.6)}
 #scene-bg.pantry .windows i.on{background:rgba(140,210,220,.45)}
 #scene-bg.review .windows i.on{background:rgba(200,210,230,.35)}
+#scene-bg.roof .windows i.on{background:rgba(255,210,140,.4)}
+#scene-bg.lift .windows{opacity:.12}
 #scene-bg .rain{position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 14px,rgba(255,255,255,.07) 15px,transparent 16px);animation:rainMove 1.1s linear infinite;opacity:.25}
 #scene-bg .tube{position:absolute;top:0;left:10%;right:10%;height:8px;background:linear-gradient(90deg,transparent,rgba(210,230,255,.35),transparent);animation:tubePulse 2.8s ease-in-out infinite}
 #scene-bg .cctv{position:absolute;top:12px;right:14px;width:8px;height:8px;border-radius:50%;background:#ff3b3b;box-shadow:0 0 10px #ff3b3b;animation:cctvBlink 1.6s step-end infinite}
