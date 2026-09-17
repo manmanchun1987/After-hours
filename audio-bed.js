@@ -11,7 +11,7 @@
     sfxGain = ctx.createGain();
     master.gain.value = 0.7;
     bedGain.gain.value = 0.18;
-    sfxGain.gain.value = 0.45;
+    sfxGain.gain.value = 0.5;
     bedGain.connect(master);
     sfxGain.connect(master);
     master.connect(ctx.destination);
@@ -78,9 +78,15 @@
   }
   function playCue(kind) {
     if (muted) return;
-    if (kind === "fail") { beep(180, 0.28, "sawtooth", 0.1, 70); noiseBurst(0.2, 0.06); }
-    else if (kind === "win") { beep(523, 0.12, "triangle", 0.1); setTimeout(function () { beep(784, 0.18, "sine", 0.09); }, 90); }
-    else if (kind === "send") { beep(640, 0.06, "square", 0.05); }
+    if (kind === "fail") {
+      beep(165, 0.32, "sawtooth", 0.14, 55);
+      noiseBurst(0.24, 0.09);
+      setTimeout(function () { beep(110, 0.18, "square", 0.08, 70); }, 80);
+    } else if (kind === "win") {
+      beep(523, 0.14, "triangle", 0.13);
+      setTimeout(function () { beep(784, 0.2, "sine", 0.11); }, 80);
+      setTimeout(function () { beep(1046, 0.16, "sine", 0.08); }, 170);
+    } else if (kind === "send") { beep(640, 0.06, "square", 0.05); }
     else if (kind === "choice") { beep(380, 0.07, "sine", 0.1, 40); setTimeout(function () { beep(520, 0.05, "triangle", 0.07); }, 35); }
     else if (kind === "tick") { beep(420, 0.04, "sine", 0.05); }
     else { beep(420, 0.05, "sine", 0.04); }
