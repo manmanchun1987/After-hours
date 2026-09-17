@@ -8,10 +8,10 @@ STORY 4 · PICTURE 3 · SOUND 3 · FEEL 3
 ## Done this hour
 - 讀 TASTE/QUALITY/METHODS/CAST.lock
 - CODE F+I harden audio-bed：enter + pointerdown/touch 必播 bgm-loop + synth bed，retry play 殺 silent
+- CODE I+J：advance/choice 必有 cue（file+synth），master mute 同時 duck AudioEngine + AHAudio bed
 - ACT2/CAST 上小時已合
 
 ## Open (lowest first)
-1. SOUND · SFX tick / mute · method I+J · advance/choice 必有 cue，mute 同時 duck file+synth
-2. SOUND · Spoken line · method G · 關鍵 narrative 用 zh-HK speechSynthesis，禁 English VO
-3. FEEL · Success/fail beat · method D+I · win/fail rim+cue 更清楚，禁黑屏
-4. PICTURE · Light/rain/glass · method C · scene CSS 對 STORYBOARD 收緊 office/close/dark
+1. SOUND · Spoken line · method G · 關鍵 narrative 用 zh-HK speechSynthesis，禁 English VO
+2. FEEL · Success/fail beat · method D+I · win/fail rim+cue 更清楚，禁黑屏
+3. PICTURE · Light/rain/glass · method C · scene CSS 對 STORYBOARD 收緊 office/close/dark
