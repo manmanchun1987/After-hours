@@ -9,472 +9,248 @@
     "n0": {
       "id": "n0",
       "label": "走廊 23:44",
-      "text": "尾班電梯門開過一次。你冇入。\n\nVera 隔門：「入嚟。唔好在廊作樣。」",
+      "scene": "office",
+      "text": "尾班電梯門開過一次。你無入。\n\nVera 隔住門：「入嚅。唔好喇走廊度扮嘢。」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
-        {
-          "label": "推門",
-          "next": "n0b"
-        },
-        {
-          "label": "（停一秒）再推",
-          "next": "n0b",
-          "tension": 2
-        }
+        {"label": "推門", "next": "n0b"},
+        {"label": "（停一秒）再推", "next": "n0b", "tension": 2}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "keys": [
-            "推門",
-            "推开门",
-            "推開門",
-            "開門",
-            "开门",
-            "入去",
-            "入嚟",
-            "進去",
-            "进去",
-            "推入",
-            "入門",
-            "入门"
-          ],
-          "next": "n0b",
-          "bucket": "leave",
-          "ack": "……門把涼。你推。"
-        },
-        {
-          "keys": [
-            "猶豫",
-            "犹豫",
-            "停一秒",
-            "停一停",
-            "唔敢",
-            "再推",
-            "等等",
-            "企喺度",
-            "站住",
-            "猶豫再推",
-            "停"
-          ],
-          "next": "n0b",
-          "tension": 2,
-          "bucket": "tired",
-          "ack": "……你停過。我知。入嚟。"
-        },
-        {
-          "keys": [
-            "鎖門",
-            "关门",
-            "關門",
-            "唔入",
-            "不进",
-            "不進",
-            "走先",
-            "閃"
-          ],
-          "next": "n0b",
-          "tension": 1,
-          "bucket": "leave",
-          "ack": "走廊燈亮住。你最終都會推。"
-        }
-      ],
-      "revealKeys": [
-        "門",
-        "门",
-        "門口",
-        "门口",
-        "推門",
-        "推门",
-        "開門",
-        "开门",
-        "入去",
-        "入嚟",
-        "進去",
-        "进去",
-        "入",
-        "走廊門",
-        "門把",
-        "门把",
-        "猶豫",
-        "犹豫",
-        "停低",
-        "停一秒",
-        "再推",
-        "企喺度",
-        "門口企"
+        {"keys": ["推門", "推开门", "推開門", "開門", "开门", "入去", "入嚅", "進去", "进去", "推入", "入門", "入门"], "next": "n0b", "bucket": "leave", "ack": "……門把凉。你推。"},
+        {"keys": ["猶豫", "犹豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企喇度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "……你停過。我知。入嚅。"},
+        {"keys": ["鎖門", "关门", "關門", "唔入", "不进", "不進", "走先", "閃"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈亮住。你最終都會推。"}
       ]
     },
     "n0b": {
       "id": "n0b",
       "label": "門後",
-      "remember": [
-        "door_shut"
-      ],
-      "text": "門在你後面筆嚟一聲。Vera 唔望你。\n\n「鎖唔鎖唔重要。重要係你推門之前已經知道結果。」",
-      "thought": "結果兩字比 deadline 更早落。",
+      "scene": "office",
+      "remember": ["door_shut"],
+      "text": "門喇你背後噁一聲。Vera 唔望你。\n\n「鎖唔鎖唔重要。重要係你推門之前已經知道結果。」",
+      "thought": "Deadline 未到，「結果」兩個字已經落地。",
       "aside": "門縫消失。",
-      "choices": [
-        {
-          "label": "走去桌前",
-          "next": "n1"
-        }
-      ]
+      "choices": [{"label": "走去桌前", "next": "n1"}]
     },
     "n1": {
       "id": "n1",
       "label": "週五 23:47",
-      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自已都知呢份嘢……未夠。」",
+      "scene": "office",
+      "text": "你將簡報推去 Vera 面前。佢指節敲兩下桌。\n\n「你自己都知呢份嘢……未夠。」",
       "thought": "今晚你走唔到。",
       "aside": "錶針幾乎停。",
       "choices": [
-        {
-          "label": "「我可以而家改。」",
-          "next": "n2a"
-        },
-        {
-          "label": "「邊部分未夠？講清楚。」",
-          "next": "n2b",
-          "tension": 6
-        },
-        {
-          "label": "（站近）「你特登留到而家先講？」",
-          "next": "n2c",
-          "heat": 8,
-          "cg": true
-        }
+        {"label": "「我可以而家改。」", "next": "n2a"},
+        {"label": "「邊部分未夠？講清楚。」", "next": "n2b", "tension": 6},
+        {"label": "（站近）「你特登留到而家先講？」", "next": "n2c", "heat": 8, "cg": true}
       ]
     },
     "n2a": {
       "id": "n2a",
-      "remember": [
-        "stayed_late"
-      ],
+      "remember": ["stayed_late"],
       "label": "配合",
+      "scene": "office",
       "text": "Vera 拉椅到你側邊。「坐低。我講，你改。唔好打斷。」",
       "thought": "距離近到聽得見呼吸。",
       "aside": "袖口冷香水擦過手腕。",
       "choices": [
-        {
-          "label": "「……係，我聽緊。」",
-          "next": "n3a"
-        },
-        {
-          "label": "（對視）「你咁近，我改唔到字。」",
-          "next": "n3b",
-          "heat": 8,
-          "cg": true
-        }
+        {"label": "「……係，我聽緊。」", "next": "n3a"},
+        {"label": "（對視）「你咁近，我改唔到字。」", "next": "n3b", "heat": 8, "cg": true}
       ]
     },
     "n2b": {
       "id": "n2b",
       "mode": "call",
-      "remember": [
-        "pushed_back"
-      ],
+      "remember": ["pushed_back"],
       "label": "頂嘴",
-      "text": "Vera 笑得唔似笑。「你想要『清楚』？得。過來。」",
+      "scene": "office",
+      "text": "Vera 笑得唔似笑。「你想要『清楚』？得。過嚟。」",
       "thought": "頂嘴？有趣。",
-      "aside": "筆尖停在空白行。",
+      "aside": "筆尖停喇空白行。",
       "choices": [
-        {
-          "label": "（行過去）",
-          "next": "n3c"
-        },
-        {
-          "label": "「……你講，我聽。」",
-          "next": "n3a",
-          "heat": 6
-        }
+        {"label": "（行過去）", "next": "n3c"},
+        {"label": "「……你講，我聽。」", "next": "n3a", "heat": 6}
       ]
     },
     "n2c": {
       "id": "n2c",
-      "remember": [
-        "got_close"
-      ],
+      "remember": ["got_close"],
       "label": "試探",
+      "scene": "office",
       "text": "「大膽。今晚……我可以例外。」",
-      "thought": "例外兩字比評語重。",
+      "thought": "例外兩個字比評語重。",
       "aside": "呼吸擦過耳側。",
       "choices": [
-        {
-          "label": "（再近啲）",
-          "next": "n3b",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「我專心改。」",
-          "next": "n3a"
-        }
+        {"label": "（再近啲）", "next": "n3b", "heat": 8, "cg": true},
+        {"label": "「我專心改。」", "next": "n3a"}
       ]
     },
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "指尖碰上。「手震。驚我，定驚你自已？」",
-      "thought": "控制權仍在佢度。",
+      "scene": "office",
+      "text": "指尖碰上。「手震。驚我，定驚你自己？」",
+      "thought": "控制權仍然喇佢度。",
       "aside": "螢幕藍光拉長影子。",
       "mid": "佢指尖停半秒。",
       "choices": [
-        {
-          "label": "「驚交唔到差。」",
-          "next": "n4a"
-        },
-        {
-          "label": "「……你話呢？」",
-          "next": "n4b",
-          "heat": 8,
-          "cg": true
-        }
+        {"label": "「驚交唔到差。」", "next": "n4a"},
+        {"label": "「……你話呢？」", "next": "n4b", "heat": 8, "cg": true}
       ]
     },
     "n3b": {
       "id": "n3b",
       "mode": "call",
       "label": "臨界",
-      "text": "「公司監控只覆走廊，唔覆呢間。」",
-      "thought": "邀請同命令，差在語氣。",
-      "aside": "監控紅點一眨。",
-      "mid": "佢語氣平，像已經算定你會留。",
+      "scene": "office",
+      "text": "「公司監控得走廊有鏡頭，呢間無。」",
+      "thought": "邀請同命令，差喇語氣。",
+      "aside": "監控紅點眼躁一下。",
+      "mid": "佢語氣平，好似已經算定你會留。",
       "choices": [
-        {
-          "label": "「所以你先留我？」",
-          "next": "n4b",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「我仲係員工。」",
-          "next": "n4a"
-        },
-        {
-          "label": "（主動拉近）",
-          "next": "n4c",
-          "heat": 10,
-          "cg": true
-        }
+        {"label": "「所以你先留我？」", "next": "n4b", "heat": 8, "cg": true},
+        {"label": "「我仲係員工。」", "next": "n4a"},
+        {"label": "（主動拉近）", "next": "n4c", "heat": 10, "cg": true}
       ]
     },
     "n3c": {
       "id": "n3c",
       "label": "靠近",
+      "scene": "office",
       "text": "「你要清楚嘅係簡報，定係我想對你點？」",
       "thought": "要清楚？靠近講。",
-      "aside": "問句落在桌面。",
+      "aside": "問句落喇桌面。",
       "choices": [
-        {
-          "label": "「兩者都要。」",
-          "next": "n4b",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「只要簡報。」",
-          "next": "n4a",
-          "tension": 4
-        }
+        {"label": "「兩樣都要。」", "next": "n4b", "heat": 8, "cg": true},
+        {"label": "「只要簡報。」", "next": "n4a", "tension": 4}
       ]
     },
     "n4a": {
       "id": "n4a",
       "label": "抽身",
-      "text": "「明智。檔案丟 shared drive。下週一評核——我記得。」",
-      "thought": "記得兩字比承諾長。",
+      "scene": "office",
+      "text": "「明智。檔案丟 shared drive。下星期一評核——我記得。」",
+      "thought": "記得兩個字比承諾長。",
       "aside": "電梯燈亮一下又熄。",
-      "choices": [
-        {
-          "label": "離開",
-          "next": "ending_c",
-          "tension": 4
-        }
-      ]
+      "choices": [{"label": "離開", "next": "ending_c", "tension": 4}]
     },
     "n4b": {
       "id": "n4b",
       "mode": "call",
-      "remember": [
-        "chose_stay"
-      ],
+      "remember": ["chose_stay"],
       "label": "承認",
+      "scene": "office",
       "text": "手指抬起你下巴。「留低，就唔好再扮只係改簡報。」",
       "thought": "唔好再扮公事。",
-      "aside": "燈管微顫。",
-      "mid": "下巴被抬起喺下，規則已經改。",
+      "aside": "燈管微顎。",
+      "mid": "下巴被抬高，規矩已經唔同。",
       "choices": [
-        {
-          "label": "留低",
-          "next": "n4x",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "離開",
-          "next": "ending_c"
-        }
+        {"label": "留低", "next": "n4x", "heat": 8, "cg": true},
+        {"label": "離開", "next": "ending_c"}
       ]
     },
     "n4x": {
       "id": "n4x",
       "mode": "call",
-      "label": "燈掣",
-      "text": "Vera 走去牆邊，手按在掣上，未推落。\n\n「最後一次問。燈熄之後，你就唔好話自己不知道。」",
-      "thought": "掣仲未落。你仲可以走。",
-      "aside": "燈管音細過呼吸。",
+      "label": "燈揯",
+      "scene": "office",
+      "text": "Vera 走去牆邊，手按喇揯上，未推落。\n\n「最後一次問。燈熄之後，你就唔好話自己唔知。」",
+      "thought": "揯仲未落。你仲可以走。",
+      "aside": "燈管聲細過呼吸。",
       "choices": [
-        {
-          "label": "「熄。」",
-          "next": "n5",
-          "heat": 6,
-          "cg": true
-        },
-        {
-          "label": "「我收回。」",
-          "next": "ending_c"
-        }
+        {"label": "「熄。」", "next": "n5", "heat": 6, "cg": true},
+        {"label": "「我收回。」", "next": "ending_c"}
       ]
     },
     "n4c": {
       "id": "n4c",
       "label": "你主動",
+      "scene": "office",
       "text": "「記住。係你先開始。」",
       "thought": "再唔係單方面。",
       "aside": "簡報白光一跳。",
-      "choices": [
-        {
-          "label": "繼續",
-          "next": "n4x",
-          "heat": 8,
-          "cg": true
-        }
-      ]
+      "choices": [{"label": "繼續", "next": "n4x", "heat": 8, "cg": true}]
     },
     "n5": {
       "id": "n5",
       "mode": "call",
       "label": "燈關之後",
-      "text": "燈暗。規則喺佢度——要你親口講想要咧。",
-      "thought": "規則喺我度。",
+      "scene": "office",
+      "text": "燈暗。規矩喇佢度——要你親口講想要啲乜。",
+      "thought": "規矩喇我度。",
       "aside": "只剩呼吸同錶聲。",
       "choices": [
-        {
-          "label": "「你話點就點。」",
-          "next": "n6a",
-          "heat": 8,
-          "requireHeat": 36,
-          "cg": true
-        },
-        {
-          "label": "「平等。今晚先。」",
-          "next": "n6b",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「你早計劃今晚。」",
-          "next": "n6c",
-          "tension": 8
-        }
+        {"label": "「你話點就點。」", "next": "n6a", "heat": 8, "requireHeat": 36, "cg": true},
+        {"label": "「平等。今晚先。」", "next": "n6b", "heat": 8, "cg": true},
+        {"label": "「你早計劃今晚。」", "next": "n6c", "tension": 8}
       ]
     },
     "n6a": {
       "id": "n6a",
       "label": "交出控制",
-      "text": "升級前佢都問：「仲可唔可以？」",
+      "scene": "office",
+      "text": "再近一步之前佢都問：「仲可唔可以？」",
       "thought": "秩序比衝動危險。",
       "aside": "桌邊緣冰涼。",
-      "choices": [
-        {
-          "label": "迎向天亮",
-          "next": "ending_a"
-        }
-      ]
+      "choices": [{"label": "迎向天亮", "next": "ending_a"}]
     },
     "n6b": {
       "id": "n6b",
-      "remember": [
-        "wanted_equal"
-      ],
+      "remember": ["wanted_equal"],
       "label": "對等",
+      "scene": "office",
       "text": "「評核表……唔會寫呢頁。」",
       "thought": "對等一晚。夠未？",
       "aside": "秘密比分數耐存。",
-      "choices": [
-        {
-          "label": "迎向天亮",
-          "next": "ending_b"
-        }
-      ]
+      "choices": [{"label": "迎向天亮", "next": "ending_b"}]
     },
     "n6c": {
       "id": "n6c",
-      "remember": [
-        "called_out_plan"
-      ],
+      "remember": ["called_out_plan"],
       "label": "拆穿",
-      "text": "deadline 可以早講。佢擇今晚。「仲留唔留？」",
+      "scene": "office",
+      "text": "Deadline 可以早講。佢握今晚。「仲留唔留？」",
       "thought": "選擇權回到你手。",
-      "aside": "佢擇今晚。",
+      "aside": "佢握今晚。",
       "choices": [
-        {
-          "label": "「留。」",
-          "next": "ending_a",
-          "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「走。」",
-          "next": "ending_c"
-        }
+        {"label": "「留。」", "next": "ending_a", "heat": 8, "cg": true},
+        {"label": "「走。」", "next": "ending_c"}
       ]
     },
     "ending_a": {
       "id": "ending_a",
       "ending": false,
       "label": "天亮",
+      "scene": "office",
       "text": "「簡報。一小時內。其他——當唔發生。」",
       "choices": [
-        {
-          "label": "去週一評核室",
-          "next": "n7",
-          "heat": 6
-        },
-        {
-          "label": "到此為止",
-          "next": "ending_a_lock"
-        }
+        {"label": "去週一評核室", "next": "n7", "heat": 6},
+        {"label": "到此為止", "next": "ending_a_lock"}
       ]
     },
     "ending_b": {
       "id": "ending_b",
       "ending": false,
       "label": "同盟",
-      "text": "「你呢晚表現……離職信我都可能批。」",
+      "scene": "office",
+      "text": "「你今晚表現……評核表我可以寫得好着。」",
       "choices": [
-        {
-          "label": "去週一評核室",
-          "next": "n7",
-          "heat": 6
-        },
-        {
-          "label": "到此為止",
-          "next": "ending_b_lock"
-        }
+        {"label": "去週一評核室", "next": "n7", "heat": 6},
+        {"label": "到此為止", "next": "ending_b_lock"}
       ]
     },
     "ending_c": {
       "id": "ending_c",
       "ending": true,
       "endingTitle": "抽身",
-      "text": "電話：Vera「檔案我等。」你冇回。"
+      "text": "電話：Vera「檔案我等。」你無回。"
     },
     "ending_a_lock": {
       "id": "ending_a_lock",
       "ending": true,
-      "endingTitle": "越界・規則內",
+      "endingTitle": "越界・規矩內",
       "text": "Vera：「檔案準時。其他——當未發生。」"
     },
     "ending_b_lock": {
@@ -486,74 +262,41 @@
     "n7": {
       "id": "n7",
       "mode": "call",
-      "remember": [
-        "review_room"
-      ],
+      "remember": ["review_room"],
       "label": "週一評核室",
-      "text": "百葉簾拉死。評核表壓住你手背。「上週五。寫定性，定寫量化？」",
+      "scene": "review",
+      "text": "百葉簾拉死。評核表壓住你手背。「上週五。寫感覺，定寫數字？」",
       "thought": "另一種合約。",
       "aside": "筆帽咕一聲。",
       "choices": [
-        {
-          "label": "「寫你想寫嘅。」",
-          "next": "n8a",
-          "heat": 10,
-          "requireHeat": 40,
-          "cg": true
-        },
-        {
-          "label": "「寫事實。包括你留我。」",
-          "next": "n8b",
-          "tension": 12,
-          "requireHeat": 28
-        },
-        {
-          "label": "「當唔發生。」",
-          "next": "ending_d"
-        }
+        {"label": "「寫你想寫嘅。」", "next": "n8a", "heat": 10, "requireHeat": 40, "cg": true},
+        {"label": "「寫事實。包括你留我。」", "next": "n8b", "tension": 12, "requireHeat": 28},
+        {"label": "「當唔發生。」", "next": "ending_d"}
       ]
     },
     "n8a": {
       "id": "n8a",
       "label": "交權",
+      "scene": "review",
       "text": "評語：可造。「我會再留。你怕唔怕？」",
       "thought": "怕同想可以並存。",
-      "aside": "評語兩字很重。",
+      "aside": "評語兩個字好重。",
       "choices": [
-        {
-          "label": "「怕。但我留。」",
-          "next": "ending_e",
-          "heat": 12,
-          "requireHeat": 50,
-          "cg": true
-        },
-        {
-          "label": "「所以我走。」",
-          "next": "ending_d"
-        }
+        {"label": "「怕。但我留。」", "next": "ending_e", "heat": 12, "requireHeat": 50, "cg": true},
+        {"label": "「所以我走。」", "next": "ending_d"}
       ]
     },
     "n8b": {
       "id": "n8b",
       "mode": "call",
       "label": "寫事實",
-      "text": "「我可以毀你，都可以抬你。你擇。」",
-      "thought": "選擇落在紙上。",
-      "aside": "選擇落在紙上。",
+      "scene": "review",
+      "text": "「我可以踩你，亦可以捧你。你握。」",
+      "thought": "選擇落喇紙上。",
+      "aside": "筆停喇紙上。",
       "choices": [
-        {
-          "label": "「抬我。對等。」",
-          "next": "ending_e",
-          "heat": 8,
-          "requireHeat": 45,
-          "cg": true
-        },
-        {
-          "label": "「你毀唔到我。」",
-          "next": "ending_f",
-          "tension": 14,
-          "requireHeat": 30
-        }
+        {"label": "「捧我。對等。」", "next": "ending_e", "heat": 8, "requireHeat": 45, "cg": true},
+        {"label": "「你毀唔到我。」", "next": "ending_f", "tension": 14, "requireHeat": 30}
       ]
     },
     "ending_d": {
@@ -565,22 +308,22 @@
     "ending_e": {
       "id": "ending_e",
       "ending": true,
-      "endingTitle": "評核室規則",
-      "text": "Vera：「Deadline 照舊。評核表仍係我寫。」"
+      "endingTitle": "評核室規矩",
+      "text": "Vera：「Deadline 照舊。評核表仲係我寫。」"
     },
     "ending_f": {
       "id": "ending_f",
       "ending": true,
       "endingTitle": "對峙存檔",
-      "text": "「有種。小心。位次由我定。」"
+      "text": "「夠膽。小心。邊個上位，我話事。」"
     }
   },
   "memoryLabels": {
-    "door_shut": "門在你後面關上",
+    "door_shut": "門喇你背後關上",
     "stayed_late": "你留到好夜",
     "pushed_back": "你敢頂嘴",
     "got_close": "你靠近過",
-    "chose_stay": "你擇留低",
+    "chose_stay": "你握留低",
     "wanted_equal": "你要平等",
     "called_out_plan": "你拆穿過計劃",
     "review_room": "你入過評核室"
