@@ -8,16 +8,35 @@
     document.body.appendChild(el);
     return el;
   }
+  function scene() {
+    var host = document.querySelector("#screen-play .play-bg");
+    if (!host) return null;
+    var el = document.getElementById("scene-bg");
+    if (el) return el;
+    el = document.createElement("div");
+    el.id = "scene-bg";
+    var wins = "";
+    for (var i = 0; i < 80; i++) wins += '<i class="' + (Math.random() > 0.62 ? "on" : "") + '"></i>';
+    el.innerHTML = '<div class="city"></div><div class="windows">' + wins + '</div><div class="rain"></div><div class="tube"></div><div class="cctv"></div>';
+    host.insertBefore(el, host.firstChild);
+    return el;
+  }
+  function setScene() {
+    var el = scene();
+    if (!el) return;
+    var id = (typeof state !== "undefined" && state.story && state.story.id) || "alex";
+    el.className = id === "morgan" ? "lounge" : id === "sam" ? "pantry" : "office";
+  }
   function play(kind) {
     var el = layer();
     el.classList.remove("is-win", "is-fail");
     void el.offsetWidth;
     el.classList.add(kind === "fail" ? "is-fail" : "is-win");
-    var play = document.getElementById("screen-play");
-    if (play && kind !== "fail") {
-      play.classList.remove("is-advancing");
-      void play.offsetWidth;
-      play.classList.add("is-advancing");
+    var playEl = document.getElementById("screen-play");
+    if (playEl && kind !== "fail") {
+      playEl.classList.remove("is-advancing");
+      void playEl.offsetWidth;
+      playEl.classList.add("is-advancing");
     }
     setTimeout(function () { el.classList.remove("is-win", "is-fail"); }, 1000);
   }
@@ -31,7 +50,7 @@
         n.intents = (n.choices || []).map(function (c) {
           var lab = String(c.label || "");
           var keys = [lab, lab.replace(/[「」\s]/g, "")];
-          lab.replace(/[\u4e00-\u9fff]{1,3}/g, function (w) { keys.push(w); return w; });
+          lab.replace(/[一-鿿]{1,3}/g, function (w) { keys.push(w); return w; });
           return { keys: keys.filter(Boolean), next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "flirt" : "work", ack: lab };
         });
       }
@@ -41,8 +60,8 @@
   var _render = window.renderNode;
   if (typeof _render === "function") {
     window.renderNode = function () {
-      var prev = typeof state !== "undefined" ? state.nodeId : null;
       _render.apply(this, arguments);
+      setScene();
       var zone = document.getElementById("action-zone");
       if (zone) zone.classList.add("is-chat-first");
       var box = document.getElementById("choices");
@@ -60,14 +79,13 @@
   if (typeof _adv === "function") {
     window.applyFreeChatAdvance = function (intent) {
       var ok = _adv.apply(this, arguments);
-      if (ok) play("win");
-      else play("fail");
+      play(ok ? "win" : "fail");
       return ok;
     };
   }
-  var _boot = window.startAlex;
   function wrapStory() {
     if (typeof state !== "undefined" && state.story) enableChatFirst(state.story);
+    setScene();
   }
   document.addEventListener("click", function (e) {
     if (e.target && e.target.id === "enter-btn") setTimeout(wrapStory, 200);
@@ -76,4 +94,5 @@
     if (typeof state !== "undefined" && state.story) { enableChatFirst(state.story); wrapStory(); clearInterval(t); }
   }, 400);
   layer();
+  scene();
 })();
