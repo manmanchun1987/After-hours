@@ -1,26 +1,19 @@
 (function () {
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var CAST = [
-    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。", portrait: "./assets/stills/vera-03.jpg" },
-    { id: "morgan", name: "Elise", role: "客戶負責人", hook: "大單前夜。夜晚講人。", portrait: "./assets/stills/vera-02.jpg" },
-    { id: "sam", name: "Sammi", role: "前輩同事", hook: "兩個杯麵。餓嘅人簽錯字。", portrait: "./assets/stills/vera-01.jpg" }
+    { id: "alex", name: "Vera", role: "部門主管", hook: "Deadline 可以改。態度唔可以。", portrait: "./assets/stills/vera-03.jpg?v=2" },
+    { id: "morgan", name: "Elise", role: "客戶負責人", hook: "大單前夜。夜晚講人。", portrait: "./assets/stills/vera-02.jpg?v=2" },
+    { id: "sam", name: "Sammi", role: "前輩同事", hook: "兩個杯麵。餓嘅人簽錯字。", portrait: "./assets/stills/vera-01.jpg?v=2" }
   ];
   function faceOf(id) {
-    for (var i = 0; i < CAST.length; i++) if (CAST[i].id === id) return CAST[i].portrait;
-    return "./assets/stills/vera-03.jpg";
+    if (id === "sam" || id === "sammi") return "./assets/stills/vera-01.jpg?v=2";
+    if (id === "morgan" || id === "elise") return "./assets/stills/vera-02.jpg?v=2";
+    return "./assets/stills/vera-03.jpg?v=2";
   }
+  window.AH_faceOf = faceOf;
   function meters() {
     if (typeof state === "undefined") return;
-    if (typeof state.heat !== "number") state.heat = 20;
-    if (typeof state.tension !== "number") state.tension = 15;
-    if (typeof renderMeters === "function") {
-      renderMeters();
-      return;
-    }
-    var heatEl = document.getElementById("meter-heat");
-    var tenEl = document.getElementById("meter-tension");
-    if (heatEl) heatEl.style.width = state.heat + "%";
-    if (tenEl) tenEl.style.width = state.tension + "%";
+    if (typeof renderMeters === "function") { renderMeters(); return; }
   }
   function paintCast() {
     var root = document.getElementById("chars");
@@ -56,8 +49,7 @@
       start.textContent = "開始";
       start.addEventListener("click", function () { bootStart(c.id, true); });
       actions.appendChild(start);
-      var canResume = save && save.storyId === c.id && save.nodeId;
-      if (canResume) {
+      if (save && save.storyId === c.id && save.nodeId) {
         var resume = document.createElement("button");
         resume.className = "btn btn-ghost";
         resume.type = "button";
@@ -110,13 +102,19 @@
     });
   }
   function ready() {
+    if (typeof portraitSrc === "function") {
+      portraitSrc = function (story) {
+        var id = (story && story.id) || (typeof state !== "undefined" && state.storyId) || "alex";
+        return faceOf(id);
+      };
+    }
     paintCast();
     var enter = document.getElementById("enter-btn");
-    if (enter) enter.addEventListener("click", function () { setTimeout(paintCast, 100); });
+    if (enter) enter.addEventListener("click", function () { setTimeout(paintCast, 50); });
     var back = document.getElementById("back-cast");
-    if (back) back.addEventListener("click", function () { setTimeout(paintCast, 100); });
+    if (back) back.addEventListener("click", function () { setTimeout(paintCast, 50); });
     var toCast = document.getElementById("ending-cast");
-    if (toCast) toCast.addEventListener("click", function () { setTimeout(paintCast, 100); });
+    if (toCast) toCast.addEventListener("click", function () { setTimeout(paintCast, 50); });
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ready);
   else ready();
