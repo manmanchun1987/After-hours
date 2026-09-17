@@ -1,27 +1,14 @@
 (function () {
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
+  var OPENERS = {
+    alex: "週五夜深。你係 Vera 手下，簡報佢話未夠，尾班電梯門開過你都無入。門後聲平：「入嚅。唔好喇走廊度扮嘢。」",
+    morgan: "酒廊外係維港燈。你係 Elise 嘅對接同事，日頭合約數字定咗。佢轉杯，聲唔高：「紙日頭講完。而家講人。」",
+    sam: "加班室螢幕只照住你同 Sammi。你係佢帶嘅後輩。佢鬆開工牌繩，好似問一句靜野：「潛規則唔寫紙上。你要學，定交差就走？」"
+  };
   var CAST = [
-    {
-      id: "alex", name: "Vera", role: "部門主管",
-      you: "你係佢手下。週五夜深，簡報未過，尾班電梯你都無入。",
-      hook: "佢叫你入房。Deadline 可以改，態度唔可以。",
-      brief: "你係 Vera 的下屬。今晚留低改簡報。佢隔門叫你入嚟——你可以推門、停一停、或講你想走。",
-      portrait: "./assets/stills/vera-03.jpg?v=2"
-    },
-    {
-      id: "morgan", name: "Elise", role: "客戶負責人",
-      you: "你係跟單同事。日頭數字講完，佢約你酒廊「再傾一次」。",
-      hook: "佢講：夜晚唔講紙，講人。你要答人定條款。",
-      brief: "你係 Elise 的對接同事。大單數字日頭定咗。酒廊佢問人同單邊樣先——你可以講「人」「條款」或「好」。",
-      portrait: "./assets/stills/vera-02.jpg?v=2"
-    },
-    {
-      id: "sam", name: "Sammi", role: "前輩同事",
-      you: "你係新來嘅。今晚加班室只剩你同佢。",
-      hook: "佢要教你紙上無寫嘅潛規則。你可以學或只交差。",
-      brief: "你係 Sammi 帶嘅後輩。夜深加班。佢問你要唔要學潛規則——可以講「教我」「交差」或「好」。",
-      portrait: "./assets/stills/vera-01.jpg?v=2"
-    }
+    { id: "alex", name: "Vera", role: "部門主管", you: "你係佢手下。簡報未過，今晚未走。", hook: "佢叫你入房。你可以推門、停一停、或講想走。", brief: "簡報未過。佢叫你入。", portrait: "./assets/stills/vera-03.jpg?v=2" },
+    { id: "morgan", name: "Elise", role: "客戶負責人", you: "你係跟單同事。日頭數字定咗。", hook: "佢要你答：人，定條款。", brief: "日頭講完紙。佢問人。", portrait: "./assets/stills/vera-02.jpg?v=2" },
+    { id: "sam", name: "Sammi", role: "前輩同事", you: "你係佢帶嘅後輩。今晚加班室只剩你兩個。", hook: "佢問你學潛規則定交差。", brief: "夜深。佢問學定走。", portrait: "./assets/stills/vera-01.jpg?v=2" }
   ];
   function faceOf(id) {
     if (id === "sam" || id === "sammi") return "./assets/stills/vera-01.jpg?v=2";
@@ -41,7 +28,7 @@
     if (document.getElementById("you-brief-css")) return;
     var s = document.createElement("style");
     s.id = "you-brief-css";
-    s.textContent = ".you-line{font-size:13px;color:#c9b48a;margin:.35rem 0 .2rem;line-height:1.45}.cast-lead{margin:0 0 .8rem;color:#9aa3b2;font-size:13px;line-height:1.5}#you-brief{font-size:13px;color:#d7c7a4;line-height:1.45;margin:0 0 .45rem;padding:.45rem .55rem;border-left:2px solid #c9b48a;background:rgba(0,0,0,.28)}";
+    s.textContent = ".you-line{font-size:13px;color:#c9b48a;margin:.35rem 0 .2rem;line-height:1.45}.cast-lead{margin:0 0 .8rem;color:#9aa3b2;font-size:13px;line-height:1.5}#you-brief{font-size:12px;color:#b7a88a;margin:0 0 .35rem}";
     document.head.appendChild(s);
   }
   function paintCast() {
@@ -54,7 +41,7 @@
       lead = document.createElement("p");
       lead.id = "cast-lead";
       lead.className = "cast-lead";
-      lead.textContent = "你一直係同一個人：公司未走得嘅下屬。握邊個女人，就係握今晚點過。";
+      lead.textContent = "你一直係同一個人：公司未走得嘅下屬。握邊條夜，就係握今晚跟邊個。";
       if (root.parentNode) root.parentNode.insertBefore(lead, root);
     }
     var save = {};
@@ -62,9 +49,7 @@
     CAST.forEach(function (c) {
       var art = document.createElement("article");
       art.className = "card glass char-card char-card--" + c.id;
-      var img = document.createElement("img");
-      img.className = "char-thumb char-thumb--" + c.id;
-      img.src = c.portrait; img.alt = c.name;
+      var img = document.createElement("img"); img.className = "char-thumb char-thumb--" + c.id; img.src = c.portrait; img.alt = c.name;
       var wrap = document.createElement("div"); wrap.className = "char-thumb-wrap"; wrap.appendChild(img);
       var body = document.createElement("div"); body.className = "char-body";
       var h = document.createElement("h2"); h.textContent = c.name;
@@ -72,13 +57,11 @@
       var you = document.createElement("p"); you.className = "you-line"; you.textContent = c.you;
       var hook = document.createElement("p"); hook.className = "hook"; hook.textContent = c.hook;
       var actions = document.createElement("div"); actions.className = "char-actions";
-      var start = document.createElement("button");
-      start.className = "btn btn-primary"; start.type = "button"; start.textContent = "開始";
+      var start = document.createElement("button"); start.className = "btn btn-primary"; start.type = "button"; start.textContent = "開始";
       start.addEventListener("click", function () { bootStart(c.id, true); });
       actions.appendChild(start);
       if (save && save.storyId === c.id && save.nodeId) {
-        var resume = document.createElement("button");
-        resume.className = "btn btn-ghost"; resume.type = "button"; resume.textContent = "繼續";
+        var resume = document.createElement("button"); resume.className = "btn btn-ghost"; resume.type = "button"; resume.textContent = "繼續";
         resume.addEventListener("click", function () { bootStart(c.id, false); });
         actions.appendChild(resume);
       }
@@ -88,11 +71,8 @@
   }
   function applyBrief(story, id) {
     var c = castOf(id);
-    var startId = story.start;
-    var n = story.nodes && story.nodes[startId];
-    if (n && c.brief && String(n.text || "").indexOf("你係") !== 0) {
-      n.text = c.brief + "\n\n" + (n.text || "");
-    }
+    var n = story.nodes && story.nodes[story.start];
+    if (n && OPENERS[id]) n.text = OPENERS[id];
     var box = document.getElementById("you-brief");
     if (!box) {
       box = document.createElement("p");
@@ -100,7 +80,7 @@
       var host = document.querySelector(".play-card") || document.getElementById("play-text");
       if (host && host.parentNode) host.parentNode.insertBefore(box, host);
     }
-    if (box) box.textContent = c.brief || "";
+    if (box) box.textContent = (c && c.brief) || "";
   }
   function bootStart(id, fresh) {
     fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
@@ -111,28 +91,15 @@
       state.story = story;
       state.storyId = id;
       if (fresh) {
-        state.nodeId = story.start;
-        state.path = [story.start];
-        state.memories = [];
-        state.heat = 20;
-        state.tension = 15;
+        state.nodeId = story.start; state.path = [story.start]; state.memories = []; state.heat = 20; state.tension = 15;
       } else {
         try {
           var save = JSON.parse(localStorage.getItem("after-hours-v2") || "{}");
           if (save && save.storyId === id && save.nodeId && story.nodes[save.nodeId]) {
-            state.nodeId = save.nodeId;
-            state.path = save.path || [save.nodeId];
-            state.memories = save.memories || [];
-            state.heat = typeof save.heat === "number" ? save.heat : 20;
-            state.tension = typeof save.tension === "number" ? save.tension : 15;
-          } else {
-            state.nodeId = story.start;
-            state.path = [story.start];
-          }
-        } catch (e) {
-          state.nodeId = story.start;
-          state.path = [story.start];
-        }
+            state.nodeId = save.nodeId; state.path = save.path || [save.nodeId];
+            state.memories = save.memories || []; state.heat = typeof save.heat === "number" ? save.heat : 20; state.tension = typeof save.tension === "number" ? save.tension : 15;
+          } else { state.nodeId = story.start; state.path = [story.start]; }
+        } catch (e) { state.nodeId = story.start; state.path = [story.start]; }
       }
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
@@ -140,8 +107,7 @@
     });
   }
   function ready() {
-    ensureBriefStyle();
-    fixVoice();
+    ensureBriefStyle(); fixVoice();
     if (typeof portraitSrc === "function") {
       portraitSrc = function (story) {
         var id = (story && story.id) || (typeof state !== "undefined" && state.storyId) || "alex";
