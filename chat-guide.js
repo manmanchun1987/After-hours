@@ -1,10 +1,11 @@
 (function () {
   var YES = /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i;
   var misses = 0;
+  var lastAck = "";
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
-    st.textContent = ".freechat-hidden,.action-zone.is-chat-first #choices{display:none!important} body.show-choices .action-zone.is-chat-first #choices,.show-choices #choices{display:flex!important;flex-direction:column}";
+    st.textContent = ".freechat-hidden,.action-zone.is-chat-first #choices{display:none!important}body.show-choices .action-zone.is-chat-first #choices,.show-choices #choices{display:flex!important;flex-direction:column}#want-line{font-size:12px;color:#c9b48a;margin:.25rem 0 .4rem}";
     document.head.appendChild(st);
   }
   function node() {
@@ -19,14 +20,7 @@
       if (!n.intents || !n.intents.length) {
         n.intents = (n.choices || []).map(function (c) {
           var lab = String(c.label || "");
-          return {
-            keys: [lab, lab.replace(/[「」\s]/g, ""), "好", "繼續"],
-            next: c.next,
-            heat: c.heat,
-            tension: c.tension,
-            bucket: c.heat ? "heat" : "leave",
-            ack: lab
-          };
+          return { keys: [lab, lab.replace(/[「」\s]/g, ""), "好", "繼續"], next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "heat" : "leave", ack: lab };
         });
       }
     });
@@ -61,22 +55,42 @@
     if (typeof state !== "undefined") state.freeChatChoicesVisible = true;
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(false);
   }
+  function glueText() {
+    var el = document.getElementById("play-text");
+    var n = node();
+    if (!el || !n) return;
+    var body = String(n.text || "");
+    if (lastAck && body.indexOf(lastAck) !== 0) {
+      el.textContent = lastAck + "\n\n" + body;
+    }
+    var want = document.getElementById("want-line");
+    if (!want) {
+      want = document.createElement("p");
+      want.id = "want-line";
+      if (el.parentNode) el.parentNode.insertBefore(want, el.nextSibling);
+    }
+    var p = poles(n);
+    want.textContent = n.ending ? "" : (p.length ? "佢而家等你答：「" + p.join("」定「") + "」。講「好」=靠近。" : "");
+  }
   function wrap() {
-    var ok = false;
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var hit = orig(userText);
-        if (hit) { misses = 0; hideChoices(); return hit; }
+        if (hit) { misses = 0; hideChoices(); lastAck = hit.ack || ""; return hit; }
         var n = node();
         var t = String(userText || "").trim();
-        if (YES.test(t)) { misses = 0; hideChoices(); return heatIntent(n); }
+        if (YES.test(t)) {
+          var h = heatIntent(n);
+          misses = 0; hideChoices();
+          if (h) lastAck = h.ack || "……好。跟住講。";
+          return h;
+        }
         misses += 1;
         if (misses >= 2) showChoices();
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
-      ok = true;
     }
     if (typeof window.renderNode === "function" && !window.renderNode.__guided) {
       var rn = window.renderNode;
@@ -85,10 +99,10 @@
         rn.apply(this, arguments);
         misses = 0;
         hideChoices();
+        glueText();
         hint();
       };
       window.renderNode.__guided = true;
-      ok = true;
     }
     if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
       var un = window.unlockFreeChatChoices;
@@ -99,23 +113,18 @@
       window.unlockFreeChatChoices.__guided = true;
     }
     if (typeof state !== "undefined" && state.story) stampChat(state.story);
-    return ok;
   }
   function hint() {
     var n = node();
     var input = document.getElementById("chat-input");
     if (!input || !n) return;
     var p = poles(n);
-    input.placeholder = p.length
-      ? "用字回佢。例如「" + p.join("」／「") + "」。講「好」=靠近"
-      : "對佢講…推劇";
+    input.placeholder = p.length ? "答佢：「" + p.join("」／「") + "」" : "對佢講…";
   }
   document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
-  var n = 0;
+  var ticks = 0;
   var t = setInterval(function () {
-    wrap();
-    hideChoices();
-    hint();
-    if (++n > 80) clearInterval(t);
+    wrap(); hideChoices(); glueText(); hint();
+    if (++ticks > 80) clearInterval(t);
   }, 300);
 })();
