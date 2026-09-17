@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./styles-compete.css?v=phone1" />
   <link rel="stylesheet" href="./safari-fix.css?v=uichat2" />
   <style>
-    :root { --play-portrait: url("./assets/alex.png"); }
+    :root { --play-portrait: url("./assets/stills/vera-03.jpg"); }
     #l2d-canvas{display:none!important}
     #alex-portrait{opacity:1!important;visibility:visible!important}
     #screen-play.active .play-bg{
@@ -24,7 +24,6 @@
 </head>
 <body>
   <script>
-  /* keyboard1 bootstrap: early --app-vh only. Full logic + listeners in app.js (avoid double handlers). */
   (function () {
     var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
     document.documentElement.style.setProperty("--app-vh", h + "px");
@@ -59,8 +58,8 @@
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
           <div class="portrait-stack" id="alex-portrait-stack">
-            <img id="alex-portrait" class="portrait" src="./assets/alex.png" alt="" />
-            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" poster="./assets/alex.png" hidden></video>
+            <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg" alt="" />
+            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" poster="./assets/stills/vera-03.jpg" hidden></video>
             <div id="blink-mask" class="blink-mask" aria-hidden="true">
               <span class="blink-lid blink-lid-l"></span>
               <span class="blink-lid blink-lid-r"></span>
@@ -112,7 +111,7 @@
               <div id="chat-messages" class="chat-messages"></div>
               <div id="chat-typing" class="chat-typing" hidden></div>
               <div class="chat-composer">
-                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="傳訊俾 Vera…" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
+                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="傳訊係 Vera…" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
               </div>
             </div>
           </div>
@@ -130,6 +129,6 @@
     </section>
   </main>
   <script src="./app.js?v=keyboard1"></script>
-  <script src="./compete-boot.js?v=chathuman1"></script>
+  <script src="./compete-boot.js?v=stills2"></script>
 </body>
 </html>
