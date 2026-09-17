@@ -1,24 +1,20 @@
 # QUALITY bar — chase this, free only
 
-Target: phone 9:16 story app that feels closer to MiraiMind-class play, without paid APIs.
-
 ## Must
-- Face lock (CAST.lock). Player always sees the right woman.
+- Face lock (CAST.lock).
 - Chat is the main verb; ≤2 fallback buttons.
-- Each node has `scene` + can advance by typed intent.
-- Success / fail has a visible beat (fx-play), not a silent jump.
-- Scene layer matches route (office/lounge/pantry/review/roof/lift).
+- Each node has `scene` + typed intent.
+- Success / fail has a visible AND audible beat (`fx-play` + `AHAudio.cue`).
+- Enter unlocks BGM (`bgm-loop.mp3` or synth bed). Mute ♪ works.
+- Scene layer matches route.
 - No black screen, no 404 portraits, no Sam/Morgan labels.
-- Safe for Safari / iPhone viewport.
-- Cantonese copy. No English baked into spoken lines.
+- Safari / iPhone safe. Cantonese copy.
 
 ## Should
-- Distinct lighting per scene (SVG + CSS motion, not face filters).
+- Distinct lighting per scene.
 - Heat/tension readable.
-- BGM loop exists; missing SFX fail silent, never 404-spam.
-- Route length ≥30 playable nodes before it feels done.
-- New rooms reuse a scene id; only mint a new empty SVG when id is new.
+- Route length ≥30 nodes.
+- Send-chat has a short tick.
 
 ## Never
-- Imagine new faces. Hotlink Pexels/Mixkit. Stolen Live2D. Ask user to upload.
-- Treat hue-rotate / Ken Burns as the product.
+Imagine new faces. Hotlink blocked CDNs. Stolen Live2D. Ask user to upload. Silent advances.
