@@ -1,16 +1,12 @@
 # 而家進度
 
-最後更新：2026-09-17 16:05 HKT
-
-## 做緊
+最後更新：2026-09-17 16:42 HKT
 
 ## 已交
-- Elise (morgan) mid 再加深 + 新支 m4e heat/cg 守住
-- Sammi (sam) mid 再加深 + 新支 s4e heat/cg 守住
-- photoreal soul 原路 · 無 Imagine · Vera 未動
+- styles-beauty.css 接上 index（气泡/蒙版/色溫，不換臉）
+- ACT2.md：Elise 行政層、Sammi 天台、Vera 燈暗中段 spec
+- 劇本自動化改為每輪最短線 +2 節，目標每線 >=30
+- 美術自動化改為只改 styles-beauty，禁 Imagine
 
-## 未過
-vera-hall 等 optional still 未有
-
-## CODE 2026-09-17 16:05 HKT
-Elise+Sammi 各加一支 + mid 再加深 · heat/cg flag 全守 · free only。
+## 鎖
+CAST.lock.md
