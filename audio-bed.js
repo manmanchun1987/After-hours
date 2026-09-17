@@ -47,21 +47,30 @@
     src.start();
   }
   function startBed() {
-    if (!ensure() || started) return;
-    started = true;
+    if (!ensure()) return;
     try { ctx.resume(); } catch (e) {}
-    var o = ctx.createOscillator();
-    var o2 = ctx.createOscillator();
-    var g = ctx.createGain();
-    o.type = "sine"; o.frequency.value = 92;
-    o2.type = "triangle"; o2.frequency.value = 138;
-    g.gain.value = 1;
-    o.connect(g); o2.connect(g); g.connect(bedGain);
-    o.start(); o2.start();
-    var a = new Audio("./assets/audio/bgm-loop.mp3");
-    a.loop = true; a.volume = 0.28;
-    a.play().catch(function () {});
-    window.__ahBgmEl = a;
+    if (!started) {
+      started = true;
+      var o = ctx.createOscillator();
+      var o2 = ctx.createOscillator();
+      var g = ctx.createGain();
+      o.type = "sine"; o.frequency.value = 92;
+      o2.type = "triangle"; o2.frequency.value = 138;
+      g.gain.value = 1;
+      o.connect(g); o2.connect(g); g.connect(bedGain);
+      o.start(); o2.start();
+    }
+    if (!window.__ahBgmEl) {
+      var a = new Audio("./assets/audio/bgm-loop.mp3");
+      a.loop = true;
+      a.volume = 0.28;
+      a.preload = "auto";
+      window.__ahBgmEl = a;
+    }
+    var a = window.__ahBgmEl;
+    a.muted = muted;
+    var p = a.play();
+    if (p && p.catch) p.catch(function () {});
   }
   function playCue(kind) {
     if (kind === "fail") { beep(180, 0.28, "sawtooth", 0.1, 70); noiseBurst(0.2, 0.06); }
@@ -69,27 +78,28 @@
     else if (kind === "send") { beep(640, 0.06, "square", 0.05); }
     else { beep(420, 0.05, "sine", 0.04); }
   }
-  window.AHAudio = { start: startBed, cue: playCue, unlock: function () { ensure(); startBed(); } };
+  function setMuted(v) {
+    muted = !!v;
+    if (window.__ahBgmEl) window.__ahBgmEl.muted = muted;
+    if (master && ctx) master.gain.setTargetAtTime(muted ? 0 : 0.7, ctx.currentTime, 0.05);
+  }
+  window.AHAudio = { start: startBed, cue: playCue, unlock: function () { ensure(); startBed(); }, setMuted: setMuted };
   document.addEventListener("click", function (e) {
     var id = e.target && e.target.id;
     if (id === "enter-btn" || id === "btn-mute-bgm" || id === "btn-mute-master") {
       ensure(); startBed();
     }
     if (id === "btn-mute-master" || id === "btn-mute-bgm") {
-      muted = !muted;
-      if (window.__ahBgmEl) window.__ahBgmEl.muted = muted;
-      if (master) master.gain.setTargetAtTime(muted ? 0 : 0.7, ctx.currentTime, 0.05);
+      setMuted(!muted);
     }
     if (id === "enter-btn") playCue("win");
   }, true);
   document.addEventListener("submit", function (e) {
     if (e.target && e.target.id === "chat-form") playCue("send");
   }, true);
-  var _play;
-  var t = setInterval(function () {
-    if (typeof window !== "undefined") {
-      /* hook after fx-play defines internally via events */
-    }
-  }, 800);
-  setTimeout(function () { clearInterval(t); }, 8000);
+  /* also unlock on any first gesture to kill silent jump */
+  document.addEventListener("pointerdown", function once() {
+    ensure(); startBed();
+    document.removeEventListener("pointerdown", once, true);
+  }, true);
 })();
