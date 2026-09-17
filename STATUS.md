@@ -1,1 +1,2 @@
-最後更新：2026-09-17 20:29 HKT — STORY ticket 1+2 已閉（portrait + freeChat ≤2 choices Elise/Sammi）
+最後更新：2026-09-18 01:10 HKT
+STORY 3 · PICTURE 3 · SOUND 2 · FEEL 3
