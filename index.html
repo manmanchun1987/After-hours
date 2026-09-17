@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="mobile-web-app-capable" content="yes" />
   <title>加班之後 After Hours</title>
   <link rel="stylesheet" href="./styles.css?v=uichat2" />
   <link rel="stylesheet" href="./styles-compete.css?v=phone1" />
   <link rel="stylesheet" href="./safari-fix.css?v=uichat2" />
   <style>
-    :root { --play-portrait: url("./assets/stills/vera-03.jpg"); }
+    :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=2"); }
     #l2d-canvas{display:none!important}
     #alex-portrait{opacity:1!important;visibility:visible!important}
     #screen-play.active .play-bg{
@@ -35,9 +33,9 @@
   <button id="resume-alex" type="button" hidden aria-hidden="true" tabindex="-1">resume</button>
   <main class="app">
     <div class="global-controls">
-      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂" aria-label="背景音樂"><span class="icon-label">♪</span></button>
-      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音" aria-label="語音"><span class="icon-label">聲</span></button>
-      <button id="btn-mute-master" class="icon-btn" type="button" title="全部靜音" aria-label="全部靜音"><span class="icon-label">音</span></button>
+      <button id="btn-mute-bgm" class="icon-btn" type="button" title="背景音樂"><span class="icon-label">♪</span></button>
+      <button id="btn-mute-voice" class="icon-btn" type="button" title="語音"><span class="icon-label">聲</span></button>
+      <button id="btn-mute-master" class="icon-btn" type="button" title="靜音"><span class="icon-label">音</span></button>
     </div>
     <section id="screen-gate" class="screen active">
       <div class="gate-hero">
@@ -58,8 +56,8 @@
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
           <div class="portrait-stack" id="alex-portrait-stack">
-            <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg" alt="" />
-            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" poster="./assets/stills/vera-03.jpg" hidden></video>
+            <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg?v=2" alt="" />
+            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" hidden></video>
             <div id="blink-mask" class="blink-mask" aria-hidden="true">
               <span class="blink-lid blink-lid-l"></span>
               <span class="blink-lid blink-lid-r"></span>
@@ -129,6 +127,6 @@
     </section>
   </main>
   <script src="./app.js?v=keyboard1"></script>
-  <script src="./compete-boot.js?v=stills2"></script>
+  <script src="./compete-boot.js?v=stills3"></script>
 </body>
 </html>
