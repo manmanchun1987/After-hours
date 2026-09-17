@@ -1,0 +1,31 @@
+#fx-layer{pointer-events:none;position:fixed;inset:0;z-index:80;overflow:hidden}
+#fx-layer .fx-sweep,#fx-layer .fx-rim,#fx-layer .fx-flash{position:absolute;inset:0}
+#fx-layer .fx-sweep{
+  background:linear-gradient(115deg,transparent 0%,rgba(255,214,150,.0) 35%,rgba(255,228,180,.55) 50%,rgba(255,200,120,.0) 65%,transparent 100%);
+  transform:translateX(-120%);
+  opacity:0;
+}
+#fx-layer.is-win .fx-sweep{animation:fxSweep .9s cubic-bezier(.2,.8,.2,1) forwards}
+#fx-layer .fx-flash{background:radial-gradient(circle at 50% 28%,rgba(255,236,200,.35),transparent 55%);opacity:0}
+#fx-layer.is-win .fx-flash{animation:fxBloom .8s ease-out}
+#fx-layer .fx-rim{box-shadow:inset 0 0 0 0 rgba(180,40,40,0);opacity:0}
+#fx-layer.is-fail .fx-rim{animation:fxRim .7s ease-out}
+#fx-layer.is-fail{animation:fxShake .55s cubic-bezier(.36,.07,.19,.97)}
+#fx-layer .spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe7b0;box-shadow:0 0 12px 4px rgba(255,210,140,.8);opacity:0}
+#fx-layer.is-win .spark{animation:fxSpark .9s ease-out forwards}
+#fx-layer.is-win .spark:nth-child(3){left:22%;top:38%;animation-delay:.05s}
+#fx-layer.is-win .spark:nth-child(4){left:48%;top:22%;animation-delay:.12s}
+#fx-layer.is-win .spark:nth-child(5){left:71%;top:34%;animation-delay:.18s}
+#fx-layer.is-win .spark:nth-child(6){left:38%;top:48%;animation-delay:.22s}
+#fx-layer.is-win .spark:nth-child(7){left:62%;top:52%;animation-delay:.28s}
+@keyframes fxSweep{0%{transform:translateX(-120%);opacity:0}25%{opacity:1}100%{transform:translateX(120%);opacity:0}}
+@keyframes fxBloom{0%{opacity:.0}30%{opacity:1}100%{opacity:0}}
+@keyframes fxRim{0%{opacity:1;box-shadow:inset 0 0 0 0 rgba(200,40,40,.0)}40%{box-shadow:inset 0 0 80px 24px rgba(180,30,30,.55)}100%{opacity:0;box-shadow:inset 0 0 0 0 rgba(180,30,30,0)}}
+@keyframes fxShake{0%,100%{transform:translate(0)}20%{transform:translate(-10px,4px)}40%{transform:translate(9px,-3px)}60%{transform:translate(-7px,2px)}80%{transform:translate(5px,-2px)}}
+@keyframes fxSpark{0%{opacity:0;transform:translateY(10px) scale(.4)}30%{opacity:1}100%{opacity:0;transform:translateY(-42px) scale(1.2)}}
+#screen-play.is-advancing .play-card{animation:fxCard .55s ease}
+@keyframes fxCard{0%{transform:translateY(18px);opacity:.4}100%{transform:none;opacity:1}}
+#play-aside,#play-thought,.aside-slot,.thought-slot{display:none!important}
+#choices.freechat-hidden{display:none!important}
+#action-zone.is-chat-first .action-label{opacity:.45;font-size:.65rem}
+#action-zone.is-chat-first .action-label::after{content:" · 對白推劇";}
