@@ -4,7 +4,9 @@
     if (el) return el;
     el = document.createElement("div");
     el.id = "fx-layer";
-    el.innerHTML = '<div class="fx-sweep"></div><div class="fx-flash"></div><div class="fx-rim"></div><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>';
+    el.innerHTML = '<div class="fx-sweep"></div><div class="fx-sweep2"></div><div class="fx-flash"></div><div class="fx-rim"></div>' +
+      '<i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>' +
+      '<i class="spark-fail"></i><i class="spark-fail"></i><i class="spark-fail"></i>';
     document.body.appendChild(el);
     return el;
   }
@@ -38,7 +40,7 @@
       void playEl.offsetWidth;
       playEl.classList.add("is-advancing");
     }
-    setTimeout(function () { el.classList.remove("is-win", "is-fail"); }, 1000);
+    setTimeout(function () { el.classList.remove("is-win", "is-fail"); }, 1100);
   }
   function enableChatFirst(story) {
     if (!story || !story.nodes) return;
