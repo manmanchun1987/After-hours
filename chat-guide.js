@@ -150,6 +150,10 @@
         hideChoices();
         glueText();
         hint();
+        var n = node();
+        if (n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") {
+          window.AHAudio.speak(n.text);
+        }
       };
       window.renderNode.__guided = true;
     }

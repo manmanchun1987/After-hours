@@ -121,10 +121,35 @@
     muted = !!v;
     if (window.__ahBgmEl) window.__ahBgmEl.muted = muted;
     if (master && ctx) master.gain.setTargetAtTime(muted ? 0 : 0.7, ctx.currentTime, 0.05);
+    if (muted && window.speechSynthesis) window.speechSynthesis.cancel();
+  }
+  function speak(text) {
+    if (muted || !window.speechSynthesis) return;
+    var t = String(text || "").replace(/\s+/g, " ").trim().slice(0, 140);
+    if (!t) return;
+    try {
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(t);
+      u.lang = "zh-HK";
+      u.rate = 0.92;
+      u.pitch = 1.02;
+      u.volume = 0.9;
+      var voices = window.speechSynthesis.getVoices() || [];
+      var pick = null;
+      for (var i = 0; i < voices.length; i++) {
+        var lg = (voices[i].lang || "").toLowerCase();
+        if (lg.indexOf("zh-hk") === 0 || lg.indexOf("zh-tw") === 0 || lg === "zh" || lg.indexOf("yue") === 0) {
+          pick = voices[i]; break;
+        }
+      }
+      if (pick) u.voice = pick;
+      window.speechSynthesis.speak(u);
+    } catch (e) {}
   }
   window.AHAudio = {
     start: startBed,
     cue: playCue,
+    speak: speak,
     unlock: function () { ensure(); startBed(); },
     setMuted: setMuted,
     get muted() { return muted; }

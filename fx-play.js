@@ -31,9 +31,17 @@
     var nodeId = (typeof state !== "undefined" && state.nodeId) || "";
     var node = (typeof state !== "undefined" && state.story && state.story.nodes && state.story.nodes[nodeId]) || null;
     var sceneKey = (node && node.scene) || "";
-    var allowed = { office:1, lounge:1, pantry:1, review:1, roof:1, lift:1 };
+    var allowed = { office:1, lounge:1, pantry:1, review:1, roof:1, lift:1, close:1, dark:1, hall:1, meet:1 };
     var cls = allowed[sceneKey] ? sceneKey : (storyId === "morgan" ? "lounge" : storyId === "sam" ? "pantry" : "office");
+    if (cls === "close" || cls === "meet" || cls === "hall") cls = "office close-mood";
+    if (cls === "dark") cls = "office dark-mood";
     el.className = cls;
+    if (!document.getElementById("scene-mood-css")) {
+      var st = document.createElement("style");
+      st.id = "scene-mood-css";
+      st.textContent = "#scene-bg.close-mood .city{filter:brightness(.85) saturate(1.1)}#scene-bg.close-mood .windows i.on{opacity:.9}#scene-bg.dark-mood{filter:brightness(.45)}#scene-bg.dark-mood .rain{opacity:.7}#scene-bg.dark-mood .windows i{opacity:.25}";
+      document.head.appendChild(st);
+    }
   }
   function play(kind) {
     var el = layer();
