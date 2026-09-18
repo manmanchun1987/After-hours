@@ -77,6 +77,26 @@
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
+        if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
+          var cls = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
+          if (cls && (cls.id === "ask_want" || cls.id === "off_topic")) {
+            // let IntentEngine handle reply/unlock path; do not force guided advance
+            return null;
+          }
+          if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
+            var mapped = window.IntentEngine.mapToNodeIntent(cls, node());
+            if (mapped) {
+              misses = 0;
+              hideChoices();
+              if (!mapped._ackClipped) {
+                mapped.ack = "你講「" + clip(userText) + "」。" + (mapped.ack || "我接。");
+                mapped._ackClipped = true;
+              }
+              lastAck = mapped.ack;
+              return mapped;
+            }
+          }
+        }
         var hit = orig(userText);
         if (hit) {
           misses = 0;
@@ -106,6 +126,14 @@
     if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
+        if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
+          var c = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
+          if (c && (c.id === "ask_want" || c.id === "off_topic" || c.id === "enter_door" || c.id === "wait" || c.id === "apologize" || c.id === "flirt" || c.id === "challenge")) {
+            var line = window.IntentEngine.pickReply(c, { node: node(), state: typeof state !== "undefined" ? state : null });
+            if (line) return line;
+            if (typeof pr === "function") return pr(userText);
+          }
+        }
         var n = node();
         var p = poles(n);
         var ask = p.length ? p.join("定") : "重點";
@@ -127,9 +155,18 @@
     }
     if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
       var un = window.unlockFreeChatChoices;
-      window.unlockFreeChatChoices = function () {
+      window.unlockFreeChatChoices = function (reason) {
+        // IntentEngine ask_want / escalate may unlock before 2 misses
+        if (reason === "ask_want" || reason === "off_topic_escalate" || (reason && String(reason).indexOf("ask") === 0)) {
+          misses = Math.max(misses, 2);
+          var ok = un.apply(this, arguments);
+          showChoices();
+          return ok;
+        }
         if (misses < 2) return false;
-        return un.apply(this, arguments);
+        var ok2 = un.apply(this, arguments);
+        if (ok2) showChoices();
+        return ok2;
       };
       window.unlockFreeChatChoices.__guided = true;
     }
