@@ -24,3 +24,11 @@ python3 -m http.server 8080
 
 編輯 `data/alex.json`、`data/morgan.json`、`data/sam.json`。
 選擇可加 `heat`、`tension`、`remember`、`requireHeat`。
+
+## 自動化／對白憲法（intent1）
+
+- 讀 `AUTOMATION.md`（hourly 短憲法）、`QUALITY.md`、`METHODS.md`、`DISPATCH.md`
+- 對白主路徑：本地 IntentEngine；禁止 CDN pin／stub `app.js`
+- 驗收：`?v=intent1` —「你想我點？」「推門／入去」「離題天氣」
+- OpenRouter 可選，非預設
+

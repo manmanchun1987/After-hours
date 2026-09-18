@@ -1,6 +1,14 @@
 # METHODS — pick by part
 
-Read QUALITY.md CAST.lock.md TASTE.md.
+Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
+
+## Engine (non-negotiable)
+| Part | Use | Never |
+|---|---|---|
+| Game JS | Full repo `app.js` + `intent-engine.js` | CDN pin / 565B stub / jsDelivr `@oldsha` |
+| Free chat | IntentEngine classify → act → pick materials | Sole path = whole-string key == pool |
+| Optional LLM | `llm-bridge.js` only if key already present | Default path · nag for OpenRouter key |
+| chat-guide | miss / hide choices only | Override IntentEngine advance |
 
 ## Pick table (dispatcher must use this)
 | Game part | Use first | Then |
@@ -9,7 +17,8 @@ Read QUALITY.md CAST.lock.md TASTE.md.
 | Room behind her (office lounge pantry review roof lift) | A reuse SVG | B new empty SVG |
 | Light / rain / glass / night mood | C CSS | D FX |
 | Success / fail beat | D + I cue | F if file exists |
-| Story advance | E chat-first | ≤2 buttons |
+| Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
+| New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
 | BGM on enter | F loop | I synth bed |
 | SFX tick / mute | I + J | F |
 | Spoken line | H if mp4 already in repo | G zh-HK synth |
@@ -22,12 +31,12 @@ A reuse `assets/bg/{scene}.svg`
 B new empty-scene SVG
 C CSS scene motion
 D fx-play cinematic
-E chat-first
+E chat-first (under IntentEngine)
 F local mp3
 G speechSynthesis zh-HK
 H existing mp4
 I Web Audio bed + cues
 J mute ducks file + synth
 
-## Do not use
-Imagine faces, blocked CDN, stolen Live2D, user upload, Suno paid.
+## Forbidden methods
+Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
