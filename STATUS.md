@@ -1,14 +1,14 @@
-最後更新：2026-09-19 07:52 HKT
+最後更新：2026-09-19 07:55 HKT
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
-STATUS open **5 INTENT P0 tickets**（主線加厚；分數再高都要開住）
-Hourly：主做 INTENT；PICTURE／SOUND 只回歸；禁 keys 對池／逼 OpenRouter
-LIVE 目標 cache：`?v=intent2+`（驗收對住 DISPATCH 測句表）
-主路徑：本地 IntentEngine · OpenRouter 可選關 · chat-guide 唔覆蓋意圖推進
-Open tickets（lowest first）：
-1. INTENT 覆蓋加厚（ask_want／enter／wait／refuse／apologize／flirt／challenge／memory／unclear…粵語變體）
-2. INTENT 場景記憶接返
-3. INTENT anti-repeat 近 N 句
-4. INTENT 離題入戲擋＋升級冷淡
-5. INTENT 固定驗收測句（DISPATCH 表）live gate
-KPI：意圖體感接近真 AI ＞ 劇情／畫面／音效刷分
-LIVE GATE：app.js full · 無 CDN pin／stub · 無 app_b64
+STATUS **OPEN P0 INTENT tickets T1–T5** — hourly **必須做意圖加厚**；**禁止 monitor-only**
+PICTURE／SOUND：只回歸；禁 keys 對池／逼 OpenRouter
+目標 cache：完成 T5 後 `?v=intent2+`
+主路徑：本地 IntentEngine · chat-guide 唔覆蓋意圖推進
+Open tickets：
+- T1 擴意圖＋粵語變體
+- T2 場景記憶接話
+- T3 anti-repeat
+- T4 離題入戲升級
+- T5 ≥8 測句驗收＋升 intent2
+KPI：意圖體感接近真 AI ＞ 刷分
+LIVE GATE：app.js full · 無 CDN pin／stub

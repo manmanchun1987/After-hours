@@ -7,12 +7,13 @@
 
 ## 硬規則
 1. **禁止** CDN pin／stub `app.js`；只改 repo 完整引擎；不准 jsDelivr 鎖舊版。
-2. 對白主路徑 = **本地 IntentEngine**。禁止再開「加 yes-words／keys 對池」ticket；新票＝加意圖、場景規則、回覆材料、場景記憶、anti-repeat。
-3. OpenRouter／API key＝**可選**，唔係預設；唔好催用戶貼 key；**有 INTENT 開票時禁止開逼 OpenRouter 票**。
-4. `chat-guide` 可留 miss／藏 choices；**推進必須以意圖結果為準**，唔好覆蓋 IntentEngine。
-5. Hourly：若 STORY/PICTURE/SOUND/FEEL **皆 ≥4** 且 **只有 INTENT 開票** → 主做 INTENT；PICTURE／SOUND **只處理回歸**，唔好空轉 chase。四柱≥4 且 **0 ticket** → 只監察回歸。
-6. 驗收：硬刷 `?v=intent2`（或更新 cache）——對住 DISPATCH「固定驗收測句」跑完；至少含想我點／推門入去／離題天氣。
+2. 對白主路徑 = **本地 IntentEngine**。禁止「加 yes-words／keys 對池」ticket；新票＝意圖、場景規則、回覆材料、場景記憶、anti-repeat。
+3. OpenRouter／API key＝**可選**；唔催 key；有 INTENT 開票時**禁止**開逼 OpenRouter 票。
+4. `chat-guide` 可 miss／藏 choices；**推進以意圖結果為準**，唔覆蓋 IntentEngine。
+5. **有 INTENT 開票（見 DISPATCH T1–T5）時：Hourly 必須做意圖加厚，禁止 monitor-only／空轉。** PICTURE／SOUND 只回歸。
+6. **僅當** INTENT 票全關 **且** 四柱≥4 **且** 無其他開票 → 先可 monitor-only。
+7. 驗收：硬刷 `?v=intent2`（完成 T5 後）——對住 DISPATCH 測句表。
 
 ## 回歸最少檢查
-- `app.js` bytes ≫ 565；index 直接 `./app.js?v=…`（無 jsDelivr loader）
+- `app.js` bytes ≫ 565；index 直接 `./app.js?v=…`
 - DISPATCH 測句意圖正確；行為掣仍可用

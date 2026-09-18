@@ -4,7 +4,7 @@ Read TASTE.md · CAST.lock.md · AUTOMATION.md.
 
 Every hour score pillars STORY / PICTURE / SOUND / FEEL 1–5.
 Write tickets for the lowest pillar first, then the next, max 5.
-**If all four pillars ≥4 and open tickets = 0 → monitor regressions only. Do not invent chase tickets.**
+**If INTENT tickets (DISPATCH T1–T5) are open → hourly MUST thicken intent; never monitor-only.** If INTENT closed AND all pillars ≥4 AND no other tickets → monitor regressions only; do not invent chase tickets.
 
 Must still: CAST.lock, chat-first, scene ids, audible+visible advance, BGM on enter, Safari, Cantonese.
 
