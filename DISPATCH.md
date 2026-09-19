@@ -9,50 +9,72 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
 - intent1：完整 `app.js`、禁 CDN stub；IntentEngine 骨架
-- 憲法寫入北辰 KPI
+- guide1：`sceneGoal` on n0 · `guide-policy.js` · 走廊 miss 升級導向 · cache `?v=guide1`
+- 憲法寫入北辰 KPI + GuidePolicy
 
-## Open tickets（lowest first）— **P0 INTENT 必須做；禁止當 0 ticket / monitor-only**
+## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
-### T1 — 擴意圖＋粵語變體
-- **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`（可再加合理 intent）；粵語同義／句型／語氣；**禁止**整句==key 唯一路徑
+### GUIDE（P0 next — 場景導向層；CEO 要 hourly 寫／做）
+
+#### GUIDE T1 — sceneGoal on key nodes
+- **Do:** 走廊／freeChat 起點補 `sceneGoal`（success／optional／maxMisses／guideLevel）；runtime 追 `state.guideMissCount`
+- **Acceptance:** `data/alex.json` `n0` 有 sceneGoal；「推門」→ success 推進；非 success 唔 advance
+
+#### GUIDE T2 — strategy replies（hint／pressure／callout／close）
+- **Do:** `guide-policy.js` 按 intent + miss 出 `{ strategy, reply, advance, showChoices, thought }`；入戲 Vera；anti-repeat
+- **Acceptance:** 「你想我點？」→ 非空、導向推門／停低；唔客服腔
+
+#### GUIDE T3 — escalate guide + 驗收
+- **Do:** 連續 miss 升級（thought → 更冷／更直接 → 亮推門／停低）；chat-guide **唔覆蓋** policy advance
+- **Acceptance:** 硬刷 `?v=guide1` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
+
+---
+
+### INTENT（仍開 — 加厚分類；GUIDE 為其後／可並行讀）
+
+#### T1 — 擴意圖＋粵語變體
+- **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`；粵語同義／句型／語氣；**禁止**整句==key 唯一路徑
 - **Acceptance:** 下列變體抽樣各 ≥1 句命中正確意圖（唔靠整句全等）
 
-### T2 — 場景記憶接話
+#### T2 — 場景記憶接話
 - **Do:** 短窗記住玩家先講過咩；回覆要接返
 - **Acceptance:** 先講「我想推門」再問「你想我點／記得我講咩」→ 回覆提到推門／門口，唔當空白上下文
 
-### T3 — anti-repeat
+#### T3 — anti-repeat
 - **Do:** 近 N 句 bot 回覆唔重複
 - **Acceptance:** 連續 5 次同類意圖，回覆文字唔出現連續重複同一句
 
-### T4 — 離題入戲升級
+#### T4 — 離題入戲升級
 - **Do:** 離題一律 Vera 入戲擋；重複離題升級冷淡；**禁客服腔**
 - **Acceptance:** 「今日天氣點呀」→ 入戲擋；連問 2–3 次離題 → 明顯更冷／更短，無「我唔明白／請重試」
 
-### T5 — 固定≥8 測句＋升 cache
+#### T5 — 固定≥8 測句＋升 cache
 - **Do:** 對住下表測完；通過後升 `?v=intent2`（或 intent2+）
-- **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`
+- **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`（GUIDE 期間可用 `guide1`）
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
 |---|---|---|---|
-| 1 | 你想我點？ | ask_want | 內心／導向＋可亮推門／停低 |
+| 1 | 你想我點？ | ask_want | 內心／導向＋可亮推門／停低（GuidePolicy hint） |
 | 2 | 我而家應該做咩 | ask_want | 節點感知導向 |
-| 3 | 推門 | enter | 推進或等同推門 |
+| 3 | 推門 | enter | 推進或等同推門（advance） |
 | 4 | 我入去啦 | enter | 推進 |
-| 5 | 停一停 | wait | wait／停低線 |
-| 6 | 唔想／我唔入 | refuse | 拒絕線，唔客服 |
+| 5 | 停一停 | wait | wait／停低線（corridor success） |
+| 6 | 唔想／我唔入 | refuse | 拒絕線，唔客服；走廊可導回門 |
 | 7 | 對唔住呀 | apologize | 入戲收／冷接 |
 | 8 | 今日天氣點呀 | off_topic | 入戲擋＋可升級 |
 | 9 | 你係咪 AI／程式 | off_topic 或 unclear | 否認系統感 |
 | 10 | 你記得我頭先講咩 | memory | 接返記憶（T2 後） |
+| G1 | （離題）×2 | off_topic | 第 2 次更冷／更直接，仍 steer 門 |
+| G2 | 推門 | enter_door | advances（GUIDE T3） |
 
 ## Ticket policy
-- **INTENT 開住 ⇒ hourly 必須做 T1–T5，不准 monitor-only**
-- 禁：yes-words／keys 對池；逼 OpenRouter／催 key
+- **INTENT 或 GUIDE 開住 ⇒ hourly 必須做對應票，不准 monitor-only**
+- 禁：yes-words／keys 對池；逼 OpenRouter／催 key；CDN pin／stub
 - PICTURE／SOUND：只回歸
+- chat-guide **唔覆蓋** GuidePolicy `advance`
 
 ## Ideas gate（唔係施工票）
 - 新 idea → 只寫 `IDEAS.md`（`proposed`）；**唔好**直接開 Open tickets
 - `approved` idea 先准搬入本檔 Open 並改碼
-- T1–T5 未清：施工優先 INTENT；idea 只提案
+- INTENT／GUIDE 未清：施工優先；idea 只提案

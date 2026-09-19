@@ -77,16 +77,28 @@
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
+        var n0 = node();
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
-          var cls = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
-          if (cls && (cls.id === "ask_want" || cls.id === "off_topic")) {
-            // let IntentEngine handle reply/unlock path; do not force guided advance
+          var cls = window.IntentEngine.classify(userText, { node: n0, state: typeof state !== "undefined" ? state : null });
+          // GuidePolicy owns advance when sceneGoal present — never force YES/heat advance
+          if (n0 && n0.sceneGoal && window.GuidePolicy) {
+            if (cls && window.GuidePolicy.isSuccess && !window.GuidePolicy.isSuccess(cls.id, n0.sceneGoal)) {
+              // miss / optional: IntentEngine+GuidePolicy reply path; do not advance
+              misses += 1;
+              if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
+              if (misses >= 2) showChoices();
+              return null;
+            }
+          }
+          if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear")) {
+            // let IntentEngine / GuidePolicy handle reply/unlock; do not force guided advance
             return null;
           }
           if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
-            var mapped = window.IntentEngine.mapToNodeIntent(cls, node());
+            var mapped = window.IntentEngine.mapToNodeIntent(cls, n0);
             if (mapped) {
               misses = 0;
+              if (typeof state !== "undefined") state.guideMissCount = 0;
               hideChoices();
               if (!mapped._ackClipped) {
                 mapped.ack = "你講「" + clip(userText) + "」。" + (mapped.ack || "我接。");
@@ -100,6 +112,7 @@
         var hit = orig(userText);
         if (hit) {
           misses = 0;
+          if (typeof state !== "undefined") state.guideMissCount = 0;
           hideChoices();
           hit.ack = "你講「" + clip(userText) + "」。" + (hit.ack || "我接。");
           lastAck = hit.ack;
@@ -107,7 +120,8 @@
         }
         var n = node();
         var t = String(userText || "").trim();
-        if (YES.test(t)) {
+        // Do not YES→heat advance when GuidePolicy sceneGoal is active
+        if (YES.test(t) && !(n && n.sceneGoal && window.GuidePolicy)) {
           var h = heatIntent(n);
           misses = 0;
           hideChoices();
@@ -118,6 +132,7 @@
           return h;
         }
         misses += 1;
+        if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
         if (misses >= 2) showChoices();
         return null;
       };
@@ -147,6 +162,7 @@
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
         rn.apply(this, arguments);
         misses = 0;
+        if (typeof state !== "undefined") state.guideMissCount = 0;
         hideChoices();
         glueText();
         hint();
@@ -161,7 +177,7 @@
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
         // IntentEngine ask_want / escalate may unlock before 2 misses
-        if (reason === "ask_want" || reason === "off_topic_escalate" || (reason && String(reason).indexOf("ask") === 0)) {
+        if (reason === "ask_want" || reason === "off_topic_escalate" || reason === "guide_policy" || (reason && String(reason).indexOf("ask") === 0)) {
           misses = Math.max(misses, 2);
           var ok = un.apply(this, arguments);
           showChoices();

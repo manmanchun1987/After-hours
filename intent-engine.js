@@ -1,7 +1,7 @@
 /**
  * IntentEngine (intent1) — Cantonese pattern / synonym / tone / scene classifier.
  * Reply pools are materials only; selection is driven by intent + scene + Vera tone.
- * Loaded after app.js + chat-guide.js so it can wrap the chat path.
+ * Loaded after app.js + chat-guide.js + guide-policy.js so it can wrap the chat path.
  */
 (function (global) {
   "use strict";
@@ -415,6 +415,12 @@
     return function matchFreeChatIntent(userText) {
       var node = currentNode();
       var classified = classify(userText, { node: node, state: typeof state !== "undefined" ? state : null, tone: currentTone() });
+      // sceneGoal: only success intents may map → advance; optional/miss stay null
+      if (node && node.sceneGoal && global.GuidePolicy && typeof global.GuidePolicy.isSuccess === "function") {
+        if (!global.GuidePolicy.isSuccess(classified.id, node.sceneGoal)) {
+          return null;
+        }
+      }
       var mapped = mapToNodeIntent(classified, node);
       if (mapped) return mapped;
       if (typeof orig === "function") {
@@ -444,9 +450,75 @@
         return;
       }
       var node = currentNode();
-      var classified = classify(cleaned, { node: node, state: typeof state !== "undefined" ? state : null, tone: currentTone() });
+      var st = typeof state !== "undefined" ? state : null;
+      var classified = classify(cleaned, { node: node, state: st, tone: currentTone() });
 
-      // Corridor ask_want: thought + unlock; do not CS-tone; pools as materials.
+      // GuidePolicy path when node has sceneGoal
+      if (node && node.sceneGoal && global.GuidePolicy && typeof global.GuidePolicy.decide === "function") {
+        var decision = global.GuidePolicy.decide({
+          intent: classified,
+          sceneGoal: node.sceneGoal,
+          memory: st && (st.chatMemory || st.memoryChips || []),
+          missCount: (st && st.guideMissCount) || 0,
+          state: st,
+          node: node,
+          tone: currentTone()
+        });
+        if (decision && decision.advance) {
+          if (st) {
+            st.guideMissCount = 0;
+            st.offTopicStreak = 0;
+          }
+          if (typeof orig === "function") return orig(text);
+          return;
+        }
+        if (decision && !decision.advance) {
+          if (st && st.chatBusy) return;
+          if (st) st.chatBusy = true;
+          if (typeof global.GuidePolicy.applyMissToState === "function") {
+            global.GuidePolicy.applyMissToState(st, decision);
+          } else if (st) {
+            st.guideMissCount = decision.missCount || ((st.guideMissCount || 0) + 1);
+          }
+          if (typeof noteChatActivity === "function") noteChatActivity();
+          if (typeof appendChat === "function") appendChat("user", cleaned);
+          if (typeof pushChatMemory === "function") pushChatMemory("user", cleaned);
+          var inputG = document.getElementById("chat-input");
+          if (inputG) inputG.value = "";
+          try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxClick(); } catch (eg0) {}
+          if (typeof setChatTyping === "function") setChatTyping(true);
+          if (typeof setUnread === "function") setUnread(0);
+          await new Promise(function (r) { setTimeout(r, 320 + Math.random() * 520); });
+
+          if (decision.thought && typeof setThoughtVoice === "function") {
+            setThoughtVoice(decision.thought);
+          }
+          if (decision.showChoices && typeof unlockFreeChatChoices === "function") {
+            unlockFreeChatChoices(classified.id === "ask_want" ? "ask_want" : "off_topic_escalate");
+          } else if (decision.showChoices && st) {
+            st.freeChatChoicesVisible = true;
+            document.body.classList.add("show-choices");
+          }
+
+          var replyG = decision.reply || "門就喺度。推定停。";
+          if (/(有什麼可以幫|很樂意為你|AI助手|語言模型)/i.test(replyG) || (/客服/.test(replyG) && !/唔做客服/.test(replyG))) {
+            replyG = "我唔做客服。門——推定停。";
+          }
+          if (typeof setChatTyping === "function") setChatTyping(false);
+          if (typeof appendChat === "function") appendChat("alex", replyG);
+          if (typeof pushChatMemory === "function") pushChatMemory("bot", replyG);
+          noteReply(replyG);
+          try {
+            if (typeof audioPrefs !== "undefined" && !audioPrefs.voiceMute && typeof speakChat === "function") speakChat(replyG);
+          } catch (eg1) {}
+          try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxTransition(); } catch (eg2) {}
+          if (st) st.chatBusy = false;
+          if (typeof noteChatActivity === "function") noteChatActivity();
+          return;
+        }
+      }
+
+      // Legacy corridor ask_want (no sceneGoal): thought + unlock
       if (classified.id === "ask_want" && node && node.freeChat) {
         if (typeof state !== "undefined" && state.chatBusy) return;
         if (typeof state !== "undefined") state.chatBusy = true;
@@ -484,7 +556,7 @@
         return;
       }
 
-      // Corridor / freeChat off_topic: in-character block + escalate, never CS tone.
+      // Legacy off_topic (no sceneGoal)
       if (classified.id === "off_topic" && node && node.freeChat) {
         if (typeof state !== "undefined" && state.chatBusy) return;
         if (typeof state !== "undefined") {
@@ -511,8 +583,7 @@
 
         var reply2 = pickReply(classified, { node: node, state: typeof state !== "undefined" ? state : null, tone: currentTone() })
           || "走廊唔傾呢啲。推，定停？";
-        // Strip any CS / bot leakage
-        if (/客服|有什麼可以|很樂意|AI助手|語言模型/i.test(reply2)) {
+        if (/(有什麼可以幫|很樂意為你|AI助手|語言模型)/i.test(reply2) || (/客服/.test(reply2) && !/唔做客服/.test(reply2))) {
           reply2 = "我唔做客服。門——推定停。";
         }
         if (typeof setChatTyping === "function") setChatTyping(false);
@@ -572,7 +643,7 @@
     pickReply: pickReply,
     isCorridor: isCorridor,
     install: install,
-    version: "intent1"
+    version: "guide1"
   };
 
   global.IntentEngine = api;
