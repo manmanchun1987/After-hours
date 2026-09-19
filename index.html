@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>加班之後 After Hours</title>
+  <link rel="stylesheet" href="./styles.css?v=hotfix1" />
+  <link rel="stylesheet" href="./styles-compete.css?v=hotfix1" />
+  <link rel="stylesheet" href="./safari-fix.css?v=hotfix1" />
+  <link rel="stylesheet" href="./fx.css?v=hotfix1" />
+  <style>
+    :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=hotfix1"); }
+    #l2d-canvas{display:none!important}
+    #alex-portrait{opacity:1!important;visibility:visible!important}
+    #screen-play.active .play-bg{
+      background-color:#0b0d12 !important;
+      background-image: var(--play-portrait) !important;
+      background-position: center 12% !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+    }
+  </style>
+</head>
+<body>
+  <script>
+  (function () {
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty("--app-vh", h + "px");
+  })();
+  </script>
+  <div class="atm-layer" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <button id="start-alex" type="button" hidden></button>
+  <button id="resume-alex" type="button" hidden></button>
+  <main class="app">
+    <div class="global-controls">
+      <button id="btn-mute-bgm" class="icon-btn" type="button"><span class="icon-label">♪</span></button>
+      <button id="btn-mute-voice" class="icon-btn" type="button"><span class="icon-label">聲</span></button>
+      <button id="btn-mute-master" class="icon-btn" type="button"><span class="icon-label">音</span></button>
+    </div>
+    <section id="screen-gate" class="screen active">
+      <div class="gate-hero">
+        <p class="brand brand-glow">AFTER HOURS</p>
+        <h1>加班之後</h1>
+        <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
+      </div>
+      <div class="card glass stack gate-card">
+        <p class="fine">18+ 。免費、無廣告。</p>
+        <button id="enter-btn" class="btn btn-primary btn-glow" type="button">我已年滿 18 歲，進入</button>
+      </div>
+    </section>
+    <section id="screen-cast" class="screen">
+      <div class="topbar"><div><p class="brand">加班之後</p><h1 class="h-cast">選擇角色</h1></div><span class="chip">訪客 · 免費</span></div>
+      <div class="chars" id="chars"></div>
+    </section>
+    <section id="screen-play" class="screen">
+      <div class="play-stage">
+        <div class="play-bg" aria-hidden="true">
+          <div class="portrait-stack" id="alex-portrait-stack">
+            <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg?v=hotfix1" alt="" />
+            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" hidden></video>
+            <div id="blink-mask" class="blink-mask" aria-hidden="true">
+              <span class="blink-lid blink-lid-l"></span>
+              <span class="blink-lid blink-lid-r"></span>
+            </div>
+          </div>
+          <div class="play-bg-vignette"></div>
+          <div class="play-bg-scrim"></div>
+        </div>
+        <div class="play-overlay">
+          <div class="topbar play-topbar">
+            <p id="play-label" class="play-label"></p>
+            <div class="play-actions">
+              <button id="btn-replay-voice" class="btn btn-ghost btn-tiny" type="button">重聽</button>
+              <span id="speaking-indicator" class="speaking-pill" hidden>語音中</span>
+              <button id="back-cast" class="btn btn-ghost btn-tiny" type="button">角色</button>
+            </div>
+          </div>
+          <div class="play-hud" id="play-hud">
+            <div class="meters">
+              <div class="meter"><span>熱度</span><i><b id="meter-heat"></b></i></div>
+              <div class="meter"><span>張力</span><i><b id="meter-tension"></b></i></div>
+            </div>
+            <div id="call-chrome" class="call-chrome" hidden>
+              <span class="call-dot"></span><span id="call-who">通話中</span><span class="call-timer" id="call-timer">00:00</span>
+            </div>
+            <button type="button" id="memory-strip" class="memory-strip" hidden><span class="memory-title">今晚記得</span><div id="memory-chips" class="memory-chips"></div></button>
+            <div id="memory-panel" class="memory-panel card glass" hidden>
+              <div class="memory-panel-head"><strong>今晚記得</strong><button type="button" id="memory-panel-close" class="btn btn-ghost btn-tiny">收起</button></div>
+              <ul id="memory-panel-list" class="memory-panel-list"></ul>
+              <p id="memory-panel-empty" hidden></p>
+            </div>
+          </div>
+          <div class="play-face-gap" aria-hidden="true"></div>
+          <div class="play-lower">
+            <div class="play-card narrative-bubble zone-story"><p id="play-text" class="narrative"></p></div>
+            <div class="action-zone is-chat-first" id="action-zone">
+              <div class="zone-label action-label">行動</div>
+              <div id="choices" class="stack choices freechat-hidden"></div>
+            </div>
+            <div class="chat-panel zone-chat">
+              <div class="chat-header"><span class="chat-title">私下對白 · <span id="chat-who">Vera</span> <span id="chat-unread" hidden>1</span></span></div>
+              <button type="button" id="incoming-toast" class="incoming-toast" hidden><span id="incoming-toast-text">傳咗訊息</span></button>
+              <div id="chat-messages" class="chat-messages"></div>
+              <div id="chat-typing" class="chat-typing" hidden></div>
+              <div class="chat-composer">
+                <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="對佢講…推劇" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="screen-ending" class="screen">
+      <p id="ending-kicker" class="brand brand-glow"></p>
+      <h2 id="ending-title" class="ending-title"></h2>
+      <div class="card glass"><p id="ending-text" class="narrative"></p></div>
+      <div class="stack">
+        <button id="ending-replay" class="btn btn-primary" type="button">再玩一次</button>
+        <button id="ending-cast" class="btn btn-ghost" type="button">返回角色選擇</button>
+      </div>
+    </section>
+  </main>
+  <script src="./app.js?v=hotfix1"></script>
+  <script src="./cast-lock.js?v=hotfix1"></script>
+  <script src="./compete-boot.js?v=hotfix1"></script>
+  <script src="./audio-bed.js?v=hotfix1"></script>
+  <script src="./fx-play.js?v=hotfix1"></script>
+  <script src="./chat-guide.js?v=hotfix1"></script>
+  <script src="./llm-bridge.js?v=hotfix1"></script>
+  <script src="./intent-engine.js?v=hotfix1"></script>
+  <script src="./guide-policy.js?v=hotfix1"></script>
+</body>
+</html>
