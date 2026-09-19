@@ -57,6 +57,8 @@
     document.body.classList.add("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = true;
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(false);
+    var box = document.getElementById("choices");
+    if (box) box.classList.remove("freechat-hidden");
   }
   function glueText() {
     var el = document.getElementById("play-text");
@@ -78,7 +80,6 @@
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var n0 = node();
-        // Soft intentsoft1: defer corridor advance to IntentEngine+GuidePolicy (goal match, not key/YES exact)
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var cls = window.IntentEngine.classify(userText, { node: n0, state: typeof state !== "undefined" ? state : null });
           if (n0 && n0.sceneGoal && window.GuidePolicy) {
@@ -101,9 +102,8 @@
                 lastAck = mappedOk.ack;
                 return mappedOk;
               }
-              return null; // success intent but unresolved — do not exact-key fallthrough
+              return null;
             }
-            // miss / optional: IntentEngine+GuidePolicy reply path; do not advance on labels
             misses += 1;
             if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
             if (misses >= 2) showChoices();
@@ -128,7 +128,6 @@
           }
         }
         var n = node();
-        // With sceneGoal, never use literal key / YES exact advance
         if (n && n.sceneGoal && window.GuidePolicy) {
           misses += 1;
           if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
@@ -200,7 +199,6 @@
     if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
-        // IntentEngine ask_want / escalate may unlock before 2 misses
         if (reason === "ask_want" || reason === "off_topic_escalate" || reason === "guide_policy" || (reason && String(reason).indexOf("ask") === 0)) {
           misses = Math.max(misses, 2);
           var ok = un.apply(this, arguments);
@@ -227,7 +225,8 @@
   var ticks = 0;
   var t = setInterval(function () {
     wrap();
-    hideChoices();
+    if (misses >= 2) showChoices();
+    else hideChoices();
     glueText();
     hint();
     if (++ticks > 80) clearInterval(t);
