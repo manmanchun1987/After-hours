@@ -1,5 +1,5 @@
 /**
- * GuideLines (split1c) — Lane B reply/thought pools for GuidePolicy.
+ * GuideLines (split1d) — Lane B reply/thought pools for GuidePolicy.
  * Policy core (sceneGoal / miss / advance) stays in guide-policy.js.
  * In-character Vera; steer to door/wait; no CS tone; anti-repeat via larger pools.
  */
@@ -18,7 +18,9 @@
     "你想知道下一步？推門。或停低。",
     "講多都係一句：入，定企。",
     "門外冷。你仲有時間擁。",
-    "……我望住你手。你會推未。"
+    "……我望住你手。你會推未。",
+    "你問跟住做咥？門把。推，定停。",
+    "而家點算？兩個位：入，定企。"
   ];
   var PRESSURE_REPLIES = [
     "離題夠。推門——定停低。而家。",
@@ -32,14 +34,16 @@
     "天氣、程式、我係乜——都唔係今晚事。門。",
     "你可以唔入。但要講清楚：停低。",
     "我冷少少。門把仲在你手上。",
-    "……你再問一次既話，我當你唔敢。"
+    "……你再問一次既話，我當你唔敢。",
+    "第二次。天氣同程式都唔係門。推，定停。",
+    "我聲更短。門。而家。"
   ];
   var CALLOUT_REPLIES = [
     "推門。定停低。撞下面都得。",
     "夠問。選——入，定企。",
     "門開住。你仲企咽度做乜。",
     "……最後一次：推，定停。",
-    "唔好聽閑話。門。而家。",
+    "唔好聽閒話。門。而家。",
     "選擇出嚟。推門。停低。唔再問。",
     "我唔再講第三句。手，或踩。",
     "多夜。門。你擁完未。",
@@ -51,7 +55,7 @@
   var OPTIONAL_AGREE = [
     "「好」唔等於推。門把仲凉。",
     "同意？跟住——推門，定停低。",
-    "嗯。決定落喇手上——入定企。",
+    "嗯。決定落喎手上——入定企。",
     "得。手按門，或停一秒。",
     "係。咁推門呀。或你講停。",
     "聽到。好唔等於入去。手呢？",
@@ -79,7 +83,7 @@
   ];
   var THOUGHTS_CALLOUT = [
     "……再離題，當你退。",
-    "夠。亮選擇畀佢。",
+    "夠。亮選擇畎佢。",
     "門——推定停。唔再兜。",
     "我唔做導遊。佢要自己推。",
     "……最後一次好聲。",
@@ -91,8 +95,10 @@
     "記得你講推門。手按落去。",
     "你講過要入去。門把仲在。",
     "記得你講門口。唔使我再問一次。",
-    "頭先那句——推門。你改嘲未？",
-    "你提過門。我唔會當聽唔到。"
+    "頭先那句——推門。你改嘻未？",
+    "你提過門。我唔會當聽唔到。",
+    "你話想入。我記得。手按落去。",
+    "頭先你講入。唔好當我失憶。"
   ];
   var FALLBACK_REPLY = "門就咽度。推定停。";
   var CS_BLOCK_REPLY = "我唔做客服。門——推定停。";
@@ -108,7 +114,7 @@
     MEM_NUDGE: MEM_NUDGE,
     FALLBACK_REPLY: FALLBACK_REPLY,
     CS_BLOCK_REPLY: CS_BLOCK_REPLY,
-    version: "split1c"
+    version: "split1d"
   };
 
   global.GuideLines = api;
