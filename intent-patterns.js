@@ -1,5 +1,5 @@
 /**
- * IntentPatterns (split1c) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
+ * IntentPatterns (split1f) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
  * Consumed by IntentEngine. Hourly default lane may thicken this file without touching engine core.
  */
 (function (global) {
@@ -30,15 +30,20 @@
       /\benter\b/i, /\bgo in\b/i, /\bgo into\b/i, /\bopen( the)? door\b/i, /push( the)? door/i,
       /\bcome in\b/i, /\bwalk in\b/i, /\bhead in\b/i,
       /\u5e6b\u6211\u958b\u9580/, /\u6211\u54d2\u5165\u53bb/, /\u6211\u884c\u904e\u53bb\u5148/, /\u884c\u904e\u53bb\u5148/, /\u6211\u53bb\u63a8/, /\u53bb\u958b\u9580/,
-      /\u5165\u53bb\u5566/, /\u5165\u569f\u5566/, /\u6211\u800c\u5bb6\u5165/, /\u800c\u5bb6\u5165\u53bb/
+      /\u5165\u53bb\u5566/, /\u5165\u569f\u5566/, /\u6211\u800c\u5bb6\u5165/, /\u800c\u5bb6\u5165\u53bb/,
+      /\u958b\u9580\u5416/, /\u958b\u9580\u5443/, /\u63a8\u9580\u5148/, /\u63a8\u9580\u5566/, /\u6211\u904e\u569f\u5165/,
+      /\u884c\u904e\u569f\u5165/, /\u5165\u53bb\u7747\u5413/, /\u5165\u53bb\u7747\u7747/, /\u6211\u54cb\u5165\u53bb/,
+      /\u6211\u54cb\u5165/, /\u904e\u9580/, /\u904e\u569f\u5148/, /\u958b\u9580\u5566\u54c7/, /let me in/i, /head inside/i
     ],
     wait: [
       /\u7336\u8c6b/, /\u505c\u4e00\u79d2/, /\u505c\u4e00\u505c/, /\u505c\u4f4e/, /\u5514\u6562/, /\u518d\u63a8/, /\u7b49\u7b49/, /\u4f01(\u558e|\u558f)\u5ea6/,
       /\u7ad9\u4f4f/, /\u7b49\u9663/, /\u7b49\u4e00\u4e0b/, /\u7b49\u4e00\u7b49/, /\u7b49\u7b49\u5148/, /\u7b49\u6211/, /\u7b49\u4e00\u5413/, /\u7a0d\u7b49/,
       /\u672a\u6562/, /\u518d\u7b49/, /\u505c\u4e00\u505c\u5148/, /^\u505c$/, /\u672a\u6e96\u5099/, /\u672a\u6e96\u5099\u597d/, /\u672a ready/i, /\u6211\u672a/,
-      /\u672a\u5920\u81bd/, /\u518d\u8af8/, /\u8af8\u6e05\u695a/, /\u672a\u597d/, /\u672a\u5f97/, /\u672a\u5f97\u9592/, /\u7b49\u9663\u5148/, /hold on/i, /\bwait\b/i,
+      /\u672a\u5920\u81bd/, /\u518d\u8af8/, /\u8af8\u6e05\u695a/, /\u672a\u597d/, /\u672a\u5f97/, /\u672a\u5f97\u9592/, /\u7b49\u9663\u5148/, /諧吓/, /我要諧吓/, /諧一諧/, /hold on/i, /\bwait\b/i,
       /not ready/i, /\u9084\u6c92\u6e96\u5099/, /\u8fd8\u6ca1\u51c6\u5907/, /\u6211\u672a\u6e96\u5099/, /\u672a\u5920/, /\u6162\u5572/, /\u7b49\u7b49\u6211/,
-      /\u6211\u8981\u8af8\u5413/, /\u8af8\u5413\u5148/, /\u7b49\u6211\u8af8/, /\u6211\u518d\u8af8\u5413/, /\u672a\u5b9a/, /\u672a\u6c7a\u5b9a/, /\u518d\u7b49\u4e00\u9663/
+      /\u6211\u8981\u8af8\u5413/, /\u8af8\u5413\u5148/, /\u7b49\u6211\u8af8/, /\u6211\u518d\u8af8\u5413/, /\u672a\u5b9a/, /\u672a\u6c7a\u5b9a/, /\u518d\u7b49\u4e00\u9663/,
+      /\u6211\u8981\u8b58\u5413/, /\u8b58\u5413/, /\u8b58\u4e00\u8b58/, /\u6162\u4f4e/, /\u505c\u4f4e\u5148/, /\u7b49\u9663\u5148\u5566/,
+      /\u672a\u5920\u81bd/, /\u6211\u672a\u5920\u81bd/, /\u6211\u8981\u6162/, /give me a sec/i, /hang on/i, /hold up/i
     ],
     ask_want: [
       /\u4f60\u60f3(\u8981|\u9ede|\u6211)/, /\u60f3(\u8981|\u9ede)(\u4e5c|\u54a5|\u6211|\u9ede)/, /\u6211(\u61c9\u8a72|\u8981)\u9ede/, /\u9ede\u6a23(\u5148|\u505a)/,
@@ -48,7 +53,9 @@
       /\u4f60\u7a76\u7adf\u60f3/, /\u60f3\u9ede\u554a/, /\u60f3\u9ede\u5440/, /\u8ddf\u4f60\u60f3/, /\u7167\u4f60\u60f3/,
       /\u61c9\u8a72\u505a\u54a5/, /\u800c\u5bb6\u61c9\u8a72/, /\u6211\u800c\u5bb6\u61c9\u8a72/, /\u6211\u61c9\u8a72\u505a/, /\u61c9\u8a72\u9ede\u505a/, /\u800c\u5bb6\u9ede\u505a/,
       /\u9ede\u5148\u597d/, /\u6211\u800c\u5bb6\u9ede/, /\u6559\u4e0b\u6211/, /\u8a71\u6211\u77e5\u9ede/,
-      /\u800c\u5bb6\u9ede\u7b97/, /\u6211\u8ddf\u4f4f\u505a\u54a5/, /\u8ddf\u4f4f\u9ede/, /\u4e0b\u4e00\u6b65/, /\u4f60\u60f3\u6211\u505a\u54a5/, /\u6211\u60f3\u77e5\u9ede\u884c/
+      /\u800c\u5bb6\u9ede\u7b97/, /\u6211\u8ddf\u4f4f\u505a\u54a5/, /\u8ddf\u4f4f\u9ede/, /\u4e0b\u4e00\u6b65/, /\u4f60\u60f3\u6211\u505a\u54a5/, /\u6211\u60f3\u77e5\u9ede\u884c/,
+      /\u9ede\u884c\u5148/, /\u8ddf\u4f4f\u9ede\u7b97/, /\u4f60\u8981\u6211\u9ede\u505a/, /\u800c\u5bb6\u9ede\u5148\u5f97/, /\u6211\u8a72\u9ede/,
+      /\u4f60\u8981\u6211\u9ede/, /next step/i, /what now/i, /what next/i
     ],
     agree: [
       /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i,
@@ -59,7 +66,9 @@
       /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /\bno\b/i, /refuse/i, /唔想入/, /唔想去/,
       /我唔入/, /唔想推/, /唔推/, /我唔去/, /走喇/, /閃先/, /算數/, /唔得喇/,
       /唔想入去/, /我唔推/, /唔入去/, /走啦/, /我閃/,
-      /我唔想而家入/, /而家唔入/, /唔想而家推/, /我而家唔入/
+      /我唔想而家入/, /而家唔入/, /唔想而家推/, /我而家唔入/,
+      /^唔想$/, /唔想啦/, /而家唔推/, /我唔想入去/, /唔過門/,
+      /我唔過/, /not going in/i, /i won't go in/i
     ],
     apologize: [
       /對唔住/, /唔好意思/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/,
@@ -79,7 +88,8 @@
       /記唔記得/, /頭先嗰/, /你記得我/, /記得我講/, /我頭先講/, /記得我頭先/,
       /你記唔記得/, /頭先講過/, /我講過咩/, /記得先前提/,
       /你仲記唔記得/, /頭先我講/, /記得我話/, /你記得未/,
-      /你記唔記得我話想入/, /記得我想推/, /記得我話入/
+      /你記唔記得我話想入/, /記得我想推/, /記得我話入/,
+      /頭先我講過推/, /記得門口/, /頭先嗰句/, /你記得未我講/
     ],
     off_topic: [
       /天氣/, /食咗/, /食乜/, /午餐/, /晚餐/, /足球/, /遊戲/, /game/i,
@@ -88,24 +98,25 @@
       /天氣點/, /落雨/, /天氣預報/, /whats the weather/i, /how are you$/i,
       /你好嗎$/, /食飯未/, /中午/, /八卦/, /同事私/,
       /你係咪ai/i, /你係咪 AI/i, /你係咪程式/i, /係咪ai/i, /係咪程式/i, /你係程式/i,
-      /係咪機械人/i, /你係唔係程式/i, /你係咪人工智能/i, /係咪機器人/i
+      /係咪機械人/i, /你係唔係程式/i, /你係咪人工智能/i, /係咪機器人/i,
+      /今日幾多度/, /你係 bot/i, /\bgpt\b/i, /chatgpt/i, /幾多度/, /落雨未/
     ]
   };
 
   var SOFT_LEXICON = {
     enter_door: [
       "推門", "開門", "入去", "入嚟", "進去", "進入", "行入", "走入", "入門", "進門",
-      "入房", "入辦公室", "推入", "入來", "入来", "入去先", "入去未", "開門啦", "我入",
+      "入房", "入辦公室", "推入", "入來", "入来", "入去先", "入去未", "開門啦", "開門吖", "我入",
       "間房", "入佢", "過去入", "行過去", "進去看", "進去睇", "入屋", "踏入", "推開", "入先"
     ],
     wait: [
       "等等", "停", "猶豫", "停低", "企", "站住", "等陣", "未準備", "未敢", "再諗",
-      "諗清楚", "未好", "稍等", "等我", "慢啲", "未夠膽", "等一等", "停一停"
+      "諗清楚", "未好", "稍等", "等我", "慢啲", "未夠膽", "等一等", "停一停", "諗吓", "慢住", "停低先", "等陣先"
     ],
-    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入", "唔推", "我唔入", "走喇", "唔入去"],
+    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入", "唔推", "我唔入", "走喇", "唔入去", "唔想", "而家唔推", "唔過門"],
     agree: ["好", "係", "繼續", "得", "ok", "yes"],
     flirt: ["近啲", "坐近", "想要你", "錫", "親"],
-    ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點", "應該做咩", "而家應該", "點先好"],
+    ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點", "應該做咩", "而家應該", "點先好", "點行先", "跟住點", "what now"],
     apologize: ["對唔住", "唔好意思", "抱歉", "sorry", "道歉", "對唔住呀"],
     off_topic: ["天氣", "食飯", "足球", "薪水", "chatgpt", "ai", "程式", "機械人", "人工智能"],
     ask_memory: ["記得", "頭先", "記唔記得", "我講過"]
@@ -140,7 +151,11 @@
     { text: "我行過去先", intent: "enter_door" },
     { text: "我要諗吓", intent: "wait" },
     { text: "我唔想而家入", intent: "refuse" },
-    { text: "你記唔記得我話想入", intent: "ask_memory" }
+    { text: "你記唔記得我話想入", intent: "ask_memory" },
+    { text: "開門吖", intent: "enter_door" },
+    { text: "唔想", intent: "refuse" },
+    { text: "點行先", intent: "ask_want" },
+    { text: "今日幾多度", intent: "off_topic" }
   ];
 
   var api = {
@@ -149,7 +164,7 @@
     SOFT_LEXICON: SOFT_LEXICON,
     KEY_SYNONYMS: KEY_SYNONYMS,
     ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
-    version: "split1c"
+    version: "split1f"
   };
 
   global.IntentPatterns = api;
