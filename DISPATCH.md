@@ -1,22 +1,16 @@
 # DISPATCH
 
-## 三車模式（現行）
-用戶 Grok 極限＝**A＋B＋C**。派工優先：
-- A → `intent-patterns.js`（+ 可選 STATUS 一行／必要 cache-bust）
-- B → `guide-lines.*` only
-- C → `data/*.json` only
-- D／E／F 額滿暫緩；**禁止 B／C 改 app／index**；F 僅 A 確認需要先做
-- Ideas：A 每小時 ≤1 proposed，或等 CEO／用戶（唔靠 D）
+## 三車模式（現行唯一預設）
+用戶極限＝**A＋B＋C**。每次 run 讀 `LANES.md` 對應車。
+- **A** → `intent-patterns.js`（+ 可選 STATUS 一行／必要 cache-bust）
+- **B** → 只 `guide-lines.*`
+- **C** → 只 `data/*.json`
+- **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
+- Ideas：A ≤1/h proposed 或等批
+- Live 驗收：`?v=split1`；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
 
-
-## 過關標準（intentsoft1・寫死）
-- ❌ 禁止要求玩家打出預設答案原文／近義整句先 advance
-- ✅ **意圖匹配 `sceneGoal` 即過**（enter_door／wait／apologize…）
-- 驗收用**非原文**測句：開門啦／我入去先／進去看看／等等／我未準備好
-- Live：`?v=split1`（soft-pass 語義照舊）
-- 禁票：「必須打齊選項字／原文」；禁倒退 keys 對池
-
-
+## 過關標準
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1`。
 
 ## 車道制（split1・可擴充 N≥1）
 
