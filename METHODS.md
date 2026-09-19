@@ -15,6 +15,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 |---|---|---|
 | Locked face Vera/Elise/Sammi | stills in repo only | never A–K faces |
 | Room behind her (office lounge pantry review roof lift) | A reuse SVG | B new empty SVG |
+| Door / lift ajar — peek room without new scene | M CSS mask-image slit | A full flat room |
 | Light / rain / glass / night mood | C CSS | D FX |
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
@@ -41,6 +42,7 @@ I Web Audio bed + cues
 J mute ducks file + synth
 K SVG filter weather (`feTurbulence` / displacement) baked into `assets/bg/{scene}.svg` — Pages + Safari, no Imagine, no upload, no CF
 L CSS `mix-blend-mode` light planes (repo SVG/CSS layers over locked still + room; no new face, no upload, no CF) — Pages + Safari; beats C whole-wash and K weather-filter for isolated CCTV/monitor/glare
+M CSS `-webkit-mask-image` / `mask-image` doorway or lift slit (radial or rect gradient) over existing A room SVG — Pages + Safari; peek room through ajar door without B new empty SVG or Imagine faces; beats A full-bleed flat room for enter/wait beats
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
