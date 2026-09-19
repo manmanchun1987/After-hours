@@ -24,6 +24,13 @@
 5. **P0 INTENT T1–T5 未完成時：hourly 先做 T1–T5**；**GUIDE T1–T3 為 INTENT 後下一個 P0**（可並行讀碼，施工跟 DISPATCH 優先序）。idea 提案可並行寫 IDEAS，**唔好搶施工**。
 6. 每條保留：id、proposed_at、status、pain／how、acceptance、rationale。
 
+
+## 核心檔安全閘（白畫面／空引擎防再發）
+- **禁止** commit／push 以下任何檔為 **空或 <1KB**：`index.html`、`intent-engine.js`、`guide-policy.js`、`app.js`（以及其他會令 live 白／死嘅核心入口）。
+- 改 `index.html`：**改前＋改後必須印 `wc -c index.html`**（兩次 ≥1000）；push 前再印核心四檔 size。
+- 改 `intent-engine.js`／`guide-policy.js`／`app.js`：push 前印 `wc -c`；`app.js` 必須 ≫565B（禁 CDN stub）。
+- size 異常（0／<1KB／突然縮水過半）→ **立刻停 push**，還原後先報 CEO／產線。
+
 ## 回歸最少檢查
 - `app.js` bytes ≫ 565；index 直接 `./app.js?v=…`；`guide-policy.js` 已載入
 - DISPATCH 測句意圖正確＋走廊導向；行為掣仍可用
