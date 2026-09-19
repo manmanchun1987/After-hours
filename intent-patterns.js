@@ -1,5 +1,5 @@
 /**
- * IntentPatterns (split1a) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
+ * IntentPatterns (split1b) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
  * Consumed by IntentEngine. Hourly default lane may thicken this file without touching engine core.
  */
 (function (global) {
@@ -44,7 +44,9 @@
       /我做咩/, /你要我/, /教我/, /指引/, /點算/, /應該點/, /我想知你想/,
       /你想要乜/, /你想要咩/, /想我點做/, /你想我點/, /點先得/, /我點做/,
       /what do you want/i, /what should i/i, /how should i/i, /tell me what/i,
-      /你究竟想/, /想點啊/, /想點呀/, /跟你想/, /照你想/
+      /你究竟想/, /想點啊/, /想點呀/, /跟你想/, /照你想/,
+      /應該做咩/, /而家應該/, /我而家應該/, /我應該做/, /應該點做/, /而家點做/,
+      /點先好/, /我而家點/, /教下我/, /話我知點/
     ],
     agree: [
       /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i,
@@ -53,10 +55,12 @@
     refuse: [
       /唔入/, /唔要/, /不要/, /拒絕/, /鎖門/, /關門/, /走先/, /閃/, /唔得/,
       /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /\bno\b/i, /refuse/i, /唔想入/, /唔想去/,
-      /我唔入/, /唔想推/, /唔推/, /我唔去/, /走喇/, /閃先/, /算數/, /唔得喇/
+      /我唔入/, /唔想推/, /唔推/, /我唔去/, /走喇/, /閃先/, /算數/, /唔得喇/,
+      /唔想入去/, /我唔推/, /唔入去/, /走啦/, /我閃/
     ],
     apologize: [
-      /對唔住/, /唔好意思/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/
+      /對唔住/, /唔好意思/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/,
+      /對唔住呀/, /唔好意思呀/, /我有錯/, /請原諒/
     ],
     flirt: [
       /靚/, /好靚/, /想錫/, /想親/, /心口/, /你香/, /今晚留/, /想要你/,
@@ -69,14 +73,17 @@
     ask_memory: [
       /記得/, /之前/, /頭先/, /今晚.*記/, /你知唔知/, /你記/, /memory/i,
       /記唔記得/, /頭先嗰/, /你記得我/, /記得我講/, /我頭先講/, /記得我頭先/,
-      /你記唔記得/, /頭先講過/, /我講過咩/, /記得先前提/
+      /你記唔記得/, /頭先講過/, /我講過咩/, /記得先前提/,
+      /你仲記唔記得/, /頭先我講/, /記得我話/, /你記得未/
     ],
     off_topic: [
       /天氣/, /食咗/, /食乜/, /午餐/, /晚餐/, /足球/, /遊戲/, /game/i,
       /chatgpt/i, /你係唔係ai/i, /人工智能/, /機械人/, /机器人/, /同ai/i, /係ai/i, /\bai\b/i, /傾偈.*ai|ai.*傾/i,
       /薪水/, /人工幾多/, /加班費/, /家人/, /老婆/, /女朋友/, /男友/,
       /天氣點/, /落雨/, /天氣預報/, /whats the weather/i, /how are you$/i,
-      /你好嗎$/, /食飯未/, /中午/, /八卦/, /同事私/
+      /你好嗎$/, /食飯未/, /中午/, /八卦/, /同事私/,
+      /你係咪ai/i, /你係咪 AI/i, /你係咪程式/i, /係咪ai/i, /係咪程式/i, /你係程式/i,
+      /係咪機械人/i, /你係唔係程式/i, /你係咪人工智能/i, /係咪機器人/i
     ]
   };
 
@@ -91,12 +98,13 @@
       "等等", "停", "猶豫", "停低", "企", "站住", "等陣", "未準備", "未敢", "再諗",
       "諗清楚", "未好", "稍等", "等我", "慢啲", "未夠膽", "等一等", "停一停"
     ],
-    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入", "唔推", "我唔入", "走喇"],
+    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入", "唔推", "我唔入", "走喇", "唔入去"],
     agree: ["好", "係", "繼續", "得", "ok", "yes"],
     flirt: ["近啲", "坐近", "想要你", "錫", "親"],
-    ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點"],
-    apologize: ["對唔住", "唔好意思", "抱歉", "sorry", "道歉"],
-    off_topic: ["天氣", "食飯", "足球", "薪水", "chatgpt"]
+    ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點", "應該做咩", "而家應該", "點先好"],
+    apologize: ["對唔住", "唔好意思", "抱歉", "sorry", "道歉", "對唔住呀"],
+    off_topic: ["天氣", "食飯", "足球", "薪水", "chatgpt", "ai", "程式", "機械人", "人工智能"],
+    ask_memory: ["記得", "頭先", "記唔記得", "我講過"]
   };
 
   // Soft synonyms that boost mapping onto node.intent keys (substring, not ==).
@@ -106,7 +114,7 @@
     refuse: ["唔入", "走", "閃", "關門", "鎖門", "離開"],
     agree: ["好", "係", "繼續", "得"],
     flirt: ["近", "坐近", "想要"],
-    ask_want: ["想", "點", "指引", "教"],
+    ask_want: ["想", "點", "指引", "教", "應該"],
     apologize: ["對唔住", "抱歉", "sorry"]
   };
 
@@ -126,7 +134,9 @@
     { text: "等等", intent: "wait" },
     { text: "我未準備好", intent: "wait" },
     { text: "推門", intent: "enter_door" },
-    { text: "停一停", intent: "wait" }
+    { text: "停一停", intent: "wait" },
+    { text: "我而家應該做咩", intent: "ask_want" },
+    { text: "你係咪 AI", intent: "off_topic" }
   ];
 
   var api = {
@@ -135,7 +145,7 @@
     SOFT_LEXICON: SOFT_LEXICON,
     KEY_SYNONYMS: KEY_SYNONYMS,
     ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
-    version: "split1a"
+    version: "split1b"
   };
 
   global.IntentPatterns = api;
