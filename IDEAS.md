@@ -36,14 +36,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ```
 
 ## Proposed
-（hourly 新 idea 寫喺呢度；最多每次 +3）
+（hourly 新 idea 寫喂呢度；最多每次 +3）
 
 ### I-20260919-01
 - proposed_at: 2026-09-19
 - status: proposed
-- pain: 玩家講完「我想推門」再問「你記得我講咩」時，若 chatMemory 結構唔係純字串陣列，接話可能 miss
+- pain: 玩家講完「我想推門」再問「你記得我講咥」時，若 chatMemory 結構唔係純字串陣列，接話可能 miss
 - how: 統一 pushChatMemory 寫入短窗 recentUserLines（最近 6 句 user text），ask_memory 優先讀呢個窗
-- acceptance: 先講「我想推門」→「你記得我頭先講咩」→ 回覆必含門／推
+- acceptance: 先講「我想推門」→「你記得我頭先講咥」→ 回覆必含門／推
 - rationale: 令記憶意圖更似真 AI 短時記憶，唔似空白客服
 
 ### I-20260919-02
@@ -69,6 +69,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: pressure／callout 再拉開短句長度同冷度差（唔改政策核心）
 - acceptance: G1 離題×2 第 2 句明顯更短更冷，仍 steer 門
 - rationale: 升級要似人發脾氣，唔似同一句 recast
+
+### I-20260920-02
+- proposed_at: 2026-09-20
+- status: proposed
+- pain: 走廊 bias 令「我唔入／我唔想而家入」在 n0 被判 enter_door，拒絕體感假陽性
+- how: 引擎（F 批核後）改 corridor：僅當 enter 明顯高於 refuse 先覆蓋；「唔+入／唔想+推」優先 refuse
+- acceptance: 走廊「我唔入」「我唔想推門」→ refuse；「我入去」仍 enter
+- rationale: 意圖聽得準先似 AI；唔好把拒絕當過關推門
 
 ## Approved
 （用戶／CEO 標記後搬嚟；先准開 DISPATCH 施工票）
