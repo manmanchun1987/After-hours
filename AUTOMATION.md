@@ -14,6 +14,15 @@
 6. **僅當** INTENT 票全關 **且** 四柱≥4 **且** 無其他開票 → 先可 monitor-only。
 7. 驗收：硬刷 `?v=intent2`（完成 T5 後）——對住 DISPATCH 測句表。
 
+
+## Idea 兩段式閘
+1. Hourly **可**產出最多 **3** 條 idea，**只寫入 `IDEAS.md`**，狀態一律 `proposed`（日期、痛點一句、點樣更似 AI、驗收一句）。
+2. **未批不准改碼／不准開施工 ticket**。只有 `status: approved`（用戶或 CEO）先可搬去 DISPATCH Open 同動手。
+3. Idea 必須服務「意圖體感接近真 AI」；否則 `rejected`。
+4. 禁區一律 rejected：CDN pin／stub app.js、yes-words／keys 對池、催 OpenRouter、改 Vera 鎖樣、範圍外大重構。
+5. **P0 INTENT T1–T5 未完成時：hourly 先做 T1–T5**；idea 提案可並行寫 IDEAS，**唔好搶施工**。
+6. 每條保留：id、proposed_at、status、pain／how、acceptance、rationale。
+
 ## 回歸最少檢查
 - `app.js` bytes ≫ 565；index 直接 `./app.js?v=…`
 - DISPATCH 測句意圖正確；行為掣仍可用

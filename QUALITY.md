@@ -23,3 +23,10 @@ Must still: CAST.lock, chat-first, scene ids, audible+visible advance, BGM on en
 
 ## Never
 Imagine faces · **CDN pin／stub `app.js`（jsDelivr 鎖舊版）** · stolen Live2D · user upload · silent jumps · Ken Burns as soul · hotlink random CDNs for engine
+
+## Ideas gate
+Hourly may propose ≤3 ideas into `IDEAS.md` as `proposed` only.
+No code / no build tickets until `approved` (user or CEO).
+Ideas must serve intent-feels-like-AI; else `rejected`.
+Banned→rejected: CDN pin/stub app.js, yes-words/key pools, nag OpenRouter, Vera lock look, out-of-scope rewrites.
+While DISPATCH T1–T5 open: build those first; ideas may be written in parallel but must not steal build slots.

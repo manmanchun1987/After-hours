@@ -12,3 +12,4 @@ Open tickets：
 - T5 ≥8 測句驗收＋升 intent2
 KPI：意圖體感接近真 AI ＞ 刷分
 LIVE GATE：app.js full · 無 CDN pin／stub
+IDEAS：兩段式閘生效 — proposed 最多3／小時；approved 先施工；T1–T5 優先於 idea 開工

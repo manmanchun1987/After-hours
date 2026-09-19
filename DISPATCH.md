@@ -51,3 +51,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **INTENT 開住 ⇒ hourly 必須做 T1–T5，不准 monitor-only**
 - 禁：yes-words／keys 對池；逼 OpenRouter／催 key
 - PICTURE／SOUND：只回歸
+
+## Ideas gate（唔係施工票）
+- 新 idea → 只寫 `IDEAS.md`（`proposed`）；**唔好**直接開 Open tickets
+- `approved` idea 先准搬入本檔 Open 並改碼
+- T1–T5 未清：施工優先 INTENT；idea 只提案
