@@ -40,6 +40,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - guide1：`sceneGoal` on n0 · `guide-policy.js` · 走廊 miss 升級導向 · cache `?v=intentsoft1`
 - **intent2**：T1 加厚 PATTERNS（ask_want／enter／wait／refuse／apologize／off_topic／ask_memory 粵語變體）· T2 ask_memory 接話材料 · 測句表 node classify 10/10 PASS · cache `?v=intentsoft1`
 - 憲法寫入北辰 KPI + GuidePolicy
+- **hourly 19:30 A**：加厚 refuse／ask_memory 變體（patterns split1a）；live soft「開門啦」→n0b PASS；ask_want hint PASS
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -87,7 +88,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T5 — 固定≥8 測句＋升 cache
 - **Do:** 對住下表測完；通過後升 `?v=intentsoft1`（或 intent2+）
 - **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`（GUIDE 期間可用 `guide1`）
-- **Status:** node classify 10/10 PASS；cache 已升 `?v=intentsoft1`；待瀏覽器 live gate
+- **Status:** node classify 10/10 PASS；cache `?v=split1`；**live gate PASS**（「開門啦」soft enter advance；「你想我點？」hint）
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |

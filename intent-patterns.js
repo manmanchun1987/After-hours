@@ -1,5 +1,5 @@
 /**
- * IntentPatterns (split1) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
+ * IntentPatterns (split1a) — Lane A data: intents, regex pools, soft lexicon, synonyms, acceptance.
  * Consumed by IntentEngine. Hourly default lane may thicken this file without touching engine core.
  */
 (function (global) {
@@ -52,7 +52,8 @@
     ],
     refuse: [
       /唔入/, /唔要/, /不要/, /拒絕/, /鎖門/, /關門/, /走先/, /閃/, /唔得/,
-      /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /\bno\b/i, /refuse/i, /唔想入/, /唔想去/
+      /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /\bno\b/i, /refuse/i, /唔想入/, /唔想去/,
+      /我唔入/, /唔想推/, /唔推/, /我唔去/, /走喇/, /閃先/, /算數/, /唔得喇/
     ],
     apologize: [
       /對唔住/, /唔好意思/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/
@@ -67,7 +68,8 @@
     ],
     ask_memory: [
       /記得/, /之前/, /頭先/, /今晚.*記/, /你知唔知/, /你記/, /memory/i,
-      /記唔記得/, /頭先嗰/
+      /記唔記得/, /頭先嗰/, /你記得我/, /記得我講/, /我頭先講/, /記得我頭先/,
+      /你記唔記得/, /頭先講過/, /我講過咩/, /記得先前提/
     ],
     off_topic: [
       /天氣/, /食咗/, /食乜/, /午餐/, /晚餐/, /足球/, /遊戲/, /game/i,
@@ -89,7 +91,7 @@
       "等等", "停", "猶豫", "停低", "企", "站住", "等陣", "未準備", "未敢", "再諗",
       "諗清楚", "未好", "稍等", "等我", "慢啲", "未夠膽", "等一等", "停一停"
     ],
-    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入"],
+    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入", "唔推", "我唔入", "走喇"],
     agree: ["好", "係", "繼續", "得", "ok", "yes"],
     flirt: ["近啲", "坐近", "想要你", "錫", "親"],
     ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點"],
@@ -133,7 +135,7 @@
     SOFT_LEXICON: SOFT_LEXICON,
     KEY_SYNONYMS: KEY_SYNONYMS,
     ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
-    version: "split1"
+    version: "split1a"
   };
 
   global.IntentPatterns = api;
