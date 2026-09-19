@@ -16,6 +16,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Locked face Vera/Elise/Sammi | stills in repo only | never A–K faces |
 | Room behind her (office lounge pantry review roof lift) | A reuse SVG | B new empty SVG |
 | Light / rain / glass / night mood | C CSS | D FX |
+| Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -37,6 +38,7 @@ G speechSynthesis zh-HK
 H existing mp4
 I Web Audio bed + cues
 J mute ducks file + synth
+K SVG filter weather (`feTurbulence` / displacement) baked into `assets/bg/{scene}.svg` — Pages + Safari, no Imagine, no upload, no CF
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
