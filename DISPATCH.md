@@ -42,6 +42,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - 憲法寫入北辰 KPI + GuidePolicy
 - **hourly 19:30 A**：加厚 refuse／ask_memory 變體（patterns split1a）；live soft「開門啦」→n0b PASS；ask_want hint PASS
 - **hourly 22:30 A**：patterns **split1b** — 加厚 ask_want（我而家應該做咩）、off_topic（你係咪 AI／程式）、refuse／apologize／ask_memory；node 測句 20/20 PASS；cache `?v=split1b`
+- **hourly 02:18 A+B+C**：patterns **split1c**（而家點算／我哋入去／我要諗吓／我唔想而家入／記唔記得我話想入）；guide-lines **split1d** hint／pressure／mem；`data/alex.json` n2a–n2c 補 sceneGoal+freeChat；node classify 23/23 + selfCheck 19/19 PASS；cache 仍 `?v=split1b`（F 暫緩）
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -50,17 +51,17 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Do:** 走廊／freeChat 起點補 `sceneGoal`（success／optional／maxMisses／guideLevel）；runtime 追 `state.guideMissCount`
 - **Acceptance:** `data/alex.json` `n0` 有 sceneGoal；「推門」→ success 推進；非 success 唔 advance
-- **Status:** n0 已有 sceneGoal；runtime 已追 miss
+- **Status:** n0 已有 sceneGoal；runtime 已追 miss；n2a–n2c 本小時補 sceneGoal+freeChat
 
 #### GUIDE T2 — strategy replies（hint／pressure／callout／close）
 - **Do:** `guide-policy.js` 按 intent + miss 出 `{ strategy, reply, advance, showChoices, thought }`；入戲 Vera；anti-repeat
 - **Acceptance:** 「你想我點？」→ 非空、導向推門／停低；唔客服腔
-- **Status:** 已實作 strategy 池
+- **Status:** 已實作 strategy 池；split1d 加厚 hint／pressure／mem
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Do:** 連續 miss 升級（thought → 更冷／更直接 → 亮推門／停低）；chat-guide **唔覆蓋** policy advance
 - **Acceptance:** 硬刷 `?v=split1b` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
-- **Status:** 邏輯已有；待 live 硬刷確認
+- **Status:** 邏輯已有；pressure 池加厚；待 live 硬刷確認（F 未升 cache）
 
 ---
 
@@ -69,7 +70,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`；粵語同義／句型／語氣；**禁止**整句==key（已禁；改用意圖／模糊） 唯一路徑
 - **Acceptance:** 下列變體抽樣各 ≥1 句命中正確意圖（唔靠整句全等）
-- **Status:** **DONE intent2 + split1b** — 測句 1–10 + soft 20/20 PASS
+- **Status:** **DONE intent2 + split1c** — 測句 23/23 PASS
 
 #### T2 — 場景記憶接話
 - **Do:** 短窗記住玩家先講過咩；回覆要接返
@@ -89,7 +90,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T5 — 固定≥8 測句＋升 cache
 - **Do:** 對住下表測完；通過後升 `?v=intentsoft1`（或 intent2+）
 - **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`（GUIDE 期間可用 `guide1`）
-- **Status:** node classify 20/20 PASS；cache `?v=split1b`；**live gate PASS**
+- **Status:** node classify 23/23 PASS；cache `?v=split1b`；**live gate PASS**（F 暫緩未升）
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
