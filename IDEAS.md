@@ -36,14 +36,22 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ```
 
 ## Proposed
-（hourly 新 idea 寫喺呢度；最多每次 +3）
+（hourly 新 idea 寫哉呢度；最多每次 +3）
+
+### I-20260920-01
+- proposed_at: 2026-09-20
+- status: proposed
+- pain: 走廊 bias 下含「入」嘅 refuse（我唔入／我唔入去）會被判 enter_door，拒絕體感似推門
+- how: 引擎走廊例外：若 refuse 分數明顯高於 enter 且有否定詞（唔／不／別），優先 refuse；patterns 繼續避免短 token「我入」
+- acceptance: 「我唔入」「我唔入去」→ refuse；「我入去先」仍 enter
+- rationale: 柔軟過關唔等於把拒絕當推進，意圖更似真對話
 
 ### I-20260919-01
 - proposed_at: 2026-09-19
 - status: proposed
-- pain: 玩家講完「我想推門」再問「你記得我講咩」時，若 chatMemory 結構唔係純字串陣列，接話可能 miss
+- pain: 玩家講完「我想推門」再問「你記得我講咥」時，若 chatMemory 結構唔係純字串陣列，接話可能 miss
 - how: 統一 pushChatMemory 寫入短窗 recentUserLines（最近 6 句 user text），ask_memory 優先讀呢個窗
-- acceptance: 先講「我想推門」→「你記得我頭先講咩」→ 回覆必含門／推
+- acceptance: 先講「我想推門」→「你記得我頭先講咥」→ 回覆必含門／推
 - rationale: 令記憶意圖更似真 AI 短時記憶，唔似空白客服
 
 ### I-20260919-02
