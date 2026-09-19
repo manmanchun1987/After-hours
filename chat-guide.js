@@ -78,20 +78,38 @@
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var n0 = node();
+        // Soft intentsoft1: defer corridor advance to IntentEngine+GuidePolicy (goal match, not key/YES exact)
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var cls = window.IntentEngine.classify(userText, { node: n0, state: typeof state !== "undefined" ? state : null });
-          // GuidePolicy owns advance when sceneGoal present — never force YES/heat advance
           if (n0 && n0.sceneGoal && window.GuidePolicy) {
-            if (cls && window.GuidePolicy.isSuccess && !window.GuidePolicy.isSuccess(cls.id, n0.sceneGoal)) {
-              // miss / optional: IntentEngine+GuidePolicy reply path; do not advance
-              misses += 1;
-              if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
-              if (misses >= 2) showChoices();
-              return null;
+            if (cls && window.GuidePolicy.isSuccess && window.GuidePolicy.isSuccess(cls.id, n0.sceneGoal)) {
+              var mappedOk = null;
+              if (typeof window.IntentEngine.mapToNodeIntent === "function") {
+                mappedOk = window.IntentEngine.mapToNodeIntent(cls, n0);
+              }
+              if (!mappedOk && typeof window.IntentEngine.forceMapByIntentId === "function") {
+                mappedOk = window.IntentEngine.forceMapByIntentId(cls.id, n0);
+              }
+              if (mappedOk) {
+                misses = 0;
+                if (typeof state !== "undefined") state.guideMissCount = 0;
+                hideChoices();
+                if (!mappedOk._ackClipped) {
+                  mappedOk.ack = "你講「" + clip(userText) + "」。" + (mappedOk.ack || "我接。");
+                  mappedOk._ackClipped = true;
+                }
+                lastAck = mappedOk.ack;
+                return mappedOk;
+              }
+              return null; // success intent but unresolved — do not exact-key fallthrough
             }
+            // miss / optional: IntentEngine+GuidePolicy reply path; do not advance on labels
+            misses += 1;
+            if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
+            if (misses >= 2) showChoices();
+            return null;
           }
           if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear")) {
-            // let IntentEngine / GuidePolicy handle reply/unlock; do not force guided advance
             return null;
           }
           if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
@@ -109,6 +127,14 @@
             }
           }
         }
+        var n = node();
+        // With sceneGoal, never use literal key / YES exact advance
+        if (n && n.sceneGoal && window.GuidePolicy) {
+          misses += 1;
+          if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
+          if (misses >= 2) showChoices();
+          return null;
+        }
         var hit = orig(userText);
         if (hit) {
           misses = 0;
@@ -118,10 +144,8 @@
           lastAck = hit.ack;
           return hit;
         }
-        var n = node();
         var t = String(userText || "").trim();
-        // Do not YES→heat advance when GuidePolicy sceneGoal is active
-        if (YES.test(t) && !(n && n.sceneGoal && window.GuidePolicy)) {
+        if (YES.test(t)) {
           var h = heatIntent(n);
           misses = 0;
           hideChoices();

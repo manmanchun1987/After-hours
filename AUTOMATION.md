@@ -31,6 +31,9 @@
 - 改 `intent-engine.js`／`guide-policy.js`／`app.js`：push 前印 `wc -c`；`app.js` 必須 ≫565B（禁 CDN stub）。
 - size 異常（0／<1KB／突然縮水過半）→ **立刻停 push**，還原後先報 CEO／產線。
 
+
+- **intentsoft1:** pass/advance = intent vs sceneGoal.successIntents（軟 paraphrases OK），唔係 literal choice keys。
+
 ## 回歸最少檢查
 - `app.js` bytes ≫ 565；index 直接 `./app.js?v=…`；`guide-policy.js` 已載入
 - DISPATCH 測句意圖正確＋走廊導向；行為掣仍可用

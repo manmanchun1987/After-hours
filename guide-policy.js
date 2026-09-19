@@ -1,5 +1,6 @@
 /**
- * GuidePolicy (intent2) — steers freeChat toward node.sceneGoal.
+ * GuidePolicy (intentsoft1) — steers freeChat toward node.sceneGoal.
+ * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
  * Input: classified intent + sceneGoal + memory + missCount
  * Output: { strategy, reply, advance, showChoices, thought, missCount }
  * Loaded after IntentEngine so it can reuse classify pools / anti-repeat.
@@ -155,7 +156,7 @@
       }
     } catch (e) {}
 
-    if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你)/i.test(reply || "") ||
+    if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你|請輸入正確)/i.test(reply || "") ||
         (/客服/.test(reply || "") && !/唔做客服/.test(reply || ""))) {
       reply = "我唔做客服。門——推定停。";
     }
@@ -204,7 +205,7 @@
     isSuccess: isSuccess,
     isOptional: isOptional,
     applyMissToState: applyMissToState,
-    version: "intent2"
+    version: "intentsoft1"
   };
 
   global.GuidePolicy = api;

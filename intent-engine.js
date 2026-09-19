@@ -1,5 +1,5 @@
 /**
- * IntentEngine (intent1) — Cantonese pattern / synonym / tone / scene classifier.
+ * IntentEngine (intentsoft1) — soft Cantonese intent → sceneGoal (not exact keys).
  * Reply pools are materials only; selection is driven by intent + scene + Vera tone.
  * Loaded after app.js + chat-guide.js + guide-policy.js so it can wrap the chat path.
  */
@@ -21,16 +21,24 @@
   ];
 
   // Pattern groups: scored hits (not whole-string equality).
+  // Soft paraphrases must classify by intent vs sceneGoal — never require exact choice labels.
   var PATTERNS = {
     enter_door: [
-      /推門/, /推開門/, /開門/, /入去/, /入嚟/, /推入/, /入門/, /入來/, /入来/,
-      /推入去/, /打開門/, /打开门/, /我推/, /推啦/, /推啊/, /入啊/, /入啦/,
-      /\benter\b/i, /\bgo in\b/i, /\bopen( the)? door\b/i, /push( the)? door/i
+      /推門/, /推開門/, /開門/, /開吓門/, /開門啦/, /開門呀/, /開門先/,
+      /入去/, /入嚟/, /入來/, /入来/, /推入/, /入門/, /進門/, /進去/, /進入/, /進來/,
+      /推入去/, /打開門/, /打开门/, /我推/, /推啦/, /推啊/, /入啊/, /入啦/, /入未/, /入去未/, /入去先/, /入去睇/,
+      /行入/, /走入/, /踏入/, /行過去入/, /行入去/, /我入/, /我入去/, /入辦公室/, /入房/, /間房/, /入佢/,
+      /進去看/, /進去睇/, /入去看/, /入去看看/, /進去看看/, /入屋/, /入到/, /入先/,
+      /過嚟/, /過去入/, /推開/, /推啦門/, /門.*推|推.*門/, /入.*辦公室|辦公室.*入/,
+      /\benter\b/i, /\bgo in\b/i, /\bgo into\b/i, /\bopen( the)? door\b/i, /push( the)? door/i,
+      /\bcome in\b/i, /\bwalk in\b/i, /\bhead in\b/i
     ],
     wait: [
       /猶豫/, /停一秒/, /停一停/, /停低/, /唔敢/, /再推/, /等等/, /企(喇|喺)度/,
-      /站住/, /等陣/, /等一下/, /等一等/, /hold on/i, /wait/i, /等等先/, /等我/,
-      /未敢/, /再等/, /停一停先/, /^停$/
+      /站住/, /等陣/, /等一下/, /等一等/, /等等先/, /等我/, /等一吓/, /稍等/,
+      /未敢/, /再等/, /停一停先/, /^停$/, /未準備/, /未準備好/, /未 ready/i, /我未/,
+      /未夠膽/, /再諗/, /諗清楚/, /未好/, /未得/, /未得閒/, /等陣先/, /hold on/i, /\bwait\b/i,
+      /not ready/i, /還沒準備/, /还没准备/, /我未準備/, /未夠/, /慢啲/, /等等我/
     ],
     ask_want: [
       /你想(要|點|我)/, /想(要|點)(乜|咩|我|點)/, /我(應該|要)點/, /點樣(先|做)/,
@@ -45,7 +53,7 @@
     ],
     refuse: [
       /唔入/, /唔要/, /不要/, /拒絕/, /鎖門/, /關門/, /走先/, /閃/, /唔得/,
-      /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /no\b/i, /refuse/i, /唔想/
+      /算吧/, /算了/, /唔敢入/, /我走/, /離開/, /\bno\b/i, /refuse/i, /唔想入/, /唔想去/
     ],
     apologize: [
       /對唔住/, /唔好意思/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/
@@ -71,15 +79,54 @@
     ]
   };
 
+  // Soft lexicon tokens: substring / ordered-chars / light typo — never whole-string == key.
+  var SOFT_LEXICON = {
+    enter_door: [
+      "推門", "開門", "入去", "入嚟", "進去", "進入", "行入", "走入", "入門", "進門",
+      "入房", "入辦公室", "推入", "入來", "入来", "入去先", "入去未", "開門啦", "我入",
+      "間房", "入佢", "過去入", "行過去", "進去看", "進去睇", "入屋", "踏入", "推開", "入先"
+    ],
+    wait: [
+      "等等", "停", "猶豫", "停低", "企", "站住", "等陣", "未準備", "未敢", "再諗",
+      "諗清楚", "未好", "稍等", "等我", "慢啲", "未夠膽", "等一等", "停一停"
+    ],
+    refuse: ["唔入", "走先", "閃", "關門", "鎖門", "離開", "我走", "唔想入"],
+    agree: ["好", "係", "繼續", "得", "ok", "yes"],
+    flirt: ["近啲", "坐近", "想要你", "錫", "親"],
+    ask_want: ["你想", "點做", "指引", "教我", "應該點", "想我點"],
+    apologize: ["對唔住", "唔好意思", "抱歉", "sorry", "道歉"],
+    off_topic: ["天氣", "食飯", "足球", "薪水", "chatgpt"]
+  };
+
   // Soft synonyms that boost mapping onto node.intent keys (substring, not ==).
   var KEY_SYNONYMS = {
-    enter_door: ["推門", "開門", "入去", "入嚟", "推", "入門", "入"],
-    wait: ["停", "猶豫", "等等", "停低", "企", "站住"],
-    refuse: ["唔入", "走", "閃", "關門", "鎖門"],
+    enter_door: ["推門", "開門", "入去", "入嚟", "進去", "進入", "行入", "走入", "推", "入門", "進門", "入", "間房", "辦公室"],
+    wait: ["停", "猶豫", "等等", "停低", "企", "站住", "未準備", "等陣", "再諗"],
+    refuse: ["唔入", "走", "閃", "關門", "鎖門", "離開"],
     agree: ["好", "係", "繼續", "得"],
     flirt: ["近", "坐近", "想要"],
-    ask_want: ["想", "點", "指引", "教"]
+    ask_want: ["想", "點", "指引", "教"],
+    apologize: ["對唔住", "抱歉", "sorry"]
   };
+
+  /**
+   * Acceptance soft phrases (intentsoft1) — must classify → goal intent, not exact keys:
+   * enter_door: 開門啦 / 入去未 / 我行入辦公室 / 進去看看 / 我入去先 / 行入佢間房
+   * wait: 等等 / 我未準備好
+   * Legacy exact 推門 / 停一停 still pass; advance = intent ∈ sceneGoal.successIntents.
+   */
+  var ACCEPTANCE_SOFT = [
+    { text: "開門啦", intent: "enter_door" },
+    { text: "入去未", intent: "enter_door" },
+    { text: "我行入辦公室", intent: "enter_door" },
+    { text: "進去看看", intent: "enter_door" },
+    { text: "我入去先", intent: "enter_door" },
+    { text: "行入佢間房", intent: "enter_door" },
+    { text: "等等", intent: "wait" },
+    { text: "我未準備好", intent: "wait" },
+    { text: "推門", intent: "enter_door" },
+    { text: "停一停", intent: "wait" }
+  ];
 
   var ASK_WANT_REPLIES = {
     cold: [
@@ -201,9 +248,61 @@
     return { score: score, hits: hits };
   }
 
+  /** Ordered-char match: all chars of token appear in order in hay (typo/word-order tolerant). */
+  function orderedChars(hay, token) {
+    if (!token || !hay) return false;
+    var i = 0;
+    for (var c = 0; c < hay.length && i < token.length; c++) {
+      if (hay.charAt(c) === token.charAt(i)) i++;
+    }
+    return i === token.length;
+  }
+
+  /** Light typo: allow one skip in token or hay for tokens length >= 3. */
+  function fuzzyIncludes(hay, token) {
+    if (!token || token.length < 1) return false;
+    if (hay.indexOf(token) >= 0) return true;
+    if (token.length >= 2 && orderedChars(hay, token)) return true;
+    if (token.length < 3) return false;
+    // skip one char in token
+    for (var s = 0; s < token.length; s++) {
+      var t2 = token.slice(0, s) + token.slice(s + 1);
+      if (t2.length >= 2 && hay.indexOf(t2) >= 0) return true;
+    }
+    // adjacent transposition
+    for (var j = 0; j < token.length - 1; j++) {
+      var arr = token.split("");
+      var tmp = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = tmp;
+      if (hay.indexOf(arr.join("")) >= 0) return true;
+    }
+    return false;
+  }
+
+  function scoreSoftLexicon(text, id) {
+    var tokens = SOFT_LEXICON[id] || [];
+    var n = norm(text);
+    var score = 0;
+    var hits = [];
+    for (var i = 0; i < tokens.length; i++) {
+      var tok = norm(tokens[i]);
+      if (!tok) continue;
+      if (fuzzyIncludes(n, tok)) {
+        // longer tokens weigh more; single-char "入" alone is weak
+        var w = tok.length >= 2 ? 1 : 0.35;
+        if (tok.length >= 3) w = 1.25;
+        score += w;
+        hits.push(tok);
+      }
+    }
+    return { score: score, hits: hits };
+  }
+
   function classify(text, ctx) {
     ctx = ctx || {};
     var raw = String(text || "").trim();
+    var nrm = norm(raw);
     var scores = {};
     var best = "unclear";
     var bestScore = 0;
@@ -211,49 +310,79 @@
 
     Object.keys(PATTERNS).forEach(function (id) {
       var r = scorePatterns(raw, PATTERNS[id]);
-      scores[id] = r.score;
-      detail[id] = r.hits;
-      if (r.score > bestScore) {
-        bestScore = r.score;
+      var soft = scoreSoftLexicon(raw, id);
+      var combined = r.score + soft.score;
+      scores[id] = combined;
+      detail[id] = (r.hits || []).concat(soft.hits || []);
+      if (combined > bestScore) {
+        bestScore = combined;
         best = id;
       }
     });
 
-    // Scene bias: on corridor, door/wait/ask_want beat soft off_topic ties.
-    if (isCorridor(ctx.node)) {
-      if (scores.enter_door > 0 && scores.enter_door >= scores.off_topic) {
+    // Rhetorical 入唔入 / 入唔入得 → enter_door, not refuse
+    if (/入唔入|進不進|入唔入得|入唔入得去/.test(raw) || /入唔入|進不進/.test(nrm)) {
+      scores.enter_door = (scores.enter_door || 0) + 2;
+      scores.refuse = Math.max(0, (scores.refuse || 0) - 1.5);
+      if (scores.enter_door > bestScore) {
         best = "enter_door";
         bestScore = scores.enter_door;
-      } else if (scores.wait > 0 && scores.wait >= scores.off_topic && scores.enter_door === 0) {
+      }
+    }
+
+    // Corridor bias: door/wait beat soft off_topic; enter beats weak refuse
+    if (isCorridor(ctx.node)) {
+      if (scores.enter_door > 0 && scores.enter_door >= (scores.off_topic || 0) * 0.5) {
+        if (scores.enter_door >= (scores.refuse || 0) || scores.enter_door >= 0.7) {
+          best = "enter_door";
+          bestScore = scores.enter_door;
+        }
+      }
+      if (best !== "enter_door" && scores.wait > 0 && scores.wait >= (scores.off_topic || 0) * 0.5) {
         best = "wait";
         bestScore = scores.wait;
-      } else if (scores.ask_want > 0 && best === "off_topic" && scores.off_topic <= scores.ask_want) {
+      }
+      if (scores.ask_want > 0 && best === "off_topic" && (scores.off_topic || 0) <= scores.ask_want) {
         best = "ask_want";
         bestScore = scores.ask_want;
       }
     }
 
-    // Node key soft-match boost (synonym / includes — never sole path).
-    if (ctx.node && Array.isArray(ctx.node.intents) && bestScore === 0) {
-      var t = norm(raw);
+    // Node key soft-match boost (synonym / includes / ordered — never sole exact ==)
+    if (ctx.node && Array.isArray(ctx.node.intents) && bestScore < 0.7) {
+      var t = nrm;
       for (var i = 0; i < ctx.node.intents.length; i++) {
         var keys = ctx.node.intents[i].keys || [];
         for (var k = 0; k < keys.length; k++) {
           var key = norm(keys[k]);
           if (!key) continue;
-          if (t.indexOf(key) >= 0 || key.indexOf(t) >= 0 && t.length >= 1) {
-            // map via synonym family
-            if (/推|開|入/.test(key)) {
-              best = "enter_door";
-              bestScore = 0.5;
-            } else if (/停|猶豫|等|企|站/.test(key)) {
-              best = "wait";
-              bestScore = 0.5;
-            } else if (/唔入|走|閃|關|鎖/.test(key)) {
-              best = "refuse";
-              bestScore = 0.5;
-            }
+          var hit = fuzzyIncludes(t, key) || fuzzyIncludes(key, t);
+          if (!hit) continue;
+          if (/推|開|入|進|行入|門/.test(key) || /推|開|入|進/.test(t)) {
+            best = "enter_door";
+            bestScore = Math.max(bestScore, 0.6);
+          } else if (/停|猶豫|等|企|站|準備/.test(key) || /停|等|準備/.test(t)) {
+            best = "wait";
+            bestScore = Math.max(bestScore, 0.6);
+          } else if (/唔入|走|閃|關|鎖/.test(key)) {
+            best = "refuse";
+            bestScore = Math.max(bestScore, 0.5);
           }
+        }
+      }
+    }
+
+    // Partial multi-token: enter if text has enter-ish bigrams without full pattern
+    if (bestScore < 0.5) {
+      if (/(行|走|踏).{0,2}(入|進)/.test(raw) || /(入|進).{0,4}(房|辦公室|屋|去|嚟|來|门|門)/.test(raw)) {
+        best = "enter_door";
+        bestScore = 0.8;
+        scores.enter_door = Math.max(scores.enter_door || 0, 0.8);
+      } else if (/未.{0,2}(準備|敢|好|得)/.test(raw) || /(等|停|猶豫)/.test(raw)) {
+        if (!/入|推門|開門/.test(nrm)) {
+          best = "wait";
+          bestScore = 0.75;
+          scores.wait = Math.max(scores.wait || 0, 0.75);
         }
       }
     }
@@ -262,7 +391,6 @@
 
     // Default residual chatter on corridor → off_topic (in-character block path)
     if (best === "unclear" && isCorridor(ctx.node) && raw.length >= 2) {
-      // short affirmations already caught; leftover = off_topic-ish
       if (!/^[嗯啊呃哦喔]+$/.test(raw)) {
         best = "off_topic";
         bestScore = 0.25;
@@ -281,11 +409,33 @@
 
   function familyOfNodeIntent(intent) {
     var keys = ((intent && intent.keys) || []).join(" ");
-    if (/推門|開門|入去|入嚟|推入|入門/.test(keys)) return "enter_door";
-    if (/猶豫|停|等等|企|站住|再推/.test(keys)) return "wait";
+    if (/推門|開門|入去|入嚟|推入|入門|進去|進入|行入/.test(keys)) return "enter_door";
+    if (/猶豫|停|等等|企|站住|再推|未準備/.test(keys)) return "wait";
     if (/鎖門|關門|唔入|走先|閃/.test(keys)) return "refuse";
     if (intent && intent.bucket === "heat") return "flirt";
     if (intent && intent.bucket === "leave" && /走|返|夠/.test(keys)) return "refuse";
+    if (intent && intent.bucket === "tired") return "wait";
+    if (intent && intent.bucket === "leave") return "enter_door";
+    return null;
+  }
+
+  function forceMapByIntentId(id, node) {
+    if (!node || !Array.isArray(node.intents)) return null;
+    for (var i = 0; i < node.intents.length; i++) {
+      if (familyOfNodeIntent(node.intents[i]) === id) return node.intents[i];
+    }
+    if (id === "enter_door") return node.intents[0] || null;
+    if (id === "wait") {
+      for (var w = 0; w < node.intents.length; w++) {
+        if (node.intents[w].tension || node.intents[w].bucket === "tired") return node.intents[w];
+      }
+      return node.intents[1] || node.intents[0] || null;
+    }
+    if (id === "refuse") {
+      for (var r = 0; r < node.intents.length; r++) {
+        if (familyOfNodeIntent(node.intents[r]) === "refuse") return node.intents[r];
+      }
+    }
     return null;
   }
 
@@ -298,26 +448,37 @@
     var syn = KEY_SYNONYMS[id] || [];
     var t = norm(classified.text || "");
 
-    // 1) family match
+    // 1) family match (intent id ↔ node intent family) — primary path, not label ==
     for (var i = 0; i < node.intents.length; i++) {
       var fam = familyOfNodeIntent(node.intents[i]);
       if (fam && fam === id) return node.intents[i];
     }
-    // 2) synonym soft includes against keys
+    // 2) synonym soft includes / fuzzy against keys (boost only)
     for (var j = 0; j < node.intents.length; j++) {
       var keys = node.intents[j].keys || [];
       for (var k = 0; k < keys.length; k++) {
         var key = norm(keys[k]);
         if (!key) continue;
-        if (t.indexOf(key) >= 0) return node.intents[j];
+        if (fuzzyIncludes(t, key) || t.indexOf(key) >= 0) return node.intents[j];
         for (var s = 0; s < syn.length; s++) {
-          if (key.indexOf(norm(syn[s])) >= 0 && t.indexOf(norm(syn[s])) >= 0) {
+          var sn = norm(syn[s]);
+          if (sn && fuzzyIncludes(key, sn) && fuzzyIncludes(t, sn)) {
             return node.intents[j];
           }
         }
       }
     }
-    // 3) agree → first / heat intent (guided yes)
+    // 3) sceneGoal success → force map by intent id (never require exact choice label)
+    if (node.sceneGoal && global.GuidePolicy && typeof global.GuidePolicy.isSuccess === "function") {
+      if (global.GuidePolicy.isSuccess(id, node.sceneGoal)) {
+        var forced = forceMapByIntentId(id, node);
+        if (forced) return forced;
+      }
+    } else {
+      var softForce = forceMapByIntentId(id, node);
+      if (softForce && (id === "enter_door" || id === "wait" || id === "refuse")) return softForce;
+    }
+    // 4) agree → first / heat intent (guided yes)
     if (id === "agree") {
       for (var a = 0; a < node.intents.length; a++) {
         if (node.intents[a].bucket === "heat" || node.intents[a].heat) return node.intents[a];
@@ -415,11 +576,14 @@
     return function matchFreeChatIntent(userText) {
       var node = currentNode();
       var classified = classify(userText, { node: node, state: typeof state !== "undefined" ? state : null, tone: currentTone() });
-      // sceneGoal: only success intents may map → advance; optional/miss stay null
+      // sceneGoal: advance iff intent ∈ successIntents — never exact choice-label match as sole path
       if (node && node.sceneGoal && global.GuidePolicy && typeof global.GuidePolicy.isSuccess === "function") {
         if (!global.GuidePolicy.isSuccess(classified.id, node.sceneGoal)) {
           return null;
         }
+        var mappedGoal = mapToNodeIntent(classified, node) || forceMapByIntentId(classified.id, node);
+        if (mappedGoal) return mappedGoal;
+        return null; // success intent but no node map — do not fall back to literal keys
       }
       var mapped = mapToNodeIntent(classified, node);
       if (mapped) return mapped;
@@ -636,14 +800,41 @@
     }
   }
 
+  function selfCheckSoft(node) {
+    node = node || {
+      id: "n0",
+      label: "走廊",
+      freeChat: true,
+      choices: [{ label: "推門" }, { label: "停低" }],
+      intents: [
+        { keys: ["推門", "開門", "入去"], next: "n0b", bucket: "leave" },
+        { keys: ["停", "等等", "猶豫"], next: "n0b", tension: 2, bucket: "tired" }
+      ],
+      sceneGoal: { successIntents: ["enter_door", "wait"], optionalIntents: ["ask_want", "agree"], maxMisses: 3 }
+    };
+    var rows = [];
+    var pass = 0;
+    for (var i = 0; i < ACCEPTANCE_SOFT.length; i++) {
+      var row = ACCEPTANCE_SOFT[i];
+      var c = classify(row.text, { node: node });
+      var ok = c.id === row.intent;
+      if (ok) pass++;
+      rows.push({ text: row.text, want: row.intent, got: c.id, ok: ok });
+    }
+    return { pass: pass, total: ACCEPTANCE_SOFT.length, rows: rows, version: "intentsoft1" };
+  }
+
   var api = {
     INTENTS: INTENTS,
     classify: classify,
     mapToNodeIntent: mapToNodeIntent,
+    forceMapByIntentId: forceMapByIntentId,
     pickReply: pickReply,
     isCorridor: isCorridor,
     install: install,
-    version: "guide1"
+    selfCheckSoft: selfCheckSoft,
+    ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
+    version: "intentsoft1"
   };
 
   global.IntentEngine = api;

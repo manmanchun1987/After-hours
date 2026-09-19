@@ -77,6 +77,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 | G1 | （離題）×2 | off_topic | 第 2 次更冷／更直接，仍 steer 門 |
 | G2 | 推門 | enter_door | advances（GUIDE T3） |
 
+- **intentsoft1:** pass = intent vs goal，唔係 exact keys（開門啦／我入去先／我未準備好 → success）。
+
 ## Ticket policy
 - **INTENT 或 GUIDE 開住 ⇒ hourly 必須做對應票，不准 monitor-only**
 - 禁：yes-words／keys 對池；逼 OpenRouter／催 key；CDN pin／stub
