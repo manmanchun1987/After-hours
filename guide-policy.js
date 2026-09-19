@@ -1,56 +1,18 @@
 /**
- * GuidePolicy (intentsoft1) — steers freeChat toward node.sceneGoal.
+ * GuidePolicy (split1 / intentsoft1 soft-pass) — steers freeChat toward node.sceneGoal.
  * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
+ * Line pools live in guide-lines.js (Lane B); this file keeps sceneGoal/miss/advance rules.
  * Input: classified intent + sceneGoal + memory + missCount
  * Output: { strategy, reply, advance, showChoices, thought, missCount }
- * Loaded after IntentEngine so it can reuse classify pools / anti-repeat.
+ * Requires GuideLines; IntentEngine optional for pickReply reuse.
  */
 (function (global) {
   "use strict";
 
-  var HINT_REPLIES = [
-    "門就喺前面。推定停——你揀。",
-    "……你問我想？想你對準門把。",
-    "走廊兩個選項：推門，或停低。",
-    "指引？入去。定企定望我。",
-    "手按門——或停一秒。其餘之後講。"
-  ];
-  var PRESSURE_REPLIES = [
-    "離題夠。推門——定停低。而家。",
-    "我唔代你揀。門。推，定停？",
-    "再岔開我當你退。門把凉。",
-    "正事係入唔入。推，或停。",
-    "少廢話。對準門。"
-  ];
-  var CALLOUT_REPLIES = [
-    "推門。定停低。撳下面都得。",
-    "夠問。選——入，定企。",
-    "門開住。你仲企喺度做乜。",
-    "……最後一次：推，定停。",
-    "唔好聽閑話。門。而家。"
-  ];
-  var OPTIONAL_AGREE = [
-    "「好」唔等於推。門把仲凉。",
-    "同意？跟住——推門，定停低。",
-    "嗯。決定落喇手上——入定企。",
-    "得。手按門，或停一秒。"
-  ];
-  var THOUGHTS_HINT = [
-    "……你問我想要乜。門把仲凉。",
-    "佢喺問界線。定問許可。",
-    "想要？先對準門。",
-    "……指引唔喺嘴——喺門把。"
-  ];
-  var THOUGHTS_PRESSURE = [
-    "……你打岔。門仲開住。",
-    "離題。佢仲企門口。",
-    "再迴避，當你退。"
-  ];
-  var THOUGHTS_CALLOUT = [
-    "……再離題，當你退。",
-    "夠。亮選擇畀佢。",
-    "門——推定停。唔再兜。"
-  ];
+  var L = global.GuideLines || global.GUIDE_LINES;
+  if (!L) {
+    throw new Error("GuidePolicy: GuideLines must load before guide-policy.js");
+  }
 
   function recentOf(state) {
     return (state && state.recentBotReplies) || [];
@@ -60,8 +22,6 @@
     var list = (pool || []).filter(Boolean);
     if (!list.length) return "";
     recent = recent || [];
-    if (global.IntentEngine && typeof global.IntentEngine.pickReply === "function") {
-    }
     var fresh = list.filter(function (l) { return recent.indexOf(l) < 0; });
     var use = fresh.length ? fresh : list;
     return use[Math.floor(Math.random() * use.length)];
@@ -87,16 +47,16 @@
   }
 
   function poolFor(strategy, intentId) {
-    if (intentId === "agree") return OPTIONAL_AGREE;
-    if (strategy === "callout") return CALLOUT_REPLIES;
-    if (strategy === "pressure") return PRESSURE_REPLIES;
-    return HINT_REPLIES;
+    if (intentId === "agree") return L.OPTIONAL_AGREE;
+    if (strategy === "callout") return L.CALLOUT_REPLIES;
+    if (strategy === "pressure") return L.PRESSURE_REPLIES;
+    return L.HINT_REPLIES;
   }
 
   function thoughtFor(strategy) {
-    if (strategy === "callout") return pickAnti(THOUGHTS_CALLOUT, []);
-    if (strategy === "pressure") return pickAnti(THOUGHTS_PRESSURE, []);
-    return pickAnti(THOUGHTS_HINT, []);
+    if (strategy === "callout") return pickAnti(L.THOUGHTS_CALLOUT, []);
+    if (strategy === "pressure") return pickAnti(L.THOUGHTS_PRESSURE, []);
+    return pickAnti(L.THOUGHTS_HINT, []);
   }
 
   function decide(input) {
@@ -148,17 +108,14 @@
     try {
       var memStr = JSON.stringify(memory || []).slice(0, 400);
       if (/推門|門口|入去/.test(memStr) && nextMiss <= 2 && id === "ask_want") {
-        var memLine = pickAnti([
-          "你頭先提過門。而家——推，定停？",
-          "記得你講推門。手按落去。"
-        ], recent);
+        var memLine = pickAnti(L.MEM_NUDGE || [], recent);
         if (memLine) reply = memLine;
       }
     } catch (e) {}
 
     if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你|請輸入正確)/i.test(reply || "") ||
         (/客服/.test(reply || "") && !/唔做客服/.test(reply || ""))) {
-      reply = "我唔做客服。門——推定停。";
+      reply = L.CS_BLOCK_REPLY || "我唔做客服。門——推定停。";
     }
 
     var showChoices = false;
@@ -176,7 +133,7 @@
 
     return {
       strategy: strategy,
-      reply: reply || "門就喺度。推定停。",
+      reply: reply || L.FALLBACK_REPLY || "門就喺度。推定停。",
       advance: false,
       showChoices: showChoices,
       thought: thought,
@@ -205,7 +162,7 @@
     isSuccess: isSuccess,
     isOptional: isOptional,
     applyMissToState: applyMissToState,
-    version: "intentsoft1"
+    version: "split1"
   };
 
   global.GuidePolicy = api;

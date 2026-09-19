@@ -4,9 +4,25 @@
 - ❌ 禁止要求玩家打出預設答案原文／近義整句先 advance
 - ✅ **意圖匹配 `sceneGoal` 即過**（enter_door／wait／apologize…）
 - 驗收用**非原文**測句：開門啦／我入去先／進去看看／等等／我未準備好
-- Live：`?v=intentsoft1`（或更新 soft）
+- Live：`?v=split1`（soft-pass 語義照舊）
 - 禁票：「必須打齊選項字／原文」；禁倒退 keys 對池
 
+
+
+## 車道制（split1・可擴充 N≥1）
+
+| Lane | 檔 | 誰寫 |
+|---|---|---|
+| A Intent-Patterns | `intent-patterns.js` | **現有單條自動化預設**（+ 柔軟過關驗收）；可讀寫 patterns；**唔停工**；**唔要求開齊全部車道** |
+| B Guide-Lines | `guide-lines.*` | 可選；回覆／內心句池 |
+| C Scene data | `data/*.json` | 可選 |
+| D Ideas | `IDEAS.md` | 可選（兩段式閘仍適用） |
+| E Status | `STATUS.md` | 可選 |
+| F Integrator | `app.js`／`index.html` **only** | 唯一准改 app／index（script 序、`?v=`） |
+
+- 原則：一檔（或一資料夾）一寫入車頭；新自動化認領空車道／新拆檔，唔搶檔。
+- 數目隨需要增長；寫「可選加車道」，**禁止**「必須開齊 10」類表述。
+- Soft pass + Guide + 空檔禁 + idea 兩段式 + INTENT／GUIDE 開票仍適用。
 
 現有空景：office lounge pantry review roof lift
 
@@ -16,6 +32,7 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **split1**：抽出 `intent-patterns.js` + `guide-lines.js`；引擎／政策變薄核心；cache `?v=split1`；車道制可擴充（預設 Lane A）
 - intent1：完整 `app.js`、禁 CDN stub；IntentEngine 骨架
 - guide1：`sceneGoal` on n0 · `guide-policy.js` · 走廊 miss 升級導向 · cache `?v=intentsoft1`
 - **intent2**：T1 加厚 PATTERNS（ask_want／enter／wait／refuse／apologize／off_topic／ask_memory 粵語變體）· T2 ask_memory 接話材料 · 測句表 node classify 10/10 PASS · cache `?v=intentsoft1`
@@ -37,7 +54,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Do:** 連續 miss 升級（thought → 更冷／更直接 → 亮推門／停低）；chat-guide **唔覆蓋** policy advance
-- **Acceptance:** 硬刷 `?v=intentsoft1` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
+- **Acceptance:** 硬刷 `?v=split1` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
 - **Status:** 邏輯已有；待 live 硬刷確認
 
 ---
