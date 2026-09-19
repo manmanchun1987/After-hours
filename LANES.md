@@ -1,12 +1,11 @@
-# LANES — 完整可執行專案指令（唔使人手貼 Grok）
+# LANES — 完整可執行專案指令
 
-每次自動化 run：**必讀本檔對應車道**。  
-若自動化名稱／設定**冇標車道** → **預設 Lane A**。  
-車道數 **N≥1 可擴充**；唔要求開齊全部車道。
+> **現用預設：只開 A＋B＋C（用戶極限）。** D／E／F＝可選／額滿暫緩。  
+> 無標車道 → **Lane A**。B／C **禁止**改 `app.js`／`index.html`。  
+> Ideas：唔靠 D；A 每小時最多 1 條 `proposed`，或等 CEO／用戶。
 
-共用憲法仍讀：`AUTOMATION.md` · `DISPATCH.md` · `QUALITY.md` · `IDEAS.md` · `STATUS.md`。
+每次自動化 run：**必讀本檔對應車道** + `AUTOMATION.md`。
 
----
 
 ## 共用開頭（所有車道）
 
@@ -26,10 +25,10 @@
 
 ---
 
-## Lane A — Intent-Patterns（**預設車道**）
+## Lane A — Intent-Patterns（**預設車道・三車模式核心**）
 
 **建議自動化顯示名：** `AH-LaneA` 或「After-hours Lane A」  
-**寫入範圍（獨佔）：** 只准改 `intent-patterns.js`  
+**寫入範圍（獨佔）：** `intent-patterns.js`；可附帶 **STATUS.md 一行**；**原則唔動 index**（僅當確認要 cache-bust：印 `wc -c` 前後≥1000，當迷你 Integrator）  
 **可讀：** `intent-engine.js`、`guide-policy.js`、`guide-lines.js`、`data/*.json`、憲法 md（唔改除非另有票）
 
 ### 任務
@@ -49,6 +48,8 @@
 ---
 
 ## Lane B — Guide-Lines
+
+**三車模式：只 guide-lines；禁止碰 app.js／index.html／patterns／data。**
 
 **顯示名：** `AH-LaneB`  
 **寫入：** 只 `guide-lines.js`（或 `guide-lines.json` 若存在）  
@@ -71,6 +72,8 @@
 
 ## Lane C — Scene data
 
+**三車模式：只 data/*.json；禁止碰 app.js／index.html／patterns／guide-lines。**
+
 **顯示名：** `AH-LaneC`  
 **寫入：** `data/*.json`（sceneGoal、節點文案 stub、successIntents 標註）  
 **可讀：** patterns／guide／engine／policy／憲法
@@ -89,7 +92,7 @@
 
 ---
 
-## Lane D — Ideas
+## Lane D — Ideas（**可選／額滿暫緩**）
 
 **顯示名：** `AH-LaneD`  
 **寫入：** 只 `IDEAS.md`  
@@ -109,7 +112,7 @@
 
 ---
 
-## Lane E — Status
+## Lane E — Status（**可選／額滿暫緩**；A 可寫一行）
 
 **顯示名：** `AH-LaneE`  
 **寫入：** 只 `STATUS.md`（必要時短補 `DISPATCH.md` Done 行，避免同 A／B 搶施工檔）  
@@ -128,7 +131,7 @@
 
 ---
 
-## Lane F — Integrator（app／index）
+## Lane F — Integrator（**可選／額滿暫緩**；僅 A 確認需要先動 app／index）
 
 **顯示名：** `AH-LaneF`  
 **寫入：** **只** `app.js`／`index.html`（script 序、`?v=` cache）  
@@ -151,7 +154,7 @@
 
 ## 新建自動化點樣開（用戶唔使貼長文）
 
-1. 新建 Grok／Cursor 自動化，名稱例如：`AH-LaneA`／`AH-LaneB`／…
+1. 而家預設開 **A＋B＋C** 三條即可（名稱 `AH-LaneA`／`AH-LaneB`／`AH-LaneC`）。D／E／F 暫緩。
 2. 指令只需一句：  
    **`讀 After-hours repo 嘅 LANES.md「Lane X」並執行；同時守 AUTOMATION.md。`**  
    （X = A–F；唔標則當 A）

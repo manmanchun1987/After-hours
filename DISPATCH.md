@@ -1,5 +1,14 @@
 # DISPATCH
 
+## 三車模式（現行）
+用戶 Grok 極限＝**A＋B＋C**。派工優先：
+- A → `intent-patterns.js`（+ 可選 STATUS 一行／必要 cache-bust）
+- B → `guide-lines.*` only
+- C → `data/*.json` only
+- D／E／F 額滿暫緩；**禁止 B／C 改 app／index**；F 僅 A 確認需要先做
+- Ideas：A 每小時 ≤1 proposed，或等 CEO／用戶（唔靠 D）
+
+
 ## 過關標準（intentsoft1・寫死）
 - ❌ 禁止要求玩家打出預設答案原文／近義整句先 advance
 - ✅ **意圖匹配 `sceneGoal` 即過**（enter_door／wait／apologize…）

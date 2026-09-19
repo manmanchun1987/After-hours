@@ -28,6 +28,25 @@
 
 ## 車道制（split1・可擴充）
 
+## 現用三車模式（用戶極限＝A+B+C・預設）
+
+而家 Grok 自動化只開到 **Lane A＋B＋C**。D／E／F＝**可選／額滿暫緩**，唔要求再開。
+
+| Lane | 職責 | 寫入 |
+|---|---|---|
+| **A** Intent-Patterns | patterns＋柔軟過關；可附帶 **STATUS 一行**；**少動 index**（只喺確認要 cache-bust 且印 size 閘先做） | `intent-patterns.js`（±極短 STATUS） |
+| **B** Guide-Lines | 只導向台詞 | **只** `guide-lines.js`／`.json` |
+| **C** Scene data | 只場景／goal 資料 | **只** `data/*.json` |
+| D Ideas | 可選／暫緩 | — |
+| E Status | 可選／暫緩（A 可寫一行） | — |
+| F Integrator | 可選／暫緩；合拼 app／index **僅當 A 確認需要**且印 `wc -c` 閘；**禁止 B／C 碰 app／index** | `app.js`／`index.html` |
+
+**Ideas：** 唔靠 Lane D；`proposed` 可由 **A 每小時最多 1 條**寫入 `IDEAS.md`，或等 CEO／用戶。
+
+**禁搶檔：** B／C 永唔改 `app.js`／`index.html`／對方車道檔。
+
+
+
 完整可執行指令：**`LANES.md`**（每車共用開頭＋範圍＋禁區＋輸出）。
 
 **一檔（或一資料夾）一寫入車頭。** 車道數 **N≥1**，隨用戶開幾多條增長——**唔寫死必須剛好 10 條，唔要求開齊全部車道先跑得。**
