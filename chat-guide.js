@@ -60,6 +60,20 @@
     var box = document.getElementById("choices");
     if (box) box.classList.remove("freechat-hidden");
   }
+  function tryYesHeat(userText) {
+    var t = String(userText || "").trim();
+    if (!YES.test(t)) return null;
+    var n = node();
+    var h = heatIntent(n);
+    misses = 0;
+    if (typeof state !== "undefined") state.guideMissCount = 0;
+    hideChoices();
+    if (h) {
+      h.ack = "好。" + (h.ack || "靠近呢邊。");
+      lastAck = h.ack;
+    }
+    return h || { ack: "好。", bucket: "heat", heat: 1 };
+  }
   function glueText() {
     var el = document.getElementById("play-text");
     var n = node();
@@ -79,6 +93,8 @@
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
+        var yesHit = tryYesHeat(userText);
+        if (yesHit) return yesHit;
         var n0 = node();
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var cls = window.IntentEngine.classify(userText, { node: n0, state: typeof state !== "undefined" ? state : null });
@@ -143,17 +159,6 @@
           lastAck = hit.ack;
           return hit;
         }
-        var t = String(userText || "").trim();
-        if (YES.test(t)) {
-          var h = heatIntent(n);
-          misses = 0;
-          hideChoices();
-          if (h) {
-            h.ack = "好。" + (h.ack || "靠近呢邊。");
-            lastAck = h.ack;
-          }
-          return h;
-        }
         misses += 1;
         if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
         if (misses >= 2) showChoices();
@@ -164,6 +169,9 @@
     if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
+        if (YES.test(String(userText || "").trim())) {
+          return "好。靠近呢邊。";
+        }
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var c = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
           if (c && (c.id === "ask_want" || c.id === "off_topic" || c.id === "enter_door" || c.id === "wait" || c.id === "apologize" || c.id === "flirt" || c.id === "challenge")) {
