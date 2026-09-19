@@ -61,6 +61,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - acceptance: 先「我想推門」再「你記得我頭先講咩」→ 回覆含推／門，唔講停
 - rationale: 記憶要對準玩家上一句
 
+### I-20260920-05
+- proposed_at: 2026-09-20
+- status: proposed
+- pain: 歷史 patterns 用「諸」代「諗」，玩家打正字「諗吓」可能靠錯字位先命中
+- how: Lane A 已並存諗／諸；引擎（F）可統一 normalize 諗|諸|想清楚
+- acceptance: 「我要諗吓」「我要諸吓」皆 wait
+- rationale: 錯字同義雙向，唔靠單一錯字
+
 ## Approved
 
 ## Rejected / Done
