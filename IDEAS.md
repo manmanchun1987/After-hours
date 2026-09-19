@@ -38,6 +38,30 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ## Proposed
 （hourly 新 idea 寫喺呢度；最多每次 +3）
 
+### I-20260919-01
+- proposed_at: 2026-09-19
+- status: proposed
+- pain: 玩家講完「我想推門」再問「你記得我講咩」時，若 chatMemory 結構唔係純字串陣列，接話可能 miss
+- how: 統一 pushChatMemory 寫入短窗 recentUserLines（最近 6 句 user text），ask_memory 優先讀呢個窗
+- acceptance: 先講「我想推門」→「你記得我頭先講咩」→ 回覆必含門／推
+- rationale: 令記憶意圖更似真 AI 短時記憶，唔似空白客服
+
+### I-20260919-02
+- proposed_at: 2026-09-19
+- status: proposed
+- pain: 走廊以外 freeChat 節點（若有）未掛 sceneGoal，GuidePolicy 唔入場
+- how: 為有 freeChat 嘅後續節點補輕量 sceneGoal（successIntents 對應該節行為）
+- acceptance: 非 n0 freeChat 節點離題亦入戲擋，唔空白
+- rationale: 意圖＋場景導向貫穿全線，體感更似 AI 帶戲
+
+### I-20260919-03
+- proposed_at: 2026-09-19
+- status: proposed
+- pain: refuse 在走廊 successIntents 外時回覆偏短，玩家可能以為卡住
+- how: refuse 材料加「走廊最終仍導回門」的入戲短句（非客服）
+- acceptance: 「我唔入」→ 入戲冷接＋仍提到門／推，唔死路
+- rationale: 拒絕意圖仍服務場景目標，更似真角色而非規則機
+
 ## Approved
 （用戶／CEO 標記後搬嚟；先准開 DISPATCH 施工票）
 
