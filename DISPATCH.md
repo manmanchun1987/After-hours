@@ -1,5 +1,13 @@
 # DISPATCH
 
+## 過關標準（intentsoft1・寫死）
+- ❌ 禁止要求玩家打出預設答案原文／近義整句先 advance
+- ✅ **意圖匹配 `sceneGoal` 即過**（enter_door／wait／apologize…）
+- 驗收用**非原文**測句：開門啦／我入去先／進去看看／等等／我未準備好
+- Live：`?v=intentsoft1`（或更新 soft）
+- 禁票：「必須打齊選項字／原文」；禁倒退 keys 對池
+
+
 現有空景：office lounge pantry review roof lift
 
 Read AUTOMATION.md before any hourly run.
@@ -9,8 +17,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
 - intent1：完整 `app.js`、禁 CDN stub；IntentEngine 骨架
-- guide1：`sceneGoal` on n0 · `guide-policy.js` · 走廊 miss 升級導向 · cache `?v=guide1`
-- **intent2**：T1 加厚 PATTERNS（ask_want／enter／wait／refuse／apologize／off_topic／ask_memory 粵語變體）· T2 ask_memory 接話材料 · 測句表 node classify 10/10 PASS · cache `?v=intent2`
+- guide1：`sceneGoal` on n0 · `guide-policy.js` · 走廊 miss 升級導向 · cache `?v=intentsoft1`
+- **intent2**：T1 加厚 PATTERNS（ask_want／enter／wait／refuse／apologize／off_topic／ask_memory 粵語變體）· T2 ask_memory 接話材料 · 測句表 node classify 10/10 PASS · cache `?v=intentsoft1`
 - 憲法寫入北辰 KPI + GuidePolicy
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
@@ -29,7 +37,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Do:** 連續 miss 升級（thought → 更冷／更直接 → 亮推門／停低）；chat-guide **唔覆蓋** policy advance
-- **Acceptance:** 硬刷 `?v=intent2` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
+- **Acceptance:** 硬刷 `?v=intentsoft1` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
 - **Status:** 邏輯已有；待 live 硬刷確認
 
 ---
@@ -37,7 +45,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ### INTENT（加厚進行中）
 
 #### T1 — 擴意圖＋粵語變體
-- **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`；粵語同義／句型／語氣；**禁止**整句==key 唯一路徑
+- **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`；粵語同義／句型／語氣；**禁止**整句==key（已禁；改用意圖／模糊） 唯一路徑
 - **Acceptance:** 下列變體抽樣各 ≥1 句命中正確意圖（唔靠整句全等）
 - **Status:** **DONE intent2** — 測句 1–10 node classify PASS
 
@@ -57,9 +65,9 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** offTopicStreak + sharp 池已有
 
 #### T5 — 固定≥8 測句＋升 cache
-- **Do:** 對住下表測完；通過後升 `?v=intent2`（或 intent2+）
+- **Do:** 對住下表測完；通過後升 `?v=intentsoft1`（或 intent2+）
 - **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`（GUIDE 期間可用 `guide1`）
-- **Status:** node classify 10/10 PASS；cache 已升 `?v=intent2`；待瀏覽器 live gate
+- **Status:** node classify 10/10 PASS；cache 已升 `?v=intentsoft1`；待瀏覽器 live gate
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |

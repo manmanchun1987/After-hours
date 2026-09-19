@@ -30,3 +30,10 @@ No code / no build tickets until `approved` (user or CEO).
 Ideas must serve intent-feels-like-AI; else `rejected`.
 Banned→rejected: CDN pin/stub app.js, yes-words/key pools, nag OpenRouter, Vera lock look, out-of-scope rewrites.
 While DISPATCH T1–T5 open: build those first; ideas may be written in parallel but must not steal build slots.
+
+## Soft pass（intentsoft1）
+劇情答案唔使 100% 字面正確；**意圖匹配 sceneGoal 即過關**。
+禁止 ticket／回歸：「必須打齊預設原文或選項字」。
+兩層都要加厚：IntentEngine（聽）＋ GuidePolicy（帶戲）；唔好倒退 keys 對池。
+驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好；cache `?v=intentsoft1`。
+KPI：意圖體感（含柔軟過關）＞刷分。

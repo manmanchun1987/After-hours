@@ -9,6 +9,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - yes-words／keys 對池
 - 催 OpenRouter／逼貼 key
 - 改 Vera 鎖樣
+- 要求玩家打齊預設原文／選項字先過關（違反柔軟過關）
 - 範圍外大重構
 
 ## 欄位（每條必填）
@@ -42,3 +43,5 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Rejected / Done
 （留底）
+
+> 北辰：idea 必須令「意圖匹配即過關」更似真 AI，唔係更似填字遊戲。
