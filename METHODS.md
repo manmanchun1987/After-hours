@@ -17,6 +17,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Room behind her (office lounge pantry review roof lift) | A reuse SVG | B new empty SVG |
 | Light / rain / glass / night mood | C CSS | D FX |
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
+| Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -39,6 +40,7 @@ H existing mp4
 I Web Audio bed + cues
 J mute ducks file + synth
 K SVG filter weather (`feTurbulence` / displacement) baked into `assets/bg/{scene}.svg` — Pages + Safari, no Imagine, no upload, no CF
+L CSS `mix-blend-mode` light planes (repo SVG/CSS layers over locked still + room; no new face, no upload, no CF) — Pages + Safari; beats C whole-wash and K weather-filter for isolated CCTV/monitor/glare
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
