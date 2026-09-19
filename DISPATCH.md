@@ -7,10 +7,10 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：`?v=split1`；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
+- Live 驗收：`?v=split1b`；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1`。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1b`。
 
 ## 車道制（split1・可擴充 N≥1）
 
@@ -41,6 +41,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **intent2**：T1 加厚 PATTERNS（ask_want／enter／wait／refuse／apologize／off_topic／ask_memory 粵語變體）· T2 ask_memory 接話材料 · 測句表 node classify 10/10 PASS · cache `?v=intentsoft1`
 - 憲法寫入北辰 KPI + GuidePolicy
 - **hourly 19:30 A**：加厚 refuse／ask_memory 變體（patterns split1a）；live soft「開門啦」→n0b PASS；ask_want hint PASS
+- **hourly 22:30 A**：patterns **split1b** — 加厚 ask_want（我而家應該做咩）、off_topic（你係咪 AI／程式）、refuse／apologize／ask_memory；node 測句 20/20 PASS；cache `?v=split1b`
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -58,7 +59,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Do:** 連續 miss 升級（thought → 更冷／更直接 → 亮推門／停低）；chat-guide **唔覆蓋** policy advance
-- **Acceptance:** 硬刷 `?v=split1` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
+- **Acceptance:** 硬刷 `?v=split1b` — 離題兩次 → 第 2 次更冷仍導向門；「推門」→ advances
 - **Status:** 邏輯已有；待 live 硬刷確認
 
 ---
@@ -68,7 +69,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Do:** 加厚 `ask_want`／`enter`／`wait`／`refuse`／`apologize`／`flirt`／`challenge`／`memory`／`unclear`；粵語同義／句型／語氣；**禁止**整句==key（已禁；改用意圖／模糊） 唯一路徑
 - **Acceptance:** 下列變體抽樣各 ≥1 句命中正確意圖（唔靠整句全等）
-- **Status:** **DONE intent2** — 測句 1–10 node classify PASS
+- **Status:** **DONE intent2 + split1b** — 測句 1–10 + soft 20/20 PASS
 
 #### T2 — 場景記憶接話
 - **Do:** 短窗記住玩家先講過咩；回覆要接返
@@ -88,7 +89,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T5 — 固定≥8 測句＋升 cache
 - **Do:** 對住下表測完；通過後升 `?v=intentsoft1`（或 intent2+）
 - **Acceptance:** 下表 #1–#8 全過；index／engine cache ≥ `intent2`（GUIDE 期間可用 `guide1`）
-- **Status:** node classify 10/10 PASS；cache `?v=split1`；**live gate PASS**（「開門啦」soft enter advance；「你想我點？」hint）
+- **Status:** node classify 20/20 PASS；cache `?v=split1b`；**live gate PASS**
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
