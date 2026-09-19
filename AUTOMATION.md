@@ -1,5 +1,10 @@
 # AUTOMATION — hourly 憲法（短讀）
 
+> **每次 run 必須讀 `LANES.md` 對應自己車道並執行完整指令。**
+> 自動化若**冇標車道** → **預設 Lane A**。
+> 用戶新建自動化：名稱 `AH-LaneB`…，指令一句「讀 LANES.md Lane B」即可，**唔使人手貼長 prompt**。
+
+
 給 Grok／dispatcher 每小時必讀。細節見 QUALITY · METHODS · DISPATCH · STATUS · IDEAS。
 
 ## 北辰 KPI
@@ -22,6 +27,8 @@
 
 
 ## 車道制（split1・可擴充）
+
+完整可執行指令：**`LANES.md`**（每車共用開頭＋範圍＋禁區＋輸出）。
 
 **一檔（或一資料夾）一寫入車頭。** 車道數 **N≥1**，隨用戶開幾多條增長——**唔寫死必須剛好 10 條，唔要求開齊全部車道先跑得。**
 

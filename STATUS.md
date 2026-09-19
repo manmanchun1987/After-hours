@@ -9,3 +9,4 @@ Live cache：`?v=split1`
 KPI：意圖體感（含柔軟過關）接近真 AI ＞ 刷分
 核心 size 閘：index／intent-engine／guide-policy／app／intent-patterns／guide-lines 皆 ≥1KB 先准 push
 Open：GUIDE T3 live 硬刷離題×2；INTENT T5 live gate 待瀏覽器確認
+LANES.md：A–F 完整指令已入 repo；無標車道→預設 A；新建自動化名 AH-LaneX + 讀 LANES 即可
