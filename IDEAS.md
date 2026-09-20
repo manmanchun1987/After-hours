@@ -85,6 +85,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - acceptance: 先「我想推門」再「你有冇記住我講」→ 回覆含推／門
 - rationale: T2 短窗記憶更似真 AI
 
+### I-20260921-03
+- proposed_at: 2026-09-21
+- status: proposed
+- pain: ask_memory 同 enter 可同時命中（「我頭先話開門」），引擎若優先 enter 會跳過接話
+- how: F 批核後 ask_memory 優先於 enter 當句含 記得／頭先／記住
+- acceptance: 「我頭先話開門」→ ask_memory（可附帶 enter 特徵但不推進）
+- rationale: T2 接話先於推進，更似聽完先答
+
 ## Approved
 
 ## Rejected / Done
