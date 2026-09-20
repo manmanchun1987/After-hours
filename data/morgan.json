@@ -27,7 +27,7 @@
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "wait", "enter", "agree", "flirt"],
-        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear"],
         "maxMisses": 3,
         "guideLevel": 0
       },
