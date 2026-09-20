@@ -61,6 +61,10 @@
     var box = document.getElementById("choices");
     if (box) box.classList.remove("freechat-hidden");
   }
+  function enforceHide() {
+    if (misses >= 2) return;
+    hideChoices();
+  }
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
     if (id === lastNodeId) return;
@@ -238,14 +242,22 @@
     input.placeholder = p.length ? "答佢：「" + p.join("」／「") + "」" : "對佢講…";
   }
   document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
-  var ticks = 0;
-  var t = setInterval(function () {
+  if (!window.__ahChoicesWatch) {
+    window.__ahChoicesWatch = true;
+    var mo = new MutationObserver(function () { if (misses < 2) hideChoices(); });
+    function watchBox() {
+      var box = document.getElementById("choices");
+      if (box) mo.observe(box, { attributes: true, childList: true, subtree: true });
+    }
+    watchBox();
+    setTimeout(watchBox, 800);
+  }
+  setInterval(function () {
     wrap();
     onNodeAdvance();
     if (misses >= 2) showChoices();
     else hideChoices();
     glueText();
     hint();
-    if (++ticks > 80) clearInterval(t);
-  }, 300);
+  }, 400);
 })();
