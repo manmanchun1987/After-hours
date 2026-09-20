@@ -16,12 +16,12 @@
       "freeChat": true,
       "intents": [],
       "sceneGoal": {
-        "successIntents": ["enter", "enter_door", "wait", "agree"],
+        "successIntents": ["enter_door", "enter", "wait", "agree"],
         "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear"],
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: corridor; steer enter/wait"
+      "stub": "mem: corridor stub; success=enter_door/wait/agree"
     }
   }
 }
