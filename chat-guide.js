@@ -2,6 +2,7 @@
   var YES = /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i;
   var misses = 0;
   var lastAck = "";
+  var lastNodeId = "";
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
@@ -59,6 +60,14 @@
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(false);
     var box = document.getElementById("choices");
     if (box) box.classList.remove("freechat-hidden");
+  }
+  function onNodeAdvance() {
+    var id = (typeof state !== "undefined" && state.nodeId) || "";
+    if (id === lastNodeId) return;
+    lastNodeId = id;
+    misses = 0;
+    if (typeof state !== "undefined") state.guideMissCount = 0;
+    hideChoices();
   }
   function tryYesHeat(userText) {
     var t = String(userText || "").trim();
@@ -192,8 +201,7 @@
       window.renderNode = function () {
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
         rn.apply(this, arguments);
-        misses = 0;
-        if (typeof state !== "undefined") state.guideMissCount = 0;
+        onNodeAdvance();
         hideChoices();
         glueText();
         hint();
@@ -233,6 +241,7 @@
   var ticks = 0;
   var t = setInterval(function () {
     wrap();
+    onNodeAdvance();
     if (misses >= 2) showChoices();
     else hideChoices();
     glueText();
