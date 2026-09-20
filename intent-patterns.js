@@ -1,5 +1,5 @@
 /**
- * IntentPatterns (split1h) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * IntentPatterns (split1i) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
  */
 (function (global) {
   "use strict";
@@ -13,7 +13,7 @@
     apologize: [/對唔住/, /對唔住呀/, /對唔住喎/, /唔好意思/, /唔好意思呀/, /抱歉/, /sorry/i, /道歉/, /我錯/, /原諒/],
     flirt: [/靚/, /好靚/, /想錫/, /想親/, /心口/, /你香/, /今晚留/, /想要你/, /可愛/, /sexy/i, /kiss/i, /抱你/, /近啲/, /坐近/],
     challenge: [/憑咩/, /唔服/, /頂嘴/, /你錯/, /無理/, /專橫/, /挑戰/, /你以為/, /challenge/i],
-    ask_memory: [/記得/, /之前/, /頭先/, /你記/, /memory/i, /記唔記得/, /你記得我/, /記得我講/, /我頭先講/, /我頭先講過/, /記得我頭先/, /頭先講過/, /我講過咩/, /你仲記唔記得/, /記得我話/, /你記得我頭先講咩/, /你記唔記得我頭先/, /記得我想推/, /記得門口/],
+    ask_memory: [/記得/, /之前/, /頭先/, /你記/, /memory/i, /記唔記得/, /你記得我/, /記得我講/, /我頭先講/, /我頭先講過/, /記得我頭先/, /頭先講過/, /我講過咩/, /你仲記唔記得/, /記得我話/, /你記得我頭先講咩/, /你記唔記得我頭先/, /記得我想推/, /記得門口/, /你記得我頭先講咽/, /頭先嗰句/, /我頭先話/, /你有冇聽/, /你聽到我講/, /記唔記得我頭先講/, /我頭先話想/, /你仲記唔記得我講/, /你記得我講過/, /頭先我講/, /do you remember/i, /what did i say/i],
     off_topic: [/天氣/, /幾多度/, /落雨未/, /食咗/, /午餐/, /晚餐/, /足球/, /遊戲/, /chatgpt/i, /人工智能/, /機械人/, /你係咪機械/, /\bai\b/i, /薪水/, /落雨/, /食飯未/, /你係咪ai/i, /你係咪 AI/i, /你係咪程式/i, /你係程式/i, /今日幾多度/, /\bgpt\b/i]
   };
   var SOFT_LEXICON = {
@@ -25,7 +25,7 @@
     ask_want: ["你想","點做","指引","教我","應該點","想我點","應該做咩","而家應該","點行先","跟住點","點算好","你話我點"],
     apologize: ["對唔住","唔好意思","抱歉","sorry","對唔住喎"],
     off_topic: ["天氣","食飯","足球","chatgpt","ai","程式","幾多度","落雨"],
-    ask_memory: ["記得","頭先","記唔記得","我講過","頭先講咩","我頭先講過"]
+    ask_memory: ["記得","頭先","記唔記得","我講過","頭先講咩","我頭先講過","頭先嗰句","我頭先話","你有冇聽","記得我講過"]
   };
   var KEY_SYNONYMS = {
     enter_door: ["推門","開門","入去","進去","推","入"],
@@ -48,9 +48,9 @@
     {text:"我要諗一諗",intent:"wait"},{text:"我唔想推門",intent:"refuse"},
     {text:"入去睇吓",intent:"enter_door"},{text:"開門先",intent:"enter_door"},{text:"等陣先",intent:"wait"},
     {text:"而家做咩好",intent:"ask_want"},{text:"我唔入去啦",intent:"refuse"},{text:"對唔住喎",intent:"apologize"},
-    {text:"落雨未",intent:"off_topic"},{text:"你記唔記得我頭先",intent:"ask_memory"}
+    {text:"落雨未",intent:"off_topic"},{text:"你記唔記得我頭先",intent:"ask_memory"},{text:"你記得我頭先講咽",intent:"ask_memory"},{text:"頭先嗰句",intent:"ask_memory"},{text:"你記得我頭先話想推",intent:"ask_memory"},{text:"你有冇聽我講",intent:"ask_memory"}
   ];
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1h"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1i"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);
