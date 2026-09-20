@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260921-04
+- proposed_at: 2026-09-21
+- status: proposed
+- pain: 「記低未／有円記低」口語可能 miss ask_memory，引擎當 unclear
+- how: Lane A 已加記低／聽低變體；F 可把 記低|記住|記得 視為同一記憶詞族
+- acceptance: 「有円記低」「記低未」→ ask_memory
+- rationale: 口語記憶問法更似真 AI 聽人說話
+
 ### I-20260919-01
 - proposed_at: 2026-09-19
 - status: proposed
@@ -82,7 +90,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: ask_memory 命中後若引擎未讀 recentUserLines，門錨材料仍可能同「停」句並存抽中
 - how: F 批核後按上一句含推／門 優先抽門錨 MEM_NUDGE；Lane B 已加厚門錨句
-- acceptance: 先「我想推門」再「你有冇記住我講」→ 回覆含推／門
+- acceptance: 先「我想推門」再「你有円記住我講」→ 回覆含推／門
 - rationale: T2 短窗記憶更似真 AI
 
 ### I-20260921-03
@@ -92,14 +100,6 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: F 批核後 ask_memory 優先於 enter 當句含 記得／頭先／記住
 - acceptance: 「我頭先話開門」→ ask_memory（可附帶 enter 特徵但不推進）
 - rationale: T2 接話先於推進，更似聽完先答
-
-### I-20260921-04
-- proposed_at: 2026-09-21
-- status: proposed
-- pain: 玩家口語「記低／有円記低／頭先同你講」若未入 patterns，ask_memory 會 miss
-- how: Lane A 已加厚；F 批核後 normalize 記低|記住|記得 為同一記憶錨
-- acceptance: 「記低」「頭先同你講」「有円記低」→ ask_memory
-- rationale: T2 口語記憶問句更似真對話
 
 ## Approved
 
