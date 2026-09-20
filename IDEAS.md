@@ -58,16 +58,24 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: ask_memory 命中後若 MEM_NUDGE 抽到「停」句，但玩家頭先講「推門」，接話會錯錨
 - how: GuidePolicy（須 F）按 recentUserLines 擇含門／推 定 停 的 nudge，唔隨機抽
-- acceptance: 先「我想推門」再「你記得我頭先講咩」→ 回覆含推／門，唔講停
+- acceptance: 先「我想推門」再「你記得我頭先講咥」→ 回覆含推／門，唔講停
 - rationale: 記憶要對準玩家上一句
 
 ### I-20260920-05
 - proposed_at: 2026-09-20
 - status: proposed
-- pain: 歷史 patterns 用「諸」代「諗」，玩家打正字「諗吓」可能靠錯字位先命中
-- how: Lane A 已並存諗／諸；引擎（F）可統一 normalize 諗|諸|想清楚
-- acceptance: 「我要諗吓」「我要諸吓」皆 wait
+- pain: 歷史 patterns 用「諸」代「諳」，玩家打正字「諳吓」可能靠錯字位先命中
+- how: Lane A 已並存諳／諸；引擎（F）可統一 normalize 諳|諸|想清楚
+- acceptance: 「我要諳吓」「我要諸吓」皆 wait
 - rationale: 錯字同義雙向，唔靠單一錯字
+
+### I-20260921-01
+- proposed_at: 2026-09-21
+- status: proposed
+- pain: ask_memory 命中後 MEM_NUDGE 仍隨機，未能保證接住玩家上一句（推門 vs 停）
+- how: 引擎（F）用 recentUserLines 擇含門／推 定 停 的 nudge；本小時只加厚門錨材料，未改 F
+- acceptance: 先「我想推門」再「你記得我頭先講咥」→ 回覆含推／門，唔講停
+- rationale: T2 場景記憶接話更似短時記憶 AI
 
 ## Approved
 
