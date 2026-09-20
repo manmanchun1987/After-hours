@@ -272,3 +272,28 @@ body.mode-play .action-zone {
     max-height: 12vh !important;
   }
 }
+
+/* METHOD N — frost glass on private chat / phone sheet over room + locked still.
+   Pages + Safari. No Imagine. No new class hook (no app.js). */
+#screen-play .chat-panel,
+#screen-play .chat-panel.zone-chat,
+#screen-play .zone-chat.chat-panel,
+#screen-play .call-chrome,
+#screen-play .memory-panel.card.glass {
+  background: rgba(8, 12, 20, 0.42) !important;
+  border-color: rgba(180, 200, 230, 0.28) !important;
+  -webkit-backdrop-filter: saturate(1.15) blur(16px) !important;
+  backdrop-filter: saturate(1.15) blur(16px) !important;
+}
+#screen-play .zone-chat .chat-header,
+#screen-play .zone-chat .chat-composer {
+  background: rgba(10, 14, 22, 0.38) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  backdrop-filter: blur(10px) !important;
+}
+@supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  #screen-play .chat-panel,
+  #screen-play .chat-panel.zone-chat {
+    background: rgba(8, 12, 20, 0.88) !important;
+  }
+}
