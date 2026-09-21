@@ -1,6 +1,6 @@
 (function () {
-  var YES = /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i;
-  var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest)$/i;
+  var YES = /^(好|好呀|好啊|好喎|係|係呀|係喎|得|得啦|得喎|得嘅|嗯|嗯哼|繼續|聽你講|想聽|ok|okay|yes|y)$/i;
+  var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code)$/i;
   var misses = 0;
   var lastAck = "";
   var lastNodeId = "";
