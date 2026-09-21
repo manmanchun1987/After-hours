@@ -30,7 +30,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: corridor last lift; success=enter_door/wait/agree; steer 推門或停低; split1q +memory optional"
+      "stub": "mem: corridor last lift; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; split1r"
     },
     "n0b": {
       "id": "n0b",
@@ -54,7 +54,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: door_shut; success=enter/agree/wait; steer 行去桌前; split1q +memory optional"
+      "stub": "mem: door_shut; success=enter/agree/wait; steer 行去桌前／等等; split1r"
     },
     "n1": {
       "id": "n1",
@@ -75,12 +75,12 @@
         {"keys": ["特登", "留到而家", "站近", "靠近", "試探"], "next": "n2c", "heat": 6, "bucket": "heat", "ack": "大膽。今晚可以例外—你轉身，定係專心改？"}
       ],
       "sceneGoal": {
-        "successIntents": ["enter_door", "enter", "agree", "wait"],
-        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"],
+        "successIntents": ["agree", "wait", "enter", "challenge"],
+        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "enter_door"],
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: at desk; success=agree/enter/wait; steer 改／問清／靠近; split1q +memory optional"
+      "stub": "mem: at desk; success=agree/wait/enter/challenge; steer 改／問清／停低; split1r"
     },
     "n2a": {
       "id": "n2a",
@@ -104,7 +104,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: cooperate sit-edit; success=agree/wait; split1q +memory optional"
+      "stub": "mem: cooperate sit-edit; success=agree/wait/enter; split1r"
     },
     "n2b": {
       "id": "n2b",
@@ -128,7 +128,7 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "mem: pushback; success=challenge/agree/enter/wait; split1q +memory optional"
+      "stub": "mem: pushback; success=challenge/agree/enter/wait; split1r"
     },
     "n2c": {
       "id": "n2c",
@@ -152,7 +152,7 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "mem: probe close; success=flirt/agree/enter/wait; split1q +memory optional"
+      "stub": "mem: probe close; success=flirt/agree/enter/wait; split1r"
     }
   }
 }
