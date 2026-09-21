@@ -16,22 +16,50 @@
       "thought": "佢望住你，唔望海。",
       "aside": "爵士樂壓得好低。",
       "choices": [
-        {"label": "「人同單，邊樣先成交？」", "next": "m2a", "heat": 8, "tension": 6, "cg": true},
-        {"label": "「我嚟係收條款。」", "next": "m2b", "tension": 10}
+        {
+          "label": "「人同單，邊樣先成交？」",
+          "next": "m2a",
+          "heat": 8,
+          "tension": 6,
+          "cg": true
+        },
+        {
+          "label": "「我嚟係收條款。」",
+          "next": "m2b",
+          "tension": 10
+        }
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近", "好", "係", "繼續", "得"], "next": "m2a", "heat": 8, "bucket": "heat", "ack": "你問成交。我聽。你坐近一格，定係只聽數？"},
-        {"keys": ["條款", "收條款", "紙", "合約", "簽", "生意"], "next": "m2b", "tension": 10, "bucket": "leave", "ack": "條款。好。紙推過嚟—你簽唔簽？"},
-        {"keys": ["坐近", "近一格", "靠近", "想聽邊種"], "next": "m2c", "heat": 14, "bucket": "heat", "ack": "你坐近。我當答哇一半。仲想聽邊邊？"}
+        {
+          "keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近", "好", "係", "繼續", "得"],
+          "next": "m2a",
+          "heat": 8,
+          "bucket": "heat",
+          "ack": "你問成交。我聽。你坐近一格，定係只聽數？"
+        },
+        {
+          "keys": ["條款", "收條款", "紙", "合約", "簽", "生意"],
+          "next": "m2b",
+          "tension": 10,
+          "bucket": "leave",
+          "ack": "條款。好。紙推過嚟—你簽唔簽？"
+        },
+        {
+          "keys": ["坐近", "近一格", "靠近", "想聽邊種"],
+          "next": "m2c",
+          "heat": 14,
+          "bucket": "heat",
+          "ack": "你坐近。我當答哇一半。仲想聽邊邊？"
+        }
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "flirt", "enter", "enter_door"],
-        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear"],
+        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"],
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: lounge harbour; success=agree/wait/flirt/enter; steer 坐近或聽條款"
+      "stub": "mem: lounge harbour; success=agree/wait/flirt/enter; steer 坐近或聽條款 | split1r soft=enter/wait/agree +memory optional"
     }
   }
 }
