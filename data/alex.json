@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "尾班電梯開過一次，你仲企嚟門外。Vera 隔住門縫見你未走，考你而家使一招。\n\n「走廊唔係你 rank。推門入嚟，定係停低講清楚？」",
+      "text": "尾班電梯開過一次，你仲企哉門外。Vera 隔住門縫見你未走，考你而家使一招。\n\n「走廊唔係你 rank。推門入嚟，定係停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -19,9 +19,10 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "推開門", "開門", "入去", "入嚟", "推入", "入門", "好", "係", "繼續", "得"], "next": "n0b", "bucket": "leave", "ack": "門把凉。你推定。入嚟之後唔好仲企住。"},
-        {"keys": ["優豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企嚟度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入嚟。"},
-        {"keys": ["鎖門", "關門", "唔入", "走先", "閃"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈份住你。推定冇回頭。"}
+        {"keys": ["推門", "推開門", "開門", "入去", "入嚟", "推入", "入門", "好", "係", "繼續", "得"], "next": "n0b", "bucket": "leave", "ack": "門把凉。你推定。入嚟之後唔好仲企住—行過桌前，定係仲等我講？"},
+        {"keys": ["猶豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企哉度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入嚟—行過桌前未？"},
+        {"keys": ["鎖門", "關門", "唔入", "走先", "閃"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈份住你。推定冇回頭—你過嚟桌前未？"},
+        {"keys": ["記低", "聽低", "寫低", "記低咋未", "你記得", "頭先"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入嚟，定係停低？"}
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -36,14 +37,14 @@
       "label": "門後",
       "scene": "office",
       "remember": ["door_shut"],
-      "text": "門嚟你背後合上。Vera 都未抬眼，筆尖停嚟簡報邊，考你走過桌前。\n\n「你推唆。行過嚟桌前，定係仲要我講第二句？」",
+      "text": "門哉你背後合上。Vera 都未抬眼，筆尖停哉簡報邊，考你走過桌前。\n\n「你推咗。行過嚟桌前，定係仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
       "choices": [{"label": "走去桌前", "next": "n1"}],
       "freeChat": true,
       "intents": [
-        {"keys": ["走去桌前", "過去", "行過去", "行過嚟", "好", "係", "繼續", "得", "推門", "入去"], "next": "n1", "bucket": "leave", "ack": "簡報嚟案面。份嘢未夠—你而家改，定要我逐行講？"},
-        {"keys": ["等等", "停", "企住", "未準備"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟。"}
+        {"keys": ["走去桌前", "過去", "行過去", "行過嚟", "好", "係", "繼續", "得", "推門", "入去"], "next": "n1", "bucket": "leave", "ack": "簡報哉案面。份嘢未夠—你而家改，定要我逐行講？"},
+        {"keys": ["等等", "停", "企住", "未準備"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟—你改，定要我講清楚？"}
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "agree", "wait"],
@@ -57,19 +58,19 @@
       "id": "n1",
       "label": "桌前 23:47",
       "scene": "office",
-      "text": "你站嚟桌前。Vera 指節敲兩下案，考你認份簡報。\n\n「你自己都知呢份嘢…未夠。你而家改，定要我講清楚？」",
+      "text": "你站哉桌前。Vera 指節敲兩下案，考你認份簡報。\n\n「你自己都知呢份嘢…未夠。你而家改，定要我講清楚？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "影印機燈仲亮。",
       "choices": [
         {"label": "「我可以而家改。」", "next": "n2a"},
         {"label": "「邊部分未夠？講清楚。」", "next": "n2b"},
-        {"label": "（站近啾）「你係唔係特登留到而家先講？」", "next": "n2c"}
+        {"label": "（站近啱）「你係唔係特登留到而家先講？」", "next": "n2c"}
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["改", "而家改", "我改", "聽你講", "坐低", "好", "係", "繼續", "得"], "next": "n2a", "bucket": "leave", "ack": "坐低。我講，你改。"},
-        {"keys": ["邊部分", "講清楚", "未夠邊", "點未夠", "問清楚"], "next": "n2b", "tension": 1, "bucket": "leave", "ack": "你要清楚？過來。"},
-        {"keys": ["特登", "留到而家", "站近", "靠近", "試探"], "next": "n2c", "heat": 6, "bucket": "heat", "ack": "大膽。今晚可以例外。"}
+        {"keys": ["改", "而家改", "我改", "聽你講", "坐低", "好", "係", "繼續", "得"], "next": "n2a", "bucket": "leave", "ack": "坐低。我講，你改—你聽緊係一行？"},
+        {"keys": ["邊部分", "講清楚", "未夠邊", "點未夠", "問清楚"], "next": "n2b", "tension": 1, "bucket": "leave", "ack": "你要清楚？過嚟—你過嚟聽，定留低位？"},
+        {"keys": ["特登", "留到而家", "站近", "靠近", "試探"], "next": "n2c", "heat": 6, "bucket": "heat", "ack": "大膽。今晚可以例外—你轉身，定係專心改？"}
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "agree", "wait"],
@@ -92,8 +93,8 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["聽緊", "係", "改", "好", "繼續", "得", "坐低"], "next": "n2a", "bucket": "leave", "ack": "改呢行。唔好停。"},
-        {"keys": ["咁近", "改唔到", "遠啾", "等等", "停"], "next": "n2a", "tension": 1, "bucket": "tired", "ack": "筆尖唔會等你。你改。"}
+        {"keys": ["聽緊", "係", "改", "好", "繼續", "得", "坐低"], "next": "n2a", "bucket": "leave", "ack": "改呢行。唔好停—下一行你跟唔跟？"},
+        {"keys": ["咁近", "改唔到", "遠啱", "等等", "停"], "next": "n2a", "tension": 1, "bucket": "tired", "ack": "筆尖唔會等你。你改—而家改呢行未？"}
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door"],
@@ -107,17 +108,17 @@
       "id": "n2b",
       "label": "頂嘴",
       "scene": "office",
-      "text": "你要清楚。Vera 放下筆靠後，考你過嚟聽。\n\n「唆。你而家教我點管理？你要清楚？過來。」",
+      "text": "你要清楚。Vera 放下筆靠後，考你過嚟聽。\n\n「咗。你而家教我點管理？你要清楚？過嚟。」",
       "thought": "聲線壓低。",
       "aside": "會議室忽然好靜。",
       "choices": [
         {"label": "（行過去）", "next": "n2b"},
-        {"label": "（留嚟位）「…你講，我聽。」", "next": "n2a"}
+        {"label": "（留哉位）「…你講，我聽。」", "next": "n2a"}
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["行過去", "過去", "過來", "入去", "好", "係", "繼續"], "next": "n2b", "bucket": "leave", "ack": "過嚟。聽清楚。"},
-        {"keys": ["你講", "我聽", "留嚟位", "等等", "停"], "next": "n2a", "bucket": "tired", "ack": "你留低。我講，你聽。"}
+        {"keys": ["行過去", "過去", "過嚟", "入去", "好", "係", "繼續"], "next": "n2b", "bucket": "leave", "ack": "過嚟。聽清楚—你跟哉哪一行？"},
+        {"keys": ["你講", "我聽", "留哉位", "等等", "停"], "next": "n2a", "bucket": "tired", "ack": "你留低。我講，你聽—坐低改呢行未？"}
       ],
       "sceneGoal": {
         "successIntents": ["challenge", "agree", "enter", "enter_door", "wait"],
@@ -140,8 +141,8 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["近", "轉身", "例外", "好", "係", "繼續"], "next": "n2c", "heat": 8, "bucket": "heat", "ack": "你近。字仲要改。"},
-        {"keys": ["專心改", "改", "聽", "等等", "停"], "next": "n2a", "bucket": "leave", "ack": "改。例外唔等於放水。"}
+        {"keys": ["近", "轉身", "例外", "好", "係", "繼續"], "next": "n2c", "heat": 8, "bucket": "heat", "ack": "你近。字仲要改—你改呢行，定仲近一步？"},
+        {"keys": ["專心改", "改", "聽", "等等", "停"], "next": "n2a", "bucket": "leave", "ack": "改。例外唔等於放水—坐低起筆未？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "enter", "enter_door", "wait"],
