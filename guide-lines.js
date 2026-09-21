@@ -88,3 +88,28 @@
     "我可以短。短到得兩字：入。企。",
     "門縫唔收。你問完都唔收。"
   ];
+  var PRESSURE_REPLIES = ["離題夠。推門——定停低。而家。"];
+  var CALLOUT_REPLIES = ["推門。定停低。撞下面都得。"];
+  var OPTIONAL_AGREE = ["「好」唔等於推。門把仲凉。"];
+  var THOUGHTS_HINT = ["……你問我想要乜。門把仲凉。"];
+  var THOUGHTS_PRESSURE = ["……你打岔。門仲開住。"];
+  var THOUGHTS_CALLOUT = ["……再離題，當你退。"];
+  var MEM_NUDGE = ["你頭先提過門。而家——推，定停？"];
+  var FALLBACK_REPLY = "門就咽度。推定停。";
+  var CS_BLOCK_REPLY = "我唔做客服。門——推定停。";
+  var api = {
+    HINT_REPLIES: HINT_REPLIES,
+    PRESSURE_REPLIES: PRESSURE_REPLIES,
+    CALLOUT_REPLIES: CALLOUT_REPLIES,
+    OPTIONAL_AGREE: OPTIONAL_AGREE,
+    THOUGHTS_HINT: THOUGHTS_HINT,
+    THOUGHTS_PRESSURE: THOUGHTS_PRESSURE,
+    THOUGHTS_CALLOUT: THOUGHTS_CALLOUT,
+    MEM_NUDGE: MEM_NUDGE,
+    FALLBACK_REPLY: FALLBACK_REPLY,
+    CS_BLOCK_REPLY: CS_BLOCK_REPLY,
+    version: "split1s"
+  };
+  global.GuideLines = api;
+  global.GUIDE_LINES = api;
+})(typeof window !== "undefined" ? window : globalThis);
