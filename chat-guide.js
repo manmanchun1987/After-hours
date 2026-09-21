@@ -143,7 +143,7 @@
             bumpMiss();
             return null;
           }
-          if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear")) {
+          if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear" || cls.id === "ask_memory")) {
             return null;
           }
           if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
@@ -191,7 +191,7 @@
         }
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var c = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
-          if (c && (c.id === "ask_want" || c.id === "off_topic" || c.id === "enter_door" || c.id === "wait" || c.id === "apologize" || c.id === "flirt" || c.id === "challenge")) {
+          if (c && (c.id === "ask_want" || c.id === "off_topic" || c.id === "enter_door" || c.id === "wait" || c.id === "apologize" || c.id === "flirt" || c.id === "challenge" || c.id === "ask_memory")) {
             var line = window.IntentEngine.pickReply(c, { node: node(), state: typeof state !== "undefined" ? state : null });
             if (line) return line;
             if (typeof pr === "function") return pr(userText);
