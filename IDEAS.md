@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260922-02
+- proposed_at: 2026-09-22
+- status: proposed
+- pain: 「抄低／記住咋／複述」同記得詞族，引擎未 normalize 可能 miss
+- how: Lane A 已加抄低／記住咋／複述變體；F 可把 記低|聽低|寫低|抄低|記住|記得|複述 視為同一記憶詞族
+- acceptance: 「抄低未」「記住咋未」「複述吓」→ ask_memory
+- rationale: 口語記憶問法更似真 AI 聽人說話
+
 ### I-20260922-01
 - proposed_at: 2026-09-22
 - status: proposed
@@ -64,7 +72,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260920-03
 - proposed_at: 2026-09-20
 - status: proposed
-- pain: 句尾助詞（喎／吤）可 miss wait／enter
+- pain: 句尾助詞（喎／吔）可 miss wait／enter
 - how: 助詞當可選尾巴；引擎可 strip
 - acceptance: 「開門喎」→ enter
 - rationale: 口語尾巴唔改意圖
