@@ -1,5 +1,6 @@
 (function () {
   var YES = /^(好|係|係呀|係喎|得|得啦|嗯|嗯哼|繼續|聽你講|想聽|好呀|得喎|ok|okay|yes|y)$/i;
+  var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest)$/i;
   var misses = 0;
   var lastAck = "";
   var lastNodeId = "";
@@ -61,10 +62,6 @@
     var box = document.getElementById("choices");
     if (box) box.classList.remove("freechat-hidden");
   }
-  function enforceHide() {
-    if (misses >= 2) return;
-    hideChoices();
-  }
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
     if (id === lastNodeId) return;
@@ -72,6 +69,11 @@
     misses = 0;
     if (typeof state !== "undefined") state.guideMissCount = 0;
     hideChoices();
+  }
+  function bumpMiss() {
+    misses += 1;
+    if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
+    if (misses >= 2) showChoices();
   }
   function tryYesHeat(userText) {
     var t = String(userText || "").trim();
@@ -106,6 +108,11 @@
     if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
+        var raw = String(userText || "").trim();
+        if (OWNER_PROBE.test(raw)) {
+          hideChoices();
+          return null;
+        }
         var yesHit = tryYesHeat(userText);
         if (yesHit) return yesHit;
         var n0 = node();
@@ -133,9 +140,7 @@
               }
               return null;
             }
-            misses += 1;
-            if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
-            if (misses >= 2) showChoices();
+            bumpMiss();
             return null;
           }
           if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear")) {
@@ -158,9 +163,7 @@
         }
         var n = node();
         if (n && n.sceneGoal && window.GuidePolicy) {
-          misses += 1;
-          if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
-          if (misses >= 2) showChoices();
+          bumpMiss();
           return null;
         }
         var hit = orig(userText);
@@ -172,9 +175,7 @@
           lastAck = hit.ack;
           return hit;
         }
-        misses += 1;
-        if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
-        if (misses >= 2) showChoices();
+        bumpMiss();
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
@@ -182,6 +183,9 @@
     if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
+        if (OWNER_PROBE.test(String(userText || "").trim())) {
+          return "";
+        }
         if (YES.test(String(userText || "").trim())) {
           return "好。靠近呢邊。";
         }
