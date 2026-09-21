@@ -35,6 +35,7 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 05:20 A+B+C**：patterns **split1t** ask_memory（抄低／記住咋未／複述吓／你記低哂未／聽到未呀）＋ guide-lines **split1t** 門錨 MEM_NUDGE＋pressure 短冷；alex n0 記憶 keys；live classify 24/24；cache 仍 `?v=split1b`（F 暫緩）
 - **hourly 02:20 A+B+C**：patterns **split1p** ask_memory（聽低／寫低／記低咋未）＋ guide-lines **split1l** 門錨聽低／寫低；alex stub；cache 仍 `?v=split1b`（F 暫緩）
 - **hourly 05:15 A+B+C**：patterns **split1n** ask_memory（記低／頭先同你講／有円記低）＋ guide-lines **split1k** 門錨＋pressure 短冷；alex n0 stub；cache 仍 `?v=split1b`（F 暫緩）
 - **hourly 04:20 A+B**：patterns **split1m** ask_memory（你有円記住我講／你記得未呀／記唔記得我想開門／我頭先話開門）＋ wait 諳吓；guide-lines **split1j** 門錨 MEM_NUDGE×35；live classify 15/15；cache 仍 `?v=split1b`（F 暫緩）
@@ -57,7 +58,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** 已實作 strategy 池；split1j 加厚門錨 MEM_NUDGE
 
 #### GUIDE T3 — escalate guide + 驗收
-- **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
+- **Status:** 邏輯已有；split1t pressure 再短冷；待 live 硬刷確認（F 未升 cache）
 
 ### INTENT
 
@@ -65,7 +66,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1p 聽低／寫低／記低咋未 + split1l 門錨；對準 recentUserLines 仍待 F
+- **Status:** split1t 抄低／記住咋／複述 + 門錨 MEM_NUDGE；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
