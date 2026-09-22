@@ -1,7 +1,7 @@
 (function () {
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
-    alex: "週五夜深。你係 Vera 手下，簡報佢話未夠，尾班電梯門開過你都無入。門後聲平：「入嚟。唔好喇走廊度似野。」",
+    alex: "週五夜深。你係 Vera 手下，簡報佢話未夠，尾班電梯門開過你都無入。門後聲平：「入嚟。唔好喃走廊度似野。」",
     morgan: "酒廊外係維港燈。你係 Elise 嘅對接同事，日頭合約數字定咗。佢轉杯，聲唔高：「紙日頭講完。而家講人。」",
     sam: "加班室螢幕只照住你同 Sammi。你係佢帶嘅後輩。佢鬆開工牌繩，好似問一句靜野：「潛規則唔寫紙上。你要學，定交差就走？」"
   };
@@ -111,6 +111,8 @@
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
       hideOnBoot();
+      setTimeout(hideOnBoot, 0);
+      setTimeout(hideOnBoot, 280);
     });
   }
   function ready() {
