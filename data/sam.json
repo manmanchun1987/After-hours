@@ -9,22 +9,45 @@
   "nodes": {
     "s1": {
       "id": "s1",
-      "label": "走廊 00:12",
-      "scene": "office",
+      "label": "茶水間 00:12",
+      "scene": "pantry",
       "text": "你走到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定係仲企外邊一晚？」",
       "thought": "佢唔催。佢等。",
       "aside": "監控紅點慢閃。",
       "choices": [
-        {"label": "推門", "next": "s1"},
-        {"label": "（停一秒）", "next": "s1", "tension": 1}
+        {
+          "label": "推門",
+          "next": "s1"
+        },
+        {
+          "label": "（停一秒）",
+          "next": "s1",
+          "tension": 1
+        }
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定係仲站？"},
-        {"keys": ["等等", "停", "未準備", "企住"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟？"}
+        {
+          "keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得"],
+          "next": "s1",
+          "bucket": "leave",
+          "ack": "門縫熱。你入嚟。坐邊度，定係仲站？"
+        },
+        {
+          "keys": ["等等", "停", "未準備", "企住"],
+          "next": "s1",
+          "tension": 1,
+          "bucket": "tired",
+          "ack": "你停過。我知。而家入嚟？"
+        }
       ],
-      "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: half door smoke; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; split1y C"
+      "sceneGoal": {
+        "successIntents": ["enter_door", "enter", "wait", "agree"],
+        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0
+      },
+      "stub": "mem: half door smoke; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; split1aa C"
     }
   }
 }
