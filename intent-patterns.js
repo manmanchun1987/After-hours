@@ -1,6 +1,6 @@
 /**
- * IntentPatterns (split1w) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2 thicken: memory family 記得/記住/記低/聽低/寫低/抄低/複述/講返/頭先講/講過未
+ * IntentPatterns (split1x) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * T2 thicken: memory family 記得/記住/記低/聽低/寫低/抄低/複述/講返/頭先講/講過未/講過有未/複述返
  */
 (function (global) {
   "use strict";
@@ -27,7 +27,10 @@
       /講返出嚟/, /講返/, /記住咋未/, /記住未/, /有冇記住/, /有冇記得/,
       /有冇記低/, /記低未/, /記低咋未/, /記低哉未/, /聽低未/, /寫低未/,
       /抄低未/, /抄低/, /複述吓/, /複述一次/, /重講一次/, /聽到未呀/,
-      /有冇記住/, /講過未/, /我頭先話/, /你記唔記得/, /記唔記得我想開門/
+      /有冇記住/, /講過未/, /我頭先話/, /你記唔記得/, /記唔記得我想開門/,
+      /講過有未/, /講過冇/, /頭先講過/, /聽低咗未/, /寫低咗未/,
+      /抄低咗未/, /複述返/, /講返一遍/, /你有冇聽低/, /有冇聽低/,
+      /你有冇寫低/, /記唔記得我頭先/, /頭先咁講/
     ],
     off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /你係咪程式/]
   };
@@ -40,7 +43,7 @@
     ask_want: ["你想", "應該做"],
     apologize: ["sorry", "對唔住"],
     off_topic: ["天氣", "chatgpt", "AI"],
-    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住"]
+    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得"]
   };
   var KEY_SYNONYMS = {
     enter_door: ["開門", "入去", "推門"],
@@ -50,7 +53,7 @@
     flirt: ["靚"],
     ask_want: ["想", "應該"],
     apologize: ["sorry"],
-    ask_memory: ["記得", "講返", "記低", "頭先"]
+    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得"]
   };
   var ACCEPTANCE_SOFT = [
     {text:"開門啦",intent:"enter_door"},
@@ -64,9 +67,12 @@
     {text:"你記得我頭先講咩",intent:"ask_memory"},
     {text:"記低未",intent:"ask_memory"},
     {text:"講過未",intent:"ask_memory"},
-    {text:"我頭先話開門",intent:"ask_memory"}
+    {text:"我頭先話開門",intent:"ask_memory"},
+    {text:"講過有未",intent:"ask_memory"},
+    {text:"聽低咗未",intent:"ask_memory"},
+    {text:"複述返",intent:"ask_memory"}
   ];
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1w"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1x"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);
