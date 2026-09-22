@@ -25,6 +25,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
 | Focus-pull / DoF on locked still (desk lean, one face plane sharp) | R CSS radial-mask sharp + outer blur | O crop-zoom / C whole wash |
+| Refuse / fail shatter on review glass or lift pane | T CSS clip-path crack | C whole wash / K weather filter |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -55,6 +56,7 @@ P CSS `transform: rotate` + `box-shadow` polaroid of locked repo still (ask_memo
 Q CSS `repeating-linear-gradient` scanlines + `@keyframes` 1px drift overlay on locked still / review SVG (CCTV watch grain; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static mix-blend planes and C whole-scene wash for live-feed / hall-cam beats
 R CSS `-webkit-mask-image` radial + dual-layer `filter: blur` DoF (sharp centre on locked repo still, outer plane soft) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for focus-pull / desk-lean beats
 S CSS `filter: brightness` + irregular `@keyframes` flicker on existing A room / locked still (pantry-office fluorescent tube buzz; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and L static mix-blend for unstable after-hours tube light
+T CSS `clip-path: polygon` cracked-glass overlay on review monitor / lift pane (refuse / fail shatter; reuse locked still + A room; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and K weather-filter for isolated glass break beats
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
