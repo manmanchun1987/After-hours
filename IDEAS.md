@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260923-02
+- proposed_at: 2026-09-23
+- status: proposed
+- pain: 「講過有未／聽低咗未／複述返」可 miss ask_memory；含開門時若 F 優先 enter 會跳過接話
+- how: Lane A split1x 已加講過有未／聽低咗未／複述返；F 可 normalize 記低|聽低|寫低|抄低|複述|講過 為記憶詞族
+- acceptance: 「講過有未」「聽低咗未」「複述返」→ ask_memory
+- rationale: T2 口語記憶問法更似真 AI
+
 ### I-20260923-01
 - proposed_at: 2026-09-23
 - status: proposed
@@ -80,7 +88,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260920-03
 - proposed_at: 2026-09-20
 - status: proposed
-- pain: 句尾助詞（喎／吤）可 miss wait／enter
+- pain: 句尾助詞（喎／吔）可 miss wait／enter
 - how: 助詞當可選尾巴；引擎可 strip
 - acceptance: 「開門喎」→ enter
 - rationale: 口語尾巴唔改意圖
