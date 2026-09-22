@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260923-01
+- proposed_at: 2026-09-23
+- status: proposed
+- pain: 「講過未／我頭先話開門」可同時命中 ask_memory 與 enter，engine 若優先 enter 會跳過接話
+- how: F 批後：句含 頭先／講過／記得／記低 時 ask_memory 優於 enter；Lane A split1w 已加講過未／頭先話
+- acceptance: 「講過未」「我頭先話開門」→ ask_memory（不推進）
+- rationale: T2 接話先於推進，更似聽完先答
+
 ### I-20260922-02
 - proposed_at: 2026-09-22
 - status: proposed
@@ -24,9 +32,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260921-04
 - proposed_at: 2026-09-21
 - status: proposed
-- pain: 「記低未／有円記低」口語可能 miss ask_memory，引擎當 unclear
+- pain: 「記低未／有冇記低」口語可能 miss ask_memory，引擎當 unclear
 - how: Lane A 已加記低／聽低變體；F 可把 記低|記住|記得 視為同一記憶詞族
-- acceptance: 「有円記低」「記低未」→ ask_memory
+- acceptance: 「有冇記低」「記低未」→ ask_memory
 - rationale: 口語記憶問法更似真 AI 聽人說話
 
 ### I-20260919-01
@@ -72,7 +80,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260920-03
 - proposed_at: 2026-09-20
 - status: proposed
-- pain: 句尾助詞（喎／吔）可 miss wait／enter
+- pain: 句尾助詞（喎／吤）可 miss wait／enter
 - how: 助詞當可選尾巴；引擎可 strip
 - acceptance: 「開門喎」→ enter
 - rationale: 口語尾巴唔改意圖
@@ -106,7 +114,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: ask_memory 命中後若引擎未讀 recentUserLines，門錨材料仍可能同「停」句並存抽中
 - how: F 批核後按上一句含推／門 優先抽門錨 MEM_NUDGE；Lane B 已加厚門錨句
-- acceptance: 先「我想推門」再「你有円記住我講」→ 回覆含推／門
+- acceptance: 先「我想推門」再「你有冇記住我講」→ 回覆含推／門
 - rationale: T2 短窗記憶更似真 AI
 
 ### I-20260921-03
