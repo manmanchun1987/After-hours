@@ -25,7 +25,7 @@
         {"keys": ["記低", "聽低", "寫低", "抄低", "記低咋未", "你記得", "頭先", "複述"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入嚟，定係停低？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: corridor last lift; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: corridor last lift; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; chat-first 好係繼續得; split1ac C goal-align"
     },
     "n0b": {
       "id": "n0b",
@@ -42,7 +42,7 @@
         {"keys": ["等等", "停", "企住", "未準備"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟—你改，定要我講清楚？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: door_shut; success=enter_door/enter/wait/agree; steer 行去桌前／等等／我未準備好; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: door_shut; success=enter_door/enter/wait/agree; steer 行去桌前／等等／我未準備好; chat-first 好係繼續得; split1ac C goal-align"
     },
     "n1": {
       "id": "n1",
@@ -63,7 +63,7 @@
         {"keys": ["特登", "留到而家", "站近", "靠近", "試探"], "next": "n2c", "heat": 6, "bucket": "heat", "ack": "大膽。今晚可以例外—你轉身，定係專心改？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "challenge"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: at desk; success=agree/wait/enter/enter_door/challenge; steer 改／問清／停低／推門仍過; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: at desk; success=agree/wait/enter/enter_door/challenge; steer 改／問清／停低／推門仍過; chat-first 好係繼續得; split1ac C goal-align"
     },
     "n2a": {
       "id": "n2a",
@@ -82,7 +82,7 @@
         {"keys": ["咁近", "改唔到", "遠啲", "等等", "停"], "next": "n2a", "tension": 1, "bucket": "tired", "ack": "筆尖唔會等你。你改—而家改呢行未？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: cooperate sit-edit; success=agree/wait/enter/enter_door; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: cooperate sit-edit; success=agree/wait/enter/enter_door; chat-first 好係繼續得; split1ac C goal-align"
     },
     "n2b": {
       "id": "n2b",
@@ -101,7 +101,7 @@
         {"keys": ["你講", "我聽", "留喺位", "等等", "停"], "next": "n2a", "bucket": "tired", "ack": "你留低。我講，你聽—坐低改呢行未？"}
       ],
       "sceneGoal": {"successIntents": ["challenge", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 1},
-      "stub": "mem: pushback; success=challenge/agree/enter/enter_door/wait; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: pushback; success=challenge/agree/enter/enter_door/wait; chat-first 好係繼續得; split1ac C goal-align"
     },
     "n2c": {
       "id": "n2c",
@@ -120,7 +120,7 @@
         {"keys": ["專心改", "改", "聽", "等等", "停"], "next": "n2a", "bucket": "leave", "ack": "改。例外唔等於放水—坐低起筆未？"}
       ],
       "sceneGoal": {"successIntents": ["flirt", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 1},
-      "stub": "mem: probe close; success=flirt/agree/enter/enter_door/wait; chat-first 好係繼續得; split1ab C one-breath"
+      "stub": "mem: probe close; success=flirt/agree/enter/enter_door/wait; chat-first 好係繼續得; split1ac C goal-align"
     }
   }
 }
