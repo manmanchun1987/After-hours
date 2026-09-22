@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "尾班電梯開過一次，你仲企喇門外。Vera 隔住門縫睇你，等你推定。\n\n「走廊唔係你 rank。推門入嚟，定係停低講清楚？」",
+      "text": "尾班電梯開過一次，你仲企喺門外。Vera 隔住門縫睇你，等你推定。\n\n「走廊唔係你 rank。推門入嚟，定係停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -20,7 +20,7 @@
       "freeChat": true,
       "intents": [
         {"keys": ["推門", "推開門", "開門", "入去", "入嚟", "推入", "入門", "好", "係", "繼續", "得"], "next": "n0b", "bucket": "leave", "ack": "門把涼。你推定。入嚟之後唔好仲企住—行過桌前，定係仲等我講？"},
-        {"keys": ["猶豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企喇度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入嚟—行過桌前未？"},
+        {"keys": ["猶豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企喺度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入嚟—行過桌前未？"},
         {"keys": ["鎖門", "關門", "唔入", "走先", "閃"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈分住你。推定冇回頭—你過嚟桌前未？"},
         {"keys": ["記低", "聽低", "寫低", "抄低", "記低咋未", "你記得", "頭先", "複述"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入嚟，定係停低？"}
       ],
@@ -32,13 +32,13 @@
       "label": "門後",
       "scene": "office",
       "remember": ["door_shut"],
-      "text": "門喇你背後合上。Vera 都未抬眼，筆尖停喇簡報邊，等你走過桌前。\n\n「你推咗。行過嚟桌前，定係仲要我講第二句？」",
+      "text": "門喺你背後合上。Vera 都未抬眼，筆尖停喺簡報邊，等你走過桌前。\n\n「你推咗。行過嚟桌前，定係仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
       "choices": [{"label": "走去桌前", "next": "n1"}],
       "freeChat": true,
       "intents": [
-        {"keys": ["走去桌前", "過去", "行過去", "行過嚟", "好", "係", "繼續", "得", "推門", "入去"], "next": "n1", "bucket": "leave", "ack": "簡報喇案面。份嘢未夠—你而家改，定要我逐行講？"},
+        {"keys": ["走去桌前", "過去", "行過去", "行過嚟", "好", "係", "繼續", "得", "推門", "入去"], "next": "n1", "bucket": "leave", "ack": "簡報喺案面。份嘢未夠—你而家改，定要我逐行講？"},
         {"keys": ["等等", "停", "企住", "未準備"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟—你改，定要我講清楚？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
@@ -48,13 +48,13 @@
       "id": "n1",
       "label": "桌前 23:47",
       "scene": "office",
-      "text": "你企喇桌前。Vera 指節敲兩下案，等你認份簡報。\n\n「你自己都知呢份嘢…未夠。你而家改，定要我講清楚？」",
+      "text": "你企喺桌前。Vera 指節敲兩下案，等你認份簡報。\n\n「你自己都知呢份嘢…未夠。你而家改，定要我講清楚？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "影印機燈仲亮。",
       "choices": [
         {"label": "「我可以而家改。」", "next": "n2a"},
         {"label": "「邊部分未夠？講清楚。」", "next": "n2b"},
-        {"label": "（站近啾）「你係唔係特登留到而家先講？」", "next": "n2c"}
+        {"label": "（站近啲）「你係唔係特登留到而家先講？」", "next": "n2c"}
       ],
       "freeChat": true,
       "intents": [
@@ -79,7 +79,7 @@
       "freeChat": true,
       "intents": [
         {"keys": ["聽緊", "係", "改", "好", "繼續", "得", "坐低"], "next": "n2a", "bucket": "leave", "ack": "改呢行。唔好停—下一行你跟唔跟？"},
-        {"keys": ["咁近", "改唔到", "遠啾", "等等", "停"], "next": "n2a", "tension": 1, "bucket": "tired", "ack": "筆尖唔會等你。你改—而家改呢行未？"}
+        {"keys": ["咁近", "改唔到", "遠啲", "等等", "停"], "next": "n2a", "tension": 1, "bucket": "tired", "ack": "筆尖唔會等你。你改—而家改呢行未？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
       "stub": "mem: cooperate sit-edit; success=agree/wait/enter/enter_door; chat-first 好係繼續得; split1ab C one-breath"
@@ -93,12 +93,12 @@
       "aside": "會議室忽然好靜。",
       "choices": [
         {"label": "（行過去）", "next": "n2b"},
-        {"label": "（留喇位）「…你講，我聽。」", "next": "n2a"}
+        {"label": "（留喺位）「…你講，我聽。」", "next": "n2a"}
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["行過去", "過去", "過嚟", "入去", "好", "係", "繼續", "得"], "next": "n2b", "bucket": "leave", "ack": "過嚟。聽清楚—你跟喇邊一行？"},
-        {"keys": ["你講", "我聽", "留喇位", "等等", "停"], "next": "n2a", "bucket": "tired", "ack": "你留低。我講，你聽—坐低改呢行未？"}
+        {"keys": ["行過去", "過去", "過嚟", "入去", "好", "係", "繼續", "得"], "next": "n2b", "bucket": "leave", "ack": "過嚟。聽清楚—你跟喺邊一行？"},
+        {"keys": ["你講", "我聽", "留喺位", "等等", "停"], "next": "n2a", "bucket": "tired", "ack": "你留低。我講，你聽—坐低改呢行未？"}
       ],
       "sceneGoal": {"successIntents": ["challenge", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 1},
       "stub": "mem: pushback; success=challenge/agree/enter/enter_door/wait; chat-first 好係繼續得; split1ab C one-breath"
