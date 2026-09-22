@@ -19,6 +19,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Light / rain / glass / night mood | C CSS | D FX |
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
+| Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
@@ -53,6 +54,7 @@ O CSS `object-fit` + `object-position` / `transform: scale` crop-zoom on locked 
 P CSS `transform: rotate` + `box-shadow` polaroid of locked repo still (ask_memory flash; reuse same still, no new face) — Pages + Safari; no Imagine, no upload, no CF; beats O lean-in crop and C whole-scene wash for memory beats
 Q CSS `repeating-linear-gradient` scanlines + `@keyframes` 1px drift overlay on locked still / review SVG (CCTV watch grain; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static mix-blend planes and C whole-scene wash for live-feed / hall-cam beats
 R CSS `-webkit-mask-image` radial + dual-layer `filter: blur` DoF (sharp centre on locked repo still, outer plane soft) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for focus-pull / desk-lean beats
+S CSS `filter: brightness` + irregular `@keyframes` flicker on existing A room / locked still (pantry-office fluorescent tube buzz; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and L static mix-blend for unstable after-hours tube light
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
