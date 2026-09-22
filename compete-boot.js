@@ -82,6 +82,12 @@
     }
     if (box) box.textContent = (c && c.brief) || "";
   }
+  function hideOnBoot() {
+    document.body.classList.remove("show-choices");
+    var box = document.getElementById("choices");
+    if (box) box.classList.add("freechat-hidden");
+    if (window.__ahHideChoices) window.__ahHideChoices();
+  }
   function bootStart(id, fresh) {
     fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
       story.portrait = faceOf(id);
@@ -104,6 +110,7 @@
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
+      hideOnBoot();
     });
   }
   function ready() {

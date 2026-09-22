@@ -62,6 +62,7 @@
     var box = document.getElementById("choices");
     if (box) box.classList.remove("freechat-hidden");
   }
+  window.__ahHideChoices = hideChoices;
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
     if (id === lastNodeId) return;
