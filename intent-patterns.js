@@ -1,6 +1,6 @@
 /**
  * IntentPatterns (split1z) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2 thicken: memory + enter/wait/ask_want 模糊／錯字／口語（聽住未／記著未／覆述吓／你聽到未／頭先我講）
+ * T2 thicken: memory + enter/wait/ask_want 模糊／錯字／口語（聽住未／記著未／記着未／覆述吓／你聽到未／頭先我講）
  */
 (function (global) {
   "use strict";
@@ -39,6 +39,7 @@
       /重複一次/, /你聽到我講咩/, /記唔記我頭先講/, /頭先嗰句講咩/,
       /你有冇聽清楚/, /複述多次/, /講多次俾我聽/,
       /聽住未/, /有冇聽住/, /你有冇聽住/, /記著未/, /有冇記著/, /你記著未/,
+      /記着未/, /有冇記着/, /你記着未/,
       /覆述吓/, /覆述一次/, /你聽到未/, /聽到未/, /頭先我講/, /講過畀你聽未/,
       /聽清楚咁未/, /寫低咁未/, /記低咁未/, /你記唔記/, /有冇聽住我講/
     ],
@@ -53,7 +54,7 @@
     ask_want: ["你想", "應該做", "而家點", "下一步", "點算"],
     apologize: ["sorry", "對唔住"],
     off_topic: ["天氣", "chatgpt", "AI", "落雨"],
-    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先嗰句", "講多次", "聽住", "記著", "覆述", "你聽到未"]
+    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先嗰句", "講多次", "聽住", "記著", "記着", "覆述", "你聽到未"]
   };
   var KEY_SYNONYMS = {
     enter_door: ["開門", "入去", "推門", "推開"],
@@ -63,7 +64,7 @@
     flirt: ["靚"],
     ask_want: ["想", "應該", "而家點"],
     apologize: ["sorry"],
-    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "覆述"]
+    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "記着", "覆述"]
   };
   var ACCEPTANCE_SOFT = [
     {text:"開門啦",intent:"enter_door"},
@@ -89,6 +90,7 @@
     {text:"頭先嗰句",intent:"ask_memory"},
     {text:"聽住未",intent:"ask_memory"},
     {text:"記著未",intent:"ask_memory"},
+    {text:"記着未",intent:"ask_memory"},
     {text:"覆述吓",intent:"ask_memory"},
     {text:"你聽到未",intent:"ask_memory"},
     {text:"頭先我講",intent:"ask_memory"}
