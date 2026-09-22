@@ -23,7 +23,7 @@
       "intents": [
         {"keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近", "好", "係", "繼續", "得"], "next": "m2a", "heat": 8, "bucket": "heat", "ack": "你問成交。我聽。你坐近一格，定係只聽數？"},
         {"keys": ["條款", "收條款", "紙", "合約", "簽", "生意"], "next": "m2b", "tension": 10, "bucket": "leave", "ack": "條款。好。紙推過嚟—你簽唔簽？"},
-        {"keys": ["坐近", "近一格", "靠近", "想聽邊種"], "next": "m2c", "heat": 14, "bucket": "heat", "ack": "你坐近。我當答哇一半。仲想聽邊邊？"}
+        {"keys": ["坐近", "近一格", "靠近", "想聽邊種"], "next": "m2c", "heat": 14, "bucket": "heat", "ack": "你坐近。我當答咗一半。仲想聽邊邊？"}
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "flirt", "enter", "enter_door"],
@@ -31,7 +31,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "mem: lounge sit-close; success=agree/wait/flirt/enter/enter_door; steer 坐近／等等／我未準備好; split1aa C"
+      "stub": "mem: lounge sit-close; success=agree/wait/flirt/enter/enter_door; steer 坐近／等等／我未準備好; chat-first 好係繼續得; split1ab C one-breath"
     }
   }
 }
