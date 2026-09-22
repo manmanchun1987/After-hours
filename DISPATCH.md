@@ -35,9 +35,10 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 04:08 A**：patterns **split1x** ask_memory（講過有未／聽低咗未／寫低咗未／複述返／記唔記得我頭先）；cache 仍 `?v=split1b`
+- **hourly 04:14 A**：patterns **split1y** ask_memory（聽清楚未／頭先嗰句／講多次）＋enter（開門先／入去睇下）＋wait（等陣）；cache 仍 `?v=split1b`
+- **hourly 04:08 A**：patterns **split1x** ask_memory（講過有未／聽低咯未／寫低咯未／複述返／記唔記得我頭先）；cache 仍 `?v=split1b`
 - **hourly 03:20 A**：patterns **split1w** ask_memory（頭先講／講過未／記低／聽低／寫低／抄低／複述）；cache 仍 `?v=split1b`
-- **hourly 05:22 A**：patterns **split1u** ask_memory（抄低／記住咋未／複述吓／記低哉未／聽到未呀／重講一次）；cache 仍 `?v=split1b`
+- **hourly 05:22 A**：patterns **split1u** ask_memory（抄低／記住咋未／複述吓／記低哎未／聽到未呀／重講一次）；cache 仍 `?v=split1b`
 - **hourly 02:20 A+B+C**：patterns **split1p** ask_memory（聽低／寫低／記低咋未）＋ guide-lines **split1l** 門錨聽低／寫低；alex stub；cache 仍 `?v=split1b`（F 暫緩）
 - **split1**：抽出 `intent-patterns.js` + `guide-lines.js`；引擎／政策變薄核心；cache `?v=split1`
 - **intent2**：T1 加厚 PATTERNS；T2 ask_memory 接話材料
@@ -61,7 +62,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1x 講過有未／聽低咗未／複述返／記唔記得我頭先；對準 recentUserLines 仍待 F
+- **Status:** split1y 聽清楚未／頭先嗰句／講多次；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
