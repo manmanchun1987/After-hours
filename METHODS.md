@@ -28,6 +28,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Refuse / fail shatter on review glass or lift pane | T CSS clip-path crack | C whole wash / K weather filter |
 | Incoming after-hours call on existing HUD / phone chrome | U CSS box-shadow pulse | C whole motion / I audio-only |
 | Late-night elapsed / time-pressure on existing HUD clock | V CSS conic-gradient sweep ring | C whole motion / I audio-only |
+| Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -61,6 +62,7 @@ S CSS `filter: brightness` + irregular `@keyframes` flicker on existing A room /
 T CSS `clip-path: polygon` cracked-glass overlay on review monitor / lift pane (refuse / fail shatter; reuse locked still + A room; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and K weather-filter for isolated glass break beats
 U CSS `box-shadow` + irregular `@keyframes` pulse on existing HUD / phone chrome (incoming after-hours call; reuse repo HUD + `sfx-call`; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and I audio-only cue for a visible ring beat
 V CSS `conic-gradient` + `@keyframes` sweep ring on existing HUD clock chrome (late-night elapsed / time-pressure; reuse repo HUD only) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and I audio-only cue for a visible time-drain beat
+W CSS `transform: scaleX` + `linear-gradient` fill on existing HUD heat/tension meter (choice heat/tension deltas; reuse repo HUD chrome only) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and I audio-only cue for a visible meter beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
