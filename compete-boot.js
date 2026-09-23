@@ -89,7 +89,7 @@
     if (window.__ahHideChoices) window.__ahHideChoices();
   }
   function bootStart(id, fresh) {
-    fetch(FILES[id]).then(function (res) { return res.json(); }).then(function (story) {
+    fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {
       story.portrait = faceOf(id);
       story.name = id === "sam" ? "Sammi" : id === "morgan" ? "Elise" : "Vera";
       story.chatName = story.name;
