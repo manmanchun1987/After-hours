@@ -35,6 +35,7 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 01:37 A+B**：patterns **split1aa** ask_memory（聽住未呀／記低咖未／覆述一遍／你聽到我頭先未／講返一次未／聽低咖未呀）；guide **split1ab** 門錨 MEM_NUDGE；cache 仍 `?v=split1b`
 - **hourly 05:10 A**：patterns **split1z** ask_memory（聽住未／記著未／覆述吓／你聽到未／頭先我講）；cache 仍 `?v=split1b`
 - **hourly 04:14 A**：patterns **split1y** ask_memory（聽清楚未／頭先嗰句／講多次）＋enter（開門先／入去睇下）＋wait（等陣）；cache 仍 `?v=split1b`
 - **hourly 04:08 A**：patterns **split1x** ask_memory（講過有未／聽低咯未／寫低咯未／複述返／記唔記得我頭先）；cache 仍 `?v=split1b`
@@ -52,7 +53,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** n0 已有 sceneGoal；runtime 已追 miss；n2a–n2c 補 sceneGoal+freeChat
 
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1j 加厚門錨 MEM_NUDGE
+- **Status:** 已實作 strategy 池；split1ab 加厚門錨 MEM_NUDGE（記低咖／覆述一遍）
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
@@ -63,7 +64,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1z 聽住未／記著未／覆述吓／你聽到未；對準 recentUserLines 仍待 F
+- **Status:** split1aa 聽住未呀／記低咖未／覆述一遍／你聽到我頭先未；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies

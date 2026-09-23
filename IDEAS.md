@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260924-01
+- proposed_at: 2026-09-24
+- status: proposed
+- pain: 「聽住未呀／記低咖未／覆述一遍／你聽到我頭先未」可 miss ask_memory；與複述／記住同族
+- how: Lane A split1aa 已加聽住未呀／記低咖／覆述一遍／你聽到我頭先未；F 可 normalize 記低|聽低|寫低|抄低|複述|覆述|聽住|記著|記着|記低咖 為記憶詞族
+- acceptance: 「聽住未呀」「記低咖未」「覆述一遍」「你聽到我頭先未」→ ask_memory
+- rationale: T2 口語記憶問法更似真 AI
+
 ### I-20260923-03
 - proposed_at: 2026-09-23
 - status: proposed
@@ -96,7 +104,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260920-03
 - proposed_at: 2026-09-20
 - status: proposed
-- pain: 句尾助詞（喎／吤）可 miss wait／enter
+- pain: 句尾助詞（喎／吴）可 miss wait／enter
 - how: 助詞當可選尾巴；引擎可 strip
 - acceptance: 「開門喎」→ enter
 - rationale: 口語尾巴唔改意圖

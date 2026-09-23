@@ -1,6 +1,6 @@
 /**
- * IntentPatterns (split1z) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2 thicken: memory + enter/wait/ask_want 模糊／錯字／口語（聽住未／記著未／記着未／覆述吓／你聽到未／頭先我講）
+ * IntentPatterns (split1aa) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * T2 thicken: memory 口語（聽住未呀／有冇記着我講／覆述一遍／你聽到我頭先未／記低咖未／講返一次未／聽低咖未呀）
  */
 (function (global) {
   "use strict";
@@ -41,7 +41,11 @@
       /聽住未/, /有冇聽住/, /你有冇聽住/, /記著未/, /有冇記著/, /你記著未/,
       /記着未/, /有冇記着/, /你記着未/,
       /覆述吓/, /覆述一次/, /你聽到未/, /聽到未/, /頭先我講/, /講過畀你聽未/,
-      /聽清楚咁未/, /寫低咁未/, /記低咁未/, /你記唔記/, /有冇聽住我講/
+      /聽清楚咁未/, /寫低咁未/, /記低咁未/, /你記唔記/, /有冇聽住我講/,
+      /聽住未呀/, /有冇記着我講/, /你有冇記着我講/, /覆述一遍/,
+      /你聽到我頭先未/, /聽到我頭先未/, /記低咖未/, /記低咖未呀/,
+      /頭先嗰啲你記得未/, /講返一次未/, /聽低咖未/, /聽低咖未呀/,
+      /記唔記得我講過/, /你有冇聽低我講/, /有冇覆述/, /你覆述未/
     ],
     off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /你係咪程式/, /落雨/, /幾多度/, /openai/i, /chatbot/i]
   };
@@ -54,7 +58,7 @@
     ask_want: ["你想", "應該做", "而家點", "下一步", "點算"],
     apologize: ["sorry", "對唔住"],
     off_topic: ["天氣", "chatgpt", "AI", "落雨"],
-    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先嗰句", "講多次", "聽住", "記著", "記着", "覆述", "你聽到未"]
+    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先嗰句", "講多次", "聽住", "記著", "記着", "覆述", "你聽到未", "記低咖", "覆述一遍", "講返一次"]
   };
   var KEY_SYNONYMS = {
     enter_door: ["開門", "入去", "推門", "推開"],
@@ -64,7 +68,7 @@
     flirt: ["靚"],
     ask_want: ["想", "應該", "而家點"],
     apologize: ["sorry"],
-    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "記着", "覆述"]
+    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "記着", "覆述", "記低咖", "覆述一遍"]
   };
   var ACCEPTANCE_SOFT = [
     {text:"開門啦",intent:"enter_door"},
@@ -93,9 +97,15 @@
     {text:"記着未",intent:"ask_memory"},
     {text:"覆述吓",intent:"ask_memory"},
     {text:"你聽到未",intent:"ask_memory"},
-    {text:"頭先我講",intent:"ask_memory"}
+    {text:"頭先我講",intent:"ask_memory"},
+    {text:"聽住未呀",intent:"ask_memory"},
+    {text:"記低咖未",intent:"ask_memory"},
+    {text:"覆述一遍",intent:"ask_memory"},
+    {text:"你聽到我頭先未",intent:"ask_memory"},
+    {text:"講返一次未",intent:"ask_memory"},
+    {text:"聽低咖未呀",intent:"ask_memory"}
   ];
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1z"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1aa"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);
