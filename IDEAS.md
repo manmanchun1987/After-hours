@@ -8,9 +8,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260925-04
 - proposed_at: 2026-09-25
 - status: proposed
-- pain: 「默底未／背底未／默齊未／背齊晒未／錄晒底未」可 miss ask_memory；默底／背底／默齊同記低詞族
-- how: Lane A split1ao 已加默底／背底／默齊／默齊晒／背齊晒／錄晒底／收晒底／背低晒；F 可 normalize 默底|背底|默齊|背齊晒|錄晒底|收晒底 為記憶詞族
-- acceptance: 「默底未」「背底未」「默齊未」「背齊晒未」「錄晒底未」→ ask_memory
+- pain: 「複誦未／複讀未／默書未／背過未／講返出囜未／聽晒底未」可 miss ask_memory
+- how: Lane A split1ao 已加複誦／複讀／默書／背過／講返出囜／讀返出囜／聽晒底／記晒底；F 可 normalize 複誦|複讀|默書|背過 為記憶詞族
+- acceptance: 「複誦未」「默書未」「背過未」「講返出囜未」「聽晒底未」→ ask_memory
 - rationale: T2 口語記憶問法更似真 AI
 
 ### I-20260925-03
@@ -27,4 +27,12 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - pain: 「抄底未／背晒未／抄齊晒未／錄齊晒未／收齊晒未」可 miss ask_memory；底／背／齊晒同記低詞族
 - how: Lane A split1am 已加抄底／背晒／背齊／抄齊晒／錄齊晒／收齊晒；F 可 normalize 抄底|背晒|背齊|抄齊晒|錄齊晒|收齊晒 為記憶詞族
 - acceptance: 「抄底未」「背晒未」「抄齊晒未」「錄齊晒未」「收齊晒未」→ ask_memory
+- rationale: T2 口語記憶問法更似真 AI
+
+### I-20260925-01
+- proposed_at: 2026-09-25
+- status: proposed
+- pain: 「有冇錄低／你有冇錄返／聽晒齊未呀／收返未呀」可 miss ask_memory；錄／收返／晒齊同記低詞族
+- how: Lane A split1aj 已加聽晒齊／記晒齊／收晒／錄低／錄返／複述齊／講返齊／聽返齊／收返／記返齊；F 可 normalize 錄低|錄返|收返|聽晒齊|記晒齊 為記憶詞族
+- acceptance: 「有冇錄低」「你有冇錄返」「聽晒齊未呀」「收返未呀」「記晒齊未」→ ask_memory
 - rationale: T2 口語記憶問法更似真 AI
