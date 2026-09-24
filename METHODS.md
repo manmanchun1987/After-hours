@@ -30,6 +30,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Late-night elapsed / time-pressure on existing HUD clock | V CSS conic-gradient sweep ring | C whole motion / I audio-only |
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
+| Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -65,6 +66,7 @@ U CSS `box-shadow` + irregular `@keyframes` pulse on existing HUD / phone chrome
 V CSS `conic-gradient` + `@keyframes` sweep ring on existing HUD clock chrome (late-night elapsed / time-pressure; reuse repo HUD only) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and I audio-only cue for a visible time-drain beat
 W CSS `transform: scaleX` + `linear-gradient` fill on existing HUD heat/tension meter (choice heat/tension deltas; reuse repo HUD chrome only) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and I audio-only cue for a visible meter beat
 X CSS `font-variant-numeric: tabular-nums` + amber `text-shadow` LED + `@keyframes` digit roll on existing lift chrome (floor arrive / floor change; reuse repo HUD + lift SVG only) — Pages + Safari; no Imagine, no upload, no CF; beats A full lift SVG and C whole-scene motion for an isolated floor-LED beat
+Y CSS `::before`/`::after` 2.35:1 letterbox bars on existing stage (cinematic / film-frame cut; reuse A room + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and D FX file for an isolated widescreen beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
