@@ -1,6 +1,6 @@
 /**
- * IntentPatterns (split1ah) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2 thicken: memory 口語（聽齊未呀／記齊未／收低未呀／有冇抄返／你有冇寫返／複述過俾我聽未／講返過未／聽齊我講未）
+ * IntentPatterns (split1aj) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * T2 thicken: memory 口語（聽晒齊未呀／記晒齊未／收晒未呀／有冇錄低／你有冇錄返／複述齊未／講返齊未／聽返齊我講未／收返未呀／記返齊未）
  * enter／wait／ask_want 加口語同義＋錯字柔軟過關
  */
 (function (global) {
@@ -73,7 +73,13 @@
       /抄返未/, /有冇抄返/, /你抄返未呀/,
       /寫返未/, /你有冇寫返/, /有冇寫返/,
       /複述過俾我聽未/, /講返過未/, /頭先嗎啲你收低未/,
-      /聽齊我講未/, /你有冇記齊/
+      /聽齊我講未/, /你有冇記齊/,
+      /聽晒齊未/, /聽晒齊未呀/, /有冇聽晒齊/,
+      /記晒齊未/, /有冇記晒齊/, /你記晒齊未/,
+      /收晒未呀/, /有冇收晒/, /收返未呀/, /你有冇收返/,
+      /有冇錄低/, /錄低未呀/, /你有冇錄返/, /錄返未/,
+      /有冇錄低我講/, /複述齊未/, /講返齊未/,
+      /聽返齊我講未/, /記返齊未/, /有冇記返齊/
     ],
     off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /你係咪程式/, /落雨/, /幾多度/, /openai/i, /chatbot/i, /而家幾點/, /幾點鐘/, /食咋飯未/]
   };
@@ -86,7 +92,7 @@
     ask_want: ["你想", "應該做", "而家點", "下一步", "點算", "做咩好", "而家做咩", "跟住點", "做乜好"],
     apologize: ["sorry", "對唔住"],
     off_topic: ["天氣", "chatgpt", "AI", "落雨", "幾點"],
-    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先喪句", "講多次", "聽住", "記著", "記着", "覆述", "你聽到未", "記低咑", "覆述一遍", "講返一次", "記住未呀", "聽低咑", "講返俾我聽", "記著咑", "記低咋", "聽低咋", "覆述俾我聽", "記低晒", "聽晒未", "聽返頭先", "覆述過未", "頭先嗎句", "記晒未", "頭先嗎啲", "聽返我講", "抄低未呀", "覆述返俾我聽", "記住晒", "聽返晒", "有冇記返", "記返未", "聽返未", "聽齊未", "記齊未", "收低未", "抄返未", "寫返未", "講返過未", "聽齊我講"]
+    ask_memory: ["記得", "講返", "記低", "聽低", "寫低", "抄低", "複述", "頭先講", "講過未", "記住", "講過有未", "複述返", "記唔記得", "聽清楚", "頭先喪句", "講多次", "聽住", "記著", "記着", "覆述", "你聽到未", "記低咑", "覆述一遍", "講返一次", "記住未呀", "聽低咑", "講返俾我聽", "記著咑", "記低咋", "聽低咋", "覆述俾我聽", "記低晒", "聽晒未", "聽返頭先", "覆述過未", "頭先嗎句", "記晒未", "頭先嗎啲", "聽返我講", "抄低未呀", "覆述返俾我聽", "記住晒", "聽返晒", "有冇記返", "記返未", "聽返未", "聽齊未", "記齊未", "收低未", "抄返未", "寫返未", "講返過未", "聽齊我講", "聽晒齊未", "記晒齊未", "收晒未", "收返未", "錄低未", "錄返未", "複述齊未", "講返齊未", "聽返齊", "記返齊"]
   };
   var KEY_SYNONYMS = {
     enter_door: ["開門", "入去", "推門", "推開", "打開門"],
@@ -96,7 +102,7 @@
     flirt: ["靚"],
     ask_want: ["想", "應該", "而家點", "做咩"],
     apologize: ["sorry"],
-    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "記着", "覆述", "記低咑", "覆述一遍", "記住未呀", "聽低咑", "記著咑", "記低咋", "聽低咋", "記低晒", "聽晒", "聽返", "覆述過", "頭先嗎句", "記晒", "頭先嗎啲", "記返", "記住晒", "聽返晒", "聽齊", "記齊", "收低", "抄返", "寫返", "講返過"]
+    ask_memory: ["記得", "講返", "記低", "頭先", "記唔記得", "聽清楚", "複述", "聽住", "記著", "記着", "覆述", "記低咑", "覆述一遍", "記住未呀", "聽低咑", "記著咑", "記低咋", "聽低咋", "記低晒", "聽晒", "聽返", "覆述過", "頭先嗎句", "記晒", "頭先嗎啲", "記返", "記住晒", "聽返晒", "聽齊", "記齊", "收低", "抄返", "寫返", "講返過", "聽晒齊", "記晒齊", "收晒", "收返", "錄低", "錄返", "複述齊", "講返齊", "聽返齊", "記返齊"]
   };
   var ACCEPTANCE_SOFT = [
     {text:"開門啦",intent:"enter_door"},
@@ -174,12 +180,22 @@
     {text:"複述過俾我聽未",intent:"ask_memory"},
     {text:"講返過未",intent:"ask_memory"},
     {text:"聽齊我講未",intent:"ask_memory"},
+    {text:"聽晒齊未呀",intent:"ask_memory"},
+    {text:"記晒齊未",intent:"ask_memory"},
+    {text:"收晒未呀",intent:"ask_memory"},
+    {text:"有冇錄低",intent:"ask_memory"},
+    {text:"你有冇錄返",intent:"ask_memory"},
+    {text:"複述齊未",intent:"ask_memory"},
+    {text:"講返齊未",intent:"ask_memory"},
+    {text:"聽返齊我講未",intent:"ask_memory"},
+    {text:"收返未呀",intent:"ask_memory"},
+    {text:"記返齊未",intent:"ask_memory"},
     {text:"入去睇吓先",intent:"enter_door"},
     {text:"推門入去",intent:"enter_door"},
     {text:"等下先",intent:"wait"},
     {text:"跟住點",intent:"ask_want"}
   ];
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1ah"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:SOFT_LEXICON,KEY_SYNONYMS:KEY_SYNONYMS,ACCEPTANCE_SOFT:ACCEPTANCE_SOFT,version:"split1aj"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);
