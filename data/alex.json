@@ -19,13 +19,13 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "推開門", "開門", "入去", "入囐", "推入", "入門", "好", "係", "繼續", "得"], "next": "n0b", "bucket": "leave", "ack": "門把涼。你推定。入囐之後唔好仲企住—行過桌前，定係仲等我講？"},
-        {"keys": ["猶豫", "停一秒", "停一停", "唔敢", "再推", "等等", "企喎度", "站住", "停"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入囐—行過桌前未？"},
+        {"keys": ["推門", "推開門", "開門", "開門啦", "入去", "入去先", "我入去先", "入囐", "推入", "入門", "進去看看", "進去睇下", "入去睇下", "開門先", "我推門", "行入去啦", "好", "係", "繼續", "得"], "next": "n0b", "bucket": "leave", "ack": "門把涼。你推定。入囐之後唔好仲企住—行過桌前，定係仲等我講？"},
+        {"keys": ["猶豫", "停一秒", "停一停", "唔敢", "再推", "等等", "等一等先", "唔好咁急", "企喎度", "站住", "停", "我未準備好", "未準備", "等陣"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。我知。而家入囐—行過桌前未？"},
         {"keys": ["鎖門", "關門", "唔入", "走先", "閃"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈分住你。推定冇回頭—你過囐桌前未？"},
-        {"keys": ["記低", "聽低", "寫低", "抄低", "記低咋未", "你記得", "頭先", "複述", "記低晒", "聽晒", "聽返", "覆述過", "頭先嗔句", "記晒", "聽晒齊未呀", "記晒齊未", "收晒未呀", "有冇錄低", "你有冇錄返", "複述齊未", "講返齊未", "聽返齊我講未", "收返未呀", "記返齊未", "錄低", "錄返", "收返", "抄晒", "寫晒", "複誦", "背返", "複讀"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入囐，定係停低？"}
+        {"keys": ["記低", "聽低", "寫低", "抄低", "記低咋未", "你記得", "頭先", "複述", "記低晒", "聽晒", "聽返", "覆述過", "頭先嗔句", "記晒", "聽晒齊未呀", "記晒齊未", "收晒未呀", "有冇錄低", "你有冇錄返", "複述齊未", "講返齊未", "聽返齊我講未", "收返未呀", "記返齊未", "錄低", "錄返", "收返", "抄晒", "寫晒", "複誦", "背返", "複讀", "記唔記晒", "你抄齊未", "有冇記低晒", "聽齊晒未呀", "錄齊未", "你收齊未", "有冇寫齊", "複述晒未", "講晒返未", "頭先講噉收齊未", "記底未", "聽底未", "寫底未"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入囐，定係停低？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: corridor last lift; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; chat-first 好係繼續得; split1al C keys 抄晒寫晒複誦"
+      "stub": "mem: corridor last lift; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／等等／我未準備好; chat-first 好係繼續得; split1am C soft-keys enter/wait + ask_memory 記唔記晒／抄齊／聽齊晒／錄齊／收齊／寫齊／複述晒／講晒返／記底／聽底／寫底"
     },
     "n0b": {
       "id": "n0b",
@@ -38,11 +38,11 @@
       "choices": [{"label": "走去桌前", "next": "n1"}],
       "freeChat": true,
       "intents": [
-        {"keys": ["走去桌前", "過去", "行過去", "行過囐", "好", "係", "繼續", "得", "推門", "入去"], "next": "n1", "bucket": "leave", "ack": "你企喎桌前。份簡報未夠—你而家改，定要我講清楚？"},
-        {"keys": ["等等", "停", "企住", "未準備"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過囐—你改，定要我講清楚？"}
+        {"keys": ["走去桌前", "過去", "行過去", "行過囐", "好", "係", "繼續", "得", "推門", "入去", "入去先", "開門啦", "進去看看"], "next": "n1", "bucket": "leave", "ack": "你企喎桌前。份簡報未夠—你而家改，定要我講清楚？"},
+        {"keys": ["等等", "停", "企住", "未準備", "我未準備好", "等一等先", "唔好咁急", "等陣"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過囐—你改，定要我講清楚？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: door_shut; success=enter_door/enter/wait/agree; steer 行去桌前／等等／我未準備好; chat-first 好係繼續得; split1ak C one-breath text+ack-chain"
+      "stub": "mem: door_shut; success=enter_door/enter/wait/agree; steer 行去桌前／等等／我未準備好; chat-first 好係繼續得; split1am C one-breath text+ack-chain"
     },
     "n1": {
       "id": "n1",
