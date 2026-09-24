@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260925-03
+- proposed_at: 2026-09-25
+- status: proposed
+- pain: 「背低未／默低未／錄底未／收底未／抄晒底未」可 miss ask_memory；背低／默／錄底／收底同記低詞族
+- how: Lane A split1an 已加背低／默低／默晒／抄晒底／背返／默返／錄底／收底／寫晒底；F 可 normalize 背低|默低|錄底|收底|抄晒底 為記憶詞族
+- acceptance: 「背低未」「默低未」「錄底未」「收底未」「抄晒底未」→ ask_memory
+- rationale: T2 口語記憶問法更似真 AI
+
 ### I-20260925-02
 - proposed_at: 2026-09-25
 - status: proposed
@@ -20,4 +28,3 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: Lane A split1aj 已加聽晒齊／記晒齊／收晒／錄低／錄返／複述齊／講返齊／聽返齊／收返／記返齊；F 可 normalize 錄低|錄返|收返|聽晒齊|記晒齊 為記憶詞族
 - acceptance: 「有冇錄低」「你有冇錄返」「聽晒齊未呀」「收返未呀」「記晒齊未」→ ask_memory
 - rationale: T2 口語記憶問法更似真 AI
-
