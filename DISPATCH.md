@@ -35,6 +35,7 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 07:00 A+B**：patterns **split1ao** ask_memory（默底未／你默底未／有冇默底／背底未／默齊未／默齊晒未／背齊晒未／錄晒底未／收晒底未／背低晒未／你有冇默返）＋enter（我推門啦／開門先啦）＋wait（停一停啦／等一等啦）；guide **split1am** 門錨 MEM_NUDGE（默底／背底／默齊）；cache 仍 `?v=split1b`
 - **hourly 05:08 A**：patterns **split1am** ask_memory（抄底未／你抄底未／有冇抄底／記底未呀／背晒未／背齊未／抄齊晒未／錄齊晒未／收齊晒未）；cache 仍 `?v=split1b`
 - **hourly 05:05 A**：patterns **split1al** ask_memory（記唔記晒／你抄齊未／有冇記低晒／聽齊晒未呀／錄齊未／你收齊未／有冇寫齊／複述晒未／講晒返未／頭先講噉收齊未／記底未／聽底未／寫底未）＋enter（我推開門／行入去啦）＋wait（等一等先／唔好咁急）；cache 仍 `?v=split1b`
 - **hourly 04:05 A+B+C**：patterns **split1aj** ask_memory（聽晒齊未呀／記晒齊未／收晒未呀／有冇錄低／你有冇錄返／複述齊未／講返齊未／聽返齊我講未／收返未呀／記返齊未）；guide **split1aj** 門錨 MEM_NUDGE（錄低／聽晒齊／收返）；alex n0 keys；cache 仍 `?v=split1b`
@@ -58,7 +59,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** n0 已有 sceneGoal；runtime 已追 miss；n2a–n2c 補 sceneGoal+freeChat
 
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1ab 加厚門錨 MEM_NUDGE（記低咕／覆述一遍）
+- **Status:** 已實作 strategy 池；split1am 加厚門錨 MEM_NUDGE（默底／背底／默齊）
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
@@ -69,7 +70,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1am 抄底／背晒／背齊／抄齊晒／錄齊晒／收齊晒；對準 recentUserLines 仍待 F
+- **Status:** split1ao 默底／背底／默齊／背齊晒／錄晒底／收晒底／背低晒；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies

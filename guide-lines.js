@@ -1,8 +1,8 @@
 /**
- * GuideLines (split1al) — Lane B reply/thought pools for GuidePolicy.
+ * GuideLines (split1am) — Lane B reply/thought pools for GuidePolicy.
  * Policy core (sceneGoal / miss / advance) stays in guide-policy.js.
  * In-character Vera; steer to door/wait; no CS tone; anti-repeat via larger pools.
- * T2/T3: MEM_NUDGE + miss escalate still 門錨；天氣／程式／問句都導向 sceneGoal。
+ * T2/T3: MEM_NUDGE + miss escalate still 門錨；默底／背底／默齊／錄晒底 都導向 sceneGoal。
  */
 (function (global) {
   "use strict";
@@ -28,6 +28,9 @@
     "你有冇錄返。錄返就把位。",
     "收返未呀。收返面對把。推，定停。",
     "記返齊未。齊完手。單好只記。",
+    "默底未。默底完面對縫。",
+    "背底未。背底就把。手落。",
+    "默齊未。齊完推，定停。",
     "你問天氣。走廊唔賣。門賣。",
     "對唔住收到。收到之後入定企。",
     "唔入可以。講停。唔好兜第三個答案。",
@@ -45,6 +48,8 @@
     "夠問有冇錄低。錄完手落把。",
     "第二次錄返。錄完就入。或講停。",
     "夠問記返齊未。齊完推。",
+    "夠問默底未。默完推。",
+    "第二次背底。背完就入。或講停。",
     "第二次天氣。我當你退半步。手。",
     "夠問我係咪程式。門先答。推。"
   ];
@@ -55,6 +60,7 @@
     "亮揽。收晒未呀都係推定停。",
     "第三次。有冇錄低都要擁。我靜。",
     "最後。記返齊未都係入定企。我收口。",
+    "第三次。默底未都要擁。我靜。",
     "第三次天氣。把凉。你擁。我無口。"
   ];
   var OPTIONAL_AGREE = [
@@ -69,18 +75,21 @@
     "……收晒未呀。收完該面對把。",
     "……有冇錄低。錄完手。",
     "……記返齊未。齊就該推。",
+    "……默底未。默完該面對把。",
     "……佢問天氣。走廊唔賣。"
   ];
   var THOUGHTS_PRESSURE = [
     "……第二次離題。當半退。",
     "……天氣又嚟。我聲短。",
     "……夠問錄低。手。",
-    "……夠問記返齊。推。"
+    "……夠問記返齊。推。",
+    "……夠問默底。推。"
   ];
   var THOUGHTS_CALLOUT = [
     "……第三次。亮揽。我靜。",
     "……第三次。錄低都要擁。我靜。",
-    "……亮揽。收晒都係推定停。"
+    "……亮揽。收晒都係推定停。",
+    "……第三次。默底都要擁。我靜。"
   ];
   var MEM_NUDGE = [
     "你頭先提過門。而家——推，定停？",
@@ -90,6 +99,9 @@
     "你有冇錄返。錄返就把位。而家手。",
     "收返未呀。收返：你講過推門。手落把。",
     "記返齊未。記返齊：走廊兩個答案。而家撿。",
+    "默底未。默底：你頭先對準縫。而家擁。",
+    "背底未。背底就把位。而家手。",
+    "默齊未。齊完：推定停。",
     "你頭先問天氣。我講過唔賣。而家門把仲凉。"
   ];
   var FALLBACK_REPLY = "門就哽度。推定停。";
@@ -105,7 +117,7 @@
     MEM_NUDGE: MEM_NUDGE,
     FALLBACK_REPLY: FALLBACK_REPLY,
     CS_BLOCK_REPLY: CS_BLOCK_REPLY,
-    version: "split1al"
+    version: "split1am"
   };
   global.GuideLines = api;
   global.GUIDE_LINES = api;
