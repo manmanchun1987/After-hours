@@ -31,6 +31,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
 | Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
+| Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -67,6 +68,7 @@ V CSS `conic-gradient` + `@keyframes` sweep ring on existing HUD clock chrome (l
 W CSS `transform: scaleX` + `linear-gradient` fill on existing HUD heat/tension meter (choice heat/tension deltas; reuse repo HUD chrome only) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and I audio-only cue for a visible meter beat
 X CSS `font-variant-numeric: tabular-nums` + amber `text-shadow` LED + `@keyframes` digit roll on existing lift chrome (floor arrive / floor change; reuse repo HUD + lift SVG only) — Pages + Safari; no Imagine, no upload, no CF; beats A full lift SVG and C whole-scene motion for an isolated floor-LED beat
 Y CSS `::before`/`::after` 2.35:1 letterbox bars on existing stage (cinematic / film-frame cut; reuse A room + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion and D FX file for an isolated widescreen beat
+Z CSS three-dot `@keyframes` bounce on existing private-chat / phone sheet (對方輸入中; reuse N frost sheet + HUD chrome; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only chat-first and I audio-only cue for a visible typing beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
