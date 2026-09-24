@@ -35,6 +35,7 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 04:05 A+B+C**：patterns **split1aj** ask_memory（聽晒齊未呀／記晒齊未／收晒未呀／有冇錄低／你有冇錄返／複述齊未／講返齊未／聽返齊我講未／收返未呀／記返齊未）；guide **split1aj** 門錨 MEM_NUDGE（錄低／聽晒齊／收返）；alex n0 keys；cache 仍 `?v=split1b`
 - **hourly 03:06 A+B+C**：patterns **split1ah** ask_memory（聽齊未呀／記齊未／收低未呀／有冇抄返／你有冇寫返／複述過俾我聽未／講返過未／聽齊我講未）；guide **split1ah** 門錨 MEM_NUDGE；alex n0 記憶 keys；cache 仍 `?v=split1b`
 - **hourly 06:02 A+B+C**：patterns **split1af** ask_memory（記低晒未／聽晒未呀／你有冇聽返／覆述過未／講返頭先嗎句／你有冇抄低我講／聽返頭先未／記晒未呀）；guide **split1ah** 門錨 MEM_NUDGE；alex n0 記憶 keys；cache 仍 `?v=split1b`
 - **hourly 01:37 A+B**：patterns **split1aa** ask_memory（聽住未呀／記低咖未／覆述一遍／你聽到我頭先未／講返一次未／聽低咖未呀）；guide **split1ab** 門錨 MEM_NUDGE；cache 仍 `?v=split1b`
@@ -66,7 +67,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1ah 聽齊／記齊／收低／抄返／寫返／講返過；對準 recentUserLines 仍待 F
+- **Status:** split1aj 聽晒齊／記晒齊／收晒／錄低／錄返／複述齊／講返齊／聽返齊／收返；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
