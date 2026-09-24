@@ -1,5 +1,5 @@
 (function () {
-  window.__ahChatGuide = "t3-0406";
+  window.__ahChatGuide = "t3-0521";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
