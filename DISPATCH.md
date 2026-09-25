@@ -35,21 +35,8 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 04:06 A+B+C**：patterns **split1ar** ask_memory（唸底未／你唸底未／有冇唸底／唸低／唸齊／唸返／溫底／溫返／溫過／背出囗／默出囗／記返底／聽返底）＋enter（我推吓門／推吓門先／行入去先啦）＋wait（等一等先呀／停一停先呀）；guide **split1ar** 門錨 MEM_NUDGE（唸底／溫底／背出囗）；alex n0 記憶 keys；cache 仍 `?v=split1b`
 - **hourly 07:00 A+B**：patterns **split1ao** ask_memory（默底未／你默底未／有冇默底／背底未／默齊未／默齊晒未／背齊晒未／錄晒底未／收晒底未／背低晒未／你有冇默返）＋enter（我推門啦／開門先啦）＋wait（停一停啦／等一等啦）；guide **split1am** 門錨 MEM_NUDGE（默底／背底／默齊）；cache 仍 `?v=split1b`
-- **hourly 05:08 A**：patterns **split1am** ask_memory（抄底未／你抄底未／有冇抄底／記底未呀／背晒未／背齊未／抄齊晒未／錄齊晒未／收齊晒未）；cache 仍 `?v=split1b`
-- **hourly 05:05 A**：patterns **split1al** ask_memory（記唔記晒／你抄齊未／有冇記低晒／聽齊晒未呀／錄齊未／你收齊未／有冇寫齊／複述晒未／講晒返未／頭先講噉收齊未／記底未／聽底未／寫底未）＋enter（我推開門／行入去啦）＋wait（等一等先／唔好咁急）；cache 仍 `?v=split1b`
-- **hourly 04:05 A+B+C**：patterns **split1aj** ask_memory（聽晒齊未呀／記晒齊未／收晒未呀／有冇錄低／你有冇錄返／複述齊未／講返齊未／聽返齊我講未／收返未呀／記返齊未）；guide **split1aj** 門錨 MEM_NUDGE（錄低／聽晒齊／收返）；alex n0 keys；cache 仍 `?v=split1b`
-- **hourly 03:06 A+B+C**：patterns **split1ah** ask_memory（聽齊未呀／記齊未／收低未呀／有冇抄返／你有冇寫返／複述過俾我聽未／講返過未／聽齊我講未）；guide **split1ah** 門錨 MEM_NUDGE；alex n0 記憶 keys；cache 仍 `?v=split1b`
-- **hourly 06:02 A+B+C**：patterns **split1af** ask_memory（記低晒未／聽晒未呀／你有冇聽返／覆述過未／講返頭先嗎句／你有冇抄低我講／聽返頭先未／記晒未呀）；guide **split1ah** 門錨 MEM_NUDGE；alex n0 記憶 keys；cache 仍 `?v=split1b`
-- **hourly 01:37 A+B**：patterns **split1aa** ask_memory（聽住未呀／記低咕未／覆述一遍／你聽到我頭先未／講返一次未／聽低咕未呀）；guide **split1ab** 門錨 MEM_NUDGE；cache 仍 `?v=split1b`
-- **hourly 05:10 A**：patterns **split1z** ask_memory（聽住未／記著未／覆述吓／你聽到未／頭先我講）；cache 仍 `?v=split1b`
-- **hourly 04:14 A**：patterns **split1y** ask_memory（聽清楚未／頭先嗎句／講多次）＋enter（開門先／入去睇下）＋wait（等陣）；cache 仍 `?v=split1b`
-- **hourly 04:08 A**：patterns **split1x** ask_memory（講過有未／聽低咯未／寫低咯未／複述返／記唔記得我頭先）；cache 仍 `?v=split1b`
-- **hourly 03:20 A**：patterns **split1w** ask_memory（頭先講／講過未／記低／聽低／寫低／抄低／複述）；cache 仍 `?v=split1b`
-- **hourly 05:22 A**：patterns **split1u** ask_memory（抄低／記住咋未／複述吓／記低哉未／聽到未呀／重講一次）；cache 仍 `?v=split1b`
-- **hourly 02:20 A+B+C**：patterns **split1p** ask_memory（聽低／寫低／記低咋未）＋ guide-lines **split1l** 門錨聽低／寫低；alex stub；cache 仍 `?v=split1b`（F 暫緩）
-- **split1**：抽出 `intent-patterns.js` + `guide-lines.js`；引擎／政策變薄核心；cache `?v=split1`
-- **intent2**：T1 加厚 PATTERNS；T2 ask_memory 接話材料
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -59,7 +46,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** n0 已有 sceneGoal；runtime 已追 miss；n2a–n2c 補 sceneGoal+freeChat
 
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1am 加厚門錨 MEM_NUDGE（默底／背底／默齊）
+- **Status:** 已實作 strategy 池；split1ar 加厚門錨 MEM_NUDGE（唸底／溫底／背出囗）
 
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
@@ -70,7 +57,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1ao 默底／背底／默齊／背齊晒／錄晒底／收晒底／背低晒；對準 recentUserLines 仍待 F
+- **Status:** split1ar 唸底／溫底／背出囗／默出囗／唸齊／溫返；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
