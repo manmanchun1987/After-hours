@@ -5,12 +5,20 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260926-02
+- proposed_at: 2026-09-26
+- status: proposed
+- pain: 「溫功課未／唤功課未／複咋未／有冇溫功課／溫過書未」可 miss ask_memory；功課／複咋同溫習詞族
+- how: Lane A split1at 已加溫功課／唤功課／複咋／有冇溫功課／溫過書／背過書；F 可 normalize 溫功課|唤功課|複咋|溫過書 為記憶詞族
+- acceptance: 「溫功課未」「唤功課未」「複咋未」「有冇溫功課」「溫過書未」→ ask_memory
+- rationale: T2 口語記憶問法更似真 AI
+
 ### I-20260926-01
 - proposed_at: 2026-09-26
 - status: proposed
-- pain: 「唸底未／溫底未／背出囗未／默出囗未／溫過未」可 miss ask_memory；唸／溫／出囗同記低詞族
-- how: Lane A split1ar 已加唸底／唸低／唸齊／唸返／溫底／溫返／溫過／背出囗／默出囗／記返底／聽返底；F 可 normalize 唸底|溫底|背出囗|默出囗 為記憶詞族
-- acceptance: 「唸底未」「溫底未」「背出囗未」「默出囗未」「溫過未」→ ask_memory
+- pain: 「唸底未／溫底未／背出囬未／默出囬未／溫過未」可 miss ask_memory；唸／溫／出囬同記低詞族
+- how: Lane A split1ar 已加唸底／唸低／唸齊／唸返／溫底／溫返／溫過／背出囬／默出囬／記返底／聽返底；F 可 normalize 唸底|溫底|背出囬|默出囬 為記憶詞族
+- acceptance: 「唸底未」「溫底未」「背出囬未」「默出囬未」「溫過未」→ ask_memory
 - rationale: T2 口語記憶問法更似真 AI
 
 ### I-20260925-04
