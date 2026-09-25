@@ -34,6 +34,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
 | Unread private ping / 未讀紅點 on existing phone HUD | AA CSS badge pulse | U call pulse / E text-only |
 | Incoming private line lands / 氣泡滑入 on existing phone sheet | AB CSS bubble slide-up | Z typing dots / E text-only |
+| Inner thought / 內心 overlay on locked still + room | AC CSS multiply veil | E text-only / C whole wash |
 | Success / fail beat | D + I cue | F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
@@ -73,6 +74,7 @@ Y CSS `::before`/`::after` 2.35:1 letterbox bars on existing stage (cinematic / 
 Z CSS three-dot `@keyframes` bounce on existing private-chat / phone sheet (對方輸入中; reuse N frost sheet + HUD chrome; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only chat-first and I audio-only cue for a visible typing beat
 AA CSS `::after` 6px unread badge + `@keyframes` scale pulse on existing phone HUD chrome (未讀私訊紅點; reuse N sheet + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats U whole-chrome call pulse and E text-only for an isolated unread-ping beat
 AB CSS `transform: translateY` + opacity `@keyframes` slide-up on existing private-chat bubble (對方氣泡落地; reuse N frost sheet + Z dots; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats Z typing-only and E text-only for the landed-message beat
+AC CSS `mix-blend-mode: multiply` + low-opacity indigo veil over locked repo still + A room (內心 / inner-thought dip; reuse still + room only) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only thought line and C whole-scene wash for an isolated inner-monologue beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
