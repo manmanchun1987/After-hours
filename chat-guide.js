@@ -64,13 +64,18 @@
     if (box) box.classList.remove("freechat-hidden");
   }
   window.__ahHideChoices = hideChoices;
+  function forceHideAfterAdvance() {
+    misses = 0;
+    if (typeof state !== "undefined") state.guideMissCount = 0;
+    hideChoices();
+    setTimeout(hideChoices, 0);
+    setTimeout(hideChoices, 240);
+  }
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
     if (id === lastNodeId) return;
     lastNodeId = id;
-    misses = 0;
-    if (typeof state !== "undefined") state.guideMissCount = 0;
-    hideChoices();
+    forceHideAfterAdvance();
   }
   function bumpMiss() {
     misses += 1;
@@ -83,9 +88,7 @@
     if (!YES.test(t)) return null;
     var n = node();
     var h = heatIntent(n);
-    misses = 0;
-    if (typeof state !== "undefined") state.guideMissCount = 0;
-    hideChoices();
+    forceHideAfterAdvance();
     if (h) {
       h.ack = "好。" + (h.ack || "靠近呢邊。");
       lastAck = h.ack;
@@ -132,9 +135,7 @@
                 mappedOk = window.IntentEngine.forceMapByIntentId(cls.id, n0);
               }
               if (mappedOk) {
-                misses = 0;
-                if (typeof state !== "undefined") state.guideMissCount = 0;
-                hideChoices();
+                forceHideAfterAdvance();
                 if (!mappedOk._ackClipped) {
                   mappedOk.ack = "你講「" + clip(userText) + "」。" + (mappedOk.ack || "我接。");
                   mappedOk._ackClipped = true;
@@ -153,9 +154,7 @@
           if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
             var mapped = window.IntentEngine.mapToNodeIntent(cls, n0);
             if (mapped) {
-              misses = 0;
-              if (typeof state !== "undefined") state.guideMissCount = 0;
-              hideChoices();
+              forceHideAfterAdvance();
               if (!mapped._ackClipped) {
                 mapped.ack = "你講「" + clip(userText) + "」。" + (mapped.ack || "我接。");
                 mapped._ackClipped = true;
@@ -172,9 +171,7 @@
         }
         var hit = orig(userText);
         if (hit) {
-          misses = 0;
-          if (typeof state !== "undefined") state.guideMissCount = 0;
-          hideChoices();
+          forceHideAfterAdvance();
           hit.ack = "你講「" + clip(userText) + "」。" + (hit.ack || "我接。");
           lastAck = hit.ack;
           return hit;
@@ -188,14 +185,19 @@
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
-        misses = 0;
-        if (typeof state !== "undefined") state.guideMissCount = 0;
-        hideChoices();
-        setTimeout(hideChoices, 0);
-        setTimeout(hideChoices, 240);
+        forceHideAfterAdvance();
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
+    }
+    if (typeof window.goToNode === "function" && !window.goToNode.__guidedHide) {
+      var gn = window.goToNode;
+      window.goToNode = function () {
+        var r = gn.apply(this, arguments);
+        forceHideAfterAdvance();
+        return r;
+      };
+      window.goToNode.__guidedHide = true;
     }
     if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
       var pr = window.pickReply;
