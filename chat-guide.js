@@ -184,6 +184,19 @@
       };
       window.matchFreeChatIntent.__guided = true;
     }
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guidedHide) {
+      var adv = window.applyFreeChatAdvance;
+      window.applyFreeChatAdvance = function () {
+        var ok = adv.apply(this, arguments);
+        misses = 0;
+        if (typeof state !== "undefined") state.guideMissCount = 0;
+        hideChoices();
+        setTimeout(hideChoices, 0);
+        setTimeout(hideChoices, 240);
+        return ok;
+      };
+      window.applyFreeChatAdvance.__guidedHide = true;
+    }
     if (typeof window.pickReply === "function" && !window.pickReply.__guided) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
