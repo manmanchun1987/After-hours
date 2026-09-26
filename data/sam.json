@@ -20,11 +20,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "撥開門", "把門推開", "拉開門先", "擰一下把", "手扭門把", "把一擰", "門把轉一下", "門把擰一下", "推門入嚟"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
-        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唄吓", "唄一陣", "歇一歇", "等我唄一陣", "等我唂吓"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟未？"}
+        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "撥開門", "把門推開", "拉開門先", "撿一下把", "手扭門把", "把一撿", "門把轉一下", "門把撿一下", "推門入嚟", "撳一下把", "門把撳一下"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
+        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唕吓", "唕一陣", "歇一歇", "等我唕一陣", "等我唰吓", "等一等先", "企住先"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟未？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bc C pantry one-breath + 好係繼續"
+      "stub": "split1be C pantry leftover +撳一下把／等一等先"
     }
   }
 }
