@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 06:08 C STORY**：node.text 一啖氣（到達＋而家要乜＋句尾問）；ack＝下一拍前半；CHAT-FIRST 好／係／繼續；唔拆 chat-guide；禁 app.js stub
 - **hourly 05:16 A+B+C**：patterns **split1ba** +enter 擰一下把／手扭門把／把一擰／門把轉一下；+wait 等我唂吓／唂一陣／歇一歇；+ask_memory 背書未／有冇默功課／溫過未；+ask_want 跟住做乜；guide MEM_NUDGE／HINT 唂吓／背書／擰一下把；C 核 n0–n2c sceneGoal 已齊；cache 仍 `?v=split1b`
 - **hourly 05:14 CODE**：chat-guide `__ahChatGuide=t3-0521`；2 miss 才揭鈕
 - **hourly 05:12 METHOD scout AE**：選擇熱度閃邊；Pages+Safari；無 Imagine/無 upload/無 CF

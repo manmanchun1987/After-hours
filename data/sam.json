@@ -11,7 +11,7 @@
       "id": "s1",
       "label": "茶水間 00:12",
       "scene": "pantry",
-      "text": "你走到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定係仲企外邊一晚？」",
+      "text": "你走到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
       "thought": "佢唔催。佢等。",
       "aside": "監控紅點慢閃。",
       "choices": [
@@ -20,11 +20,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "撥開門", "把門推開", "拉開門先", "撓一下把", "手扭門把", "把一撓", "門把轉一下", "門把撓一下", "推門入嚟"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定係仲站？"},
-        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唄吓", "唄一陣", "歇一歇", "等我唄一陣"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟？"}
+        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "撥開門", "把門推開", "拉開門先", "擰一下把", "手扭門把", "把一擰", "門把轉一下", "門把擰一下", "推門入嚟"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
+        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唄吓", "唄一陣", "歇一歇", "等我唄一陣", "等我唂吓"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟未？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bb C pantry door: enter/wait/agree +撓把／唄吓／歇一歇"
+      "stub": "split1bc C pantry one-breath + 好係繼續"
     }
   }
 }
