@@ -35,7 +35,8 @@ Read AUTOMATION.md before any hourly run.
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 05:08 A+B+C**：patterns **split1at** enter（拉開門先／我行去開門／去推開門／行到門口推）＋wait（等我唰吓／唰一陣／唔好逼我／俾我唰吓）＋ask_memory（溫功課／唤功課／複咋未／溫過書）；guide **split1at** 門錨 MEM_NUDGE（溫功課／唤功課／拉開門先）；alex n0 keys；cache 仍 `?v=split1b`
+- **hourly 02:03 A+B+C**：patterns **split1aw** enter（我去門度推／推開大門／門一推就入／我去拉開門）＋wait（等我唶吓／唶一陣／俾我唶吓／唔好催住先）＋ask_memory（有冇複課／你複課未／背功課未／溫返功課未／功課溫返未）；guide **split1aw** 門錨 MEM_NUDGE（複課／背功課／溫返功課／等我唶吓）；alex n0 stub tag；cache 仍 `?v=split1b`
+- **hourly 05:08 A+B+C**：patterns **split1at** enter（拉開門先／我行去開門／去推開門／行到門口推）＋wait（等我啢吓／啢一陣／唔好逼我／俾我啢吓）＋ask_memory（溫功課／唤功課／複咋未／溫過書）；guide **split1at** 門錨 MEM_NUDGE（溫功課／唤功課／拉開門先）；alex n0 keys；cache 仍 `?v=split1b`
 - **hourly 04:06 A+B+C**：patterns **split1ar** ask_memory（唸底未／你唸底未／有冇唸底／唸低／唸齊／唸返／溫底／溫返／溫過／背出囬／默出囬／記返底／聽返底）＋enter（我推吓門／推吓門先／行入去先啦）＋wait（等一等先呀／停一停先呀）；guide **split1ar** 門錨 MEM_NUDGE（唸底／溫底／背出囬）；alex n0 記憶 keys；cache 仍 `?v=split1b`
 - **hourly 07:00 A+B**：patterns **split1ao** ask_memory（默底未／你默底未／有冇默底／背底未／默齊未／默齊晒未／背齊晒未／錄晒底未／收晒底未／背低晒未／你有冇默返）＋enter（我推門啦／開門先啦）＋wait（停一停啦／等一等啦）；guide **split1am** 門錨 MEM_NUDGE（默底／背底／默齊）；cache 仍 `?v=split1b`
 
@@ -58,7 +59,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 
 #### T2 — 場景記憶接話
-- **Status:** split1at 溫功課／唤功課／複咋／溫過書／拉開門先；對準 recentUserLines 仍待 F
+- **Status:** split1aw 複課／背功課／溫返功課／等我唶吓／我去門度推；對準 recentUserLines 仍待 F
 
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
