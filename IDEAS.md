@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260927-01
+- proposed_at: 2026-09-27
+- status: proposed
+- pain: 「等我唶吓／唶一陣／背功課未／功課溫返未／有冇複課」可 miss；唶同停低、功課同記憶詞族
+- how: Lane A split1aw 已加等我唶吓／唶一陣／俾我唶吓／背功課／溫返功課／有冇複課；F 可 normalize 唶吓|複課|背功課|溫返功課 為對應詞族
+- acceptance: 「等我唶吓」「唶一陣」「背功課未」「溫返功課未」「有冇複課」→ wait / ask_memory
+- rationale: T2 口語停低＋記憶問法更似真 AI
+
 ### I-20260926-02
 - proposed_at: 2026-09-26
 - status: proposed
@@ -24,9 +32,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260925-04
 - proposed_at: 2026-09-25
 - status: proposed
-- pain: 「複誦未／複讀未／默書未／背過未／講返出囜未／聽晒底未」可 miss ask_memory
-- how: Lane A split1ao 已加複誦／複讀／默書／背過／講返出囜／讀返出囜／聽晒底／記晒底；F 可 normalize 複誦|複讀|默書|背過 為記憶詞族
-- acceptance: 「複誦未」「默書未」「背過未」「講返出囜未」「聽晒底未」→ ask_memory
+- pain: 「複誦未／複讀未／默書未／背過未／講返出囝未／聽晒底未」可 miss ask_memory
+- how: Lane A split1ao 已加複誦／複讀／默書／背過／講返出囝／讀返出囝／聽晒底／記晒底；F 可 normalize 複誦|複讀|默書|背過 為記憶詞族
+- acceptance: 「複誦未」「默書未」「背過未」「講返出囝未」「聽晒底未」→ ask_memory
 - rationale: T2 口語記憶問法更似真 AI
 
 ### I-20260925-03
