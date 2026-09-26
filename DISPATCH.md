@@ -16,9 +16,10 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 05:16 A+B+C**：patterns **split1ba** +enter 擰一下把／手扭門把／把一擰／門把轉一下；+wait 等我唂吓／唂一陣／歇一歇；+ask_memory 背書未／有冇默功課／溫過未；+ask_want 跟住做乜；guide MEM_NUDGE／HINT 唂吓／背書／擰一下把；C 核 n0–n2c sceneGoal 已齊；cache 仍 `?v=split1b`
+- **hourly 05:14 CODE**：chat-guide `__ahChatGuide=t3-0521`；2 miss 才揭鈕
 - **hourly 05:12 METHOD scout AE**：選擇熱度閃邊；Pages+Safari；無 Imagine/無 upload/無 CF
 - **hourly 04:07 A+B+C**：patterns **split1ay** +wait 等我唵吓／唵一陣；+ask_memory 功課默未／默功課未；+enter 門把扭一下；guide 門錨 MEM_NUDGE；cache 仍 `?v=split1b`
-- **hourly 04:07 METHOD scout AD**：評核紙滑上柜；Pages+Safari；無 Imagine/無 upload/無 CF
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -32,7 +33,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1ay 加厚門錨 MEM_NUDGE（唵吓／功課默）
+- **Status:** 已實作 strategy 池；split1ba 加厚門錨 MEM_NUDGE（唂吓／背書／擰一下把）
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -40,7 +41,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1ay 等我唵吓／功課默未／門把扭一下；對準 recentUserLines 仍待 F
+- **Status:** split1ba 等我唂吓／歇一歇／背書未／擰一下把；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
