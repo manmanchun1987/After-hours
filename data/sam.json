@@ -20,11 +20,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "擱開門", "把門推開", "拉開門先"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定係仲站？"},
-        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟？"}
+        {"keys": ["推門", "入去", "入嚟", "開門", "好", "係", "繼續", "得", "開門啦", "我入去先", "進去看看", "撥開門", "把門推開", "拉開門先", "撓一下把", "手扭門把", "把一撓", "門把轉一下", "門把撓一下", "推門入嚟"], "next": "s1", "bucket": "leave", "ack": "門縫熱。你入嚟。坐邊度，定係仲站？"},
+        {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唄吓", "唄一陣", "歇一歇", "等我唄一陣"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入嚟？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "mem: half door smoke; success=enter_door/enter/wait/agree; steer 開門啦／我入去先／進去看看／擱開門／等等／我未準備好; chat-first 好係繼續得; split1ay C corridor align enter/wait"
+      "stub": "split1bb C pantry door: enter/wait/agree +撓把／唄吓／歇一歇"
     }
   }
 }
