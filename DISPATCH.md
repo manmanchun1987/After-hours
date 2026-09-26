@@ -16,12 +16,15 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 05:12 METHOD scout AE**：選擇熱度閃邊；Pages+Safari；無 Imagine/無 upload/無 CF
 - **hourly 04:07 A+B+C**：patterns **split1ay** +wait 等我唵吓／唵一陣；+ask_memory 功課默未／默功課未；+enter 門把扭一下；guide 門錨 MEM_NUDGE；cache 仍 `?v=split1b`
 - **hourly 04:07 METHOD scout AD**：評核紙滑上柜；Pages+Safari；無 Imagine/無 upload/無 CF
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE AE — choice heat-rim pulse
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接 `#choices` heat delta
 #### CODE AD — review dossier paper slide
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 review 節
 

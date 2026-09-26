@@ -29,6 +29,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Incoming after-hours call on existing HUD / phone chrome | U CSS box-shadow pulse | C whole motion / I audio-only |
 | Late-night elapsed / time-pressure on existing HUD clock | V CSS conic-gradient sweep ring | C whole motion / I audio-only |
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
+| Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
 | Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
@@ -77,6 +78,7 @@ AA CSS `::after` 6px unread badge + `@keyframes` scale pulse on existing phone H
 AB CSS `transform: translateY` + opacity `@keyframes` slide-up on existing private-chat bubble (對方氣泡落地; reuse N frost sheet + Z dots; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats Z typing-only and E text-only for the landed-message beat
 AC CSS `mix-blend-mode: multiply` + low-opacity indigo veil over locked repo still + A room (內心 / inner-thought dip; reuse still + room only) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only thought line and C whole-scene wash for an isolated inner-monologue beat
 AD CSS `linear-gradient` paper grain + `transform: translateY` slide on existing review desk (評核檔案滑上柜; reuse A review SVG + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room and C whole-scene motion for an isolated dossier-land beat
+AE CSS `box-shadow` amber heat-rim + brief `transform: scale` `@keyframes` pulse on existing `#choices` buttons when heat delta (選擇熱度閃邊; reuse repo HUD chrome only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and W meter-only for an isolated choice-heat beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
