@@ -32,6 +32,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
 | Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
+| Scene cut / room change wipe (office→lift, pantry→review) | AF CSS clip-path shutter | Y letterbox hold / C whole motion / D FX |
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
 | Unread private ping / 未讀紅點 on existing phone HUD | AA CSS badge pulse | U call pulse / E text-only |
 | Incoming private line lands / 氣泡滑入 on existing phone sheet | AB CSS bubble slide-up | Z typing dots / E text-only |
@@ -79,6 +80,7 @@ AB CSS `transform: translateY` + opacity `@keyframes` slide-up on existing priva
 AC CSS `mix-blend-mode: multiply` + low-opacity indigo veil over locked repo still + A room (內心 / inner-thought dip; reuse still + room only) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only thought line and C whole-scene wash for an isolated inner-monologue beat
 AD CSS `linear-gradient` paper grain + `transform: translateY` slide on existing review desk (評核檔案滑上柜; reuse A review SVG + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room and C whole-scene motion for an isolated dossier-land beat
 AE CSS `box-shadow` amber heat-rim + brief `transform: scale` `@keyframes` pulse on existing `#choices` buttons when heat delta (選擇熱度閃邊; reuse repo HUD chrome only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and W meter-only for an isolated choice-heat beat
+AF CSS `clip-path: inset` horizontal shutter + `@keyframes` close/open wipe on existing stage (office→lift / pantry→review scene-cut; reuse A room + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats Y static letterbox hold, C whole-scene motion and D FX file for an isolated room-change wipe
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
