@@ -1,5 +1,5 @@
 (function () {
-  window.__ahChatGuide = "t3-0521";
+  window.__ahChatGuide = "t3-0414";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
@@ -256,11 +256,9 @@
     if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
-        if (reason === "ask_want" || reason === "off_topic_escalate" || reason === "guide_policy" || (reason && String(reason).indexOf("ask") === 0)) {
-          misses = Math.max(misses, 2);
-          var ok = un.apply(this, arguments);
-          showChoices();
-          return ok;
+        if (OWNER_PROBE.test(String(reason || ""))) {
+          hideChoices();
+          return false;
         }
         if (misses < 2) return false;
         var ok2 = un.apply(this, arguments);
