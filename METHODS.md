@@ -38,7 +38,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Incoming private line lands / 氣泡滑入 on existing phone sheet | AB CSS bubble slide-up | Z typing dots / E text-only |
 | Inner thought / 內心 overlay on locked still + room | AC CSS multiply veil | E text-only / C whole wash |
 | Review dossier / 評核紙滑上柜 | AD CSS paper slide | A full room / C whole motion |
-| Success / fail beat | D + I cue | F if file exists |
+| Success / fail beat | AG CSS stamp slam | D + I cue / F if file exists |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
 | New dialogue tickets | intents · scene rules · reply materials | yes-words / key lists vs pools |
 | BGM on enter | F loop | I synth bed |
@@ -81,6 +81,7 @@ AC CSS `mix-blend-mode: multiply` + low-opacity indigo veil over locked repo sti
 AD CSS `linear-gradient` paper grain + `transform: translateY` slide on existing review desk (評核檔案滑上柜; reuse A review SVG + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room and C whole-scene motion for an isolated dossier-land beat
 AE CSS `box-shadow` amber heat-rim + brief `transform: scale` `@keyframes` pulse on existing `#choices` buttons when heat delta (選擇熱度閃邊; reuse repo HUD chrome only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and W meter-only for an isolated choice-heat beat
 AF CSS `clip-path: inset` horizontal shutter + `@keyframes` close/open wipe on existing stage (office→lift / pantry→review scene-cut; reuse A room + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats Y static letterbox hold, C whole-scene motion and D FX file for an isolated room-change wipe
+AG CSS `transform: scale` + `rotate` + `mix-blend-mode: multiply` rubber-stamp slam (`@keyframes` drop-hit) on existing AD review paper / HUD chrome (success / fail chop; reuse repo paper + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats D FX file, I audio-only cue and A full room for an isolated pass/fail stamp beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
