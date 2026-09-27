@@ -27,6 +27,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Focus-pull / DoF on locked still (desk lean, one face plane sharp) | R CSS radial-mask sharp + outer blur | O crop-zoom / C whole wash |
 | Refuse / fail shatter on review glass or lift pane | T CSS clip-path crack | C whole wash / K weather filter |
 | Incoming after-hours call on existing HUD / phone chrome | U CSS box-shadow pulse | C whole motion / I audio-only |
+| Incoming private vibrate on existing phone HUD | AH CSS translate3d micro-shake | U glow pulse / AA badge / I audio-only |
 | Late-night elapsed / time-pressure on existing HUD clock | V CSS conic-gradient sweep ring | C whole motion / I audio-only |
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
@@ -82,6 +83,7 @@ AD CSS `linear-gradient` paper grain + `transform: translateY` slide on existing
 AE CSS `box-shadow` amber heat-rim + brief `transform: scale` `@keyframes` pulse on existing `#choices` buttons when heat delta (選擇熱度閃邊; reuse repo HUD chrome only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash and W meter-only for an isolated choice-heat beat
 AF CSS `clip-path: inset` horizontal shutter + `@keyframes` close/open wipe on existing stage (office→lift / pantry→review scene-cut; reuse A room + locked still; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats Y static letterbox hold, C whole-scene motion and D FX file for an isolated room-change wipe
 AG CSS `transform: scale` + `rotate` + `mix-blend-mode: multiply` rubber-stamp slam (`@keyframes` drop-hit) on existing AD review paper / HUD chrome (success / fail chop; reuse repo paper + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats D FX file, I audio-only cue and A full room for an isolated pass/fail stamp beat
+AH CSS `transform: translate3d` 1–2px irregular `@keyframes` micro-shake on existing phone HUD chrome (incoming private vibrate; reuse repo HUD + `sfx-ping`; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats U box-shadow glow pulse, AA badge-only and I audio-only cue for a tactile vibrate beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
