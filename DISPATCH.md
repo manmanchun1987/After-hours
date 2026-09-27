@@ -16,7 +16,8 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 04:11 A+B INTENT T2**：patterns **split1bj** +門把一擷推／把一扭推入／輕輕扭把入／手按門把一扭；+等我唶吓／唶一陣／唶一唶；+頭先喺句講咧／你頭先講過咧嚟／頭先你講過啲咧；+跟住要我點／而家你要我做咧；guide MEM_NUDGE／HINT；固定測句+split1bj 本地 classify 22/22 PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 05:11 A+B INTENT T2**：patterns **split1bk** +輕輕一撷把入／把一撷推入／手撷把一推／門把輕輕一扭；+等我唽吓／唽一陣／唽一唽；+頭先嗰句講咩嚟／你頭先講過啲咩嚟／頭先講過嗰句呀；+而家跟住要我點／你而家想我做咩；guide MEM_NUDGE／HINT；固定測句+split1bk 本地 classify 預期 PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 04:11 A+B INTENT T2**：patterns **split1bj** +門把一撷推／把一扭推入／輕輕扭把入／手按門把一扭；+等我唶吓／唶一陣／唶一唶；+頭先喇句講呀／你頭先講過呀嚟／頭先你講過啲呀；+跟住要我點／而家你要我做呀；guide MEM_NUDGE／HINT；固定測句+split1bj 本地 classify 22/22 PASS；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 04:12 METHOD scout AG**：success/fail CSS stamp slam（scale+rotate+multiply）接 AD 紙／HUD；Pages+Safari；無 Imagine/無 upload/無 CF；贏 D FX / I 只聲 / A 全場
 - **hourly 06:12 METHOD scout AF**：百葉簾 `clip-path: inset` 轉場（office→lift / pantry→review）；Pages+Safari；無 Imagine/無 upload/無 CF；贏 Y 靜止 letterbox / C 全場動 / D FX
 - **hourly 06:08 C STORY**：node.text 一呼吸（到達＋而家要乜＋句尾問）；ack＝下一拍前半；CHAT-FIRST 好／係／繼續；唔拆 chat-guide；禁 app.js stub
@@ -37,7 +38,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1bj 加厚門錨 MEM_NUDGE（門把一擷推／唶一唶／頭先喺句）
+- **Status:** 已實作 strategy 池；split1bk 加厚門錨 MEM_NUDGE（輕輕一撷把入／唽一唽／頭先嗰句）
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -45,7 +46,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1bj 等我唶吓／唶一唶／頭先喺句講咧／門把一擷推；對準 recentUserLines 仍待 F
+- **Status:** split1bk 等我唽吓／唽一唽／頭先嗰句講咩嚟／輕輕一撷把入；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
@@ -60,7 +61,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 | 3 | 推門 | enter | 推進 |
 | 5 | 停一停 | wait | 停低 |
 | 8 | 今日天氣點呀 | off_topic | 入戲擋 |
-| 10 | 你記得我頭先講咧 | memory | 接記憶 |
+| 10 | 你記得我頭先講呀 | memory | 接記憶 |
 
 ## Ticket policy
 - **INTENT 或 GUIDE 開住 ⇒ hourly 必須做對應票，不准 monitor-only**
