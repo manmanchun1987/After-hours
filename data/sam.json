@@ -24,13 +24,8 @@
         {"keys": ["等等", "停", "未準備", "企住", "我未準備好", "等我唾吓", "唔好催住先啦", "停一停", "等我唸吓", "唸一陣", "歇一歇", "等我唸一陣", "等我啽吓", "等一等先", "企住先"], "next": "s1", "tension": 1, "bucket": "tired", "ack": "你停過。我知。而家入哈未？"},
         {"keys": ["你想我點", "而家要我做咩", "跟住點", "而家跟住要我點"], "next": "s1", "bucket": "leave", "ack": "燈仲亮。推門入哈，定仲企外邊？"}
       ],
-      "sceneGoal": {
-        "successIntents": ["enter_door", "enter", "wait", "agree"],
-        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
-        "maxMisses": 3,
-        "guideLevel": 0
-      },
-      "stub": "split1bt C pantry; success=enter/wait/agree; ask_want steer"
+      "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
+      "stub": "split1bw C pantry; success=enter/wait/agree; 推門入哈／等等"
     }
   }
 }
