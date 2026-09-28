@@ -16,15 +16,13 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 06:12 METHOD SCOUT AJ**：pick 行 Presence/呼吸感 + letter AJ CSS scale breathe；CODE AJ 待 F hook；禁 Imagine/上傳/CF；Pages+Safari
-- **hourly 05:11 A+B+C INTENT T2**：patterns **split1bv** +我過去開門／去開門先／幫你推門／門畀我開／等我唵吓／唵一陣／等我唵氣／慢住先／你想點先／跟住點算／而家點做先啦／你記唔記得頭先喪句／頭先講過咩嚕架／幾點鐘啦／出面凍唔凍；guide HINT/PRESSURE/MEM；alex n0 keys 材料加厚；固定測句+split1bv 本地 classify 51/51 PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 03:11 A+B INTENT T2**：patterns **split1bq** 加厚門把／唾／講咩嚕；cache `?v=split1b`
+- **hourly 06:11 A+B+C INTENT T2**：patterns/guide **split1by** +我行過去開門／等我去開門／門我開啦／行前開門／等我唴吓／唴一陣／唔好趕／等陣先啦／你想點呀／跟住點先／而家點算／你記唔記得我頭先講咩／頭先嗰句係咩嚟／頭先講過啲咩／而家幾點呀／出面凍唔凍呀；guide HINT/PRESSURE/MEM 加厚；alex n0 thought 記頭先；固定測句+split1by 本地 classify 83/83 PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 05:11 A+B+C INTENT T2**：patterns **split1bv**
+- **hourly 03:11 A+B INTENT T2**：patterns **split1bq**
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
-#### CODE AJ — locked-still breathe presence
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 wait / linger 節 locked still
 #### CODE AG — success/fail stamp slam
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 success/fail beat
 #### CODE AF — scene-cut shutter wipe
@@ -38,7 +36,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1bv 加厚開門先／唵吓／想點先 HINT
+- **Status:** 已實作 strategy 池；split1by 加厚門我開啦／唴吓／頭先講過啲咩 HINT
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -46,7 +44,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1bv 等我唵吓／頭先講過咩嚕架／我過去開門；對準 recentUserLines 仍待 F
+- **Status:** split1by 我行過去開門／等我唴吓／頭先講過啲咩；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
