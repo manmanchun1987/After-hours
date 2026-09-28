@@ -16,13 +16,8 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 02:04 A INTENT T2**：patterns **split1bo** +輕輕扭門把入／手握把輕輕推／把輕輕一扭入／門把輕輕一推入；+等我唍吓／唍一陣／唍一唍；+頭先嗰句講咩嚀／你頭先講過嗰句嚀／頭先講嗰句係咩嚀；+而家跟住點做好啦／你而家要我點做好；固定測句+split1bo 本地 classify 19/19 PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 06:11 A+B INTENT T2**：patterns **split1bn** +手輕輕一扭把入／把輕輕一掇入／門把輕輕推入／手按把輕輕扭；+等我唅吓／唅一陣／唅一唅；+頭先嗰句講咩四嗔嗔嘎／你頭先講過嘈句／頭先講嗰句係咩四嗔；+而家跟住點做好／你而家要我點做；guide HINT／PRESSURE／MEM_NUDGE；固定測句+split1bn 本地 classify 21/21 PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 05:11 A+B INTENT T2**：patterns **split1bk** +輕輕一掇把入／把一掇推入／手掇把一推／門把輕輕一扭；+等我唽吓／唽一陣／唽一唽；+頭先嗰句講咩四嗔／你頭先講過啲咩四嗔／頭先講過嗰句呀；+而家跟住要我點／你而家想我做咩；guide MEM_NUDGE／HINT；固定測句+split1bk 本地 classify 預期 PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 04:11 A+B INTENT T2**：patterns **split1bj** +門把一掇推／把一扭推入／輕輕扭把入／手按門把一扭；+等我唶吓／唶一陣／唶一唶；+頭先喃句講呀／你頭先講過呀四嗔／頭先你講過啲呀；+跟住要我點／而家你要我做呀；guide MEM_NUDGE／HINT；固定測句+split1bj 本地 classify 22/22 PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 04:12 METHOD scout AG**：success/fail CSS stamp slam（scale+rotate+multiply）接 AD 紙／HUD；Pages+Safari；無 Imagine/無 upload/無 CF；贏 D FX / I 只聲 / A 全場
-- **hourly 06:12 METHOD scout AF**：百葉簾 `clip-path: inset` 轉場（office→lift / pantry→review）；Pages+Safari；無 Imagine/無 upload/無 CF；贏 Y 靜止 letterbox / C 全場動 / D FX
-- **hourly 06:08 C STORY**：node.text 一呼吸（到達＋而家要乜＋句尾問）；ack＝下一拍前半；CHAT-FIRST 好／係／繼續；唔拆 chat-guide；禁 app.js stub
+- **hourly 03:11 A+B INTENT T2**：patterns **split1bq** +手輕輕推門把入／把一擷輕輕入／門把輕輕扭推入／輕輕一擷門把入；+等我唎吓／唎一陣／唎一唎；+頭先嗰句講咩嚟／你頭先講過嗰句嚟／頭先講嗰句係咩嚟；+而家跟住點做好先／你而家要我點做先；guide HINT；固定測句+split1bq 本地 classify 24/24 PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 02:04 A INTENT T2**：patterns **split1bo** 加厚門把／唅／講咩嚌；19/19 PASS；cache `?v=split1b`
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -40,7 +35,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1bn 加厚門錨 MEM_NUDGE（手輕輕一扭把入／唅一唅／頭先嗰句講咩四嗔嘎）
+- **Status:** 已實作 strategy 池；split1bq 加厚門錨 HINT（手輕輕推門把入／唎一唎／頭先嗰句講咩嚟）
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -48,7 +43,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1bo 等我唍吓／唍一唍／頭先嗰句講咩嚀／輕輕扭門把入；對準 recentUserLines 仍待 F
+- **Status:** split1bq 等我唎吓／唎一唎／頭先嗰句講咩嚟／手輕輕推門把入；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
