@@ -8,9 +8,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260929-01
 - proposed_at: 2026-09-29
 - status: proposed
-- pain: 「手輕輕推門把入／把一擷輕輕入／等我唾吓／唾一唾／頭先嗰句講咩嚅／而家跟住點做好先」可 miss；記憶接話未接 recentUserLines
-- how: Lane A split1bq 已加；F 可 normalize 唾吓|唾一唾|把一擷輕輕入|嗰句講咩嚅 為 wait/ask_memory/enter 詞族，並接 recentUserLines
-- acceptance: 「等我唾吓」「唾一唾」「頭先嗰句講咩嚅」「手輕輕推門把入」→ wait / ask_memory / enter_door
+- pain: 「手輕輕推門把入／把一擷輕輕入／等我唾吓／唾一唾／頭先嗰句講咩噔／而家跟住點做好先」可 miss；記憶接話未接 recentUserLines
+- how: Lane A split1bq 已加；F 可 normalize 唾吓|唾一唾|把一擷輕輕入|嗰句講咩噔 為 wait/ask_memory/enter 詞族，並接 recentUserLines
+- acceptance: 「等我唾吓」「唾一唾」「頭先嗰句講咩噔」「手輕輕推門把入」→ wait / ask_memory / enter_door
 - rationale: T2 口語停低＋輕輕擷把入門＋記憶問法更似真 AI
 
 ### I-20260929-02
@@ -28,3 +28,11 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 唴吓|門我開啦|頭先講過啲咩
 - acceptance: 先講「等我唴吓」再開「你記得我頭先講呀」→ wait 後 ask_memory 回聲唴吓而非客服腔
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
+
+### I-20260929-05
+- proposed_at: 2026-09-29
+- status: proposed
+- pain: 「我去開門啦／門由我開／等我唴氣／你重記唔記得」patterns 已認，F 未把最近一句寫進 MEM 回聲
+- how: F 接 recentUserLines；normalize 唴氣|門由我開|你重記唔記得
+- acceptance: 先「等我唴氣」再「你重記唔記得」→ ask_memory 回聲唴氣
+- rationale: T2 記憶接話更似真 AI；未批唔改 F
