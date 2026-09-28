@@ -22,6 +22,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
+| Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
 | Focus-pull / DoF on locked still (desk lean, one face plane sharp) | R CSS radial-mask sharp + outer blur | O crop-zoom / C whole wash |
@@ -86,6 +87,7 @@ AF CSS `clip-path: inset` horizontal shutter + `@keyframes` close/open wipe on e
 AG CSS `transform: scale` + `rotate` + `mix-blend-mode: multiply` rubber-stamp slam (`@keyframes` drop-hit) on existing AD review paper / HUD chrome (success / fail chop; reuse repo paper + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats D FX file, I audio-only cue and A full room for an isolated pass/fail stamp beat
 AH CSS `transform: translate3d` 1–2px irregular `@keyframes` micro-shake on existing phone HUD chrome (incoming private vibrate; reuse repo HUD + `sfx-ping`; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats U box-shadow glow pulse, AA badge-only and I audio-only cue for a tactile vibrate beat
 AI CSS `caret-color` + `::after` 1px underline `@keyframes` opacity blink on existing freechat input (type-now after `#choices` hide; reuse repo HUD input only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only chat-first and C whole-scene wash for an isolated type-now beat
+AJ CSS `transform: scale` 1.000–1.012 slow `@keyframes` breathe on locked repo still (wait / linger presence; reuse still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for an isolated she’s-still-there beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
