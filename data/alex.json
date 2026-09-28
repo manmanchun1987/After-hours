@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "你踩晚車到門口。Vera 隔住門縫認住你仲企喺度，要你而家擁位。\n\n「走廊唔係你 rank。推門入嚟，定停低講清楚？」",
+      "text": "你踩晚車到門口。Vera 隔住門縫認住你仲企喺度，要你而家認位。\n\n「走廊唔係你 rank。推門入嚟，定停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -19,15 +19,14 @@
       ],
       "freeChat": true,
       "intents": [
-        {"keys": ["推門", "開門啦", "入去先", "我入去先", "進去看看", "好", "係", "繼續", "得", "扭開門", "把門扭開", "我去扭門", "搜一下把", "手扭門把", "把一搜", "門把轉一下", "門把搜一下", "撲一下把", "手按門把", "門把撲一下", "拉門先", "推門入嚟", "撰門把入", "門一推入", "手按把推入", "把門推入", "一推入去", "門把一擾推", "輕輕扭把入"], "next": "n0b", "bucket": "leave", "ack": "門把涼過。你推完入嚟—行過桌前，定仲等我講？"},
-        {"keys": ["等等", "停一停", "我未準備好", "等我喚吓", "喚一陣", "等我唠吓", "唠一陣", "歇一歇", "等我唠一陣", "等一等先", "未準備", "企住先", "等我企住", "唔好催住先", "等我唾吓", "唾一陣", "唾一唾", "等我唾一陣", "等我哦吓", "哦一哦"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。門把仲喺度—而家推門入嚟未？"},
+        {"keys": ["推門", "開門啦", "入去先", "我入去先", "進去看看", "好", "係", "繼續", "得", "扭開門", "把門扭開", "我去扭門", "手扭門把", "門把轉一下", "拉門先", "推門入嚟", "把門推入", "一推入去", "輕輕扭把入"], "next": "n0b", "bucket": "leave", "ack": "門把涼過。你推完入嚟—行過桌前，定仲等我講？"},
+        {"keys": ["等等", "停一停", "我未準備好", "等我喚吓", "喚一陣", "歇一歇", "等一等先", "未準備", "企住先", "等我企住", "唔好催住先"], "next": "n0b", "tension": 2, "bucket": "tired", "ack": "你停過。門把仲喺度—而家推門入嚟未？"},
         {"keys": ["唔入", "走先"], "next": "n0b", "tension": 1, "bucket": "leave", "ack": "走廊燈分住你。推完無回頭—你過嚟桌前未？"},
-        {"keys": ["你記得", "溫書未", "書溫未", "功課溫未", "背書未", "有冇默功課", "溫過未", "功課默未", "頭先講過唆", "溫返未", "頭先你講唆", "頭先喺句係唆"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入嚟，定停低？"},
-        {"keys": ["你想我點", "而家跟住做唆", "跟住做乜", "點算", "而家要我點", "而家要我做唆", "跟住你想我點", "跟住要我點", "而家你要我做唆"], "next": "n0b", "bucket": "leave", "ack": "走廊唔係你 rank。推門入嚟，定停低講清楚？"},
-        {"keys": ["你而家想我做咩", "而家跟住要我點", "跟住點行", "我而家應該點"], "next": "n0b", "bucket": "leave", "ack": "走廊唔係你 rank。推門入嚟，定停低講清楚？"}
+        {"keys": ["你記得", "溫書未", "頭先講過", "頭先你講", "頭先喺句"], "next": "n0b", "bucket": "leave", "ack": "我記低。你仲企門外—推門入嚟，定停低？"},
+        {"keys": ["你想我點", "而家跟住做", "跟住做乜", "點算", "而家要我點", "而家要我做", "跟住你想我點", "你而家想我做咩", "我而家應該點"], "next": "n0b", "bucket": "leave", "ack": "走廊唔係你 rank。推門入嚟，定停低講清楚？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bs C corridor breath; success=enter/wait/agree; chat-first 好係繼續"
+      "stub": "split1bu C corridor breath; success=enter/wait/agree; chat-first 好係繼續"
     },
     "n0b": {
       "id": "n0b",
@@ -40,12 +39,12 @@
       "choices": [{"label": "走去桌前", "next": "n1"}],
       "freeChat": true,
       "intents": [
-        {"keys": ["走去桌前", "行過嚟", "好", "係", "繼續", "得", "行過桌前", "過嚟桌前", "企桌前", "行埋桌", "走近柯", "過去柯前", "行去桌"], "next": "n1", "bucket": "leave", "ack": "你企喺桌前。份簡報未夠—你而家改，定要我講清楚？"},
-        {"keys": ["等等", "停", "我未準備好", "歇一歇", "等我唠吓", "唠一陣", "等一陣", "企住先", "等我唾吓", "唾一陣"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟未？"},
-        {"keys": ["你想我點", "而家要我做唆", "跟住你想我點"], "next": "n1", "bucket": "leave", "ack": "桌前有位。行過嚟，定仲等我講？"}
+        {"keys": ["走去桌前", "行過嚟", "好", "係", "繼續", "得", "行過桌前", "過嚟桌前", "企桌前", "行埋桌", "過去桌前", "行去桌"], "next": "n1", "bucket": "leave", "ack": "你企喺桌前。份簡報未夠—你而家改，定要我講清楚？"},
+        {"keys": ["等等", "停", "我未準備好", "歇一歇", "等一陣", "企住先"], "next": "n1", "tension": 1, "bucket": "tired", "ack": "你停過。桌前有位。而家過嚟未？"},
+        {"keys": ["你想我點", "而家要我做", "跟住你想我點"], "next": "n1", "bucket": "leave", "ack": "桌前有位。行過嚟，定仲等我講？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bs C desk-approach breath; success=enter/wait/agree"
+      "stub": "split1bu C desk-approach breath; success=enter/wait/agree"
     },
     "n1": {
       "id": "n1",
@@ -57,7 +56,7 @@
       "choices": [
         {"label": "「我可以而家改。」", "next": "n2a"},
         {"label": "「邊部分未夠？講清楚。」", "next": "n2b"},
-        {"label": "（站近啾）「你係唔係特登留到而家先講？」", "next": "n2c"}
+        {"label": "（站近）「你係唔係特登留到而家先講？」", "next": "n2c"}
       ],
       "freeChat": true,
       "intents": [
@@ -66,7 +65,7 @@
         {"keys": ["特登", "站近"], "next": "n2c", "heat": 6, "bucket": "heat", "ack": "你站近。膽大—你轉身，定專心改？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "challenge"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bs C brief breath; success=agree/wait/enter/challenge"
+      "stub": "split1bu C brief breath; success=agree/wait/enter/challenge"
     },
     "n2a": {
       "id": "n2a",
@@ -86,7 +85,7 @@
         {"keys": ["你想我點", "而家要我做咩", "跟住點改", "而家跟住要我點"], "next": "n2a", "bucket": "leave", "ack": "坐低改呢行。唔好停—你跟唔跟？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bs C sit-edit breath; success=agree/wait/enter +ask_want steer"
+      "stub": "split1bu C sit-edit breath; success=agree/wait/enter +ask_want steer"
     },
     "n2b": {
       "id": "n2b",
@@ -106,7 +105,7 @@
         {"keys": ["你想我點", "而家要我做咩", "跟住點行"], "next": "n2b", "bucket": "leave", "ack": "過嚟聽清楚。你跟喺邊一行？"}
       ],
       "sceneGoal": {"successIntents": ["challenge", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 1},
-      "stub": "split1bs C challenge breath; success=challenge/agree/enter/wait"
+      "stub": "split1bu C challenge breath; success=challenge/agree/enter/wait"
     },
     "n2c": {
       "id": "n2c",
@@ -126,7 +125,7 @@
         {"keys": ["你想我點", "而家要我做咩", "跟住點"], "next": "n2a", "bucket": "leave", "ack": "字仲要改。你改呢行，定仲近一步？"}
       ],
       "sceneGoal": {"successIntents": ["flirt", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 1},
-      "stub": "split1bs C heat-near breath; success=flirt/agree/enter/wait"
+      "stub": "split1bu C heat-near breath; success=flirt/agree/enter/wait"
     }
   }
 }
