@@ -1,6 +1,6 @@
-最後更新：2026-09-29 02:04 HKT · A split1bo
+最後更新：2026-09-29 03:07 HKT · C split1bp
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
 Live：`?v=split1b`（禁 stub／禁動 app.js）
-Hourly 02:04 A：patterns **split1bo** +輕輕扭門把入／手握把輕輕推／把輕輕一扭入／等我唍吓／唍一唍／頭先嗰句講咩嚀／而家跟住點做好啦；本地 classify 19/19 PASS；cache 仍 `?v=split1b`
+Hourly 03:07 C：alex.json 一息 text；ack=下拍前半；好／係／繼續 glue；喂/囎；stub split1bp
 開票：GUIDE T3 待 live 硬刷；INTENT T2 recentUserLines 仍待 F；CODE AG 待 F；F 暫緩
