@@ -17,17 +17,22 @@
       "aside": "爵士樂壓得好低。",
       "choices": [
         {"label": "「人同單，邊樣先成交？」", "next": "m2a", "heat": 8, "tension": 6, "cg": true},
-        {"label": "「我咼係收條款。」", "next": "m2b", "tension": 10}
+        {"label": "「我哈係收條款。」", "next": "m2b", "tension": 10}
       ],
       "freeChat": true,
       "intents": [
         {"keys": ["人", "成交", "邊樣", "人同單", "先成交", "想聽", "答案", "坐近", "好", "係", "繼續", "得", "坐近一格", "我想聽人", "傾人", "講人"], "next": "m2a", "heat": 8, "bucket": "heat", "ack": "你問成交。我聽。你坐近一格，定只聽數？"},
-        {"keys": ["條款", "收條款", "紙", "合約", "簽", "生意", "等等", "我未準備好", "歇一歇", "等我唸吓", "傾紙", "講紙"], "next": "m2b", "tension": 10, "bucket": "leave", "ack": "條款。好。紙推過咼—你簽唔簽？"},
+        {"keys": ["條款", "收條款", "紙", "合約", "簽", "生意", "等等", "我未準備好", "歇一歇", "等我唸吓", "傾紙", "講紙"], "next": "m2b", "tension": 10, "bucket": "leave", "ack": "條款。好。紙推過哈—你簽唔簽？"},
         {"keys": ["坐近", "近一格", "靠近", "想聽邊種"], "next": "m2c", "heat": 14, "bucket": "heat", "ack": "你坐近。我當答晒一半。仲想聽邊邊？"},
         {"keys": ["你想我點", "而家要我做咩", "跟住點傾", "而家跟住要我點"], "next": "m2a", "bucket": "heat", "ack": "人定紙。你坐近一格，定只收條款？"}
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "flirt", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0},
-      "stub": "split1bl C lounge leftover; success=agree/wait/flirt/enter +ask_want steer"
+      "sceneGoal": {
+        "successIntents": ["agree", "wait", "flirt", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0
+      },
+      "stub": "split1bt C lounge; success=agree/wait/flirt/enter; ask_want steer"
     }
   }
 }
