@@ -1,15 +1,24 @@
 (function () {
   var wrapped = false;
+  var lastNode = "";
   function layer() {
     var el = document.getElementById("fx-layer");
     if (el) return el;
     el = document.createElement("div");
     el.id = "fx-layer";
     el.innerHTML = '<div class="fx-sweep"></div><div class="fx-sweep2"></div><div class="fx-flash"></div><div class="fx-rim"></div>' +
+      '<div class="fx-shutter"></div><div class="fx-stamp"></div>' +
       '<i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i><i class="spark"></i>' +
       '<i class="spark-fail"></i><i class="spark-fail"></i><i class="spark-fail"></i>';
     document.body.appendChild(el);
     return el;
+  }
+  function ensureFxCss() {
+    if (document.getElementById("fx-code-css")) return;
+    var st = document.createElement("style");
+    st.id = "fx-code-css";
+    st.textContent = ".fx-shutter{position:fixed;inset:0;pointer-events:none;background:#0a0a0c;transform:scaleY(0);transform-origin:50% 0;z-index:40;opacity:0}.fx-layer.is-cut .fx-shutter{animation:ahCut .38s ease}.fx-stamp{position:fixed;right:12%;top:18%;width:72px;height:72px;border:3px solid #c9b48a;border-radius:4px;opacity:0;pointer-events:none;z-index:41}.fx-layer.is-win .fx-stamp{border-color:#e8c98a;animation:ahSlam .42s ease}.fx-layer.is-fail .fx-stamp{border-color:#8a3a3a;animation:ahSlam .42s ease}@keyframes ahCut{0%{opacity:1;transform:scaleY(1)}55%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0)}}@keyframes ahSlam{0%{opacity:0;transform:scale(1.4) rotate(-8deg)}40%{opacity:1;transform:scale(.96) rotate(2deg)}100%{opacity:0;transform:scale(1) rotate(0)}}#choices.show-heat-rim button,#choices:not(.freechat-hidden) button{box-shadow:0 0 0 0 rgba(201,180,138,.45)}body.show-choices #choices:not(.freechat-hidden) button{animation:ahRim .9s ease 1}@keyframes ahRim{0%{box-shadow:0 0 0 0 rgba(201,180,138,.5)}70%{box-shadow:0 0 0 8px rgba(201,180,138,0)}100%{box-shadow:0 0 0 0 rgba(201,180,138,0)}}";
+    document.head.appendChild(st);
   }
   function scene() {
     var host = document.querySelector("#screen-play .play-bg");
@@ -43,9 +52,18 @@
       document.head.appendChild(st);
     }
   }
+  function shutter() {
+    var el = layer();
+    ensureFxCss();
+    el.classList.remove("is-cut");
+    void el.offsetWidth;
+    el.classList.add("is-cut");
+    setTimeout(function () { el.classList.remove("is-cut"); }, 420);
+  }
   function play(kind) {
     var el = layer();
-    el.classList.remove("is-win", "is-fail");
+    ensureFxCss();
+    el.classList.remove("is-win", "is-fail", "is-cut");
     void el.offsetWidth;
     el.classList.add(kind === "fail" ? "is-fail" : "is-win");
     if (window.AHAudio && window.AHAudio.cue) window.AHAudio.cue(kind === "fail" ? "fail" : "win");
@@ -63,16 +81,34 @@
     wrapped = true;
     var _render = window.renderNode;
     window.renderNode = function () {
+      var before = (typeof state !== "undefined" && state.nodeId) || "";
       _render.apply(this, arguments);
       setScene();
+      var after = (typeof state !== "undefined" && state.nodeId) || "";
+      if (after && after !== lastNode) {
+        if (lastNode) shutter();
+        lastNode = after;
+      }
+      if (window.__ahHideChoices) window.__ahHideChoices();
     };
     if (typeof window.applyFreeChatAdvance === "function") {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
         play(ok ? "win" : "fail");
+        if (window.__ahHideChoices) window.__ahHideChoices();
         return ok;
       };
+    }
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut) {
+      var gn = window.goToNode;
+      window.goToNode = function () {
+        var r = gn.apply(this, arguments);
+        shutter();
+        if (window.__ahHideChoices) window.__ahHideChoices();
+        return r;
+      };
+      window.goToNode.__ahCut = true;
     }
   }
   document.addEventListener("click", function (e) {
@@ -89,4 +125,5 @@
     if (wrapped || ++n > 40) clearInterval(t);
   }, 250);
   layer();
+  ensureFxCss();
 })();
