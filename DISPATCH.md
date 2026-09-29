@@ -16,7 +16,8 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚟推門先／等我唾吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講咩嚟／而家幾點鐘喇；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 05:17 A+B+C INTENT T2**：patterns/guide **split1ce** +我擰門把入去／擰把推門先／等我唾多陣／俾我唾一陣先／你到底想我點做好呀／頭先嗰句你記唔記得呀／而家幾點鐘呀喂；alex n0 keys；ACCEPTANCE 58；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚟推門先／等我唾吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講咩嚟／而家幾點鐘喎；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 03:11 A+B INTENT T2**：patterns **split1ca**；guide **split1bx**；ACCEPTANCE 32；cache 仍 `?v=split1b`
 - **hourly 07:11 A INTENT T2**：patterns **split1bz**
 - **hourly 06:11 A+B+C INTENT T2**：patterns/guide **split1by**
@@ -39,7 +40,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1cc 份在
+- **Status:** 已實作 strategy 池；split1ce 份在
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -47,7 +48,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1cc 我幫你扭門／等我唾吓先／頭先嗰句我講咩嚟；對準 recentUserLines 仍待 F
+- **Status:** split1ce 我擰門把入去／等我唾多陣／頭先嗰句你記唔記得呀；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
