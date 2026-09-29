@@ -16,7 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚟推門先／等我唎吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講咩嚟／而家幾點鐘喇；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚟推門先／等我唾吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講咩嚟／而家幾點鐘喇；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 03:11 A+B INTENT T2**：patterns **split1ca**；guide **split1bx**；ACCEPTANCE 32；cache 仍 `?v=split1b`
 - **hourly 07:11 A INTENT T2**：patterns **split1bz**
 - **hourly 06:11 A+B+C INTENT T2**：patterns/guide **split1by**
@@ -24,6 +24,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE AK — lift/roof glass breath fog
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接 wait hold 上 lift/roof pane
 #### CODE AG — success/fail stamp slam
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 success/fail beat
 #### CODE AF — scene-cut shutter wipe
@@ -45,7 +47,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1cc 我幫你扭門／等我唎吓先／頭先嗰句我講咩嚟；對準 recentUserLines 仍待 F
+- **Status:** split1cc 我幫你扭門／等我唾吓先／頭先嗰句我講咩嚟；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
