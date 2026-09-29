@@ -16,9 +16,9 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 07:11 A INTENT T2**：patterns **split1bz** +我去開門啦／我囎開門／門由我開／行過去入／等我唴氣／唔好催住／俾我唴一陣／你想我點做好呀／跟住點算先／頭先我講過啲咩／頭先嗰句講過咩囎／你重記唔記得／而家幾點鐘呀；固定測句+ACCEPTANCE 25/25 PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 03:11 A+B INTENT T2**：patterns **split1ca** +等我推門先／我嚟開門／門我嚟開／行埋去入／等我唴一唴／唔好催我住／你到底想我點／頭先我講咗啲咩／而家幾點鐘架；guide **split1bx**；ACCEPTANCE 32；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 07:11 A INTENT T2**：patterns **split1bz**
 - **hourly 06:11 A+B+C INTENT T2**：patterns/guide **split1by**
-- **hourly 05:11 A+B+C INTENT T2**：patterns **split1bv**
 
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -36,7 +36,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### GUIDE T1 — sceneGoal on key nodes
 - **Status:** n0 已有 sceneGoal；n2a–n2c 補 sceneGoal+freeChat
 #### GUIDE T2 — strategy replies
-- **Status:** 已實作 strategy 池；split1bw 份在；本時段以 patterns split1bz 為主
+- **Status:** 已實作 strategy 池；split1bx 份在
 #### GUIDE T3 — escalate guide + 驗收
 - **Status:** 邏輯已有；pressure 池份在；待 live 硬刷確認（F 未升 cache）
 
@@ -44,7 +44,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1bz 我去開門啦／等我唴氣／頭先我講過啲咩／你重記唔記得；對準 recentUserLines 仍待 F
+- **Status:** split1ca 等我推門先／我嚟開門／等我唴一唴／頭先我講咗啲咩；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
