@@ -5,20 +5,28 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20260930-04
+- proposed_at: 2026-09-30
+- status: proposed
+- pain: 「我擰門把入去／等我唾多陣／頭先嗰句你記唔記得呀」patterns split1ce 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 擰門把|唾多陣|記唔記得呀
+- acceptance: 先「等我唾多陣」再「頭先嗰句你記唔記得呀」→ wait 後 ask_memory 回聲唾多陣
+- rationale: T2 場景記憶接話更似真 AI；未批唔改 F
+
 ### I-20260930-03
 - proposed_at: 2026-09-30
 - status: proposed
-- pain: 「我幫你扭門／等我唎吓先／頭先嗰句我講咩嚟」patterns split1cc 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 幫你扭門|唎吓先|嗰句我講咩嚟
-- acceptance: 先「等我唎吓先」再「頭先嗰句我講咩嚟」→ wait 後 ask_memory 回聲唎吓先
+- pain: 「我幫你扭門／等我唾吓先／頭先嗰句我講咩嚟」patterns split1cc 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 幫你扭門|唾吓先|嗰句我講咩嚟
+- acceptance: 先「等我唾吓先」再「頭先嗰句我講咩嚟」→ wait 後 ask_memory 回聲唾吓先
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
 
 ### I-20260930-02
 - proposed_at: 2026-09-30
 - status: proposed
-- pain: 「等我唎一唎／唔好迫我住／頭先喪句我講咩嚟」patterns split1cb 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 唎一唎|迫我住|講咩嚟
-- acceptance: 先「等我唎一唎」再「頭先喪句我講咩嚟」→ wait 後 ask_memory 回聲唎一唎
+- pain: 「等我唾一唾／唔好迫我住／頭先喪句我講咩嚟」patterns split1cb 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 唾一唾|迫我住|講咩嚟
+- acceptance: 先「等我唾一唾」再「頭先喪句我講咩嚟」→ wait 後 ask_memory 回聲唾一唾
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
 
 ### I-20260930-01
