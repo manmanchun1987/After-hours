@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "你踩晚車來到門口。Vera 隔住門縫認住你仲企喇度，要你而家認位。\n\n「走廊唔係你 rank。推門入嚟，定停低講清楚？」",
+      "text": "你踩晚車來到門口。Vera 隔住門縫認住你仲企喎度，要你而家認位。\n\n「走廊唔係你 rank。推門入嚟，定停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -20,7 +20,8 @@
       "freeChat": true,
       "intents": [
         { "bucket": "leave", "next": "n0b", "ack": "門把涼過。你推完入嚟—行過桌前，定仲等我講？" },
-        { "bucket": "tired", "next": "n0b", "tension": 2, "ack": "你停過。門把仲喇度—而家推門入嚟未？" }
+        { "bucket": "tired", "next": "n0b", "tension": 2, "ack": "你停過。門把仲喎度—而家推門入嚟未？" },
+        { "bucket": "agree", "next": "n0b", "ack": "好。門把涼過—行過桌前，定仲等我講？" }
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -29,14 +30,14 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "split1ch C corridor; success=enter/wait/agree; goalAsk; no keys pool"
+      "stub": "hourly C corridor; success=enter/wait/agree; 好係繼續; goalAsk"
     },
     "n0b": {
       "id": "n0b",
       "label": "門後",
       "scene": "office",
       "remember": ["door_shut"],
-      "text": "門把涼過。你推完入嚟。Vera 未抬眼，筆尖停喇簡報邊，要你走過桌前。\n\n「你推晒。行過嚟桌前，定仲要我講第二句？」",
+      "text": "門把涼過。你推完入嚟。Vera 未抬眼，筆尖停喎簡報邊，要你走過桌前。\n\n「你推晒。行過嚟桌前，定仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
       "choices": [
@@ -44,8 +45,9 @@
       ],
       "freeChat": true,
       "intents": [
-        { "bucket": "leave", "next": "n1", "ack": "你企喇桌前。份簡報未夠—你而家改，定要我講清楚？" },
-        { "bucket": "tired", "next": "n1", "ack": "桌前仲空住。行過嚟，定再停一句？" }
+        { "bucket": "leave", "next": "n1", "ack": "你企喎桌前。份簡報未夠—你而家改，定要我講清楚？" },
+        { "bucket": "tired", "next": "n1", "ack": "桌前仲空住。行過嚟，定再停一句？" },
+        { "bucket": "agree", "next": "n1", "ack": "係。你企喎桌前—你而家改，定要我講清楚？" }
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -54,13 +56,13 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "split1ch C desk-approach; success=enter/wait/agree; goalAsk"
+      "stub": "hourly C desk-approach; success=enter/wait/agree; goalAsk"
     },
     "n1": {
       "id": "n1",
       "label": "簡報",
       "scene": "office",
-      "text": "你企喇桌前。Vera 指節敲兩下案，要你認份簡報。\n\n「你自己都知呢份嘢未夠。你而家改，定要我講清楚？」",
+      "text": "你企喎桌前。Vera 指節敲兩下案，要你認份簡報。\n\n「你自己都知呢份嘢未夠。你而家改，定要我講清楚？」",
       "thought": "指節兩下。",
       "aside": "螢幕光打住佢下頷。",
       "choices": [
@@ -70,7 +72,8 @@
       "freeChat": true,
       "intents": [
         { "bucket": "leave", "next": "n2a", "ack": "改。坐低—呢行你跟唔跟？" },
-        { "bucket": "heat", "next": "n2b", "ack": "你要清楚。過嚟聽。" }
+        { "bucket": "heat", "next": "n2b", "ack": "你要清楚。過嚟聽。" },
+        { "bucket": "agree", "next": "n2a", "ack": "繼續。坐低—呢行你跟唔跟？" }
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door", "challenge"],
@@ -79,7 +82,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "split1ch C brief; success=agree/wait/enter/challenge; goalAsk"
+      "stub": "hourly C brief; success=agree/wait/enter/challenge; goalAsk"
     },
     "n2a": {
       "id": "n2a",
@@ -95,7 +98,8 @@
       "freeChat": true,
       "intents": [
         { "bucket": "leave", "next": "n2a", "ack": "改呢行。唔好停—下一行你跟唔跟？" },
-        { "bucket": "tired", "next": "n2a", "tension": 1, "ack": "筆尖唔會等你。你改—而家改呢行未？" }
+        { "bucket": "tired", "next": "n2a", "tension": 1, "ack": "筆尖唔會等你。你改—而家改呢行未？" },
+        { "bucket": "agree", "next": "n2a", "ack": "係。改呢行—下一行你跟唔跟？" }
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door"],
@@ -104,7 +108,7 @@
         "guideLevel": 0,
         "ask": "坐低聽。你聽緊係一行？"
       },
-      "stub": "split1ch C sit-edit; success=agree/wait/enter; goalAsk"
+      "stub": "hourly C sit-edit; success=agree/wait/enter; goalAsk"
     },
     "n2b": {
       "id": "n2b",
@@ -115,12 +119,13 @@
       "aside": "會議室忽然好靜。",
       "choices": [
         { "label": "（行過去）", "next": "n2b" },
-        { "label": "（留喇位）「…你講，我聽。」", "next": "n2a" }
+        { "label": "（留喎位）「…你講，我聽。」", "next": "n2a" }
       ],
       "freeChat": true,
       "intents": [
         { "bucket": "leave", "next": "n2b", "ack": "過嚟。聽清楚—你跟嘅邊一行？" },
-        { "bucket": "tired", "next": "n2a", "ack": "你留低。我講你聽—坐低改呢行未？" }
+        { "bucket": "tired", "next": "n2a", "ack": "你留低。我講你聽—坐低改呢行未？" },
+        { "bucket": "agree", "next": "n2a", "ack": "好。我講你聽—坐低改呢行未？" }
       ],
       "sceneGoal": {
         "successIntents": ["challenge", "agree", "enter", "enter_door", "wait"],
@@ -129,7 +134,7 @@
         "guideLevel": 1,
         "ask": "你要清楚？過嚟。"
       },
-      "stub": "split1ch C challenge; success=challenge/agree/enter/wait; goalAsk"
+      "stub": "hourly C challenge; success=challenge/agree/enter/wait; goalAsk"
     },
     "n2c": {
       "id": "n2c",
@@ -145,7 +150,8 @@
       "freeChat": true,
       "intents": [
         { "bucket": "heat", "next": "n2c", "heat": 8, "ack": "你近。字仲要改—你改呢行，定仲近一步？" },
-        { "bucket": "leave", "next": "n2a", "ack": "改。例外唔等於放水—坐低起筆未？" }
+        { "bucket": "leave", "next": "n2a", "ack": "改。例外唔等於放水—坐低起筆未？" },
+        { "bucket": "agree", "next": "n2a", "ack": "繼續。例外唔等於放水—坐低起筆未？" }
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "enter", "enter_door", "wait"],
@@ -154,7 +160,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "split1ch C heat-near; success=flirt/agree/enter/wait; goalAsk"
+      "stub": "hourly C heat-near; success=flirt/agree/enter/wait; goalAsk"
     }
   }
 }
