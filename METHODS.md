@@ -24,6 +24,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
 | Lift/roof glass breath / 呵氣霧 (wait hold on pane) | AK CSS fog-radial | N HUD frost / C whole wash / K weather |
+| Corridor / office long floor shadow (enter / wait stretch) | AL CSS skew drop-shadow | A flat room / C whole wash / L static plane |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
 | Focus-pull / DoF on locked still (desk lean, one face plane sharp) | R CSS radial-mask sharp + outer blur | O crop-zoom / C whole wash |
@@ -90,6 +91,7 @@ AH CSS `transform: translate3d` 1–2px irregular `@keyframes` micro-shake on ex
 AI CSS `caret-color` + `::after` 1px underline `@keyframes` opacity blink on existing freechat input (type-now after `#choices` hide; reuse repo HUD input only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only chat-first and C whole-scene wash for an isolated type-now beat
 AJ CSS `transform: scale` 1.000–1.012 slow `@keyframes` breathe on locked repo still (wait / linger presence; reuse still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for an isolated she’s-still-there beat
 AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/roof glass pane (呵氣霧; reuse A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats N phone-sheet frost, C whole-scene wash and K weather-filter for an isolated breath-on-glass beat
+AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under locked still on existing A corridor/office SVG (enter / wait stretch; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat full-bleed room, C whole-scene wash and L static light plane for an isolated late-night long-shadow beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
