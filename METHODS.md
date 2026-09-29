@@ -20,6 +20,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
+| Pantry kettle / mug steam (wait hold / late kitchen) | AM CSS steam wisps | C whole wash / K weather / L plane |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
@@ -92,6 +93,7 @@ AI CSS `caret-color` + `::after` 1px underline `@keyframes` opacity blink on exi
 AJ CSS `transform: scale` 1.000–1.012 slow `@keyframes` breathe on locked repo still (wait / linger presence; reuse still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for an isolated she’s-still-there beat
 AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/roof glass pane (呵氣霧; reuse A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats N phone-sheet frost, C whole-scene wash and K weather-filter for an isolated breath-on-glass beat
 AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under locked still on existing A corridor/office SVG (enter / wait stretch; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat full-bleed room, C whole-scene wash and L static light plane for an isolated late-night long-shadow beat
+AM CSS `radial-gradient` + `translateY`/`opacity` `@keyframes` steam wisps over existing A pantry SVG (kettle/mug vapor; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, K weather-filter and L static light plane for an isolated after-hours pantry steam beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
