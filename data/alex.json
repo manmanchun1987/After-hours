@@ -31,7 +31,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C corridor; success=enter/wait/agree; 好係繼續; goalAsk"
+      "stub": "hourly C 06:03 corridor; success=enter/wait/agree; smoke=開門啦/我入去先/進去看看/等等/我未準備好"
     },
     "n0b": {
       "id": "n0b",
@@ -58,7 +58,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C desk-approach; success=enter/wait/agree; goalAsk"
+      "stub": "hourly C 06:03 desk-approach; success=enter/wait/agree; goalAsk"
     },
     "n1": {
       "id": "n1",
@@ -85,7 +85,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C brief; success=agree/wait/enter/challenge; goalAsk"
+      "stub": "hourly C 06:03 brief; success=agree/wait/enter/challenge; goalAsk"
     },
     "n2a": {
       "id": "n2a",
@@ -112,7 +112,7 @@
         "guideLevel": 0,
         "ask": "坐低聽。你聽緊係一行？"
       },
-      "stub": "hourly C sit-edit; success=agree/wait/enter; goalAsk"
+      "stub": "hourly C 06:03 sit-edit; success=agree/wait/enter; goalAsk"
     },
     "n2b": {
       "id": "n2b",
@@ -139,7 +139,7 @@
         "guideLevel": 1,
         "ask": "你要清楚？過嚟。"
       },
-      "stub": "hourly C challenge; success=challenge/agree/enter/wait; goalAsk"
+      "stub": "hourly C 06:03 challenge; success=challenge/agree/enter/wait; goalAsk"
     },
     "n2c": {
       "id": "n2c",
@@ -166,7 +166,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C heat-near; success=flirt/agree/enter/wait; goalAsk"
+      "stub": "hourly C 06:03 heat-near; success=flirt/agree/enter/wait; goalAsk"
     }
   }
 }
