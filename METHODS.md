@@ -22,10 +22,11 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
 | Last lamp switch-off / dark cut (n4x office kill) | AP CSS cone collapse | C whole wash / L static plane / S flicker |
 | Pantry kettle / mug steam (wait hold / late kitchen) | AM CSS steam wisps | C whole wash / K weather / L plane |
+| Dust / ash / 塵埃慢飄 (wait hold office/pantry air) | AQ CSS offset-path mote | C whole motion / D FX / AM steam |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
-| Lift/roof glass breath / 呵氣霧 (wait hold on pane) | AK CSS fog-radial | N HUD frost / C whole wash / K weather |
+| Lift/roof glass breath / 呰氣霧 (wait hold on pane) | AK CSS fog-radial | N HUD frost / C whole wash / K weather |
 | Corridor / office long floor shadow (enter / wait stretch) | AL CSS skew drop-shadow | A flat room / C whole wash / L static plane |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
@@ -94,12 +95,13 @@ AG CSS `transform: scale` + `rotate` + `mix-blend-mode: multiply` rubber-stamp s
 AH CSS `transform: translate3d` 1–2px irregular `@keyframes` micro-shake on existing phone HUD chrome (incoming private vibrate; reuse repo HUD + `sfx-ping`; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats U box-shadow glow pulse, AA badge-only and I audio-only cue for a tactile vibrate beat
 AI CSS `caret-color` + `::after` 1px underline `@keyframes` opacity blink on existing freechat input (type-now after `#choices` hide; reuse repo HUD input only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats E text-only chat-first and C whole-scene wash for an isolated type-now beat
 AJ CSS `transform: scale` 1.000–1.012 slow `@keyframes` breathe on locked repo still (wait / linger presence; reuse still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats O crop-zoom and C whole-scene wash for an isolated she’s-still-there beat
-AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/roof glass pane (呵氣霧; reuse A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats N phone-sheet frost, C whole-scene wash and K weather-filter for an isolated breath-on-glass beat
+AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/roof glass pane (呰氣霧; reuse A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats N phone-sheet frost, C whole-scene wash and K weather-filter for an isolated breath-on-glass beat
 AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under locked still on existing A corridor/office SVG (enter / wait stretch; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat full-bleed room, C whole-scene wash and L static light plane for an isolated late-night long-shadow beat
 AM CSS `radial-gradient` + `translateY`/`opacity` `@keyframes` steam wisps over existing A pantry SVG (kettle/mug vapor; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, K weather-filter and L static light plane for an isolated after-hours pantry steam beat
 AN CSS `linear-gradient` swipe bar + inset `box-shadow` green/amber LED `@keyframes` travel on existing door/lift chrome (房卡／門禁過閘; reuse A SVG + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, X floor-digit-only and C whole-scene wash for an isolated access-grant beat
 AO CSS `repeating-linear-gradient` horizontal slat shadows + slow `@keyframes` 1px drift on existing A review/office SVG (百葉闇上 / blinds-shut stripe; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane and Q CCTV scanlines for an isolated review blinds-shadow beat
 AP CSS `radial-gradient` lamp cone + `@keyframes` scale/opacity collapse on existing A office SVG (n4x last-lamp switch-off / dark cut; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane and S tube-flicker for an isolated kill-the-last-light beat
+AQ CSS `offset-path` + `offset-distance` 2–3px specks + slow `@keyframes` drift over existing A office/pantry SVG (塵埃/煙灰慢飄; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion, D FX file and AM steam-wisps for an isolated wait-hold dust-air beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`

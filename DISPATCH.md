@@ -16,7 +16,8 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
-- **hourly 06:04 A INTENT T2**：patterns **split1ck** +我行埋前去一推把入／手一擷把入去先啦／等我唾多吓先／唔好催住我住先／你而家到底想我點樣做好呀先／頭先嗰句你重記唔記得未呀／出面而家落唔落雨呀；ACCEPTANCE 71；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 06:12 METHOD SCOUT AQ**：office/pantry dust motes (`offset-path`) + CODE AQ；Pages+Safari；禁 Imagine/上傳/CF
+- **hourly 06:04 A INTENT T2**：patterns **split1ck** +我行埋前去一推把入／手一擷把入去先啦／等我唾多吓先／唔好催住我住先／你而家到底想我點樣做好呀先／頭先嗲句你重記唔記得未呀／出面而家落唔落雨呀；ACCEPTANCE 71；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:11 A+B INTENT T2**：patterns/guide **split1cj** +我行埋前去推把入／手一推把入去先啦／等我唾多吓先／唔好趕住我住先／你而家到底想我點做好呀先／頭先嗎句你重記唔記得未呀／出面而家有冇落雨呀；ACCEPTANCE 64；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:04 A INTENT T2**：patterns **split1ci** +我行前去推把入／手推把入去先啦／等我唾多陣先／唔好趕住我先／你而家到底想我點做好先／頭先嗎句你重記唔記得呀／出面而家有冇落雨；ACCEPTANCE 57；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 07:12 METHOD SCOUT AM**：pantry steam wisps + CODE AM #票；Pages+Safari；禁 Imagine/上傳/CF
@@ -29,6 +30,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE AQ — office/pantry dust mote drift
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接 wait hold 空氣
 #### CODE AM — pantry kettle/mug steam wisps
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 pantry wait hold
 #### CODE AK — lift/roof glass breath fog
@@ -54,7 +57,7 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1ck 我行埋前去一推把入／唔好催住我住先／頭先嗰句你重記唔記得未呀；對準 recentUserLines 仍待 F
+- **Status:** split1ck 我行埋前去一推把入／唔好催住我住先／頭先嗲句你重記唔記得未呀；對準 recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
