@@ -28,6 +28,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Corridor / office long floor shadow (enter / wait stretch) | AL CSS skew drop-shadow | A flat room / C whole wash / L static plane |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
+| Review / office blinds shut / 百葉影 | AO CSS slat stripes | C whole wash / L plane / Q scanline |
 | Focus-pull / DoF on locked still (desk lean, one face plane sharp) | R CSS radial-mask sharp + outer blur | O crop-zoom / C whole wash |
 | Refuse / fail shatter on review glass or lift pane | T CSS clip-path crack | C whole wash / K weather filter |
 | Incoming after-hours call on existing HUD / phone chrome | U CSS box-shadow pulse | C whole motion / I audio-only |
@@ -96,6 +97,7 @@ AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/ro
 AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under locked still on existing A corridor/office SVG (enter / wait stretch; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat full-bleed room, C whole-scene wash and L static light plane for an isolated late-night long-shadow beat
 AM CSS `radial-gradient` + `translateY`/`opacity` `@keyframes` steam wisps over existing A pantry SVG (kettle/mug vapor; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, K weather-filter and L static light plane for an isolated after-hours pantry steam beat
 AN CSS `linear-gradient` swipe bar + inset `box-shadow` green/amber LED `@keyframes` travel on existing door/lift chrome (房卡／門禁過閘; reuse A SVG + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, X floor-digit-only and C whole-scene wash for an isolated access-grant beat
+AO CSS `repeating-linear-gradient` horizontal slat shadows + slow `@keyframes` 1px drift on existing A review/office SVG (百葉闇上 / blinds-shut stripe; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane and Q CCTV scanlines for an isolated review blinds-shadow beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
