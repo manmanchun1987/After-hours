@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261001-05
+- proposed_at: 2026-10-01
+- status: proposed
+- pain: 「我行前去推把入／等我唎多陣先／頭先嗰句你重記唔記得呀」patterns split1ci 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|唎多陣先|重記唔記得
+- acceptance: 先「等我唎多陣先」再「頭先嗰句你重記唔記得呀」→ wait 後 ask_memory 回聲唎多陣
+- rationale: T2 場景記憶接話更似真 AI；未批唔改 F
+
 ### I-20260930-07
 - proposed_at: 2026-09-30
 - status: proposed
