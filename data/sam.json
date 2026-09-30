@@ -22,7 +22,8 @@
       "intents": [
         {"bucket": "leave", "next": "s2", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
         {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你停過。我知。而家入嚟未？"},
-        {"bucket": "agree", "next": "s2", "ack": "好。門縫熱。坐邊度，定仲站？"}
+        {"bucket": "agree", "next": "s2", "ack": "好。門縫熱。坐邊度，定仲站？"},
+        {"bucket": "wait", "next": "s2", "ack": "繼續。燈仲亮—你推門入嚟，定仲企外邊？"}
       ],
       "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你推門入嚟，定仲企外邊一晚？"},
       "stub": "hourly C pantry; success=enter/wait/agree; 好係繼續; goalAsk"
@@ -32,7 +33,7 @@
       "label": "茶水間內",
       "scene": "pantry",
       "remember": ["pantry_in"],
-      "text": "你推門入嚟。Sammi 把热水推過來，要你坐定仲站。\n\n「門關咗。坐低飲杯，定仲站住講？」",
+      "text": "你推門入嚟。Sammi 把熱水推過來，要你坐定仲站。\n\n「門關咗。坐低飲杯，定仲站住講？」",
       "thought": "煙味混住粉味。",
       "aside": "壺仲滴水。",
       "choices": [

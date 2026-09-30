@@ -21,7 +21,8 @@
       "intents": [
         { "bucket": "leave", "next": "n0b", "ack": "門把涼過。你推完入嚟—行過桌前，定仲等我講？" },
         { "bucket": "tired", "next": "n0b", "tension": 2, "ack": "你停過。門把仲喎度—而家推門入嚟未？" },
-        { "bucket": "agree", "next": "n0b", "ack": "好。門把涼過—行過桌前，定仲等我講？" }
+        { "bucket": "agree", "next": "n0b", "ack": "好。門把涼過—行過桌前，定仲等我講？" },
+        { "bucket": "wait", "next": "n0b", "ack": "繼續。門縫仲開—你推，定停低講清楚？" }
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -47,7 +48,8 @@
       "intents": [
         { "bucket": "leave", "next": "n1", "ack": "你企喎桌前。份簡報未夠—你而家改，定要我講清楚？" },
         { "bucket": "tired", "next": "n1", "ack": "桌前仲空住。行過嚟，定再停一句？" },
-        { "bucket": "agree", "next": "n1", "ack": "係。你企喎桌前—你而家改，定要我講清楚？" }
+        { "bucket": "agree", "next": "n1", "ack": "係。你企喎桌前—你而家改，定要我講清楚？" },
+        { "bucket": "wait", "next": "n1", "ack": "繼續。桌前仲空—行過嚟，定仲要我講第二句？" }
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -73,7 +75,8 @@
       "intents": [
         { "bucket": "leave", "next": "n2a", "ack": "改。坐低—呢行你跟唔跟？" },
         { "bucket": "heat", "next": "n2b", "ack": "你要清楚。過嚟聽。" },
-        { "bucket": "agree", "next": "n2a", "ack": "繼續。坐低—呢行你跟唔跟？" }
+        { "bucket": "agree", "next": "n2a", "ack": "繼續。坐低—呢行你跟唔跟？" },
+        { "bucket": "wait", "next": "n2a", "ack": "係。簡報仲開—你而家改，定要我講清楚？" }
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door", "challenge"],
@@ -99,7 +102,8 @@
       "intents": [
         { "bucket": "leave", "next": "n2a", "ack": "改呢行。唔好停—下一行你跟唔跟？" },
         { "bucket": "tired", "next": "n2a", "tension": 1, "ack": "筆尖唔會等你。你改—而家改呢行未？" },
-        { "bucket": "agree", "next": "n2a", "ack": "係。改呢行—下一行你跟唔跟？" }
+        { "bucket": "agree", "next": "n2a", "ack": "係。改呢行—下一行你跟唔跟？" },
+        { "bucket": "wait", "next": "n2a", "ack": "繼續。椅仲在你側—你聽緊係一行？" }
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door"],
@@ -125,7 +129,8 @@
       "intents": [
         { "bucket": "leave", "next": "n2b", "ack": "過嚟。聽清楚—你跟嘅邊一行？" },
         { "bucket": "tired", "next": "n2a", "ack": "你留低。我講你聽—坐低改呢行未？" },
-        { "bucket": "agree", "next": "n2a", "ack": "好。我講你聽—坐低改呢行未？" }
+        { "bucket": "agree", "next": "n2a", "ack": "好。我講你聽—坐低改呢行未？" },
+        { "bucket": "wait", "next": "n2a", "ack": "繼續。筆仲在案—你過嚟聽，定坐低改？" }
       ],
       "sceneGoal": {
         "successIntents": ["challenge", "agree", "enter", "enter_door", "wait"],
@@ -151,7 +156,8 @@
       "intents": [
         { "bucket": "heat", "next": "n2c", "heat": 8, "ack": "你近。字仲要改—你改呢行，定仲近一步？" },
         { "bucket": "leave", "next": "n2a", "ack": "改。例外唔等於放水—坐低起筆未？" },
-        { "bucket": "agree", "next": "n2a", "ack": "繼續。例外唔等於放水—坐低起筆未？" }
+        { "bucket": "agree", "next": "n2a", "ack": "繼續。例外唔等於放水—坐低起筆未？" },
+        { "bucket": "wait", "next": "n2a", "ack": "好。椅仲在你側—你轉身，定專心改？" }
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "enter", "enter_door", "wait"],

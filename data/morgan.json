@@ -35,7 +35,7 @@
       "scene": "lounge",
       "text": "你坐近一格。Elise 把杯推到你手邊，要你講人唔講數。\n\n「你坐低啦。夜晚唔講數。你講你想點，定我先講？」",
       "thought": "戒指冷過杯壁。",
-      "aside": "海外灯打住佢提骨。",
+      "aside": "窗外燈打住佢提骨。",
       "choices": [
         {"label": "「你先講。」", "next": "m2a", "heat": 2},
         {"label": "「我想聽人。」", "next": "m2a", "heat": 4}
