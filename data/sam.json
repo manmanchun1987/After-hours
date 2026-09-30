@@ -22,18 +22,23 @@
       "intents": [
         {"bucket": "leave", "next": "s2", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
         {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你停過。我知。而家入嚟未？"},
-        {"bucket": "agree", "next": "s2", "ack": "好。門縫熱。坐邊度，定仲站？"},
-        {"bucket": "wait", "next": "s2", "ack": "繼續。燈仲亮—你推門入嚟，定仲企外邊？"}
+        {"bucket": "agree", "next": "s2", "ack": "好。門縫熱。坐邊度，定仲站？"}
       ],
-      "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你推門入嚟，定仲企外邊一晚？"},
-      "stub": "hourly C pantry; success=enter/wait/agree; 好係繼續; goalAsk"
+      "sceneGoal": {
+        "successIntents": ["enter_door", "enter", "wait", "agree"],
+        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你推門入嚟，定仲企外邊一晚？"
+      },
+      "stub": "hourly C 06:03 pantry; success=enter/wait/agree; smoke=開門啦/我入去先/等等"
     },
     "s2": {
       "id": "s2",
       "label": "茶水間內",
       "scene": "pantry",
       "remember": ["pantry_in"],
-      "text": "你推門入嚟。Sammi 把熱水推過來，要你坐定仲站。\n\n「門關咗。坐低飲杯，定仲站住講？」",
+      "text": "你推門入嚟。Sammi 把热水推過來，要你坐定仲站。\n\n「門關咇。坐低飲杯，定仲站住講？」",
       "thought": "煙味混住粉味。",
       "aside": "壺仲滴水。",
       "choices": [
@@ -44,11 +49,17 @@
       "intents": [
         {"bucket": "agree", "next": "s2", "ack": "係。坐低—你飲呢杯未？"},
         {"bucket": "wait", "next": "s2", "ack": "繼續。水仲熱—你坐唔坐？"},
-        {"bucket": "leave", "next": "s2", "ack": "你入咗。坐邊度，定仲站？"},
-        {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你站住。水涼咗—你飲唔飲？"}
+        {"bucket": "leave", "next": "s2", "ack": "你入咇。坐邊度，定仲站？"},
+        {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你站住。水涼咇—你飲唔飲？"}
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "坐低飲杯，定仲站住講？"},
-      "stub": "hourly C pantry-in; success=agree/wait/enter; 好係繼續"
+      "sceneGoal": {
+        "successIntents": ["agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "坐低飲杯，定仲站住講？"
+      },
+      "stub": "hourly C 06:03 pantry-in; success=agree/wait/enter; goalAsk"
     }
   }
 }
