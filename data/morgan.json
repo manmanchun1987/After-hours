@@ -27,7 +27,7 @@
         {"bucket": "wait", "next": "m2b", "ack": "繼續。紙推過來—你簽唔簽？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "flirt", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你坐近一格，定只收條款？"},
-      "stub": "hourly C lounge; success=agree/wait/flirt/enter; 好係繼續; goalAsk"
+      "stub": "hourly C 06:03 lounge; success=agree/wait/flirt/enter; goalAsk"
     },
     "m2a": {
       "id": "m2a",
@@ -48,7 +48,7 @@
         {"bucket": "leave", "next": "m2b", "ack": "份紙仲在。你簽唔簽？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "flirt", "enter"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你講你想點，定我先講？"},
-      "stub": "hourly C lounge-near; success=agree/wait/flirt; 好係繼續"
+      "stub": "hourly C 06:03 lounge-near; success=agree/wait/flirt; goalAsk"
     },
     "m2b": {
       "id": "m2b",
@@ -69,7 +69,7 @@
         {"bucket": "leave", "next": "m2b", "ack": "紙仲在桌面—你簽唔簽？"}
       ],
       "sceneGoal": {"successIntents": ["agree", "wait", "enter", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你簽呢頁，定仲睇住我？"},
-      "stub": "hourly C lounge-paper; success=agree/wait/enter/flirt; 好係繼續"
+      "stub": "hourly C 06:03 lounge-paper; success=agree/wait/enter/flirt; goalAsk"
     }
   }
 }
