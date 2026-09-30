@@ -20,6 +20,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
+| Last lamp switch-off / dark cut (n4x office kill) | AP CSS cone collapse | C whole wash / L static plane / S flicker |
 | Pantry kettle / mug steam (wait hold / late kitchen) | AM CSS steam wisps | C whole wash / K weather / L plane |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
@@ -98,6 +99,7 @@ AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under l
 AM CSS `radial-gradient` + `translateY`/`opacity` `@keyframes` steam wisps over existing A pantry SVG (kettle/mug vapor; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, K weather-filter and L static light plane for an isolated after-hours pantry steam beat
 AN CSS `linear-gradient` swipe bar + inset `box-shadow` green/amber LED `@keyframes` travel on existing door/lift chrome (房卡／門禁過閘; reuse A SVG + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, X floor-digit-only and C whole-scene wash for an isolated access-grant beat
 AO CSS `repeating-linear-gradient` horizontal slat shadows + slow `@keyframes` 1px drift on existing A review/office SVG (百葉闇上 / blinds-shut stripe; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane and Q CCTV scanlines for an isolated review blinds-shadow beat
+AP CSS `radial-gradient` lamp cone + `@keyframes` scale/opacity collapse on existing A office SVG (n4x last-lamp switch-off / dark cut; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane and S tube-flicker for an isolated kill-the-last-light beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`

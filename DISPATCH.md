@@ -16,12 +16,13 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 05:12 METHOD SCOUT AP**：last-lamp cone collapse + CODE AP；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 05:04 A INTENT T2**：patterns **split1ci** +我行前去推把入／手推把入去先啦／等我唎多陣先／唔好趕住我先／你而家到底想我點做好先／頭先嗰句你重記唔記得呀／出面而家有冇落雨；ACCEPTANCE 57；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 07:12 METHOD SCOUT AM**：pantry steam wisps + CODE AM #票；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 06:11 A+B INTENT T2**：patterns/guide **split1cg** +我去推把入／推門把入去先／等我唷多吓先／唔好迫我住先／你而家究竟想我點／頭先講嗰句你記唔記得／出面有冇落雨；ACCEPTANCE 43；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 06:04 A INTENT T2**：patterns **split1cf** +我去撚門入／撚門把推入先／等我唾一唾先／唔好催我住先／你究竟想我點做好先／頭先我講嗰句你仲記唔記得／出面落唔落雨呀；ACCEPTANCE 64；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:17 A+B+C INTENT T2**：patterns/guide **split1ce** +我撚門把入去／撚把推門先／等我唾多陣／俾我唾一陣先／你到底想我點做好呀／頭先嗰句你記唔記得呀／而家幾點鐘呀喂；alex n0 keys；ACCEPTANCE 58；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚕推門先／等我唾吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講啱嚕／而家幾點鐘喃；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 04:24 A+B+C INTENT T2**：patterns/guide **split1cc** +我幫你扭門／行埋去開門先／門我幫你推／過嚅推門先／等我唾吓先／唔好迫住我／等陣唔好趕／你想我點做好先呀／頭先嗰句我講啲嚅／而家幾點鐘喅；alex n0 keys；ACCEPTANCE 46；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 03:11 A+B INTENT T2**：patterns **split1ca**；guide **split1bx**；ACCEPTANCE 32；cache 仍 `?v=split1b`
 - **hourly 07:11 A INTENT T2**：patterns **split1bz**
 - **hourly 06:11 A+B+C INTENT T2**：patterns/guide **split1by**
@@ -29,6 +30,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE AP — last-lamp cone collapse (n4x dark cut)
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接 office n4x switch-off
 #### CODE AM — pantry kettle/mug steam wisps
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 pantry wait hold
 #### CODE AK — lift/roof glass breath fog
