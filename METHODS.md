@@ -36,6 +36,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
+| Keycard / door-lock grant on existing door or lift chrome | AN CSS swipe LED bar | A flat room / X floor-digit / C whole wash |
 | Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
 | Scene cut / room change wipe (office→lift, pantry→review) | AF CSS clip-path shutter | Y letterbox hold / C whole motion / D FX |
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
@@ -94,6 +95,7 @@ AJ CSS `transform: scale` 1.000–1.012 slow `@keyframes` breathe on locked repo
 AK CSS `radial-gradient` white fog + slow `@keyframes` bloom on existing lift/roof glass pane (呵氣霧; reuse A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats N phone-sheet frost, C whole-scene wash and K weather-filter for an isolated breath-on-glass beat
 AL CSS `filter: drop-shadow` + `transform: skewX` elongated floor shadow under locked still on existing A corridor/office SVG (enter / wait stretch; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat full-bleed room, C whole-scene wash and L static light plane for an isolated late-night long-shadow beat
 AM CSS `radial-gradient` + `translateY`/`opacity` `@keyframes` steam wisps over existing A pantry SVG (kettle/mug vapor; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, K weather-filter and L static light plane for an isolated after-hours pantry steam beat
+AN CSS `linear-gradient` swipe bar + inset `box-shadow` green/amber LED `@keyframes` travel on existing door/lift chrome (房卡／門禁過閘; reuse A SVG + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, X floor-digit-only and C whole-scene wash for an isolated access-grant beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
