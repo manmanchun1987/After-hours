@@ -7,7 +7,7 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：`?v=split1b`；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
+- Live 驗收：patterns `?v=split1cp`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
 
 ## 過關標準
 intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1b`。
@@ -16,9 +16,9 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ## Done this hour
-- **hourly 06:15 METHOD SCOUT AV**：night window city bokeh (`radial-gradient` speck drift) + CODE AV；Pages+Safari；禁 Imagine/上傳/CF
-- **hourly 05:13 A INTENT T2**：patterns **split1cn** +我跨過門檻先／我鑽入房先／行埋門口挽入去／我企定先／我唾多陣先／未諺定點做好／我應該點做好先／你要我點呀先／你仲知唔知我頭先講咩／頭先句說話你有冇印象／出面好暗呀／聽日會唔會打風；flirt `/面/` 收窄為你塊面／望實你面／近我塊面（出面不再誤 flirt）；ACCEPTANCE 98；測句 gate PASS；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 05:07 STATUS**：CAST.lock 仍 Vera/Elise/Sammi stills；repo `app.js` 係全機，Pages `?v=split1b` app.js 頭一段唔係 565B，但 owner 未 playtest 到 parts 齊（intent-engine / chat-guide / guide-policy）。CHAT-FIRST：打字成功後仍倒選項鐘 → FEEL 2。票不開新：#46 CODE restore-engine、#47 STORY intents、#48 CODE chat-guide hide。禁 Imagine。
+- **hourly 06:13 A INTENT T2**：patterns **split1cp** +我踩過門檻入去／我溜入間房先／側身挨入門口／等我抖順條氣先／你俾我企定先／你想我點先算呀／頭先我話嗰句你仲記唔記得／出面黑唔黑呀；錯字開問啦／入去先丫；ACCEPTANCE 125；測句 gate PASS；index 7275→7276 只 cache-bust `intent-patterns.js?v=split1cp`；禁 app.js stub
+- **hourly 05:13 A INTENT T2**：patterns **split1cn** +我跨過門檻先／我鑽入房先／行埋門口挨入去／我企定先／我唞多陣先／未諗定點做好／我應該點做好先／你要我點呀先／你仲知唔知我頭先講咩／頭先句說話你有冇印象／出面好暗呀／聽日會唔會打風；flirt `/面/` 收窄為你塊面／望實你面／近我塊面（出面不再誤 flirt）；ACCEPTANCE 98；測句 gate PASS；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 05:07 STATUS**：CAST.lock 仍 Vera/Elise/Sammi stills；repo `app.js` 係全機，Pages `?v=split1b` app.js 頭一段唔係 565B，但 owner 未 playtest 到 parts 齊（intent-engine / chat-guide / guide-policy）。CHAT-FIRST：打字成功後仍倒選項鍾 → FEEL 2。票不開新：#46 CODE restore-engine、#47 STORY intents、#48 CODE chat-guide hide。禁 Imagine。
 - **hourly 04:12 METHOD SCOUT AT**：private-chat 已讀雙剔 (`::before`/`::after` check fill) + CODE AT；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 03:12 METHOD SCOUT AS**：ending dawn window leak (`linear-gradient` warm slit) + CODE AS；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 07:12 METHOD SCOUT AR**：corridor/lift/office wet-floor (`-webkit-box-reflect`) + CODE AR；Pages+Safari；禁 Imagine/上傳/CF
@@ -41,8 +41,6 @@ STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 - **Status:** P0。Live loader 未證 parts 齊；full app.js + intent-engine + chat-guide + guide-policy。禁 CDN / 565B stub。
 #### CODE chat-guide hide — #48
 - **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。
-#### CODE AV — night-window city bokeh
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 office/roof/lounge 夜窗光點
 #### CODE AT — private-chat read-receipt double-tick
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接私聊氣泡已讀雙剔
 #### CODE AS — ending dawn window leak
@@ -66,13 +64,13 @@ STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1cn 我跨過門檻先／我唾多陣先／你仲知唔知我頭先講咩／出面好暗呀；flirt 唔再食出面；recentUserLines 仍待 F
+- **Status:** split1cp 我踩過門檻入去／等我抖順條氣先／頭先我話嗰句你仲記唔記得／出面黑唔黑呀；錯字開問啦；recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級
 - **Status:** offTopicStreak + sharp 池已有
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** live classify PASS；cache `?v=split1b`；F 暫緩未升
+- **Status:** live classify PASS；patterns cache `?v=split1cp`；全頁 F 暫緩未升
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |

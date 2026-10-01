@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261002-02
+- proposed_at: 2026-10-02
+- status: proposed
+- pain: 「出面落雨但我都想入去」off_topic 食落雨、enter 食入去；非走廊節可能跌離題，唔會先認天氣再問推門
+- how: 混合句 enter_door≥1 且有入／推門時唔准 off_topic 獨贏；回覆先接落雨再導向推門。未批唔改 engine
+- acceptance: 「出面落雨但我都想入去」→ enter_door，唔係 off_topic
+- rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261002-01
 - proposed_at: 2026-10-02
 - status: proposed
