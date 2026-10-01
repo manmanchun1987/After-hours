@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261002-03
+- proposed_at: 2026-10-02
+- status: proposed
+- pain: 「開問入去先／入去先吚／等我喘返啖氣先」patterns split1cq 已認，F 未接 recentUserLines；混合句「等我喘返啖氣先但都想入」而家只會取最高分
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；混合句先答 wait 再問 enter，唔當 unclear。未批唔改 engine
+- acceptance: 先「等我喘返啖氣先」再「頭先我話嘅句你仲記唔記到」→ wait 後 ask_memory 回聲喘返啖氣；「開問入去先」仍 enter_door
+- rationale: T2 場景記憶接話更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261002-02
 - proposed_at: 2026-10-02
 - status: proposed
@@ -18,23 +26,23 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: 「你仲知唔知我頭先講咩／頭先句說話你有冇印象」patterns split1cn 已認，F 未接 recentUserLines 做記憶回聲；玩家一句同時企定又想入（我企定先但門我都想入）而家只會取最高分
 - how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；混合句先答 wait 再問 enter，唔當 unclear
-- acceptance: 先「我唞多陣先」再「頭先句說話你有冇印象」→ wait 後 ask_memory 回聲唞多陣；「我企定先但門我都想入」唔跌 unclear
+- acceptance: 先「我唸多陣先」再「頭先句說話你有冇印象」→ wait 後 ask_memory 回聲唸多陣；「我企定先但門我都想入」唔跌 unclear
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F／唔開施工票
 
 ### I-20261001-08
 - proposed_at: 2026-10-01
 - status: proposed
-- pain: 「我行埋前去擷把一推入／唔好催住我唧先／頭先嗰句你重記唔記得住未呀」patterns split1cl 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 擷把一推入|催住我唧先|記唔記得住未
-- acceptance: 先「唔好催住我唧先」再「頭先嗰句你重記唔記得住未呀」→ wait 後 ask_memory 回聲催住我唧
+- pain: 「我行埋前去擔把一推入／唔好催住我嘲先／頭先嘅句你重記唔記得住未呀」patterns split1cl 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 擔把一推入|催住我嘲先|記唔記得住未
+- acceptance: 先「唔好催住我嘲先」再「頭先嘅句你重記唔記得住未呀」→ wait 後 ask_memory 回聲催住我嘲
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
 
 ### I-20261001-07
 - proposed_at: 2026-10-01
 - status: proposed
-- pain: 「我行埋前去一推把入／唔好催住我住先／頭先嗰句你重記唔記得未呀」patterns split1ck 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 一推把入|催住我住先|嗰句重記唔記得未
-- acceptance: 先「唔好催住我住先」再「頭先嗰句你重記唔記得未呀」→ wait 後 ask_memory 回聲催住
+- pain: 「我行埋前去一推把入／唔好催住我住先／頭先嘅句你重記唔記得未呀」patterns split1ck 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 一推把入|催住我住先|嘅句重記唔記得未
+- acceptance: 先「唔好催住我住先」再「頭先嘅句你重記唔記得未呀」→ wait 後 ask_memory 回聲催住
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
 
 ### I-20261001-06
@@ -56,7 +64,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20260930-07
 - proposed_at: 2026-09-30
 - status: proposed
-- pain: 「我行埋去推把入／等我唧多陣先／頭先嗎句你重記唔記得」patterns split1ch 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|唧多陣先|重記唔記得
-- acceptance: 先「等我唧多陣先」再「頭先嗎句你重記唔記得」→ wait 後 ask_memory 回聲唧多陣
+- pain: 「我行埋去推把入／等我嘲多陣先／頭先嗎句你重記唔記得」patterns split1ch 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|嘲多陣先|重記唔記得
+- acceptance: 先「等我嘲多陣先」再「頭先嗎句你重記唔記得」→ wait 後 ask_memory 回聲嘲多陣
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
