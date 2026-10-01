@@ -1,8 +1,8 @@
 # 而家進度
 
-最後更新：2026-10-01 07:12 HKT · Lane METHOD SCOUT AR
-STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
+最後更新：2026-10-02 02:06 HKT · Lane DISPATCH
+STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
-Live：`?v=split1b`（禁 stub／禁動 app.js）
-Hourly 07:12 METHOD SCOUT AR：潮濕地 `-webkit-box-reflect` + CODE AR；cache 仍 `?v=split1b`
-開票：GUIDE T3 待 live 硬刷 `?v=split1b`；INTENT T2 recentUserLines 仍待 F；CODE AR/AQ/AM/AK 待 F
+Live：`?v=split1b` stub loader 無 parts（禁 CDN pin／禁 Imagine）
+Hourly 02:06：CODE restore-engine 第一張；打完句彈選項 → FEEL 2；STORY intents + CODE chat-guide hide
+開票：主人 playtest 預期；CAST.lock Vera/Elise/Sammi 仍鎖
