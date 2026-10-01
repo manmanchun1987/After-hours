@@ -11,7 +11,7 @@
       "id": "s1",
       "label": "茶水間 00:12",
       "scene": "pantry",
-      "text": "你走到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
+      "text": "你行到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
       "thought": "佢唔催。佢等。",
       "aside": "監控紅點慢閃。",
       "choices": [
@@ -20,9 +20,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "leave", "next": "s2", "ack": "門縫熱。你入嚟。坐邊度，定仲站？"},
-        {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你停過。我知。而家入嚟未？"},
-        {"bucket": "agree", "next": "s2", "ack": "好。門縫熱。坐邊度，定仲站？"}
+        {"bucket": "leave", "say": "推門", "next": "s2", "ack": "門縫熱。你入嚟—坐邊度，定仲企？"},
+        {"bucket": "tired", "say": "停低", "next": "s2", "tension": 1, "ack": "你停過。我知。而家入嚟未？"},
+        {"bucket": "agree", "say": "好", "next": "s2", "ack": "好。門縫熱。你入嚟—坐邊度，定仲企？"},
+        {"bucket": "wait", "say": "係", "next": "s2", "ack": "係。燈仲亮—你推門入嚟，定仲企外邊？"},
+        {"bucket": "agree", "say": "繼續", "next": "s2", "ack": "繼續。門縫熱。你入嚟—坐邊度，定仲企？"}
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -31,35 +33,36 @@
         "guideLevel": 0,
         "ask": "你推門入嚟，定仲企外邊一晚？"
       },
-      "stub": "hourly C 07:03 pantry; success=enter/wait/agree; smoke=開門啦/我入去先/等等"
+      "stub": "hourly C 05:08 pantry; chat-first 好/係/繼續; success=enter/wait/agree; smoke=開門啦/我入去先/等等"
     },
     "s2": {
       "id": "s2",
       "label": "茶水間內",
       "scene": "pantry",
       "remember": ["pantry_in"],
-      "text": "你推門入嚟。Sammi 把热水推過來，要你坐定仲站。\n\n「門關咇。坐低飲杯，定仲站住講？」",
+      "text": "你推門入嚟。Sammi 把熱水推過嚟，要你坐定仲企。\n\n「門關咗。坐低飲杯，定仲企住講？」",
       "thought": "煙味混住粉味。",
       "aside": "壺仲滴水。",
       "choices": [
         {"label": "坐低", "next": "s2"},
-        {"label": "（站住）", "next": "s2", "tension": 1}
+        {"label": "（企住）", "next": "s2", "tension": 1}
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "next": "s2", "ack": "係。坐低—你飲呢杯未？"},
-        {"bucket": "wait", "next": "s2", "ack": "繼續。水仲熱—你坐唔坐？"},
-        {"bucket": "leave", "next": "s2", "ack": "你入咇。坐邊度，定仲站？"},
-        {"bucket": "tired", "next": "s2", "tension": 1, "ack": "你站住。水涼咇—你飲唔飲？"}
+        {"bucket": "agree", "say": "好", "next": "s2", "ack": "好。坐低—你飲呢杯未？"},
+        {"bucket": "wait", "say": "係", "next": "s2", "ack": "係。水仲熱—你坐唔坐？"},
+        {"bucket": "agree", "say": "繼續", "next": "s2", "ack": "繼續。坐低飲杯—你飲呢杯未？"},
+        {"bucket": "leave", "say": "入咗", "next": "s2", "ack": "你入咗。坐邊度，定仲企？"},
+        {"bucket": "tired", "say": "企住", "next": "s2", "tension": 1, "ack": "你企住。水涼咗—你飲唔飲？"}
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door"],
         "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
         "maxMisses": 3,
         "guideLevel": 0,
-        "ask": "坐低飲杯，定仲站住講？"
+        "ask": "坐低飲杯，定仲企住講？"
       },
-      "stub": "hourly C 07:03 pantry-in; success=agree/wait/enter; goalAsk"
+      "stub": "hourly C 05:08 pantry-in; chat-first 好/係/繼續; success=agree/wait/enter; goalAsk"
     }
   }
 }
