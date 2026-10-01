@@ -1,6 +1,8 @@
 (function () {
+  window.__ahAudioBed = "t3-1002";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
+  var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   function AC() { return window.AudioContext || window.webkitAudioContext; }
   function ensure() {
     if (ctx) return ctx;
@@ -174,7 +176,11 @@
     }
   }, true);
   document.addEventListener("submit", function (e) {
-    if (e.target && e.target.id === "chat-form") playCue("send");
+    if (!e.target || e.target.id !== "chat-form") return;
+    var input = document.getElementById("chat-input");
+    var raw = input ? String(input.value || "").trim() : "";
+    if (OWNER_PROBE.test(raw)) return;
+    playCue("send");
   }, true);
   document.addEventListener("pointerdown", function () { ensure(); startBed(); }, true);
 })();

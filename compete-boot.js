@@ -1,4 +1,6 @@
 (function () {
+  window.__ahCompeteBoot = "t3-1002";
+  window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
     alex: "週五夜深。你係 Vera 手下，簡報佢話未夠，尾班電梯門開過你都無入。門後聲平：「入嚟。唔好喃走廊度似野。」",

@@ -1,4 +1,5 @@
 (function () {
+  window.__ahFxPlay = "t3-1002";
   var wrapped = false;
   var lastNode = "";
   function layer() {
@@ -89,6 +90,7 @@
         if (lastNode) shutter();
         lastNode = after;
       }
+      document.body.classList.remove("show-choices");
       if (window.__ahHideChoices) window.__ahHideChoices();
     };
     if (typeof window.applyFreeChatAdvance === "function") {
@@ -105,6 +107,7 @@
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
         shutter();
+        document.body.classList.remove("show-choices");
         if (window.__ahHideChoices) window.__ahHideChoices();
         return r;
       };
