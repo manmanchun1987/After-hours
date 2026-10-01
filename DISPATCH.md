@@ -7,7 +7,7 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1cp`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
+- Live 驗收：patterns `?v=split1cr`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔＋禁 CDN／禁原文唯一
 
 ## 過關標準
 intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1b`。
@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ## Done this hour
+- **hourly 07:20 A INTENT T2/T5**：patterns **split1cr** 12077B；+彎低身鑽入去／唔係唔入／順順氣先／未定得落／記唔記到我頭先講；本地 gate 17/17 PASS；index 只 cache-bust `intent-patterns.js?v=split1cr`；禁 app.js stub／禁 CDN。recentUserLines 仍待 F。
 - **hourly 07:08**：Live index 已掛 parts（app.js 119953、intent-engine 29001、chat-guide 12397、guide-policy 5483、patterns 15453 `?v=split1cp`）。唔係 565B stub loader，唔開新 restore 票。CAST.lock 仍 Vera/Elise/Sammi stills。CHAT-FIRST 打字成功後仍倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
 - **hourly 06:15 METHOD SCOUT AV**：night window city bokeh + CODE AV；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 06:13 A INTENT T2**：patterns **split1cp**；ACCEPTANCE 125；index 只 cache-bust `intent-patterns.js?v=split1cp`；禁 app.js stub
@@ -40,9 +41,9 @@ STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1cp 已加變體；recentUserLines 仍待 F
+- **Status:** split1cr 已加記唔記到／唔係唔入變體；recentUserLines 仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1cp`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1cr`；全頁 F 暫緩未升
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |

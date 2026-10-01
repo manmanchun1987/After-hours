@@ -1,6 +1,6 @@
 /**
- * IntentPatterns (split1cq) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2 thicken split1cq: +我踎低鑽入房／彎腰挨入門口／腳尖踩入門檻／推開度門入先; +等我喘返啖氣先／唔好逼住我先啦／我仲未定落腳; +咁你想我點樣先算／而家叫我做邊樣; +頭先我話嘅句你仲記唔記到／我頭先講過你有冇聽入耳; +出面會唔會打雷／而家出面凍唔凍呀; 錯字開問入去先／入去先吚
+ * IntentPatterns (split1cr) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * T2/T5 split1cr: +彎低身鑽入去／趴低擠入去／唔係唔入; +順順氣先／未定得落／收收氣先; +記唔記到我頭先講; 否定雙重唔係唔入唔當 refuse
  */
 (function (global) {
   "use strict";
@@ -35,7 +35,7 @@
       /我行埋前去一推把入/, /手一擔把入去先啦/, /行埋前去一扭把入/, /門把我一擔入/,
       /我行埋前去擔把一推入/, /手擔把一推入去先啦/, /行埋前去擔把入/, /門把我擔一推入/,
       /我去撳個門把先/, /撳把推入去/, /幫我推開嘅度門/, /我撳門把入去/,
-      /我跨過門檻先/, /我鑽入房先/, /行埋門口挨入去/, /我挨入房先/, /我閃入去先/, /我側身鑽入/, /門縫擠入去/, /我推開條縫入/, /手扳開條門縫/, /挨實門縫鑽入/, /開們啦/, /我入去先呀/, /我踩過門檻入去/, /我溜入間房先/, /側身挨入門口/, /我推開條門縫入先/, /開問啦/, /入去先丫/, /我踎低鑽入房/, /彎腰挨入門口/, /腳尖踩入門檻/, /幫我開咗度門先/, /推開度門入先/, /伸手扭開度門/, /開問入去先/, /入去先吚/, /側身擠入房先/
+      /我跨過門檻先/, /我鑽入房先/, /行埋門口挨入去/, /我挨入房先/, /我閃入去先/, /我側身鑽入/, /門縫擠入去/, /我推開條縫入/, /手扳開條門縫/, /挨實門縫鑽入/, /開們啦/, /我入去先呀/, /我踩過門檻入去/, /我溜入間房先/, /側身挨入門口/, /我推開條門縫入先/, /開問啦/, /入去先丫/, /我踎低鑽入房/, /彎腰挨入門口/, /腳尖踩入門檻/, /幫我開咗度門先/, /推開度門入先/, /伸手扭開度門/, /開問入去先/, /入去先吚/, /側身擠入房先/, /彎低身鑽入去/, /我趴低擠入去/, /唔係唔入/, /我想入去先/
     ],
     wait: [
       /等等/, /停一停/, /停低/, /未準備/, /我未準備好/, /hold on/i, /wait/i,
@@ -51,7 +51,7 @@
       /等我唾多吓先/, /唔好催住我住先/, /俾我唾一陣先/, /等我唾一唾先/,
       /等我喎多兩吓先/, /唔好催住我喎先/, /俾我喎多兩吓先/, /等我喎一喎先/,
       /等一等我未定/, /唔好迫得咁緊/, /俾啲時間我先/, /我未定好先/,
-      /我企定先/, /我唸多陣先/, /未諦定點做好/, /你等我埋位先/, /等我定定神先/, /我仲未穩陣/, /唔好逼到我貼牆/, /等我攝多啖氣先/, /我未企穩先/, /等我抖順條氣先/, /你俾我企定先/, /我未諦清楚先/, /等我定過神先/, /我仲未企穩呀/, /等我喘返啖氣先/, /唔好逼住我先啦/, /我仲未定落腳/, /你等我穩陣先/, /等埋陣先唔好催/, /等我順返條氣先/
+      /我企定先/, /我唸多陣先/, /未諦定點做好/, /你等我埋位先/, /等我定定神先/, /我仲未穩陣/, /唔好逼到我貼牆/, /等我攝多啖氣先/, /我未企穩先/, /等我抖順條氣先/, /你俾我企定先/, /我未諦清楚先/, /等我定過神先/, /我仲未企穩呀/, /等我喘返啖氣先/, /唔好逼住我先啦/, /我仲未定落腳/, /你等我穩陣先/, /等埋陣先唔好催/, /等我順返條氣先/, /等我順順氣先/, /我未定得落/, /等我收收氣先/
     ],
     ask_want: [
       /你想我點/, /而家點/, /下一步/, /跟住點/, /what now/i,
@@ -86,11 +86,11 @@
       /頭先嘅句你重記唔記得未呀/, /你重記唔記得未呀頭先嘅句/,
       /頭先嘅句你重記唔記得住未呀/, /你重記唔記得住未呀頭先嘅句/,
       /我頭先講過你仲記得嘛/, /你有冇聽過我頭先/, /你聽住我頭先講嘛/,
-      /你仲知唔知我頭先講咩/, /頭先句說話你有冇印象/, /我頭先講咩你仲知/, /頭先我講嘅句你有冇留低/, /你仲有冇記得我頭先話/, /頭先句你仲喺唔喺度/, /頭先我話嘅句你仲記唔記得/, /我頭先講過嘅句你有冇印象/, /你仲記唔記得我頭先嘅句/, /頭先句說話你仲有冇印象呀/, /頭先我話嘅句你仲記唔記到/, /我頭先講過你有冇聽入耳/, /頭先嘅句你仲記唔記到呀/, /你有冇記住我頭先嘅句/
+      /你仲知唔知我頭先講咩/, /頭先句說話你有冇印象/, /我頭先講咩你仲知/, /頭先我講嘅句你有冇留低/, /你仲有冇記得我頭先話/, /頭先句你仲喺唔喺度/, /頭先我話嘅句你仲記唔記得/, /我頭先講過嘅句你有冇印象/, /你仲記唔記得我頭先嘅句/, /頭先句說話你仲有冇印象呀/, /頭先我話嘅句你仲記唔記到/, /我頭先講過你有冇聽入耳/, /頭先嘅句你仲記唔記到呀/, /你有冇記住我頭先嘅句/, /記唔記到/, /你記唔記到我頭先/, /我頭先講嗰句你有冇記住/
     ],
     off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /落雨/, /openai/i, /chatbot/i, /而家幾點/, /而家幾點鐘喃/, /而家幾點呀喂/, /出面凍到震未/, /而家幾點鐘呀喂/, /而家幾點鐘呀/, /落唔落雨呀/, /出面有冇落雨/, /出面凍唔凍呀/, /出面而家落雨未/, /出面而家凍唔凍/, /出面而家有冇落雨/, /出面而家凍到震未/, /出面而家有冇落雨呀/, /出面而家落唔落雨/, /出面而家落唔落雨呀/, /出面而家有冇落緊雨/, /出面而家落緊雨未呀/, /出面而家有冇落緊雨呀/, /出面熱唔熱呀/, /而家幾點鐘啦/, /出面熱唔熱/, /出面好暗呀/, /聽日會唔會打風/, /而家係咪通宵/, /出面係咪起霧/, /而家幾點幾呀/, /聽晚會唔會落雨/, /出面好靜呀/, /出面黑唔黑呀/, /聽日會唔會好熱/, /出面係咪落雨呀/, /而家係咪好夜呀/, /出面會唔會打雷/, /聽日會唔會落雨呀/, /而家出面凍唔凍呀/, /出面會唔會好凍/]
   };
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:{},KEY_SYNONYMS:{},ACCEPTANCE_SOFT:[{text:"開門啦",intent:"enter_door"},{text:"我入去先",intent:"enter_door"},{text:"進去看看",intent:"enter_door"},{text:"推門",intent:"enter_door"},{text:"我踎低鑽入房",intent:"enter_door"},{text:"彎腰挨入門口",intent:"enter_door"},{text:"腳尖踩入門檻",intent:"enter_door"},{text:"幫我開咗度門先",intent:"enter_door"},{text:"推開度門入先",intent:"enter_door"},{text:"伸手扭開度門",intent:"enter_door"},{text:"開問入去先",intent:"enter_door"},{text:"入去先吚",intent:"enter_door"},{text:"側身擠入房先",intent:"enter_door"},{text:"等等",intent:"wait"},{text:"我未準備好",intent:"wait"},{text:"停一停",intent:"wait"},{text:"等我喘返啖氣先",intent:"wait"},{text:"唔好逼住我先啦",intent:"wait"},{text:"我仲未定落腳",intent:"wait"},{text:"你等我穩陣先",intent:"wait"},{text:"等埋陣先唔好催",intent:"wait"},{text:"等我順返條氣先",intent:"wait"},{text:"你想我點？",intent:"ask_want"},{text:"咁你想我點樣先算",intent:"ask_want"},{text:"而家叫我做邊樣",intent:"ask_want"},{text:"你講清楚要我點",intent:"ask_want"},{text:"咁而家要我點先算",intent:"ask_want"},{text:"你記得我頭先講呀",intent:"ask_memory"},{text:"頭先我話嘅句你仲記唔記到",intent:"ask_memory"},{text:"我頭先講過你有冇聽入耳",intent:"ask_memory"},{text:"頭先嘅句你仲記唔記到呀",intent:"ask_memory"},{text:"你有冇記住我頭先嘅句",intent:"ask_memory"},{text:"今日天氣點呀",intent:"off_topic"},{text:"出面會唔會打雷",intent:"off_topic"},{text:"聽日會唔會落雨呀",intent:"off_topic"},{text:"而家出面凍唔凍呀",intent:"off_topic"},{text:"出面會唔會好凍",intent:"off_topic"},{text:"出面黑唔黑呀",intent:"off_topic"}],version:"split1cq"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:{},KEY_SYNONYMS:{},ACCEPTANCE_SOFT:[{text:"開門啦",intent:"enter_door"},{text:"我入去先",intent:"enter_door"},{text:"進去看看",intent:"enter_door"},{text:"推門",intent:"enter_door"},{text:"我踎低鑽入房",intent:"enter_door"},{text:"彎腰挨入門口",intent:"enter_door"},{text:"腳尖踩入門檻",intent:"enter_door"},{text:"幫我開咗度門先",intent:"enter_door"},{text:"推開度門入先",intent:"enter_door"},{text:"伸手扭開度門",intent:"enter_door"},{text:"開問入去先",intent:"enter_door"},{text:"入去先吚",intent:"enter_door"},{text:"側身擠入房先",intent:"enter_door"},{text:"等等",intent:"wait"},{text:"我未準備好",intent:"wait"},{text:"停一停",intent:"wait"},{text:"等我喘返啖氣先",intent:"wait"},{text:"唔好逼住我先啦",intent:"wait"},{text:"我仲未定落腳",intent:"wait"},{text:"你等我穩陣先",intent:"wait"},{text:"等埋陣先唔好催",intent:"wait"},{text:"等我順返條氣先",intent:"wait"},{text:"你想我點？",intent:"ask_want"},{text:"咁你想我點樣先算",intent:"ask_want"},{text:"而家叫我做邊樣",intent:"ask_want"},{text:"你講清楚要我點",intent:"ask_want"},{text:"咁而家要我點先算",intent:"ask_want"},{text:"你記得我頭先講呀",intent:"ask_memory"},{text:"頭先我話嘅句你仲記唔記到",intent:"ask_memory"},{text:"我頭先講過你有冇聽入耳",intent:"ask_memory"},{text:"頭先嘅句你仲記唔記到呀",intent:"ask_memory"},{text:"你有冇記住我頭先嘅句",intent:"ask_memory"},{text:"今日天氣點呀",intent:"off_topic"},{text:"出面會唔會打雷",intent:"off_topic"},{text:"聽日會唔會落雨呀",intent:"off_topic"},{text:"而家出面凍唔凍呀",intent:"off_topic"},{text:"出面會唔會好凍",intent:"off_topic"},{text:"出面黑唔黑呀",intent:"off_topic"},{text:"彎低身鑽入去",intent:"enter_door"},{text:"唔係唔入我想入去",intent:"enter_door"},{text:"我未定得落",intent:"wait"},{text:"你記唔記到我頭先講",intent:"ask_memory"}],version:"split1cr"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);

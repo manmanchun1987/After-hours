@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261002-04
+- proposed_at: 2026-10-02
+- status: proposed
+- pain: split1cr 已認「唔係唔入我想入去／記唔記到我頭先講」，但 F 未把 recentUserLines 回聲進 GuidePolicy；「等我喘返啖氣先但都想入」而家只取最高分
+- how: F 把最後一句回聲進 MEM_NUDGE；混合句 wait+enter 先答喘氣再問 enter，唔當 unclear。未批唔改 engine
+- acceptance: 先「等我喘返啖氣先」再「你記唔記到我頭先講」→ wait 後 ask_memory 回聲喘返啖氣；「等我喘返啖氣先但都想入」唔跌 unclear
+- rationale: T2 場景記憶接話更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261002-03
 - proposed_at: 2026-10-02
 - status: proposed
