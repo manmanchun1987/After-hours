@@ -11,7 +11,7 @@
       "id": "s1",
       "label": "茶水間 00:12",
       "scene": "pantry",
-      "text": "你行到半掩門前。Sammi 低聲抽著煙，考你入定停。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
+      "text": "你行到半掩門前。Sammi 低聲抽煙，要你而家入定停。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
       "thought": "佢唔催。佢等。",
       "aside": "監控紅點慢閃。",
       "choices": [
@@ -20,11 +20,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "leave", "say": "推門", "next": "s2", "ack": "門縫熱。你入嚟—坐邊度，定仲企？"},
+        {"bucket": "leave", "say": "推門", "next": "s2", "ack": "門縫熱。你入嚟—坐低飲杯，定仲企住講？"},
         {"bucket": "tired", "say": "停低", "next": "s2", "tension": 1, "ack": "你停過。我知。而家入嚟未？"},
-        {"bucket": "agree", "say": "好", "next": "s2", "ack": "好。門縫熱。你入嚟—坐邊度，定仲企？"},
+        {"bucket": "agree", "say": "好", "next": "s2", "ack": "好。門縫熱。你入嚟—坐低飲杯，定仲企住講？"},
         {"bucket": "wait", "say": "係", "next": "s2", "ack": "係。燈仲亮—你推門入嚟，定仲企外邊？"},
-        {"bucket": "agree", "say": "繼續", "next": "s2", "ack": "繼續。門縫熱。你入嚟—坐邊度，定仲企？"}
+        {"bucket": "agree", "say": "繼續", "next": "s2", "ack": "繼續。門縫熱。你入嚟—坐低飲杯，定仲企住講？"}
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -33,14 +33,14 @@
         "guideLevel": 0,
         "ask": "你推門入嚟，定仲企外邊一晚？"
       },
-      "stub": "hourly C 06:04 pantry corridor; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=我去撚個門把先/撚把推入去/幫我推開嘅度門→enter; 等一等我未定/唔好迫得咁緊→wait"
+      "stub": "hourly C 06:08 pantry corridor one-breath; chat-first 好/係/繼續 ack=s2 first half; success=enter/enter_door/wait/agree"
     },
     "s2": {
       "id": "s2",
       "label": "茶水間內",
       "scene": "pantry",
       "remember": ["pantry_in"],
-      "text": "你推門入嚟。Sammi 把熱水推過嚟，要你坐定仲企。\n\n「門關咗。坐低飲杯，定仲企住講？」",
+      "text": "你推門入嚟。Sammi 將熱水推過嚟，要你而家坐定企。\n\n「門關咗。坐低飲杯，定仲企住講？」",
       "thought": "煙味混住粉味。",
       "aside": "壺仲滴水。",
       "choices": [
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "坐低飲杯，定仲企住講？"
       },
-      "stub": "hourly C 06:04 pantry-in; chat-first 好/係/繼續; success=agree/wait/enter/enter_door; goalAsk"
+      "stub": "hourly C 06:08 pantry-in one-breath; chat-first 好/係/繼續; success=agree/wait/enter/enter_door"
     }
   }
 }

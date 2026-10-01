@@ -12,7 +12,7 @@
       "id": "m1",
       "label": "酒廊 21:10",
       "scene": "lounge",
-      "text": "你走入酒廊。Elise 轉酒杯，戒指敲一下杯壁，考你講人定講紙。\n\n「合約數字日頭講完。夜晚講人。你坐近一格，定只收條款？」",
+      "text": "你走入酒廊。Elise 轉酒杯，要你而家講人唔講紙。\n\n「日頭講完數。夜晚講人。你坐近一格，定只收條款？」",
       "thought": "佢望住你，唔望海。",
       "aside": "爵士樂壓得好低。",
       "choices": [
@@ -21,11 +21,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "heat", "say": "講人", "next": "m2a", "heat": 8, "ack": "你問成交。杯近過—你坐低講人，定份紙你簽？"},
-        {"bucket": "leave", "say": "收條款", "next": "m2b", "tension": 10, "ack": "條款。紙推過嚟—你簽唔簽？"},
-        {"bucket": "agree", "say": "好", "next": "m2a", "heat": 8, "ack": "好。你坐近一格—講人先，定先睇紙？"},
-        {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。紙推過嚟—你簽唔簽？"},
-        {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。你坐近一格—講人先，定先睇紙？"}
+        {"bucket": "heat", "say": "講人", "next": "m2a", "heat": 8, "ack": "你坐近一格。杯推到你手邊—你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "收條款", "next": "m2b", "tension": 10, "ack": "你收條款。紙推過嚟—你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "好", "next": "m2a", "heat": 8, "ack": "好。你坐近一格—你講你想點，定我先講？"},
+        {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。紙推過嚟—你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。你坐近一格—你講你想點，定我先講？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -34,15 +34,15 @@
         "guideLevel": 0,
         "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 06:04 lounge; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door; 唔好迫得咁緊→wait; 你想點先啦 optional"
+      "stub": "hourly C 06:08 lounge one-breath; chat-first 好/係/繼續 ack=m2a/m2b first half; success=flirt/agree/wait/enter/enter_door"
     },
     "m2a": {
       "id": "m2a",
       "label": "近座",
       "scene": "lounge",
-      "text": "你坐近一格。Elise 把杯推到你手邊，要你講人唔講數。\n\n「你坐低啦。夜晚唔講數。你講你想點，定我先講？」",
+      "text": "你坐近一格。Elise 將杯推到你手邊，要你而家講人唔講數。\n\n「你坐低啦。夜晚唔講數。你講你想點，定我先講？」",
       "thought": "戒指冷過杯壁。",
-      "aside": "窗外燈打住佢頬骨。",
+      "aside": "窗外燈打住佢頴骨。",
       "choices": [
         {"label": "「你先講。」", "next": "m2a", "heat": 2},
         {"label": "「我想聽人。」", "next": "m2a", "heat": 4}
@@ -53,7 +53,7 @@
         {"bucket": "agree", "say": "好", "next": "m2a", "ack": "好。你講你想點—你仲講唔講？"},
         {"bucket": "wait", "say": "係", "next": "m2a", "ack": "係。杯仲暖—你講先，定我講？"},
         {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。我講人—你跟唔跟呢一句？"},
-        {"bucket": "leave", "say": "睇紙", "next": "m2b", "ack": "份紙仲喺。你簽唔簽？"}
+        {"bucket": "leave", "say": "睇紙", "next": "m2b", "ack": "你收條款。紙仲喺—你簽呢頁，定仲睇住我？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -62,13 +62,13 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 06:04 lounge-near; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door"
+      "stub": "hourly C 06:08 lounge-near one-breath; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door"
     },
     "m2b": {
       "id": "m2b",
       "label": "條款",
       "scene": "lounge",
-      "text": "你收條款。Elise 把文件夾推過桌，要你簽定抬眼。\n\n「紙到你手。你簽呢頁，定仲睇住我？」",
+      "text": "你收條款。Elise 將文件夾推過桌，要你而家簽定抬眼。\n\n「紙到你手。你簽呢頁，定仲睇住我？」",
       "thought": "壁燈打住簽名位。",
       "aside": "音樂停一拍。",
       "choices": [
@@ -80,8 +80,8 @@
         {"bucket": "agree", "say": "好", "next": "m2b", "ack": "好。簽呢頁—你簽完仲留唔留？"},
         {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。筆仲喺—你簽唔簽？"},
         {"bucket": "agree", "say": "繼續", "next": "m2b", "ack": "繼續。簽呢頁—你簽完仲留唔留？"},
-        {"bucket": "heat", "say": "抬眼", "next": "m2a", "heat": 2, "ack": "你抬眼。坐近講人—你講唔講？"},
-        {"bucket": "leave", "say": "簽", "next": "m2b", "ack": "紙仲喺桌面—你簽唔簽？"}
+        {"bucket": "heat", "say": "抬眼", "next": "m2a", "heat": 2, "ack": "你坐近一格。杯推到你手邊—你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "簽", "next": "m2b", "ack": "紙仲喺桌面—你簽呢頁，定仲睇住我？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -90,7 +90,7 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 06:04 lounge-paper; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door"
+      "stub": "hourly C 06:08 lounge-paper one-breath; chat-first 好/係/繼續 ack=next half; success=flirt/agree/wait/enter/enter_door"
     }
   }
 }

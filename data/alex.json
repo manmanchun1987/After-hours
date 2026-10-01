@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "你踩晚車來到門口。Vera 隔住門縫認住你仲企喺度，要你而家認位。\n\n「走廊唔係你個位。推門入嚟，定停低講清楚？」",
+      "text": "你踩晚車停喺門縫。Vera 要你而家認位，唔俾你企走廊。\n\n「走廊唔係位。你推門入嚟，定停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "choices": [
@@ -19,11 +19,11 @@
       ],
       "freeChat": true,
       "intents": [
-        { "bucket": "leave", "say": "推門", "next": "n0b", "ack": "門把涼過。你推完入嚟—行過桌前，定仲等我講？" },
+        { "bucket": "leave", "say": "推門", "next": "n0b", "ack": "門把涼。你推完入嚟—行過嚟桌前，定仲要我講第二句？" },
         { "bucket": "tired", "say": "停低", "next": "n0b", "tension": 2, "ack": "你停過先推。門把仲涼—而家行過桌前未？" },
-        { "bucket": "agree", "say": "好", "next": "n0b", "ack": "好。門把涼過，你推完入嚟—行過桌前，定仲等我講？" },
+        { "bucket": "agree", "say": "好", "next": "n0b", "ack": "好。門把涼。你推完入嚟—行過嚟桌前，定仲要我講第二句？" },
         { "bucket": "wait", "say": "係", "next": "n0b", "ack": "係。門縫仲開—你推入嚟，定停低講清楚？" },
-        { "bucket": "agree", "say": "繼續", "next": "n0b", "ack": "繼續。門把涼過，你推完入嚟—行過桌前，定仲等我講？" }
+        { "bucket": "agree", "say": "繼續", "next": "n0b", "ack": "繼續。門把涼。你推完入嚟—行過嚟桌前，定仲要我講第二句？" }
       ],
       "sceneGoal": {
         "successIntents": ["enter_door", "enter", "wait", "agree"],
@@ -32,14 +32,14 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 06:04 corridor; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=我去撚個門把先/撚把推入去/幫我推開嘅度門→enter; 等一等我未定/唔好迫得咁緊→wait; 你想點先啦→ask_want optional; 出面熱唔熱呀→off_topic optional"
+      "stub": "hourly C 06:08 corridor one-breath; chat-first 好/係/繼續 ack=n0b first half; success=enter/enter_door/wait/agree; smoke=我去撚個門把先/撚把推入去/幫我推開嘅度門→enter; 等一等我未定/唔好迫得咁緊→wait"
     },
     "n0b": {
       "id": "n0b",
       "label": "門後",
       "scene": "office",
       "remember": ["door_shut"],
-      "text": "門把涼過。你推完入嚟。Vera 未抬眼，筆尖停喺簡報邊，要你行過桌前。\n\n「你推晒。行過嚟桌前，定仲要我講第二句？」",
+      "text": "門把涼。你推完入嚟。Vera 未抬眼，要你而家行過桌前。\n\n「你推晒。行過嚟桌前，定仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
       "choices": [
@@ -47,7 +47,7 @@
       ],
       "freeChat": true,
       "intents": [
-        { "bucket": "leave", "say": "行過去", "next": "n1", "ack": "你企喺桌前。份簡報未夠—你而家改，定要我講清楚？" },
+        { "bucket": "leave", "say": "行過去", "next": "n1", "ack": "你企喺桌前。簡報未夠—你而家改，定要我講清楚？" },
         { "bucket": "tired", "say": "停低", "next": "n1", "ack": "桌前仲空住。行過嚟，定再停一句？" },
         { "bucket": "agree", "say": "好", "next": "n1", "ack": "好。你企喺桌前—你而家改，定要我講清楚？" },
         { "bucket": "wait", "say": "係", "next": "n1", "ack": "係。桌前仲空—行過嚟，定仲要我講第二句？" },
@@ -60,13 +60,13 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 06:04 desk-approach; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=開門啦/我入去先/進去看看→enter; 等等/我未準備好→wait"
+      "stub": "hourly C 06:08 desk-approach one-breath; chat-first 好/係/繼續 ack=n1 first half; success=enter/enter_door/wait/agree; smoke=開門啦/我入去先/進去看看→enter; 等等/我未準備好→wait"
     },
     "n1": {
       "id": "n1",
       "label": "簡報",
       "scene": "office",
-      "text": "你企喺桌前。Vera 指節敲兩下案，要你認份簡報。\n\n「你自己都知呢份嘢未夠。你而家改，定要我講清楚？」",
+      "text": "你企喺桌前。Vera 指節敲兩下，要你而家認份簡報。\n\n「你自己都知未夠。你而家改，定要我講清楚？」",
       "thought": "指節兩下。",
       "aside": "螢幕光打住佢下頼。",
       "choices": [
@@ -88,13 +88,13 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 06:04 brief; chat-first 好/係/繼續; success=agree/wait/enter/enter_door/challenge; 你想點先啦 still optional ask_want"
+      "stub": "hourly C 06:08 brief one-breath; chat-first 好/係/繼續 ack=n2a first half; success=agree/wait/enter/enter_door/challenge"
     },
     "n2a": {
       "id": "n2a",
       "label": "改稿",
       "scene": "office",
-      "text": "你認改。Vera 拉張椅到你側邊，要你坐低起筆。\n\n「坐低。我講，你改。唔好打斷。你聽緊係一行？」",
+      "text": "你認改。Vera 拉張椅到你側，要你而家坐低起筆。\n\n「坐低。我講你改。你聽緊係一行？」",
       "thought": "近到聞到袖口冷香水。",
       "aside": "筆尖指住一頁。",
       "choices": [
@@ -103,7 +103,7 @@
       ],
       "freeChat": true,
       "intents": [
-        { "bucket": "leave", "say": "聽緊", "next": "n2a", "ack": "改呢行。唔好停—下一行你跟唔跟？" },
+        { "bucket": "leave", "say": "聽緊", "next": "n2a", "ack": "你聽緊。改呢行—下一行你跟唔跟？" },
         { "bucket": "tired", "say": "改唔到", "next": "n2a", "tension": 1, "ack": "筆尖唔會等你。你改—而家改呢行未？" },
         { "bucket": "agree", "say": "好", "next": "n2a", "ack": "好。改呢行—下一行你跟唔跟？" },
         { "bucket": "wait", "say": "係", "next": "n2a", "ack": "係。椅仲喺你側—你聽緊係一行？" },
@@ -116,13 +116,13 @@
         "guideLevel": 0,
         "ask": "坐低聽。你聽緊係一行？"
       },
-      "stub": "hourly C 06:04 sit-edit; chat-first 好/係/繼續; success=agree/wait/enter/enter_door"
+      "stub": "hourly C 06:08 sit-edit one-breath; chat-first 好/係/繼續 ack=same beat next line; success=agree/wait/enter/enter_door"
     },
     "n2b": {
       "id": "n2b",
       "label": "頂嘴",
       "scene": "office",
-      "text": "你要清楚。Vera 放落筆靠後，要你過嚟聽。\n\n「咁。你而家教我點管理？你要清楚？過嚟。」",
+      "text": "你要清楚。Vera 放低筆靠後，要你而家過嚟聽。\n\n「你而家教我點管理？你要清楚？過嚟。」",
       "thought": "聲線壓低。",
       "aside": "會議室忽然好靜。",
       "choices": [
@@ -144,13 +144,13 @@
         "guideLevel": 1,
         "ask": "你要清楚？過嚟。"
       },
-      "stub": "hourly C 06:04 challenge; chat-first 好/係/繼續; success=challenge/agree/enter/enter_door/wait"
+      "stub": "hourly C 06:08 challenge one-breath; chat-first 好/係/繼續 ack=n2c/n2a first half; success=challenge/agree/enter/enter_door/wait"
     },
     "n2c": {
       "id": "n2c",
       "label": "試探",
       "scene": "office",
-      "text": "你站近。Vera 睇住你好耐，要你還敢唔敢再近一步。\n\n「膽大。今晚我可以例外。你轉身，定專心改？」",
+      "text": "你站近。Vera 睇住你好耐，要你而家仲膽。\n\n「膽大。今晚可以例外。你轉身，定專心改？」",
       "thought": "呼吸擦過耳側。",
       "aside": "椅背有佢隻手。",
       "choices": [
@@ -172,7 +172,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 06:04 heat-near; chat-first 好/係/繼續; success=flirt/agree/enter/enter_door/wait"
+      "stub": "hourly C 06:08 heat-near one-breath; chat-first 好/係/繼續 ack=next half; success=flirt/agree/enter/enter_door/wait"
     }
   }
 }
