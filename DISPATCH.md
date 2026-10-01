@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ## Done this hour
+- **hourly 05:13 A INTENT T2**：patterns **split1cn** +我跨過門檻先／我鑽入房先／行埋門口挨入去／我企定先／我唞多陣先／未諗定點做好／我應該點做好先／你要我點呀先／你仲知唔知我頭先講咩／頭先句說話你有冇印象／出面好暗呀／聽日會唔會打風；flirt `/面/` 收窄為你塊面／望實你面／近我塊面（出面不再誤 flirt）；ACCEPTANCE 98；測句 gate PASS；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:07 STATUS**：CAST.lock 仍 Vera/Elise/Sammi stills；repo `app.js` 係全機，Pages `?v=split1b` app.js 頭一段唔係 565B，但 owner 未 playtest 到 parts 齊（intent-engine / chat-guide / guide-policy）。CHAT-FIRST：打字成功後仍倒選項鍾 → FEEL 2。票不開新：#46 CODE restore-engine、#47 STORY intents、#48 CODE chat-guide hide。禁 Imagine。
 - **hourly 04:12 METHOD SCOUT AT**：private-chat 已讀雙剔 (`::before`/`::after` check fill) + CODE AT；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 03:12 METHOD SCOUT AS**：ending dawn window leak (`linear-gradient` warm slit) + CODE AS；Pages+Safari；禁 Imagine/上傳/CF
@@ -62,7 +63,7 @@ STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 #### T1 — 擴意圖＋粵語變體
 - **Status:** **DONE intent2 + split1m** — live classify PASS
 #### T2 — 場景記憶接話
-- **Status:** split1cm 我去撚個門把先／唔好迫得咁緊／我頭先講過你仲記得嘛；對準 recentUserLines 仍待 F
+- **Status:** split1cn 我跨過門檻先／我唞多陣先／你仲知唔知我頭先講咩／出面好暗呀；flirt 唔再食出面；recentUserLines 仍待 F
 #### T3 — anti-repeat
 - **Status:** pickFrom / pickAnti 已過濾 recentBotReplies
 #### T4 — 離題入戲升級

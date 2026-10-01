@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261002-01
+- proposed_at: 2026-10-02
+- status: proposed
+- pain: 「你仲知唔知我頭先講咩／頭先句說話你有冇印象」patterns split1cn 已認，F 未接 recentUserLines 做記憶回聲；玩家一句同時企定又想入（我企定先但門我都想入）而家只會取最高分
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；混合句先答 wait 再問 enter，唔當 unclear
+- acceptance: 先「我唞多陣先」再「頭先句說話你有冇印象」→ wait 後 ask_memory 回聲唞多陣；「我企定先但門我都想入」唔跌 unclear
+- rationale: T2 場景記憶接話更似真 AI；未批唔改 F／唔開施工票
+
 ### I-20261001-08
 - proposed_at: 2026-10-01
 - status: proposed
