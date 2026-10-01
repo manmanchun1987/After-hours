@@ -32,7 +32,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 05:08 corridor; chat-first 好/係/繼續; success=enter/wait/agree; smoke=開門啦/我入去先/進去看看/等等/我未準備好"
+      "stub": "hourly C 06:04 corridor; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=我去撚個門把先/撚把推入去/幫我推開嘅度門→enter; 等一等我未定/唔好迫得咁緊→wait; 你想點先啦→ask_want optional; 出面熱唔熱呀→off_topic optional"
     },
     "n0b": {
       "id": "n0b",
@@ -60,7 +60,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 05:08 desk-approach; chat-first 好/係/繼續; success=enter/wait/agree"
+      "stub": "hourly C 06:04 desk-approach; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=開門啦/我入去先/進去看看→enter; 等等/我未準備好→wait"
     },
     "n1": {
       "id": "n1",
@@ -88,7 +88,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 05:08 brief; chat-first 好/係/繼續; success=agree/wait/enter/challenge"
+      "stub": "hourly C 06:04 brief; chat-first 好/係/繼續; success=agree/wait/enter/enter_door/challenge; 你想點先啦 still optional ask_want"
     },
     "n2a": {
       "id": "n2a",
@@ -116,7 +116,7 @@
         "guideLevel": 0,
         "ask": "坐低聽。你聽緊係一行？"
       },
-      "stub": "hourly C 05:08 sit-edit; chat-first 好/係/繼續; success=agree/wait/enter"
+      "stub": "hourly C 06:04 sit-edit; chat-first 好/係/繼續; success=agree/wait/enter/enter_door"
     },
     "n2b": {
       "id": "n2b",
@@ -144,7 +144,7 @@
         "guideLevel": 1,
         "ask": "你要清楚？過嚟。"
       },
-      "stub": "hourly C 05:08 challenge; chat-first 好/係/繼續; success=challenge/agree/enter/wait"
+      "stub": "hourly C 06:04 challenge; chat-first 好/係/繼續; success=challenge/agree/enter/enter_door/wait"
     },
     "n2c": {
       "id": "n2c",
@@ -172,7 +172,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 05:08 heat-near; chat-first 好/係/繼續; success=flirt/agree/enter/wait"
+      "stub": "hourly C 06:04 heat-near; chat-first 好/係/繼續; success=flirt/agree/enter/enter_door/wait"
     }
   }
 }

@@ -33,7 +33,7 @@
         "guideLevel": 0,
         "ask": "你推門入嚟，定仲企外邊一晚？"
       },
-      "stub": "hourly C 05:08 pantry; chat-first 好/係/繼續; success=enter/wait/agree; smoke=開門啦/我入去先/等等"
+      "stub": "hourly C 06:04 pantry corridor; chat-first 好/係/繼續; success=enter/enter_door/wait/agree; smoke=我去撚個門把先/撚把推入去/幫我推開嘅度門→enter; 等一等我未定/唔好迫得咁緊→wait"
     },
     "s2": {
       "id": "s2",
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "坐低飲杯，定仲企住講？"
       },
-      "stub": "hourly C 05:08 pantry-in; chat-first 好/係/繼續; success=agree/wait/enter; goalAsk"
+      "stub": "hourly C 06:04 pantry-in; chat-first 好/係/繼續; success=agree/wait/enter/enter_door; goalAsk"
     }
   }
 }

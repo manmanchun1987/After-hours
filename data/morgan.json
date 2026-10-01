@@ -34,7 +34,7 @@
         "guideLevel": 0,
         "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 05:08 lounge; chat-first 好/係/繼續; success=agree/wait/flirt/enter"
+      "stub": "hourly C 06:04 lounge; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door; 唔好迫得咁緊→wait; 你想點先啦 optional"
     },
     "m2a": {
       "id": "m2a",
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 05:08 lounge-near; chat-first 好/係/繼續; success=agree/wait/flirt"
+      "stub": "hourly C 06:04 lounge-near; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door"
     },
     "m2b": {
       "id": "m2b",
@@ -90,7 +90,7 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 05:08 lounge-paper; chat-first 好/係/繼續; success=agree/wait/enter/flirt"
+      "stub": "hourly C 06:04 lounge-paper; chat-first 好/係/繼續; success=flirt/agree/wait/enter/enter_door"
     }
   }
 }
