@@ -1,5 +1,5 @@
 (function () {
-  window.__ahFxPlay = "t3-1002";
+  window.__ahFxPlay = "t3-0617";
   var wrapped = false;
   var lastNode = "";
   function layer() {
@@ -54,6 +54,7 @@
     }
   }
   function shutter() {
+    if (window.__ahOwnerQuiet) return;
     var el = layer();
     ensureFxCss();
     el.classList.remove("is-cut");
@@ -62,6 +63,7 @@
     setTimeout(function () { el.classList.remove("is-cut"); }, 420);
   }
   function play(kind) {
+    if (window.__ahOwnerQuiet) return;
     var el = layer();
     ensureFxCss();
     el.classList.remove("is-win", "is-fail", "is-cut");
@@ -97,7 +99,7 @@
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
-        play(ok ? "win" : "fail");
+        if (!window.__ahOwnerQuiet) play(ok ? "win" : "fail");
         if (window.__ahHideChoices) window.__ahHideChoices();
         return ok;
       };
@@ -117,8 +119,10 @@
   document.addEventListener("click", function (e) {
     var btn = e.target && e.target.closest && e.target.closest("button, .btn, .btn-choice");
     if (!btn) return;
-    if (btn.classList.contains("is-locked")) play("fail");
-    else if (btn.classList.contains("btn-choice") || btn.id === "enter-btn" || btn.classList.contains("btn-primary")) play("win");
+    if (!window.__ahOwnerQuiet) {
+      if (btn.classList.contains("is-locked")) play("fail");
+      else if (btn.classList.contains("btn-choice") || btn.id === "enter-btn" || btn.classList.contains("btn-primary")) play("win");
+    }
     hookEngine();
     setScene();
   }, true);

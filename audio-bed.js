@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-1002";
+  window.__ahAudioBed = "t3-0617";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -96,7 +96,7 @@
     if (p && p.catch) p.catch(function () {});
   }
   function playCue(kind) {
-    if (muted) return;
+    if (muted || window.__ahOwnerQuiet) return;
     if (kind === "fail") {
       beep(165, 0.32, "sawtooth", 0.14, 55);
       noiseBurst(0.24, 0.09);
@@ -126,7 +126,7 @@
     if (muted && window.speechSynthesis) window.speechSynthesis.cancel();
   }
   function speak(text) {
-    if (muted || !window.speechSynthesis) return;
+    if (muted || window.__ahOwnerQuiet || !window.speechSynthesis) return;
     var t = String(text || "").replace(/\s+/g, " ").trim().slice(0, 140);
     if (!t) return;
     try {
@@ -179,7 +179,10 @@
     if (!e.target || e.target.id !== "chat-form") return;
     var input = document.getElementById("chat-input");
     var raw = input ? String(input.value || "").trim() : "";
-    if (OWNER_PROBE.test(raw)) return;
+    if (OWNER_PROBE.test(raw)) {
+      window.__ahOwnerQuiet = true;
+      return;
+    }
     playCue("send");
   }, true);
   document.addEventListener("pointerdown", function () { ensure(); startBed(); }, true);

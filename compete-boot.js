@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-1002";
+  window.__ahCompeteBoot = "t3-0617";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -109,6 +109,7 @@
           } else { state.nodeId = story.start; state.path = [story.start]; }
         } catch (e) { state.nodeId = story.start; state.path = [story.start]; }
       }
+      window.__ahOwnerQuiet = false;
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
