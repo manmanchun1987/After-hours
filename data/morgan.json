@@ -16,231 +16,137 @@
       "thought": "佢望住你，唔望海。",
       "aside": "爵士樂壓得好低。",
       "choices": [
-        {
-          "label": "「人同單，邊樣先成交？」",
-          "next": "m2a",
-          "heat": 8,
-          "tension": 6,
-          "cg": true
-        },
-        {
-          "label": "「我係收條款。」",
-          "next": "m2b",
-          "tension": 10
-        }
+        {"label": "「人同單，邊樣先成交？」", "next": "m2a", "heat": 8, "tension": 6, "cg": true},
+        {"label": "「我係收條款。」", "next": "m2b", "tension": 10}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "bucket": "heat",
-          "say": "講人",
-          "next": "m2a",
-          "heat": 8,
-          "ack": "你坐近一格。杯推到你手邊—你講你想點，定我先講？"
-        },
-        {
-          "bucket": "leave",
-          "say": "收條款",
-          "next": "m2b",
-          "tension": 10,
-          "ack": "你收條款。紙推過嚟—你簽呢頁，定仲睇住我？"
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m2a",
-          "heat": 8,
-          "ack": "好。你坐近一格—你講你想點，定我先講？"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m2b",
-          "ack": "係。紙推過嚟—你簽呢頁，定仲睇住我？"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m2a",
-          "ack": "繼續。你坐近一格—你講你想點，定我先講？"
-        }
+        {"bucket": "heat", "say": "講人", "next": "m2a", "heat": 8, "ack": "你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "收條款", "next": "m2b", "tension": 10, "ack": "你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "好", "next": "m2a", "heat": 8, "ack": "好。你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
+        {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。你坐近一格。杯推到你手邊。你講你想點，定我先講？"}
       ],
       "sceneGoal": {
-        "successIntents": [
-          "flirt",
-          "agree",
-          "wait",
-          "enter",
-          "enter_door"
-        ],
-        "optionalIntents": [
-          "ask_want",
-          "refuse",
-          "ask_memory",
-          "apologize",
-          "off_topic",
-          "unclear",
-          "memory",
-          "challenge"
-        ],
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
         "maxMisses": 3,
         "guideLevel": 0,
-        "ask": "你坐近一格，定停低先？"
+        "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 07:03 lounge one-breath; success=flirt/agree/wait/enter/enter_door; ask_want optional"
+      "stub": "hourly C 07:10 lounge; ack=m2a/m2b first half; chat-first 好/係/繼續"
     },
     "m2a": {
       "id": "m2a",
       "label": "近座",
       "scene": "lounge",
-      "text": "你坐近一格。Elise 將杯推到你手邊，要你而家講人唔講數。\n\n「你坐低啦。夜晚唔講數。你講你想點，定我先講？」",
+      "text": "你坐近一格。杯推到你手邊。Elise 要你而家講人，唔好縮返數。\n\n「你講你想點，定我先講？」",
       "thought": "戒指冷過杯壁。",
-      "aside": "窗外燈打住佢頴骨。",
+      "aside": "窗外燈打住佢顱骨。",
       "choices": [
-        {
-          "label": "「你先講。」",
-          "next": "m2a",
-          "heat": 2
-        },
-        {
-          "label": "「我想聽人。」",
-          "next": "m2a",
-          "heat": 4
-        }
+        {"label": "「你先講。」", "next": "m3", "heat": 2},
+        {"label": "「我想聽人。」", "next": "m3", "heat": 4}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "bucket": "heat",
-          "say": "聽人",
-          "next": "m2a",
-          "heat": 2,
-          "ack": "你近住。我講人—你跟唔跟呢一句？"
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m2a",
-          "ack": "好。你講你想點—你仲講唔講？"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m2a",
-          "ack": "係。杯仲暖—你講先，定我講？"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m2a",
-          "ack": "繼續。我講人—你跟唔跟呢一句？"
-        },
-        {
-          "bucket": "leave",
-          "say": "睇紙",
-          "next": "m2b",
-          "ack": "你收條款。紙仲喺—你簽呢頁，定仲睇住我？"
-        }
+        {"bucket": "heat", "say": "聽人", "next": "m3", "heat": 2, "ack": "你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "agree", "say": "好", "next": "m3", "ack": "好。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "wait", "say": "係", "next": "m3", "ack": "係。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3", "ack": "繼續。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "leave", "say": "睇紙", "next": "m2b", "ack": "你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"}
       ],
       "sceneGoal": {
-        "successIntents": [
-          "flirt",
-          "agree",
-          "wait",
-          "enter",
-          "enter_door"
-        ],
-        "optionalIntents": [
-          "ask_want",
-          "refuse",
-          "ask_memory",
-          "apologize",
-          "off_topic",
-          "unclear",
-          "memory",
-          "challenge"
-        ],
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
         "maxMisses": 3,
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 07:03 lounge one-breath; success=flirt/agree/wait/enter/enter_door; ask_want optional"
+      "stub": "hourly C 07:10 near-seat; ack=m3 first half"
     },
     "m2b": {
       "id": "m2b",
       "label": "條款",
       "scene": "lounge",
-      "text": "你收條款。Elise 將文件夾推過桌，要你而家簽定抬眼。\n\n「紙到你手。你簽呢頁，定仲睇住我？」",
+      "text": "你收條款。紙推過嚟。Elise 要你而家簽定抬眼，唔畀你足夜。\n\n「你簽呢頁，定仲睇住我？」",
       "thought": "壁燈打住簽名位。",
       "aside": "音樂停一拍。",
       "choices": [
-        {
-          "label": "「我簽。」",
-          "next": "m2b"
-        },
-        {
-          "label": "（抬眼）",
-          "next": "m2a",
-          "heat": 2
-        }
+        {"label": "「我簽。」", "next": "m3b"},
+        {"label": "（抬眼）", "next": "m2a", "heat": 2}
       ],
       "freeChat": true,
       "intents": [
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m2b",
-          "ack": "好。簽呢頁—你簽完仲留唔留？"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m2b",
-          "ack": "係。筆仲喺—你簽唔簽？"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m2b",
-          "ack": "繼續。簽呢頁—你簽完仲留唔留？"
-        },
-        {
-          "bucket": "heat",
-          "say": "抬眼",
-          "next": "m2a",
-          "heat": 2,
-          "ack": "你坐近一格。杯推到你手邊—你講你想點，定我先講？"
-        },
-        {
-          "bucket": "leave",
-          "say": "簽",
-          "next": "m2b",
-          "ack": "紙仲喺桌面—你簽呢頁，定仲睇住我？"
-        }
+        {"bucket": "agree", "say": "好", "next": "m3b", "ack": "好。你簽咗呢頁。你簽完仲留唔留？"},
+        {"bucket": "wait", "say": "係", "next": "m3b", "ack": "係。你簽咗呢頁。你簽完仲留唔留？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3b", "ack": "繼續。你簽咗呢頁。你簽完仲留唔留？"},
+        {"bucket": "heat", "say": "抬眼", "next": "m2a", "heat": 2, "ack": "你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "簽", "next": "m3b", "ack": "你簽咗呢頁。你簽完仲留唔留？"}
       ],
       "sceneGoal": {
-        "successIntents": [
-          "flirt",
-          "agree",
-          "wait",
-          "enter",
-          "enter_door"
-        ],
-        "optionalIntents": [
-          "ask_want",
-          "refuse",
-          "ask_memory",
-          "apologize",
-          "off_topic",
-          "unclear",
-          "memory",
-          "challenge"
-        ],
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
         "maxMisses": 3,
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 07:03 lounge one-breath; success=flirt/agree/wait/enter/enter_door; ask_want optional"
+      "stub": "hourly C 07:10 terms; ack=m3b first half"
+    },
+    "m3": {
+      "id": "m3",
+      "label": "呢一句",
+      "scene": "lounge",
+      "text": "你近住。我講人。Elise 要你而家跟呢一句，唔好縮返條款。\n\n「你跟唔跟呢一句？」",
+      "thought": "佢聲線細，唔催。",
+      "aside": "杯沿有口紅。",
+      "choices": [
+        {"label": "「我跟。」", "next": "m3", "heat": 2},
+        {"label": "「你再講一句。」", "next": "m3", "heat": 1}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "m3", "ack": "好。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "wait", "say": "係", "next": "m3", "ack": "係。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3", "ack": "繼續。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "heat", "say": "跟", "next": "m3", "heat": 2, "ack": "你跟。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "leave", "say": "再講", "next": "m3", "ack": "你要再講。你近住。我講人。你跟唔跟呢一句？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你跟唔跟呢一句？"
+      },
+      "stub": "hourly C 07:10 m3 new beat; chat-first 好/係/繼續"
+    },
+    "m3b": {
+      "id": "m3b",
+      "label": "簽完",
+      "scene": "lounge",
+      "text": "你簽咗呢頁。Elise 未收紙，要你而家講留定走。\n\n「你簽完仲留唔留？」",
+      "thought": "筆盖未撩。",
+      "aside": "簽名仲未乾。",
+      "choices": [
+        {"label": "「留。」", "next": "m3", "heat": 2},
+        {"label": "「我收工。」", "next": "m3b", "tension": 1}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "m3", "heat": 2, "ack": "好。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "wait", "say": "係", "next": "m3b", "ack": "係。你簽咗呢頁。你簽完仲留唔留？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3b", "ack": "繼續。你簽咗呢頁。你簽完仲留唔留？"},
+        {"bucket": "heat", "say": "留", "next": "m3", "heat": 2, "ack": "你留。你近住。我講人。你跟唔跟呢一句？"},
+        {"bucket": "leave", "say": "收工", "next": "m3b", "tension": 1, "ack": "你話收工。你簽咗呢頁。你簽完仲留唔留？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你簽完仲留唔留？"
+      },
+      "stub": "hourly C 07:10 m3b new beat; stay ask; leave routes to m3 first half"
     }
   }
 }
