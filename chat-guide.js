@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-1002";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002";
+  window.__ahChatGuide = "t3-0617";
+  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
@@ -50,6 +50,14 @@
   function clip(s) {
     return String(s || "").replace(/\s+/g, "").slice(0, 12) || "呢句";
   }
+  function markOwner() {
+    window.__ahOwnerQuiet = true;
+    if (typeof state !== "undefined") state.ownerProbe = true;
+  }
+  function clearOwner() {
+    window.__ahOwnerQuiet = false;
+    if (typeof state !== "undefined") state.ownerProbe = false;
+  }
   function hideChoices() {
     document.body.classList.remove("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = false;
@@ -58,7 +66,7 @@
     if (box) box.classList.add("freechat-hidden");
   }
   function showChoices() {
-    if (misses < 2) return hideChoices();
+    if (window.__ahOwnerQuiet || misses < 2) return hideChoices();
     document.body.classList.add("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = true;
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(false);
@@ -81,6 +89,7 @@
     forceHideAfterAdvance();
   }
   function bumpMiss() {
+    if (window.__ahOwnerQuiet) return;
     misses += 1;
     if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
     if (misses >= 2) showChoices();
@@ -89,6 +98,7 @@
     var t = String(userText || "").trim();
     if (OWNER_PROBE.test(t)) return null;
     if (!YES.test(t)) return null;
+    clearOwner();
     var n = node();
     var h = heatIntent(n);
     forceHideAfterAdvance();
@@ -133,9 +143,11 @@
         var raw = String(userText || "").trim();
         if (!raw) return null;
         if (OWNER_PROBE.test(raw)) {
+          markOwner();
           hideChoices();
           return null;
         }
+        clearOwner();
         var yesHit = tryYesHeat(userText);
         if (yesHit) return yesHit;
         var n0 = node();
@@ -219,6 +231,7 @@
       var pr = window.pickReply;
       window.pickReply = function (userText) {
         if (OWNER_PROBE.test(String(userText || "").trim())) {
+          markOwner();
           return "";
         }
         if (YES.test(String(userText || "").trim())) {
@@ -249,7 +262,7 @@
         glueText();
         hint();
         var n = node();
-        if (n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") {
+        if (!window.__ahOwnerQuiet && n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") {
           window.AHAudio.speak(n.text);
         }
       };
@@ -258,7 +271,7 @@
     if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
-        if (OWNER_PROBE.test(String(reason || ""))) {
+        if (window.__ahOwnerQuiet || OWNER_PROBE.test(String(reason || ""))) {
           hideChoices();
           return false;
         }
@@ -281,7 +294,7 @@
   document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
   if (!window.__ahChoicesWatch) {
     window.__ahChoicesWatch = true;
-    var mo = new MutationObserver(function () { if (misses < 2) hideChoices(); });
+    var mo = new MutationObserver(function () { if (window.__ahOwnerQuiet || misses < 2) hideChoices(); });
     function watchBox() {
       var box = document.getElementById("choices");
       if (box) mo.observe(box, { attributes: true, childList: true, subtree: true });
@@ -292,8 +305,8 @@
   setInterval(function () {
     wrap();
     onNodeAdvance();
-    if (misses >= 2) showChoices();
-    else hideChoices();
+    if (window.__ahOwnerQuiet || misses < 2) hideChoices();
+    else showChoices();
     glueText();
     hint();
   }, 400);
