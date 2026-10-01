@@ -1,8 +1,9 @@
 # 而家進度
 
-最後更新：2026-10-02 06:13 HKT · Lane A INTENT T2 split1cp
-STORY 4 · PICTURE 4 · SOUND 3 · FEEL 2
+最後更新：2026-10-02 07:08 HKT · hourly 驗 live loader
+STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
-Live：patterns `?v=split1cp`；其餘 asset 仍 `?v=split1b`；同源 app.js ~120KB，禁 app_b64 stub／禁 CDN pin／禁 Imagine
-Hourly 06:13 A：intent-patterns.js 15453B split1cp（踩過門檻入去／抖順條氣／頭先我話嗰句／開問啦）；測句 gate PASS；index 7275→7276 只 cache-bust patterns；recentUserLines 仍待 F
-開住：GUIDE T3 硬刷證 hide/2-miss；INTENT T2 recentUserLines 待 F；T5 全頁 cache 未升（F 暫緩）
+Live：index 已掛 app.js 119953 · intent-engine 29001 · chat-guide 12397 · guide-policy 5483 · patterns 15453 `?v=split1cp`；唔係 565B stub；禁 CDN pin／禁 Imagine
+CAST.lock：Vera/Elise/Sammi → stills/vera-03/02/01，未倒退
+CHAT-FIRST：打字成功後大部份 node 仍倒 choice；FEEL 2。等 owner playtest
+開住：#46 CODE restore-engine（等 playtest 證 parts 齊，禁 stub）· #47 STORY intents · #48 CODE chat-guide hide
