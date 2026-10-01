@@ -16,12 +16,13 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 
 ## Done this hour
+- **hourly 04:12 METHOD SCOUT AT**：private-chat 已讀雙剔 (`::before`/`::after` check fill) + CODE AT；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 03:12 METHOD SCOUT AS**：ending dawn window leak (`linear-gradient` warm slit) + CODE AS；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 07:12 METHOD SCOUT AR**：corridor/lift/office wet-floor (`-webkit-box-reflect`) + CODE AR；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 07:04 A INTENT T2**：patterns **split1cm** +我去撚個門把先／撚把推入去／幫我推開嘅度門／等一等我未定／唔好迫得咁緊／你想點先啦／我頭先講過你仲記得嘛／出面熱唔熱呀；ACCEPTANCE 85；cache 仍 `?v=split1b`；禁 app.js stub
-- **hourly 06:15 A INTENT T2**：patterns **split1cl** +我行埋前去撷把一推入／手撷把一推入去先啦／等我嘅多兩吕先／唔好催住我嘅先／你而家到底想我點樣先做好呀／頭先嘅句你重記唔記得住未呀／出面而家落緊雨未呀；ACCEPTANCE 78；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 06:15 A INTENT T2**：patterns **split1cl** +我行埋前去摷把一推入／手摷把一推入去先啦／等我嘅多兩吕先／唔好催住我嘅先／你而家到底想我點樣先做好呀／頭先嘅句你重記唔記得住未呀／出面而家落緊雨未呀；ACCEPTANCE 78；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 06:12 METHOD SCOUT AQ**：office/pantry dust motes (`offset-path`) + CODE AQ；Pages+Safari；禁 Imagine/上傳/CF
-- **hourly 06:04 A INTENT T2**：patterns **split1ck** +我行埋前去一推把入／手一撷把入去先啦／等我唾多吕先／唔好催住我住先／你而家到底想我點樣做好呀先／頭先嘅句你重記唔記得未呀／出面而家落唔落雨呀；ACCEPTANCE 71；cache 仍 `?v=split1b`；禁 app.js stub
+- **hourly 06:04 A INTENT T2**：patterns **split1ck** +我行埋前去一推把入／手一摷把入去先啦／等我唾多吕先／唔好催住我住先／你而家到底想我點樣做好呀先／頭先嘅句你重記唔記得未呀／出面而家落唔落雨呀；ACCEPTANCE 71；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:11 A+B INTENT T2**：patterns/guide **split1cj** +我行埋前去推把入／手一推把入去先啦／等我唾多吕先／唔好趕住我住先／你而家到底想我點做好呀先／頭先嗎句你重記唔記得未呀／出面而家有冇落雨呀；ACCEPTANCE 64；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:04 A INTENT T2**：patterns **split1ci** +我行前去推把入／手推把入去先啦／等我唾多陣先／唔好趕住我先／你而家到底想我點做好先／頭先嗎句你重記唔記得呀／出面而家有冇落雨；ACCEPTANCE 57；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 07:12 METHOD SCOUT AM**：pantry steam wisps + CODE AM #票；Pages+Safari；禁 Imagine/上傳/CF
@@ -33,6 +34,8 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE AT — private-chat read-receipt double-tick
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接私聊氣泡已讀雙剔
 #### CODE AS — ending dawn window leak
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 ending_a/b 窗漏晨光
 #### CODE AR — corridor/lift/office wet-floor reflect

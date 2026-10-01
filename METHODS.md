@@ -47,6 +47,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
 | Unread private ping / 未讀紅點 on existing phone HUD | AA CSS badge pulse | U call pulse / E text-only |
 | Incoming private line lands / 氣泡滑入 on existing phone sheet | AB CSS bubble slide-up | Z typing dots / E text-only |
+| Private line seen / 已讀雙剔 on existing phone sheet | AT CSS check-stroke fill | AB slide-only / E text-only / Z typing |
 | Inner thought / 內心 overlay on locked still + room | AC CSS multiply veil | E text-only / C whole wash |
 | Review dossier / 評核紙滑上柜 | AD CSS paper slide | A full room / C whole motion |
 | Success / fail beat | AG CSS stamp slam | D + I cue / F if file exists |
@@ -106,6 +107,7 @@ AP CSS `radial-gradient` lamp cone + `@keyframes` scale/opacity collapse on exis
 AQ CSS `offset-path` + `offset-distance` 2–3px specks + slow `@keyframes` drift over existing A office/pantry SVG (塵埃/煙灰慢飄; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene motion, D FX file and AM steam-wisps for an isolated wait-hold dust-air beat
 AR CSS `-webkit-box-reflect: below` + fade mask on locked repo still over existing A corridor/lift/office SVG (潮濕地反光; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, AL long-shadow-only and L static mix-blend plane for an isolated wet-floor reflection beat
 AS CSS `linear-gradient` warm gold slit + slow `@keyframes` opacity bloom on existing A office/review window (ending_a/b dawn leak / 窗漏晨光; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, AO blinds-shut stripes and L static mix-blend plane for an isolated dawn-leak beat
+AT CSS `::before`/`::after` double-check strokes + `@keyframes` color/opacity fill on existing private-chat bubble (已讀雙剔; reuse N frost sheet + AB bubble; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AB slide-only and E text-only for an isolated she-read-it beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
