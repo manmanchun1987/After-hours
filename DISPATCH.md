@@ -13,9 +13,10 @@
 intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1b`。
 
 ## Scores
-STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
+STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ## Done this hour
+- **hourly 05:07 STATUS**：CAST.lock 仍 Vera/Elise/Sammi stills；repo `app.js` 係全機，Pages `?v=split1b` app.js 頭一段唔係 565B，但 owner 未 playtest 到 parts 齊（intent-engine / chat-guide / guide-policy）。CHAT-FIRST：打字成功後仍倒選項鍾 → FEEL 2。票不開新：#46 CODE restore-engine、#47 STORY intents、#48 CODE chat-guide hide。禁 Imagine。
 - **hourly 04:12 METHOD SCOUT AT**：private-chat 已讀雙剔 (`::before`/`::after` check fill) + CODE AT；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 03:12 METHOD SCOUT AS**：ending dawn window leak (`linear-gradient` warm slit) + CODE AS；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 07:12 METHOD SCOUT AR**：corridor/lift/office wet-floor (`-webkit-box-reflect`) + CODE AR；Pages+Safari；禁 Imagine/上傳/CF
@@ -34,26 +35,20 @@ STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4
 ## Open tickets（lowest first）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE restore-engine — #46
+- **Status:** P0。Live loader 未證 parts 齊；full app.js + intent-engine + chat-guide + guide-policy。禁 CDN / 565B stub。
+#### CODE chat-guide hide — #48
+- **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。
 #### CODE AT — private-chat read-receipt double-tick
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接私聊氣泡已讀雙剔
 #### CODE AS — ending dawn window leak
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 ending_a/b 窗漏晨光
 #### CODE AR — corridor/lift/office wet-floor reflect
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接 enter/wait 潮濕地
-#### CODE AQ — office/pantry dust mote drift
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 wait hold 空氣
-#### CODE AM — pantry kettle/mug steam wisps
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 pantry wait hold
-#### CODE AK — lift/roof glass breath fog
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 wait hold 上 lift/roof pane
-#### CODE AG — success/fail stamp slam
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 success/fail beat
-#### CODE AF — scene-cut shutter wipe
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 room-change / goToNode 轉場
-#### CODE AE — choice heat-rim pulse
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 `#choices` heat delta
-#### CODE AD — review dossier paper slide
-- **Status:** METHODS row 已寫；待 F/樣式 hook 接 review 節
+
+### STORY
+#### STORY intents — #47
+- **Status:** P0。大部份 node 打字成功後仍倒 choice buttons。加意圖／回覆材料；禁 yes-word pool。
 
 ### GUIDE
 #### GUIDE T1 — sceneGoal on key nodes
