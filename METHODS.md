@@ -50,6 +50,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Private line seen / 已讀雙剔 on existing phone sheet | AT CSS check-stroke fill | AB slide-only / E text-only / Z typing |
 | Inner thought / 內心 overlay on locked still + room | AC CSS multiply veil | E text-only / C whole wash |
 | Review dossier / 評核紙滑上柜 | AD CSS paper slide | A full room / C whole motion |
+| Review write / 評核筆劃 (n7/n8 pen on form) | AU CSS stroke-dashoffset ink | AD paper slide / AG stamp / E text-only |
 | Success / fail beat | AG CSS stamp slam | D + I cue / F if file exists |
 | Type-now after hide choices / freechat 輸入提示 | AI CSS caret blink + underline | E text-only / C whole wash |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
@@ -108,6 +109,7 @@ AQ CSS `offset-path` + `offset-distance` 2–3px specks + slow `@keyframes` drif
 AR CSS `-webkit-box-reflect: below` + fade mask on locked repo still over existing A corridor/lift/office SVG (潮濕地反光; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, AL long-shadow-only and L static mix-blend plane for an isolated wet-floor reflection beat
 AS CSS `linear-gradient` warm gold slit + slow `@keyframes` opacity bloom on existing A office/review window (ending_a/b dawn leak / 窗漏晨光; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, AO blinds-shut stripes and L static mix-blend plane for an isolated dawn-leak beat
 AT CSS `::before`/`::after` double-check strokes + `@keyframes` color/opacity fill on existing private-chat bubble (已讀雙剔; reuse N frost sheet + AB bubble; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AB slide-only and E text-only for an isolated she-read-it beat
+AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD review paper (評核筆劃; n7/n8 pen on form; reuse review SVG + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full room, D FX file and E text-only for an isolated she-writes-the-form beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
