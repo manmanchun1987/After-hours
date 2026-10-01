@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 
 ## Done this hour
+- **hourly 06:15 METHOD SCOUT AV**：night window city bokeh (`radial-gradient` speck drift) + CODE AV；Pages+Safari；禁 Imagine/上傳/CF
 - **hourly 06:13 A INTENT T2**：patterns **split1cp** +我踩過門檻入去／我溜入間房先／側身挨入門口／等我抖順條氣先／你俾我企定先／你想我點先算呀／頭先我話嗰句你仲記唔記得／出面黑唔黑呀；錯字開問啦／入去先丫；ACCEPTANCE 125；測句 gate PASS；index 7275→7276 只 cache-bust `intent-patterns.js?v=split1cp`；禁 app.js stub
 - **hourly 05:13 A INTENT T2**：patterns **split1cn** +我跨過門檻先／我鑽入房先／行埋門口挨入去／我企定先／我唞多陣先／未諗定點做好／我應該點做好先／你要我點呀先／你仲知唔知我頭先講咩／頭先句說話你有冇印象／出面好暗呀／聽日會唔會打風；flirt `/面/` 收窄為你塊面／望實你面／近我塊面（出面不再誤 flirt）；ACCEPTANCE 98；測句 gate PASS；cache 仍 `?v=split1b`；禁 app.js stub
 - **hourly 05:07 STATUS**：CAST.lock 仍 Vera/Elise/Sammi stills；repo `app.js` 係全機，Pages `?v=split1b` app.js 頭一段唔係 565B，但 owner 未 playtest 到 parts 齊（intent-engine / chat-guide / guide-policy）。CHAT-FIRST：打字成功後仍倒選項鍾 → FEEL 2。票不開新：#46 CODE restore-engine、#47 STORY intents、#48 CODE chat-guide hide。禁 Imagine。
@@ -41,6 +42,8 @@ STORY 3 · PICTURE 4 · SOUND 4 · FEEL 2
 - **Status:** P0。Live loader 未證 parts 齊；full app.js + intent-engine + chat-guide + guide-policy。禁 CDN / 565B stub。
 #### CODE chat-guide hide — #48
 - **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。
+#### CODE AV — night-window city bokeh
+- **Status:** METHODS row 已寫；待 F/樣式 hook 接 office/roof/lounge 夜窗光點
 #### CODE AT — private-chat read-receipt double-tick
 - **Status:** METHODS row 已寫；待 F/樣式 hook 接私聊氣泡已讀雙剔
 #### CODE AS — ending dawn window leak
