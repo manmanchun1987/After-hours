@@ -33,7 +33,7 @@
         "guideLevel": 0,
         "ask": "你推門入嚟，定仲企外邊一晚？"
       },
-      "stub": "hourly C 07:10 pantry door; ack=s2 first half; chat-first 好/係/繼續"
+      "stub": "hourly C 05:07 pantry door; ack=s2 first half; chat-first 好/係/繼續"
     },
     "s2": {
       "id": "s2",
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "坐低飲杯，定仲企住講？"
       },
-      "stub": "hourly C 07:10 pantry-in; ack=s3 first half"
+      "stub": "hourly C 05:07 pantry-in; ack=s3 first half"
     },
     "s3": {
       "id": "s3",
@@ -72,16 +72,16 @@
       "thought": "佢聲細，唔迫。",
       "aside": "熱氣貼住杯沿。",
       "choices": [
-        {"label": "飲一口", "next": "s3"},
-        {"label": "（握住，未飲）", "next": "s3", "tension": 1}
+        {"label": "飲一口", "next": "s4"},
+        {"label": "（握住，未飲）", "next": "s4", "tension": 1}
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "say": "好", "next": "s3", "ack": "好。你坐低。杯推到你手。你飲呢杯未？"},
-        {"bucket": "wait", "say": "係", "next": "s3", "ack": "係。你坐低。杯推到你手。你飲呢杯未？"},
-        {"bucket": "agree", "say": "繼續", "next": "s3", "ack": "繼續。你坐低。杯推到你手。你飲呢杯未？"},
-        {"bucket": "leave", "say": "飲", "next": "s3", "ack": "你飲咗。你坐低。杯推到你手。你飲呢杯未？"},
-        {"bucket": "tired", "say": "未飲", "next": "s3", "tension": 1, "ack": "你未飲。你坐低。杯推到你手。你飲呢杯未？"}
+        {"bucket": "agree", "say": "好", "next": "s4", "ack": "好。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "wait", "say": "係", "next": "s4", "ack": "係。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "agree", "say": "繼續", "next": "s4", "ack": "繼續。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "leave", "say": "飲", "next": "s4", "ack": "你飲咗。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "tired", "say": "未飲", "next": "s4", "tension": 1, "ack": "你未飲。你飲過呢杯。煙燃到半。你留低傾，定而家走？"}
       ],
       "sceneGoal": {
         "successIntents": ["agree", "wait", "enter", "enter_door"],
@@ -90,7 +90,36 @@
         "guideLevel": 0,
         "ask": "你飲呢杯未？"
       },
-      "stub": "hourly C 07:10 s3 new beat; chat-first 好/係/繼續"
+      "stub": "hourly C 05:07 s3 to s4; ack=s4 first half"
+    },
+    "s4": {
+      "id": "s4",
+      "label": "留定走",
+      "scene": "pantry",
+      "remember": ["cup_taken"],
+      "text": "你飲過呢杯。煙燃到半。Sammi 要你而家講留定走，唔催你關燈。\n\n「你留低傾，定而家走？」",
+      "thought": "佢聲仲細。",
+      "aside": "煙尾跌喺盆沿。",
+      "choices": [
+        {"label": "「留。」", "next": "s4"},
+        {"label": "「我走先。」", "next": "s4", "tension": 1}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "s4", "ack": "好。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "wait", "say": "係", "next": "s4", "ack": "係。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "agree", "say": "繼續", "next": "s4", "ack": "繼續。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "heat", "say": "留", "next": "s4", "ack": "你留。你飲過呢杯。煙燃到半。你留低傾，定而家走？"},
+        {"bucket": "leave", "say": "走", "next": "s4", "tension": 1, "ack": "你話走。你飲過呢杯。煙燃到半。你留低傾，定而家走？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["agree", "wait", "enter", "enter_door", "refuse"],
+        "optionalIntents": ["ask_want", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留低傾，定而家走？"
+      },
+      "stub": "hourly C 05:07 s4 stay-or-go; chat-first 好/係/繼續"
     }
   }
 }
