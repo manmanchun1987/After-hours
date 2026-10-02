@@ -49,7 +49,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
     },
     "n2a": {
       "id": "n2a",
@@ -94,7 +94,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
     },
     "n2b": {
       "id": "n2b",
@@ -140,7 +140,7 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
     },
     "n2c": {
       "id": "n2c",
@@ -186,7 +186,7 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
     },
     "n3a": {
       "id": "n3a",
@@ -228,7 +228,7 @@
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -290,7 +290,7 @@
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -347,7 +347,7 @@
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -400,7 +400,7 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -461,7 +461,7 @@
         "guideLevel": 1,
         "ask": "你留低，定轉身？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -514,7 +514,7 @@
         "guideLevel": 1,
         "ask": "你繼續，定停低？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -560,7 +560,9 @@
           "flirt",
           "challenge",
           "wait",
-          "ask_want"
+          "ask_want",
+          "enter_door",
+          "enter"
         ],
         "optionalIntents": [
           "refuse",
@@ -574,7 +576,7 @@
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n5; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -627,7 +629,7 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -683,7 +685,7 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",
@@ -743,7 +745,7 @@
         "guideLevel": 1,
         "ask": "你留低，定走？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
       "intents": [
         {
           "bucket": "agree",

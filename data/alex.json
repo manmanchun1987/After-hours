@@ -32,7 +32,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n0"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n0"
     },
     "n0b": {
       "id": "n0b",
@@ -60,7 +60,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n0b"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n0b"
     },
     "n1": {
       "id": "n1",
@@ -88,7 +88,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n1"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n1"
     },
     "n2a": {
       "id": "n2a",
@@ -116,7 +116,7 @@
         "guideLevel": 0,
         "ask": "坐低。你聽緊係一行？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2a"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2a"
     },
     "n2b": {
       "id": "n2b",
@@ -144,7 +144,7 @@
         "guideLevel": 1,
         "ask": "過嚟聽，定仲留喺位？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2b"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2b"
     },
     "n2c": {
       "id": "n2c",
@@ -172,7 +172,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2c"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n2c"
     },
     "n3": {
       "id": "n3",
@@ -200,7 +200,7 @@
         "guideLevel": 0,
         "ask": "下一行你跟唔跟？"
       },
-      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n3"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；n3"
     },
     "n4": {
       "id": "n4",
@@ -229,7 +229,7 @@
         "guideLevel": 0,
         "ask": "你留低改完，定而家走？"
       },
-      "stub": "hourly C 06:08: 好／係／繼續 出 n4 入 n5；走入 n5b；ack=下一拍前半"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: 好／係／繼續 出 n4 入 n5；走入 n5b；ack=下一拍前半"
     },
     "n5": {
       "id": "n5",
@@ -258,7 +258,7 @@
         "guideLevel": 0,
         "ask": "你留嚟改完，定留嚟等我？"
       },
-      "stub": "hourly C 06:08: n5 新拍；好／係／繼續 入 n6；ack=下一拍前半"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: n5 新拍；好／係／繼續 入 n6；ack=下一拍前半"
     },
     "n5b": {
       "id": "n5b",
@@ -287,7 +287,7 @@
         "guideLevel": 1,
         "ask": "走之前，你改完未？"
       },
-      "stub": "hourly C 06:08: n5b 走線；好／係／繼續 入 n6；未改完返 n5"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: n5b 走線；好／係／繼續 入 n6；未改完返 n5"
     },
     "n6": {
       "id": "n6",
@@ -315,7 +315,7 @@
         "guideLevel": 0,
         "ask": "你講留嚟等我，定而家起筆？"
       },
-      "stub": "hourly C 06:08: n6 本拍終；好／係／繼續 留 n6；ack=本拍前半"
+      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; hourly C 06:08: n6 本拍終；好／係／繼續 留 n6；ack=本拍前半"
     }
   }
 }
