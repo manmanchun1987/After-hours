@@ -1,6 +1,6 @@
 /**
- * IntentPatterns (split1cs) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
- * T2/T5 split1cs: +縮身擠入／蹲低鑽入／低身鑽入房; +定定神／攝返啖氣／未穩陣唔好催; +頭先嗰句你記到未; 唔入得太急但我都想入 唔當 refuse
+ * IntentPatterns (split1ct) — Lane A. Soft-pass lexicon + regex. No exact-key gate.
+ * T2/T5 split1ct: +屈身鑽入／挨低身擠入／側身閃入門口; +定定神先唔好催／未企得穩／喘返啖氣; +頭先嗰句你記到未呀／留低印象; 唔係話唔入我只係未企穩 仍 wait
  */
 (function (global) {
   "use strict";
@@ -36,7 +36,8 @@
       /我行埋前去擔把一推入/, /手擔把一推入去先啦/, /行埋前去擔把入/, /門把我擔一推入/,
       /我去撳個門把先/, /撳把推入去/, /幫我推開嘅度門/, /我撳門把入去/,
       /我跨過門檻先/, /我鑽入房先/, /行埋門口挨入去/, /我挨入房先/, /我閃入去先/, /我側身鑽入/, /門縫擠入去/, /我推開條縫入/, /手扳開條門縫/, /挨實門縫鑽入/, /開們啦/, /我入去先呀/, /我踩過門檻入去/, /我溜入間房先/, /側身挨入門口/, /我推開條門縫入先/, /開問啦/, /入去先丫/, /我踎低鑽入房/, /彎腰挨入門口/, /腳尖踩入門檻/, /幫我開咗度門先/, /推開度門入先/, /伸手扭開度門/, /開問入去先/, /入去先吚/, /側身擠入房先/, /彎低身鑽入去/, /我趴低擠入去/, /唔係唔入/, /我想入去先/,
-      /我縮身擠入去/, /蹲低鑽入房/, /我閃身入去先/, /門縫我鑽入/, /我挨實門框入/, /推開條縫我入/, /我低身鑽入房/, /彎腰鑽入去先/, /我趴低鑽入房/, /唔入得太急但我都想入/, /我先進去看看/, /算啦我入去/
+      /我縮身擠入去/, /蹲低鑽入房/, /我閃身入去先/, /門縫我鑽入/, /我挨實門框入/, /推開條縫我入/, /我低身鑽入房/, /彎腰鑽入去先/, /我趴低鑽入房/, /唔入得太急但我都想入/, /我先進去看看/, /算啦我入去/,
+      /我屈身鑽入去/, /挨低身擠入房/, /我側身閃入門口/, /算我入去先啦/, /我縮低身鑽入/, /低頭擠入房先/, /我彎身鑽入房/, /門縫我想鑽入/
     ],
     wait: [
       /等等/, /停一停/, /停低/, /未準備/, /我未準備好/, /hold on/i, /wait/i,
@@ -53,7 +54,8 @@
       /等我喎多兩吓先/, /唔好催住我喎先/, /俾我喎多兩吓先/, /等我喎一喎先/,
       /等一等我未定/, /唔好迫得咁緊/, /俾啲時間我先/, /我未定好先/,
       /我企定先/, /我唸多陣先/, /未諦定點做好/, /你等我埋位先/, /等我定定神先/, /我仲未穩陣/, /唔好逼到我貼牆/, /等我攝多啖氣先/, /我未企穩先/, /等我抖順條氣先/, /你俾我企定先/, /我未諦清楚先/, /等我定過神先/, /我仲未企穩呀/, /等我喘返啖氣先/, /唔好逼住我先啦/, /我仲未定落腳/, /你等我穩陣先/, /等埋陣先唔好催/, /等我順返條氣先/, /等我順順氣先/, /我未定得落/, /等我收收氣先/,
-      /等我定定神先呀/, /我未喘順氣/, /唔係話唔入/, /我只係未企穩/, /你等我收收氣/, /我仲要順順氣/, /等我攝返啖氣/, /未穩陣唔好催/, /我要先定過神/, /先別催我/, /等我定過神先呀/
+      /等我定定神先呀/, /我未喘順氣/, /唔係話唔入/, /我只係未企穩/, /你等我收收氣/, /我仲要順順氣/, /等我攝返啖氣/, /未穩陣唔好催/, /我要先定過神/, /先別催我/, /等我定過神先呀/,
+      /等我定定神先唔好催/, /我未企得穩先/, /等我攝多啖氣先呀/, /你俾我喘返啖氣先/, /等我抖順氣先呀/, /我仲未喘得順/, /等我企穩先唔好催/
     ],
     ask_want: [
       /你想我點/, /而家點/, /下一步/, /跟住點/, /what now/i,
@@ -69,7 +71,8 @@
       /你而家到底想我點樣先做好呀/, /而家到底想我點樣做好呀先/,
       /你想點先啦/, /跟住我應該做乜/, /你要我做乜先/,
       /我應該點做好先/, /你要我點呀先/, /咁我而家點算好/, /你想我點算呀/, /咁而家叫我做咩/, /你話事定我話事/, /我應該點算先/, /你想我點先算呀/, /而家我應該點先/, /你話我點做好先/, /咁我跟住點算呀/, /咁你想我點樣先算/, /而家叫我做邊樣/, /你講清楚要我點/, /咁而家要我點先算/,
-      /咁我而家應該點/, /你話我跟住點/, /究竟你想我點先/, /我而家點做好呀/, /你想我點先算/
+      /咁我而家應該點/, /你話我跟住點/, /究竟你想我點先/, /我而家點做好呀/, /你想我點先算/,
+      /你想我點先呀/, /咁我而家應該點算/
     ],
     agree: [/^(?:好|係|ok|yes|得)$/i],
     refuse: [/唔入/, /我唔入/, /唔想推門/, /我唔想/, /\bno\b/i, /唔得/, /唔想入/, /唔開門/, /我唔推/, /唔好入/],
@@ -90,11 +93,12 @@
       /頭先嘅句你重記唔記得住未呀/, /你重記唔記得住未呀頭先嘅句/,
       /我頭先講過你仲記得嘛/, /你有冇聽過我頭先/, /你聽住我頭先講嘛/,
       /你仲知唔知我頭先講咩/, /頭先句說話你有冇印象/, /我頭先講咩你仲知/, /頭先我講嘅句你有冇留低/, /你仲有冇記得我頭先話/, /頭先句你仲喺唔喺度/, /頭先我話嘅句你仲記唔記得/, /我頭先講過嘅句你有冇印象/, /你仲記唔記得我頭先嘅句/, /頭先句說話你仲有冇印象呀/, /頭先我話嘅句你仲記唔記到/, /我頭先講過你有冇聽入耳/, /頭先嘅句你仲記唔記到呀/, /你有冇記住我頭先嘅句/, /記唔記到/, /你記唔記到我頭先/, /我頭先講嗰句你有冇記住/,
-      /你記唔記到我頭先講/, /頭先我講嗰句你記到未/, /你有冇記住頭先嗰句/, /我頭先嗰句你仲記唔記/, /頭先講嘅你有冇留低印象/
+      /你記唔記到我頭先講/, /頭先我講嗰句你記到未/, /你有冇記住頭先嗰句/, /我頭先嗰句你仲記唔記/, /頭先講嘅你有冇留低印象/,
+      /頭先嗰句你記到未呀/, /你有冇留低頭先嗰句印象/, /頭先我講嗰句你仲記唔記到/, /頭先嗰句你仲記唔記到未/, /頭先嗰句你仲有冇印象/
     ],
-    off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /落雨/, /openai/i, /chatbot/i, /而家幾點/, /而家幾點鐘喃/, /而家幾點呀喂/, /出面凍到震未/, /而家幾點鐘呀喂/, /而家幾點鐘呀/, /落唔落雨呀/, /出面有冇落雨/, /出面凍唔凍呀/, /出面而家落雨未/, /出面而家凍唔凍/, /出面而家有冇落雨/, /出面而家凍到震未/, /出面而家有冇落雨呀/, /出面而家落唔落雨/, /出面而家落唔落雨呀/, /出面而家有冇落緊雨/, /出面而家落緊雨未呀/, /出面而家有冇落緊雨呀/, /出面熱唔熱呀/, /而家幾點鐘啦/, /出面熱唔熱/, /出面好暗呀/, /聽日會唔會打風/, /而家係咪通宵/, /出面係咪起霧/, /而家幾點幾呀/, /聽晚會唔會落雨/, /出面好靜呀/, /出面黑唔黑呀/, /聽日會唔會好熱/, /出面係咪落雨呀/, /而家係咪好夜呀/, /出面會唔會打雷/, /聽日會唔會落雨呀/, /而家出面凍唔凍呀/, /出面會唔會好凍/, /出面會唔會落雪/, /而家幾點幾啦/, /聽日會唔會打風呀/, /今日天氣點呀/]
+    off_topic: [/天氣/, /今日天氣/, /chatgpt/i, /你係咪 AI/, /落雨/, /openai/i, /chatbot/i, /而家幾點/, /而家幾點鐘喃/, /而家幾點呀喂/, /出面凍到震未/, /而家幾點鐘呀喂/, /而家幾點鐘呀/, /落唔落雨呀/, /出面有冇落雨/, /出面凍唔凍呀/, /出面而家落雨未/, /出面而家凍唔凍/, /出面而家有冇落雨/, /出面而家凍到震未/, /出面而家有冇落雨呀/, /出面而家落唔落雨/, /出面而家落唔落雨呀/, /出面而家有冇落緊雨/, /出面而家落緊雨未呀/, /出面而家有冇落緊雨呀/, /出面熱唔熱呀/, /而家幾點鐘啦/, /出面熱唔熱/, /出面好暗呀/, /聽日會唔會打風/, /而家係咪通宵/, /出面係咪起霧/, /而家幾點幾呀/, /聽晚會唔會落雨/, /出面好靜呀/, /出面黑唔黑呀/, /聽日會唔會好熱/, /出面係咪落雨呀/, /而家係咪好夜呀/, /出面會唔會打雷/, /聽日會唔會落雨呀/, /而家出面凍唔凍呀/, /出面會唔會好凍/, /出面會唔會落雪/, /而家幾點幾啦/, /聽日會唔會打風呀/, /今日天氣點呀/, /出面落緊雪呀/, /而家幾點幾呀喂/]
   };
-  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:{},KEY_SYNONYMS:{},ACCEPTANCE_SOFT:[{text:"開門啦",intent:"enter_door"},{text:"我入去先",intent:"enter_door"},{text:"進去看看",intent:"enter_door"},{text:"推門",intent:"enter_door"},{text:"我踎低鑽入房",intent:"enter_door"},{text:"彎腰挨入門口",intent:"enter_door"},{text:"腳尖踩入門檻",intent:"enter_door"},{text:"幫我開咗度門先",intent:"enter_door"},{text:"推開度門入先",intent:"enter_door"},{text:"伸手扭開度門",intent:"enter_door"},{text:"開問入去先",intent:"enter_door"},{text:"入去先吚",intent:"enter_door"},{text:"側身擠入房先",intent:"enter_door"},{text:"等等",intent:"wait"},{text:"我未準備好",intent:"wait"},{text:"停一停",intent:"wait"},{text:"等我喘返啖氣先",intent:"wait"},{text:"唔好逼住我先啦",intent:"wait"},{text:"我仲未定落腳",intent:"wait"},{text:"你等我穩陣先",intent:"wait"},{text:"等埋陣先唔好催",intent:"wait"},{text:"等我順返條氣先",intent:"wait"},{text:"你想我點？",intent:"ask_want"},{text:"咁你想我點樣先算",intent:"ask_want"},{text:"而家叫我做邊樣",intent:"ask_want"},{text:"你講清楚要我點",intent:"ask_want"},{text:"咁而家要我點先算",intent:"ask_want"},{text:"你記得我頭先講呀",intent:"ask_memory"},{text:"頭先我話嘅句你仲記唔記到",intent:"ask_memory"},{text:"我頭先講過你有冇聽入耳",intent:"ask_memory"},{text:"頭先嘅句你仲記唔記到呀",intent:"ask_memory"},{text:"你有冇記住我頭先嘅句",intent:"ask_memory"},{text:"今日天氣點呀",intent:"off_topic"},{text:"出面會唔會打雷",intent:"off_topic"},{text:"聽日會唔會落雨呀",intent:"off_topic"},{text:"而家出面凍唔凍呀",intent:"off_topic"},{text:"出面會唔會好凍",intent:"off_topic"},{text:"出面黑唔黑呀",intent:"off_topic"},{text:"彎低身鑽入去",intent:"enter_door"},{text:"唔係唔入我想入去",intent:"enter_door"},{text:"我未定得落",intent:"wait"},{text:"你記唔記到我頭先講",intent:"ask_memory"},{text:"我縮身擠入去",intent:"enter_door"},{text:"蹲低鑽入房",intent:"enter_door"},{text:"等我攝返啖氣",intent:"wait"},{text:"未穩陣唔好催",intent:"wait"},{text:"頭先我講嗰句你記到未",intent:"ask_memory"},{text:"唔入得太急但我都想入",intent:"enter_door"},{text:"我先進去看看",intent:"enter_door"},{text:"先別催我",intent:"wait"},{text:"唔係話唔入我只係未企穩",intent:"wait"}],version:"split1cs"};
+  var api = {INTENTS:INTENTS,PATTERNS:PATTERNS,SOFT_LEXICON:{},KEY_SYNONYMS:{},ACCEPTANCE_SOFT:[{text:"開門啦",intent:"enter_door"},{text:"我入去先",intent:"enter_door"},{text:"進去看看",intent:"enter_door"},{text:"推門",intent:"enter_door"},{text:"我踎低鑽入房",intent:"enter_door"},{text:"彎腰挨入門口",intent:"enter_door"},{text:"腳尖踩入門檻",intent:"enter_door"},{text:"幫我開咗度門先",intent:"enter_door"},{text:"推開度門入先",intent:"enter_door"},{text:"伸手扭開度門",intent:"enter_door"},{text:"開問入去先",intent:"enter_door"},{text:"入去先吚",intent:"enter_door"},{text:"側身擠入房先",intent:"enter_door"},{text:"等等",intent:"wait"},{text:"我未準備好",intent:"wait"},{text:"停一停",intent:"wait"},{text:"等我喘返啖氣先",intent:"wait"},{text:"唔好逼住我先啦",intent:"wait"},{text:"我仲未定落腳",intent:"wait"},{text:"你等我穩陣先",intent:"wait"},{text:"等埋陣先唔好催",intent:"wait"},{text:"等我順返條氣先",intent:"wait"},{text:"你想我點？",intent:"ask_want"},{text:"咁你想我點樣先算",intent:"ask_want"},{text:"而家叫我做邊樣",intent:"ask_want"},{text:"你講清楚要我點",intent:"ask_want"},{text:"咁而家要我點先算",intent:"ask_want"},{text:"你記得我頭先講呀",intent:"ask_memory"},{text:"頭先我話嘅句你仲記唔記到",intent:"ask_memory"},{text:"我頭先講過你有冇聽入耳",intent:"ask_memory"},{text:"頭先嘅句你仲記唔記到呀",intent:"ask_memory"},{text:"你有冇記住我頭先嘅句",intent:"ask_memory"},{text:"今日天氣點呀",intent:"off_topic"},{text:"出面會唔會打雷",intent:"off_topic"},{text:"聽日會唔會落雨呀",intent:"off_topic"},{text:"而家出面凍唔凍呀",intent:"off_topic"},{text:"出面會唔會好凍",intent:"off_topic"},{text:"出面黑唔黑呀",intent:"off_topic"},{text:"彎低身鑽入去",intent:"enter_door"},{text:"唔係唔入我想入去",intent:"enter_door"},{text:"我未定得落",intent:"wait"},{text:"你記唔記到我頭先講",intent:"ask_memory"},{text:"我縮身擠入去",intent:"enter_door"},{text:"蹲低鑽入房",intent:"enter_door"},{text:"等我攝返啖氣",intent:"wait"},{text:"未穩陣唔好催",intent:"wait"},{text:"頭先我講嗰句你記到未",intent:"ask_memory"},{text:"唔入得太急但我都想入",intent:"enter_door"},{text:"我先進去看看",intent:"enter_door"},{text:"先別催我",intent:"wait"},{text:"唔係話唔入我只係未企穩",intent:"wait"},{text:"我屈身鑽入去",intent:"enter_door"},{text:"挨低身擠入房",intent:"enter_door"},{text:"我側身閃入門口",intent:"enter_door"},{text:"算我入去先啦",intent:"enter_door"},{text:"等我定定神先唔好催",intent:"wait"},{text:"我未企得穩先",intent:"wait"},{text:"你俾我喘返啖氣先",intent:"wait"},{text:"頭先嗰句你記到未呀",intent:"ask_memory"},{text:"你有冇留低頭先嗰句印象",intent:"ask_memory"},{text:"頭先我講嗰句你仲記唔記到",intent:"ask_memory"},{text:"你想我點先呀",intent:"ask_want"},{text:"出面落緊雪呀",intent:"off_topic"}],version:"split1ct"};
   global.IntentPatterns = api;
   global.INTENT_PATTERNS = api;
 })(typeof window !== "undefined" ? window : globalThis);
