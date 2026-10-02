@@ -21,11 +21,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "heat", "say": "講人", "next": "m2a", "heat": 8, "ack": "你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
-        {"bucket": "leave", "say": "收條款", "next": "m2b", "tension": 10, "ack": "你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"},
-        {"bucket": "agree", "say": "好", "next": "m2a", "heat": 8, "ack": "好。你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
-        {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"},
-        {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。你坐近一格。杯推到你手邊。你講你想點，定我先講？"}
+        {"bucket": "heat", "say": "講人", "next": "m2a", "heat": 8, "ack": "你坐近一格。杯推到你手邊。Elise 要你講人。你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "收條款", "next": "m2b", "tension": 10, "ack": "你收條款。紙推過嚟。Elise 要你簽定抬眼。你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "好", "next": "m2a", "heat": 8, "ack": "好。你坐近一格。杯推到你手邊。Elise 要你講人。你講你想點，定我先講？"},
+        {"bucket": "wait", "say": "係", "next": "m2b", "ack": "係。你收條款。紙推過嚟。Elise 要你簽定抬眼。你簽呢頁，定仲睇住我？"},
+        {"bucket": "agree", "say": "繼續", "next": "m2a", "ack": "繼續。你坐近一格。杯推到你手邊。Elise 要你講人。你講你想點，定我先講？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -34,7 +34,7 @@
         "guideLevel": 0,
         "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；m1"
     },
     "m2a": {
       "id": "m2a",
@@ -49,11 +49,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "heat", "say": "聽人", "next": "m3", "heat": 2, "ack": "你近住。我講人。你跟唔跟呢一句？"},
-        {"bucket": "agree", "say": "好", "next": "m3", "ack": "好。你近住。我講人。你跟唔跟呢一句？"},
-        {"bucket": "wait", "say": "係", "next": "m3", "ack": "係。你近住。我講人。你跟唔跟呢一句？"},
-        {"bucket": "agree", "say": "繼續", "next": "m3", "ack": "繼續。你近住。我講人。你跟唔跟呢一句？"},
-        {"bucket": "leave", "say": "睇紙", "next": "m2b", "ack": "你收條款。紙推過嚟。你簽呢頁，定仲睇住我？"}
+        {"bucket": "heat", "say": "聽人", "next": "m3", "heat": 2, "ack": "你近住。我講人。Elise 要你跟呢一句。你跟唔跟呢一句？"},
+        {"bucket": "agree", "say": "好", "next": "m3", "ack": "好。你近住。我講人。Elise 要你跟呢一句。你跟唔跟呢一句？"},
+        {"bucket": "wait", "say": "係", "next": "m3", "ack": "係。你近住。我講人。Elise 要你跟呢一句。你跟唔跟呢一句？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3", "ack": "繼續。你近住。我講人。Elise 要你跟呢一句。你跟唔跟呢一句？"},
+        {"bucket": "leave", "say": "睇紙", "next": "m2b", "ack": "你收條款。紙推過嚟。Elise 要你簽定抬眼。你簽呢頁，定仲睇住我？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m2a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；m2a"
     },
     "m2b": {
       "id": "m2b",
@@ -77,11 +77,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "say": "好", "next": "m3b", "ack": "好。你簽咗呢頁。你簽完仲留唔留？"},
-        {"bucket": "wait", "say": "係", "next": "m3b", "ack": "係。你簽咗呢頁。你簽完仲留唔留？"},
-        {"bucket": "agree", "say": "繼續", "next": "m3b", "ack": "繼續。你簽咗呢頁。你簽完仲留唔留？"},
-        {"bucket": "heat", "say": "抬眼", "next": "m2a", "heat": 2, "ack": "你坐近一格。杯推到你手邊。你講你想點，定我先講？"},
-        {"bucket": "leave", "say": "簽", "next": "m3b", "ack": "你簽咗呢頁。你簽完仲留唔留？"}
+        {"bucket": "agree", "say": "好", "next": "m3b", "ack": "好。你簽咗呢頁。Elise 未收紙。你簽完仲留唔留？"},
+        {"bucket": "wait", "say": "係", "next": "m3b", "ack": "係。你簽咗呢頁。Elise 未收紙。你簽完仲留唔留？"},
+        {"bucket": "agree", "say": "繼續", "next": "m3b", "ack": "繼續。你簽咗呢頁。Elise 未收紙。你簽完仲留唔留？"},
+        {"bucket": "heat", "say": "抬眼", "next": "m2a", "heat": 2, "ack": "你坐近一格。杯推到你手邊。Elise 要你講人。你講你想點，定我先講？"},
+        {"bucket": "leave", "say": "簽", "next": "m3b", "ack": "你簽咗呢頁。Elise 未收紙。你簽完仲留唔留？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -90,7 +90,7 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m2b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；m2b"
     },
     "m3": {
       "id": "m3",
@@ -105,11 +105,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "say": "好", "next": "m4", "ack": "好。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "wait", "say": "係", "next": "m4", "ack": "係。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "agree", "say": "繼續", "next": "m4", "ack": "繼續。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "heat", "say": "跟", "next": "m4", "heat": 2, "ack": "你跟。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "leave", "say": "再講", "next": "m4", "ack": "你要再講。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"}
+        {"bucket": "agree", "say": "好", "next": "m4", "ack": "好。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "wait", "say": "係", "next": "m4", "ack": "係。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "agree", "say": "繼續", "next": "m4", "ack": "繼續。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "heat", "say": "跟", "next": "m4", "heat": 2, "ack": "你跟。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "leave", "say": "再講", "next": "m4", "ack": "你要再講。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -118,14 +118,14 @@
         "guideLevel": 0,
         "ask": "你跟唔跟呢一句？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m3; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；m3"
     },
     "m3b": {
       "id": "m3b",
       "label": "簽完",
       "scene": "lounge",
       "text": "你簽咗呢頁。Elise 未收紙，要你而家講留定走。\n\n「你簽完仲留唔留？」",
-      "thought": "筆盖未撩。",
+      "thought": "筆蓋未撩。",
       "aside": "簽名仲未乾。",
       "choices": [
         {"label": "「留。」", "next": "m4", "heat": 2},
@@ -133,11 +133,11 @@
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "say": "好", "next": "m4", "heat": 2, "ack": "好。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "wait", "say": "係", "next": "m4", "ack": "係。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "agree", "say": "繼續", "next": "m4", "ack": "繼續。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "heat", "say": "留", "next": "m4", "heat": 2, "ack": "你留。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "leave", "say": "收工", "next": "m4", "tension": 1, "ack": "你話收工。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"}
+        {"bucket": "agree", "say": "好", "next": "m4", "heat": 2, "ack": "好。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "wait", "say": "係", "next": "m4", "ack": "係。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "agree", "say": "繼續", "next": "m4", "ack": "繼續。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "heat", "say": "留", "next": "m4", "heat": 2, "ack": "你留。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"},
+        {"bucket": "leave", "say": "收工", "next": "m4", "tension": 1, "ack": "你話收工。你跟咗呢一句。杯未放低。Elise 要你留定收工。你留低聽人，定而家走？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
@@ -146,7 +146,7 @@
         "guideLevel": 0,
         "ask": "你簽完仲留唔留？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m3b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: node.text 一句呼吸；好／係／繼續 ack=下一拍前半；m3b"
     },
     "m4": {
       "id": "m4",
@@ -157,16 +157,16 @@
       "thought": "佢未收杯。",
       "aside": "爵士樂再低一度。",
       "choices": [
-        {"label": "「留。」", "next": "m4", "heat": 2},
-        {"label": "「我走。」", "next": "m4", "tension": 1}
+        {"label": "「留。」", "next": "m5", "heat": 2},
+        {"label": "「我走。」", "next": "m5b", "tension": 1}
       ],
       "freeChat": true,
       "intents": [
-        {"bucket": "agree", "say": "好", "next": "m4", "ack": "好。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "wait", "say": "係", "next": "m4", "ack": "係。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "agree", "say": "繼續", "next": "m4", "ack": "繼續。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "heat", "say": "留", "next": "m4", "heat": 2, "ack": "你留。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"},
-        {"bucket": "leave", "say": "走", "next": "m4", "tension": 1, "ack": "你話走。你跟咗呢一句。杯未放低。你留低聽人，定而家走？"}
+        {"bucket": "agree", "say": "好", "next": "m5", "ack": "好。你留低。杯未收。Elise 要你講留嚟聽定簽。你留嚟聽人，定留嚟簽尾頁？"},
+        {"bucket": "wait", "say": "係", "next": "m5", "ack": "係。你留低。杯未收。Elise 要你講留嚟聽定簽。你留嚟聽人，定留嚟簽尾頁？"},
+        {"bucket": "agree", "say": "繼續", "next": "m5", "ack": "繼續。你留低。杯未收。Elise 要你講留嚟聽定簽。你留嚟聽人，定留嚟簽尾頁？"},
+        {"bucket": "heat", "say": "留", "next": "m5", "heat": 2, "ack": "你留。你留低。杯未收。Elise 要你講留嚟聽定簽。你留嚟聽人，定留嚟簽尾頁？"},
+        {"bucket": "leave", "say": "走", "next": "m5b", "tension": 1, "ack": "你話走。杯沿未乾。Elise 要你收工前講一句。走之前，單你收未？"}
       ],
       "sceneGoal": {
         "successIntents": ["flirt", "agree", "wait", "enter", "enter_door", "refuse"],
@@ -175,7 +175,93 @@
         "guideLevel": 0,
         "ask": "你留低聽人，定而家走？"
       },
-      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m4; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
+      "stub": "hourly C 06:08: 好／係／繼續 出 m4 入 m5；走入 m5b；ack=下一拍前半"
+    },
+    "m5": {
+      "id": "m5",
+      "label": "留嚟聽定簽",
+      "scene": "lounge",
+      "remember": ["stayed"],
+      "text": "你留低。杯未收。Elise 要你而家講留嚟聽定簽，唔好再縮返紙。\n\n「你留嚟聽人，定留嚟簽尾頁？」",
+      "thought": "佢未放杯。",
+      "aside": "壁燈停喺簽名位。",
+      "choices": [
+        {"label": "「聽人。」", "next": "m6", "heat": 2},
+        {"label": "「簽尾頁。」", "next": "m6"}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "m6", "ack": "好。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "wait", "say": "係", "next": "m6", "ack": "係。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "agree", "say": "繼續", "next": "m6", "ack": "繼續。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "heat", "say": "聽人", "next": "m6", "heat": 2, "ack": "你聽人。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "leave", "say": "簽", "next": "m6", "ack": "你簽。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留嚟聽人，定留嚟簽尾頁？"
+      },
+      "stub": "hourly C 06:08: m5 新拍；好／係／繼續 入 m6；ack=下一拍前半"
+    },
+    "m5b": {
+      "id": "m5b",
+      "label": "走之前",
+      "scene": "lounge",
+      "remember": ["named_leave"],
+      "text": "你話走。杯沿未乾。Elise 要你而家收工前講一句，唔好甩單。\n\n「走之前，單你收未？」",
+      "thought": "佢未收紙。",
+      "aside": "音樂停一拍。",
+      "choices": [
+        {"label": "「收咗先走。」", "next": "m6"},
+        {"label": "「未收。」", "next": "m5", "tension": 1}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "m6", "ack": "好。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "wait", "say": "係", "next": "m6", "ack": "係。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "agree", "say": "繼續", "next": "m6", "ack": "繼續。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "leave", "say": "收咗", "next": "m6", "ack": "你收咗。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "tired", "say": "未收", "next": "m5", "tension": 1, "ack": "你未收。你留低。杯未收。Elise 要你講留嚟聽定簽。你留嚟聽人，定留嚟簽尾頁？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["agree", "wait", "enter", "enter_door", "refuse"],
+        "optionalIntents": ["ask_want", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 1,
+        "ask": "走之前，單你收未？"
+      },
+      "stub": "hourly C 06:08: m5b 走線；好／係／繼續 入 m6；未收返 m5"
+    },
+    "m6": {
+      "id": "m6",
+      "label": "再講一句",
+      "scene": "lounge",
+      "text": "你話留嚟聽。杯未放低。Elise 要你而家再講一句，唔好收咗就走。\n\n「你聽人，定而家收單？」",
+      "thought": "聲線細，未催。",
+      "aside": "口紅停喺杯沿。",
+      "choices": [
+        {"label": "「聽人。」", "next": "m6", "heat": 2},
+        {"label": "「收單。」", "next": "m6"}
+      ],
+      "freeChat": true,
+      "intents": [
+        {"bucket": "agree", "say": "好", "next": "m6", "ack": "好。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "wait", "say": "係", "next": "m6", "ack": "係。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "agree", "say": "繼續", "next": "m6", "ack": "繼續。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "heat", "say": "聽人", "next": "m6", "heat": 2, "ack": "你聽人。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"},
+        {"bucket": "leave", "say": "收單", "next": "m6", "ack": "你收單。你話留嚟聽。杯未放低。Elise 要你再講一句。你聽人，定而家收單？"}
+      ],
+      "sceneGoal": {
+        "successIntents": ["flirt", "agree", "wait", "enter", "enter_door"],
+        "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你聽人，定而家收單？"
+      },
+      "stub": "hourly C 06:08: m6 本拍終；好／係／繼續 留 m6；ack=本拍前半"
     }
   }
 }
