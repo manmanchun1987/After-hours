@@ -7,15 +7,16 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1cx`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
+- Live 驗收：patterns `?v=split1cy`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1cx`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1cy`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 07:04 A INTENT T2/T5**：patterns **split1cy**；本地 gate 152/152 PASS（固定 5 句＋柔軟過關）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
 - **hourly 07:07 驗 live**：index 掛齊 parts，app.js 119953B 完整引擎（唔係 b64 stub loader）。#46 restore-engine 保留、唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
 - **hourly 06:15 A INTENT T2/T5**：patterns **split1cx** 20028B；本地 gate 133/133 PASS（固定 5 句＋柔軟過關）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
 - **hourly 06:07 驗 live**：index 掛齊 parts。app.js 119953B。#46 唔係第一張。FEEL 2。
@@ -36,9 +37,9 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1cx 已加記唔記得實／印唔印實／掛住頭先嚟句；recentUserLines 回聲仍待 F
+- **Status:** split1cy 已加記唔記得實嘋句／印實未／掛實未；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1cx`；本地 133/133；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1cy`；本地 152/152；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
