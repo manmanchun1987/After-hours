@@ -5,6 +5,15 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261003-06
+- proposed_at: 2026-10-03
+- status: proposed
+- pain: 「頭先你叫我停但而家我想入」會同時中 wait／ask_memory 同 enter；走廊 bias 可能先搶 wait，唔會當轉念入門
+- how: F／引擎：enter_door≥1 且句有而家想入／入去時 enter 獨贏，唔被 wait 蓋。未批唔改 engine
+- acceptance: 「頭先你叫我停但而家我想入」→ enter_door；「腳未企實先」仍 wait
+- rationale: 轉念入門更似真 AI；禁 yes-word pool；未批唔開施工票
+
+
 ### I-20261003-05
 - proposed_at: 2026-10-03
 - status: proposed
