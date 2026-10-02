@@ -34,7 +34,7 @@
         "guideLevel": 0,
         "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 05:07 lounge; ack=m2a/m2b first half; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "m2a": {
       "id": "m2a",
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 05:07 near-seat; ack=m3 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m2a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "m2b": {
       "id": "m2b",
@@ -90,7 +90,7 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 05:07 terms; ack=m3b first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m2b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "m3": {
       "id": "m3",
@@ -118,7 +118,7 @@
         "guideLevel": 0,
         "ask": "你跟唔跟呢一句？"
       },
-      "stub": "hourly C 05:07 m3 to m4; ack=m4 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m3; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "m3b": {
       "id": "m3b",
@@ -146,7 +146,7 @@
         "guideLevel": 0,
         "ask": "你簽完仲留唔留？"
       },
-      "stub": "hourly C 05:07 m3b to m4; leave ack=m4 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m3b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "m4": {
       "id": "m4",
@@ -175,7 +175,7 @@
         "guideLevel": 0,
         "ask": "你留低聽人，定而家走？"
       },
-      "stub": "hourly C 05:07 m4 stay-or-go; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; m4; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     }
   }
 }

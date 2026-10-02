@@ -32,7 +32,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 05:07 corridor; ack=n0b first half; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n0; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n0b": {
       "id": "n0b",
@@ -42,7 +42,9 @@
       "text": "門把涼。你推完入嚟。Vera 未抬眼，要你而家行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
-      "choices": [{"label": "走去桌前", "next": "n1"}],
+      "choices": [
+        {"label": "走去桌前", "next": "n1"}
+      ],
       "freeChat": true,
       "intents": [
         {"bucket": "leave", "say": "行過去", "next": "n1", "ack": "你企喺桌前。簡報未夠。你而家改，定要我講清楚？"},
@@ -58,7 +60,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 05:07 desk-approach; ack=n1 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n0b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n1": {
       "id": "n1",
@@ -86,7 +88,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 05:07 brief; ack=n2a/n2b first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2a": {
       "id": "n2a",
@@ -114,7 +116,7 @@
         "guideLevel": 0,
         "ask": "坐低。你聽緊係一行？"
       },
-      "stub": "hourly C 05:07 sit-edit; ack=n3 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2b": {
       "id": "n2b",
@@ -142,7 +144,7 @@
         "guideLevel": 1,
         "ask": "過嚟聽，定仲留喺位？"
       },
-      "stub": "hourly C 05:07 challenge; ack=n2c or n2a first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2c": {
       "id": "n2c",
@@ -170,7 +172,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 05:07 heat-near; ack=n3 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n3": {
       "id": "n3",
@@ -198,7 +200,7 @@
         "guideLevel": 0,
         "ask": "下一行你跟唔跟？"
       },
-      "stub": "hourly C 05:07 n3 to n4; ack=n4 first half; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n4": {
       "id": "n4",
@@ -227,7 +229,7 @@
         "guideLevel": 0,
         "ask": "你留低改完，定而家走？"
       },
-      "stub": "hourly C 05:07 n4 stay-or-go; chat-first 好/係/繼續; ack repeats ask until next hour"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     }
   }
 }

@@ -33,7 +33,7 @@
         "guideLevel": 0,
         "ask": "你推門入嚟，定仲企外邊一晚？"
       },
-      "stub": "hourly C 05:07 pantry door; ack=s2 first half; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; s1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "s2": {
       "id": "s2",
@@ -62,7 +62,7 @@
         "guideLevel": 0,
         "ask": "坐低飲杯，定仲企住講？"
       },
-      "stub": "hourly C 05:07 pantry-in; ack=s3 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; s2; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "s3": {
       "id": "s3",
@@ -90,7 +90,7 @@
         "guideLevel": 0,
         "ask": "你飲呢杯未？"
       },
-      "stub": "hourly C 05:07 s3 to s4; ack=s4 first half"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; s3; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "s4": {
       "id": "s4",
@@ -119,7 +119,7 @@
         "guideLevel": 0,
         "ask": "你留低傾，定而家走？"
       },
-      "stub": "hourly C 05:07 s4 stay-or-go; chat-first 好/係/繼續"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; s4; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     }
   }
 }

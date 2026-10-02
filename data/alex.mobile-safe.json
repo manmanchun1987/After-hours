@@ -49,7 +49,7 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 07:03 mobile corridor; success=enter/enter_door/agree/wait; smoke=我踩過門檻入去/我溜入間房先/側身挨入門口→enter; 等我抖順條氣先/你俾我企定先→wait"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n1; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2a": {
       "id": "n2a",
@@ -87,13 +87,14 @@
           "apologize",
           "off_topic",
           "unclear",
-          "challenge"
+          "challenge",
+          "memory"
         ],
         "ask": "坐低聽。你聽緊係一行？",
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 07:03 mobile n2a; freeChat+sceneGoal; success includes enter/wait"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2b": {
       "id": "n2b",
@@ -132,13 +133,14 @@
           "ask_memory",
           "apologize",
           "off_topic",
-          "unclear"
+          "unclear",
+          "memory"
         ],
         "ask": "你要清楚？過嚟。",
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 07:03 mobile n2b; freeChat+sceneGoal; success includes enter/wait"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n2c": {
       "id": "n2c",
@@ -177,13 +179,14 @@
           "apologize",
           "off_topic",
           "unclear",
-          "challenge"
+          "challenge",
+          "memory"
         ],
         "ask": "你轉身，定專心改？",
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 07:03 mobile n2c; freeChat+sceneGoal; success includes enter/wait"
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n2c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一"
     },
     "n3a": {
       "id": "n3a",
@@ -208,6 +211,7 @@
           "agree",
           "wait",
           "challenge",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -224,7 +228,7 @@
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/wait/challenge/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -267,6 +271,7 @@
       "sceneGoal": {
         "successIntents": [
           "agree",
+          "enter_door",
           "enter",
           "wait",
           "flirt",
@@ -285,7 +290,7 @@
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/enter/wait/flirt/challenge; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -325,6 +330,7 @@
           "agree",
           "challenge",
           "wait",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -341,7 +347,7 @@
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/challenge/wait/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n3c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -376,6 +382,7 @@
         "successIntents": [
           "agree",
           "wait",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -393,7 +400,7 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/wait/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -437,6 +444,7 @@
           "agree",
           "wait",
           "refuse",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -453,7 +461,7 @@
         "guideLevel": 1,
         "ask": "你留低，定轉身？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/wait/refuse/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -487,6 +495,7 @@
       "sceneGoal": {
         "successIntents": [
           "agree",
+          "enter_door",
           "enter",
           "wait",
           "flirt"
@@ -505,7 +514,7 @@
         "guideLevel": 1,
         "ask": "你繼續，定停低？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/enter/wait/flirt; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n4c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -565,7 +574,7 @@
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/flirt/challenge/wait/ask_want; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n5; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -600,6 +609,7 @@
         "successIntents": [
           "agree",
           "wait",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -617,7 +627,7 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/wait/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6a; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -654,6 +664,7 @@
       "sceneGoal": {
         "successIntents": [
           "agree",
+          "enter_door",
           "enter",
           "challenge",
           "wait"
@@ -672,7 +683,7 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/enter/challenge/wait; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6b; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
@@ -715,6 +726,7 @@
           "agree",
           "refuse",
           "wait",
+          "enter_door",
           "enter"
         ],
         "optionalIntents": [
@@ -731,7 +743,7 @@
         "guideLevel": 1,
         "ask": "你留低，定走？"
       },
-      "stub": "hourly C 07:03 mid-beat sceneGoal; freeChat on; success=agree/refuse/wait/enter; not button-only; ask_want not sole key",
+      "stub": "hourly C 06:03 split1cv: enter_door alias beside enter; memory/ask_memory not sole key; freeChat goal aligned; n6c; 開門啦/我入去先→enter_door; 等等→wait; 推門唔係唯一",
       "intents": [
         {
           "bucket": "agree",
