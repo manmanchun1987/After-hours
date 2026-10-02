@@ -1,15 +1,17 @@
 (function () {
-  window.__ahChatGuide = "t3-0617";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617";
+  window.__ahChatGuide = "t3-1003";
+  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
   var lastAck = "";
   var lastNodeId = "";
+  var lockUntil = 0;
+  window.__ahMisses = 0;
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
-    st.textContent = ".freechat-hidden,.action-zone.is-chat-first #choices{display:none!important}body.show-choices .action-zone.is-chat-first #choices,.show-choices #choices{display:flex!important;flex-direction:column}#want-line{font-size:12px;color:#c9b48a;margin:.25rem 0 .4rem}";
+    st.textContent = ".freechat-hidden,.action-zone.is-chat-first #choices.freechat-hidden,#choices.freechat-hidden{display:none!important;visibility:hidden!important}body.show-choices .action-zone.is-chat-first #choices:not(.freechat-hidden),.show-choices #choices:not(.freechat-hidden){display:flex!important;flex-direction:column;visibility:visible!important}#want-line{font-size:12px;color:#c9b48a;margin:.25rem 0 .4rem}";
     document.head.appendChild(st);
   }
   function node() {
@@ -58,30 +60,42 @@
     window.__ahOwnerQuiet = false;
     if (typeof state !== "undefined") state.ownerProbe = false;
   }
+  function choicesAllowed() {
+    return !window.__ahOwnerQuiet && misses >= 2 && Date.now() >= lockUntil;
+  }
   function hideChoices() {
     document.body.classList.remove("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = false;
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(true);
     var box = document.getElementById("choices");
-    if (box) box.classList.add("freechat-hidden");
+    if (box) {
+      box.classList.add("freechat-hidden");
+      box.style.setProperty("display", "none", "important");
+    }
   }
   function showChoices() {
-    if (window.__ahOwnerQuiet || misses < 2) return hideChoices();
+    if (!choicesAllowed()) return hideChoices();
     document.body.classList.add("show-choices");
     if (typeof state !== "undefined") state.freeChatChoicesVisible = true;
     if (typeof setChoicesDeferred === "function") setChoicesDeferred(false);
     var box = document.getElementById("choices");
-    if (box) box.classList.remove("freechat-hidden");
+    if (box) {
+      box.classList.remove("freechat-hidden");
+      box.style.removeProperty("display");
+    }
   }
   window.__ahHideChoices = hideChoices;
   function forceHideAfterAdvance() {
     misses = 0;
+    window.__ahMisses = 0;
+    lockUntil = Date.now() + 1400;
     if (typeof state !== "undefined") state.guideMissCount = 0;
     hideChoices();
     setTimeout(hideChoices, 0);
     setTimeout(hideChoices, 240);
     setTimeout(hideChoices, 720);
   }
+  window.__ahForceHide = forceHideAfterAdvance;
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
     if (id === lastNodeId) return;
@@ -91,6 +105,7 @@
   function bumpMiss() {
     if (window.__ahOwnerQuiet) return;
     misses += 1;
+    window.__ahMisses = misses;
     if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
     if (misses >= 2) showChoices();
   }
@@ -258,7 +273,7 @@
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
         rn.apply(this, arguments);
         onNodeAdvance();
-        hideChoices();
+        if (!choicesAllowed()) hideChoices();
         glueText();
         hint();
         var n = node();
@@ -275,7 +290,7 @@
           hideChoices();
           return false;
         }
-        if (misses < 2) return false;
+        if (!choicesAllowed()) return false;
         var ok2 = un.apply(this, arguments);
         if (ok2) showChoices();
         return ok2;
@@ -294,10 +309,10 @@
   document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
   if (!window.__ahChoicesWatch) {
     window.__ahChoicesWatch = true;
-    var mo = new MutationObserver(function () { if (window.__ahOwnerQuiet || misses < 2) hideChoices(); });
+    var mo = new MutationObserver(function () { if (!choicesAllowed()) hideChoices(); });
     function watchBox() {
       var box = document.getElementById("choices");
-      if (box) mo.observe(box, { attributes: true, childList: true, subtree: true });
+      if (box) mo.observe(box, { attributes: true, childList: true, subtree: true, attributeFilter: ["class", "style"] });
     }
     watchBox();
     setTimeout(watchBox, 800);
@@ -305,7 +320,7 @@
   setInterval(function () {
     wrap();
     onNodeAdvance();
-    if (window.__ahOwnerQuiet || misses < 2) hideChoices();
+    if (!choicesAllowed()) hideChoices();
     else showChoices();
     glueText();
     hint();

@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0617";
+  window.__ahCompeteBoot = "t3-1003";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -88,7 +88,8 @@
     document.body.classList.remove("show-choices");
     var box = document.getElementById("choices");
     if (box) box.classList.add("freechat-hidden");
-    if (window.__ahHideChoices) window.__ahHideChoices();
+    if (window.__ahForceHide) window.__ahForceHide();
+    else if (window.__ahHideChoices) window.__ahHideChoices();
   }
   function bootStart(id, fresh) {
     fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {

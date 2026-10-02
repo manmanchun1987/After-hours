@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-0617";
+  window.__ahAudioBed = "t3-1003";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -95,6 +95,12 @@
     var p = a.play();
     if (p && p.catch) p.catch(function () {});
   }
+  function quietOwner() {
+    window.__ahOwnerQuiet = true;
+    if (window.speechSynthesis) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
+  }
   function playCue(kind) {
     if (muted || window.__ahOwnerQuiet) return;
     if (kind === "fail") {
@@ -157,6 +163,7 @@
     get muted() { return muted; }
   };
   document.addEventListener("click", function (e) {
+    if (window.__ahOwnerQuiet) return;
     var t = e.target;
     if (!t) return;
     var id = t.id || (t.closest && t.closest("[id]") && t.closest("[id]").id);
@@ -180,10 +187,11 @@
     var input = document.getElementById("chat-input");
     var raw = input ? String(input.value || "").trim() : "";
     if (OWNER_PROBE.test(raw)) {
-      window.__ahOwnerQuiet = true;
+      quietOwner();
       return;
     }
+    if (window.__ahOwnerQuiet) return;
     playCue("send");
   }, true);
-  document.addEventListener("pointerdown", function () { ensure(); startBed(); }, true);
+  document.addEventListener("pointerdown", function () { if (window.__ahOwnerQuiet) return; ensure(); startBed(); }, true);
 })();
