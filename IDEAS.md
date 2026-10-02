@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261003-03
+- proposed_at: 2026-10-03
+- status: proposed
+- pain: 「我弓腰想入但腳未站實」patterns split1cv 會同時中 wait（未站實）同可能 enter；最高分獨贏，唔會先接腳未站實再問入
+- how: F／引擎：一句同時有 wait 體感同 enter_door≥1 時唔當 unclear，回覆先接未站實再導向入。未批唔改 engine
+- acceptance: 「我弓腰想入但腳未站實」→ enter_door（或先 wait 再問入），唔係 refuse／unclear；「我腳未站實」仍 wait
+- rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261003-02
 - proposed_at: 2026-10-03
 - status: proposed
