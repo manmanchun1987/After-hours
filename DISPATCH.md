@@ -7,17 +7,17 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1cr`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
+- Live 驗收：patterns `?v=split1cs`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1b`。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1cs`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
-- **hourly 02:14**：Live index 已掛 parts（app.js 119953、intent-engine 29001、chat-guide 12397、guide-policy 5483、patterns 12077 `?v=split1cr`）。唔係 stub loader，唔開新 restore 票。CAST.lock 仍 Vera/Elise/Sammi stills。CHAT-FIRST 打字成功後仍倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
-- **hourly 07:20 A INTENT T2/T5**：patterns **split1cr** 12077B；本地 gate 17/17 PASS；recentUserLines 仍待 F。
+- **hourly 03:12 A INTENT T2/T5**：patterns **split1cs** 13429B；本地 gate 63/63 PASS（固定測句＋柔軟過關＋縮身擠入／攝返啖氣／頭先嗰句記到未／唔入得太急但我都想入／唔係話唔入我只係未企穩）。index 只 cache-bust patterns。recentUserLines 仍待 F。
+- **hourly 02:14**：Live index 已掛 parts。唔係 stub loader。CHAT-FIRST 打字成功後仍倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
 
 ## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
@@ -33,13 +33,13 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### GUIDE
 #### GUIDE T3 — escalate guide + 驗收
-- **Status:** 邏輯已有；待 live 硬刷確認 hide（F 未升 cache）
+- **Status:** 邏輯已有；待 live 硬刷確認 hide（F 未升全頁 cache）
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1cr 已加變體；recentUserLines 仍待 F
+- **Status:** split1cs 已加記到未／留低印象變體；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1cr`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1cs`；本地 63/63；全頁 F 暫緩未升
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
