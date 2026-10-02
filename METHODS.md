@@ -19,6 +19,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Light / rain / glass / night mood | C CSS | D FX |
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
+| Hall / review CCTV record-dot / 錄緊紅燈 (n0 corridor, review cam live) | AX CSS opacity blink dot | L static plane / S tube flicker / Q scanline |
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
 | Last lamp switch-off / dark cut (n4x office kill) | AP CSS cone collapse | C whole wash / L static plane / S flicker |
 | Dawn window leak / 窗漏晨光 (ending_a/b pull-back) | AS CSS warm slit gradient | C whole wash / AO blinds-shut / L plane |
@@ -114,6 +115,7 @@ AT CSS `::before`/`::after` double-check strokes + `@keyframes` color/opacity fi
 AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD review paper (評核筆劃; n7/n8 pen on form; reuse review SVG + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full room, D FX file and E text-only for an isolated she-writes-the-form beat
 AV CSS 4–6px `radial-gradient` amber/cool specks + slow `translate`/`opacity` `@keyframes` drift on existing A office/roof/lounge window pane (夜窗城市光點; reuse room SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane, AS dawn-slit and AQ interior dust for an isolated after-hours city-lights-through-glass beat
 AW CSS two `::before`/`::after` (or dual div) metal panels + `@keyframes translateX` meet at centre on existing lift chrome (升降機門合上; enter-lift trapped beat; reuse A lift SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed lift SVG, C whole-scene motion and M static ajar-slit for an isolated doors-shut beat
+AX CSS 6px `radial-gradient` red record-dot + irregular `@keyframes` opacity blink on existing hall/review CCTV chrome corner (錄緊燈; reuse A SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static mix-blend plane, S fluorescent flicker and Q scanline drift for an isolated camera-is-recording beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
