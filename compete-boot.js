@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-1003";
+  window.__ahCompeteBoot = "t3-0616";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -91,6 +91,14 @@
     if (window.__ahForceHide) window.__ahForceHide();
     else if (window.__ahHideChoices) window.__ahHideChoices();
   }
+  function ensureFreshGuide() {
+    if (window.__ahChatGuide === "t3-0616") return;
+    if (document.getElementById("chat-guide-t3-0616")) return;
+    var s = document.createElement("script");
+    s.id = "chat-guide-t3-0616";
+    s.src = "./chat-guide.js?v=t3-0616";
+    document.body.appendChild(s);
+  }
   function bootStart(id, fresh) {
     fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {
       story.portrait = faceOf(id);
@@ -120,7 +128,7 @@
     });
   }
   function ready() {
-    ensureBriefStyle(); fixVoice();
+    ensureBriefStyle(); fixVoice(); ensureFreshGuide();
     if (typeof portraitSrc === "function") {
       portraitSrc = function (story) {
         var id = (story && story.id) || (typeof state !== "undefined" && state.storyId) || "alex";

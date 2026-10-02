@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-1003";
+  window.__ahAudioBed = "t3-0616";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -97,6 +97,7 @@
   }
   function quietOwner() {
     window.__ahOwnerQuiet = true;
+    window.__ahPlaytest = true;
     if (window.speechSynthesis) {
       try { window.speechSynthesis.cancel(); } catch (e) {}
     }
