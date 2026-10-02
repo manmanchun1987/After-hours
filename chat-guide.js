@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-1003";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003";
+  window.__ahChatGuide = "t3-0616";
+  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003>t3-0616";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
@@ -8,6 +8,9 @@
   var lastNodeId = "";
   var lockUntil = 0;
   window.__ahMisses = 0;
+  ["matchFreeChatIntent","applyFreeChatAdvance","goToNode","pickReply","renderNode","unlockFreeChatChoices","typeText","typeNode","finishTyping","onTypedDone"].forEach(function (name) {
+    if (window[name]) { window[name].__guided = false; window[name].__guidedHide = false; }
+  });
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
@@ -26,7 +29,7 @@
       if (!n.intents || !n.intents.length) {
         n.intents = (n.choices || []).map(function (c) {
           var lab = String(c.label || "");
-          return { keys: [lab, lab.replace(/[「」\s]/g, ""), "好", "繼續"], next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "heat" : "leave", ack: lab };
+          return { keys: [lab, lab.replace(/[「」\s]/g, "")], next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "heat" : "leave", ack: lab };
         });
       }
     });
@@ -144,7 +147,7 @@
       var fn = window[name];
       window[name] = function () {
         var r = fn.apply(this, arguments);
-        forceHideAfterAdvance();
+        if (!choicesAllowed()) hideChoices();
         return r;
       };
       window[name].__guidedHide = true;
@@ -228,7 +231,8 @@
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
-        forceHideAfterAdvance();
+        if (ok) forceHideAfterAdvance();
+        else if (!choicesAllowed()) hideChoices();
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
@@ -273,7 +277,7 @@
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
         rn.apply(this, arguments);
         onNodeAdvance();
-        if (!choicesAllowed()) hideChoices();
+        hideChoices();
         glueText();
         hint();
         var n = node();

@@ -1,5 +1,5 @@
 (function () {
-  window.__ahFxPlay = "t3-1003";
+  window.__ahFxPlay = "t3-0616";
   var wrapped = false;
   var lastNode = "";
   function layer() {
@@ -21,9 +21,9 @@
     st.textContent = ".fx-shutter{position:fixed;inset:0;pointer-events:none;background:#0a0a0c;transform:scaleY(0);transform-origin:50% 0;z-index:40;opacity:0}.fx-layer.is-cut .fx-shutter{animation:ahCut .38s ease}.fx-stamp{position:fixed;right:12%;top:18%;width:72px;height:72px;border:3px solid #c9b48a;border-radius:4px;opacity:0;pointer-events:none;z-index:41}.fx-layer.is-win .fx-stamp{border-color:#e8c98a;animation:ahSlam .42s ease}.fx-layer.is-fail .fx-stamp{border-color:#8a3a3a;animation:ahSlam .42s ease}@keyframes ahCut{0%{opacity:1;transform:scaleY(1)}55%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0)}}@keyframes ahSlam{0%{opacity:0;transform:scale(1.4) rotate(-8deg)}40%{opacity:1;transform:scale(.96) rotate(2deg)}100%{opacity:0;transform:scale(1) rotate(0)}}#choices.show-heat-rim button,#choices:not(.freechat-hidden) button{box-shadow:0 0 0 0 rgba(201,180,138,.45)}body.show-choices #choices:not(.freechat-hidden) button{animation:ahRim .9s ease 1}@keyframes ahRim{0%{box-shadow:0 0 0 0 rgba(201,180,138,.5)}70%{box-shadow:0 0 0 8px rgba(201,180,138,0)}100%{box-shadow:0 0 0 0 rgba(201,180,138,0)}}";
     document.head.appendChild(st);
   }
-  function keepChatFirst() {
+  function keepChatFirst(resetMiss) {
     document.body.classList.remove("show-choices");
-    if (window.__ahForceHide) window.__ahForceHide();
+    if (resetMiss && window.__ahForceHide) window.__ahForceHide();
     else if (window.__ahHideChoices) window.__ahHideChoices();
     else {
       var box = document.getElementById("choices");
@@ -100,9 +100,9 @@
       if (after && after !== lastNode) {
         if (lastNode && !window.__ahOwnerQuiet) shutter();
         lastNode = after;
-        keepChatFirst();
-      } else if ((window.__ahMisses || 0) < 2) {
-        keepChatFirst();
+        keepChatFirst(true);
+      } else {
+        keepChatFirst(false);
       }
     };
     if (typeof window.applyFreeChatAdvance === "function") {
@@ -110,7 +110,7 @@
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
         if (!window.__ahOwnerQuiet) play(ok ? "win" : "fail");
-        keepChatFirst();
+        keepChatFirst(!!ok);
         return ok;
       };
     }
@@ -119,7 +119,7 @@
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
         if (!window.__ahOwnerQuiet) shutter();
-        keepChatFirst();
+        keepChatFirst(true);
         return r;
       };
       window.goToNode.__ahCut = true;
