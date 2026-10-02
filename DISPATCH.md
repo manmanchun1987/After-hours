@@ -16,15 +16,15 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 07:07 驗 live**：index 掛齊 parts，app.js 119953B 完整引擎（唔係 b64 stub loader）。#46 restore-engine 保留、唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
 - **hourly 06:15 A INTENT T2/T5**：patterns **split1cx** 20028B；本地 gate 133/133 PASS（固定 5 句＋柔軟過關）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 06:07 驗 live**：index 掛齊 parts（app.js／cast-lock／compete-boot／audio-bed／fx-play／chat-guide／llm-bridge／intent-patterns／intent-engine／guide-lines／guide-policy）。app.js 119953B 完整引擎，唔係 stub loader。#46 唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
-- **hourly 06:04 A INTENT T2/T5**：patterns **split1cw** 18404B；本地 gate 118/118 PASS。index 只 cache-bust patterns。recentUserLines 仍待 F。
+- **hourly 06:07 驗 live**：index 掛齊 parts。app.js 119953B。#46 唔係第一張。FEEL 2。
 
 ## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
 #### CODE chat-guide hide — #48
-- **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。index 而家 chat-guide 仍 `?v=split1b`，等 owner playtest。Lane A 唔改 chat-guide。
+- **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。index chat-guide 仍 `?v=split1b`，等 owner playtest。Lane A 唔改 chat-guide。
 
 ### STORY
 #### STORY intents — #47
@@ -36,13 +36,13 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1cx 已加記唔記得實／印唔印實／掛住頭先嗰句；recentUserLines 回聲仍待 F
+- **Status:** split1cx 已加記唔記得實／印唔印實／掛住頭先嚟句；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
 - **Status:** patterns cache `?v=split1cx`；本地 133/133；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
-- **Status:** live 有 parts，唔係 stub loader，唔係第一張。未證齊前不關。禁 CDN / stub。
+- **Status:** 07:07 live 有 parts，唔係 stub loader，唔係第一張。未證齊前不關。禁 CDN / stub。
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
