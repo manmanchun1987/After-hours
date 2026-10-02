@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261003-01
+- proposed_at: 2026-10-03
+- status: proposed
+- pain: 「唔係話唔入我只係未企穩」patterns split1cs 已當 wait，但「出面落雪但我縮身擠入去」off_topic 同 enter 都中；非走廊節可能 off_topic 獨贏，唔會先接落雪再問推門
+- how: F／引擎：enter_door≥1 且有入／推門時唔准 off_topic 獨贏；回覆先接落雪再導向推門。未批唔改 engine
+- acceptance: 「出面落雪但我縮身擠入去」→ enter_door，唔係 off_topic；「唔係話唔入我只係未企穩」仍 wait
+- rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261002-04
 - proposed_at: 2026-10-02
 - status: proposed
