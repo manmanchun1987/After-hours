@@ -16,20 +16,15 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
-- **hourly 06:04 A INTENT T2/T5**：patterns **split1cw** 18404B；本地 gate 118/118 PASS（貓腰擦入房／側身擦過門檻／俯身挨入門縫／屈膝挨入房先／收細身鑽入房／跨檻入房先／開問入房先／入去先呀喂／等我醒返神先／腳未踏實先／再俾我一陣先／記唔記實／印住頭先／你要我點先至得／出面落緊霧未／而家係咪凌晨）。固定測句 1/3/5/8/10 PASS。index 只 cache-bust patterns（7276→7276）。recentUserLines 仍待 F。禁 app.js stub。
-- **hourly 05:13 A INTENT T2/T5**：patterns **split1cv** 16738B；本地 gate 87/87 PASS（弓腰閃入房／側身溜過門檻／俯低身擠入房／屈膝鑽入去先／等我回過神先／我腳未站實／再俾我十秒／頭先嗰句你仲掛唔掛住／印唔印到／留低咗未／你要我點先至算／出面落緊冰雹未／聽晚會唔會起霧）。固定測句 1/3/5/8/10 PASS。index 只 cache-bust patterns（7276→7276）。recentUserLines 仍待 F。LIVE 唔係 b64 stub。
-- **hourly 05:09 A INTENT T2/T5**：patterns **split1cu** 15383B；本地 gate 73/73 PASS。index 只 cache-bust patterns。recentUserLines 仍待 F。
-- **hourly 04:12 A INTENT T2/T5**：patterns **split1ct** 14735B；本地 gate 73/73 PASS（固定測句＋柔軟過關＋屈身鑽入／挨低身擠入／定定神先唔好催／頭先嗰句你記到未呀／你有冇留低頭先嗰句印象）。index 只 cache-bust patterns（7276→7276）。recentUserLines 仍待 F。
-- **hourly 03:12 A INTENT T2/T5**：patterns **split1cs** 13429B；本地 gate 63/63 PASS。index 只 cache-bust patterns。recentUserLines 仍待 F。
-- **hourly 02:14**：Live index 已掛 parts。唔係 stub loader。CHAT-FIRST 打字成功後仍倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
+- **hourly 06:07 驗 live**：index 掛齊 parts（app.js／cast-lock／compete-boot／audio-bed／fx-play／chat-guide t3-1003／llm-bridge／intent-patterns split1cw 18404B／intent-engine／guide-lines／guide-policy）。app.js 119953B 完整引擎，唔係 stub loader。#46 唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
+- **hourly 06:04 A INTENT T2/T5**：patterns **split1cw** 18404B；本地 gate 118/118 PASS。index 只 cache-bust patterns。recentUserLines 仍待 F。
+- **hourly 02:14**：Live index 已掛 parts。唔係 stub loader。CHAT-FIRST 打字成功後仍倒選項 → FEEL 2。
 
 ## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
 #### CODE chat-guide hide — #48
-- **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。
-#### CODE restore-engine — #46
-- **Status:** 保留等 owner playtest。今晚 live 有 parts，唔係第一張。未證齊前不關。禁 CDN / stub。
+- **Status:** P0 FEEL。打字成功後保持 freechat-hidden；唔好覆蓋 IntentEngine。live 已有 t3-1003，等 owner playtest。
 
 ### STORY
 #### STORY intents — #47
@@ -37,13 +32,17 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### GUIDE
 #### GUIDE T3 — escalate guide + 驗收
-- **Status:** 邏輯已有；待 live 硬刷確認 hide（F 未升全頁 cache）
+- **Status:** 邏輯已有；待 owner 硬刷確認 hide（F 未升全頁 cache）
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1cw 已加記唔記實／印住頭先；split1cv 掛唔掛住／印唔印到／留低咗未；split1cu 留唔留到／記住頭先印象；recentUserLines 回聲仍待 F
+- **Status:** split1cw 已加記唔記實／印住頭先；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
 - **Status:** patterns cache `?v=split1cw`；本地 118/118；全頁 F 暫緩未升
+
+### 保留（唔占 5 張額）
+#### CODE restore-engine — #46
+- **Status:** live 有 parts，唔係 stub loader，唔係第一張。未證齊前不關。禁 CDN / stub。
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
