@@ -43,6 +43,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
 | Keycard / door-lock grant on existing door or lift chrome | AN CSS swipe LED bar | A flat room / X floor-digit / C whole wash |
+| Lift doors close / 升降機門合上 (enter lift, trapped-with-her) | AW CSS dual-panel translateX | M static slit / A full lift SVG / C whole motion |
 | Cinematic / film-frame beat (enter night, review stare, roof cut) | Y CSS letterbox bars | C whole motion / D FX |
 | Scene cut / room change wipe (office→lift, pantry→review) | AF CSS clip-path shutter | Y letterbox hold / C whole motion / D FX |
 | Private chat typing / 對方輸入中 on existing phone sheet | Z CSS bounce dots | E text-only / I audio-only |
@@ -112,6 +113,7 @@ AS CSS `linear-gradient` warm gold slit + slow `@keyframes` opacity bloom on exi
 AT CSS `::before`/`::after` double-check strokes + `@keyframes` color/opacity fill on existing private-chat bubble (已讀雙剔; reuse N frost sheet + AB bubble; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AB slide-only and E text-only for an isolated she-read-it beat
 AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD review paper (評核筆劃; n7/n8 pen on form; reuse review SVG + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full room, D FX file and E text-only for an isolated she-writes-the-form beat
 AV CSS 4–6px `radial-gradient` amber/cool specks + slow `translate`/`opacity` `@keyframes` drift on existing A office/roof/lounge window pane (夜窗城市光點; reuse room SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane, AS dawn-slit and AQ interior dust for an isolated after-hours city-lights-through-glass beat
+AW CSS two `::before`/`::after` (or dual div) metal panels + `@keyframes translateX` meet at centre on existing lift chrome (升降機門合上; enter-lift trapped beat; reuse A lift SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed lift SVG, C whole-scene motion and M static ajar-slit for an isolated doors-shut beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
