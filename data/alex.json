@@ -113,7 +113,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n0b": {
       "id": "n0b",
@@ -185,7 +185,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool",
       "remember": [
         "door_shut"
       ]
@@ -236,7 +236,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n2a",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「你而家改，定要我講清楚？」",
+          "ack": "稿未認。你停低我收到，唔使打選項字。改，定要我講清楚。",
           "tension": 1,
           "keys": [
             "停低",
@@ -271,7 +271,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n2a": {
       "id": "n2a",
@@ -343,7 +343,7 @@
         "guideLevel": 0,
         "ask": "坐低。你聽緊係一行？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n2b": {
       "id": "n2b",
@@ -412,7 +412,7 @@
         "guideLevel": 1,
         "ask": "過嚟聽，定仲留喺位？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n2c": {
       "id": "n2c",
@@ -462,7 +462,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n3",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "ack": "你停喺近處。我睇住。轉身，定專心改。",
           "tension": 1,
           "keys": [
             "停低",
@@ -496,7 +496,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n3": {
       "id": "n3",
@@ -547,7 +547,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n4",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「下一行你跟唔跟？」",
+          "ack": "下一格未動。你停筆我收到。跟，定再停。",
           "tension": 1,
           "keys": [
             "停低",
@@ -581,7 +581,7 @@
         "guideLevel": 0,
         "ask": "下一行你跟唔跟？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     },
     "n4": {
       "id": "n4",
@@ -632,7 +632,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n5",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留低改完，定而家走？」",
+          "ack": "筆已收。你未認留定走。留低改完，定而家走。",
           "tension": 1,
           "keys": [
             "停低",
@@ -667,7 +667,7 @@
         "guideLevel": 0,
         "ask": "你留低改完，定而家走？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool",
       "remember": [
         "line_followed"
       ]
@@ -720,7 +720,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n6",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留嚟改完，定留嚟等我？」",
+          "ack": "你留低，未講留嚟做咩。等我，定起筆。",
           "tension": 1,
           "keys": [
             "停低",
@@ -754,7 +754,7 @@
         "guideLevel": 0,
         "ask": "你留嚟改完，定留嚟等我？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool",
       "remember": [
         "stayed"
       ]
@@ -830,7 +830,7 @@
         "guideLevel": 1,
         "ask": "走之前，你改完未？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool",
       "remember": [
         "named_leave"
       ]
@@ -881,7 +881,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n6",
-          "ack": "你停低。我收到，未當你打齊原文。\n\n「你講留嚟等我，定而家起筆？」",
+          "ack": "燈未關。你呢句我收到，未使打掣。留嚟等，定而家起筆。",
           "tension": 1,
           "keys": [
             "停低",
@@ -915,7 +915,7 @@
         "guideLevel": 0,
         "ask": "你講留嚟等我，定而家起筆？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
+      "stub": "hourly C 06:03: success enter|enter_door|wait; scene ack; no yes-pool"
     }
   }
 }
