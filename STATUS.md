@@ -1,6 +1,7 @@
 # 而家進度
 
-最後更新：2026-10-04 07:09 HKT · STORY #47
+最後更新：2026-10-04 07:13 HKT · A INTENT split1df
+A 07:13：intent-patterns split1df（開個門囉／我準備好入／腳未定落／頭先我講過嘅你知唔知／五更未）；index 只 cache-bust patterns ?v=split1df。本地 gate 243/243。未碰 app／guide／data。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
 Live：index 掛齊 parts（app.js 119953B 完整引擎，唔係 b64 stub）。禁 app_b64 stub／禁 CDN pin／禁 Imagine

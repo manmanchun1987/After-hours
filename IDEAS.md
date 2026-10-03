@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261004-02
+- proposed_at: 2026-10-04
+- status: proposed
+- pain: 「我準備好入」split1df 已當 enter_door，但若上一句係 wait（腳未定落），回覆唔會先接「頭先未定落、而家準備好」再推進
+- how: F／引擎：recentUserLines 上一句係 wait 且本句 enter_door 時，回覆先承接轉念再推進。未批唔改 engine
+- acceptance: 先「腳未定落」再「我準備好入」→ enter_door 且回覆提到頭先未定落；單獨「開個門囉」仍 enter_door
+- rationale: 轉念接話更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261004-01
 - proposed_at: 2026-10-04
 - status: proposed

@@ -7,15 +7,16 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1dd`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
+- Live 驗收：patterns `?v=split1df`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁原文唯一
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1dd`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1df`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 07:13 A INTENT T2/T5**：patterns **split1df** 30671B；本地 gate 243/243 PASS。新認：開個門囉／我準備好入／腳未定落／未定落神／頭先我講過嘅你知唔知／五更未。index 只 `intent-patterns.js?v=split1df`（7276B）。未碰 app／guide／data。T2 回聲仍待 F。
 - **hourly 06:17 CODE #48**：chat-guide **t3-1005**。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。compete-boot 注入 `chat-guide.js?v=t3-1005`（index 未改）。fx-play／audio-bed 唔揭擔；playtest 唔當打斷。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
 - **hourly 06:07 驗 live**：Pages index 掛齊 parts，app.js 119953B 完整引擎（唔係 b64 stub loader）。#46 保留、唔係第一張。
 - **hourly 06:04 A INTENT T2/T5**：patterns **split1dd** 26500B；本地 gate 196/196 PASS。
@@ -36,9 +37,9 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1dd 已加；recentUserLines 回聲仍待 F
+- **Status:** split1df 已加記唔知／掛實咗未；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1dd`；本地 196/196；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1df`；本地 243/243；固定測句 1/3/5/8/10 PASS；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
