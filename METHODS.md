@@ -28,6 +28,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Pantry kettle / mug steam (wait hold / late kitchen) | AM CSS steam wisps | C whole wash / K weather / L plane |
 | Dust / ash / 塵埃慢飄 (wait hold office/pantry air) | AQ CSS offset-path mote | C whole motion / D FX / AM steam |
 | Wet floor / 潮濕地反光 (enter / wait corridor lift office) | AR CSS -webkit-box-reflect | A flat room / AL long-shadow / L plane |
+| Meet desk knuckle tap / 敲枱 (n1 tap knuckles) | AZ CSS radial ripple | A flat room / I audio-only / C whole wash |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
@@ -118,6 +119,8 @@ AV CSS 4–6px `radial-gradient` amber/cool specks + slow `translate`/`opacity` 
 AW CSS two `::before`/`::after` (or dual div) metal panels + `@keyframes translateX` meet at centre on existing lift chrome (升降機門合上; enter-lift trapped beat; reuse A lift SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed lift SVG, C whole-scene motion and M static ajar-slit for an isolated doors-shut beat
 AX CSS 6px `radial-gradient` red record-dot + irregular `@keyframes` opacity blink on existing hall/review CCTV chrome corner (錄緊燈; reuse A SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static mix-blend plane, S fluorescent flicker and Q scanline drift for an isolated camera-is-recording beat
 AY CSS `transform: scaleX(-1)` + `-webkit-mask-image` fade of locked repo still over existing review/lift glass (監控玻璃倒影; n3b hold stare; reuse still + A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, AR wet-floor box-reflect and L static light plane for an isolated she's-in-the-glass beat
+
+AZ CSS `radial-gradient` ring + `@keyframes` scale/opacity one-shot ripple on existing A office desk SVG (n1 敲枱; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, C whole-scene motion and I audio-only cue for an isolated knuckle-tap beat
 
 
 ## Forbidden methods
