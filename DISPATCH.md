@@ -16,20 +16,16 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
-- **hourly 05:15 CODE #48**：chat-guide **t3-1004** 推進後保持 freechat-hidden；兩次 miss 先出掣；renderNode 唔揭掣；好／係／得仍 map heat。compete-boot 注入 `chat-guide.js?v=t3-1004`（index 未改）。fx-play／audio-bed 唔揭掣；playtest 唔當打斷。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
-- **hourly 06:04 A INTENT T2/T5**：patterns **split1dd** 26500B；本地 gate 196/196 PASS（固定 5 句＋柔軟過關＋收腰貼框鑽入／腳未踏穩先／頭先嗰句你掛實未吖／出面落緊雹呀）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 05:04 A INTENT T2/T5**：patterns **split1db**；本地 gate 187/187 PASS（固定 5 句＋柔軟過關＋記唔記得實我頭先講嘅句／定實神呀／縮身挨入門縫）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 07:14 A INTENT T2/T5**：patterns **split1da**；本地 gate 173/173 PASS（固定 5 句＋柔軟過關＋新記憶／入門句）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 07:04 A INTENT T2/T5**：patterns **split1cy**；本地 gate 152/152 PASS（固定 5 句＋柔軟過關）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 07:07 驗 live**：index 掛齊 parts，app.js 119953B 完整引擎（唔係 b64 stub loader）。#46 restore-engine 保留、唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
-- **hourly 06:15 A INTENT T2/T5**：patterns **split1cx** 20028B；本地 gate 133/133 PASS（固定 5 句＋柔軟過關）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
-- **hourly 06:07 驗 live**：index 掛齊 parts。app.js 119953B。#46 唔係第一張。FEEL 2。
+- **hourly 06:07 驗 live**：Pages index 掛齊 parts，app.js 119953B 完整引擎（唔係 b64 stub loader；觀測 patterns 仍 split1dc，repo 已 split1dd）。#46 restore-engine 保留、唔係第一張。CHAT-FIRST 打字成功後仍可倒選項 → FEEL 2。等 owner playtest。禁 Imagine。
+- **hourly 05:15 CODE #48**：chat-guide **t3-1004** 推進後保持 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。compete-boot 注入 `chat-guide.js?v=t3-1004`（index 未改）。fx-play／audio-bed 唔揭擔；playtest 唔當打斷。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
+- **hourly 06:04 A INTENT T2/T5**：patterns **split1dd** 26500B；本地 gate 196/196 PASS（固定 5 句＋柔軟過關＋收腰貼框鑽入／腳未踏穩先／頭先喻句你掛實未吲／出面落緊雹呀）。index 只 cache-bust patterns（7276→7276）。recentUserLines 回聲仍待 F。
+- **hourly 05:04 A INTENT T2/T5**：patterns **split1db**；本地 gate 187/187 PASS。recentUserLines 回聲仍待 F。
 
 ## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
 #### CODE chat-guide hide — #48
-- **Status:** P0 FEEL。05:15 已推 t3-1004：推進後 freechat-hidden，兩次 miss 先出掣，唔覆蓋 IntentEngine。index 仍 `?v=split1b`，靠 compete-boot 注入。未硬刷，未關。
+- **Status:** P0 FEEL。05:15 已推 t3-1004：推進後 freechat-hidden，兩次 miss 先出擔，唔覆蓋 IntentEngine。index 仍 `?v=split1b`，靠 compete-boot 注入。未硬刷，未關。
 
 ### STORY
 #### STORY intents — #47
@@ -41,13 +37,13 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### INTENT
 #### T2 — 場景記憶接話
-- **Status:** split1dd 已加掛實未吖／有冇掛實頭先嗰句；腳未踏穩／未定實神；recentUserLines 回聲仍待 F
+- **Status:** split1dd 已加掛實未吲；腳未踏穩；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
 - **Status:** patterns cache `?v=split1dd`；本地 196/196；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
-- **Status:** 07:07 live 有 parts，唔係 stub loader，唔係第一張。未證齊前不關。禁 CDN / stub。
+- **Status:** 06:07 live 有 parts，app.js 119953B，唔係 stub loader，唔係第一張。未證齊前不關。禁 CDN / stub。
 
 ### 固定驗收測句
 | # | 玩家輸入 | 預期意圖 | 期望行為 |
