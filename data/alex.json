@@ -1,185 +1,1098 @@
 {
-  "id": "alex", "name": "Vera", "title": "部門主管", "hook": "Deadline 可以改。態度唔可以。", "start": "n0", "portrait": "./assets/stills/vera-03.jpg",
+  "id": "alex",
+  "name": "Vera",
+  "title": "部門主管",
+  "hook": "Deadline 可以改。態度唔可以。",
+  "start": "n0",
+  "portrait": "./assets/stills/vera-03.jpg",
   "nodes": {
     "n0": {
-      "id": "n0", "label": "走廊 23:44", "scene": "office",
+      "id": "n0",
+      "label": "走廊 23:44",
+      "scene": "office",
       "text": "你踩晚車，停喺門縫，我睇到你未入。我而家要你入房認位，唔好掛喺走廊。\n\n「走廊唔係位。你推門入嚟，定停低講清楚？」",
-      "thought": "佢知你仲未走。", "aside": "監控紅點照住你後腦。", "freeChat": true,
-      "choices": [{"label": "推門", "next": "n0b"}, {"label": "（停一秒）再推", "next": "n0b", "tension": 2}],
-      "intents": [
-        {"bucket": "leave", "say": "推門", "next": "n0b", "ack": "推門。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」", "keys": ["推門", "開門", "入去", "入嚟", "進去", "進入", "我入去先", "開門啦", "進去看看"]},
-        {"bucket": "tired", "say": "停低", "next": "n0b", "tension": 2, "ack": "你停過先推。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」", "keys": ["停低", "等等", "停一停", "我未準備好", "未準備好"]},
-        {"bucket": "agree", "say": "好", "next": "n0b", "ack": "好。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"},
-        {"bucket": "wait", "say": "係", "next": "n0b", "ack": "係。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n0b", "ack": "繼續。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"}
+      "thought": "佢知你仲未走。",
+      "aside": "監控紅點照住你後腦。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "推門",
+          "next": "n0b"
+        },
+        {
+          "label": "（停一秒）再推",
+          "next": "n0b",
+          "tension": 2
+        }
       ],
-      "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "推門入嚟，定停低講清楚？"},
-      "stub": "hourly C 06:08: n0 好/係/繼續 ack=n0b"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "推門",
+          "next": "n0b",
+          "ack": "推門。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n0b",
+          "tension": 2,
+          "ack": "你停過先推。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "推門入嚟，定停低講清楚？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n0b"
     },
     "n0b": {
-      "id": "n0b", "label": "門後", "scene": "office", "remember": ["door_shut"],
-      "text": "門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
-      "thought": "Deadline 未到，結果已經落地。", "aside": "門縫消失。", "freeChat": true,
-      "choices": [{"label": "走去桌前", "next": "n1"}],
-      "intents": [
-        {"bucket": "leave", "say": "行過去", "next": "n1", "ack": "你行過去。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」", "keys": ["行過去", "入去", "推門"]},
-        {"bucket": "tired", "say": "停低", "next": "n1", "ack": "你停過先行。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」", "keys": ["停低", "等等", "未準備好"]},
-        {"bucket": "agree", "say": "好", "next": "n1", "ack": "好。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"},
-        {"bucket": "wait", "say": "係", "next": "n1", "ack": "係。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n1", "ack": "繼續。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"}
+      "id": "n0b",
+      "label": "門後",
+      "scene": "office",
+      "remember": [
+        "door_shut"
       ],
-      "sceneGoal": {"successIntents": ["enter_door", "enter", "wait", "agree"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "行過桌前，定仲要我講第二句？"},
-      "stub": "hourly C 06:08: n0b 好/係/繼續 ack=n1"
+      "text": "門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
+      "thought": "Deadline 未到，結果已經落地。",
+      "aside": "門縫消失。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "走去桌前",
+          "next": "n1"
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "行過去",
+          "next": "n1",
+          "ack": "你行過去。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」",
+          "keys": [
+            "行過去",
+            "入去",
+            "推門",
+            "開門啦",
+            "我入去先",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n1",
+          "ack": "你停過先行。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」",
+          "keys": [
+            "停低",
+            "等等",
+            "未準備好",
+            "停一停",
+            "我未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "行過桌前，定仲要我講第二句？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n1"
     },
     "n1": {
-      "id": "n1", "label": "簡報", "scene": "office",
+      "id": "n1",
+      "label": "簡報",
+      "scene": "office",
       "text": "你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」",
-      "thought": "指節兩下。", "aside": "螢幕光打住佢下顎。", "freeChat": true,
-      "choices": [{"label": "「我改。」", "next": "n2a"}, {"label": "「你講清楚。」", "next": "n2b"}],
-      "intents": [
-        {"bucket": "leave", "say": "我改", "next": "n2a", "ack": "你認改。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」", "keys": ["我改", "改完", "而家改"]},
-        {"bucket": "heat", "say": "講清楚", "next": "n2b", "ack": "你要清楚。筆放低，我靠後。我而家要你過嚟聽。\n\n「過嚟聽，定仲留喺位？」", "keys": ["講清楚", "留低"]},
-        {"bucket": "agree", "say": "好", "next": "n2a", "ack": "好。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"},
-        {"bucket": "wait", "say": "係", "next": "n2a", "ack": "係。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n2a", "ack": "繼續。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"}
+      "thought": "指節兩下。",
+      "aside": "螢幕光打住佢下顎。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「我改。」",
+          "next": "n2a"
+        },
+        {
+          "label": "「你講清楚。」",
+          "next": "n2b"
+        }
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "challenge", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 0, "ask": "你而家改，定要我講清楚？"},
-      "stub": "hourly C 06:08: n1 好/係/繼續 ack=n2a"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n2a",
+          "ack": "你入去。你而家改，定要我講清楚？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "我改",
+          "next": "n2a",
+          "ack": "你認改。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」",
+          "keys": [
+            "我改",
+            "改完",
+            "而家改"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "講清楚",
+          "next": "n2b",
+          "ack": "你要清楚。筆放低，我靠後。我而家要你過嚟聽。\n\n「過嚟聽，定仲留喺位？」",
+          "keys": [
+            "講清楚",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n2b",
+          "tension": 2,
+          "ack": "你停低。你而家改，定要我講清楚？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "challenge",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你而家改，定要我講清楚？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n2a"
     },
     "n2a": {
-      "id": "n2a", "label": "改稿", "scene": "office",
+      "id": "n2a",
+      "label": "改稿",
+      "scene": "office",
       "text": "椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」",
-      "thought": "近到聞到袖口冷香水。", "aside": "筆尖指住一頁。", "freeChat": true,
-      "choices": [{"label": "「…係，我聽緊。」", "next": "n3"}, {"label": "（對視）「你咁近，我改唔到字。」", "next": "n3", "tension": 1}],
-      "intents": [
-        {"bucket": "leave", "say": "聽緊", "next": "n3", "ack": "你聽緊。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」", "keys": ["聽緊", "聽你講"]},
-        {"bucket": "tired", "say": "改唔到", "next": "n3", "tension": 1, "ack": "你話改唔到。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」", "keys": ["改唔到", "停低", "未準備好"]},
-        {"bucket": "agree", "say": "好", "next": "n3", "ack": "好。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"},
-        {"bucket": "wait", "say": "係", "next": "n3", "ack": "係。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n3", "ack": "繼續。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"}
+      "thought": "近到聞到袖口冷香水。",
+      "aside": "筆尖指住一頁。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「…係，我聽緊。」",
+          "next": "n3"
+        },
+        {
+          "label": "（對視）「你咁近，我改唔到字。」",
+          "next": "n3",
+          "tension": 1
+        }
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "坐低。你聽緊係一行？"},
-      "stub": "hourly C 06:08: n2a 好/係/繼續 ack=n3"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n3",
+          "ack": "你入去。坐低。你聽緊係一行？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "聽緊",
+          "next": "n3",
+          "ack": "你聽緊。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "聽緊",
+            "聽你講"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "改唔到",
+          "next": "n3",
+          "tension": 1,
+          "ack": "你話改唔到。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "改唔到",
+            "停低",
+            "未準備好",
+            "等等",
+            "停一停",
+            "我未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "坐低。你聽緊係一行？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3"
     },
     "n2b": {
-      "id": "n2b", "label": "頂嘴", "scene": "office",
+      "id": "n2b",
+      "label": "頂嘴",
+      "scene": "office",
       "text": "你要清楚，筆放低，我靠後。我而家要你過嚟聽。\n\n「過嚟聽，定仲留喺位？」",
-      "thought": "聲線壓低。", "aside": "會議室忽然好靜。", "freeChat": true,
-      "choices": [{"label": "（行過去）", "next": "n2c"}, {"label": "（留喺位）「…你講，我聽。」", "next": "n2a"}],
-      "intents": [
-        {"bucket": "leave", "say": "過去", "next": "n2c", "ack": "你過去。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」", "keys": ["過去"]},
-        {"bucket": "tired", "say": "留低", "next": "n2a", "ack": "你留低。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」", "keys": ["留低", "停低", "未準備好"]},
-        {"bucket": "agree", "say": "好", "next": "n2a", "ack": "好。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"},
-        {"bucket": "wait", "say": "係", "next": "n2a", "ack": "係。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n2c", "ack": "繼續。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」"}
+      "thought": "聲線壓低。",
+      "aside": "會議室忽然好靜。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "（行過去）",
+          "next": "n2c"
+        },
+        {
+          "label": "（留喺位）「…你講，我聽。」",
+          "next": "n2a"
+        }
       ],
-      "sceneGoal": {"successIntents": ["challenge", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory"], "maxMisses": 3, "guideLevel": 1, "ask": "過嚟聽，定仲留喺位？"},
-      "stub": "hourly C 06:08: n2b 好/係->n2a 繼續->n2c"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n2c",
+          "ack": "你入去。過嚟聽，定仲留喺位？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "過去",
+          "next": "n2c",
+          "ack": "你過去。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」",
+          "keys": [
+            "過去"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "留低",
+          "next": "n2a",
+          "ack": "你留低。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」",
+          "keys": [
+            "留低",
+            "停低",
+            "未準備好",
+            "等等",
+            "停一停",
+            "我未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "challenge",
+          "agree",
+          "enter",
+          "enter_door",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 1,
+        "ask": "過嚟聽，定仲留喺位？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n2c"
     },
     "n2c": {
-      "id": "n2c", "label": "試探", "scene": "office",
+      "id": "n2c",
+      "label": "試探",
+      "scene": "office",
       "text": "你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」",
-      "thought": "呼吸擦過耳側。", "aside": "椅背有佢隻手。", "freeChat": true,
-      "choices": [{"label": "（轉身，距離更近）", "next": "n3", "heat": 8}, {"label": "「…我專心改。」", "next": "n3"}],
-      "intents": [
-        {"bucket": "heat", "say": "再近", "next": "n3", "heat": 8, "ack": "你再近。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」", "keys": ["再近", "近啲", "留低"]},
-        {"bucket": "leave", "say": "改", "next": "n3", "ack": "你改。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」", "keys": ["改", "我改", "改完"]},
-        {"bucket": "agree", "say": "好", "next": "n3", "ack": "好。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"},
-        {"bucket": "wait", "say": "係", "next": "n3", "ack": "係。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n3", "ack": "繼續。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"}
+      "thought": "呼吸擦過耳側。",
+      "aside": "椅背有佢隻手。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "（轉身，距離更近）",
+          "next": "n3",
+          "heat": 8
+        },
+        {
+          "label": "「…我專心改。」",
+          "next": "n3"
+        }
       ],
-      "sceneGoal": {"successIntents": ["flirt", "agree", "enter", "enter_door", "wait"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 1, "ask": "你轉身，定專心改？"},
-      "stub": "hourly C 06:08: n2c 好/係/繼續 ack=n3"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n3",
+          "ack": "你入去。你轉身，定專心改？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "再近",
+          "next": "n3",
+          "heat": 8,
+          "ack": "你再近。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "改",
+          "next": "n3",
+          "ack": "你改。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "改",
+            "我改",
+            "改完"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n3",
+          "tension": 2,
+          "ack": "你停低。你轉身，定專心改？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "flirt",
+          "agree",
+          "enter",
+          "enter_door",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 1,
+        "ask": "你轉身，定專心改？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3"
     },
     "n3": {
-      "id": "n3", "label": "下一行", "scene": "office",
+      "id": "n3",
+      "label": "下一行",
+      "scene": "office",
       "text": "筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
-      "thought": "佢未鬆手。", "aside": "螢幕光移咗一行。", "freeChat": true,
-      "choices": [{"label": "「我跟。」", "next": "n4"}, {"label": "「你讀畀我聽。」", "next": "n4", "tension": 1}],
-      "intents": [
-        {"bucket": "leave", "say": "跟", "next": "n4", "ack": "你跟。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」", "keys": ["跟", "我跟", "跟你", "跟住"]},
-        {"bucket": "heat", "say": "你讀", "next": "n4", "tension": 1, "ack": "你要我讀。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」", "keys": ["你讀", "留低"]},
-        {"bucket": "agree", "say": "好", "next": "n4", "ack": "好。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"},
-        {"bucket": "wait", "say": "係", "next": "n4", "ack": "係。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n4", "ack": "繼續。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"}
+      "thought": "佢未鬆手。",
+      "aside": "螢幕光移咗一行。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「我跟。」",
+          "next": "n4"
+        },
+        {
+          "label": "「你讀畀我聽。」",
+          "next": "n4",
+          "tension": 1
+        }
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "下一行你跟唔跟？"},
-      "stub": "hourly C 06:08: n3 好/係/繼續 ack=n4"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n4",
+          "ack": "你入去。下一行你跟唔跟？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "跟",
+          "next": "n4",
+          "ack": "你跟。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
+          "keys": [
+            "跟",
+            "我跟",
+            "跟你",
+            "跟住"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "你讀",
+          "next": "n4",
+          "tension": 1,
+          "ack": "你要我讀。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
+          "keys": [
+            "你讀",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n4",
+          "tension": 2,
+          "ack": "你停低。下一行你跟唔跟？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "下一行你跟唔跟？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4"
     },
     "n4": {
-      "id": "n4", "label": "留定走", "scene": "office", "remember": ["line_followed"],
-      "text": "呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
-      "thought": "佢未放你走。", "aside": "螢幕光停喺最尾行。", "freeChat": true,
-      "choices": [{"label": "「我留。」", "next": "n5", "tension": 1}, {"label": "「我而家走。」", "next": "n5b"}],
-      "intents": [
-        {"bucket": "heat", "say": "留", "next": "n5", "tension": 1, "ack": "你留。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」", "keys": ["留", "留低"]},
-        {"bucket": "leave", "say": "走", "next": "n5b", "ack": "你話走。門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」", "keys": ["走", "而家走", "走先", "我走"]},
-        {"bucket": "agree", "say": "好", "next": "n5", "ack": "好。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"},
-        {"bucket": "wait", "say": "係", "next": "n5", "ack": "係。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n5", "ack": "繼續。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"}
+      "id": "n4",
+      "label": "留定走",
+      "scene": "office",
+      "remember": [
+        "line_followed"
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "refuse"], "optionalIntents": ["ask_want", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你留低改完，定而家走？"},
-      "stub": "hourly C 06:08: n4 好/係/繼續 -> n5; 走 -> n5b"
+      "text": "呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
+      "thought": "佢未放你走。",
+      "aside": "螢幕光停喺最尾行。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「我留。」",
+          "next": "n5",
+          "tension": 1
+        },
+        {
+          "label": "「我而家走。」",
+          "next": "n5b"
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n5",
+          "ack": "你入去。你留低改完，定而家走？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "留",
+          "next": "n5",
+          "tension": 1,
+          "ack": "你留。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
+          "keys": [
+            "留",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "走",
+          "next": "n5b",
+          "ack": "你話走。門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」",
+          "keys": [
+            "走",
+            "而家走",
+            "走先",
+            "我走"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n5b",
+          "tension": 2,
+          "ack": "你停低。你留低改完，定而家走？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge",
+          "refuse"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留低改完，定而家走？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n5"
     },
     "n5": {
-      "id": "n5", "label": "留嚟做咩", "scene": "office", "remember": ["stayed"],
-      "text": "筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
-      "thought": "佢未放筆蓋。", "aside": "燈未關。", "freeChat": true,
-      "choices": [{"label": "「改完。」", "next": "n6"}, {"label": "「等你。」", "next": "n6", "heat": 2}],
-      "intents": [
-        {"bucket": "leave", "say": "改完", "next": "n6", "ack": "你話改完。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」", "keys": ["改完", "我改"]},
-        {"bucket": "heat", "say": "等你", "next": "n6", "heat": 2, "ack": "你話等我。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」", "keys": ["等你", "留低"]},
-        {"bucket": "agree", "say": "好", "next": "n6", "ack": "好。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"},
-        {"bucket": "wait", "say": "係", "next": "n6", "ack": "係。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n6", "ack": "繼續。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"}
+      "id": "n5",
+      "label": "留嚟做咩",
+      "scene": "office",
+      "remember": [
+        "stayed"
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你留嚟改完，定留嚟等我？"},
-      "stub": "hourly C 06:08: n5 好/係/繼續 -> n6"
+      "text": "筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
+      "thought": "佢未放筆蓋。",
+      "aside": "燈未關。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「改完。」",
+          "next": "n6"
+        },
+        {
+          "label": "「等你。」",
+          "next": "n6",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n6",
+          "ack": "你入去。你留嚟改完，定留嚟等我？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "改完",
+          "next": "n6",
+          "ack": "你話改完。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "改完",
+            "我改"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "等你",
+          "next": "n6",
+          "heat": 2,
+          "ack": "你話等我。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "等你",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n6",
+          "tension": 2,
+          "ack": "你停低。你留嚟改完，定留嚟等我？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留嚟改完，定留嚟等我？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n6"
     },
     "n5b": {
-      "id": "n5b", "label": "走之前", "scene": "office", "remember": ["named_leave"],
-      "text": "你話走，門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」",
-      "thought": "佢未抬頭。", "aside": "門縫未開。", "freeChat": true,
-      "choices": [{"label": "「改完先走。」", "next": "n6"}, {"label": "「未改完。」", "next": "n5", "tension": 1}],
-      "intents": [
-        {"bucket": "leave", "say": "改完", "next": "n6", "ack": "你話改完。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」", "keys": ["改完"]},
-        {"bucket": "tired", "say": "未改完", "next": "n5", "tension": 1, "ack": "你未改完。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」", "keys": ["未改完", "停低", "未準備好"]},
-        {"bucket": "agree", "say": "好", "next": "n6", "ack": "好。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"},
-        {"bucket": "wait", "say": "係", "next": "n6", "ack": "係。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n6", "ack": "繼續。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」"}
+      "id": "n5b",
+      "label": "走之前",
+      "scene": "office",
+      "remember": [
+        "named_leave"
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "refuse"], "optionalIntents": ["ask_want", "flirt", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 1, "ask": "走之前，你改完未？"},
-      "stub": "hourly C 06:08: n5b 好/係/繼續 -> n6; 未改完 -> n5"
+      "text": "你話走，門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」",
+      "thought": "佢未抬頭。",
+      "aside": "門縫未開。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「改完先走。」",
+          "next": "n6"
+        },
+        {
+          "label": "「未改完。」",
+          "next": "n5",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n6",
+          "ack": "你入去。走之前，你改完未？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "改完",
+          "next": "n6",
+          "ack": "你話改完。燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "改完"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "未改完",
+          "next": "n5",
+          "tension": 1,
+          "ack": "你未改完。筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
+          "keys": [
+            "未改完",
+            "停低",
+            "未準備好",
+            "等等",
+            "停一停",
+            "我未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge",
+          "refuse"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 1,
+        "ask": "走之前，你改完未？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n6"
     },
     "n6": {
-      "id": "n6", "label": "一句先", "scene": "office",
+      "id": "n6",
+      "label": "一句先",
+      "scene": "office",
       "text": "燈未關。我要你講一句先。\n\n「你講留嚟等我，定而家起筆？」",
-      "thought": "聲線未鬆。", "aside": "螢幕光停住。", "freeChat": true,
-      "choices": [{"label": "「等你。」", "next": "n7", "heat": 2}, {"label": "「起筆。」", "next": "n7"}],
-      "intents": [
-        {"bucket": "heat", "say": "等你", "next": "n7", "heat": 2, "ack": "你話等我。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」", "keys": ["等你", "留低"]},
-        {"bucket": "leave", "say": "起筆", "next": "n7", "ack": "你起筆。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」", "keys": ["起筆", "改"]},
-        {"bucket": "agree", "say": "好", "next": "n7", "ack": "好。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"},
-        {"bucket": "wait", "say": "係", "next": "n7", "ack": "係。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n7", "ack": "繼續。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"}
+      "thought": "聲線未鬆。",
+      "aside": "螢幕光停住。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「等你。」",
+          "next": "n7",
+          "heat": 2
+        },
+        {
+          "label": "「起筆。」",
+          "next": "n7"
+        }
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你講留嚟等我，定而家起筆？"},
-      "stub": "hourly C 06:08: n6 no self-loop; 好/係/繼續 -> n7"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n7",
+          "ack": "你入去。你講留嚟等我，定而家起筆？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "等你",
+          "next": "n7",
+          "heat": 2,
+          "ack": "你話等我。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」",
+          "keys": [
+            "等你",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "起筆",
+          "next": "n7",
+          "ack": "你起筆。燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」",
+          "keys": [
+            "起筆",
+            "改"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n7",
+          "tension": 2,
+          "ack": "你停低。你講留嚟等我，定而家起筆？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你講留嚟等我，定而家起筆？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n7"
     },
     "n7": {
-      "id": "n7", "label": "關燈", "scene": "office",
+      "id": "n7",
+      "label": "關燈",
+      "scene": "office",
       "text": "燈仲係開。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」",
-      "thought": "佢未放你走。", "aside": "桌火只佢一盏。", "freeChat": true,
-      "choices": [{"label": "「落筆。」", "next": "n7"}, {"label": "「同你關燈。」", "next": "n7", "heat": 2}],
-      "intents": [
-        {"bucket": "leave", "say": "落筆", "next": "n7", "ack": "你落筆。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」", "keys": ["落筆", "起筆"]},
-        {"bucket": "heat", "say": "關燈", "next": "n7", "heat": 2, "ack": "你同我關燈。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」", "keys": ["關燈", "同你關燈"]},
-        {"bucket": "agree", "say": "好", "next": "n7", "ack": "好。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"},
-        {"bucket": "wait", "say": "係", "next": "n7", "ack": "係。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"},
-        {"bucket": "agree", "say": "繼續", "next": "n7", "ack": "繼續。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」"}
+      "thought": "佢未放你走。",
+      "aside": "桌火只佢一盏。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「落筆。」",
+          "next": "n7"
+        },
+        {
+          "label": "「同你關燈。」",
+          "next": "n7",
+          "heat": 2
+        }
       ],
-      "sceneGoal": {"successIntents": ["agree", "wait", "enter", "enter_door", "flirt"], "optionalIntents": ["ask_want", "refuse", "ask_memory", "apologize", "off_topic", "unclear", "memory", "challenge"], "maxMisses": 3, "guideLevel": 0, "ask": "你而家落筆，定同我關燈？"},
-      "stub": "hourly C 06:08: n7 hold ask; ack=this beat first half"
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n7",
+          "ack": "你入去。你而家落筆，定同我關燈？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "落筆",
+          "next": "n7",
+          "ack": "你落筆。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」",
+          "keys": [
+            "落筆",
+            "起筆"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "關燈",
+          "next": "n7",
+          "heat": 2,
+          "ack": "你同我關燈。桌火只佢一盏。我而家要你落筆定同我關燈。\n\n「你而家落筆，定同我關燈？」",
+          "keys": [
+            "關燈",
+            "同你關燈"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n7",
+          "tension": 2,
+          "ack": "你停低。你而家落筆，定同我關燈？",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "enter",
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你而家落筆，定同我關燈？"
+      },
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n7"
     }
   }
 }

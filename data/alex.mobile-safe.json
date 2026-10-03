@@ -46,11 +46,11 @@
           "memory",
           "challenge"
         ],
-        "ask": "你推門入嚟，定停低講清楚？",
+        "ask": "推門入嚟，定停低講清楚？",
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n2a",
       "intents": [
         {
           "bucket": "leave",
@@ -144,8 +144,24 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3a",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n3a",
+          "ack": "你入去。坐低聽。你聽緊係一行？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "……係，我聽緊。",
@@ -231,8 +247,24 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3c",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n3c",
+          "ack": "你入去。你要清楚？過嚟。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "（行過去）",
@@ -307,8 +339,24 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3b",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n3b",
+          "ack": "你入去。你轉身，定專心改？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "heat",
           "say": "（轉身，距離更近）",
@@ -390,8 +438,24 @@
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4a",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n4a",
+          "ack": "你入去。手震係驚交唔到，定停低先？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -477,8 +541,24 @@
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4b",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n4b",
+          "ack": "你入去。你留低講清楚，定停低？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -558,8 +638,24 @@
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4b",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n4b",
+          "ack": "你入去。你要清楚簡報，定清楚我想點？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -634,8 +730,24 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_c",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "ending_c",
+          "ack": "你入去。你收檔離開，定停低再講？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -719,8 +831,24 @@
         "guideLevel": 1,
         "ask": "你留低，定轉身？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n5",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n5",
+          "ack": "你入去。你留低，定轉身？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -796,8 +924,24 @@
         "guideLevel": 1,
         "ask": "你繼續，定停低？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n5",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n5",
+          "ack": "你入去。你繼續，定停低？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -884,8 +1028,24 @@
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n6a",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "n6a",
+          "ack": "你入去。你親口講想要邊樣，定停低？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -960,8 +1120,24 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_a",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "ending_a",
+          "ack": "你入去。你跟節奏，定停低？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -1040,8 +1216,24 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_b",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "ending_b",
+          "ack": "你入去。你搶返主動，定停低？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
@@ -1124,8 +1316,24 @@
         "guideLevel": 1,
         "ask": "你留低，定走？"
       },
-      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_a",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "ending_a",
+          "ack": "你入去。你留低，定走？",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
         {
           "bucket": "leave",
           "say": "跟住",
