@@ -20,6 +20,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
 | Hall / review CCTV record-dot / 錄緊紅燈 (n0 corridor, review cam live) | AX CSS opacity blink dot | L static plane / S tube flicker / Q scanline |
+| Review glass / monitor reflex of her (n3b CCTV reflex, hold stare) | AY CSS scaleX(-1) masked still | AR floor reflect / L plane / O crop |
 | Fluorescent flicker / pantry-office unstable tube | S CSS brightness flicker | C whole motion / L static plane |
 | Last lamp switch-off / dark cut (n4x office kill) | AP CSS cone collapse | C whole wash / L static plane / S flicker |
 | Dawn window leak / 窗漏晨光 (ending_a/b pull-back) | AS CSS warm slit gradient | C whole wash / AO blinds-shut / L plane |
@@ -116,6 +117,8 @@ AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD revie
 AV CSS 4–6px `radial-gradient` amber/cool specks + slow `translate`/`opacity` `@keyframes` drift on existing A office/roof/lounge window pane (夜窗城市光點; reuse room SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, L static mix-blend plane, AS dawn-slit and AQ interior dust for an isolated after-hours city-lights-through-glass beat
 AW CSS two `::before`/`::after` (or dual div) metal panels + `@keyframes translateX` meet at centre on existing lift chrome (升降機門合上; enter-lift trapped beat; reuse A lift SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed lift SVG, C whole-scene motion and M static ajar-slit for an isolated doors-shut beat
 AX CSS 6px `radial-gradient` red record-dot + irregular `@keyframes` opacity blink on existing hall/review CCTV chrome corner (錄緊燈; reuse A SVG + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static mix-blend plane, S fluorescent flicker and Q scanline drift for an isolated camera-is-recording beat
+AY CSS `transform: scaleX(-1)` + `-webkit-mask-image` fade of locked repo still over existing review/lift glass (監控玻璃倒影; n3b hold stare; reuse still + A SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, AR wet-floor box-reflect and L static light plane for an isolated she's-in-the-glass beat
+
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
