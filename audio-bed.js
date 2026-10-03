@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-0616";
+  window.__ahAudioBed = "t3-1004";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -98,9 +98,6 @@
   function quietOwner() {
     window.__ahOwnerQuiet = true;
     window.__ahPlaytest = true;
-    if (window.speechSynthesis) {
-      try { window.speechSynthesis.cancel(); } catch (e) {}
-    }
   }
   function playCue(kind) {
     if (muted || window.__ahOwnerQuiet) return;
@@ -189,6 +186,7 @@
     var raw = input ? String(input.value || "").trim() : "";
     if (OWNER_PROBE.test(raw)) {
       quietOwner();
+      if (window.__ahForceHide) window.__ahForceHide();
       return;
     }
     if (window.__ahOwnerQuiet) return;

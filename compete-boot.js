@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0616";
+  window.__ahCompeteBoot = "t3-1004";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -87,16 +87,19 @@
   function hideOnBoot() {
     document.body.classList.remove("show-choices");
     var box = document.getElementById("choices");
-    if (box) box.classList.add("freechat-hidden");
+    if (box) {
+      box.classList.add("freechat-hidden");
+      box.style.setProperty("display", "none", "important");
+    }
     if (window.__ahForceHide) window.__ahForceHide();
     else if (window.__ahHideChoices) window.__ahHideChoices();
   }
   function ensureFreshGuide() {
-    if (window.__ahChatGuide === "t3-0616") return;
-    if (document.getElementById("chat-guide-t3-0616")) return;
+    if (window.__ahChatGuide === "t3-1004") return;
+    if (document.getElementById("chat-guide-t3-1004")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0616";
-    s.src = "./chat-guide.js?v=t3-0616";
+    s.id = "chat-guide-t3-1004";
+    s.src = "./chat-guide.js?v=t3-1004";
     document.body.appendChild(s);
   }
   function bootStart(id, fresh) {
@@ -119,6 +122,7 @@
         } catch (e) { state.nodeId = story.start; state.path = [story.start]; }
       }
       window.__ahOwnerQuiet = false;
+      window.__ahPlaytest = false;
       if (typeof applyStoryArt === "function") applyStoryArt(story);
       if (typeof startAlex === "function") startAlex(!!fresh);
       else if (typeof renderNode === "function") renderNode();
