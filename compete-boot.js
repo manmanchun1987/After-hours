@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-1005";
+  window.__ahCompeteBoot = "t3-0716";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -94,12 +94,21 @@
     if (window.__ahForceHide) window.__ahForceHide();
     else if (window.__ahHideChoices) window.__ahHideChoices();
   }
+  function liveGate() {
+    window.__ahLiveGate = "full-app-no-b64";
+    var nodes = document.querySelectorAll("script[src]");
+    for (var i = 0; i < nodes.length; i++) {
+      var src = nodes[i].getAttribute("src") || "";
+      if (/app_b64|app\.b64/i.test(src)) nodes[i].parentNode.removeChild(nodes[i]);
+    }
+  }
   function ensureFreshGuide() {
-    if (window.__ahChatGuide === "t3-1005") return;
-    if (document.getElementById("chat-guide-t3-1005")) return;
+    liveGate();
+    if (window.__ahChatGuide === "t3-0716") return;
+    if (document.getElementById("chat-guide-t3-0716")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-1005";
-    s.src = "./chat-guide.js?v=t3-1005";
+    s.id = "chat-guide-t3-0716";
+    s.src = "./chat-guide.js?v=t3-0716";
     document.body.appendChild(s);
   }
   function bootStart(id, fresh) {

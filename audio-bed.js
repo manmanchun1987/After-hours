@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-1005";
+  window.__ahAudioBed = "t3-0716";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -100,8 +100,11 @@
     window.__ahPlaytest = true;
     if (window.__ahHideChoices) window.__ahHideChoices();
   }
+  function ownerPlay() {
+    return !!(window.__ahOwnerQuiet || window.__ahPlaytest);
+  }
   function playCue(kind) {
-    if (muted || window.__ahOwnerQuiet || window.__ahPlaytest) return;
+    if (muted || ownerPlay()) return;
     if (kind === "fail") {
       beep(165, 0.32, "sawtooth", 0.14, 55);
       noiseBurst(0.24, 0.09);
@@ -162,7 +165,7 @@
     get muted() { return muted; }
   };
   document.addEventListener("click", function (e) {
-    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
+    if (ownerPlay()) return;
     var t = e.target;
     if (!t) return;
     var id = t.id || (t.closest && t.closest("[id]") && t.closest("[id]").id);
@@ -191,11 +194,11 @@
       if (window.__ahForceHide) window.__ahForceHide();
       return;
     }
-    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
+    if (ownerPlay()) return;
     playCue("send");
   }, true);
   document.addEventListener("pointerdown", function () {
-    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
+    if (ownerPlay()) return;
     ensure(); startBed();
   }, true);
 })();

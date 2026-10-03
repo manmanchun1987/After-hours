@@ -1,5 +1,5 @@
 (function () {
-  window.__ahFxPlay = "t3-1005";
+  window.__ahFxPlay = "t3-0716";
   var wrapped = false;
   var lastNode = "";
   function layer() {
@@ -105,9 +105,10 @@
       } else {
         keepChatFirst(false);
       }
+      document.body.classList.remove("show-choices");
     };
     window.renderNode.__ahNeverReveal = true;
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx1005) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0716) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
@@ -115,9 +116,9 @@
         keepChatFirst(!!ok);
         return ok;
       };
-      window.applyFreeChatAdvance.__ahFx1005 = true;
+      window.applyFreeChatAdvance.__ahFx0716 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut1005) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0716) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -125,7 +126,7 @@
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut1005 = true;
+      window.goToNode.__ahCut0716 = true;
     }
   }
   document.addEventListener("click", function (e) {
