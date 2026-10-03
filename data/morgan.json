@@ -36,40 +36,52 @@
           "say": "講人",
           "next": "m2a",
           "ack": "你講人。你坐近一格，杯推到你手邊。我而家要你講人。\n\n「你講你想點，定我先講？」",
-          "heat": 8
+          "heat": 8,
+          "keys": [
+            "講人",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "收條款",
           "next": "m2b",
           "ack": "你收條款。你收條款，紙推過嚟。我而家要你簽定抬眼。\n\n「你簽呢頁，定仲睇住我？」",
-          "tension": 10
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m2a",
-          "ack": "好。你坐近一格，杯推到你手邊。我而家要你講人。\n\n「你講你想點，定我先講？」",
-          "heat": 8
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m2b",
-          "ack": "係。你收條款，紙推過嚟。我而家要你簽定抬眼。\n\n「你簽呢頁，定仲睇住我？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m2a",
-          "ack": "繼續。你坐近一格，杯推到你手邊。我而家要你講人。\n\n「你講你想點，定我先講？」"
+          "tension": 10,
+          "keys": [
+            "收條款",
+            "收單",
+            "收咗"
+          ]
         },
         {
           "bucket": "heat",
           "say": "坐近",
           "next": "m2a",
           "ack": "你坐近。你坐近一格，杯推到你手邊。我而家要你講人。\n\n「你講你想點，定我先講？」",
-          "heat": 8
+          "heat": 8,
+          "keys": [
+            "坐近",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m2a",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你坐近一格，定只收條款？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -95,7 +107,7 @@
         "guideLevel": 0,
         "ask": "你坐近一格，定只收條款？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "m2a": {
       "id": "m2a",
@@ -123,31 +135,36 @@
           "say": "聽人",
           "next": "m3",
           "ack": "你聽人。你近住，我講人。我而家要你跟呢一句。\n\n「你跟唔跟呢一句？」",
-          "heat": 2
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m3",
-          "ack": "好。你近住，我講人。我而家要你跟呢一句。\n\n「你跟唔跟呢一句？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m3",
-          "ack": "係。你近住，我講人。我而家要你跟呢一句。\n\n「你跟唔跟呢一句？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m3",
-          "ack": "繼續。你近住，我講人。我而家要你跟呢一句。\n\n「你跟唔跟呢一句？」"
+          "heat": 2,
+          "keys": [
+            "聽人",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "睇紙",
           "next": "m2b",
-          "ack": "你睇紙。你收條款，紙推過嚟。我而家要你簽定抬眼。\n\n「你簽呢頁，定仲睇住我？」"
+          "ack": "你睇紙。你收條款，紙推過嚟。我而家要你簽定抬眼。\n\n「你簽呢頁，定仲睇住我？」",
+          "keys": [
+            "睇紙"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m3",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你講你想點，定我先講？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -173,7 +190,7 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "m2b": {
       "id": "m2b",
@@ -196,35 +213,40 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m3b",
-          "ack": "好。你簽咗呢頁，我未收紙。我而家要你講留定走。\n\n「你簽完仲留唔留？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m3b",
-          "ack": "係。你簽咗呢頁，我未收紙。我而家要你講留定走。\n\n「你簽完仲留唔留？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m3b",
-          "ack": "繼續。你簽咗呢頁，我未收紙。我而家要你講留定走。\n\n「你簽完仲留唔留？」"
-        },
-        {
           "bucket": "heat",
           "say": "抬眼",
           "next": "m2a",
           "ack": "你抬眼。你坐近一格，杯推到你手邊。我而家要你講人。\n\n「你講你想點，定我先講？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "抬眼",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "簽",
           "next": "m3b",
-          "ack": "你簽。你簽咗呢頁，我未收紙。我而家要你講留定走。\n\n「你簽完仲留唔留？」"
+          "ack": "你簽。你簽咗呢頁，我未收紙。我而家要你講留定走。\n\n「你簽完仲留唔留？」",
+          "keys": [
+            "簽"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m2a",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你簽呢頁，定仲睇住我？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -250,7 +272,7 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "m3": {
       "id": "m3",
@@ -274,35 +296,40 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m4",
-          "ack": "好。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m4",
-          "ack": "係。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m4",
-          "ack": "繼續。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
-        },
-        {
           "bucket": "heat",
           "say": "跟",
           "next": "m4",
           "ack": "你跟。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "跟",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "再講",
           "next": "m4",
-          "ack": "你要再講。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
+          "ack": "你要再講。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」",
+          "keys": [
+            "再講"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m4",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你跟唔跟呢一句？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -328,7 +355,7 @@
         "guideLevel": 0,
         "ask": "你跟唔跟呢一句？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "m3b": {
       "id": "m3b",
@@ -352,37 +379,44 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m4",
-          "ack": "好。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」",
-          "heat": 2
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m4",
-          "ack": "係。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m4",
-          "ack": "繼續。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」"
-        },
-        {
           "bucket": "heat",
           "say": "留",
           "next": "m4",
           "ack": "你留。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "留",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "收工",
           "next": "m4",
           "ack": "你話收工。杯未放低。我而家要你留定收工。\n\n「你留低聽人，定而家走？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "收工",
+            "收條款",
+            "收單",
+            "收咗"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m4",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你簽完仲留唔留？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -408,7 +442,7 @@
         "guideLevel": 0,
         "ask": "你簽完仲留唔留？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "m4": {
       "id": "m4",
@@ -432,36 +466,44 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m5",
-          "ack": "好。你留低，杯未收。我而家要你講留嚟聽定簽。\n\n「你留嚟聽人，定留嚟簽尾頁？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m5",
-          "ack": "係。你留低，杯未收。我而家要你講留嚟聽定簽。\n\n「你留嚟聽人，定留嚟簽尾頁？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m5",
-          "ack": "繼續。你留低，杯未收。我而家要你講留嚟聽定簽。\n\n「你留嚟聽人，定留嚟簽尾頁？」"
-        },
-        {
           "bucket": "heat",
           "say": "留",
           "next": "m5",
           "ack": "你留。你留低，杯未收。我而家要你講留嚟聽定簽。\n\n「你留嚟聽人，定留嚟簽尾頁？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "留",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "走",
           "next": "m5b",
           "ack": "你話走。你話走，杯沿未乾。我而家要你收工前講一句。\n\n「走之前，單你收未？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "走",
+            "而家走",
+            "走先",
+            "我走"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m5",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留低聽人，定而家走？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -488,7 +530,7 @@
         "guideLevel": 0,
         "ask": "你留低聽人，定而家走？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "line_followed"
       ]
@@ -514,35 +556,40 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m6",
-          "ack": "好。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m6",
-          "ack": "係。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m6",
-          "ack": "繼續。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
           "bucket": "heat",
           "say": "聽人",
           "next": "m6",
           "ack": "你聽人。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "聽人",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "簽",
           "next": "m6",
-          "ack": "你簽。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
+          "ack": "你簽。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」",
+          "keys": [
+            "簽"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m6",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留嚟聽人，定留嚟簽尾頁？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -568,7 +615,7 @@
         "guideLevel": 0,
         "ask": "你留嚟聽人，定留嚟簽尾頁？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "stayed"
       ]
@@ -594,35 +641,31 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m6",
-          "ack": "好。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m6",
-          "ack": "係。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m6",
-          "ack": "繼續。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
           "bucket": "leave",
           "say": "收咗",
           "next": "m6",
-          "ack": "你收咗。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
+          "ack": "你收咗。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」",
+          "keys": [
+            "收咗",
+            "收條款",
+            "收單"
+          ]
         },
         {
           "bucket": "tired",
           "say": "未收",
           "next": "m5",
           "ack": "你未收。你留低，杯未收。我而家要你講留嚟聽定簽。\n\n「你留嚟聽人，定留嚟簽尾頁？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "未收",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -648,7 +691,7 @@
         "guideLevel": 1,
         "ask": "走之前，單你收未？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "named_leave"
       ]
@@ -674,35 +717,42 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "m6",
-          "ack": "好。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "m6",
-          "ack": "係。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "m6",
-          "ack": "繼續。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
-        },
-        {
           "bucket": "heat",
           "say": "聽人",
           "next": "m6",
           "ack": "你聽人。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "聽人",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "收單",
           "next": "m6",
-          "ack": "你收單。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」"
+          "ack": "你收單。杯未放低。我而家要你再講一句，先至收單。\n\n「你聽人，定而家收單？」",
+          "keys": [
+            "收單",
+            "收條款",
+            "收咗"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "m6",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你聽人，定而家收單？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -728,7 +778,7 @@
         "guideLevel": 0,
         "ask": "你聽人，定而家收單？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     }
   }
 }

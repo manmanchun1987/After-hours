@@ -32,7 +32,8 @@
           "enter_door",
           "enter",
           "agree",
-          "wait"
+          "wait",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -49,7 +50,55 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "我可以而家改。",
+          "next": "n2a",
+          "ack": "我可以而家改。。我收到，未當你打齊原文。\n\n「你推門入嚟，定停低講清楚？」",
+          "keys": [
+            "我可以而家改。",
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "邊部分未夠？講清楚。",
+          "next": "n2b",
+          "ack": "邊部分未夠？講清楚。。我收到，未當你打齊原文。\n\n「你推門入嚟，定停低講清楚？」",
+          "tension": 1,
+          "keys": [
+            "邊部分未夠？講清楚。",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "（站近啲，聲細）「你係唔係特登留到而",
+          "next": "n2c",
+          "ack": "（站近啲，聲細）「你係唔係特登留到而。我收到，未當你打齊原文。\n\n「你推門入嚟，定停低講清楚？」",
+          "keys": [
+            "（站近啲，聲細）「你係唔係特登留到而",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        }
+      ]
     },
     "n2a": {
       "id": "n2a",
@@ -77,7 +126,8 @@
           "agree",
           "wait",
           "enter",
-          "enter_door"
+          "enter_door",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -94,7 +144,47 @@
         "maxMisses": 3,
         "guideLevel": 0
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "……係，我聽緊。",
+          "next": "n3a",
+          "ack": "……係，我聽緊。。我收到，未當你打齊原文。\n\n「坐低聽。你聽緊係一行？」",
+          "keys": [
+            "……係，我聽緊。",
+            "聽緊",
+            "聽你講",
+            "聽人"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "（捉住筆，對視）「你咁近，我改唔到字",
+          "next": "n3b",
+          "ack": "（捉住筆，對視）「你咁近，我改唔到字。我收到，未當你打齊原文。\n\n「坐低聽。你聽緊係一行？」",
+          "keys": [
+            "（捉住筆，對視）「你咁近，我改唔到字",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n3a",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「坐低聽。你聽緊係一行？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
+        }
+      ]
     },
     "n2b": {
       "id": "n2b",
@@ -134,13 +224,44 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "challenge"
         ],
         "ask": "你要清楚？過嚟。",
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "（行過去）",
+          "next": "n3c",
+          "ack": "（行過去）。我收到，未當你打齊原文。\n\n「你要清楚？過嚟。」",
+          "keys": [
+            "（行過去）",
+            "行過去",
+            "行過嚟",
+            "行埋去"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "（留嗚位）「……你講，我聽。",
+          "next": "n3a",
+          "ack": "（留嗚位）「……你講，我聽。。我收到，未當你打齊原文。\n\n「你要清楚？過嚟。」",
+          "tension": 1,
+          "keys": [
+            "（留嗚位）「……你講，我聽。",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
+        }
+      ]
     },
     "n2c": {
       "id": "n2c",
@@ -186,7 +307,47 @@
         "maxMisses": 3,
         "guideLevel": 1
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
+      "intents": [
+        {
+          "bucket": "heat",
+          "say": "（轉身，距離更近）",
+          "next": "n3b",
+          "ack": "（轉身，距離更近）。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "keys": [
+            "（轉身，距離更近）",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "……我專心改。",
+          "next": "n3a",
+          "ack": "……我專心改。。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "keys": [
+            "……我專心改。",
+            "我改",
+            "改完",
+            "而家改"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n3b",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
+        }
+      ]
     },
     "n3a": {
       "id": "n3a",
@@ -222,26 +383,50 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n4a",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「手震係驚交唔到，定停低先？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4a",
-          "ack": "手震係驚交唔到，定停低先？"
+          "ack": "手震係驚交唔到，定停低先？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4b",
           "tension": 2,
-          "ack": "你停低。門未關—手震係驚交唔到，定停低先？"
+          "ack": "你停低。門未關—手震係驚交唔到，定停低先？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -284,26 +469,51 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "flirt",
+          "challenge"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n4b",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低講清楚，定停低？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4b",
-          "ack": "你留低講清楚，定停低？"
+          "ack": "你留低講清楚，定停低？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4c",
           "tension": 2,
-          "ack": "你停低。門未關—你留低講清楚，定停低？"
+          "ack": "你停低。門未關—你留低講清楚，定停低？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -341,26 +551,50 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n4b",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你要清楚簡報，定清楚我想點？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4b",
-          "ack": "你要清楚簡報，定清楚我想點？"
+          "ack": "你要清楚簡報，定清楚我想點？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4a",
           "tension": 2,
-          "ack": "你停低。門未關—你要清楚簡報，定清楚我想點？"
+          "ack": "你停低。門未關—你要清楚簡報，定清楚我想點？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -400,20 +634,43 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "ending_c",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你收檔離開，定停低再講？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_c",
-          "ack": "你收檔離開，定停低再講？"
+          "ack": "你收檔離開，定停低再講？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停低。門未關—你收檔離開，定停低再講？"
+          "ack": "你停低。門未關—你收檔離開，定停低再講？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -455,26 +712,50 @@
           "off_topic",
           "unclear",
           "memory",
-          "challenge"
+          "challenge",
+          "refuse"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你留低，定轉身？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n5",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低，定轉身？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n5",
-          "ack": "你留低，定轉身？"
+          "ack": "你留低，定轉身？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停低。門未關—你留低，定轉身？"
+          "ack": "你停低。門未關—你留低，定轉身？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -508,26 +789,50 @@
           "off_topic",
           "unclear",
           "memory",
-          "challenge"
+          "challenge",
+          "flirt"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你繼續，定停低？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n5",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你繼續，定停低？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n5",
-          "ack": "你繼續，定停低？"
+          "ack": "你繼續，定停低？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n5",
           "tension": 2,
-          "ack": "你停低。門未關—你繼續，定停低？"
+          "ack": "你停低。門未關—你繼續，定停低？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -570,26 +875,52 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "ask_want",
+          "flirt",
+          "challenge"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "n6a",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你親口講想要邊樣，定停低？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n6a",
-          "ack": "你親口講想要邊樣，定停低？"
+          "ack": "你親口講想要邊樣，定停低？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n6c",
           "tension": 2,
-          "ack": "你停低。門未關—你親口講想要邊樣，定停低？"
+          "ack": "你停低。門未關—你親口講想要邊樣，定停低？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -629,20 +960,43 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "ending_a",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你跟節奏，定停低？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_a",
-          "ack": "你跟節奏，定停低？"
+          "ack": "你跟節奏，定停低？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_a",
           "tension": 2,
-          "ack": "你停低。門未關—你跟節奏，定停低？"
+          "ack": "你停低。門未關—你跟節奏，定停低？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -679,26 +1033,50 @@
           "apologize",
           "off_topic",
           "unclear",
-          "memory"
+          "memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "ending_b",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你搶返主動，定停低？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_b",
-          "ack": "你搶返主動，定停低？"
+          "ack": "你搶返主動，定停低？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_b",
           "tension": 2,
-          "ack": "你停低。門未關—你搶返主動，定停低？"
+          "ack": "你停低。門未關—你搶返主動，定停低？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },
@@ -739,26 +1117,50 @@
           "off_topic",
           "unclear",
           "memory",
-          "challenge"
+          "challenge",
+          "refuse"
         ],
         "maxMisses": 3,
         "guideLevel": 1,
         "ask": "你留低，定走？"
       },
-      "stub": "hourly C 07:03: corridor/freeChat keep enter+enter_door+wait beside other success; not sole key; start kept; n5 add enter/enter_door",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "intents": [
+        {
+          "bucket": "leave",
+          "say": "跟住",
+          "next": "ending_a",
+          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低，定走？」",
+          "keys": [
+            "跟住",
+            "我跟",
+            "跟你"
+          ]
+        },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_a",
-          "ack": "你留低，定走？"
+          "ack": "你留低，定走？",
+          "keys": [
+            "我跟你呢拍"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停低。門未關—你留低，定走？"
+          "ack": "你停低。門未關—你留低，定走？",
+          "keys": [
+            "停低先",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ]
     },

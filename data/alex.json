@@ -30,45 +30,65 @@
           "bucket": "leave",
           "say": "推門",
           "next": "n0b",
-          "ack": "推門。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"
+          "ack": "推門。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n0b",
           "ack": "你停過先推。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
-          "tension": 2
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n0b",
-          "ack": "好。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n0b",
-          "ack": "係。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n0b",
-          "ack": "繼續。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"
+          "tension": 2,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n0b",
-          "ack": "入去。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」"
+          "ack": "入去。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
+          "keys": [
+            "入去",
+            "推門",
+            "開門",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
         },
         {
           "bucket": "tired",
           "say": "我未準備好",
           "next": "n0b",
           "ack": "你未準備好。門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前。\n\n「行過嚟桌前，定仲要我講第二句？」",
-          "tension": 2
+          "tension": 2,
+          "keys": [
+            "我未準備好",
+            "停低",
+            "等等",
+            "停一停",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -93,7 +113,7 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n0b": {
       "id": "n0b",
@@ -114,31 +134,33 @@
           "bucket": "leave",
           "say": "行過去",
           "next": "n1",
-          "ack": "你行過去。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"
+          "ack": "你行過去。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」",
+          "keys": [
+            "行過去",
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看"
+          ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n1",
-          "ack": "你停過先行。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n1",
-          "ack": "好。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n1",
-          "ack": "係。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n1",
-          "ack": "繼續。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」"
+          "ack": "你停過先行。你企喺桌前，簡報未夠。我指節敲兩下，要你而家認份稿。\n\n「你而家改，定要我講清楚？」",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -163,7 +185,7 @@
         "guideLevel": 0,
         "ask": "行過桌前，定仲要我講第二句？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "door_shut"
       ]
@@ -191,31 +213,38 @@
           "bucket": "leave",
           "say": "我改",
           "next": "n2a",
-          "ack": "你認改。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
+          "ack": "你認改。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」",
+          "keys": [
+            "我改",
+            "改完",
+            "而家改"
+          ]
         },
         {
           "bucket": "heat",
           "say": "講清楚",
           "next": "n2b",
-          "ack": "你要清楚。你要清楚，筆放低，我靠後。我而家要你過嚟聽。\n\n「過嚟聽，定仲留喺位？」"
+          "ack": "你要清楚。你要清楚，筆放低，我靠後。我而家要你過嚟聽。\n\n「過嚟聽，定仲留喺位？」",
+          "keys": [
+            "講清楚",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
-          "bucket": "agree",
-          "say": "好",
+          "bucket": "tired",
+          "say": "停低",
           "next": "n2a",
-          "ack": "好。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n2a",
-          "ack": "係。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n2a",
-          "ack": "繼續。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你而家改，定要我講清楚？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -224,7 +253,8 @@
           "wait",
           "enter",
           "enter_door",
-          "challenge"
+          "challenge",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -241,7 +271,7 @@
         "guideLevel": 0,
         "ask": "你而家改，定要我講清楚？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n2a": {
       "id": "n2a",
@@ -267,32 +297,28 @@
           "bucket": "leave",
           "say": "聽緊",
           "next": "n3",
-          "ack": "你聽緊。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
+          "ack": "你聽緊。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "聽緊",
+            "聽你講",
+            "聽人"
+          ]
         },
         {
           "bucket": "tired",
           "say": "改唔到",
           "next": "n3",
           "ack": "你話改唔到。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
-          "tension": 1
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n3",
-          "ack": "好。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n3",
-          "ack": "係。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n3",
-          "ack": "繼續。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
+          "tension": 1,
+          "keys": [
+            "改唔到",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -317,7 +343,7 @@
         "guideLevel": 0,
         "ask": "坐低。你聽緊係一行？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n2b": {
       "id": "n2b",
@@ -342,31 +368,25 @@
           "bucket": "leave",
           "say": "過去",
           "next": "n2c",
-          "ack": "你過去。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」"
+          "ack": "你過去。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」",
+          "keys": [
+            "過去"
+          ]
         },
         {
           "bucket": "tired",
           "say": "留低",
           "next": "n2a",
-          "ack": "你留低。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n2a",
-          "ack": "好。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n2a",
-          "ack": "係。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n2c",
-          "ack": "繼續。你站近，我睇住你好耐。我而家要你仲膽。\n\n「你轉身，定專心改？」"
+          "ack": "你留低。椅拉到你側。我要你而家坐低起筆。\n\n「坐低。你聽緊係一行？」",
+          "keys": [
+            "留低",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -392,7 +412,7 @@
         "guideLevel": 1,
         "ask": "過嚟聽，定仲留喺位？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n2c": {
       "id": "n2c",
@@ -419,31 +439,38 @@
           "say": "再近",
           "next": "n3",
           "ack": "你再近。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
-          "heat": 8
+          "heat": 8,
+          "keys": [
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "改",
           "next": "n3",
-          "ack": "你改。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
+          "ack": "你改。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」",
+          "keys": [
+            "改",
+            "我改",
+            "改完",
+            "而家改"
+          ]
         },
         {
-          "bucket": "agree",
-          "say": "好",
+          "bucket": "tired",
+          "say": "停低",
           "next": "n3",
-          "ack": "好。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n3",
-          "ack": "係。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n3",
-          "ack": "繼續。筆尖停喺下一格。我而家要你跟，唔放你停筆。\n\n「下一行你跟唔跟？」"
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -469,7 +496,7 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n3": {
       "id": "n3",
@@ -492,35 +519,43 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n4",
-          "ack": "好。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n4",
-          "ack": "係。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n4",
-          "ack": "繼續。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"
-        },
-        {
           "bucket": "leave",
           "say": "跟",
           "next": "n4",
-          "ack": "你跟。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」"
+          "ack": "你跟。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
+          "keys": [
+            "跟",
+            "我跟",
+            "跟你",
+            "跟住"
+          ]
         },
         {
           "bucket": "heat",
           "say": "你讀",
           "next": "n4",
           "ack": "你要我讀。呢行過咗，筆收返筆桶。我要你而家認留定走。\n\n「你留低改完，定而家走？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "你讀",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n4",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「下一行你跟唔跟？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -528,7 +563,8 @@
           "agree",
           "wait",
           "enter",
-          "enter_door"
+          "enter_door",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -545,7 +581,7 @@
         "guideLevel": 0,
         "ask": "下一行你跟唔跟？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     },
     "n4": {
       "id": "n4",
@@ -568,35 +604,43 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n5",
-          "ack": "好。你留低，筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n5",
-          "ack": "係。你留低，筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n5",
-          "ack": "繼續。你留低，筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」"
-        },
-        {
           "bucket": "heat",
           "say": "留",
           "next": "n5",
           "ack": "你留。你留低，筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "留",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "走",
           "next": "n5b",
-          "ack": "你話走。你話走，門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」"
+          "ack": "你話走。你話走，門柄仲涼。我要你講最後一句。\n\n「走之前，你改完未？」",
+          "keys": [
+            "走",
+            "而家走",
+            "走先",
+            "我走"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n5",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留低改完，定而家走？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -605,7 +649,8 @@
           "wait",
           "enter",
           "enter_door",
-          "refuse"
+          "refuse",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -622,7 +667,7 @@
         "guideLevel": 0,
         "ask": "你留低改完，定而家走？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "line_followed"
       ]
@@ -648,35 +693,42 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n6",
-          "ack": "好。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n6",
-          "ack": "係。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n6",
-          "ack": "繼續。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
           "bucket": "leave",
           "say": "改完",
           "next": "n6",
-          "ack": "你話改完。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
+          "ack": "你話改完。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "改完",
+            "我改",
+            "而家改"
+          ]
         },
         {
           "bucket": "heat",
           "say": "等你",
           "next": "n6",
           "ack": "你話等我。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "等你",
+            "再近",
+            "近啲",
+            "留低"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n6",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你留嚟改完，定留嚟等我？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -702,7 +754,7 @@
         "guideLevel": 0,
         "ask": "你留嚟改完，定留嚟等我？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "stayed"
       ]
@@ -728,35 +780,31 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n6",
-          "ack": "好。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n6",
-          "ack": "係。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n6",
-          "ack": "繼續。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
           "bucket": "leave",
           "say": "改完",
           "next": "n6",
-          "ack": "你話改完。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
+          "ack": "你話改完。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "改完",
+            "我改",
+            "而家改"
+          ]
         },
         {
           "bucket": "tired",
           "say": "未改完",
           "next": "n5",
           "ack": "你未改完。你留低，筆桶未蓋。我要你講留嚟做咩。\n\n「你留嚟改完，定留嚟等我？」",
-          "tension": 1
+          "tension": 1,
+          "keys": [
+            "未改完",
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好"
+          ]
         }
       ],
       "sceneGoal": {
@@ -782,7 +830,7 @@
         "guideLevel": 1,
         "ask": "走之前，你改完未？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue",
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool",
       "remember": [
         "named_leave"
       ]
@@ -808,35 +856,40 @@
       "freeChat": true,
       "intents": [
         {
-          "bucket": "agree",
-          "say": "好",
-          "next": "n6",
-          "ack": "好。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "wait",
-          "say": "係",
-          "next": "n6",
-          "ack": "係。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
-          "bucket": "agree",
-          "say": "繼續",
-          "next": "n6",
-          "ack": "繼續。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
-        },
-        {
           "bucket": "heat",
           "say": "等你",
           "next": "n6",
           "ack": "你話等我。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」",
-          "heat": 2
+          "heat": 2,
+          "keys": [
+            "等你",
+            "再近",
+            "近啲",
+            "留低"
+          ]
         },
         {
           "bucket": "leave",
           "say": "起筆",
           "next": "n6",
-          "ack": "你起筆。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」"
+          "ack": "你起筆。燈未關。我要你講一句先，先至畀你收筆。\n\n「你講留嚟等我，定而家起筆？」",
+          "keys": [
+            "起筆"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "n6",
+          "ack": "你停低。我收到，未當你打齊原文。\n\n「你講留嚟等我，定而家起筆？」",
+          "tension": 1,
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住"
+          ]
         }
       ],
       "sceneGoal": {
@@ -862,7 +915,7 @@
         "guideLevel": 0,
         "ask": "你講留嚟等我，定而家起筆？"
       },
-      "stub": "hourly C 02:07: one breath; ack=next first half; 好/係/繼續 glue"
+      "stub": "hourly C 05:03: success enter_door|enter|wait; soft keys; no yes-pool"
     }
   }
 }
