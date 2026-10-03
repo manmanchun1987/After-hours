@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-1004";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003>t3-0616>t3-1004";
+  window.__ahChatGuide = "t3-1005";
+  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003>t3-0616>t3-1004>t3-1005";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var misses = 0;
@@ -8,12 +8,6 @@
   var lastNodeId = "";
   var lockUntil = 0;
   window.__ahMisses = 0;
-  ["matchFreeChatIntent","applyFreeChatAdvance","goToNode","pickReply","renderNode","unlockFreeChatChoices","typeText","typeNode","finishTyping","onTypedDone"].forEach(function (name) {
-    if (window[name] && !window[name].__guided1004) {
-      window[name].__guided = false;
-      window[name].__guidedHide = false;
-    }
-  });
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
@@ -95,17 +89,18 @@
   function forceHideAfterAdvance() {
     misses = 0;
     window.__ahMisses = 0;
-    lockUntil = Date.now() + 1400;
+    lockUntil = Date.now() + 1600;
     if (typeof state !== "undefined") state.guideMissCount = 0;
     hideChoices();
     setTimeout(hideChoices, 0);
     setTimeout(hideChoices, 240);
     setTimeout(hideChoices, 720);
+    setTimeout(hideChoices, 1400);
   }
   window.__ahForceHide = forceHideAfterAdvance;
   function onNodeAdvance() {
     var id = (typeof state !== "undefined" && state.nodeId) || "";
-    if (id === lastNodeId) return;
+    if (!id || id === lastNodeId) return;
     lastNodeId = id;
     forceHideAfterAdvance();
   }
@@ -115,6 +110,7 @@
     window.__ahMisses = misses;
     if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
     if (misses >= 2) showChoices();
+    else hideChoices();
   }
   function tryYesHeat(userText) {
     var t = String(userText || "").trim();
@@ -147,7 +143,7 @@
   }
   function hookTyped() {
     ["typeText", "typeNode", "finishTyping", "onTypedDone"].forEach(function (name) {
-      if (typeof window[name] !== "function" || window[name].__guided1004) return;
+      if (typeof window[name] !== "function" || window[name].__guided1005) return;
       var fn = window[name];
       window[name] = function () {
         var r = fn.apply(this, arguments);
@@ -155,12 +151,12 @@
         return r;
       };
       window[name].__guidedHide = true;
-      window[name].__guided1004 = true;
+      window[name].__guided1005 = true;
     });
   }
   function wrap() {
     hookTyped();
-    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided1004) {
+    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided1005) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var raw = String(userText || "").trim();
@@ -179,12 +175,8 @@
           if (n0 && n0.sceneGoal && window.GuidePolicy) {
             if (cls && window.GuidePolicy.isSuccess && window.GuidePolicy.isSuccess(cls.id, n0.sceneGoal)) {
               var mappedOk = null;
-              if (typeof window.IntentEngine.mapToNodeIntent === "function") {
-                mappedOk = window.IntentEngine.mapToNodeIntent(cls, n0);
-              }
-              if (!mappedOk && typeof window.IntentEngine.forceMapByIntentId === "function") {
-                mappedOk = window.IntentEngine.forceMapByIntentId(cls.id, n0);
-              }
+              if (typeof window.IntentEngine.mapToNodeIntent === "function") mappedOk = window.IntentEngine.mapToNodeIntent(cls, n0);
+              if (!mappedOk && typeof window.IntentEngine.forceMapByIntentId === "function") mappedOk = window.IntentEngine.forceMapByIntentId(cls.id, n0);
               if (mappedOk) {
                 forceHideAfterAdvance();
                 if (!mappedOk._ackClipped) {
@@ -199,9 +191,7 @@
             bumpMiss();
             return null;
           }
-          if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear" || cls.id === "ask_memory")) {
-            return null;
-          }
+          if (cls && (cls.id === "ask_want" || cls.id === "off_topic" || cls.id === "unclear" || cls.id === "ask_memory")) return null;
           if (cls && typeof window.IntentEngine.mapToNodeIntent === "function") {
             var mapped = window.IntentEngine.mapToNodeIntent(cls, n0);
             if (mapped) {
@@ -231,9 +221,9 @@
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
-      window.matchFreeChatIntent.__guided1004 = true;
+      window.matchFreeChatIntent.__guided1005 = true;
     }
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided1004) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided1005) {
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
@@ -242,9 +232,9 @@
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
-      window.applyFreeChatAdvance.__guided1004 = true;
+      window.applyFreeChatAdvance.__guided1005 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__guided1004) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__guided1005) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -252,18 +242,16 @@
         return r;
       };
       window.goToNode.__guidedHide = true;
-      window.goToNode.__guided1004 = true;
+      window.goToNode.__guided1005 = true;
     }
-    if (typeof window.pickReply === "function" && !window.pickReply.__guided1004) {
+    if (typeof window.pickReply === "function" && !window.pickReply.__guided1005) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
         if (OWNER_PROBE.test(String(userText || "").trim())) {
           markOwner();
           return "";
         }
-        if (YES.test(String(userText || "").trim())) {
-          return "好。靠近呢邊。";
-        }
+        if (YES.test(String(userText || "").trim())) return "好。靠近呢邊。";
         if (window.IntentEngine && typeof window.IntentEngine.classify === "function") {
           var c = window.IntentEngine.classify(userText, { node: node(), state: typeof state !== "undefined" ? state : null });
           if (c && (c.id === "ask_want" || c.id === "off_topic" || c.id === "enter_door" || c.id === "wait" || c.id === "apologize" || c.id === "flirt" || c.id === "challenge" || c.id === "ask_memory")) {
@@ -278,9 +266,9 @@
         return "你講「" + clip(userText) + "」。我要聽嘅係" + ask + "。";
       };
       window.pickReply.__guided = true;
-      window.pickReply.__guided1004 = true;
+      window.pickReply.__guided1005 = true;
     }
-    if (typeof window.renderNode === "function" && !window.renderNode.__guided1004) {
+    if (typeof window.renderNode === "function" && !window.renderNode.__guided1005) {
       var rn = window.renderNode;
       window.renderNode = function () {
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
@@ -290,15 +278,14 @@
         glueText();
         hint();
         var n = node();
-        if (!window.__ahOwnerQuiet && n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") {
-          window.AHAudio.speak(n.text);
-        }
+        if (!window.__ahOwnerQuiet && n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") window.AHAudio.speak(n.text);
         if (!choicesAllowed()) hideChoices();
       };
       window.renderNode.__guided = true;
-      window.renderNode.__guided1004 = true;
+      window.renderNode.__ahNeverReveal = true;
+      window.renderNode.__guided1005 = true;
     }
-    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided1004) {
+    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided1005) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
         if (window.__ahOwnerQuiet || OWNER_PROBE.test(String(reason || ""))) {
@@ -312,7 +299,7 @@
         return !!(ok2 && choicesAllowed());
       };
       window.unlockFreeChatChoices.__guided = true;
-      window.unlockFreeChatChoices.__guided1004 = true;
+      window.unlockFreeChatChoices.__guided1005 = true;
     }
     if (typeof state !== "undefined" && state.story) stampChat(state.story);
   }

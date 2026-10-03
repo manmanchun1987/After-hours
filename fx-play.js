@@ -1,5 +1,5 @@
 (function () {
-  window.__ahFxPlay = "t3-1004";
+  window.__ahFxPlay = "t3-1005";
   var wrapped = false;
   var lastNode = "";
   function layer() {
@@ -64,7 +64,7 @@
     }
   }
   function shutter() {
-    if (window.__ahOwnerQuiet) return;
+    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
     var el = layer();
     ensureFxCss();
     el.classList.remove("is-cut");
@@ -73,7 +73,7 @@
     setTimeout(function () { el.classList.remove("is-cut"); }, 420);
   }
   function play(kind) {
-    if (window.__ahOwnerQuiet) return;
+    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
     var el = layer();
     ensureFxCss();
     el.classList.remove("is-win", "is-fail", "is-cut");
@@ -99,42 +99,45 @@
       setScene();
       var after = (typeof state !== "undefined" && state.nodeId) || "";
       if (after && after !== lastNode) {
-        if (lastNode && !window.__ahOwnerQuiet) shutter();
+        if (lastNode && !window.__ahOwnerQuiet && !window.__ahPlaytest) shutter();
         lastNode = after;
         keepChatFirst(true);
       } else {
         keepChatFirst(false);
       }
     };
-    if (typeof window.applyFreeChatAdvance === "function") {
+    window.renderNode.__ahNeverReveal = true;
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx1005) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
-        if (!window.__ahOwnerQuiet) play(ok ? "win" : "fail");
+        if (!window.__ahOwnerQuiet && !window.__ahPlaytest) play(ok ? "win" : "fail");
         keepChatFirst(!!ok);
         return ok;
       };
+      window.applyFreeChatAdvance.__ahFx1005 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut1005) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
-        if (!window.__ahOwnerQuiet) shutter();
+        if (!window.__ahOwnerQuiet && !window.__ahPlaytest) shutter();
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut = true;
+      window.goToNode.__ahCut1005 = true;
     }
   }
   document.addEventListener("click", function (e) {
     var btn = e.target && e.target.closest && e.target.closest("button, .btn, .btn-choice");
     if (!btn) return;
-    if (!window.__ahOwnerQuiet) {
+    if (!window.__ahOwnerQuiet && !window.__ahPlaytest) {
       if (btn.classList.contains("is-locked")) play("fail");
       else if (btn.classList.contains("btn-choice") || btn.id === "enter-btn" || btn.classList.contains("btn-primary")) play("win");
     }
     hookEngine();
     setScene();
+    if (btn.classList.contains("btn-choice")) keepChatFirst(true);
   }, true);
   var n = 0;
   var t = setInterval(function () {

@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-1004";
+  window.__ahCompeteBoot = "t3-1005";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -95,11 +95,11 @@
     else if (window.__ahHideChoices) window.__ahHideChoices();
   }
   function ensureFreshGuide() {
-    if (window.__ahChatGuide === "t3-1004") return;
-    if (document.getElementById("chat-guide-t3-1004")) return;
+    if (window.__ahChatGuide === "t3-1005") return;
+    if (document.getElementById("chat-guide-t3-1005")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-1004";
-    s.src = "./chat-guide.js?v=t3-1004";
+    s.id = "chat-guide-t3-1005";
+    s.src = "./chat-guide.js?v=t3-1005";
     document.body.appendChild(s);
   }
   function bootStart(id, fresh) {
@@ -129,6 +129,7 @@
       hideOnBoot();
       setTimeout(hideOnBoot, 0);
       setTimeout(hideOnBoot, 280);
+      setTimeout(hideOnBoot, 900);
     });
   }
   function ready() {
@@ -141,7 +142,7 @@
     }
     paintCast();
     var enter = document.getElementById("enter-btn");
-    if (enter) enter.addEventListener("click", function () { setTimeout(function () { fixVoice(); paintCast(); }, 50); });
+    if (enter) enter.addEventListener("click", function () { setTimeout(function () { fixVoice(); paintCast(); ensureFreshGuide(); }, 50); });
     var back = document.getElementById("back-cast");
     if (back) back.addEventListener("click", function () { setTimeout(paintCast, 50); });
     var toCast = document.getElementById("ending-cast");
@@ -149,4 +150,5 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", ready);
   else ready();
+  setInterval(ensureFreshGuide, 1500);
 })();
