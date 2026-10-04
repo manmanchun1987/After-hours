@@ -35,7 +35,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m2a",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "你坐近一格，杯推到你手邊。",
           "keys": [
             "開門",
             "入去",
@@ -51,7 +51,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "你坐近一格，杯推到你手邊。"
           ]
         },
         {
@@ -59,7 +59,7 @@
           "say": "講人",
           "next": "m2a",
           "heat": 8,
-          "ack": "你應咗。酒廊 21:10呢步跟住講人。",
+          "ack": "你坐近一格，杯推到你手邊。",
           "keys": [
             "講人",
             "坐近",
@@ -68,7 +68,7 @@
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。酒廊 21:10呢步跟住講人。"
+            "你坐近一格，杯推到你手邊。"
           ]
         },
         {
@@ -76,14 +76,14 @@
           "say": "收條款",
           "next": "m2b",
           "tension": 10,
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "你收條款，紙推過嚟。",
           "keys": [
             "收條款",
             "收單",
             "收咗"
           ],
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "你收條款，紙推過嚟。"
           ],
           "intentId": "refuse"
         },
@@ -92,7 +92,7 @@
           "say": "停低",
           "next": "m2a",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你坐近一格，杯推到你手邊。",
           "keys": [
             "停低",
             "等等",
@@ -103,21 +103,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你坐近一格，杯推到你手邊。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m2a",
-          "ack": "你應咗。酒廊 21:10呢步跟住講人。",
+          "ack": "你坐近一格，杯推到你手邊。",
           "keys": [
             "人同單，邊樣先成交？",
             "我係收條款。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。酒廊 21:10呢步跟住講人。"
+            "你坐近一格，杯推到你手邊。"
           ]
         }
       ],
@@ -144,15 +144,14 @@
         "guideLevel": 0,
         "ask": "日頭講完數。夜晚講人。你坐近一格，定只收條款？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。酒廊 21:10呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。",
-          "refuse": "你收住。紙仲喺度，我聽到。"
+          "enter_door": "你坐近一格，杯推到你手邊。",
+          "agree": "你坐近一格，杯推到你手邊。",
+          "refuse": "你收條款，紙推過嚟。",
+          "wait": "你坐近一格，杯推到你手邊。",
+          "enter": "你坐近一格，杯推到你手邊。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m2a": {
       "id": "m2a",
@@ -179,7 +178,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m3",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "你近住，我講人。",
           "keys": [
             "開門",
             "入去",
@@ -195,7 +194,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "你近住，我講人。"
           ]
         },
         {
@@ -203,7 +202,7 @@
           "say": "聽人",
           "next": "m3",
           "heat": 2,
-          "ack": "你應咗。近座呢步跟住講人。",
+          "ack": "你近住，我講人。",
           "keys": [
             "聽人",
             "留低",
@@ -211,19 +210,19 @@
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。近座呢步跟住講人。"
+            "你近住，我講人。"
           ]
         },
         {
           "bucket": "leave",
           "say": "睇紙",
           "next": "m2b",
-          "ack": "你應咗。近座呢步跟住講人。",
+          "ack": "你收條款，紙推過嚟。",
           "keys": [
             "睇紙"
           ],
           "replies": [
-            "你應咗。近座呢步跟住講人。"
+            "你收條款，紙推過嚟。"
           ],
           "intentId": "agree"
         },
@@ -232,7 +231,7 @@
           "say": "停低",
           "next": "m3",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你近住，我講人。",
           "keys": [
             "停低",
             "等等",
@@ -243,21 +242,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你近住，我講人。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m3",
-          "ack": "你應咗。近座呢步跟住講人。",
+          "ack": "你近住，我講人。",
           "keys": [
             "你先講。",
             "我想聽人。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。近座呢步跟住講人。"
+            "你近住，我講人。"
           ]
         }
       ],
@@ -283,14 +282,13 @@
         "guideLevel": 0,
         "ask": "你講你想點，定我先講？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。近座呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "你近住，我講人。",
+          "agree": "你近住，我講人。",
+          "wait": "你近住，我講人。",
+          "enter": "你近住，我講人。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m2b": {
       "id": "m2b",
@@ -316,7 +314,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m3b",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "你簽咗呢頁，我未收紙。",
           "keys": [
             "開門",
             "入去",
@@ -332,19 +330,19 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "你簽咗呢頁，我未收紙。"
           ]
         },
         {
           "bucket": "leave",
           "say": "簽",
           "next": "m3b",
-          "ack": "你應咗。條款呢步跟住講人。",
+          "ack": "你簽咗呢頁，我未收紙。",
           "keys": [
             "簽"
           ],
           "replies": [
-            "你應咗。條款呢步跟住講人。"
+            "你簽咗呢頁，我未收紙。"
           ],
           "intentId": "agree"
         },
@@ -353,14 +351,14 @@
           "say": "抬眼",
           "next": "m2a",
           "heat": 2,
-          "ack": "你應咗。條款呢步跟住講人。",
+          "ack": "你坐近一格，杯推到你手邊。",
           "keys": [
             "抬眼",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。條款呢步跟住講人。"
+            "你坐近一格，杯推到你手邊。"
           ]
         },
         {
@@ -368,7 +366,7 @@
           "say": "停低",
           "next": "m3b",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你簽咗呢頁，我未收紙。",
           "keys": [
             "停低",
             "等等",
@@ -379,21 +377,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你簽咗呢頁，我未收紙。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m3b",
-          "ack": "你應咗。條款呢步跟住講人。",
+          "ack": "你簽咗呢頁，我未收紙。",
           "keys": [
             "我簽。",
             "抬眼"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。條款呢步跟住講人。"
+            "你簽咗呢頁，我未收紙。"
           ]
         }
       ],
@@ -419,14 +417,13 @@
         "guideLevel": 0,
         "ask": "你簽呢頁，定仲睇住我？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。條款呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "你簽咗呢頁，我未收紙。",
+          "agree": "你簽咗呢頁，我未收紙。",
+          "wait": "你簽咗呢頁，我未收紙。",
+          "enter": "你簽咗呢頁，我未收紙。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m3": {
       "id": "m3",
@@ -453,7 +450,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m4",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯未放低。",
           "keys": [
             "開門",
             "入去",
@@ -469,7 +466,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯未放低。"
           ]
         },
         {
@@ -477,26 +474,26 @@
           "say": "跟",
           "next": "m4",
           "heat": 2,
-          "ack": "你應咗。呢一句呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "跟",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。呢一句呢步跟住講人。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "再講",
           "next": "m4",
-          "ack": "你應咗。呢一句呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "再講"
           ],
           "replies": [
-            "你應咗。呢一句呢步跟住講人。"
+            "杯未放低。"
           ],
           "intentId": "agree"
         },
@@ -505,7 +502,7 @@
           "say": "停低",
           "next": "m4",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯未放低。",
           "keys": [
             "停低",
             "等等",
@@ -516,21 +513,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m4",
-          "ack": "你應咗。呢一句呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "我跟。",
             "你再講一句。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。呢一句呢步跟住講人。"
+            "杯未放低。"
           ]
         }
       ],
@@ -556,14 +553,13 @@
         "guideLevel": 0,
         "ask": "你跟唔跟呢一句？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。呢一句呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "杯未放低。",
+          "agree": "杯未放低。",
+          "wait": "杯未放低。",
+          "enter": "杯未放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m3b": {
       "id": "m3b",
@@ -590,7 +586,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m4",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯未放低。",
           "keys": [
             "開門",
             "入去",
@@ -606,7 +602,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯未放低。"
           ]
         },
         {
@@ -614,14 +610,14 @@
           "say": "留",
           "next": "m4",
           "heat": 2,
-          "ack": "你應咗。簽完呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "留",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。簽完呢步跟住講人。"
+            "杯未放低。"
           ]
         },
         {
@@ -629,13 +625,13 @@
           "say": "收工",
           "next": "m4",
           "tension": 1,
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "杯未放低。",
           "keys": [
             "收工",
             "收單"
           ],
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "杯未放低。"
           ],
           "intentId": "refuse"
         },
@@ -644,7 +640,7 @@
           "say": "停低",
           "next": "m4",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯未放低。",
           "keys": [
             "停低",
             "等等",
@@ -655,21 +651,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m4",
-          "ack": "你應咗。簽完呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "留。",
             "我收工。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。簽完呢步跟住講人。"
+            "杯未放低。"
           ]
         }
       ],
@@ -696,15 +692,14 @@
         "guideLevel": 0,
         "ask": "你簽完仲留唔留？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。簽完呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。",
-          "refuse": "你收住。紙仲喺度，我聽到。"
+          "enter_door": "杯未放低。",
+          "agree": "杯未放低。",
+          "refuse": "杯未放低。",
+          "wait": "杯未放低。",
+          "enter": "杯未放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m4": {
       "id": "m4",
@@ -734,7 +729,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m5",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯未收。",
           "keys": [
             "開門",
             "入去",
@@ -750,7 +745,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯未收。"
           ]
         },
         {
@@ -758,14 +753,14 @@
           "say": "留",
           "next": "m5",
           "heat": 2,
-          "ack": "你應咗。留定走呢步跟住講人。",
+          "ack": "杯未收。",
           "keys": [
             "留",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。留定走呢步跟住講人。"
+            "杯未收。"
           ]
         },
         {
@@ -773,7 +768,7 @@
           "say": "走",
           "next": "m5b",
           "tension": 1,
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "你話走，杯沿未乾。",
           "keys": [
             "走",
             "而家走",
@@ -784,7 +779,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "你話走，杯沿未乾。"
           ]
         },
         {
@@ -792,7 +787,7 @@
           "say": "停低",
           "next": "m5b",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你話走，杯沿未乾。",
           "keys": [
             "停低",
             "等等",
@@ -803,28 +798,28 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你話走，杯沿未乾。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m5",
-          "ack": "你應咗。留定走呢步跟住講人。",
+          "ack": "杯未收。",
           "keys": [
             "留。",
             "我走。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。留定走呢步跟住講人。"
+            "杯未收。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "m5b",
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "你話走，杯沿未乾。",
           "keys": [
             "唔做",
             "我唔",
@@ -835,7 +830,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "你話走，杯沿未乾。"
           ]
         }
       ],
@@ -862,15 +857,14 @@
         "guideLevel": 0,
         "ask": "你留低聽人，定而家走？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。留定走呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。",
-          "refuse": "你收住。紙仲喺度，我聽到。"
+          "enter_door": "杯未收。",
+          "agree": "杯未收。",
+          "refuse": "你話走，杯沿未乾。",
+          "wait": "你話走，杯沿未乾。",
+          "enter": "杯未收。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m5": {
       "id": "m5",
@@ -899,7 +893,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m6",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯未放低。",
           "keys": [
             "開門",
             "入去",
@@ -915,7 +909,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯未放低。"
           ]
         },
         {
@@ -923,26 +917,26 @@
           "say": "聽人",
           "next": "m6",
           "heat": 2,
-          "ack": "你應咗。留嚟聽定簽呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "聽人",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。留嚟聽定簽呢步跟住講人。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "簽",
           "next": "m6",
-          "ack": "你應咗。留嚟聽定簽呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "簽"
           ],
           "replies": [
-            "你應咗。留嚟聽定簽呢步跟住講人。"
+            "杯未放低。"
           ],
           "intentId": "agree"
         },
@@ -951,7 +945,7 @@
           "say": "停低",
           "next": "m6",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯未放低。",
           "keys": [
             "停低",
             "等等",
@@ -962,21 +956,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m6",
-          "ack": "你應咗。留嚟聽定簽呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "聽人。",
             "簽尾頁。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。留嚟聽定簽呢步跟住講人。"
+            "杯未放低。"
           ]
         }
       ],
@@ -1002,14 +996,13 @@
         "guideLevel": 0,
         "ask": "你留嚟聽人，定留嚟簽尾頁？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。留嚟聽定簽呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "杯未放低。",
+          "agree": "杯未放低。",
+          "wait": "杯未放低。",
+          "enter": "杯未放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m5b": {
       "id": "m5b",
@@ -1038,7 +1031,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m6",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯未放低。",
           "keys": [
             "開門",
             "入去",
@@ -1054,20 +1047,20 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "收咗",
           "next": "m6",
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "杯未放低。",
           "keys": [
             "收咗",
             "收單"
           ],
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "杯未放低。"
           ],
           "intentId": "refuse"
         },
@@ -1076,7 +1069,7 @@
           "say": "未收",
           "next": "m5",
           "tension": 1,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯未收。",
           "keys": [
             "未收",
             "停低",
@@ -1088,14 +1081,14 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯未收。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "m5",
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯未收。",
           "keys": [
             "停低",
             "等等",
@@ -1107,28 +1100,28 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯未收。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m6",
-          "ack": "你應咗。走之前呢步跟住講人。",
+          "ack": "杯未放低。",
           "keys": [
             "收咗先走。",
             "未收。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。走之前呢步跟住講人。"
+            "杯未放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "m5",
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "杯未收。",
           "keys": [
             "唔做",
             "我唔",
@@ -1139,7 +1132,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "杯未收。"
           ]
         }
       ],
@@ -1167,15 +1160,14 @@
         "guideLevel": 1,
         "ask": "走之前，單你收未？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。走之前呢步跟住講人。",
-          "refuse": "你收住。紙仲喺度，我聽到。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "杯未放低。",
+          "refuse": "杯未放低。",
+          "wait": "杯未收。",
+          "agree": "杯未放低。",
+          "enter": "杯未放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m6": {
       "id": "m6",
@@ -1201,7 +1193,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m7",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "杯放低。",
           "keys": [
             "開門",
             "入去",
@@ -1217,7 +1209,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "杯放低。"
           ]
         },
         {
@@ -1225,27 +1217,27 @@
           "say": "聽人",
           "next": "m7",
           "heat": 2,
-          "ack": "你應咗。再講一句呢步跟住講人。",
+          "ack": "杯放低。",
           "keys": [
             "聽人",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。再講一句呢步跟住講人。"
+            "杯放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "收單",
           "next": "m7",
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "杯放低。",
           "keys": [
             "收單",
             "收咗"
           ],
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "杯放低。"
           ],
           "intentId": "refuse"
         },
@@ -1254,7 +1246,7 @@
           "say": "停低",
           "next": "m7",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "杯放低。",
           "keys": [
             "停低",
             "等等",
@@ -1265,21 +1257,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "杯放低。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m7",
-          "ack": "你應咗。再講一句呢步跟住講人。",
+          "ack": "杯放低。",
           "keys": [
             "聽人。",
             "收單。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。再講一句呢步跟住講人。"
+            "杯放低。"
           ]
         }
       ],
@@ -1306,15 +1298,14 @@
         "guideLevel": 0,
         "ask": "你聽人，定而家收單？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。再講一句呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。",
-          "refuse": "你收住。紙仲喺度，我聽到。"
+          "enter_door": "杯放低。",
+          "agree": "杯放低。",
+          "refuse": "杯放低。",
+          "wait": "杯放低。",
+          "enter": "杯放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m7": {
       "id": "m7",
@@ -1340,7 +1331,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "m8",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "你應完，杯放低。",
           "keys": [
             "開門",
             "入去",
@@ -1356,7 +1347,7 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "你應完，杯放低。"
           ]
         },
         {
@@ -1364,26 +1355,26 @@
           "say": "留到歌完",
           "next": "m8",
           "heat": 2,
-          "ack": "你應咗。歌完呢步跟住講人。",
+          "ack": "你應完，杯放低。",
           "keys": [
             "留到歌完",
             "留"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。歌完呢步跟住講人。"
+            "你應完，杯放低。"
           ]
         },
         {
           "bucket": "leave",
           "say": "收單",
           "next": "m8",
-          "ack": "你收住。紙仲喺度，我聽到。",
+          "ack": "你應完，杯放低。",
           "keys": [
             "收單"
           ],
           "replies": [
-            "你收住。紙仲喺度，我聽到。"
+            "你應完，杯放低。"
           ],
           "intentId": "refuse"
         },
@@ -1392,7 +1383,7 @@
           "say": "停低",
           "next": "m8",
           "tension": 2,
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你應完，杯放低。",
           "keys": [
             "停低",
             "等等",
@@ -1403,21 +1394,21 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你應完，杯放低。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m8",
-          "ack": "你應咗。歌完呢步跟住講人。",
+          "ack": "你應完，杯放低。",
           "keys": [
             "留到歌完。",
             "收單。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。歌完呢步跟住講人。"
+            "你應完，杯放低。"
           ]
         }
       ],
@@ -1444,15 +1435,14 @@
         "guideLevel": 0,
         "ask": "你留到歌完，定而家收單？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。歌完呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。",
-          "refuse": "你收住。紙仲喺度，我聽到。"
+          "enter_door": "你應完，杯放低。",
+          "agree": "你應完，杯放低。",
+          "refuse": "你應完，杯放低。",
+          "wait": "你應完，杯放低。",
+          "enter": "你應完，杯放低。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool"
     },
     "m8": {
       "id": "m8",
@@ -1494,20 +1484,19 @@
         "guideLevel": 0,
         "ask": "你收單，定留低聽完？",
         "replies": {
-          "enter_door": "你入咗座。杯推到你手邊。",
-          "enter": "你入咗座。呢步算你行。",
-          "wait": "你停低。杯仲喺度，我未趕你。",
-          "agree": "你應咗。歌尾呢步跟住講人。",
-          "flirt": "你近咗少少。戒指未動。"
+          "enter_door": "你講完，單我收。",
+          "wait": "你講完，單我收。",
+          "agree": "你講完，單我收。",
+          "enter": "你講完，單我收。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 06:10: ack=next first half; 好/係/繼續 stay heat glue; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "m9",
-          "ack": "你入咗座。杯推到你手邊。",
+          "ack": "你講完，單我收。",
           "keys": [
             "推門",
             "開門",
@@ -1523,14 +1512,14 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗座。杯推到你手邊。"
+            "你講完，單我收。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "m9",
-          "ack": "你停低。杯仲喺度，我未趕你。",
+          "ack": "你講完，單我收。",
           "keys": [
             "停低",
             "等等",
@@ -1542,21 +1531,21 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯仲喺度，我未趕你。"
+            "你講完，單我收。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "m9",
-          "ack": "你應咗。歌尾呢步跟住講人。",
+          "ack": "你講完，單我收。",
           "keys": [
             "收單",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗。歌尾呢步跟住講人。"
+            "你講完，單我收。"
           ]
         }
       ]
