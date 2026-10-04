@@ -1,12 +1,9 @@
 # 而家進度
 
-最後更新：2026-10-05 05:16 HKT · CODE t3-0516
-CODE 05:16：#48 追數。chat-guide t3-0516。推進後 #choices 保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔。好／係／得仍 map heat，keys 剝 yes-pool。OWNER／playtest 唔計 miss、唔推進。compete-boot 注入 chat-guide.js?v=t3-0516，剝 app_b64。fx-play／audio-bed 唔揭擔。未碰 app.js／index。禁 Imagine。FEEL 仍 2，等硬刷。
-A 05:13：intent-patterns.js split1dh。加側頸滑過門檻／弓背貼縫鑽入／開嘅扇門啦／我而家準備好入去／門由我推開先／開度門羅（囉錯字）；未定落步唔好催／腳未定落步；頭先我講過嘅你仲知唔知呀／掛實咗未吖；點先至啲數先嘛；六更未呀。煙測 22/22＋acceptance 288/288＋固定閘 17/17。index 只 cache-bust patterns ?v=split1df→split1dh（7276→7276）。未碰 app／guide／data。T2 回聲仍等 F。
-CODE 03:14：只改 chat-guide.js、compete-boot.js、audio-bed.js、fx-play.js。推進後 #choices 保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔。好／係／得仍 map heat，唔入 key pool。OWNER／playtest 唔計 miss、唔推進、唔鎖死。compete-boot 注入 chat-guide.js?v=t3-0314，剝 app_b64。未碰 app.js／index。禁 Imagine。FEEL 仍 2，等硬刷。
+最後更新：2026-10-05 06:07 HKT · hourly dispatch
+Live：Pages `app.js` 119953B 完整引擎（`const STORAGE_KEY` 起），index 掛齊 parts，唔係 b64 stub loader。#46 保留、唔係第一張。禁 app_b64／禁 CDN pin／禁 Imagine。
+CHAT-FIRST：data 節點帶 choices：alex 13/14、morgan 11/12、sam 9/10。打字成功後大概仍倒擔。FEEL 保 2。
+CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
-**三車 A+B+C＝唯一預設**；D／E／F 暫緩
-Live：index 掛齊 parts（app.js 完整引擎，唔係 b64 stub）。禁 app_b64 stub／禁 CDN pin／禁 Imagine
-CHAT-FIRST：好／係／得 入 heat；推進後擔繼續收埋；兩次唔接先出。
-開住：#48 CODE hide（t3-0516 已推，等硬刷）；#47 STORY breath 已落 data；GUIDE T3；INTENT T2；INTENT T5。
-FEEL 仍 2。
+開住（最多 5，低分先）：#48 CODE chat-guide hide（推進後保 freechat-hidden，等 owner 硬刷）；#47 STORY intents（禁 yes-pool）；GUIDE T3；INTENT T2 回聲；INTENT T5 cache。#46 不占額。
+Owner playtest 預期：你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀。
