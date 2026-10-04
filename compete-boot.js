@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0516";
+  window.__ahCompeteBoot = "t3-0616";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -105,14 +105,20 @@
       }
     }
   }
+  function injectPart(id, src, verKey, ver) {
+    if (window[verKey] === ver) return;
+    if (document.getElementById(id)) return;
+    var s = document.createElement("script");
+    s.id = id;
+    s.src = src;
+    document.body.appendChild(s);
+  }
   function ensureFreshGuide() {
     liveGate();
-    if (window.__ahChatGuide === "t3-0516") return;
-    if (document.getElementById("chat-guide-t3-0516")) return;
-    var s = document.createElement("script");
-    s.id = "chat-guide-t3-0516";
-    s.src = "./chat-guide.js?v=t3-0516";
-    document.body.appendChild(s);
+    if (window.__ahAppB64) delete window.__ahAppB64;
+    injectPart("chat-guide-t3-0616", "./chat-guide.js?v=t3-0616", "__ahChatGuide", "t3-0616");
+    injectPart("audio-bed-t3-0616", "./audio-bed.js?v=t3-0616", "__ahAudioBed", "t3-0616");
+    injectPart("fx-play-t3-0616", "./fx-play.js?v=t3-0616", "__ahFxPlay", "t3-0616");
   }
   function bootStart(id, fresh) {
     fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {
