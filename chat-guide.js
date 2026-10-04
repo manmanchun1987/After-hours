@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-0314";
-  window.__ahChatGuideChain = "t3-0716>t3-0314";
+  window.__ahChatGuide = "t3-0516";
+  window.__ahChatGuideChain = "t3-0314>t3-0516";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var MISS_NEED = 2;
@@ -9,6 +9,7 @@
   var lastNodeId = "";
   var lockUntil = 0;
   window.__ahMisses = 0;
+  window.__ahNeverReveal = true;
   if (!document.getElementById("chat-guide-css")) {
     var st = document.createElement("style");
     st.id = "chat-guide-css";
@@ -18,17 +19,26 @@
   function node() {
     return (typeof state !== "undefined" && state.story && state.story.nodes && state.story.nodes[state.nodeId]) || null;
   }
+  function stripYesKeys(n) {
+    if (!n || !n.intents) return;
+    n.intents.forEach(function (it) {
+      if (!it.keys) return;
+      it.keys = it.keys.filter(function (k) { return !YES.test(String(k || "").trim()); });
+    });
+  }
   function stampChat(story) {
     if (!story || !story.nodes) return;
     Object.keys(story.nodes).forEach(function (id) {
       var n = story.nodes[id];
       if (n.ending) return;
       n.freeChat = true;
+      stripYesKeys(n);
       if (!n.intents || !n.intents.length) {
         n.intents = (n.choices || []).map(function (c) {
           var lab = String(c.label || "");
           return { keys: [lab, lab.replace(/[「」\s]/g, "")], next: c.next, heat: c.heat, tension: c.tension, bucket: c.heat ? "heat" : "leave", ack: lab };
         });
+        stripYesKeys(n);
       }
     });
   }
@@ -64,7 +74,7 @@
     if (typeof state !== "undefined") state.ownerProbe = false;
   }
   function choicesAllowed() {
-    return !window.__ahOwnerQuiet && misses >= MISS_NEED && Date.now() >= lockUntil;
+    return !window.__ahOwnerQuiet && !window.__ahPlaytest && misses >= MISS_NEED && Date.now() >= lockUntil;
   }
   function hideChoices() {
     document.body.classList.remove("show-choices");
@@ -107,7 +117,7 @@
     forceHideAfterAdvance();
   }
   function bumpMiss() {
-    if (window.__ahOwnerQuiet) return;
+    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
     misses += 1;
     window.__ahMisses = misses;
     if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
@@ -145,7 +155,7 @@
   }
   function hookTyped() {
     ["typeText", "typeNode", "finishTyping", "onTypedDone"].forEach(function (name) {
-      if (typeof window[name] !== "function" || window[name].__guided0314) return;
+      if (typeof window[name] !== "function" || window[name].__guided0516) return;
       var fn = window[name];
       window[name] = function () {
         var r = fn.apply(this, arguments);
@@ -153,12 +163,12 @@
         return r;
       };
       window[name].__guidedHide = true;
-      window[name].__guided0314 = true;
+      window[name].__guided0516 = true;
     });
   }
   function wrap() {
     hookTyped();
-    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided0314) {
+    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided0516) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var raw = String(userText || "").trim();
@@ -223,9 +233,9 @@
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
-      window.matchFreeChatIntent.__guided0314 = true;
+      window.matchFreeChatIntent.__guided0516 = true;
     }
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided0314) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided0516) {
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
@@ -234,9 +244,9 @@
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
-      window.applyFreeChatAdvance.__guided0314 = true;
+      window.applyFreeChatAdvance.__guided0516 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__guided0314) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__guided0516) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -244,9 +254,9 @@
         return r;
       };
       window.goToNode.__guidedHide = true;
-      window.goToNode.__guided0314 = true;
+      window.goToNode.__guided0516 = true;
     }
-    if (typeof window.pickReply === "function" && !window.pickReply.__guided0314) {
+    if (typeof window.pickReply === "function" && !window.pickReply.__guided0516) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
         if (OWNER_PROBE.test(String(userText || "").trim())) {
@@ -268,9 +278,9 @@
         return "你講「" + clip(userText) + "」。我要聽嘅係" + ask + "。";
       };
       window.pickReply.__guided = true;
-      window.pickReply.__guided0314 = true;
+      window.pickReply.__guided0516 = true;
     }
-    if (typeof window.renderNode === "function" && !window.renderNode.__guided0314) {
+    if (typeof window.renderNode === "function" && !window.renderNode.__guided0516) {
       var rn = window.renderNode;
       window.renderNode = function () {
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
@@ -281,17 +291,17 @@
         hint();
         document.body.classList.remove("show-choices");
         var n = node();
-        if (!window.__ahOwnerQuiet && n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") window.AHAudio.speak(n.text);
+        if (!window.__ahOwnerQuiet && !window.__ahPlaytest && n && n.text && window.AHAudio && typeof window.AHAudio.speak === "function") window.AHAudio.speak(n.text);
         if (!choicesAllowed()) hideChoices();
       };
       window.renderNode.__guided = true;
       window.renderNode.__ahNeverReveal = true;
-      window.renderNode.__guided0314 = true;
+      window.renderNode.__guided0516 = true;
     }
-    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided0314) {
+    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided0516) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
-        if (window.__ahOwnerQuiet || OWNER_PROBE.test(String(reason || ""))) {
+        if (window.__ahOwnerQuiet || window.__ahPlaytest || OWNER_PROBE.test(String(reason || ""))) {
           hideChoices();
           return false;
         }
@@ -302,7 +312,7 @@
         return !!(ok2 && choicesAllowed());
       };
       window.unlockFreeChatChoices.__guided = true;
-      window.unlockFreeChatChoices.__guided0314 = true;
+      window.unlockFreeChatChoices.__guided0516 = true;
     }
     if (typeof state !== "undefined" && state.story) stampChat(state.story);
   }

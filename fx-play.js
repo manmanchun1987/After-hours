@@ -1,5 +1,5 @@
 (function () {
-  window.__ahFxPlay = "t3-0314";
+  window.__ahFxPlay = "t3-0516";
   var wrapped = false;
   var lastNode = "";
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -109,7 +109,8 @@
       document.body.classList.remove("show-choices");
     };
     window.renderNode.__ahNeverReveal = true;
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0314) {
+    window.renderNode.__ahFx0516 = true;
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0516) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
@@ -117,9 +118,9 @@
         keepChatFirst(!!ok);
         return ok;
       };
-      window.applyFreeChatAdvance.__ahFx0314 = true;
+      window.applyFreeChatAdvance.__ahFx0516 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0314) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0516) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -127,7 +128,7 @@
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut0314 = true;
+      window.goToNode.__ahCut0516 = true;
     }
   }
   document.addEventListener("click", function (e) {
@@ -145,6 +146,8 @@
     var input = document.getElementById("chat-input");
     var raw = input ? String(input.value || "").trim() : "";
     if (!OWNER_PROBE.test(raw)) return;
+    window.__ahOwnerQuiet = true;
+    window.__ahPlaytest = true;
     keepChatFirst(false);
     e.preventDefault();
     e.stopPropagation();

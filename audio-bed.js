@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-0314";
+  window.__ahAudioBed = "t3-0516";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -186,6 +186,7 @@
     var raw = input ? String(input.value || "").trim() : "";
     if (OWNER_PROBE.test(raw)) {
       window.__ahOwnerQuiet = true;
+      window.__ahPlaytest = true;
       if (window.__ahHideChoices) window.__ahHideChoices();
       e.preventDefault();
       e.stopPropagation();

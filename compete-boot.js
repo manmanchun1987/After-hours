@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0314";
+  window.__ahCompeteBoot = "t3-0516";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -96,19 +96,22 @@
   }
   function liveGate() {
     window.__ahLiveGate = "full-app-no-b64";
-    var nodes = document.querySelectorAll("script[src]");
-    for (var i = 0; i < nodes.length; i++) {
+    var nodes = document.querySelectorAll("script");
+    for (var i = nodes.length - 1; i >= 0; i--) {
       var src = nodes[i].getAttribute("src") || "";
-      if (/app_b64|app\.b64/i.test(src)) nodes[i].parentNode.removeChild(nodes[i]);
+      var txt = nodes[i].textContent || "";
+      if (/app_b64|app\.b64/i.test(src) || /app_b64|__ahAppB64/.test(txt)) {
+        if (nodes[i].parentNode) nodes[i].parentNode.removeChild(nodes[i]);
+      }
     }
   }
   function ensureFreshGuide() {
     liveGate();
-    if (window.__ahChatGuide === "t3-0314") return;
-    if (document.getElementById("chat-guide-t3-0314")) return;
+    if (window.__ahChatGuide === "t3-0516") return;
+    if (document.getElementById("chat-guide-t3-0516")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0314";
-    s.src = "./chat-guide.js?v=t3-0314";
+    s.id = "chat-guide-t3-0516";
+    s.src = "./chat-guide.js?v=t3-0516";
     document.body.appendChild(s);
   }
   function bootStart(id, fresh) {
