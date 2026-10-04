@@ -1,10 +1,10 @@
 # 而家進度
 
-最後更新：2026-10-05 02:07 HKT · STORY breath
-STORY 02:07：只改 data/alex.json、data/morgan.json、data/sam.json。每個 node.text 一個 breath：點嚟到＋而家要咩＋一句問到尾。intent ack＝下一拍開頭，唔再空殼「你應咗」。好／係／繼續 釘喺 heat，唔做 yes-only pool。start 保留。結局未刪。未碰 app.js／index／guide／patterns。禁 app_b64／禁 Imagine。
+最後更新：2026-10-05 03:14 HKT · CODE #48
+CODE 03:14：只改 chat-guide.js、compete-boot.js、audio-bed.js、fx-play.js。推進後 #choices 保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔。好／係／得仍 map heat，唔入 key pool。OWNER／playtest 唔計 miss、唔推進、唔鎖死。compete-boot 注入 chat-guide.js?v=t3-0314，剝 app_b64。未碰 app.js／index。禁 Imagine。FEEL 仍 2，等硬刷。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
-Live：index 掛齊 parts（app.js 119953B 完整引擎，唔係 b64 stub）。禁 app_b64 stub／禁 CDN pin／禁 Imagine
-CHAT-FIRST：好／係／繼續 入 heat；ack＝下一拍。n7/m7/s7 入 n8/m8/s8，再入結局。start 保留。
-開住：#48 CODE hide（t3-0716 已推，等硬刷）；#47 STORY breath 已落 data；GUIDE T3；INTENT T2；INTENT T5。
+Live：index 掛齊 parts（app.js 完整引擎，唔係 b64 stub）。禁 app_b64 stub／禁 CDN pin／禁 Imagine
+CHAT-FIRST：好／係／得 入 heat；推進後擔繼續收埋；兩次唔接先出。
+開住：#48 CODE hide（t3-0314 已推，等硬刷）；#47 STORY breath 已落 data；GUIDE T3；INTENT T2；INTENT T5。
 FEEL 仍 2。

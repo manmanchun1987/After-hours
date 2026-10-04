@@ -1,5 +1,5 @@
 (function () {
-  window.__ahAudioBed = "t3-0716";
+  window.__ahAudioBed = "t3-0314";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
@@ -95,11 +95,6 @@
     var p = a.play();
     if (p && p.catch) p.catch(function () {});
   }
-  function quietOwner() {
-    window.__ahOwnerQuiet = true;
-    window.__ahPlaytest = true;
-    if (window.__ahHideChoices) window.__ahHideChoices();
-  }
   function ownerPlay() {
     return !!(window.__ahOwnerQuiet || window.__ahPlaytest);
   }
@@ -190,8 +185,10 @@
     var input = document.getElementById("chat-input");
     var raw = input ? String(input.value || "").trim() : "";
     if (OWNER_PROBE.test(raw)) {
-      quietOwner();
-      if (window.__ahForceHide) window.__ahForceHide();
+      window.__ahOwnerQuiet = true;
+      if (window.__ahHideChoices) window.__ahHideChoices();
+      e.preventDefault();
+      e.stopPropagation();
       return;
     }
     if (ownerPlay()) return;

@@ -1,7 +1,8 @@
 (function () {
-  window.__ahFxPlay = "t3-0716";
+  window.__ahFxPlay = "t3-0314";
   var wrapped = false;
   var lastNode = "";
+  var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   function layer() {
     var el = document.getElementById("fx-layer");
     if (el) return el;
@@ -108,7 +109,7 @@
       document.body.classList.remove("show-choices");
     };
     window.renderNode.__ahNeverReveal = true;
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0716) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0314) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
@@ -116,9 +117,9 @@
         keepChatFirst(!!ok);
         return ok;
       };
-      window.applyFreeChatAdvance.__ahFx0716 = true;
+      window.applyFreeChatAdvance.__ahFx0314 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0716) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0314) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -126,7 +127,7 @@
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut0716 = true;
+      window.goToNode.__ahCut0314 = true;
     }
   }
   document.addEventListener("click", function (e) {
@@ -139,6 +140,14 @@
     hookEngine();
     setScene();
     if (btn.classList.contains("btn-choice")) keepChatFirst(true);
+  }, true);
+  document.addEventListener("submit", function (e) {
+    var input = document.getElementById("chat-input");
+    var raw = input ? String(input.value || "").trim() : "";
+    if (!OWNER_PROBE.test(raw)) return;
+    keepChatFirst(false);
+    e.preventDefault();
+    e.stopPropagation();
   }, true);
   var n = 0;
   var t = setInterval(function () {
