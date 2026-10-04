@@ -57,7 +57,7 @@
           "flirt": "你近咗桌邊。我未催。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -172,7 +172,7 @@
           "flirt": "你近咗桌邊。我未催。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -299,10 +299,11 @@
           "enter": "你入咗呢步。位仲留。",
           "enter_door": "你行入嚟。燈未關。",
           "wait": "你停低。我未趕你，位仲喺度。",
-          "challenge": "你頂咗一句。我聽到。"
+          "challenge": "你頂咗一句。我聽到。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -426,7 +427,7 @@
           "wait": "你停低。我未趕你，位仲喺度。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -549,10 +550,11 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
-          "challenge": "你頂咗一句。我聽到。"
+          "challenge": "你頂咗一句。我聽到。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -681,7 +683,7 @@
           "challenge": "你頂咗一句。我聽到。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -752,6 +754,22 @@
           "replies": [
             "你停低。我未趕你，位仲喺度。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "近啲",
+          "next": "n4b",
+          "heat": 4,
+          "ack": "你近咗桌邊。我未催。",
+          "intentId": "flirt",
+          "replies": [
+            "你近咗桌邊。我未催。"
+          ],
+          "keys": [
+            "近啲",
+            "望住我",
+            "留低"
+          ]
         }
       ]
     },
@@ -800,10 +818,11 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
-          "challenge": "你頂咗一句。我聽到。"
+          "challenge": "你頂咗一句。我聽到。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -916,10 +935,11 @@
           "agree": "你應咗。抽身邊緣跟住落筆。",
           "wait": "你停低。我未趕你，位仲喺度。",
           "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。"
+          "enter": "你入咗呢步。位仲留。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1042,10 +1062,11 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "refuse": "你收住。門我未鎖。",
           "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。"
+          "enter": "你入咗呢步。位仲留。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1163,7 +1184,7 @@
           "flirt": "你近咗桌邊。我未催。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1234,6 +1255,22 @@
           "replies": [
             "你停低。我未趕你，位仲喺度。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "近啲",
+          "next": "n5",
+          "heat": 4,
+          "ack": "你近咗桌邊。我未催。",
+          "intentId": "flirt",
+          "replies": [
+            "你近咗桌邊。我未催。"
+          ],
+          "keys": [
+            "近啲",
+            "望住我",
+            "留低"
+          ]
         }
       ]
     },
@@ -1293,7 +1330,7 @@
           "challenge": "你頂咗一句。我聽到。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1364,6 +1401,22 @@
           "replies": [
             "你停低。我未趕你，位仲喺度。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "近啲",
+          "next": "n6a",
+          "heat": 4,
+          "ack": "你近咗桌邊。我未催。",
+          "intentId": "flirt",
+          "replies": [
+            "你近咗桌邊。我未催。"
+          ],
+          "keys": [
+            "近啲",
+            "望住我",
+            "留低"
+          ]
         }
       ]
     },
@@ -1406,10 +1459,11 @@
           "agree": "你應咗。交出控制跟住落筆。",
           "wait": "你停低。我未趕你，位仲喺度。",
           "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。"
+          "enter": "你入咗呢步。位仲留。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1527,10 +1581,11 @@
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
           "wait": "你停低。我未趕你，位仲喺度。",
-          "challenge": "你頂咗一句。我聽到。"
+          "challenge": "你頂咗一句。我聽到。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1652,10 +1707,11 @@
           "refuse": "你收住。門我未鎖。",
           "wait": "你停低。我未趕你，位仲喺度。",
           "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。"
+          "enter": "你入咗呢步。位仲留。",
+          "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
+      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
