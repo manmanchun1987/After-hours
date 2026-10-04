@@ -46,11 +46,11 @@
           "memory",
           "challenge"
         ],
-        "ask": "推門入嚟，定停低講清楚？",
         "maxMisses": 3,
-        "guideLevel": 0
+        "guideLevel": 0,
+        "ask": "推門入嚟，定停低講清楚？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n2a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -140,11 +140,11 @@
           "challenge",
           "memory"
         ],
-        "ask": "坐低聽。你聽緊係一行？",
         "maxMisses": 3,
-        "guideLevel": 0
+        "guideLevel": 0,
+        "ask": "坐低聽。你聽緊係一行？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -243,11 +243,11 @@
           "memory",
           "challenge"
         ],
-        "ask": "你要清楚？過嚟。",
         "maxMisses": 3,
-        "guideLevel": 1
+        "guideLevel": 1,
+        "ask": "你要清楚？過嚟。"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3c",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -335,11 +335,11 @@
           "challenge",
           "memory"
         ],
-        "ask": "你轉身，定專心改？",
         "maxMisses": 3,
-        "guideLevel": 1
+        "guideLevel": 1,
+        "ask": "你轉身，定專心改？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n3b",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -438,7 +438,7 @@
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -541,7 +541,7 @@
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4b",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -638,7 +638,7 @@
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n4b",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -730,7 +730,7 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_c",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -831,7 +831,7 @@
         "guideLevel": 1,
         "ask": "你留低，定轉身？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n5",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -924,7 +924,7 @@
         "guideLevel": 1,
         "ask": "你繼續，定停低？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n5",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -1028,7 +1028,7 @@
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->n6a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -1120,7 +1120,7 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -1216,7 +1216,7 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_b",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -1316,7 +1316,7 @@
         "guideLevel": 1,
         "ask": "你留低，定走？"
       },
-      "stub": "hourly C 07:03: no yes-pool; enter/wait ack->ending_a",
+      "stub": "hourly C 08:04: enter/wait on goal; stripped yes-only",
       "intents": [
         {
           "bucket": "leave",
@@ -1380,7 +1380,16 @@
       "endingTitle": "越界・規則内",
       "text": "你們越界，但有明確界線：唔嗚公司群組留痕。天亮前，Vera 幫你整理衣領，恢復成上司聲線： 「簡報。一小時內。其他——當冇發生。」 （預告：下週「評核室」隱藏線即將登場。）",
       "thought": "其他——當冇發生。",
-      "aside": "天亮前，衣領被整理返原位。"
+      "aside": "天亮前，衣領被整理返原位。",
+      "stub": "hourly C 08:04: ending, no self-loop",
+      "sceneGoal": {
+        "successIntents": [],
+        "optionalIntents": [],
+        "maxMisses": 0,
+        "guideLevel": 0,
+        "ask": "",
+        "closed": true
+      }
     },
     "ending_b": {
       "id": "ending_b",
@@ -1390,7 +1399,16 @@
       "endingTitle": "越界・對等一晚",
       "text": "控制權來回拉扯，最後兩邊都有點狼狽。Vera 少見噉笑： 「你呢晚表現……離職信我都可能批。」 關係變成秘密同盟式暗昧，而唔係單向支配。",
       "thought": "對等一晚。夠未？",
-      "aside": "兩個人都有啲狼狽。誰都唔提。"
+      "aside": "兩個人都有啲狼狽。誰都唔提。",
+      "stub": "hourly C 08:04: ending, no self-loop",
+      "sceneGoal": {
+        "successIntents": [],
+        "optionalIntents": [],
+        "maxMisses": 0,
+        "guideLevel": 0,
+        "ask": "",
+        "closed": true
+      }
     },
     "ending_c": {
       "id": "ending_c",
@@ -1400,7 +1418,16 @@
       "endingTitle": "抽身",
       "text": "你離開會議室。走廊冷光好長。電話震：Vera「檔案我等。」無其他字。 評核仍嚴——但有一條未解扣。 （預告：週一續。）",
       "thought": "走廊好長。檔案我等。",
-      "aside": "電話震一下。三個字：檔案我等。"
+      "aside": "電話震一下。三個字：檔案我等。",
+      "stub": "hourly C 08:04: ending, no self-loop",
+      "sceneGoal": {
+        "successIntents": [],
+        "optionalIntents": [],
+        "maxMisses": 0,
+        "guideLevel": 0,
+        "ask": "",
+        "closed": true
+      }
     }
   },
   "memoryLabels": {
