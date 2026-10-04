@@ -1,1 +1,1354 @@
-{"id":"sam","name":"Sammi","title":"肝夜前輩","hook":"火點未關。你都未走。","start":"s1","portrait":"./assets/stills/vera-01.jpg","chatName":"Sammi","nodes":{"s1":{"id":"s1","label":"茶水間 00:12","scene":"pantry","text":"你行到半掩門前，我低聲抽煙，聽到你未入。我而家要你入定停，唔好企外邊一晚。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」","thought":"佢唔催。佢等。","aside":"監控紅點慢閃。","freeChat":true,"choices":[{"label":"推門","next":"s2"},{"label":"（停一秒）","next":"s2","tension":1}],"intents":[{"bucket":"leave","say":"推門","next":"s2","ack":"你入咗茶水間。呢步算你行。","keys":["推門","開門","入去","入嚟","進去","進入","我入去先","開門啦","進去看看","行入去"],"intentId":"enter_door","replies":["你入咗茶水間。呢步算你行。"]},{"bucket":"tired","say":"停低","next":"s2","tension":2,"ack":"你停低。燈仲亮，我未趕你。","keys":["停低","等等","停一停","我未準備好","企住","未準備好","企住先"],"intentId":"wait","replies":["你停低。燈仲亮，我未趕你。"]},{"bucket":"leave","say":"入去","next":"s2","ack":"你入咗茶水間。呢步算你行。","keys":["推門","開門","入去","入嚟","進去","進入","我入去先","開門啦","進去看看","行入去"],"intentId":"enter_door","replies":["你入咗茶水間。呢步算你行。"]},{"bucket":"heat","say":"應場","next":"s2","ack":"你應咗場。跟住呢步，唔使打齊原文。","keys":["推門","停一秒","照你講","而家做","我應","跟你","應場"],"intentId":"agree","replies":["你應咗場。跟住呢步，唔使打齊原文。"]}],"sceneGoal":{"successIntents":["enter_door","enter","wait","agree","flirt"],"optionalIntents":["ask_want","refuse","flirt","ask_memory","apologize","off_topic","unclear","memory","challenge"],"maxMisses":3,"guideLevel":0,"ask":"燈仲亮。你推門入嚟，定仲企外邊一晚？","replies":{"enter_door":"你入咗茶水間。呢步算你行。","enter":"你入咗茶水間。呢步算你行。","wait":"你停低。燈仲亮，我未趕你。","agree":"你應咗場。跟住呢步，唔使打齊原文。","flirt":"你近咗少少。呢步算，唔使背原文。"}},"stub":"hourly C 05:03: beat replies; intentId filled; no yes-pool"},"s9":{"id":"s9","label":"杯再斛","scene":"pantry","ending":true,"endingTitle":"杯再斛","text":"你講完，火我睇住。我而家要你聽日再過嚟。\n\n「聽日茶水間，杯我再斛，你嚟定唔嚟？」","thought":"前輩未趕你。","aside":"煙灰涼咗。","freeChat":false,"choices":[],"intents":[],"stub":"hourly C 02:07: breath text; ack=next first half; chat 好/係/繼續","sceneGoal":{"successIntents":[],"optionalIntents":[],"maxMisses":0,"guideLevel":0,"ask":"聽日茶水間，杯我再斛，你嚟定唔嚟？","closed":true}}}}
+{
+  "id": "sam",
+  "name": "Sammi",
+  "title": "肝夜前輩",
+  "hook": "火點未關。你都未走。",
+  "start": "s1",
+  "portrait": "./assets/stills/vera-01.jpg",
+  "chatName": "Sammi",
+  "nodes": {
+    "s1": {
+      "id": "s1",
+      "label": "茶水間 00:12",
+      "scene": "pantry",
+      "text": "你行到半掩門前，我低聲抽煙，聽到你未入。我而家要你入定停，唔好企外邊一晚。\n\n「燈仲亮。你推門入嚟，定仲企外邊一晚？」",
+      "thought": "佢唔催。佢等。",
+      "aside": "監控紅點慢閃。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "推門",
+          "next": "s2"
+        },
+        {
+          "label": "（停一秒）",
+          "next": "s2",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "推門",
+          "next": "s2",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s2",
+          "tension": 2,
+          "ack": "你停低。燈仲亮，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住",
+            "未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。燈仲亮，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s2",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s2",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "推門",
+            "停一秒",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "燈仲亮。你推門入嚟，定仲企外邊一晚？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。燈仲亮，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s2": {
+      "id": "s2",
+      "label": "茶水間內",
+      "scene": "pantry",
+      "remember": [
+        "pantry_in"
+      ],
+      "text": "門縫熱，你入咗嚟，我將熱水推過嚟。我而家要你坐定企。\n\n「坐低飲杯，定仲企住講？」",
+      "thought": "煙味混住粉味。",
+      "aside": "壺仲滴水。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "坐低",
+          "next": "s3"
+        },
+        {
+          "label": "（企住）",
+          "next": "s3",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "坐低",
+          "next": "s3",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "坐低",
+            "入咗",
+            "入去",
+            "開門啦",
+            "我入去先",
+            "進去看看",
+            "開門",
+            "進去",
+            "行入去"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "企住",
+          "next": "s3",
+          "tension": 1,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "企住",
+            "停低",
+            "等等",
+            "未準備好",
+            "停一停",
+            "我未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s3",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "坐低"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s3",
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "tension": 2,
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s3",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "坐低",
+            "企住",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "坐低飲杯，定仲企住講？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s3": {
+      "id": "s3",
+      "label": "呢杯",
+      "scene": "pantry",
+      "text": "杯推到你手。我而家要你飲呢杯，唔好企住講完就走。\n\n「你飲呢杯未？」",
+      "thought": "佢聲細，唔迫。",
+      "aside": "熱氣貼住杯沿。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "飲一口",
+          "next": "s4"
+        },
+        {
+          "label": "（握住，未飲）",
+          "next": "s4",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s4",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "飲一口"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "飲",
+          "next": "s4",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲",
+            "飲呢杯",
+            "飲完",
+            "我飲"
+          ],
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
+        },
+        {
+          "bucket": "tired",
+          "say": "未飲",
+          "next": "s4",
+          "tension": 1,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "未飲",
+            "停低",
+            "等等",
+            "未準備好",
+            "停一停",
+            "我未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s4",
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "tension": 2,
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s4",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲一口",
+            "握住，未飲",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你飲呢杯未？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s4": {
+      "id": "s4",
+      "label": "留定走",
+      "scene": "pantry",
+      "remember": [
+        "cup_taken"
+      ],
+      "text": "煙燃到半。我而家要你講留定走，唔催你關燈。\n\n「你留低傾，定而家走？」",
+      "thought": "佢聲仲細。",
+      "aside": "煙尾跌喺盆沿。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「留。」",
+          "next": "s5"
+        },
+        {
+          "label": "「我走先。」",
+          "next": "s5b",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s5",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "留。"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "留",
+          "next": "s5",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "留",
+            "留低"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "走",
+          "next": "s5b",
+          "tension": 1,
+          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "keys": [
+            "走",
+            "而家走",
+            "走先",
+            "我走",
+            "唔入",
+            "閃"
+          ],
+          "intentId": "refuse",
+          "replies": [
+            "你收住。呢步我聽到，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s5b",
+          "tension": 2,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s5",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "留。",
+            "我走先。",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "唔做",
+          "next": "s5b",
+          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "keys": [
+            "唔做",
+            "我唔",
+            "走先",
+            "唔留",
+            "唔入",
+            "閃"
+          ],
+          "intentId": "refuse",
+          "replies": [
+            "你收住。呢步我聽到，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "refuse",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge",
+          "refuse"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留低傾，定而家走？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s5": {
+      "id": "s5",
+      "label": "留嚟飲定聽",
+      "scene": "pantry",
+      "remember": [
+        "stayed"
+      ],
+      "text": "煙未完。我而家要你講留嚟飲定聽。\n\n「你留嚟飲完，定留嚟聽我講？」",
+      "thought": "佢聲仲細。",
+      "aside": "熱氣貼住杯沿。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「飲完。」",
+          "next": "s6"
+        },
+        {
+          "label": "「聽你講。」",
+          "next": "s6",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s6",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "飲完。"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "飲完",
+          "next": "s6",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲完",
+            "我飲"
+          ],
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
+        },
+        {
+          "bucket": "heat",
+          "say": "聽你講",
+          "next": "s6",
+          "tension": 1,
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "聽你講",
+            "留低"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s6",
+          "tension": 2,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s6",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲完。",
+            "聽你講。",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留嚟飲完，定留嚟聽我講？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s5b": {
+      "id": "s5b",
+      "label": "走之前",
+      "scene": "pantry",
+      "remember": [
+        "named_leave"
+      ],
+      "text": "你話走，門縫仲熱。我而家要你走前講一句。\n\n「走之前，杯你飲完未？」",
+      "thought": "佢未熄煙。",
+      "aside": "壺仲滴水。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「飲完先走。」",
+          "next": "s6"
+        },
+        {
+          "label": "「未飲完。」",
+          "next": "s5",
+          "tension": 1
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s6",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "飲完先走。"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "飲完",
+          "next": "s6",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲完",
+            "我飲"
+          ],
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
+        },
+        {
+          "bucket": "tired",
+          "say": "未飲完",
+          "next": "s5",
+          "tension": 1,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "未飲完",
+            "停低",
+            "未準備好",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s5",
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "tension": 2,
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s6",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲完先走。",
+            "未飲完。",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "唔做",
+          "next": "s5",
+          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "keys": [
+            "唔做",
+            "我唔",
+            "走先",
+            "唔留",
+            "唔入",
+            "閃"
+          ],
+          "intentId": "refuse",
+          "replies": [
+            "你收住。呢步我聽到，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "refuse",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "flirt",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge",
+          "refuse"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 1,
+        "ask": "走之前，杯你飲完未？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s6": {
+      "id": "s6",
+      "label": "再留一句",
+      "scene": "pantry",
+      "text": "煙尾未跌。我而家要你再留一句，先至關燈。\n\n「你聽我講，定而家飲完？」",
+      "thought": "佢聲仲細。",
+      "aside": "煙尾停喺盆沿。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「聽你講。」",
+          "next": "s7"
+        },
+        {
+          "label": "「飲完。」",
+          "next": "s7"
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s7",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "聽你講。"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "聽你講",
+          "next": "s7",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "聽你講",
+            "留低"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "飲完",
+          "next": "s7",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "飲完",
+            "我飲"
+          ],
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s7",
+          "tension": 2,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s7",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "聽你講。",
+            "飲完。",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你聽我講，定而家飲完？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s7": {
+      "id": "s7",
+      "label": "火滅",
+      "scene": "pantry",
+      "text": "煙尾跌咗。我而家要你講留到火滅定幫我熄。\n\n「你留到火滅，定而家幫我熄？」",
+      "thought": "佢未搶你杯。",
+      "aside": "火頭只佢一粒。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "「留到火滅。」",
+          "next": "s8"
+        },
+        {
+          "label": "「我幫你熄。」",
+          "next": "s8"
+        }
+      ],
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s8",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "推門",
+            "行入去",
+            "留到火滅。"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "留到火滅",
+          "next": "s8",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "留到火滅",
+            "留"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "幫你熄",
+          "next": "s8",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "幫你熄",
+            "熄"
+          ],
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s8",
+          "tension": 2,
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s8",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "留到火滅。",
+            "我幫你熄。",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你留到火滅，定而家幫我熄？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+    },
+    "s8": {
+      "id": "s8",
+      "label": "火滅",
+      "scene": "pantry",
+      "text": "你應完，煙尾跌咗。我而家要你講熄定留到火滅。\n\n「你幫我熄，定留低？」",
+      "thought": "佢聲好細。",
+      "aside": "茶水間只剩水滾聲。",
+      "freeChat": true,
+      "choices": [
+        {
+          "label": "熄",
+          "next": "s9"
+        },
+        {
+          "label": "留低",
+          "next": "s9"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "refuse",
+          "ask_memory",
+          "apologize",
+          "off_topic",
+          "unclear",
+          "memory",
+          "challenge"
+        ],
+        "maxMisses": 3,
+        "guideLevel": 0,
+        "ask": "你幫我熄，定留低？",
+        "replies": {
+          "enter_door": "你入咗茶水間。呢步算你行。",
+          "enter": "你入咗茶水間。呢步算你行。",
+          "wait": "你停低。杯未涼，我未趕你。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
+        }
+      },
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
+      "intents": [
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s9",
+          "ack": "你入咗茶水間。呢步算你行。",
+          "keys": [
+            "推門",
+            "開門",
+            "入去",
+            "入嚟",
+            "進去",
+            "進入",
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "熄"
+          ],
+          "intentId": "enter_door",
+          "replies": [
+            "你入咗茶水間。呢步算你行。"
+          ]
+        },
+        {
+          "bucket": "tired",
+          "say": "停低",
+          "next": "s9",
+          "ack": "你停低。杯未涼，我未趕你。",
+          "keys": [
+            "停低",
+            "等等",
+            "停一停",
+            "我未準備好",
+            "未準備好",
+            "企住先"
+          ],
+          "tension": 2,
+          "intentId": "wait",
+          "replies": [
+            "你停低。杯未涼，我未趕你。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "應場",
+          "next": "s9",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "keys": [
+            "熄",
+            "留低",
+            "照你講",
+            "而家做",
+            "我應",
+            "跟你",
+            "應場"
+          ],
+          "intentId": "agree",
+          "replies": [
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ]
+        }
+      ]
+    },
+    "s9": {
+      "id": "s9",
+      "label": "杯再斟",
+      "scene": "pantry",
+      "ending": true,
+      "endingTitle": "杯再斟",
+      "text": "你講完，火我睇住。我而家要你聽日再過嚟。\n\n「聽日茶水間，杯我再斟，你嚟定唔嚟？」",
+      "thought": "前輩未趕你。",
+      "aside": "煙灰涼咗。",
+      "freeChat": false,
+      "choices": [],
+      "intents": [],
+      "stub": "hourly C 02:07: breath text; ack=next first half; chat 好/係/繼續",
+      "sceneGoal": {
+        "successIntents": [],
+        "optionalIntents": [],
+        "maxMisses": 0,
+        "guideLevel": 0,
+        "ask": "聽日茶水間，杯我再斟，你嚟定唔嚟？",
+        "closed": true
+      }
+    }
+  }
+}
