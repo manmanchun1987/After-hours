@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-0716";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0617>t3-1003>t3-0616>t3-1004>t3-1005>t3-0716";
+  window.__ahChatGuide = "t3-0314";
+  window.__ahChatGuideChain = "t3-0716>t3-0314";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var MISS_NEED = 2;
@@ -60,10 +60,11 @@
   }
   function clearOwner() {
     window.__ahOwnerQuiet = false;
+    window.__ahPlaytest = false;
     if (typeof state !== "undefined") state.ownerProbe = false;
   }
   function choicesAllowed() {
-    return !window.__ahOwnerQuiet && !window.__ahPlaytest && misses >= MISS_NEED && Date.now() >= lockUntil;
+    return !window.__ahOwnerQuiet && misses >= MISS_NEED && Date.now() >= lockUntil;
   }
   function hideChoices() {
     document.body.classList.remove("show-choices");
@@ -106,7 +107,7 @@
     forceHideAfterAdvance();
   }
   function bumpMiss() {
-    if (window.__ahOwnerQuiet || window.__ahPlaytest) return;
+    if (window.__ahOwnerQuiet) return;
     misses += 1;
     window.__ahMisses = misses;
     if (typeof state !== "undefined") state.guideMissCount = Math.max(state.guideMissCount || 0, misses);
@@ -144,7 +145,7 @@
   }
   function hookTyped() {
     ["typeText", "typeNode", "finishTyping", "onTypedDone"].forEach(function (name) {
-      if (typeof window[name] !== "function" || window[name].__guided0716) return;
+      if (typeof window[name] !== "function" || window[name].__guided0314) return;
       var fn = window[name];
       window[name] = function () {
         var r = fn.apply(this, arguments);
@@ -152,12 +153,12 @@
         return r;
       };
       window[name].__guidedHide = true;
-      window[name].__guided0716 = true;
+      window[name].__guided0314 = true;
     });
   }
   function wrap() {
     hookTyped();
-    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided0716) {
+    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided0314) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var raw = String(userText || "").trim();
@@ -222,9 +223,9 @@
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
-      window.matchFreeChatIntent.__guided0716 = true;
+      window.matchFreeChatIntent.__guided0314 = true;
     }
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided0716) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided0314) {
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
@@ -233,9 +234,9 @@
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
-      window.applyFreeChatAdvance.__guided0716 = true;
+      window.applyFreeChatAdvance.__guided0314 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__guided0716) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__guided0314) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -243,9 +244,9 @@
         return r;
       };
       window.goToNode.__guidedHide = true;
-      window.goToNode.__guided0716 = true;
+      window.goToNode.__guided0314 = true;
     }
-    if (typeof window.pickReply === "function" && !window.pickReply.__guided0716) {
+    if (typeof window.pickReply === "function" && !window.pickReply.__guided0314) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
         if (OWNER_PROBE.test(String(userText || "").trim())) {
@@ -267,9 +268,9 @@
         return "你講「" + clip(userText) + "」。我要聽嘅係" + ask + "。";
       };
       window.pickReply.__guided = true;
-      window.pickReply.__guided0716 = true;
+      window.pickReply.__guided0314 = true;
     }
-    if (typeof window.renderNode === "function" && !window.renderNode.__guided0716) {
+    if (typeof window.renderNode === "function" && !window.renderNode.__guided0314) {
       var rn = window.renderNode;
       window.renderNode = function () {
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
@@ -285,9 +286,9 @@
       };
       window.renderNode.__guided = true;
       window.renderNode.__ahNeverReveal = true;
-      window.renderNode.__guided0716 = true;
+      window.renderNode.__guided0314 = true;
     }
-    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided0716) {
+    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided0314) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
         if (window.__ahOwnerQuiet || OWNER_PROBE.test(String(reason || ""))) {
@@ -301,7 +302,7 @@
         return !!(ok2 && choicesAllowed());
       };
       window.unlockFreeChatChoices.__guided = true;
-      window.unlockFreeChatChoices.__guided0716 = true;
+      window.unlockFreeChatChoices.__guided0314 = true;
     }
     if (typeof state !== "undefined" && state.story) stampChat(state.story);
   }
@@ -312,7 +313,19 @@
     var p = poles(n);
     input.placeholder = p.length ? "答佢：「" + p.join("」／「") + "」" : "對佢講…";
   }
-  document.addEventListener("submit", function () { setTimeout(hint, 80); }, true);
+  document.addEventListener("submit", function (e) {
+    var input = document.getElementById("chat-input");
+    var raw = input ? String(input.value || "").trim() : "";
+    if (OWNER_PROBE.test(raw)) {
+      markOwner();
+      hideChoices();
+      if (e && e.preventDefault) e.preventDefault();
+      if (e && e.stopPropagation) e.stopPropagation();
+      setTimeout(clearOwner, 500);
+      return;
+    }
+    setTimeout(hint, 80);
+  }, true);
   if (!window.__ahChoicesWatch) {
     window.__ahChoicesWatch = true;
     var mo = new MutationObserver(function () { if (!choicesAllowed()) hideChoices(); });

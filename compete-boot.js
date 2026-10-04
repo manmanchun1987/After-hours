@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0716";
+  window.__ahCompeteBoot = "t3-0314";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -104,11 +104,11 @@
   }
   function ensureFreshGuide() {
     liveGate();
-    if (window.__ahChatGuide === "t3-0716") return;
-    if (document.getElementById("chat-guide-t3-0716")) return;
+    if (window.__ahChatGuide === "t3-0314") return;
+    if (document.getElementById("chat-guide-t3-0314")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0716";
-    s.src = "./chat-guide.js?v=t3-0716";
+    s.id = "chat-guide-t3-0314";
+    s.src = "./chat-guide.js?v=t3-0314";
     document.body.appendChild(s);
   }
   function bootStart(id, fresh) {
