@@ -50,18 +50,20 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "我可以而家改。",
           "next": "n2a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "我可以而家改。",
             "推門",
@@ -77,15 +79,14 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "tired",
           "say": "邊部分未夠？講清楚。",
           "next": "n2b",
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "tension": 1,
           "keys": [
             "邊部分未夠？講清楚。",
@@ -99,15 +100,14 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         },
         {
           "bucket": "heat",
           "say": "（站近啲，聲細）「你係唔係特登留到而",
           "next": "n2c",
-          "ack": "你應咗場。跟住呢步。",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "（站近啲，聲細）「你係唔係特登留到而",
             "再近",
@@ -116,8 +116,7 @@
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步。",
-            "收到。唔使打齊原文。"
+            "你應咗場。跟住呢步，唔使打齊原文。"
           ]
         }
       ]
@@ -166,18 +165,20 @@
         "guideLevel": 0,
         "ask": "坐低聽。你聽緊係一行？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n3a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -191,15 +192,14 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "……係，我聽緊。",
           "next": "n3a",
-          "ack": "……係，我聽緊。。我收到，未當你打齊原文。\n\n「坐低聽。你聽緊係一行？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "……係，我聽緊。",
             "聽緊",
@@ -207,14 +207,15 @@
             "聽人"
           ],
           "replies": [
-            "……係，我聽緊。。我收到，未當你打齊原文。\n\n「坐低聽。你聽緊係一行？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "heat",
           "say": "（捉住筆，對視）「你咁近，我改唔到字",
           "next": "n3b",
-          "ack": "你應咗場。跟住呢步。",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "（捉住筆，對視）「你咁近，我改唔到字",
             "再近",
@@ -223,15 +224,14 @@
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步。",
-            "收到。唔使打齊原文。"
+            "你應咗場。跟住呢步，唔使打齊原文。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n3a",
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "tension": 1,
           "keys": [
             "停低",
@@ -244,8 +244,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -295,18 +294,19 @@
         "guideLevel": 1,
         "ask": "你要清楚？過嚟。",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n3c",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -320,15 +320,14 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "（行過去）",
           "next": "n3c",
-          "ack": "（行過去）。我收到，未當你打齊原文。\n\n「你要清楚？過嚟。」",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "（行過去）",
             "行過去",
@@ -336,14 +335,15 @@
             "行埋去"
           ],
           "replies": [
-            "（行過去）。我收到，未當你打齊原文。\n\n「你要清楚？過嚟。」"
-          ]
+            "你行咗呢步。唔使打齊原文。"
+          ],
+          "intentId": "enter_door"
         },
         {
           "bucket": "tired",
           "say": "（留嗚位）「……你講，我聽。",
           "next": "n3a",
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "tension": 1,
           "keys": [
             "（留嗚位）「……你講，我聽。",
@@ -357,8 +357,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -407,18 +406,20 @@
         "guideLevel": 1,
         "ask": "你轉身，定專心改？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "flirt": "你近咗少少。呢步算，唔使背原文。",
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n3b",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -432,15 +433,14 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "heat",
           "say": "（轉身，距離更近）",
           "next": "n3b",
-          "ack": "你應咗場。跟住呢步。",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "（轉身，距離更近）",
             "再近",
@@ -449,15 +449,14 @@
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步。",
-            "收到。唔使打齊原文。"
+            "你應咗場。跟住呢步，唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "……我專心改。",
           "next": "n3a",
-          "ack": "……我專心改。。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "……我專心改。",
             "我改",
@@ -465,14 +464,15 @@
             "而家改"
           ],
           "replies": [
-            "……我專心改。。我收到，未當你打齊原文。\n\n「你轉身，定專心改？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n3b",
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "tension": 1,
           "keys": [
             "停低",
@@ -485,8 +485,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -532,18 +531,19 @@
         "guideLevel": 0,
         "ask": "手震係驚交唔到，定停低先？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n4a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -557,42 +557,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n4a",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「手震係驚交唔到，定停低先？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「手震係驚交唔到，定停低先？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4a",
-          "ack": "手震係驚交唔到，定停低先？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "手震係驚交唔到，定停低先？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4b",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -605,8 +606,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -658,18 +658,20 @@
         "guideLevel": 1,
         "ask": "你留低講清楚，定停低？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n4b",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -683,42 +685,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n4b",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低講清楚，定停低？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你留低講清楚，定停低？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4b",
-          "ack": "你留低講清楚，定停低？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你留低講清楚，定停低？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4c",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -731,8 +734,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -778,18 +780,19 @@
         "guideLevel": 1,
         "ask": "你要清楚簡報，定清楚我想點？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n4b",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -803,42 +806,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n4b",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你要清楚簡報，定清楚我想點？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你要清楚簡報，定清楚我想點？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n4b",
-          "ack": "你要清楚簡報，定清楚我想點？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你要清楚簡報，定清楚我想點？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n4a",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -851,8 +855,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -893,18 +896,19 @@
         "guideLevel": 0,
         "ask": "你收檔離開，定停低再講？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "ending_c",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -918,42 +922,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "ending_c",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你收檔離開，定停低再講？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你收檔離開，定停低再講？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_c",
-          "ack": "你收檔離開，定停低再講？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你收檔離開，定停低再講？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -966,8 +971,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1017,18 +1021,20 @@
         "guideLevel": 1,
         "ask": "你留低，定轉身？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n5",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1042,42 +1048,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n5",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低，定轉身？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你留低，定轉身？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n5",
-          "ack": "你留低，定轉身？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你留低，定轉身？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1090,8 +1097,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1133,18 +1139,20 @@
         "guideLevel": 1,
         "ask": "你繼續，定停低？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n5",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1158,42 +1166,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n5",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你繼續，定停低？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你繼續，定停低？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n5",
-          "ack": "你繼續，定停低？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你繼續，定停低？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n5",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1206,8 +1215,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1260,18 +1268,20 @@
         "guideLevel": 1,
         "ask": "你親口講想要邊樣，定停低？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "flirt": "你近咗少少。呢步算，唔使背原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "n6a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1285,42 +1295,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "n6a",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你親口講想要邊樣，定停低？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你親口講想要邊樣，定停低？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "n6a",
-          "ack": "你親口講想要邊樣，定停低？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你親口講想要邊樣，定停低？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "n6c",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1333,8 +1344,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1375,18 +1385,19 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "ending_a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1400,42 +1411,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "ending_a",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你跟節奏，定停低？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你跟節奏，定停低？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_a",
-          "ack": "你跟節奏，定停低？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你跟節奏，定停低？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_a",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1448,8 +1460,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1494,18 +1505,19 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "ending_b",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1519,42 +1531,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "ending_b",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你搶返主動，定停低？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你搶返主動，定停低？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_b",
-          "ack": "你搶返主動，定停低？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你搶返主動，定停低？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_b",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1567,8 +1580,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
@@ -1617,18 +1629,20 @@
         "guideLevel": 1,
         "ask": "你留低，定走？",
         "replies": {
-          "enter": "你入咗嚟。呢步算你行。",
-          "wait": "你停低。我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。"
+          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
+          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
+          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你行咗呢步。唔使打齊原文。",
+          "enter": "你行咗呢步。唔使打齊原文。"
         }
       },
-      "stub": "hourly C 04:03: no yes-pool; enter/wait soft keys; short replies",
+      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "ending_a",
-          "ack": "你入咗嚟。呢步算你行。",
+          "ack": "你行咗呢步。唔使打齊原文。",
           "keys": [
             "開門",
             "入去",
@@ -1642,42 +1656,43 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你入咗嚟。呢步算你行。",
-            "開門都算。跟住。"
+            "你行咗呢步。唔使打齊原文。"
           ]
         },
         {
           "bucket": "leave",
           "say": "跟住",
           "next": "ending_a",
-          "ack": "跟住。我收到，未當你打齊原文。\n\n「你留低，定走？」",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "跟住",
             "我跟",
             "跟你"
           ],
           "replies": [
-            "跟住。我收到，未當你打齊原文。\n\n「你留低，定走？」"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "agree",
           "say": "我跟你呢拍",
           "next": "ending_a",
-          "ack": "你留低，定走？",
+          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
           "keys": [
             "我跟你呢拍"
           ],
           "replies": [
-            "你留低，定走？"
-          ]
+            "你應咗場。跟住呢步，唔使打齊原文。"
+          ],
+          "intentId": "agree"
         },
         {
           "bucket": "tired",
           "say": "停低先",
           "next": "ending_c",
           "tension": 2,
-          "ack": "你停過先，我未趕你。",
+          "ack": "你停低。我未趕你，位仲喺度。",
           "keys": [
             "停低先",
             "停低",
@@ -1690,8 +1705,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未趕你。",
-            "等等都得。門仲喺度。"
+            "你停低。我未趕你，位仲喺度。"
           ]
         }
       ]
