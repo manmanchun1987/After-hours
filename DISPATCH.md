@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 07:05 Lane A split1dj**：intent-patterns 加側背滑過門檻／收膊貼縫鑽入／開嗰道門啦／我而家準備好入去房／門由我推開喇／開度門咧／開門丫；未定落腳氣唔好催／腳未定落陣氣；頭先我講過嘅你仲知唔知咧／掛實咗未咧；點先至啱數先喎；八更未呀。acceptance 326/326；固定閘 16/16（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀／開門啦／等等／七更未呀 全過）。index patterns cache split1di→split1dj（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 06:13 Lane A split1di**：intent-patterns 加側膊滑過門檻／收頸貼縫鑽入／開嗰度門啦／我而家準備好入房／門由我推開囉／開度門喇；未定落步氣唔好催／腳未定落步氣；頭先我講過嘅你仲知唔知喎／掛實咗未囉；點先至啱數先咧；七更未呀。acceptance 306/306；固定閘 17/17（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀／開門啦／等等／七更未呀 全過）。index patterns cache split1dh→split1di（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 05:13 Lane A split1dh**：intent-patterns 加側頸滑過門檻／開嗰扇門啦／開度門羅／未定落步唔好催／頭先我講過嘅你仲知唔知呀／點先至啱數先嘛／六更未呀。acceptance 288/288；固定閘 17/17（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀 全過）。index patterns cache split1df→split1dh（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 03:14 CODE #48**：chat-guide **t3-0314**。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss、唔推進、唔鎖死。compete-boot 注入 `chat-guide.js?v=t3-0314`（index 未改）。fx-play／audio-bed 唔揭擔。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
@@ -44,7 +45,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1di`；本地 306/306；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1dj`；本地 306/306；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46

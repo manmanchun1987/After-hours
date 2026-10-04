@@ -1,3 +1,4 @@
+最後更新：2026-10-05 07:05 HKT · hourly Lane A split1dj patterns（T2/T5 同義錯字；index cache split1di→split1dj）。
 # 而家進度
 
 最後更新：2026-10-05 06:10 HKT · hourly STORY Lane C
