@@ -30,6 +30,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Wet floor / 潮濕地反光 (enter / wait corridor lift office) | AR CSS -webkit-box-reflect | A flat room / AL long-shadow / L plane |
 | Meet desk knuckle tap / 敲桌 (n1 tap knuckles) | AZ CSS radial ripple | A flat room / I audio-only / C whole wash |
 | Lounge glass / 酒杯液面 (Morgan wait hold, glass on table) | BA CSS meniscus sway | A flat room / AM steam / C whole wash |
+| Review pen-cap click / 筆蓋一響 (n7 before ink) | BB CSS cap snap | AU ink stroke / I audio-only / A flat room |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
@@ -123,6 +124,7 @@ AY CSS `transform: scaleX(-1)` + `-webkit-mask-image` fade of locked repo still 
 
 AZ CSS `radial-gradient` ring + `@keyframes` scale/opacity one-shot ripple on existing A office desk SVG (n1 敲桌; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, C whole-scene motion and I audio-only cue for an isolated knuckle-tap beat
 BA CSS ellipse `border-radius` + amber `linear-gradient` meniscus + slow `@keyframes` skew/translate on existing A lounge table SVG (Morgan 酒杯液面搖; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, AM pantry steam and C whole-scene wash for an isolated glass-on-the-table beat
+BB CSS short cylinder `transform: rotate` + one-shot `@keyframes` snap and amber contact flash on existing AD review paper / A review SVG (n7 筆蓋一響 before ink; reuse room + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room, AU ink-stroke (write, not the click), I audio-only and C whole-scene wash for an isolated pen-cap beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
