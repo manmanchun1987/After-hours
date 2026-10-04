@@ -1,10 +1,10 @@
 # 而家進度
 
-最後更新：2026-10-05 03:14 HKT · CODE #48
-CODE 03:14：只改 chat-guide.js、compete-boot.js、audio-bed.js、fx-play.js。推進後 #choices 保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔。好／係／得仍 map heat，唔入 key pool。OWNER／playtest 唔計 miss、唔推進、唔鎖死。compete-boot 注入 chat-guide.js?v=t3-0314，剝 app_b64。未碰 app.js／index。禁 Imagine。FEEL 仍 2，等硬刷。
+最後更新：2026-10-05 05:09 HKT · CODE chase
+CODE 05:09：app.js ~120KB 完整引擎（STORAGE_KEY / AudioEngine），唔係 b64 loader，唔係 LIVE-BROKEN。#47 STORY 加意圖，唔係 choice-only。#48 CODE 保 freechat-hidden，唔拆 hide-after-advance，唔係 WRONG-METHOD。playtest 唔算衝突。禁 Imagine。禁動 app.js stub。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 **三車 A+B+C＝唯一預設**；D／E／F 暫緩
 Live：index 掛齊 parts（app.js 完整引擎，唔係 b64 stub）。禁 app_b64 stub／禁 CDN pin／禁 Imagine
 CHAT-FIRST：好／係／得 入 heat；推進後擔繼續收埋；兩次唔接先出。
-開住：#48 CODE hide（t3-0314 已推，等硬刷）；#47 STORY breath 已落 data；GUIDE T3；INTENT T2；INTENT T5。
+開住：#48 CODE hide（t3-0314 已推，等硬刷 ?v=split1b）；#47 STORY breath；GUIDE T3；INTENT T2；F 暫緩。
 FEEL 仍 2。
