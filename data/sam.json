@@ -93,21 +93,15 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s2",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。茶水間 00:12跟住呢杯。",
           "keys": [
-            "推門",
-            "停一秒",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "停一秒"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。茶水間 00:12跟住呢杯。"
           ]
         }
       ],
@@ -137,11 +131,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。燈仲亮，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。茶水間 00:12跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s2": {
       "id": "s2",
@@ -180,7 +174,10 @@
             "進去看看",
             "開門",
             "進去",
-            "行入去"
+            "行入去",
+            "入嚟",
+            "進入",
+            "推門"
           ],
           "intentId": "enter_door",
           "replies": [
@@ -251,21 +248,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s3",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。茶水間內跟住呢杯。",
           "keys": [
             "坐低",
-            "企住",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "企住"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。茶水間內跟住呢杯。"
           ]
         }
       ],
@@ -295,11 +287,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。茶水間內跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s3": {
       "id": "s3",
@@ -348,7 +340,7 @@
           "bucket": "leave",
           "say": "飲",
           "next": "s4",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。呢杯跟住呢杯。",
           "keys": [
             "飲",
             "飲呢杯",
@@ -356,7 +348,7 @@
             "我飲"
           ],
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。呢杯跟住呢杯。"
           ],
           "intentId": "agree"
         },
@@ -401,21 +393,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s4",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。呢杯跟住呢杯。",
           "keys": [
             "飲一口",
-            "握住，未飲",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "握住，未飲"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。呢杯跟住呢杯。"
           ]
         }
       ],
@@ -445,11 +432,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。呢杯跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s4": {
       "id": "s4",
@@ -501,14 +488,14 @@
           "bucket": "heat",
           "say": "留",
           "next": "s5",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。留定走跟住呢杯。",
           "keys": [
             "留",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。留定走跟住呢杯。"
           ]
         },
         {
@@ -516,7 +503,7 @@
           "say": "走",
           "next": "s5b",
           "tension": 1,
-          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "ack": "你收住。杯我未收。",
           "keys": [
             "走",
             "而家走",
@@ -527,7 +514,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。呢步我聽到，唔使打齊原文。"
+            "你收住。杯我未收。"
           ]
         },
         {
@@ -551,28 +538,23 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s5",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。留定走跟住呢杯。",
           "keys": [
             "留。",
-            "我走先。",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "我走先。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。留定走跟住呢杯。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "s5b",
-          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "ack": "你收住。杯我未收。",
           "keys": [
             "唔做",
             "我唔",
@@ -583,7 +565,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。呢步我聽到，唔使打齊原文。"
+            "你收住。杯我未收。"
           ]
         }
       ],
@@ -613,12 +595,12 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。留定走跟住呢杯。",
+          "refuse": "你收住。杯我未收。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s5": {
       "id": "s5",
@@ -670,13 +652,13 @@
           "bucket": "leave",
           "say": "飲完",
           "next": "s6",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。留嚟飲定聽跟住呢杯。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。留嚟飲定聽跟住呢杯。"
           ],
           "intentId": "agree"
         },
@@ -685,14 +667,14 @@
           "say": "聽你講",
           "next": "s6",
           "tension": 1,
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。留嚟飲定聽跟住呢杯。",
           "keys": [
             "聽你講",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。留嚟飲定聽跟住呢杯。"
           ]
         },
         {
@@ -716,21 +698,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s6",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。留嚟飲定聽跟住呢杯。",
           "keys": [
             "飲完。",
-            "聽你講。",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "聽你講。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。留嚟飲定聽跟住呢杯。"
           ]
         }
       ],
@@ -759,11 +736,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。留嚟飲定聽跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s5b": {
       "id": "s5b",
@@ -815,13 +792,13 @@
           "bucket": "leave",
           "say": "飲完",
           "next": "s6",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。走之前跟住呢杯。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。走之前跟住呢杯。"
           ],
           "intentId": "agree"
         },
@@ -866,28 +843,23 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s6",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。走之前跟住呢杯。",
           "keys": [
             "飲完先走。",
-            "未飲完。",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "未飲完。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。走之前跟住呢杯。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "s5",
-          "ack": "你收住。呢步我聽到，唔使打齊原文。",
+          "ack": "你收住。杯我未收。",
           "keys": [
             "唔做",
             "我唔",
@@ -898,7 +870,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你收住。呢步我聽到，唔使打齊原文。"
+            "你收住。杯我未收。"
           ]
         }
       ],
@@ -929,12 +901,12 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "refuse": "你收住。呢步我聽到，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。走之前跟住呢杯。",
+          "refuse": "你收住。杯我未收。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s6": {
       "id": "s6",
@@ -982,27 +954,27 @@
           "bucket": "heat",
           "say": "聽你講",
           "next": "s7",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。再留一句跟住呢杯。",
           "keys": [
             "聽你講",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。再留一句跟住呢杯。"
           ]
         },
         {
           "bucket": "leave",
           "say": "飲完",
           "next": "s7",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。再留一句跟住呢杯。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。再留一句跟住呢杯。"
           ],
           "intentId": "agree"
         },
@@ -1027,21 +999,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s7",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。再留一句跟住呢杯。",
           "keys": [
             "聽你講。",
-            "飲完。",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "飲完。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。再留一句跟住呢杯。"
           ]
         }
       ],
@@ -1070,11 +1037,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。再留一句跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s7": {
       "id": "s7",
@@ -1122,27 +1089,27 @@
           "bucket": "heat",
           "say": "留到火滅",
           "next": "s8",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。火滅跟住呢杯。",
           "keys": [
             "留到火滅",
             "留"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。火滅跟住呢杯。"
           ]
         },
         {
           "bucket": "leave",
           "say": "幫你熄",
           "next": "s8",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。火滅跟住呢杯。",
           "keys": [
             "幫你熄",
             "熄"
           ],
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。火滅跟住呢杯。"
           ],
           "intentId": "agree"
         },
@@ -1167,21 +1134,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s8",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。火滅跟住呢杯。",
           "keys": [
             "留到火滅。",
-            "我幫你熄。",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "我幫你熄。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。火滅跟住呢杯。"
           ]
         }
       ],
@@ -1210,11 +1172,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。火滅跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool"
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept"
     },
     "s8": {
       "id": "s8",
@@ -1259,11 +1221,11 @@
           "enter_door": "你入咗茶水間。呢步算你行。",
           "enter": "你入咗茶水間。呢步算你行。",
           "wait": "你停低。杯未涼，我未趕你。",
-          "agree": "你應咗場。跟住呢步，唔使打齊原文。",
-          "flirt": "你近咗少少。呢步算，唔使背原文。"
+          "agree": "你應咗。火滅跟住呢杯。",
+          "flirt": "你近咗水斗。火未熄。"
         }
       },
-      "stub": "hourly C 05:03: beat replies; intentId filled; no yes-pool",
+      "stub": "hourly C 06:03: yes-pool stripped; beat ack; enter|wait kept",
       "intents": [
         {
           "bucket": "leave",
@@ -1309,21 +1271,16 @@
         },
         {
           "bucket": "heat",
-          "say": "應場",
+          "say": "應呢步",
           "next": "s9",
-          "ack": "你應咗場。跟住呢步，唔使打齊原文。",
+          "ack": "你應咗。火滅跟住呢杯。",
           "keys": [
             "熄",
-            "留低",
-            "照你講",
-            "而家做",
-            "我應",
-            "跟你",
-            "應場"
+            "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你應咗場。跟住呢步，唔使打齊原文。"
+            "你應咗。火滅跟住呢杯。"
           ]
         }
       ]
@@ -1340,7 +1297,7 @@
       "freeChat": false,
       "choices": [],
       "intents": [],
-      "stub": "hourly C 02:07: breath text; ack=next first half; chat 好/係/繼續",
+      "stub": "hourly C 06:03: ending closed; start kept",
       "sceneGoal": {
         "successIntents": [],
         "optionalIntents": [],
