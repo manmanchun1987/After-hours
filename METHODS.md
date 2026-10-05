@@ -16,6 +16,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Locked face Vera/Elise/Sammi | stills in repo only | never A–K faces |
 | Room behind her (office lounge pantry review roof lift) | A reuse SVG | B new empty SVG |
 | Door / lift ajar — peek room without new scene | M CSS mask-image slit | A full flat room |
+| Hall door shut behind / 門在身後合上 (n0b enter lock) | BC CSS rotateY door swing | M static slit / A full room / AW lift doors |
 | Light / rain / glass / night mood | C CSS | D FX |
 | Rain / glass on existing room SVG | K SVG filter in bg | C CSS |
 | Isolated light planes (CCTV red / monitor blue / review glare / amber side) | L mix-blend overlay | C whole-scene grade |
@@ -125,6 +126,7 @@ AY CSS `transform: scaleX(-1)` + `-webkit-mask-image` fade of locked repo still 
 AZ CSS `radial-gradient` ring + `@keyframes` scale/opacity one-shot ripple on existing A office desk SVG (n1 敲桌; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, C whole-scene motion and I audio-only cue for an isolated knuckle-tap beat
 BA CSS ellipse `border-radius` + amber `linear-gradient` meniscus + slow `@keyframes` skew/translate on existing A lounge table SVG (Morgan 酒杯液面搖; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, AM pantry steam and C whole-scene wash for an isolated glass-on-the-table beat
 BB CSS short cylinder `transform: rotate` + one-shot `@keyframes` snap and amber contact flash on existing AD review paper / A review SVG (n7 筆蓋一響 before ink; reuse room + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room, AU ink-stroke (write, not the click), I audio-only and C whole-scene wash for an isolated pen-cap beat
+BC CSS `perspective` + `transform: rotateY` one-shot `@keyframes` door panel (`transform-origin: left`) swing shut on existing A hall/office SVG (n0b 門在身後合上; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, M static ajar-slit and AW lift dual-panel doors for an isolated door-shut-behind beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
