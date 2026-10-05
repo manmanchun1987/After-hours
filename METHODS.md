@@ -45,6 +45,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Incoming after-hours call on existing HUD / phone chrome | U CSS box-shadow pulse | C whole motion / I audio-only |
 | Incoming private vibrate on existing phone HUD | AH CSS translate3d micro-shake | U glow pulse / AA badge / I audio-only |
 | Late-night elapsed / time-pressure on existing HUD clock | V CSS conic-gradient sweep ring | C whole motion / I audio-only |
+| Office / review wall clock / 牆鐘秒針 (wait-hold late elapsed) | BD CSS rotate steps hand | V HUD ring / C whole wash / I audio-only |
 | Heat / tension meter on existing HUD chrome | W CSS scaleX fill bar | C whole wash / I audio-only |
 | Choice heat flash on existing #choices | AE CSS heat-rim pulse | C whole wash / W meter-only |
 | Lift arrive / floor change on existing lift chrome | X CSS tabular-nums LED | A full lift SVG / C whole motion |
@@ -127,6 +128,7 @@ AZ CSS `radial-gradient` ring + `@keyframes` scale/opacity one-shot ripple on ex
 BA CSS ellipse `border-radius` + amber `linear-gradient` meniscus + slow `@keyframes` skew/translate on existing A lounge table SVG (Morgan 酒杯液面搖; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, AM pantry steam and C whole-scene wash for an isolated glass-on-the-table beat
 BB CSS short cylinder `transform: rotate` + one-shot `@keyframes` snap and amber contact flash on existing AD review paper / A review SVG (n7 筆蓋一響 before ink; reuse room + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room, AU ink-stroke (write, not the click), I audio-only and C whole-scene wash for an isolated pen-cap beat
 BC CSS `perspective` + `transform: rotateY` one-shot `@keyframes` door panel (`transform-origin: left`) swing shut on existing A hall/office SVG (n0b 門在身後合上; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, M static ajar-slit and AW lift dual-panel doors for an isolated door-shut-behind beat
+BD CSS 1px `transform: rotate` second hand + `@keyframes` `steps(60)` on a small dial over existing A office/review SVG (牆鐘秒針; wait-hold late elapsed; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, V HUD-only conic ring and I audio-only cue for an isolated in-room clock beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
