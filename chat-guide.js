@@ -1,6 +1,6 @@
 (function () {
-  window.__ahChatGuide = "t3-0616";
-  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0516>t3-0616";
+  window.__ahChatGuide = "t3-1016";
+  window.__ahChatGuideChain = "t3-0414>t3-0521>t3-0614>t3-1002>t3-0516>t3-0616>t3-1016";
   var YES = /^(好|好呀|好啊|好喎|好的|係|係呀|係喎|係啦|得|得啦|得喎|得嘅|嘎|嘎哮|繼續|繼續啦|聽你講|想聽|ok|okay|yes|y)$/i;
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   var MISS_NEED = 2;
@@ -155,7 +155,7 @@
   }
   function hookTyped() {
     ["typeText", "typeNode", "finishTyping", "onTypedDone"].forEach(function (name) {
-      if (typeof window[name] !== "function" || window[name].__guided0616) return;
+      if (typeof window[name] !== "function" || window[name].__guided1016) return;
       var fn = window[name];
       window[name] = function () {
         var r = fn.apply(this, arguments);
@@ -163,12 +163,12 @@
         return r;
       };
       window[name].__guidedHide = true;
-      window[name].__guided0616 = true;
+      window[name].__guided1016 = true;
     });
   }
   function wrap() {
     hookTyped();
-    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided0616) {
+    if (typeof window.matchFreeChatIntent === "function" && !window.matchFreeChatIntent.__guided1016) {
       var orig = window.matchFreeChatIntent;
       window.matchFreeChatIntent = function (userText) {
         var raw = String(userText || "").trim();
@@ -233,9 +233,9 @@
         return null;
       };
       window.matchFreeChatIntent.__guided = true;
-      window.matchFreeChatIntent.__guided0616 = true;
+      window.matchFreeChatIntent.__guided1016 = true;
     }
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided0616) {
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__guided1016) {
       var adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = adv.apply(this, arguments);
@@ -244,9 +244,9 @@
         return ok;
       };
       window.applyFreeChatAdvance.__guidedHide = true;
-      window.applyFreeChatAdvance.__guided0616 = true;
+      window.applyFreeChatAdvance.__guided1016 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__guided0616) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__guided1016) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -254,9 +254,9 @@
         return r;
       };
       window.goToNode.__guidedHide = true;
-      window.goToNode.__guided0616 = true;
+      window.goToNode.__guided1016 = true;
     }
-    if (typeof window.pickReply === "function" && !window.pickReply.__guided0616) {
+    if (typeof window.pickReply === "function" && !window.pickReply.__guided1016) {
       var pr = window.pickReply;
       window.pickReply = function (userText) {
         if (OWNER_PROBE.test(String(userText || "").trim())) {
@@ -278,9 +278,9 @@
         return "你講「" + clip(userText) + "」。我要聽嘅係" + ask + "。";
       };
       window.pickReply.__guided = true;
-      window.pickReply.__guided0616 = true;
+      window.pickReply.__guided1016 = true;
     }
-    if (typeof window.renderNode === "function" && !window.renderNode.__guided0616) {
+    if (typeof window.renderNode === "function" && !window.renderNode.__guided1016) {
       var rn = window.renderNode;
       window.renderNode = function () {
         if (typeof state !== "undefined" && state.story) stampChat(state.story);
@@ -296,9 +296,9 @@
       };
       window.renderNode.__guided = true;
       window.renderNode.__ahNeverReveal = true;
-      window.renderNode.__guided0616 = true;
+      window.renderNode.__guided1016 = true;
     }
-    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided0616) {
+    if (typeof window.unlockFreeChatChoices === "function" && !window.unlockFreeChatChoices.__guided1016) {
       var un = window.unlockFreeChatChoices;
       window.unlockFreeChatChoices = function (reason) {
         if (window.__ahOwnerQuiet || window.__ahPlaytest || OWNER_PROBE.test(String(reason || ""))) {
@@ -312,7 +312,7 @@
         return !!(ok2 && choicesAllowed());
       };
       window.unlockFreeChatChoices.__guided = true;
-      window.unlockFreeChatChoices.__guided0616 = true;
+      window.unlockFreeChatChoices.__guided1016 = true;
     }
     if (typeof state !== "undefined" && state.story) stampChat(state.story);
   }

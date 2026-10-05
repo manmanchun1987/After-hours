@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0616";
+  window.__ahCompeteBoot = "t3-1016";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -116,9 +116,9 @@
   function ensureFreshGuide() {
     liveGate();
     if (window.__ahAppB64) delete window.__ahAppB64;
-    injectPart("chat-guide-t3-0616", "./chat-guide.js?v=t3-0616", "__ahChatGuide", "t3-0616");
-    injectPart("audio-bed-t3-0616", "./audio-bed.js?v=t3-0616", "__ahAudioBed", "t3-0616");
-    injectPart("fx-play-t3-0616", "./fx-play.js?v=t3-0616", "__ahFxPlay", "t3-0616");
+    injectPart("chat-guide-t3-1016", "./chat-guide.js?v=t3-1016", "__ahChatGuide", "t3-1016");
+    injectPart("audio-bed-t3-1016", "./audio-bed.js?v=t3-1016", "__ahAudioBed", "t3-1016");
+    injectPart("fx-play-t3-1016", "./fx-play.js?v=t3-1016", "__ahFxPlay", "t3-1016");
   }
   function bootStart(id, fresh) {
     fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {
