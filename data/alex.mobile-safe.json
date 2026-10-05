@@ -55,9 +55,10 @@
           "agree": "你應咗。週五 23:47跟住落筆。",
           "wait": "你停低。我未趕你，位仲喺度。",
           "flirt": "你近咗桌邊。我未催。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -205,9 +206,10 @@
           "enter": "你入咗呢步。位仲留。",
           "enter_door": "你行入嚟。燈未關。",
           "flirt": "你近咗桌邊。我未催。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -371,9 +373,10 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -529,9 +532,10 @@
           "enter": "你入咗呢步。位仲留。",
           "enter_door": "你行入嚟。燈未關。",
           "wait": "你停低。我未趕你，位仲喺度。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -691,9 +695,10 @@
           "enter": "你入咗呢步。位仲留。",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -854,9 +859,10 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "flirt": "你近咗桌邊。我未催。",
           "challenge": "你頂咗一句。我聽到。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1027,9 +1033,10 @@
           "enter": "你入咗呢步。位仲留。",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1178,9 +1185,10 @@
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1322,9 +1330,10 @@
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1457,9 +1466,10 @@
           "enter": "你入咗呢步。位仲留。",
           "wait": "你停低。我未趕你，位仲喺度。",
           "flirt": "你近咗桌邊。我未催。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1621,9 +1631,10 @@
           "enter": "你入咗呢步。位仲留。",
           "challenge": "你頂咗一句。我聽到。",
           "ask_want": "你應咗呢步。燈關之後我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1788,9 +1799,10 @@
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1927,9 +1939,10 @@
           "wait": "你停低。我未趕你，位仲喺度。",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -2087,9 +2100,10 @@
           "enter_door": "你行入嚟。燈未關。",
           "enter": "你入咗呢步。位仲留。",
           "flirt": "你望近咗。我未抬眼。"
-        }
+        },
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",

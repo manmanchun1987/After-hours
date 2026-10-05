@@ -66,7 +66,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "你停低。門未鎖，我未趕你入嚟。"
           ]
         },
         {
@@ -170,9 +170,10 @@
           "flirt": "門縫熱，你入咗嚟，我將熱水推過嚟。"
         },
         "section": "corridor",
-        "goal": "enter_or_wait"
+        "goal": "enter_or_wait",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s2": {
       "id": "s2",
@@ -238,7 +239,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -280,7 +281,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -363,9 +364,10 @@
           "flirt": "杯推到你手，你未飲。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s3": {
       "id": "s3",
@@ -443,7 +445,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -462,7 +464,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -545,9 +547,10 @@
           "flirt": "煙燃到半，你應完未走。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s4": {
       "id": "s4",
@@ -644,7 +647,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你話走，門縫仲熱。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -746,9 +749,10 @@
           "flirt": "煙未完，你留低咗。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s5": {
       "id": "s5",
@@ -840,7 +844,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -922,9 +926,10 @@
           "flirt": "煙尾未跌，你應完未關燈。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s5b": {
       "id": "s5b",
@@ -1003,7 +1008,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "煙未完，你留低咗。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -1022,7 +1027,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "煙未完，你留低咗。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -1125,9 +1130,10 @@
           "flirt": "煙尾未跌，你應完未關燈。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s6": {
       "id": "s6",
@@ -1214,7 +1220,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -1296,9 +1302,10 @@
           "flirt": "煙尾跌咗，火未滅。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s7": {
       "id": "s7",
@@ -1386,7 +1393,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {
@@ -1468,9 +1475,10 @@
           "flirt": "你應完，煙尾跌咗。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "s8": {
       "id": "s8",
@@ -1519,9 +1527,10 @@
           "flirt": "你講完，火我睇住。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1562,7 +1571,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你講完，火我睇住。"
+            "你停低。杯未斟埋，位仲喺度。"
           ]
         },
         {

@@ -64,7 +64,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "門柄涼，你入咗嚟，我未抬眼。"
+            "你停低。門未鎖，我未趕你入嚟。"
           ]
         },
         {
@@ -168,9 +168,10 @@
           "flirt": "門柄涼，你入咗嚟，我未抬眼。"
         },
         "section": "corridor",
-        "goal": "enter_or_wait"
+        "goal": "enter_or_wait",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n0b": {
       "id": "n0b",
@@ -229,7 +230,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你企喺桌前，簡報未夠。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -334,9 +335,10 @@
           "flirt": "你企喺桌前，簡報未夠。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n1": {
       "id": "n1",
@@ -425,7 +427,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "椅拉到你側，我要你而家坐低起筆。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -525,9 +527,10 @@
           "challenge": "椅拉到你側，我要你而家坐低起筆。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n2a": {
       "id": "n2a",
@@ -602,7 +605,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "筆尖停喺下一格，我未放你停筆。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -621,7 +624,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "筆尖停喺下一格，我未放你停筆。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -704,9 +707,10 @@
           "flirt": "筆尖停喺下一格，我未放你停筆。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n2b": {
       "id": "n2b",
@@ -779,7 +783,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "椅拉到你側，我要你而家坐低起筆。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -798,7 +802,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你企近，我睇住你好耐。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -899,9 +903,10 @@
           "challenge": "你企近，我睇住你好耐。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n2c": {
       "id": "n2c",
@@ -993,7 +998,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "筆尖停喺下一格，我未放你停筆。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1075,9 +1080,10 @@
           "flirt": "筆尖停喺下一格，我未放你停筆。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n3": {
       "id": "n3",
@@ -1168,7 +1174,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "呢行過咗，筆收返筆桶。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1250,9 +1256,10 @@
           "flirt": "呢行過咗，筆收返筆桶。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n4": {
       "id": "n4",
@@ -1349,7 +1356,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "筆桶未蓋，你留低咗。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1452,9 +1459,10 @@
           "flirt": "筆桶未蓋，你留低咗。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n5": {
       "id": "n5",
@@ -1547,7 +1555,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "燈未關，你應完未收工。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1629,9 +1637,10 @@
           "flirt": "燈未關，你應完未收工。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n5b": {
       "id": "n5b",
@@ -1709,7 +1718,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "筆桶未蓋，你留低咗。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1728,7 +1737,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "筆桶未蓋，你留低咗。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -1831,9 +1840,10 @@
           "flirt": "燈未關，你應完未收工。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n6": {
       "id": "n6",
@@ -1923,7 +1933,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "燈仲係開，評核表喺手。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -2005,9 +2015,10 @@
           "flirt": "燈仲係開，評核表喺手。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n7": {
       "id": "n7",
@@ -2097,7 +2108,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你應完，燈仲係開。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
@@ -2179,9 +2190,10 @@
           "flirt": "你應完，燈仲係開。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
     },
     "n8": {
       "id": "n8",
@@ -2230,9 +2242,10 @@
           "flirt": "你講完，我收呢句。"
         },
         "section": "freeChat",
-        "goal": "freechat_soft_pass"
+        "goal": "freechat_soft_pass",
+        "stub": "enter/wait soft-pass; wait≠enter"
       },
-      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool",
+      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -2273,7 +2286,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你講完，我收呢句。"
+            "你停低。門我未鎖，走廊位仲喺度。"
           ]
         },
         {
