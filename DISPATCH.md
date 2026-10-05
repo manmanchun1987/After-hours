@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 07:16 CODE #48 t3-0715**：chat-guide／compete-boot／audio-bed／fx-play 再注入 `?v=t3-0715`。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
 - **hourly 07:12 Lane A split1ds**：intent-patterns 加側趾滑過門檻／收指貼縫鑽入／斜趾貼縫鑽入／開嗰道門先嘅／我而家準備好入去嗰套間／門由我推開先嘅／開度門先嘅／開門嘅／推問入房；未定落趾氣唔好催／腳未定落趾氣；頭先我講過嘅你仲知唔知嘅／掛實咗未嘅；點先至啱數先嘅；十五更未呀。acceptance 506/506；固定 5 句＋柔軟煙測全過。index patterns cache split1dr→split1ds（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:04 Lane A split1dr**：intent-patterns 加側踝滑過門檻／收掌貼縫鑽入／斜踝貼縫鑽入／開嗰道門先喔／我而家準備好入去嗰套房／門由我推開先喔／開度門先喔／開門喔／推問入去；未定落踝氣唔好催／腳未定落踝氣；頭先我講過嘅你仲知唔知喔／掛實咗未喔；點先至啱數先喔；十四更未呀。index patterns cache split1dp→split1dr（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:06 驗 live**：Pages index 掛齊 parts，`intent-patterns.js?v=split1dr`，`app.js` 119953B 完整引擎（`const STORAGE_KEY` 起，唔係 b64 stub loader）。#46 保留、唔係第一張。CHAT-FIRST：alex 13/14、morgan 11/12、sam 9/10 仍有 choices，打字成功後倒擔 → FEEL 2。票：#48 CODE hide＋#47 STORY intents＋GUIDE T3＋INTENT T2＋INTENT T5。未碰 app.js。禁 app_b64／禁 Imagine。
@@ -26,7 +27,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ### CODE
 #### CODE chat-guide hide — #48
-- **Status:** P0 FEEL。05:16 已推 t3-1016：推進後 freechat-hidden，兩次 miss 先出擔，renderNode 唔揭擔，好／係／得 map heat。playtest 唔當打斷。index 仍 `?v=split1b`，靠 compete-boot 注入。未硬刷，未關。
+- **Status:** P0 FEEL。05:16 已推 t3-0715：推進後 freechat-hidden，兩次 miss 先出擔，renderNode 唔揭擔，好／係／得 map heat。playtest 唔當打斷。index 仍 `?v=split1b`，compete-boot／audio-bed／fx-play 注入 `chat-guide.js?v=t3-0715`。未硬刷，未關。
 
 ### STORY
 #### STORY intents — #47
