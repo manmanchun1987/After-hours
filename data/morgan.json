@@ -92,7 +92,7 @@
           "say": "停低",
           "next": "m2a",
           "tension": 2,
-          "ack": "你坐近一格，杯推到你手邊。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -182,12 +182,14 @@
           "enter_door": "你坐近一格，杯推到你手邊。",
           "agree": "你坐近一格，杯推到你手邊。",
           "refuse": "你收條款，紙推過嚟。",
-          "wait": "你坐近一格，杯推到你手邊。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "你坐近一格，杯推到你手邊。",
           "flirt": "你坐近一格，杯推到你手邊。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m2a": {
       "id": "m2a",
@@ -267,7 +269,7 @@
           "say": "停低",
           "next": "m3",
           "tension": 2,
-          "ack": "你近住，我講人。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -355,12 +357,14 @@
         "replies": {
           "enter_door": "你近住，我講人。",
           "agree": "你近住，我講人。",
-          "wait": "你近住，我講人。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "你近住，我講人。",
           "flirt": "你近住，我講人。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m2b": {
       "id": "m2b",
@@ -438,7 +442,7 @@
           "say": "停低",
           "next": "m3b",
           "tension": 2,
-          "ack": "你簽咗呢頁，我未收紙。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -526,12 +530,14 @@
         "replies": {
           "enter_door": "你簽咗呢頁，我未收紙。",
           "agree": "你簽咗呢頁，我未收紙。",
-          "wait": "你簽咗呢頁，我未收紙。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "你簽咗呢頁，我未收紙。",
           "flirt": "你簽咗呢頁，我未收紙。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m3": {
       "id": "m3",
@@ -610,7 +616,7 @@
           "say": "停低",
           "next": "m4",
           "tension": 2,
-          "ack": "杯未放低，你應完未收工。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -698,12 +704,14 @@
         "replies": {
           "enter_door": "杯未放低，你應完未收工。",
           "agree": "杯未放低，你應完未收工。",
-          "wait": "杯未放低，你應完未收工。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "杯未放低，你應完未收工。",
           "flirt": "杯未放低，你應完未收工。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m3b": {
       "id": "m3b",
@@ -784,7 +792,7 @@
           "say": "停低",
           "next": "m4",
           "tension": 2,
-          "ack": "杯未放低，你應完未收工。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -873,13 +881,15 @@
         "replies": {
           "enter_door": "杯未放低，你應完未收工。",
           "agree": "杯未放低，你應完未收工。",
-          "refuse": "杯未放低，你應完未收工。",
-          "wait": "杯未放低，你應完未收工。",
+          "refuse": "你收住。門我未鎖。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "杯未放低，你應完未收工。",
           "flirt": "杯未放低，你應完未收工。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m4": {
       "id": "m4",
@@ -967,7 +977,7 @@
           "say": "停低",
           "next": "m5b",
           "tension": 2,
-          "ack": "你話走，杯沿未乾。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1075,12 +1085,14 @@
           "enter_door": "杯未收，你留低咗。",
           "agree": "杯未收，你留低咗。",
           "refuse": "你話走，杯沿未乾。",
-          "wait": "你話走，杯沿未乾。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "杯未收，你留低咗。",
           "flirt": "杯未收，你留低咗。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m5": {
       "id": "m5",
@@ -1161,7 +1173,7 @@
           "say": "停低",
           "next": "m6",
           "tension": 2,
-          "ack": "杯未放低，你應完未收單。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1249,12 +1261,14 @@
         "replies": {
           "enter_door": "杯未放低，你應完未收單。",
           "agree": "杯未放低，你應完未收單。",
-          "wait": "杯未放低，你應完未收單。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "杯未放低，你應完未收單。",
           "flirt": "杯未放低，你應完未收單。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m5b": {
       "id": "m5b",
@@ -1321,7 +1335,7 @@
           "say": "未收",
           "next": "m5",
           "tension": 1,
-          "ack": "杯未收，你留低咗。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "未收",
             "停低",
@@ -1340,7 +1354,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "m5",
-          "ack": "杯未收，你留低咗。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1448,14 +1462,16 @@
         "ask": "走之前，單你收未？",
         "replies": {
           "enter_door": "杯未放低，你應完未收單。",
-          "refuse": "杯未放低，你應完未收單。",
-          "wait": "杯未收，你留低咗。",
+          "refuse": "你收住。門我未鎖。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "agree": "杯未放低，你應完未收單。",
           "enter": "杯未放低，你應完未收單。",
           "flirt": "杯未放低，你應完未收單。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m6": {
       "id": "m6",
@@ -1534,7 +1550,7 @@
           "say": "停低",
           "next": "m7",
           "tension": 2,
-          "ack": "杯放低，歌未完。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1623,13 +1639,15 @@
         "replies": {
           "enter_door": "杯放低，歌未完。",
           "agree": "杯放低，歌未完。",
-          "refuse": "杯放低，歌未完。",
-          "wait": "杯放低，歌未完。",
+          "refuse": "你收住。門我未鎖。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "杯放低，歌未完。",
           "flirt": "杯放低，歌未完。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m7": {
       "id": "m7",
@@ -1707,7 +1725,7 @@
           "say": "停低",
           "next": "m8",
           "tension": 2,
-          "ack": "你應完，杯放低。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1796,13 +1814,15 @@
         "replies": {
           "enter_door": "你應完，杯放低。",
           "agree": "你應完，杯放低。",
-          "refuse": "你應完，杯放低。",
-          "wait": "你應完，杯放低。",
+          "refuse": "你收住。門我未鎖。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "enter": "你應完，杯放低。",
           "flirt": "你應完，杯放低。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool"
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool"
     },
     "m8": {
       "id": "m8",
@@ -1845,13 +1865,15 @@
         "ask": "你收單，定留低聽完？",
         "replies": {
           "enter_door": "你講完，單我收。",
-          "wait": "你講完，單我收。",
+          "wait": "你停低。杯未推，位仲喺度。",
           "agree": "你講完，單我收。",
           "enter": "你講完，單我收。",
           "flirt": "你講完，單我收。"
-        }
+        },
+        "section": "freeChat",
+        "goal": "freechat_soft_pass"
       },
-      "stub": "hourly C 02:08: one-breath ask; ack=next first half; 好/係/繼續 stay heat glue, no yes-pool",
+      "stub": "hourly C 04:03: corridor/freeChat wait≠enter; successIntents enter/wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1880,7 +1902,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "m9",
-          "ack": "你講完，單我收。",
+          "ack": "你停低。杯未推，位仲喺度。",
           "keys": [
             "停低",
             "等等",
@@ -1958,7 +1980,7 @@
       "freeChat": false,
       "choices": [],
       "intents": [],
-      "stub": "hourly C 02:08: ending closed; start kept",
+      "stub": "hourly C 04:03: ending closed; start kept",
       "sceneGoal": {
         "successIntents": [],
         "optionalIntents": [],
