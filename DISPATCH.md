@@ -7,15 +7,16 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1dl`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
+- Live 驗收：patterns `?v=split1dm`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1dl`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1dm`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 05:13 Lane A split1dm**：intent-patterns 加側腹滑過門檻／收胸貼縫鑽入／斜腹貼縫鑽入／開嗰道門先啫／我而家準備好入去嗰度房／門由我推開先囉／開度門先啫／開門咋；未定落胸氣唔好催／腳未定落胸氣；頭先我講過嘅你仲知唔知咋／掛實咗未啫；點先至啱數先咋；十一更未呀。acceptance 400/400；固定閘 34/34（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀／開門啦／等等／十一更未呀 全過）。index patterns cache split1dl→split1dm（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 05:08 Lane A split1dl**：intent-patterns 加側胸滑過門檻／收腹貼縫鑽入／斜背貼縫鑽入／開嗰道門先喎／我而家準備好入去嗰間房／門由我推開先啦／開度門先喎／開門啫／開問啦；未定落腹氣唔好催／腳未定落腹氣；頭先我講過嘅你仲知唔知囉／掛實咗未喎；點先至啱數先啫；十更未呀。index patterns cache split1dk→split1dl。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:15 METHOD SCOUT BB**：評核筆蓋一響。Pick row：Review pen-cap click / n7 before ink → BB。未落 app.js。
 - **hourly 07:05 Lane A split1dj**：intent-patterns 加側背滑過門檻／收膊貼縫鑽入／開嗰道門啦／我而家準備好入去房／門由我推開喇／開度門咧／開門丫；未定落腳氣唔好催／腳未定落陣氣；頭先我講過嘅你仲知唔知咧／掛實咗未咧；點先至啱數先喎；八更未呀。acceptance 326/326；固定閘 16/16（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀／開門啦／等等／七更未呀 全過）。index patterns cache split1di→split1dj（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
@@ -50,7 +51,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1dl`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1dm`；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46

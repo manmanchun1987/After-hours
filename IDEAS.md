@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261006-01
+- proposed_at: 2026-10-06
+- status: proposed
+- pain: 「出面十一更但我都想推開嗰道門」patterns split1dm 會同時中 off_topic（十一更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- how: F／引擎：enter_door≥1 且有推開／入度房時唔准 off_topic 獨贏；回覆先接十一更再導向推門。未批唔改 engine
+- acceptance: 「出面十一更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「十一更未呀」仍 off_topic
+- rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261005-03
 - proposed_at: 2026-10-05
 - status: proposed
