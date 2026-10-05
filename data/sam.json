@@ -103,6 +103,41 @@
           "replies": [
             "門縫熱，你入咗嚟，我將熱水推過嚟。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s2",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s2",
+          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -135,7 +170,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s2": {
       "id": "s2",
@@ -259,6 +294,41 @@
           "replies": [
             "杯推到你手。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s3",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s3",
+          "ack": "杯推到你手。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "杯推到你手。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -291,7 +361,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s3": {
       "id": "s3",
@@ -404,6 +474,41 @@
           "replies": [
             "煙燃到半。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s4",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s4",
+          "ack": "煙燃到半。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "煙燃到半。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -436,7 +541,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s4": {
       "id": "s4",
@@ -567,6 +672,41 @@
           "replies": [
             "你話走，門縫仲熱。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s5",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s5",
+          "ack": "煙未完。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "煙未完。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -600,7 +740,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s5": {
       "id": "s5",
@@ -708,6 +848,41 @@
           "replies": [
             "煙尾未跌。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s6",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s6",
+          "ack": "煙尾未跌。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "煙尾未跌。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -739,7 +914,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s5b": {
       "id": "s5b",
@@ -871,6 +1046,41 @@
           "replies": [
             "煙未完。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s6",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s6",
+          "ack": "煙尾未跌。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "煙尾未跌。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -905,7 +1115,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s6": {
       "id": "s6",
@@ -1008,6 +1218,41 @@
           "replies": [
             "煙尾跌咗。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s7",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s7",
+          "ack": "煙尾跌咗。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "煙尾跌咗。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -1039,7 +1284,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s7": {
       "id": "s7",
@@ -1143,6 +1388,41 @@
           "replies": [
             "你應完，煙尾跌咗。"
           ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s8",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s8",
+          "ack": "你應完，煙尾跌咗。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
+          "replies": [
+            "你應完，煙尾跌咗。"
+          ]
         }
       ],
       "sceneGoal": {
@@ -1174,7 +1454,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool"
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool"
     },
     "s8": {
       "id": "s8",
@@ -1223,7 +1503,7 @@
           "flirt": "你望近咗。我未抬眼。"
         }
       },
-      "stub": "hourly C 07:03: wait≠enter ack; flirt reply on success; corridor/freeChat enter+wait; no yes-pool",
+      "stub": "hourly C 08:05: flirt/challenge intent+reply so typed success advances; corridor/freeChat enter+wait; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -1277,6 +1557,41 @@
             "留低"
           ],
           "intentId": "agree",
+          "replies": [
+            "你講完，火我睇住。"
+          ]
+        },
+        {
+          "bucket": "heat",
+          "say": "望近",
+          "next": "s9",
+          "ack": "你望近咗。我未抬眼。",
+          "keys": [
+            "望近啲",
+            "挨近你",
+            "靠近你",
+            "你望住我",
+            "坐近啲",
+            "撩你一句"
+          ],
+          "intentId": "flirt",
+          "replies": [
+            "你望近咗。我未抬眼。"
+          ]
+        },
+        {
+          "bucket": "leave",
+          "say": "入去",
+          "next": "s9",
+          "ack": "你講完，火我睇住。",
+          "keys": [
+            "我入去先",
+            "開門啦",
+            "進去看看",
+            "行入去",
+            "入房"
+          ],
+          "intentId": "enter",
           "replies": [
             "你講完，火我睇住。"
           ]
