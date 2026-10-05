@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 06:04 Lane A split1dn**：intent-patterns 加側胯滑過門檻／收肘貼縫鑽入／斜胯貼縫鑽入／開嗰道門先噃／我而家準備好入去嗰邊房／門由我推開先嚟／開度門先噃／開門噃；未定落胯氣唔好催／腳未定落胯氣；頭先我講過嘅你仲知唔知噃／掛實咗未噃；點先至啱數先噃；十二更未呀。index patterns cache split1dm→split1dn。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 05:16 CODE #48 t3-1016**：chat-guide／compete-boot／audio-bed／fx-play 再注入。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
 - **hourly 05:15 Lane B split1do**：guide-lines 加厚 hint／pressure／callout／thought／mem（門縫風、銅綠、檻膠條、消防喉轆、地毯邊、感應燈）。miss 仍導向入或停；anti-repeat 新句置池首。未碰 app／index／patterns／data。GUIDE T3 邏輯仍等 owner 硬刷。
 - **hourly 05:13 Lane A split1dm**：intent-patterns 加側腹滑過門檻／收胸貼縫鑽入／斜腹貼縫鑽入／開嗰道門先啫／我而家準備好入去嗰度房／門由我推開先囉／開度門先啫／開門咋；未定落胸氣唔好催／腳未定落胸氣；頭先我講過嘅你仲知唔知咋／掛實咗未啫；點先至啱數先咋；十一更未呀。acceptance 400/400；固定閘 34/34（你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀／開門啦／等等／十一更未呀 全過）。index patterns cache split1dl→split1dm（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
@@ -53,7 +54,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1dm`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1dn`；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
