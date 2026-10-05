@@ -1,7 +1,7 @@
 # 而家進度
 
-最後更新：2026-10-05 07:20 HKT · hourly Lane A split1dk
-Live：Pages `app.js` 119953B 完整引擎（`const STORAGE_KEY` 起），index 掛齊 parts（patterns `?v=split1dk`（07:20）），唔係 b64 stub loader。#46 保留、唔係第一張。禁 app_b64／禁 CDN pin／禁 Imagine。
+最後更新：2026-10-06 02:08 HKT · hourly Lane C
+Live：Pages `app.js` 119953B 完整引擎（`const STORAGE_KEY` 起），index 掛齊 parts，唔係 b64 stub loader。#46 保留、唔係第一張。禁 app_b64／禁 CDN pin／禁 Imagine。
 CHAT-FIRST：打字成功後大部份 node 仍倒 choice buttons（alex 13/14、morgan 11/12、sam 9/10）。好／係／繼續仍走 heat glue（chat-guide 剝 yes-key），唔落 yes-pool。Ack＝下一拍第一句。
 CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
