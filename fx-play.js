@@ -1,8 +1,8 @@
 (function () {
-  window.__ahFxPlay = "t3-0715";
+  window.__ahFxPlay = "t3-0514";
   var wrapped = false;
   var lastNode = "";
-  window.__ahFxPlayChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715";
+  window.__ahFxPlayChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715>t3-0514";
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   function layer() {
     var el = document.getElementById("fx-layer");
@@ -110,8 +110,8 @@
       document.body.classList.remove("show-choices");
     };
     window.renderNode.__ahNeverReveal = true;
-    window.renderNode.__ahFx0715 = true;
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0715) {
+    window.renderNode.__ahFx0514 = true;
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0514) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
@@ -119,9 +119,9 @@
         keepChatFirst(!!ok);
         return ok;
       };
-      window.applyFreeChatAdvance.__ahFx0715 = true;
+      window.applyFreeChatAdvance.__ahFx0514 = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0715) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0514) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -129,7 +129,7 @@
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut0715 = true;
+      window.goToNode.__ahCut0514 = true;
     }
   }
   document.addEventListener("click", function (e) {
@@ -159,11 +159,11 @@
     if (wrapped || ++n > 40) clearInterval(t);
   }, 250);
   function ensureGuide0715() {
-    if (window.__ahChatGuide === "t3-0715") return;
-    if (document.getElementById("chat-guide-t3-0715")) return;
+    if (window.__ahChatGuide === "t3-0514") return;
+    if (document.getElementById("chat-guide-t3-0514")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0715";
-    s.src = "./chat-guide.js?v=t3-0715";
+    s.id = "chat-guide-t3-0514";
+    s.src = "./chat-guide.js?v=t3-0514";
     document.body.appendChild(s);
   }
   layer();
