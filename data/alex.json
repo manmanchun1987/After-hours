@@ -10,7 +10,7 @@
       "id": "n0",
       "label": "走廊 23:44",
       "scene": "office",
-      "text": "你踩晚車，停喺門縫，我睇到你未入。我而家要你入房認位，唔好掛喺走廊。\n\n「走廊唔係位。你推門入嚟，定停低講清楚？」",
+      "text": "你踩晚車，停喺門縫，我睇到你未入。我而家要你入房認位，唔好掛喺走廊。「走廊唔係位。你推門入嚟，定停低講清楚？」",
       "thought": "佢知你仲未走。",
       "aside": "監控紅點照住你後腦。",
       "freeChat": true,
@@ -56,7 +56,7 @@
           "say": "停低",
           "next": "n0b",
           "tension": 2,
-          "ack": "你停低。門未鎖，我未趕你入嚟。",
+          "ack": "你停低。門柄涼，你入咗嚟，我未抬眼。",
           "keys": [
             "停低",
             "等等",
@@ -67,7 +67,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。門未鎖，我未趕你入嚟。",
+            "你停低。門柄涼，你入咗嚟，我未抬眼。",
             "你停。我未催。"
           ]
         },
@@ -111,7 +111,8 @@
           "replies": [
             "門柄涼，你入咗嚟，我未抬眼。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -176,20 +177,20 @@
         "replies": {
           "enter_door": "門柄涼，你入咗嚟，我未抬眼。",
           "enter": "門柄涼，你入咗嚟，我未抬眼。",
-          "wait": "你停低。門未鎖，我未趕你入嚟。",
+          "wait": "你停低。門柄涼，你入咗嚟，我未抬眼。",
           "agree": "門柄涼，你入咗嚟，我未抬眼。",
           "flirt": "門柄涼，你入咗嚟，我未抬眼。"
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n0b": {
       "id": "n0b",
@@ -198,7 +199,7 @@
       "remember": [
         "door_shut"
       ],
-      "text": "門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前認位。\n\n「行過嚟桌前，定仲要我講第二句？」",
+      "text": "門柄涼，你入咗嚟，我未抬眼。我而家要你行過桌前認位。「行過嚟桌前，定仲要我講第二句？」",
       "thought": "Deadline 未到，結果已經落地。",
       "aside": "門縫消失。",
       "freeChat": true,
@@ -239,7 +240,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n1",
-          "ack": "你停喺門後。桌未就你。",
+          "ack": "你停低。你行到桌前，我先抬半眼。",
           "keys": [
             "停低",
             "等等",
@@ -251,7 +252,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停喺門後。桌未就你。",
+            "你停低。你行到桌前，我先抬半眼。",
             "你停。我未催。"
           ]
         },
@@ -296,7 +297,8 @@
           "replies": [
             "你行到桌前，我先抬半眼。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -362,26 +364,26 @@
         "replies": {
           "enter_door": "你行到桌前，我先抬半眼。",
           "enter": "你行到桌前，我先抬半眼。",
-          "wait": "你停喺門後。桌未就你。",
+          "wait": "你停低。你行到桌前，我先抬半眼。",
           "agree": "你行到桌前，我先抬半眼。",
           "flirt": "你行到桌前，我先抬半眼。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n1": {
       "id": "n1",
       "label": "簡報",
       "scene": "office",
-      "text": "你行到桌前，我先抬半眼。簡報未夠，我而家要你認份稿。\n\n「你而家改，定要我講清楚？」",
+      "text": "你行到桌前，我先抬半眼。簡報未夠，我而家要你認份稿。「你而家改，定要我講清楚？」",
       "thought": "指節兩下。",
       "aside": "螢幕光打住佢下顎。",
       "freeChat": true,
@@ -439,7 +441,8 @@
             "你應改，筆我推到你手邊。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -457,14 +460,15 @@
           "replies": [
             "你要清楚，筆放低，我靠後。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n2a",
           "tension": 2,
-          "ack": "你停低。簡報未揭，我未催。",
+          "ack": "你停低。你應改，筆我推到你手邊。",
           "keys": [
             "停低",
             "等等",
@@ -475,7 +479,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。簡報未揭，我未催。",
+            "你停低。你應改，筆我推到你手邊。",
             "你停。我未催。"
           ]
         },
@@ -517,7 +521,7 @@
           "bucket": "tired",
           "say": "頂一句",
           "next": "n2a",
-          "ack": "你停。我未催。",
+          "ack": "你應改，筆我推到你手邊。",
           "keys": [
             "你講清楚",
             "我唔同意",
@@ -581,27 +585,27 @@
         "replies": {
           "enter_door": "你應改，筆我推到你手邊。",
           "enter": "你應改，筆我推到你手邊。",
-          "wait": "你停低。簡報未揭，我未催。",
+          "wait": "你停低。你應改，筆我推到你手邊。",
           "agree": "你應改，筆我推到你手邊。",
           "flirt": "你應改，筆我推到你手邊。",
           "challenge": "你應改，筆我推到你手邊。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n2a": {
       "id": "n2a",
       "label": "改稿",
       "scene": "office",
-      "text": "你應改，筆我推到你手邊。我而家要你坐低起筆，唔好望屏幕。\n\n「坐低。你跟邊一行？」",
+      "text": "你應改，筆我推到你手邊。我而家要你坐低起筆，唔好望屏幕。「坐低。你跟邊一行？」",
       "thought": "近到聞到袖口冷香水。",
       "aside": "筆尖指住一頁。",
       "freeChat": true,
@@ -658,14 +662,15 @@
             "筆尖停喺下一格，我未放你停筆。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "tired",
           "say": "改唔到",
           "next": "n3",
           "tension": 1,
-          "ack": "你停筆。下一格我未逼。",
+          "ack": "你停低。筆尖停喺下一格，我未放你停筆。",
           "keys": [
             "改唔到",
             "停低",
@@ -677,7 +682,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停筆。下一格我未逼。",
+            "你停低。筆尖停喺下一格，我未放你停筆。",
             "你停。我未催。"
           ]
         },
@@ -685,7 +690,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n3",
-          "ack": "你停筆。下一格我未逼。",
+          "ack": "你停低。筆尖停喺下一格，我未放你停筆。",
           "keys": [
             "停低",
             "等等",
@@ -697,7 +702,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停筆。下一格我未逼。",
+            "你停低。筆尖停喺下一格，我未放你停筆。",
             "你停。我未催。"
           ]
         },
@@ -717,7 +722,8 @@
           "replies": [
             "筆尖停喺下一格，我未放你停筆。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -783,26 +789,26 @@
         "replies": {
           "enter_door": "筆尖停喺下一格，我未放你停筆。",
           "enter": "筆尖停喺下一格，我未放你停筆。",
-          "wait": "你停筆。下一格我未逼。",
+          "wait": "你停低。筆尖停喺下一格，我未放你停筆。",
           "agree": "筆尖停喺下一格，我未放你停筆。",
           "flirt": "筆尖停喺下一格，我未放你停筆。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n2b": {
       "id": "n2b",
       "label": "頂嘴",
       "scene": "office",
-      "text": "你要清楚，筆放低，我靠後。我而家要你過嚟聽，唔好留喺位裝聽。\n\n「過嚟聽，定仲留喺位？」",
+      "text": "你要清楚，筆放低，我靠後。我而家要你過嚟聽，唔好留喺位裝聽。「過嚟聽，定仲留喺位？」",
       "thought": "聲線壓低。",
       "aside": "會議室忽然好靜。",
       "freeChat": true,
@@ -858,13 +864,14 @@
             "你企近，我睇住你好耐。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "tired",
           "say": "留低",
           "next": "n2a",
-          "ack": "你停低。簡報未揭，我未催。",
+          "ack": "你停低。你應改，筆我推到你手邊。",
           "keys": [
             "留低",
             "停低",
@@ -876,7 +883,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。簡報未揭，我未催。",
+            "你停低。你應改，筆我推到你手邊。",
             "你停。我未催。"
           ]
         },
@@ -884,7 +891,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n2c",
-          "ack": "你停。我未叫你再近。",
+          "ack": "你停低。你企近，我睇住你好耐。",
           "keys": [
             "停低",
             "等等",
@@ -896,7 +903,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停。我未叫你再近。",
+            "你停低。你企近，我睇住你好耐。",
             "你停。我未催。"
           ]
         },
@@ -916,7 +923,8 @@
           "replies": [
             "你企近，我睇住你好耐。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -941,7 +949,7 @@
           "bucket": "tired",
           "say": "頂一句",
           "next": "n2c",
-          "ack": "你停。我未催。",
+          "ack": "你企近，我睇住你好耐。",
           "keys": [
             "你講清楚",
             "我唔同意",
@@ -1006,27 +1014,27 @@
         "replies": {
           "enter_door": "你企近，我睇住你好耐。",
           "enter": "你企近，我睇住你好耐。",
-          "wait": "你停。我未叫你再近。",
+          "wait": "你停低。你企近，我睇住你好耐。",
           "agree": "你企近，我睇住你好耐。",
           "flirt": "你企近，我睇住你好耐。",
           "challenge": "你企近，我睇住你好耐。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n2c": {
       "id": "n2c",
       "label": "試探",
       "scene": "office",
-      "text": "你企近，我睇住你好耐。我而家要你再近少少，先至落下一格。\n\n「你轉身，定專心改？」",
+      "text": "你企近，我睇住你好耐。我而家要你再近少少，先至落下一格。「你轉身，定專心改？」",
       "thought": "呼吸擦過耳側。",
       "aside": "椅背有佢隻手。",
       "freeChat": true,
@@ -1109,7 +1117,7 @@
           "say": "停低",
           "next": "n3",
           "tension": 2,
-          "ack": "你停筆。下一格我未逼。",
+          "ack": "你停低。筆尖停喺下一格，我未放你停筆。",
           "keys": [
             "停低",
             "等等",
@@ -1120,7 +1128,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停筆。下一格我未逼。",
+            "你停低。筆尖停喺下一格，我未放你停筆。",
             "你停。我未催。"
           ]
         },
@@ -1202,26 +1210,26 @@
         "replies": {
           "enter_door": "筆尖停喺下一格，我未放你停筆。",
           "enter": "筆尖停喺下一格，我未放你停筆。",
-          "wait": "你停筆。下一格我未逼。",
+          "wait": "你停低。筆尖停喺下一格，我未放你停筆。",
           "agree": "筆尖停喺下一格，我未放你停筆。",
           "flirt": "筆尖停喺下一格，我未放你停筆。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n3": {
       "id": "n3",
       "label": "下一行",
       "scene": "office",
-      "text": "筆尖停喺下一格，我未放你停筆。你跟呢行，唔好自己改句。\n\n「下一行你跟唔跟？」",
+      "text": "筆尖停喺下一格，我未放你停筆。你跟呢行，唔好自己改句。「下一行你跟唔跟？」",
       "thought": "佢未鬆手。",
       "aside": "螢幕光移咗一行。",
       "freeChat": true,
@@ -1280,7 +1288,8 @@
             "呢行過咗，筆收返筆桶。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -1299,14 +1308,15 @@
           "replies": [
             "呢行過咗，筆收返筆桶。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "n4",
           "tension": 2,
-          "ack": "你停。留定走，我未替你講。",
+          "ack": "你停低。呢行過咗，筆收返筆桶。",
           "keys": [
             "停低",
             "等等",
@@ -1317,7 +1327,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。留定走，我未替你講。",
+            "你停低。呢行過咗，筆收返筆桶。",
             "你停。我未催。"
           ]
         },
@@ -1399,20 +1409,20 @@
         "replies": {
           "enter_door": "呢行過咗，筆收返筆桶。",
           "enter": "呢行過咗，筆收返筆桶。",
-          "wait": "你停。留定走，我未替你講。",
+          "wait": "你停低。呢行過咗，筆收返筆桶。",
           "agree": "呢行過咗，筆收返筆桶。",
           "flirt": "呢行過咗，筆收返筆桶。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n4": {
       "id": "n4",
@@ -1421,7 +1431,7 @@
       "remember": [
         "line_followed"
       ],
-      "text": "呢行過咗，筆收返筆桶。我要你而家認留定走，唔好企到天光。\n\n「你留低改完，定而家走？」",
+      "text": "呢行過咗，筆收返筆桶。我要你而家認留定走，唔好企到天光。「你留低改完，定而家走？」",
       "thought": "佢未放你走。",
       "aside": "螢幕光停喺最尾行。",
       "freeChat": true,
@@ -1480,13 +1490,14 @@
           "replies": [
             "筆桶未蓋，你留低咗。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "leave",
           "say": "走",
           "next": "n5b",
-          "ack": "你話走，門柄仲涼。",
+          "ack": "你唔跟。你話走，門柄仲涼。",
           "keys": [
             "走",
             "而家走",
@@ -1502,7 +1513,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你話走，門柄仲涼。",
+            "你唔跟。你話走，門柄仲涼。",
             "你停。我未催。",
             "我收你入嚟。未改口。"
           ]
@@ -1512,7 +1523,7 @@
           "say": "停低",
           "next": "n5",
           "tension": 2,
-          "ack": "你停。留嚟做咩，你未講。",
+          "ack": "你停低。筆桶未蓋，你留低咗。",
           "keys": [
             "停低",
             "等等",
@@ -1523,7 +1534,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。留嚟做咩，你未講。",
+            "你停低。筆桶未蓋，你留低咗。",
             "你停。我未催。"
           ]
         },
@@ -1546,7 +1557,7 @@
           "bucket": "leave",
           "say": "唔做",
           "next": "n5b",
-          "ack": "你話走，門柄仲涼。",
+          "ack": "你唔跟。你話走，門柄仲涼。",
           "keys": [
             "唔做",
             "我唔",
@@ -1562,7 +1573,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你話走，門柄仲涼。",
+            "你唔跟。你話走，門柄仲涼。",
             "你停。我未催。",
             "我收你入嚟。未改口。"
           ]
@@ -1632,21 +1643,21 @@
         "replies": {
           "enter_door": "筆桶未蓋，你留低咗。",
           "enter": "筆桶未蓋，你留低咗。",
-          "wait": "你停。留嚟做咩，你未講。",
+          "wait": "你停低。筆桶未蓋，你留低咗。",
           "agree": "筆桶未蓋，你留低咗。",
           "flirt": "筆桶未蓋，你留低咗。",
-          "refuse": "你話走，門柄仲涼。"
+          "refuse": "你唔跟。你話走，門柄仲涼。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n5": {
       "id": "n5",
@@ -1655,7 +1666,7 @@
       "remember": [
         "stayed"
       ],
-      "text": "筆桶未蓋，你留低咗。我要你講留嚟做咩，唔好淨係企住。\n\n「你留嚟改完，定留嚟等我？」",
+      "text": "筆桶未蓋，你留低咗。我要你講留嚟做咩，唔好淨係企住。「你留嚟改完，定留嚟等我？」",
       "thought": "佢未放筆蓋。",
       "aside": "燈未關。",
       "freeChat": true,
@@ -1713,7 +1724,8 @@
             "燈未關，你應完未收工。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -1739,7 +1751,7 @@
           "say": "停低",
           "next": "n6",
           "tension": 2,
-          "ack": "你停。開關未到你手。",
+          "ack": "你停低。燈未關，你應完未收工。",
           "keys": [
             "停低",
             "等等",
@@ -1750,7 +1762,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。開關未到你手。",
+            "你停低。燈未關，你應完未收工。",
             "你停。我未催。"
           ]
         },
@@ -1832,20 +1844,20 @@
         "replies": {
           "enter_door": "燈未關，你應完未收工。",
           "enter": "燈未關，你應完未收工。",
-          "wait": "你停。開關未到你手。",
+          "wait": "你停低。燈未關，你應完未收工。",
           "agree": "燈未關，你應完未收工。",
           "flirt": "燈未關，你應完未收工。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n5b": {
       "id": "n5b",
@@ -1854,7 +1866,7 @@
       "remember": [
         "named_leave"
       ],
-      "text": "你話走，門柄仲涼。我要你走之前講最後一句，唔好摸門就走。\n\n「走之前，你改完未？」",
+      "text": "你話走，門柄仲涼。我要你走之前講最後一句，唔好摸門就走。「走之前，你改完未？」",
       "thought": "佢未抬頭。",
       "aside": "門縫未開。",
       "freeChat": true,
@@ -1911,14 +1923,15 @@
             "燈未關，你應完未收工。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "tired",
           "say": "未改完",
           "next": "n5",
           "tension": 1,
-          "ack": "你停。留嚟做咩，你未講。",
+          "ack": "你停低。筆桶未蓋，你留低咗。",
           "keys": [
             "未改完",
             "停低",
@@ -1930,7 +1943,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。留嚟做咩，你未講。",
+            "你停低。筆桶未蓋，你留低咗。",
             "你停。我未催。"
           ]
         },
@@ -1938,7 +1951,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n5",
-          "ack": "你停。留嚟做咩，你未講。",
+          "ack": "你停低。筆桶未蓋，你留低咗。",
           "keys": [
             "停低",
             "等等",
@@ -1950,7 +1963,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停。留嚟做咩，你未講。",
+            "你停低。筆桶未蓋，你留低咗。",
             "你停。我未催。"
           ]
         },
@@ -1970,13 +1983,14 @@
           "replies": [
             "燈未關，你應完未收工。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "n5",
-          "ack": "筆桶未蓋，你留低咗。",
+          "ack": "你唔跟。筆桶未蓋，你留低咗。",
           "keys": [
             "唔做",
             "我唔",
@@ -1992,7 +2006,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "筆桶未蓋，你留低咗。",
+            "你唔跟。筆桶未蓋，你留低咗。",
             "你停。我未催。",
             "我收你入嚟。未改口。"
           ]
@@ -2062,27 +2076,27 @@
         "replies": {
           "enter_door": "燈未關，你應完未收工。",
           "enter": "燈未關，你應完未收工。",
-          "wait": "你停。留嚟做咩，你未講。",
+          "wait": "你停低。筆桶未蓋，你留低咗。",
           "agree": "燈未關，你應完未收工。",
           "flirt": "燈未關，你應完未收工。",
-          "refuse": "筆桶未蓋，你留低咗。"
+          "refuse": "你唔跟。筆桶未蓋，你留低咗。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n6": {
       "id": "n6",
       "label": "一句先",
       "scene": "office",
-      "text": "燈未關，你應完未收工。我要你講一句先，先至俾你摸開關。\n\n「你講留嚟等我，定而家起筆？」",
+      "text": "燈未關，你應完未收工。我要你講一句先，先至俾你摸開關。「你講留嚟等我，定而家起筆？」",
       "thought": "聲線未鬆。",
       "aside": "螢幕光停住。",
       "freeChat": true,
@@ -2163,7 +2177,7 @@
           "say": "停低",
           "next": "n7",
           "tension": 2,
-          "ack": "你停。筆同燈，你未揀。",
+          "ack": "你停低。燈仲係開，評核表喺手。",
           "keys": [
             "停低",
             "等等",
@@ -2174,7 +2188,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。筆同燈，你未揀。",
+            "你停低。燈仲係開，評核表喺手。",
             "你停。我未催。"
           ]
         },
@@ -2256,26 +2270,26 @@
         "replies": {
           "enter_door": "燈仲係開，評核表喺手。",
           "enter": "燈仲係開，評核表喺手。",
-          "wait": "你停。筆同燈，你未揀。",
+          "wait": "你停低。燈仲係開，評核表喺手。",
           "agree": "燈仲係開，評核表喺手。",
           "flirt": "燈仲係開，評核表喺手。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n7": {
       "id": "n7",
       "label": "關燈",
       "scene": "office",
-      "text": "燈仲係開，評核表喺手。我而家要你落筆，定同我關燈，你揀一句。\n\n「你而家落筆，定同我關燈？」",
+      "text": "燈仲係開，評核表喺手。我而家要你落筆，定同我關燈，你揀一句。「你而家落筆，定同我關燈？」",
       "thought": "佢未放你走。",
       "aside": "桌火只佢一盏。",
       "freeChat": true,
@@ -2333,7 +2347,8 @@
             "你應完，燈仲係開。",
             "我收你呢步。未改口。"
           ],
-          "intentId": "agree"
+          "intentId": "agree",
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -2359,7 +2374,7 @@
           "say": "停低",
           "next": "n8",
           "tension": 2,
-          "ack": "你停。收工定留，你未講。",
+          "ack": "你停低。你應完，燈仲係開。",
           "keys": [
             "停低",
             "等等",
@@ -2370,7 +2385,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停。收工定留，你未講。",
+            "你停低。你應完，燈仲係開。",
             "你停。我未催。"
           ]
         },
@@ -2452,26 +2467,26 @@
         "replies": {
           "enter_door": "你應完，燈仲係開。",
           "enter": "你應完，燈仲係開。",
-          "wait": "你停。收工定留，你未講。",
+          "wait": "你停低。你應完，燈仲係開。",
           "agree": "你應完，燈仲係開。",
           "flirt": "你應完，燈仲係開。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
     },
     "n8": {
       "id": "n8",
       "label": "收工",
       "scene": "office",
-      "text": "你應完，燈仲係開。我而家要你收工定留到我關燈，唔好半句收場。\n\n「你收工，定留低？」",
+      "text": "你應完，燈仲係開。我而家要你收工定留到我關燈，唔好半句收場。「你收工，定留低？」",
       "thought": "佢未放你走。",
       "aside": "桌燈只剩一盞。",
       "freeChat": true,
@@ -2509,20 +2524,20 @@
         "replies": {
           "enter_door": "你講完，我收呢句。",
           "enter": "你講完，我收呢句。",
-          "wait": "你停。聽日呢句你未應。",
+          "wait": "你停低。你講完，我收呢句。",
           "agree": "你講完，我收呢句。",
           "flirt": "你講完，我收呢句。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
           "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
-      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
@@ -2554,7 +2569,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "n9",
-          "ack": "你停。聽日呢句你未應。",
+          "ack": "你停低。你講完，我收呢句。",
           "keys": [
             "停低",
             "等等",
@@ -2566,7 +2581,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停。聽日呢句你未應。",
+            "你停低。你講完，我收呢句。",
             "你停。我未催。"
           ]
         },
@@ -2586,7 +2601,8 @@
           "replies": [
             "你講完，我收呢句。",
             "我收你呢步。未改口。"
-          ]
+          ],
+          "heat": 2
         },
         {
           "bucket": "heat",
@@ -2634,13 +2650,13 @@
       "scene": "office",
       "ending": true,
       "endingTitle": "燈未關",
-      "text": "你講完，我收呢句。我而家要你聽日返嚟再對，門我再開。\n\n「聽日門我再開，你嚟定唔嚟？」",
+      "text": "你講完，我收呢句。我而家要你聽日返嚟再對，門我再開。「聽日門我再開，你嚟定唔嚟？」",
       "thought": "Deadline 可以改。",
       "aside": "走廊回復靜。",
       "freeChat": false,
       "choices": [],
       "intents": [],
-      "stub": "hourly C 04:03: ending closed; start kept",
+      "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool",
       "sceneGoal": {
         "successIntents": [],
         "optionalIntents": [],
@@ -2651,7 +2667,7 @@
         "replies": {},
         "section": "ending",
         "goal": "closed",
-        "stub": "ending; no soft-pass"
+        "stub": "one-breath; ack=next first half; 好/係/繼續 heat agree; no yes-pool"
       }
     }
   }
