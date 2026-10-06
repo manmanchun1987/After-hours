@@ -41,12 +41,14 @@
             "我入去先",
             "開門啦",
             "進去看看",
-            "行入去"
+            "行入去",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "門柄涼，你入咗嚟，我未抬眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -84,12 +86,14 @@
             "我入去先",
             "開門啦",
             "進去看看",
-            "行入去"
+            "行入去",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "門柄涼，你入咗嚟，我未抬眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -143,7 +147,8 @@
           "intentId": "enter",
           "replies": [
             "門柄涼，你入咗嚟，我未抬眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -177,7 +182,7 @@
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
           "ask_want": "你想我點？門就喺度。推，定停。",
           "off_topic": "天氣唔關事。對準門。",
@@ -220,12 +225,14 @@
             "進去",
             "行入去",
             "入嚟",
-            "進入"
+            "進入",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你行到桌前，我先抬半眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -264,12 +271,14 @@
             "開門啦",
             "進去看看",
             "行入去",
-            "走去桌前"
+            "走去桌前",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你行到桌前，我先抬半眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -323,7 +332,8 @@
           "intentId": "enter",
           "replies": [
             "你行到桌前，我先抬半眼。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -358,11 +368,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -402,12 +412,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "我改。"
+            "我改。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你應改，筆我推到你手邊。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -505,18 +517,24 @@
           "bucket": "tired",
           "say": "頂一句",
           "next": "n2a",
-          "ack": "你應改，筆我推到你手邊。",
+          "ack": "你停。我未催。",
           "keys": [
             "你講清楚",
             "我唔同意",
             "頂你一句",
             "反駁你",
-            "你先講"
+            "你先講",
+            "等等",
+            "我未準備好",
+            "停一停",
+            "未準備好",
+            "企住先"
           ],
           "intentId": "challenge",
           "replies": [
             "你應改，筆我推到你手邊。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "你停。我未催。"
           ]
         },
         {
@@ -534,7 +552,8 @@
           "intentId": "enter",
           "replies": [
             "你應改，筆我推到你手邊。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -569,11 +588,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -614,12 +633,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "…係，我聽緊。"
+            "…係，我聽緊。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "筆尖停喺下一格，我未放你停筆。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -732,7 +753,8 @@
           "intentId": "enter",
           "replies": [
             "筆尖停喺下一格，我未放你停筆。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -767,11 +789,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -811,12 +833,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "行過去"
+            "行過去",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你企近，我睇住你好耐。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -917,18 +941,24 @@
           "bucket": "tired",
           "say": "頂一句",
           "next": "n2c",
-          "ack": "你企近，我睇住你好耐。",
+          "ack": "你停。我未催。",
           "keys": [
             "你講清楚",
             "我唔同意",
             "頂你一句",
             "反駁你",
-            "你先講"
+            "你先講",
+            "等等",
+            "我未準備好",
+            "停一停",
+            "未準備好",
+            "企住先"
           ],
           "intentId": "challenge",
           "replies": [
             "你企近，我睇住你好耐。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "你停。我未催。"
           ]
         },
         {
@@ -946,7 +976,8 @@
           "intentId": "enter",
           "replies": [
             "你企近，我睇住你好耐。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -982,11 +1013,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -1027,12 +1058,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "轉身，距離更近"
+            "轉身，距離更近",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "筆尖停喺下一格，我未放你停筆。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1140,7 +1173,8 @@
           "intentId": "enter",
           "replies": [
             "筆尖停喺下一格，我未放你停筆。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -1174,11 +1208,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -1219,12 +1253,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "我跟。"
+            "我跟。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "呢行過咗，筆收返筆桶。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1334,7 +1370,8 @@
           "intentId": "enter",
           "replies": [
             "呢行過咗，筆收返筆桶。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -1368,11 +1405,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -1416,12 +1453,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "我留。"
+            "我留。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "筆桶未蓋，你留低咗。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1454,12 +1493,18 @@
             "走先",
             "我走",
             "唔入",
-            "閃"
+            "閃",
+            "開門啦",
+            "我入去先",
+            "進去看看",
+            "行入去",
+            "入房"
           ],
           "intentId": "refuse",
           "replies": [
             "你話走，門柄仲涼。",
-            "你停。我未催。"
+            "你停。我未催。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1508,12 +1553,18 @@
             "走先",
             "唔留",
             "唔入",
-            "閃"
+            "閃",
+            "開門啦",
+            "我入去先",
+            "進去看看",
+            "行入去",
+            "入房"
           ],
           "intentId": "refuse",
           "replies": [
             "你話走，門柄仲涼。",
-            "你停。我未催。"
+            "你停。我未催。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1550,7 +1601,8 @@
           "intentId": "enter",
           "replies": [
             "筆桶未蓋，你留低咗。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -1587,11 +1639,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -1635,12 +1687,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "改完。"
+            "改完。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "燈未關，你應完未收工。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1749,7 +1803,8 @@
           "intentId": "enter",
           "replies": [
             "燈未關，你應完未收工。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -1783,11 +1838,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -1831,12 +1886,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "改完先走。"
+            "改完先走。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "燈未關，你應完未收工。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1926,12 +1983,18 @@
             "走先",
             "唔留",
             "唔入",
-            "閃"
+            "閃",
+            "開門啦",
+            "我入去先",
+            "進去看看",
+            "行入去",
+            "入房"
           ],
           "intentId": "refuse",
           "replies": [
             "筆桶未蓋，你留低咗。",
-            "你停。我未催。"
+            "你停。我未催。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -1968,7 +2031,8 @@
           "intentId": "enter",
           "replies": [
             "燈未關，你應完未收工。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -2005,11 +2069,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -2050,12 +2114,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "等你。"
+            "等你。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "燈仲係開，評核表喺手。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -2161,7 +2227,8 @@
           "intentId": "enter",
           "replies": [
             "燈仲係開，評核表喺手。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -2195,11 +2262,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -2240,12 +2307,14 @@
             "進去看看",
             "推門",
             "行入去",
-            "落筆。"
+            "落筆。",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你應完，燈仲係開。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -2354,7 +2423,8 @@
           "intentId": "enter",
           "replies": [
             "你應完，燈仲係開。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ],
@@ -2388,11 +2458,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
@@ -2445,11 +2515,11 @@
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
         "guideReplies": {
-          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
-          "off_topic": "呢句離題。對準而家呢步，定停低。",
-          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+          "ask_want": "你想我點？門就喺度。推，定停。",
+          "off_topic": "天氣唔關事。對準門。",
+          "memory": "頭先你講過。而家先算：推門，定停低。"
         }
       },
       "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
@@ -2470,12 +2540,14 @@
             "開門啦",
             "進去看看",
             "行入去",
-            "收工"
+            "收工",
+            "入房"
           ],
           "intentId": "enter_door",
           "replies": [
             "你講完，我收呢句。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         },
         {
@@ -2550,7 +2622,8 @@
           "intentId": "enter",
           "replies": [
             "你講完，我收呢句。",
-            "我收你呢步。未改口。"
+            "我收你呢步。未改口。",
+            "我收你入嚟。未改口。"
           ]
         }
       ]
@@ -2575,7 +2648,10 @@
         "guideLevel": 0,
         "ask": "聽日門我再開，你嚟定唔嚟？",
         "closed": true,
-        "replies": {}
+        "replies": {},
+        "section": "ending",
+        "goal": "closed",
+        "stub": "ending; no soft-pass"
       }
     }
   }
