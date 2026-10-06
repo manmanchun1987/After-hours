@@ -31,7 +31,7 @@
           "bucket": "leave",
           "say": "推門",
           "next": "s2",
-          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "ack": "門推開，茶氣湧出嚟。",
           "keys": [
             "推門",
             "開門",
@@ -46,7 +46,8 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "門推開，茶氣湧出嚟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
@@ -54,7 +55,7 @@
           "say": "停低",
           "next": "s2",
           "tension": 2,
-          "ack": "你停低。門未鎖，我未趕你入嚟。",
+          "ack": "你停低。門未掩，杯未遞。",
           "keys": [
             "停低",
             "等等",
@@ -66,14 +67,15 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。門未鎖，我未趕你入嚟。"
+            "你停低。門未掩，杯未遞。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s2",
-          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "ack": "門推開，茶氣湧出嚟。",
           "keys": [
             "推門",
             "開門",
@@ -88,27 +90,29 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "門推開，茶氣湧出嚟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s2",
-          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "ack": "門推開，茶氣湧出嚟。",
           "keys": [
             "停一秒"
           ],
           "intentId": "agree",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "門推開，茶氣湧出嚟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s2",
-          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "ack": "門推開，茶氣湧出嚟。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -119,14 +123,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "門推開，茶氣湧出嚟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s2",
-          "ack": "門縫熱，你入咗嚟，我將熱水推過嚟。",
+          "ack": "門推開，茶氣湧出嚟。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -136,7 +141,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "門縫熱，你入咗嚟，我將熱水推過嚟。"
+            "門推開，茶氣湧出嚟。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -144,9 +150,7 @@
         "successIntents": [
           "enter_door",
           "enter",
-          "wait",
-          "agree",
-          "flirt"
+          "wait"
         ],
         "optionalIntents": [
           "ask_want",
@@ -161,19 +165,22 @@
         ],
         "maxMisses": 3,
         "guideLevel": 0,
-        "ask": "燈仲亮。你推門入嚟，定仲企外邊一晚？",
+        "ask": "茶水間唔係走廊。你推門入嚟，定停低？",
         "replies": {
-          "enter_door": "門縫熱，你入咗嚟，我將熱水推過嚟。",
-          "wait": "你停低。門未鎖，我未趕你入嚟。",
-          "agree": "門縫熱，你入咗嚟，我將熱水推過嚟。",
-          "enter": "門縫熱，你入咗嚟，我將熱水推過嚟。",
-          "flirt": "門縫熱，你入咗嚟，我將熱水推過嚟。"
+          "enter_door": "門推開，茶氣湧出嚟。",
+          "enter": "門推開，茶氣湧出嚟。",
+          "wait": "你停低。門未掩，杯未遞。"
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？推門，定停低。",
+          "off_topic": "天氣同呢杯無關。入嚟，定停。",
+          "memory": "頭先你講過。而家推門，定停低。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s2": {
       "id": "s2",
@@ -202,7 +209,7 @@
           "bucket": "leave",
           "say": "坐低",
           "next": "s3",
-          "ack": "杯推到你手，你未飲。",
+          "ack": "你坐低。杯我推向你。",
           "keys": [
             "坐低",
             "入咗",
@@ -219,7 +226,8 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你坐低。杯我推向你。",
+            "我收你呢步。未改口。"
           ]
         },
         {
@@ -227,7 +235,7 @@
           "say": "企住",
           "next": "s3",
           "tension": 1,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你企住。位空，我未催你坐。",
           "keys": [
             "企住",
             "停低",
@@ -239,14 +247,15 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你企住。位空，我未催你坐。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s3",
-          "ack": "杯推到你手，你未飲。",
+          "ack": "你坐低。杯我推向你。",
           "keys": [
             "推門",
             "開門",
@@ -262,14 +271,15 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你坐低。杯我推向你。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "s3",
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你企住。位空，我未催你坐。",
           "keys": [
             "停低",
             "等等",
@@ -281,28 +291,30 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你企住。位空，我未催你坐。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s3",
-          "ack": "杯推到你手，你未飲。",
+          "ack": "你坐低。杯我推向你。",
           "keys": [
             "坐低",
             "企住"
           ],
           "intentId": "agree",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你坐低。杯我推向你。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s3",
-          "ack": "杯推到你手，你未飲。",
+          "ack": "你坐低。杯我推向你。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -313,14 +325,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你坐低。杯我推向你。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s3",
-          "ack": "杯推到你手，你未飲。",
+          "ack": "你坐低。杯我推向你。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -330,7 +343,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "杯推到你手，你未飲。"
+            "你坐低。杯我推向你。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -339,8 +353,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -357,17 +371,22 @@
         "guideLevel": 0,
         "ask": "坐低飲杯，定仲企住講？",
         "replies": {
-          "enter_door": "杯推到你手，你未飲。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "agree": "杯推到你手，你未飲。",
-          "enter": "杯推到你手，你未飲。",
-          "flirt": "杯推到你手，你未飲。"
+          "enter_door": "你坐低。杯我推向你。",
+          "enter": "你坐低。杯我推向你。",
+          "wait": "你企住。位空，我未催你坐。",
+          "agree": "你坐低。杯我推向你。",
+          "flirt": "你坐低。杯我推向你。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s3": {
       "id": "s3",
@@ -393,7 +412,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s4",
-          "ack": "煙燃到半，你應完未走。",
+          "ack": "你飲一口。火未滅。",
           "keys": [
             "開門",
             "入去",
@@ -409,14 +428,15 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你飲一口。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "飲",
           "next": "s4",
-          "ack": "煙燃到半，你應完未走。",
+          "ack": "你飲一口。火未滅。",
           "keys": [
             "飲",
             "飲呢杯",
@@ -424,7 +444,8 @@
             "我飲"
           ],
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你飲一口。火未滅。",
+            "我收你呢步。未改口。"
           ],
           "intentId": "agree"
         },
@@ -433,7 +454,7 @@
           "say": "未飲",
           "next": "s4",
           "tension": 1,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你握住未飲。我未再斟。",
           "keys": [
             "未飲",
             "停低",
@@ -445,14 +466,15 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你握住未飲。我未再斟。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "s4",
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你握住未飲。我未再斟。",
           "keys": [
             "停低",
             "等等",
@@ -464,28 +486,30 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你握住未飲。我未再斟。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s4",
-          "ack": "煙燃到半，你應完未走。",
+          "ack": "你飲一口。火未滅。",
           "keys": [
             "飲一口",
             "握住，未飲"
           ],
           "intentId": "agree",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你飲一口。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s4",
-          "ack": "煙燃到半，你應完未走。",
+          "ack": "你飲一口。火未滅。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -496,14 +520,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你飲一口。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s4",
-          "ack": "煙燃到半，你應完未走。",
+          "ack": "你飲一口。火未滅。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -513,7 +538,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "煙燃到半，你應完未走。"
+            "你飲一口。火未滅。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -522,8 +548,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -540,17 +566,22 @@
         "guideLevel": 0,
         "ask": "你飲呢杯未？",
         "replies": {
-          "enter_door": "煙燃到半，你應完未走。",
-          "agree": "煙燃到半，你應完未走。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "enter": "煙燃到半，你應完未走。",
-          "flirt": "煙燃到半，你應完未走。"
+          "enter_door": "你飲一口。火未滅。",
+          "enter": "你飲一口。火未滅。",
+          "wait": "你握住未飲。我未再斟。",
+          "agree": "你飲一口。火未滅。",
+          "flirt": "你飲一口。火未滅。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s4": {
       "id": "s4",
@@ -579,7 +610,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你留。杯我未收。",
           "keys": [
             "開門",
             "入去",
@@ -595,21 +626,23 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "煙未完，你留低咗。"
+            "你留。杯我未收。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "留",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你留。杯我未收。",
           "keys": [
             "留",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "煙未完，你留低咗。"
+            "你留。杯我未收。",
+            "我收你呢步。未改口。"
           ]
         },
         {
@@ -617,7 +650,7 @@
           "say": "走",
           "next": "s5b",
           "tension": 1,
-          "ack": "你話走，門縫仲熱。",
+          "ack": "你話走先。茶水間門未關。",
           "keys": [
             "走",
             "而家走",
@@ -628,7 +661,8 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你話走，門縫仲熱。"
+            "你話走先。茶水間門未關。",
+            "你停。我未催。"
           ]
         },
         {
@@ -636,7 +670,7 @@
           "say": "停低",
           "next": "s5b",
           "tension": 2,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你話走先。茶水間門未關。",
           "keys": [
             "停低",
             "等等",
@@ -647,28 +681,30 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你話走先。茶水間門未關。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你留。杯我未收。",
           "keys": [
             "留。",
             "我走先。"
           ],
           "intentId": "agree",
           "replies": [
-            "煙未完，你留低咗。"
+            "你留。杯我未收。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "s5b",
-          "ack": "你話走，門縫仲熱。",
+          "ack": "你話走先。茶水間門未關。",
           "keys": [
             "唔做",
             "我唔",
@@ -679,14 +715,15 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你話走，門縫仲熱。"
+            "你話走先。茶水間門未關。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你留。杯我未收。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -697,14 +734,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "煙未完，你留低咗。"
+            "你留。杯我未收。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你留。杯我未收。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -714,7 +752,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "煙未完，你留低咗。"
+            "你留。杯我未收。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -723,9 +762,9 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
           "refuse",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -741,18 +780,23 @@
         "guideLevel": 0,
         "ask": "你留低傾，定而家走？",
         "replies": {
-          "enter_door": "煙未完，你留低咗。",
-          "agree": "煙未完，你留低咗。",
-          "refuse": "你話走，門縫仲熱。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "enter": "煙未完，你留低咗。",
-          "flirt": "煙未完，你留低咗。"
+          "enter_door": "你留。杯我未收。",
+          "enter": "你留。杯我未收。",
+          "wait": "你話走先。茶水間門未關。",
+          "agree": "你留。杯我未收。",
+          "flirt": "你留。杯我未收。",
+          "refuse": "你話走先。茶水間門未關。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s5": {
       "id": "s5",
@@ -781,7 +825,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "開門",
             "入去",
@@ -797,20 +841,22 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "飲完",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ],
           "intentId": "agree"
         },
@@ -819,13 +865,14 @@
           "say": "聽你講",
           "next": "s6",
           "tension": 1,
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ]
         },
         {
@@ -833,7 +880,7 @@
           "say": "停低",
           "next": "s6",
           "tension": 2,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你停喺聽之前。杯未冷。",
           "keys": [
             "停低",
             "等等",
@@ -844,28 +891,30 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你停喺聽之前。杯未冷。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "飲完。",
             "聽你講。"
           ],
           "intentId": "agree",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -876,14 +925,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完。我再講一句。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -893,7 +943,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完。我再講一句。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -902,8 +953,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -919,17 +970,22 @@
         "guideLevel": 0,
         "ask": "你留嚟飲完，定留嚟聽我講？",
         "replies": {
-          "enter_door": "煙尾未跌，你應完未關燈。",
-          "agree": "煙尾未跌，你應完未關燈。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "enter": "煙尾未跌，你應完未關燈。",
-          "flirt": "煙尾未跌，你應完未關燈。"
+          "enter_door": "你飲完。我再講一句。",
+          "enter": "你飲完。我再講一句。",
+          "wait": "你停喺聽之前。杯未冷。",
+          "agree": "你飲完。我再講一句。",
+          "flirt": "你飲完。我再講一句。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s5b": {
       "id": "s5b",
@@ -958,7 +1014,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完先走。火未滅。",
           "keys": [
             "開門",
             "入去",
@@ -974,20 +1030,22 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完先走。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "飲完",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完先走。火未滅。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完先走。火未滅。",
+            "我收你呢步。未改口。"
           ],
           "intentId": "agree"
         },
@@ -996,7 +1054,7 @@
           "say": "未飲完",
           "next": "s5",
           "tension": 1,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你未飲完。我未放你出。",
           "keys": [
             "未飲完",
             "停低",
@@ -1008,14 +1066,15 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你未飲完。我未放你出。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "s5",
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你未飲完。我未放你出。",
           "keys": [
             "停低",
             "等等",
@@ -1027,28 +1086,30 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你未飲完。我未放你出。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完先走。火未滅。",
           "keys": [
             "飲完先走。",
             "未飲完。"
           ],
           "intentId": "agree",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完先走。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "唔做",
           "next": "s5",
-          "ack": "煙未完，你留低咗。",
+          "ack": "你未飲完。我未放你出。",
           "keys": [
             "唔做",
             "我唔",
@@ -1059,14 +1120,15 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "煙未完，你留低咗。"
+            "你未飲完。我未放你出。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完先走。火未滅。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -1077,14 +1139,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完先走。火未滅。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s6",
-          "ack": "煙尾未跌，你應完未關燈。",
+          "ack": "你飲完先走。火未滅。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -1094,7 +1157,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "煙尾未跌，你應完未關燈。"
+            "你飲完先走。火未滅。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -1103,9 +1167,9 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
           "refuse",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1122,18 +1186,23 @@
         "guideLevel": 1,
         "ask": "走之前，杯你飲完未？",
         "replies": {
-          "enter_door": "煙尾未跌，你應完未關燈。",
-          "agree": "煙尾未跌，你應完未關燈。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "refuse": "煙未完，你留低咗。",
-          "enter": "煙尾未跌，你應完未關燈。",
-          "flirt": "煙尾未跌，你應完未關燈。"
+          "enter_door": "你飲完先走。火未滅。",
+          "enter": "你飲完先走。火未滅。",
+          "wait": "你未飲完。我未放你出。",
+          "agree": "你飲完先走。火未滅。",
+          "flirt": "你飲完先走。火未滅。",
+          "refuse": "你未飲完。我未放你出。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s6": {
       "id": "s6",
@@ -1158,7 +1227,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "開門",
             "入去",
@@ -1174,33 +1243,36 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "聽你講",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "飲完",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "飲完",
             "我飲"
           ],
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ],
           "intentId": "agree"
         },
@@ -1209,7 +1281,7 @@
           "say": "停低",
           "next": "s7",
           "tension": 2,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你停。火未滅，我未趕。",
           "keys": [
             "停低",
             "等等",
@@ -1220,28 +1292,30 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你停。火未滅，我未趕。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "聽你講。",
             "飲完。"
           ],
           "intentId": "agree",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -1252,14 +1326,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s7",
-          "ack": "煙尾跌咗，火未滅。",
+          "ack": "你再留一句。我講。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -1269,7 +1344,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "煙尾跌咗，火未滅。"
+            "你再留一句。我講。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -1278,8 +1354,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1295,17 +1371,22 @@
         "guideLevel": 0,
         "ask": "你聽我講，定而家飲完？",
         "replies": {
-          "enter_door": "煙尾跌咗，火未滅。",
-          "agree": "煙尾跌咗，火未滅。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "enter": "煙尾跌咗，火未滅。",
-          "flirt": "煙尾跌咗，火未滅。"
+          "enter_door": "你再留一句。我講。",
+          "enter": "你再留一句。我講。",
+          "wait": "你停。火未滅，我未趕。",
+          "agree": "你再留一句。我講。",
+          "flirt": "你再留一句。我講。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s7": {
       "id": "s7",
@@ -1330,7 +1411,7 @@
           "bucket": "leave",
           "say": "入去",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "開門",
             "入去",
@@ -1346,34 +1427,37 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "留到火滅",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "留到火滅",
             "留"
           ],
           "intentId": "agree",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "幫你熄",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "幫你熄",
             "熄"
           ],
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ],
           "intentId": "agree"
         },
@@ -1382,7 +1466,7 @@
           "say": "停低",
           "next": "s8",
           "tension": 2,
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你幫手熄。我未即刻交杯。",
           "keys": [
             "停低",
             "等等",
@@ -1393,28 +1477,30 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你幫手熄。我未即刻交杯。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "留到火滅。",
             "我幫你熄。"
           ],
           "intentId": "agree",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -1425,14 +1511,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s8",
-          "ack": "你應完，煙尾跌咗。",
+          "ack": "你留到火滅。杯我睇住。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -1442,7 +1529,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "你應完，煙尾跌咗。"
+            "你留到火滅。杯我睇住。",
+            "我收你呢步。未改口。"
           ]
         }
       ],
@@ -1451,8 +1539,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1468,17 +1556,22 @@
         "guideLevel": 0,
         "ask": "你留到火滅，定而家幫我熄？",
         "replies": {
-          "enter_door": "你應完，煙尾跌咗。",
-          "agree": "你應完，煙尾跌咗。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "enter": "你應完，煙尾跌咗。",
-          "flirt": "你應完，煙尾跌咗。"
+          "enter_door": "你留到火滅。杯我睇住。",
+          "enter": "你留到火滅。杯我睇住。",
+          "wait": "你幫手熄。我未即刻交杯。",
+          "agree": "你留到火滅。杯我睇住。",
+          "flirt": "你留到火滅。杯我睇住。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool"
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool"
     },
     "s8": {
       "id": "s8",
@@ -1503,8 +1596,8 @@
           "enter_door",
           "enter",
           "wait",
-          "agree",
-          "flirt"
+          "flirt",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1520,23 +1613,28 @@
         "guideLevel": 0,
         "ask": "你幫我熄，定留低？",
         "replies": {
-          "enter_door": "你講完，火我睇住。",
-          "wait": "你停低。杯未斟埋，位仲喺度。",
-          "agree": "你講完，火我睇住。",
-          "enter": "你講完，火我睇住。",
-          "flirt": "你講完，火我睇住。"
+          "enter_door": "你熄。聽日杯我再斟。",
+          "enter": "你熄。聽日杯我再斟。",
+          "wait": "你留低。火未滅我未起身。",
+          "agree": "你熄。聽日杯我再斟。",
+          "flirt": "你熄。聽日杯我再斟。"
         },
         "section": "freeChat",
         "goal": "freechat_soft_pass",
-        "stub": "enter/wait soft-pass; wait≠enter"
+        "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
+        "guideReplies": {
+          "ask_want": "你想我點？應呢步，定停低。唔使打齊原文。",
+          "off_topic": "呢句離題。對準而家呢步，定停低。",
+          "memory": "頭先你講過。我收低。而家應呢步，定停。"
+        }
       },
-      "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
+      "stub": "enter/wait soft-pass; wait≠enter; no yes-pool",
       "intents": [
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s9",
-          "ack": "你講完，火我睇住。",
+          "ack": "你熄。聽日杯我再斟。",
           "keys": [
             "推門",
             "開門",
@@ -1552,14 +1650,15 @@
           ],
           "intentId": "enter_door",
           "replies": [
-            "你講完，火我睇住。"
+            "你熄。聽日杯我再斟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "tired",
           "say": "停低",
           "next": "s9",
-          "ack": "你停低。杯未斟埋，位仲喺度。",
+          "ack": "你留低。火未滅我未起身。",
           "keys": [
             "停低",
             "等等",
@@ -1571,28 +1670,30 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。杯未斟埋，位仲喺度。"
+            "你留低。火未滅我未起身。",
+            "你停。我未催。"
           ]
         },
         {
           "bucket": "heat",
           "say": "應呢步",
           "next": "s9",
-          "ack": "你講完，火我睇住。",
+          "ack": "你熄。聽日杯我再斟。",
           "keys": [
             "熄",
             "留低"
           ],
           "intentId": "agree",
           "replies": [
-            "你講完，火我睇住。"
+            "你熄。聽日杯我再斟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "heat",
           "say": "望近",
           "next": "s9",
-          "ack": "你講完，火我睇住。",
+          "ack": "你熄。聽日杯我再斟。",
           "keys": [
             "望近啲",
             "挨近你",
@@ -1603,14 +1704,15 @@
           ],
           "intentId": "flirt",
           "replies": [
-            "你講完，火我睇住。"
+            "你熄。聽日杯我再斟。",
+            "我收你呢步。未改口。"
           ]
         },
         {
           "bucket": "leave",
           "say": "入去",
           "next": "s9",
-          "ack": "你講完，火我睇住。",
+          "ack": "你熄。聽日杯我再斟。",
           "keys": [
             "我入去先",
             "開門啦",
@@ -1620,7 +1722,8 @@
           ],
           "intentId": "enter",
           "replies": [
-            "你講完，火我睇住。"
+            "你熄。聽日杯我再斟。",
+            "我收你呢步。未改口。"
           ]
         }
       ]
