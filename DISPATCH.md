@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 06:05 HKT Lane A split1dw**：intent-patterns 加開埋道門我入／我跨過門檻先／推開入去啦／入去嗰邊先／行入去睇下／幫我推開入去／開問啦／推開道門啦；等我準備好先／我仲未準備／先停低唔好入／未得閒推門／等一等先啦／我未準好；你想我而家做咩／叫我點做先／你要我點先呀；頭先我講嗰句仲喺度嗎／你仲記唔記得頭先嗰句／記住咗未呀頭先；出面凍唔凍／而家幾多度／十九更未呀／聽日天氣點。typos: 開問啦／我未準好。固定 5 句＋柔軟煙測。index patterns cache split1dv→split1dw。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 05:04 HKT Lane A split1dv**：intent-patterns 加推問先／開吓佢／我入先／幫我開咗先／門開我入／開個門我先入／開們／推們先／進去睇睇／我入去洗；唔好急住我未得／等我諗諗／等陣先唔好推／停一亭先；你想我做咩先／而家要我點／我點做先啱／你話我點做；頭先嗰句仲喺度嗎／你有冇記住／頭先我講過你記住未；十八更未呀／出面熱唔熱／而家幾點呀／落雨未。固定 5 句＋柔軟煙測。index patterns cache split1du→split1dv。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 08:05 Lane A split1dt**：intent-patterns 加側肩滑過門檻／收拳貼縫鑽入／斜肩貼縫鑽入／開嗰道門先㗎／我而家準備好入去嗰廂房／門由我推開先㗎／開度門先㗎／開門㗎／推問入屋／開吓道門我入；未定落肩氣唔好催／腳未定落肩氣／等陣先我未定；頭先我講過嘅你仲知唔知㗎／掛實咗未㗎／頭先我講嗰句你仲記唔記得；點先至啱數先㗎／你想我點做先；十六更未呀／出面打風未呀。acceptance 545/545；固定 5 句＋柔軟煙測全過。index patterns cache split1ds→split1dt（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:16 CODE #48 t3-0715**：chat-guide／compete-boot／audio-bed／fx-play 再注入 `?v=t3-0715`。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
@@ -43,7 +44,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1dv`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1dw`；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
