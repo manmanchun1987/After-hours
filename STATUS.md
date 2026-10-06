@@ -1,4 +1,5 @@
 # 而家進度
+- **hourly 05:04 HKT Lane A split1dv**：intent-patterns 加推問先／開吓佢／我入先／幫我開咗先／門開我入／開個門我先入／開們／推們先／進去睇睇／我入去洗／側肘滑過門框／開嗰道門先呀嘛／我而家準備好入去嗰暗房；唔好急住我未得／等我諗諗／等陣先唔好推／停一亭先；你想我做咩先／而家要我點／我點做先啱／你話我點做；頭先嗰句仲喺度嗎／你有冇記住／頭先我講過你記住未；十八更未呀／出面熱唔熱／而家幾點呀／落雨未。index patterns cache split1du→split1dv。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 20:04 Lane A split1du**：intent-patterns 加側肘滑過門檻／收踝貼縫鑽入／斜腕貼縫鑽入／開嗰道門先咩／我而家準備好入去嗰偏廳／門由我推開先咩／開門拉／推們；未定落肘氣唔好催／停一亭／等陣先我未企穩；頭先我講過嘅你仲知唔知咩／掛實咗未咩；點先至啱數先咩／你想我點做好；十七更未呀／今日天氣點丫。acceptance 煙測非原文。index patterns cache split1dt→split1du。未碰 app／guide／data。T2 回聲仍等 F。
 最後更新：2026-10-06 08:12 HKT · Lane C 一口氣
 Live：Pages `app.js` 119953B 完整引擎（`const STORAGE_KEY` 起），index 掛齊 parts，唔係 b64 stub loader。#46 保留、唔係第一張。
