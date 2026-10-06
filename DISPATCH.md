@@ -29,6 +29,9 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 ## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
 
 ### CODE
+#### CODE BE — roof wind shear
+- **Status:** open. METHOD SCOUT 06:16 HKT。天台 wait／欄風掠：現有 `assets/bg/roof.svg` 欄位加 BE（`repeating-linear-gradient` 1px 風線 + `translateX`）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。
+
 #### CODE chat-guide hide — #48
 - **Status:** P0 FEEL。05:16 已推 t3-0715：推進後 freechat-hidden，兩次 miss 先出擔，renderNode 唔揭擔，好／係／得 map heat。playtest 唔當打斷。index 仍 `?v=split1b`，compete-boot／audio-bed／fx-play 注入 `chat-guide.js?v=t3-0715`。未硬刷，未關。
 

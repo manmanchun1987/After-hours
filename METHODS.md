@@ -26,6 +26,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Last lamp switch-off / dark cut (n4x office kill) | AP CSS cone collapse | C whole wash / L static plane / S flicker |
 | Dawn window leak / 窗漏晨光 (ending_a/b pull-back) | AS CSS warm slit gradient | C whole wash / AO blinds-shut / L plane |
 | Night window city lights / 夜窗光點 (office/roof/lounge wait) | AV CSS bokeh drift | C whole wash / L plane / AS dawn / AQ dust |
+| Roof wait / 天台欄風掠 (roof linger, dry wind not rain) | BE CSS wind shear on railing | A flat roof / AV city bokeh / C whole wash / K rain filter |
 | Pantry kettle / mug steam (wait hold / late kitchen) | AM CSS steam wisps | C whole wash / K weather / L plane |
 | Dust / ash / 塵埃慢飄 (wait hold office/pantry air) | AQ CSS offset-path mote | C whole motion / D FX / AM steam |
 | Wet floor / 潮濕地反光 (enter / wait corridor lift office) | AR CSS -webkit-box-reflect | A flat room / AL long-shadow / L plane |
@@ -129,6 +130,7 @@ BA CSS ellipse `border-radius` + amber `linear-gradient` meniscus + slow `@keyfr
 BB CSS short cylinder `transform: rotate` + one-shot `@keyframes` snap and amber contact flash on existing AD review paper / A review SVG (n7 筆蓋一響 before ink; reuse room + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed room, AU ink-stroke (write, not the click), I audio-only and C whole-scene wash for an isolated pen-cap beat
 BC CSS `perspective` + `transform: rotateY` one-shot `@keyframes` door panel (`transform-origin: left`) swing shut on existing A hall/office SVG (n0b 門在身後合上; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, M static ajar-slit and AW lift dual-panel doors for an isolated door-shut-behind beat
 BD CSS 1px `transform: rotate` second hand + `@keyframes` `steps(60)` on a small dial over existing A office/review SVG (牆鐘秒針; wait-hold late elapsed; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, V HUD-only conic ring and I audio-only cue for an isolated in-room clock beat
+BE CSS `repeating-linear-gradient` 1px wind streaks + `@keyframes translateX` shear on existing A roof SVG railing band (天台欄風; roof wait hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat roof, AV city-bokeh specks, C whole-scene wash and K rain SVG filter for an isolated dry-wind-on-railing beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
