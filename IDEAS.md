@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261007-01
+- proposed_at: 2026-10-07
+- status: proposed
+- pain: 「未得閒推門」係等一等，但句裡有「推門」，classify 被 enter_door 子串搶走（split1dy acceptance 671/672 只跌此句）
+- how: F／引擎：句有未得閒／未準備／等陣先 且語意係停低時，唔准「推門」子串獨贏 enter。未批唔改 engine
+- acceptance: 「未得閒推門」→ wait；單獨「推門」仍 enter_door；「我跟住你入去」仍 enter_door
+- rationale: 停低唔好被動詞子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261006-04
 - proposed_at: 2026-10-06
 - status: proposed
