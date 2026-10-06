@@ -10,12 +10,13 @@
 - Live 驗收：patterns `?v=split1ds`；guide `split1do`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1ds`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1dt`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 08:05 Lane A split1dt**：intent-patterns 加側肩滑過門檻／收拳貼縫鑽入／斜肩貼縫鑽入／開嗰道門先㗎／我而家準備好入去嗰廂房／門由我推開先㗎／開度門先㗎／開門㗎／推問入屋／開吓道門我入；未定落肩氣唔好催／腳未定落肩氣／等陣先我未定；頭先我講過嘅你仲知唔知㗎／掛實咗未㗎／頭先我講嗰句你仲記唔記得；點先至啱數先㗎／你想我點做先；十六更未呀／出面打風未呀。acceptance 545/545；固定 5 句＋柔軟煙測全過。index patterns cache split1ds→split1dt（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:16 CODE #48 t3-0715**：chat-guide／compete-boot／audio-bed／fx-play 再注入 `?v=t3-0715`。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
 - **hourly 07:12 Lane A split1ds**：intent-patterns 加側趾滑過門檻／收指貼縫鑽入／斜趾貼縫鑽入／開嗰道門先嘅／我而家準備好入去嗰套間／門由我推開先嘅／開度門先嘅／開門嘅／推問入房；未定落趾氣唔好催／腳未定落趾氣；頭先我講過嘅你仲知唔知嘅／掛實咗未嘅；點先至啱數先嘅；十五更未呀。acceptance 506/506；固定 5 句＋柔軟煙測全過。index patterns cache split1dr→split1ds（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:04 Lane A split1dr**：intent-patterns 加側踝滑過門檻／收掌貼縫鑽入／斜踝貼縫鑽入／開嗰道門先喔／我而家準備好入去嗰套房／門由我推開先喔／開度門先喔／開門喔／推問入去；未定落踝氣唔好催／腳未定落踝氣；頭先我講過嘅你仲知唔知喔／掛實咗未喔；點先至啱數先喔；十四更未呀。index patterns cache split1dp→split1dr（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
@@ -41,7 +42,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1ds`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1dt`；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46
