@@ -7,15 +7,16 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1ds`；guide `split1do`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
+- Live 驗收：patterns `?v=split1e0`；guide `split1b`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1dz`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1e0`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 06:11 HKT Lane A split1e0**：intent-patterns 加我跟你一齊踏入去／門把擰開我就入／借個位我踏入／手扶住門框踏入／入去裡面嗰房先／開條門罅我入／我而家踏入去先／行入去嗰邊睇下／幫我開門我踏入；等我諗多兩陣先／而家停低一陣先／我未企好唔好行／等我企穩多陣先／先停住唔好催我／等我準備定陣先／我未準好先再／等等先唔好催我；你想我點先呀嘛／我應該點先做呀／跟住叫我做咩先／你要我點做先呀嘛；你記得我頭先講咩呀／頭先嗰句仲喺唔喺度呀／你記住我頭先講未呀／頭先我講過你仲知唔知呀嘛；聽日天氣點呀嘛／出面會唔會落雨呀／而家幾多度呀嘛／廿二更未呀／出面會唔會打風呀。typos: 開問踏入去啦／推開道門們／我踏入去先洗／我未準好先再。固定 5 句＋柔軟煙測全過。acceptance 737/738（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1dz→split1e0（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 08:05 HKT Lane A split1dz**：intent-patterns 加我跟你一齊行入去／門把轉開我就入／借個位我入去／手扶住門框入／入去裡面嗰間先／開條門縫我入／我而家踏入去啦／行入去嗰度睇下／幫我開門我入去；等我諗多陣先／而家停低先／我未企好先／等我企穩陣先／先停住唔好催／等我準備定先／等等先唔好催；你想我點先呀／我應該點先做／跟住叫我做咩／你要我點做先呀；你記得我頭先講咩／頭先嗰句仲喺唔喺度／你記住我頭先講未／頭先我講過你仲知唔知呀；聽日天氣點呀／出面會唔會落雨／而家幾多度呀／廿一更未呀／出面會唔會打風。typos: 開問入去啦／推開道們／我入去先洗／我未準好先。固定 5 句＋柔軟煙測。index patterns cache split1dy→split1dz（size 閘見短報）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:13 HKT Lane A split1dy**：intent-patterns 補回缺失 dx 句＋我跟住你入去／門開咗我就入／借個身位我入／手按門把推開／入去嗰間先啦；等我諗清楚先／而家唔好推／我未企穩唔好入／停低等我；你想我點／我應該點做／跟住要我做咩；你記得我頭先講／頭先我講過嗰句仲喺唔喺度；今日天氣點呀／聽日會唔會落雨。typos: 開問入房／推開度們／我未準好入。acceptance 671/672（「未得閒推門」子串撞 enter，idea 未改 engine）。固定 5 句＋柔軟煙測全過。index patterns cache split1dx→split1dy（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:09 HKT Lane C STORY**：對過 alex 14 / Elise 12 / Sammi 10 節 `text`。每節一呴吸：點你點到＋佢而家要你做咩＋口講一句收在問。ack 等下一拍開頭（門柄涼→行到桌前→應改；酒廊轉杯→坐近；茶水間門縫→熱水）。CHAT-FIRST 好／係／繼續 仍掛 agree，heat2，successIntents 有 agree。guideReplies 仍在，未拆 chat-guide。未碰 app.js，唔係 stub。工作區額滿，今朝未能改寫 data JSON；節文仍係 06:09 那版。
@@ -50,7 +51,7 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### T2 — 場景記憶接話
 - **Status:** split1dd 已加；recentUserLines 回聲仍待 F
 #### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1dz`；全頁 F 暫緩未升
+- **Status:** patterns cache `?v=split1e0`；全頁 F 暫緩未升
 
 ### 保留（唔占 5 張額）
 #### CODE restore-engine — #46

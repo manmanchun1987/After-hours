@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261008-01
+- proposed_at: 2026-10-08
+- status: proposed
+- pain: 「你想我點先至入去」會同時中 ask_want 同 enter_door；最高分可能 enter 獨贏，唔會先答你想我點再導向推門
+- how: F／引擎：句有你想我點且 ask_want≥1 時唔准 enter_door 獨贏；回覆先答想點再導向入或停。未批唔改 engine
+- acceptance: 「你想我點先至入去」→ ask_want；單獨「我而家踏入去先」仍 enter_door；「推門」仍 enter_door
+- rationale: 問想點唔好被入去子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261007-01
 - proposed_at: 2026-10-07
 - status: proposed
