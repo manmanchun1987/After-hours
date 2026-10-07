@@ -1,4 +1,5 @@
 # 而家進度
+- **hourly 08:05 HKT Lane A split1dz**：intent-patterns 加我跟你一齊行入去／門把轉開我就入／借個位我入去／手扶住門框入／入去裡面嗰間先／開條門縫我入／我而家踏入去啦／行入去嗰度睇下／幫我開門我入去；等我諗多陣先／而家停低先／我未企好先／等我企穩陣先／先停住唔好催／等我準備定先；你想我點先呀／我應該點先做／跟住叫我做咩／你要我點做先呀；你記得我頭先講咩／頭先嗰句仲喺唔喺度／你記住我頭先講未／頭先我講過你仲知唔知呀；聽日天氣點呀／出面會唔會落雨／而家幾多度呀／廿一更未呀／出面會唔會打風。typos: 開問入去啦／推開道們／我入去先洗／我未準好先。固定 5 句＋柔軟煙測。index patterns cache split1dy→split1dz。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:16 HKT CODE t3-0716**：chat-guide 留住。推進後 #choices 繼續 freechat-hidden；renderNode 唔揭擔；兩次 miss 先出擔。好／係／得／繼續仍 map heat，唔落 yes-pool。Owner／#pt 唔計 miss，playtest 唔算打斷。audio-bed／fx-play／compete-boot 注入 `?v=t3-0716`。未碰 app.js。禁 app_b64／禁 Imagine。
 - **hourly 07:13 HKT Lane A split1dy**：intent-patterns 補回檔內缺失嘅 dx 句，並加我跟住你入去／門開咗我就入／借個身位我入／手按門把推開／入去嘅間先啦／幫我開條門縫先／門縫推開我入／我踏入去先／開道門入去啦／行過門檻睇下／入去嘅間先／開問入房／推開度們／入去睇睇先；等我諭清楚先／而家唔好推／我未企穩唔好入／停低等我／等我定定神先／我仲未企定／先唔好推住／等陣先唔好催／我未準好入／等一等先住；你想我點／我應該點做／跟住要我做咩／你想我而家點先／叫我點先至得／你要我做咩先呀；你記得我頭先講／頭先我講過嘅句仲喺唔喺度／頭先嘅句你記住未／你仲記得我頭先講咩／頭先講過你記住咗未；今日天氣點呀／聽日會唔會落雨／出面落唔落雨／今晚幾多度／二十更未呀／出面大唔大風。typos: 開問入房／推開度們／我未準好入。acceptance 671/672（舊句「未得閒推門」仍被「推門」子串搶成 enter_door，引擎分屬 F，已寫 idea 未改 engine）。固定 5 句＋柔軟煙測全過。index patterns cache split1dx→split1dy（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 07:05 HKT Lane A split1dx**：intent-patterns 加幫我開條門縫先／門縫推開我入／我踏入去先／開道門入去啦／行過門檻睇下／入去嘅間先／開問入房／推開度們／入去睇睇先；等我定定神先／我仲未企定／先唔好推住／等陣先唔好催／我未準好入／等一等先住；你想我而家點先／叫我點先至得／你要我做咩先呀；頭先嘅句你記住未／你仲記得我頭先講咩／頭先講過你記住咗未；出面落唔落雨／今晚幾多度／二十更未呀／出面大唔大風。typos: 開問入房／推開度們／我未準好入。固定 5 句＋柔軟煙測 35/35。index patterns cache split1dw→split1dx（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
@@ -6,12 +7,12 @@
 - **hourly 06:09 HKT Lane C 一唸**：alex／morgan／sam 每節 agree 加掛好／係／繼續（heat 2，唔落 yes-pool）；ack＝下一拍第一句，停低／唔跟先接反應再接下一拍。node.text 維持一唸（點入嚟＋而家要咩＋問號）。guideReplies 留住。未碰 app.js／index／patterns／guide-lines。
 - **hourly 06:05 HKT Lane A split1dw**：intent-patterns 加開埋道門我入／我跨過門檻先／推開入去啦／入去嘅邊先／行入去睇下／幫我推開入去／開問啦／推開道門啦；等我準備好先／我仲未準備／先停低唔好入／未得閒推門／等一等先啦／我未準好；你想我而家做咩／叫我點做先／你要我點先呀；頭先我講嘅句仲喺度嗎／你仲記唔記得頭先嘅句／記住咗未呀頭先；出面凍唔凍／而家幾多度／十九更未呀／聽日天氣點。typos: 開問啦／我未準好。index patterns cache split1dv→split1dw。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 05:07 HKT Lane C 一唸**：alex／morgan／sam 全部 node.text 收成一唸（點入嚟＋而家要咩＋一句問，尾有問號），唔再空白行切開。ack＝下一拍開頭；停低／唔跟先接反應再接下一拍。好／係／繼續已掛每節 agree，heat 2，唔落 yes-pool。guideReplies 留住。未碰 app.js／index／patterns／guide-lines。
-最後更新：2026-10-07 07:16 HKT · CODE t3-0716
+最後更新：2026-10-07 08:05 HKT · Lane A split1dz
 Live：Pages `app.js` 119953B 完整引擎（`const STORAGE_KEY` 起），index 掛齊 parts，唔係 b64 stub loader。#46 保留、唔係第一張。
 禁 app_b64／禁 CDN pin／禁 Imagine。未碰 app.js。
 CHAT-FIRST：node.text＝點入嚟＋而家要咩＋一句問；ack＝下一拍開頭。好／係／繼續掛 heat agree，唔落 yes-pool。#48 hide 仍開，注入 `?v=t3-0716`。
 CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
-開住（最多 5，低分先）：#48 CODE chat-guide hide；#47 STORY intents；GUIDE T3；INTENT T2 回聲；INTENT T5 cache split1dy。
+開住（最多 5，低分先）：#48 CODE chat-guide hide；#47 STORY intents；GUIDE T3；INTENT T2 回聲；INTENT T5 cache split1dz。
 #46 不占額。
 Owner playtest 預期：你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀。打「好」「係」「得」「繼續」跟 heat 去下一拍開頭，唔好彈返選擇擔。Owner／#pt 唔計 miss。
