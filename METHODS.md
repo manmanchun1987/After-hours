@@ -37,6 +37,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
 | Presence / 呼吸感 on locked still (wait hold / linger) | AJ CSS scale breathe | O crop-zoom / C whole wash |
 | Lift/roof glass breath / 命氣霧 (wait hold on pane) | AK CSS fog-radial | N HUD frost / C whole wash / K weather |
+| Lift/pantry cold pane drip / 玻璃掛水 (wait hold, not rain) | BF CSS droplet translateY | AK fog bloom / K weather / C whole wash |
 | Corridor / office long floor shadow (enter / wait stretch) | AL CSS skew drop-shadow | A flat room / C whole wash / L static plane |
 | Memory flash / 記憶閃回 (ask_memory polaroid) | P CSS rotate+shadow polaroid | O crop-zoom / C wash |
 | CCTV / monitor watch (review cam, hall cam, live feed grain) | Q CSS scanline drift | L static light / C wash |
@@ -131,6 +132,7 @@ BB CSS short cylinder `transform: rotate` + one-shot `@keyframes` snap and amber
 BC CSS `perspective` + `transform: rotateY` one-shot `@keyframes` door panel (`transform-origin: left`) swing shut on existing A hall/office SVG (n0b 門在身後合上; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, M static ajar-slit and AW lift dual-panel doors for an isolated door-shut-behind beat
 BD CSS 1px `transform: rotate` second hand + `@keyframes` `steps(60)` on a small dial over existing A office/review SVG (牆鐘秒針; wait-hold late elapsed; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, V HUD-only conic ring and I audio-only cue for an isolated in-room clock beat
 BE CSS `repeating-linear-gradient` 1px wind streaks + `@keyframes translateX` shear on existing A roof SVG railing band (天台欄風; roof wait hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat roof, AV city-bokeh specks, C whole-scene wash and K rain SVG filter for an isolated dry-wind-on-railing beat
+BF CSS 2–3 ellipse droplets + `@keyframes translateY`/`opacity` slide on existing A lift/pantry glass pane (玻璃掛水; wait-hold cold pane, not weather; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AK fog-radial bloom, K SVG weather filter and C whole-scene wash for an isolated condensation-drip beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
