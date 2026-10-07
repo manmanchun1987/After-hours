@@ -62,6 +62,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Inner thought / 內心 overlay on locked still + room | AC CSS multiply veil | E text-only / C whole wash |
 | Review dossier / 評核紙滑上柜 | AD CSS paper slide | A full room / C whole motion |
 | Review write / 評核筆劃 (n7/n8 pen on form) | AU CSS stroke-dashoffset ink | AD paper slide / AG stamp / E text-only |
+| Review copy / 影印掃光 (n7/n8 dossier on desk, before stamp) | BG CSS scan-bar sweep | AU ink stroke / AD paper slide / AG stamp / A flat room |
 | Success / fail beat | AG CSS stamp slam | D + I cue / F if file exists |
 | Type-now after hide choices / freechat 輸入提示 | AI CSS caret blink + underline | E text-only / C whole wash |
 | Story advance | **IntentEngine** + E chat-first | ≤2 buttons（行為選：推門／停低） |
@@ -133,6 +134,8 @@ BC CSS `perspective` + `transform: rotateY` one-shot `@keyframes` door panel (`t
 BD CSS 1px `transform: rotate` second hand + `@keyframes` `steps(60)` on a small dial over existing A office/review SVG (牆鐘秒針; wait-hold late elapsed; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, C whole-scene wash, V HUD-only conic ring and I audio-only cue for an isolated in-room clock beat
 BE CSS `repeating-linear-gradient` 1px wind streaks + `@keyframes translateX` shear on existing A roof SVG railing band (天台欄風; roof wait hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat roof, AV city-bokeh specks, C whole-scene wash and K rain SVG filter for an isolated dry-wind-on-railing beat
 BF CSS 2–3 ellipse droplets + `@keyframes translateY`/`opacity` slide on existing A lift/pantry glass pane (玻璃掛水; wait-hold cold pane, not weather; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AK fog-radial bloom, K SVG weather filter and C whole-scene wash for an isolated condensation-drip beat
+
+BG CSS `linear-gradient` cyan/white 8px scan bar + one-shot `@keyframes translateY` sweep on existing AD review paper (影印掃光; n7/n8 dossier on desk before stamp; reuse paper + A review SVG only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, AU ink-stroke (write, not copy), AD slide-only, AG stamp and C whole-scene wash for an isolated copier-pass beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
