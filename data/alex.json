@@ -181,11 +181,12 @@
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？走廊唔係位。你推門入嚟，定停低講清楚？",
           "off_topic": "呢句唔關事。走廊唔係位。你推門入嚟，定停低講清楚？",
           "memory": "頭先你講過。而家先算：走廊唔係位。你推門入嚟，定停低講清楚？",
+          "ask_memory": "頭先你講過。而家先算：走廊唔係位。你推門入嚟，定停低講清楚？",
           "apologize": "唔使道歉。走廊唔係位。你推門入嚟，定停低講清楚？",
           "refuse": "你唔跟先。我未收。走廊唔係位。你推門入嚟，定停低講清楚？",
           "unclear": "我未聽清。講清楚：走廊唔係位。你推門入嚟，定停低講清楚？"
@@ -369,11 +370,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？行過嚟桌前，定仲要我講第二句？",
           "off_topic": "呢句唔關事。行過嚟桌前，定仲要我講第二句？",
           "memory": "頭先你講過。而家先算：行過嚟桌前，定仲要我講第二句？",
+          "ask_memory": "頭先你講過。而家先算：行過嚟桌前，定仲要我講第二句？",
           "apologize": "唔使道歉。行過嚟桌前，定仲要我講第二句？",
           "refuse": "你唔跟先。我未收。行過嚟桌前，定仲要我講第二句？",
           "unclear": "我未聽清。講清楚：行過嚟桌前，定仲要我講第二句？"
@@ -598,11 +600,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你而家改，定要我講清楚？",
           "off_topic": "呢句唔關事。你而家改，定要我講清楚？",
           "memory": "頭先你講過。而家先算：你而家改，定要我講清楚？",
+          "ask_memory": "頭先你講過。而家先算：你而家改，定要我講清楚？",
           "apologize": "唔使道歉。你而家改，定要我講清楚？",
           "refuse": "你唔跟先。我未收。你而家改，定要我講清楚？",
           "unclear": "我未聽清。講清楚：你而家改，定要我講清楚？"
@@ -803,11 +806,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？坐低。你跟邊一行？",
           "off_topic": "呢句唔關事。坐低。你跟邊一行？",
           "memory": "頭先你講過。而家先算：坐低。你跟邊一行？",
+          "ask_memory": "頭先你講過。而家先算：坐低。你跟邊一行？",
           "apologize": "唔使道歉。坐低。你跟邊一行？",
           "refuse": "你唔跟先。我未收。坐低。你跟邊一行？",
           "unclear": "我未聽清。講清楚：坐低。你跟邊一行？"
@@ -1031,11 +1035,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？過嚟聽，定仲留喺位？",
           "off_topic": "呢句唔關事。過嚟聽，定仲留喺位？",
           "memory": "頭先你講過。而家先算：過嚟聽，定仲留喺位？",
+          "ask_memory": "頭先你講過。而家先算：過嚟聽，定仲留喺位？",
           "apologize": "唔使道歉。過嚟聽，定仲留喺位？",
           "refuse": "你唔跟先。我未收。過嚟聽，定仲留喺位？",
           "unclear": "我未聽清。講清楚：過嚟聽，定仲留喺位？"
@@ -1237,11 +1242,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你轉身，定專心改？",
           "off_topic": "呢句唔關事。你轉身，定專心改？",
           "memory": "頭先你講過。而家先算：你轉身，定專心改？",
+          "ask_memory": "頭先你講過。而家先算：你轉身，定專心改？",
           "apologize": "唔使道歉。你轉身，定專心改？",
           "refuse": "你唔跟先。我未收。你轉身，定專心改？",
           "unclear": "我未聽清。講清楚：你轉身，定專心改？"
@@ -1443,11 +1449,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？下一行你跟唔跟？",
           "off_topic": "呢句唔關事。下一行你跟唔跟？",
           "memory": "頭先你講過。而家先算：下一行你跟唔跟？",
+          "ask_memory": "頭先你講過。而家先算：下一行你跟唔跟？",
           "apologize": "唔使道歉。下一行你跟唔跟？",
           "refuse": "你唔跟先。我未收。下一行你跟唔跟？",
           "unclear": "我未聽清。講清楚：下一行你跟唔跟？"
@@ -1682,11 +1689,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你留低改完，定而家走？",
           "off_topic": "呢句唔關事。你留低改完，定而家走？",
           "memory": "頭先你講過。而家先算：你留低改完，定而家走？",
+          "ask_memory": "頭先你講過。而家先算：你留低改完，定而家走？",
           "apologize": "唔使道歉。你留低改完，定而家走？",
           "refuse": "你唔跟先。我未收。你留低改完，定而家走？",
           "unclear": "我未聽清。講清楚：你留低改完，定而家走？"
@@ -1889,11 +1897,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你留嚟改完，定留嚟等我？",
           "off_topic": "呢句唔關事。你留嚟改完，定留嚟等我？",
           "memory": "頭先你講過。而家先算：你留嚟改完，定留嚟等我？",
+          "ask_memory": "頭先你講過。而家先算：你留嚟改完，定留嚟等我？",
           "apologize": "唔使道歉。你留嚟改完，定留嚟等我？",
           "refuse": "你唔跟先。我未收。你留嚟改完，定留嚟等我？",
           "unclear": "我未聽清。講清楚：你留嚟改完，定留嚟等我？"
@@ -2123,11 +2132,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？走之前，你改完未？",
           "off_topic": "呢句唔關事。走之前，你改完未？",
           "memory": "頭先你講過。而家先算：走之前，你改完未？",
+          "ask_memory": "頭先你講過。而家先算：走之前，你改完未？",
           "apologize": "唔使道歉。走之前，你改完未？",
           "refuse": "你唔跟先。我未收。走之前，你改完未？",
           "unclear": "我未聽清。講清楚：走之前，你改完未？"
@@ -2327,11 +2337,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你講留嚟等我，定而家起筆？",
           "off_topic": "呢句唔關事。你講留嚟等我，定而家起筆？",
           "memory": "頭先你講過。而家先算：你講留嚟等我，定而家起筆？",
+          "ask_memory": "頭先你講過。而家先算：你講留嚟等我，定而家起筆？",
           "apologize": "唔使道歉。你講留嚟等我，定而家起筆？",
           "refuse": "你唔跟先。我未收。你講留嚟等我，定而家起筆？",
           "unclear": "我未聽清。講清楚：你講留嚟等我，定而家起筆？"
@@ -2531,11 +2542,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你而家落筆，定同我關燈？",
           "off_topic": "呢句唔關事。你而家落筆，定同我關燈？",
           "memory": "頭先你講過。而家先算：你而家落筆，定同我關燈？",
+          "ask_memory": "頭先你講過。而家先算：你而家落筆，定同我關燈？",
           "apologize": "唔使道歉。你而家落筆，定同我關燈？",
           "refuse": "你唔跟先。我未收。你而家落筆，定同我關燈？",
           "unclear": "我未聽清。講清楚：你而家落筆，定同我關燈？"
@@ -2593,11 +2605,12 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 03:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；apologize/refuse/unclear 導回 ask；start 未刪",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "guideReplies": {
           "ask_want": "你想我點？你收工，定留低？",
           "off_topic": "呢句唔關事。你收工，定留低？",
           "memory": "頭先你講過。而家先算：你收工，定留低？",
+          "ask_memory": "頭先你講過。而家先算：你收工，定留低？",
           "apologize": "唔使道歉。你收工，定留低？",
           "refuse": "你唔跟先。我未收。你收工，定留低？",
           "unclear": "我未聽清。講清楚：你收工，定留低？"

@@ -31,8 +31,8 @@
         "successIntents": [
           "enter_door",
           "enter",
-          "agree",
           "wait",
+          "agree",
           "flirt"
         ],
         "optionalIntents": [
@@ -50,19 +50,23 @@
         "guideLevel": 0,
         "ask": "推門入嚟，定停低講清楚？",
         "replies": {
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "enter_door": "你入咗呢步。推門入嚟，定停低講清楚？",
+          "enter": "你入咗呢步。推門入嚟，定停低講清楚？",
           "agree": "你應咗。週五 23:47跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "wait": "你停低。我未催。推門入嚟，定停低講清楚？",
           "flirt": "你近咗桌邊。我未催。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
-        "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
+        "section": "corridor",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？推門入嚟，定停低講清楚？",
+          "off_topic": "呢句唔關事。推門入嚟，定停低講清楚？",
+          "memory": "頭先你講過。而家先算：推門入嚟，定停低講清楚？",
+          "ask_memory": "頭先你講過。而家先算：推門入嚟，定停低講清楚？",
+          "apologize": "唔使道歉。推門入嚟，定停低講清楚？",
+          "refuse": "你唔跟先。我未收。推門入嚟，定停低講清楚？",
+          "unclear": "我未聽清。講清楚：推門入嚟，定停低講清楚？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -191,10 +195,10 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "wait",
-          "enter",
           "enter_door",
+          "enter",
+          "wait",
+          "agree",
           "flirt"
         ],
         "optionalIntents": [
@@ -213,18 +217,22 @@
         "ask": "坐低聽。你聽緊係一行？",
         "replies": {
           "agree": "你應咗。配合跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter": "你入咗呢步。位仲留。",
-          "enter_door": "你行入嚟。燈未關。",
+          "wait": "你停低。我未催。坐低聽。你聽緊係一行？",
+          "enter": "你入咗呢步。坐低聽。你聽緊係一行？",
+          "enter_door": "你入咗呢步。坐低聽。你聽緊係一行？",
           "flirt": "你近咗桌邊。我未催。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？坐低聽。你聽緊係一行？",
+          "off_topic": "呢句唔關事。坐低聽。你聽緊係一行？",
+          "memory": "頭先你講過。而家先算：坐低聽。你聽緊係一行？",
+          "ask_memory": "頭先你講過。而家先算：坐低聽。你聽緊係一行？",
+          "apologize": "唔使道歉。坐低聽。你聽緊係一行？",
+          "refuse": "你唔跟先。我未收。坐低聽。你聽緊係一行？",
+          "unclear": "我未聽清。講清楚：坐低聽。你聽緊係一行？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -368,11 +376,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "challenge",
-          "agree",
-          "enter",
           "enter_door",
-          "wait"
+          "enter",
+          "wait",
+          "agree",
+          "challenge"
         ],
         "optionalIntents": [
           "ask_want",
@@ -390,19 +398,23 @@
         "ask": "你要清楚？過嚟。",
         "replies": {
           "agree": "你應咗。頂嘴跟住落筆。",
-          "enter": "你入咗呢步。位仲留。",
-          "enter_door": "你行入嚟。燈未關。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter": "你入咗呢步。你要清楚？過嚟。",
+          "enter_door": "你入咗呢步。你要清楚？過嚟。",
+          "wait": "你停低。我未催。你要清楚？過嚟。",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你要清楚？過嚟。",
+          "off_topic": "呢句唔關事。你要清楚？過嚟。",
+          "memory": "頭先你講過。而家先算：你要清楚？過嚟。",
+          "ask_memory": "頭先你講過。而家先算：你要清楚？過嚟。",
+          "apologize": "唔使道歉。你要清楚？過嚟。",
+          "refuse": "你唔跟先。我未收。你要清楚？過嚟。",
+          "unclear": "我未聽清。講清楚：你要清楚？過嚟。"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -547,11 +559,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "flirt",
-          "agree",
-          "enter",
           "enter_door",
-          "wait"
+          "enter",
+          "wait",
+          "agree",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -570,17 +582,21 @@
         "replies": {
           "flirt": "你近咗桌邊。我未催。",
           "agree": "你應咗。試探跟住落筆。",
-          "enter": "你入咗呢步。位仲留。",
-          "enter_door": "你行入嚟。燈未關。",
-          "wait": "你停低。我未趕你，位仲喺度。"
+          "enter": "你入咗呢步。你轉身，定專心改？",
+          "enter_door": "你入咗呢步。你轉身，定專心改？",
+          "wait": "你停低。我未催。你轉身，定專心改？"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你轉身，定專心改？",
+          "off_topic": "呢句唔關事。你轉身，定專心改？",
+          "memory": "頭先你講過。而家先算：你轉身，定專心改？",
+          "ask_memory": "頭先你講過。而家先算：你轉身，定專心改？",
+          "apologize": "唔使道歉。你轉身，定專心改？",
+          "refuse": "你唔跟先。我未收。你轉身，定專心改？",
+          "unclear": "我未聽清。講清楚：你轉身，定專心改？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -720,11 +736,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "wait",
-          "challenge",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree",
+          "challenge"
         ],
         "optionalIntents": [
           "ask_want",
@@ -742,19 +758,23 @@
         "ask": "手震係驚交唔到，定停低先？",
         "replies": {
           "agree": "你應咗。克制升温跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "wait": "你停低。我未催。手震係驚交唔到，定停低先？",
+          "enter_door": "你入咗呢步。手震係驚交唔到，定停低先？",
+          "enter": "你入咗呢步。手震係驚交唔到，定停低先？",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？手震係驚交唔到，定停低先？",
+          "off_topic": "呢句唔關事。手震係驚交唔到，定停低先？",
+          "memory": "頭先你講過。而家先算：手震係驚交唔到，定停低先？",
+          "ask_memory": "頭先你講過。而家先算：手震係驚交唔到，定停低先？",
+          "apologize": "唔使道歉。手震係驚交唔到，定停低先？",
+          "refuse": "你唔跟先。我未收。手震係驚交唔到，定停低先？",
+          "unclear": "我未聽清。講清楚：手震係驚交唔到，定停低先？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -900,10 +920,10 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
           "enter_door",
           "enter",
           "wait",
+          "agree",
           "flirt",
           "challenge"
         ],
@@ -923,19 +943,23 @@
         "ask": "你留低講清楚，定停低？",
         "replies": {
           "agree": "你應咗。臨界跟住落筆。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你入咗呢步。你留低講清楚，定停低？",
+          "enter": "你入咗呢步。你留低講清楚，定停低？",
+          "wait": "你停低。我未催。你留低講清楚，定停低？",
           "flirt": "你近咗桌邊。我未催。",
           "challenge": "你頂咗一句。我聽到。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你留低講清楚，定停低？",
+          "off_topic": "呢句唔關事。你留低講清楚，定停低？",
+          "memory": "頭先你講過。而家先算：你留低講清楚，定停低？",
+          "ask_memory": "頭先你講過。而家先算：你留低講清楚，定停低？",
+          "apologize": "唔使道歉。你留低講清楚，定停低？",
+          "refuse": "你唔跟先。我未收。你留低講清楚，定停低？",
+          "unclear": "我未聽清。講清楚：你留低講清楚，定停低？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1092,11 +1116,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "challenge",
-          "wait",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree",
+          "challenge"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1114,19 +1138,23 @@
         "ask": "你要清楚簡報，定清楚我想點？",
         "replies": {
           "agree": "你應咗。被叫過去跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "wait": "你停低。我未催。你要清楚簡報，定清楚我想點？",
+          "enter_door": "你入咗呢步。你要清楚簡報，定清楚我想點？",
+          "enter": "你入咗呢步。你要清楚簡報，定清楚我想點？",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你要清楚簡報，定清楚我想點？",
+          "off_topic": "呢句唔關事。你要清楚簡報，定清楚我想點？",
+          "memory": "頭先你講過。而家先算：你要清楚簡報，定清楚我想點？",
+          "ask_memory": "頭先你講過。而家先算：你要清楚簡報，定清楚我想點？",
+          "apologize": "唔使道歉。你要清楚簡報，定清楚我想點？",
+          "refuse": "你唔跟先。我未收。你要清楚簡報，定清楚我想點？",
+          "unclear": "我未聽清。講清楚：你要清楚簡報，定清楚我想點？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1263,10 +1291,10 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "wait",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1284,18 +1312,22 @@
         "ask": "你收檔離開，定停低再講？",
         "replies": {
           "agree": "你應咗。抽身邊緣跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "wait": "你停低。我未催。你收檔離開，定停低再講？",
+          "enter_door": "你入咗呢步。你收檔離開，定停低再講？",
+          "enter": "你入咗呢步。你收檔離開，定停低再講？",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你收檔離開，定停低再講？",
+          "off_topic": "呢句唔關事。你收檔離開，定停低再講？",
+          "memory": "頭先你講過。而家先算：你收檔離開，定停低再講？",
+          "ask_memory": "頭先你講過。而家先算：你收檔離開，定停低再講？",
+          "apologize": "唔使道歉。你收檔離開，定停低再講？",
+          "refuse": "你唔跟先。我未收。你收檔離開，定停低再講？",
+          "unclear": "我未聽清。講清楚：你收檔離開，定停低再講？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1417,11 +1449,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "wait",
-          "refuse",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree",
+          "refuse"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1439,19 +1471,23 @@
         "ask": "你留低，定轉身？",
         "replies": {
           "agree": "你應咗。承認張力跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "wait": "你停低。我未催。你留低，定轉身？",
           "refuse": "你收住。門我未鎖。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "enter_door": "你入咗呢步。你留低，定轉身？",
+          "enter": "你入咗呢步。你留低，定轉身？",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你留低，定轉身？",
+          "off_topic": "呢句唔關事。你留低，定轉身？",
+          "memory": "頭先你講過。而家先算：你留低，定轉身？",
+          "ask_memory": "頭先你講過。而家先算：你留低，定轉身？",
+          "apologize": "唔使道歉。你留低，定轉身？",
+          "refuse": "你唔跟先。我未收。你留低，定轉身？",
+          "unclear": "我未聽清。講清楚：你留低，定轉身？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1565,10 +1601,10 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
           "enter_door",
           "enter",
           "wait",
+          "agree",
           "flirt"
         ],
         "optionalIntents": [
@@ -1587,18 +1623,22 @@
         "ask": "你繼續，定停低？",
         "replies": {
           "agree": "你應咗。你主動跟住落筆。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "enter_door": "你入咗呢步。你繼續，定停低？",
+          "enter": "你入咗呢步。你繼續，定停低？",
+          "wait": "你停低。我未催。你繼續，定停低？",
           "flirt": "你近咗桌邊。我未催。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你繼續，定停低？",
+          "off_topic": "呢句唔關事。你繼續，定停低？",
+          "memory": "頭先你講過。而家先算：你繼續，定停低？",
+          "ask_memory": "頭先你講過。而家先算：你繼續，定停低？",
+          "apologize": "唔使道歉。你繼續，定停低？",
+          "refuse": "你唔跟先。我未收。你繼續，定停低？",
+          "unclear": "我未聽清。講清楚：你繼續，定停低？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1737,12 +1777,12 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
+          "enter_door",
+          "enter",
+          "wait",
           "agree",
           "flirt",
-          "challenge",
-          "wait",
-          "enter_door",
-          "enter"
+          "challenge"
         ],
         "optionalIntents": [
           "refuse",
@@ -1761,19 +1801,23 @@
         "replies": {
           "agree": "你應咗。燈關之後跟住落筆。",
           "flirt": "你近咗桌邊。我未催。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "wait": "你停低。我未催。你親口講想要邊樣，定停低？",
+          "enter_door": "你入咗呢步。你親口講想要邊樣，定停低？",
+          "enter": "你入咗呢步。你親口講想要邊樣，定停低？",
           "challenge": "你頂咗一句。我聽到。",
           "ask_want": "你應咗呢步。燈關之後我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你親口講想要邊樣，定停低？",
+          "off_topic": "呢句唔關事。你親口講想要邊樣，定停低？",
+          "memory": "頭先你講過。而家先算：你親口講想要邊樣，定停低？",
+          "ask_memory": "頭先你講過。而家先算：你親口講想要邊樣，定停低？",
+          "apologize": "唔使道歉。你親口講想要邊樣，定停低？",
+          "refuse": "你唔跟先。我未收。你親口講想要邊樣，定停低？",
+          "unclear": "我未聽清。講清楚：你親口講想要邊樣，定停低？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -1926,10 +1970,10 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "wait",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree"
         ],
         "optionalIntents": [
           "ask_want",
@@ -1946,19 +1990,23 @@
         "guideLevel": 1,
         "ask": "你跟節奏，定停低？",
         "replies": {
-          "agree": "你應咗。交出控制跟住落筆。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "agree": "你應咗。唔使打齊原文。你跟節奏，定停低？",
+          "wait": "你停低。我未催。你跟節奏，定停低？",
+          "enter_door": "你入咗呢步。你跟節奏，定停低？",
+          "enter": "你入咗呢步。你跟節奏，定停低？",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你跟節奏，定停低？",
+          "off_topic": "呢句唔關事。你跟節奏，定停低？",
+          "memory": "頭先你講過。而家先算：你跟節奏，定停低？",
+          "ask_memory": "頭先你講過。而家先算：你跟節奏，定停低？",
+          "apologize": "唔使道歉。你跟節奏，定停低？",
+          "refuse": "你唔跟先。我未收。你跟節奏，定停低？",
+          "unclear": "我未聽清。講清楚：你跟節奏，定停低？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -2075,11 +2123,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
           "enter_door",
           "enter",
-          "challenge",
-          "wait"
+          "wait",
+          "agree",
+          "challenge"
         ],
         "optionalIntents": [
           "ask_want",
@@ -2096,20 +2144,24 @@
         "guideLevel": 1,
         "ask": "你搶返主動，定停低？",
         "replies": {
-          "agree": "你應咗。搶返主動跟住落筆。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
-          "wait": "你停低。我未趕你，位仲喺度。",
+          "agree": "你應咗。唔使打齊原文。你搶返主動，定停低？",
+          "enter_door": "你入咗呢步。你搶返主動，定停低？",
+          "enter": "你入咗呢步。你搶返主動，定停低？",
+          "wait": "你停低。我未催。你搶返主動，定停低？",
           "challenge": "你頂咗一句。我聽到。",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你搶返主動，定停低？",
+          "off_topic": "呢句唔關事。你搶返主動，定停低？",
+          "memory": "頭先你講過。而家先算：你搶返主動，定停低？",
+          "ask_memory": "頭先你講過。而家先算：你搶返主動，定停低？",
+          "apologize": "唔使道歉。你搶返主動，定停低？",
+          "refuse": "你唔跟先。我未收。你搶返主動，定停低？",
+          "unclear": "我未聽清。講清楚：你搶返主動，定停低？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
@@ -2253,11 +2305,11 @@
       "freeChat": true,
       "sceneGoal": {
         "successIntents": [
-          "agree",
-          "refuse",
-          "wait",
           "enter_door",
-          "enter"
+          "enter",
+          "wait",
+          "agree",
+          "refuse"
         ],
         "optionalIntents": [
           "ask_want",
@@ -2274,20 +2326,24 @@
         "guideLevel": 1,
         "ask": "你留低，定走？",
         "replies": {
-          "agree": "你應咗。拆穿跟住落筆。",
+          "agree": "你應咗。唔使打齊原文。你留低，定走？",
           "refuse": "你收住。門我未鎖。",
-          "wait": "你停低。我未趕你，位仲喺度。",
-          "enter_door": "你行入嚟。燈未關。",
-          "enter": "你入咗呢步。位仲留。",
+          "wait": "你停低。我未催。你留低，定走？",
+          "enter_door": "你入咗呢步。你留低，定走？",
+          "enter": "你入咗呢步。你留低，定走？",
           "flirt": "你望近咗。我未抬眼。"
         },
-        "stub": "enter/wait soft-pass; wait≠enter; ask_want optional; no yes-pool",
+        "stub": "hourly C 04:03 HKT: corridor/freeChat goal=enter_or_wait；success enter_door/enter/wait/agree（唔係yes唯一）；ask_memory/apologize/refuse/unclear 導回 ask；start 未刪",
         "section": "freeChat",
-        "goal": "freechat_soft_pass",
+        "goal": "enter_or_wait",
         "guideReplies": {
-          "ask_want": "你想我點？門就喺度。推，定停。",
-          "off_topic": "天氣唔關事。對準門。",
-          "memory": "頭先你講過。而家先算：推門，定停低。"
+          "ask_want": "你想我點？你留低，定走？",
+          "off_topic": "呢句唔關事。你留低，定走？",
+          "memory": "頭先你講過。而家先算：你留低，定走？",
+          "ask_memory": "頭先你講過。而家先算：你留低，定走？",
+          "apologize": "唔使道歉。你留低，定走？",
+          "refuse": "你唔跟先。我未收。你留低，定走？",
+          "unclear": "我未聽清。講清楚：你留低，定走？"
         }
       },
       "stub": "hourly C 07:03: corridor/freeChat enter+wait success; wait reply ≠ enter line; no yes-pool",
