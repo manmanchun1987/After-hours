@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261008-02
+- proposed_at: 2026-10-08
+- status: proposed
+- pain: 「你記得我頭先講咩但我而家閃入去」會同時中 ask_memory 同 enter_door；最高分可能記憶獨贏，唔會當而家轉念入門
+- how: F／引擎：句有而家閃入／入去且 enter_door≥1 時唔准 ask_memory 獨贏；回覆可先接記得再推進。未批唔改 engine
+- acceptance: 「你記得我頭先講咩但我而家閃入去」→ enter_door；單獨「你記得我頭先講咩吖」仍 ask_memory；「推門」仍 enter_door
+- rationale: 轉念入門唔好被記憶子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261008-01
 - proposed_at: 2026-10-08
 - status: proposed
