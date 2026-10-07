@@ -1,8 +1,8 @@
 (function () {
-  window.__ahFxPlay = "t3-0814";
+  window.__ahFxPlay = "t3-0715b";
   var wrapped = false;
   var lastNode = "";
-  window.__ahFxPlayChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715>t3-0514>t3-0618>t3-0716>t3-0814";
+  window.__ahFxPlayChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715>t3-0514>t3-0618>t3-0716>t3-0814>t3-0715b";
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   function layer() {
     var el = document.getElementById("fx-layer");
@@ -110,8 +110,8 @@
       document.body.classList.remove("show-choices");
     };
     window.renderNode.__ahNeverReveal = true;
-    window.renderNode.__ahFx0814 = true;
-    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0814) {
+    window.renderNode.__ahFx0715b = true;
+    if (typeof window.applyFreeChatAdvance === "function" && !window.applyFreeChatAdvance.__ahFx0715b) {
       var _adv = window.applyFreeChatAdvance;
       window.applyFreeChatAdvance = function () {
         var ok = _adv.apply(this, arguments);
@@ -119,9 +119,9 @@
         keepChatFirst(!!ok);
         return ok;
       };
-      window.applyFreeChatAdvance.__ahFx0814 = true;
+      window.applyFreeChatAdvance.__ahFx0715b = true;
     }
-    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0814) {
+    if (typeof window.goToNode === "function" && !window.goToNode.__ahCut0715b) {
       var gn = window.goToNode;
       window.goToNode = function () {
         var r = gn.apply(this, arguments);
@@ -129,7 +129,7 @@
         keepChatFirst(true);
         return r;
       };
-      window.goToNode.__ahCut0814 = true;
+      window.goToNode.__ahCut0715b = true;
     }
   }
   document.addEventListener("click", function (e) {
@@ -158,16 +158,16 @@
     hookEngine();
     if (wrapped || ++n > 40) clearInterval(t);
   }, 250);
-  function ensureGuide0814() {
-    if (window.__ahChatGuide === "t3-0814") return;
-    if (document.getElementById("chat-guide-t3-0814")) return;
+  function ensureGuide0715b() {
+    if (window.__ahChatGuide === "t3-0715b") return;
+    if (document.getElementById("chat-guide-t3-0715b")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0814";
-    s.src = "./chat-guide.js?v=t3-0814";
+    s.id = "chat-guide-t3-0715b";
+    s.src = "./chat-guide.js?v=t3-0715b";
     document.body.appendChild(s);
   }
   layer();
   ensureFxCss();
-  ensureGuide0814();
-  setInterval(ensureGuide0814, 1600);
+  ensureGuide0715b();
+  setInterval(ensureGuide0715b, 1600);
 })();

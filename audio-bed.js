@@ -1,8 +1,8 @@
 (function () {
-  window.__ahAudioBed = "t3-0814";
+  window.__ahAudioBed = "t3-0715b";
   var ctx, master, bedGain, sfxGain, started = false, muted = false;
   var clickEl, choiceEl;
-  window.__ahAudioBedChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715>t3-0514>t3-0618>t3-0716>t3-0814";
+  window.__ahAudioBedChain = "t3-0414>t3-1002>t3-0616>t3-1016>t3-0715>t3-0514>t3-0618>t3-0716>t3-0814>t3-0715b";
   var OWNER_PROBE = /^(OWNER|CODE|#pt|#playtest|playtest|#code|#督|#驗|#owner|#追|#測|#qa)$/i;
   function AC() { return window.AudioContext || window.webkitAudioContext; }
   function ensure() {
@@ -196,18 +196,18 @@
     if (ownerPlay()) return;
     playCue("send");
   }, true);
-  function ensureGuide0814() {
-    if (window.__ahChatGuide === "t3-0814") return;
-    if (document.getElementById("chat-guide-t3-0814")) return;
+  function ensureGuide0715b() {
+    if (window.__ahChatGuide === "t3-0715b") return;
+    if (document.getElementById("chat-guide-t3-0715b")) return;
     var s = document.createElement("script");
-    s.id = "chat-guide-t3-0814";
-    s.src = "./chat-guide.js?v=t3-0814";
+    s.id = "chat-guide-t3-0715b";
+    s.src = "./chat-guide.js?v=t3-0715b";
     document.body.appendChild(s);
   }
   document.addEventListener("pointerdown", function () {
     if (ownerPlay()) return;
     ensure(); startBed();
   }, true);
-  ensureGuide0814();
-  setInterval(ensureGuide0814, 1600);
+  ensureGuide0715b();
+  setInterval(ensureGuide0715b, 1600);
 })();
