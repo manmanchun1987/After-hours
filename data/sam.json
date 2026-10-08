@@ -57,7 +57,7 @@
           "say": "停低",
           "next": "s2",
           "tension": 2,
-          "ack": "你停低。我未催。燈仲亮。你推門入嚟，定仲企外邊？",
+          "ack": "你停低。我未催。門縫熱，你入咗嚟，我將熱水推過嚟。",
           "keys": [
             "停低",
             "等等",
@@ -189,7 +189,7 @@
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？燈仲亮。你推門入嚟，定仲企外邊？",
           "off_topic": "呢句唔關事。燈仲亮。你推門入嚟，定仲企外邊？",
@@ -209,7 +209,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s2": {
       "id": "s2",
@@ -266,7 +266,7 @@
           "say": "企住",
           "next": "s3",
           "tension": 1,
-          "ack": "你停低。我未催。坐低飲杯，定仲企住講？",
+          "ack": "你停低。我未催。杯推到你手，你未飲。",
           "keys": [
             "企住",
             "停低",
@@ -313,7 +313,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "s3",
-          "ack": "你停低。我未催。坐低飲杯，定仲企住講？",
+          "ack": "你停低。我未催。杯推到你手，你未飲。",
           "keys": [
             "停低",
             "等等",
@@ -422,7 +422,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？坐低飲杯，定仲企住講？",
           "off_topic": "呢句唔關事。坐低飲杯，定仲企住講？",
@@ -442,7 +442,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s3": {
       "id": "s3",
@@ -517,7 +517,7 @@
           "say": "未飲",
           "next": "s4",
           "tension": 1,
-          "ack": "你停低。我未催。你飲呢杯未？",
+          "ack": "你停低。我未催。煙燃到半，你應完未走。",
           "keys": [
             "未飲",
             "停低",
@@ -538,7 +538,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "s4",
-          "ack": "你停低。我未催。你飲呢杯未？",
+          "ack": "你停低。我未催。煙燃到半，你應完未走。",
           "keys": [
             "停低",
             "等等",
@@ -647,7 +647,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你飲呢杯未？",
           "off_topic": "呢句唔關事。你飲呢杯未？",
@@ -667,7 +667,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s4": {
       "id": "s4",
@@ -743,7 +743,7 @@
           "say": "走",
           "next": "s5b",
           "tension": 1,
-          "ack": "你唔跟。我未改口。你留低傾，定而家走？",
+          "ack": "你唔跟。我未改口。你話走，門縫仲熱。",
           "keys": [
             "走",
             "而家走",
@@ -759,7 +759,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你唔跟。我未改口。你留低傾，定而家走？",
+            "你唔跟。我未改口。你話走，門縫仲熱。",
             "你唔跟。我未改口。你話走，門縫仲熱。我未改口。"
           ]
         },
@@ -768,7 +768,7 @@
           "say": "停低",
           "next": "s5b",
           "tension": 2,
-          "ack": "你停低。我未催。你留低傾，定而家走？",
+          "ack": "你停低。我未催。你話走，門縫仲熱。",
           "keys": [
             "停低",
             "等等",
@@ -779,7 +779,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未催。煙未完，你留低咗。",
+            "你停低。我未催。你話走，門縫仲熱。",
             "你停低。我未催。你留低傾，定而家走？",
             "你留低傾，定而家走？"
           ]
@@ -808,7 +808,7 @@
           "bucket": "leave",
           "say": "唔做",
           "next": "s5b",
-          "ack": "你唔跟。我未改口。你留低傾，定而家走？",
+          "ack": "你唔跟。我未改口。你話走，門縫仲熱。",
           "keys": [
             "唔做",
             "我唔",
@@ -824,7 +824,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你唔跟。我未改口。你留低傾，定而家走？",
+            "你唔跟。我未改口。你話走，門縫仲熱。",
             "你唔跟。我未改口。你話走，門縫仲熱。我未改口。"
           ]
         },
@@ -902,7 +902,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你留低傾，定而家走？",
           "off_topic": "呢句唔關事。你留低傾，定而家走？",
@@ -922,7 +922,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s5": {
       "id": "s5",
@@ -1018,7 +1018,7 @@
           "say": "停低",
           "next": "s6",
           "tension": 2,
-          "ack": "你停低。我未催。你留嚟飲完，定留嚟聽我講？",
+          "ack": "你停低。我未催。煙尾未跌，你應完未關燈。",
           "keys": [
             "停低",
             "等等",
@@ -1126,7 +1126,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你留嚟飲完，定留嚟聽我講？",
           "off_topic": "呢句唔關事。你留嚟飲完，定留嚟聽我講？",
@@ -1146,7 +1146,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s5b": {
       "id": "s5b",
@@ -1222,7 +1222,7 @@
           "say": "未飲完",
           "next": "s5",
           "tension": 1,
-          "ack": "你停低。我未催。走之前，杯你飲完未？",
+          "ack": "你停低。我未催。煙未完，你留低咗。",
           "keys": [
             "未飲完",
             "停低",
@@ -1234,7 +1234,7 @@
           ],
           "intentId": "wait",
           "replies": [
-            "你停低。我未催。煙尾未跌，你應完未關燈。",
+            "你停低。我未催。煙未完，你留低咗。",
             "你停低。我未催。走之前，杯你飲完未？",
             "走之前，杯你飲完未？"
           ]
@@ -1243,7 +1243,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "s5",
-          "ack": "你停低。我未催。走之前，杯你飲完未？",
+          "ack": "你停低。我未催。煙未完，你留低咗。",
           "keys": [
             "停低",
             "等等",
@@ -1255,7 +1255,7 @@
           "tension": 2,
           "intentId": "wait",
           "replies": [
-            "你停低。我未催。煙尾未跌，你應完未關燈。",
+            "你停低。我未催。煙未完，你留低咗。",
             "你停低。我未催。走之前，杯你飲完未？",
             "走之前，杯你飲完未？"
           ]
@@ -1284,7 +1284,7 @@
           "bucket": "leave",
           "say": "唔做",
           "next": "s5",
-          "ack": "你唔跟。我未改口。走之前，杯你飲完未？",
+          "ack": "你唔跟。我未改口。煙未完，你留低咗。",
           "keys": [
             "唔做",
             "我唔",
@@ -1300,7 +1300,7 @@
           ],
           "intentId": "refuse",
           "replies": [
-            "你唔跟。我未改口。走之前，杯你飲完未？",
+            "你唔跟。我未改口。煙未完，你留低咗。",
             "你唔跟。我未改口。煙未完，你留低咗。我未改口。"
           ]
         },
@@ -1378,7 +1378,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？走之前，杯你飲完未？",
           "off_topic": "呢句唔關事。走之前，杯你飲完未？",
@@ -1398,7 +1398,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s6": {
       "id": "s6",
@@ -1489,7 +1489,7 @@
           "say": "停低",
           "next": "s7",
           "tension": 2,
-          "ack": "你停低。我未催。你聽我講，定而家飲完？",
+          "ack": "你停低。我未催。煙尾跌咗，火未滅。",
           "keys": [
             "停低",
             "等等",
@@ -1597,7 +1597,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你聽我講，定而家飲完？",
           "off_topic": "呢句唔關事。你聽我講，定而家飲完？",
@@ -1617,7 +1617,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s7": {
       "id": "s7",
@@ -1709,7 +1709,7 @@
           "say": "停低",
           "next": "s8",
           "tension": 2,
-          "ack": "你停低。我未催。你留到火滅，定而家幫我熄？",
+          "ack": "你停低。我未催。你應完，煙尾跌咗。",
           "keys": [
             "停低",
             "等等",
@@ -1817,7 +1817,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你留到火滅，定而家幫我熄？",
           "off_topic": "呢句唔關事。你留到火滅，定而家幫我熄？",
@@ -1837,7 +1837,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
     },
     "s8": {
       "id": "s8",
@@ -1889,7 +1889,7 @@
         },
         "section": "freeChat",
         "goal": "enter_or_wait",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
         "guideReplies": {
           "ask_want": "你想我點？你幫我熄，定留低？",
           "off_topic": "呢句唔關事。你幫我熄，定留低？",
@@ -1909,7 +1909,7 @@
           "我未準備好"
         ]
       },
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。",
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
       "intents": [
         {
           "bucket": "leave",
@@ -1941,7 +1941,7 @@
           "bucket": "tired",
           "say": "停低",
           "next": "s9",
-          "ack": "你停低。我未催。你幫我熄，定留低？",
+          "ack": "你停低。我未催。你講完，火我睇住。",
           "keys": [
             "停低",
             "等等",
@@ -2031,7 +2031,7 @@
       "freeChat": false,
       "choices": [],
       "intents": [],
-      "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。 ending closed 唔加 success。",
+      "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
       "sceneGoal": {
         "successIntents": [],
         "optionalIntents": [],
@@ -2042,7 +2042,7 @@
         "replies": {},
         "section": "ending",
         "goal": "closed",
-        "stub": "hourly C 04:03 HKT: 走廊只 n0/m1/s1 section=corridor goal=enter_or_wait；其餘非 ending section=freeChat goal=enter_or_wait。successIntents 保 enter／enter_door／wait／agree，唔刪既有 flirt／challenge／refuse。wait 回覆先接「你停低。我未催。」再導向本節問；enter 回覆第二句唔複讀第一句。好／係／繼續仍掛 agree，唔開 yes-pool、唔加 keys。ending successIntents 仍空。start 未刪。未碰 app／index／patterns／guide。 ending closed 唔加 success。",
+        "stub": "hourly C 05:07 HKT: 每節一唸＝點到＋而家要＋口講問。ack＝下一拍第一句。wait 先接「你停低。我未催。」再接下一拍開頭。好／係／繼續仍掛 agree，heat 2，唔開 yes-pool。guideReplies 留住。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。 ending closed 唔加 success。",
         "guideReplies": {
           "ask_want": "你想我點？聽日茶水間，杯我再斟，你嚟定唔嚟？",
           "off_topic": "呢句唔關事。聽日茶水間，杯我再斟，你嚟定唔嚟？",
