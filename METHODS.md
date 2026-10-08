@@ -32,6 +32,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Wet floor / 潮濕地反光 (enter / wait corridor lift office) | AR CSS -webkit-box-reflect | A flat room / AL long-shadow / L plane |
 | Meet desk knuckle tap / 敲桌 (n1 tap knuckles) | AZ CSS radial ripple | A flat room / I audio-only / C whole wash |
 | She pulls chair / 拉椅坐下 (n2a sit, sleeve brush) | BH CSS chair translateX | A flat room / AZ knuckle ripple / AL long-shadow / C whole wash |
+| Sleeve brush / 袖口掠過 (n2a sit, after chair) | BJ CSS sleeve streak | BH chair-only / A flat room / C whole wash / O crop |
 | Lounge glass / 酒杯液面 (Morgan wait hold, glass on table) | BA CSS meniscus sway | A flat room / AM steam / C whole wash |
 | Lounge glass ice / 酒杯冰塊 (Morgan wait hold, cube in glass) | BI CSS ice tilt | BA meniscus-only / AM steam / A flat room / C whole wash |
 | Review pen-cap click / 筆蓋一響 (n7 before ink) | BB CSS cap snap | AU ink stroke / I audio-only / A flat room |
@@ -142,6 +143,9 @@ BG CSS `linear-gradient` cyan/white 8px scan bar + one-shot `@keyframes translat
 BH CSS `transform: translateX` one-shot chair slide (`transform-origin: bottom`) on existing A office/lounge SVG (n2a 拉椅坐下; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, AZ knuckle-ripple (tap, not sit), AL long-shadow and C whole-scene wash for an isolated she-pulls-the-chair beat
 
 BI CSS 2 small rect cubes + `@keyframes rotate` slow tilt inside existing lounge glass on A lounge SVG (酒杯冰塊; Morgan wait hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, BA meniscus-only (surface, not ice), AM steam wisps and C whole-scene wash for an isolated ice-in-glass beat
+
+BJ CSS 2px warm `linear-gradient` streak + one-shot `@keyframes translateX` along locked still shoulder/sleeve on existing A office SVG (n2a 袖口掠過 after chair; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, BH chair-only (chair moves, sleeve does not brush), C whole-scene wash and O crop-zoom for an isolated sleeve-brush beat
+
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
