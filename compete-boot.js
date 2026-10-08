@@ -1,5 +1,5 @@
 (function () {
-  window.__ahCompeteBoot = "t3-0715b";
+  window.__ahCompeteBoot = "t3-0514h";
   window.__ahLiveGate = "full-app-no-b64";
   var FILES = { alex: "./data/alex.json", morgan: "./data/morgan.json", sam: "./data/sam.json" };
   var OPENERS = {
@@ -96,6 +96,7 @@
   }
   function liveGate() {
     window.__ahLiveGate = "full-app-no-b64";
+    if (window.__ahAppB64) delete window.__ahAppB64;
     var nodes = document.querySelectorAll("script");
     for (var i = nodes.length - 1; i >= 0; i--) {
       var src = nodes[i].getAttribute("src") || "";
@@ -116,17 +117,16 @@
   }
   function ensureFreshGuide() {
     liveGate();
-    if (window.__ahAppB64) delete window.__ahAppB64;
-    ["chat-guide-t3-0814","audio-bed-t3-0814","fx-play-t3-0814","chat-guide-t3-0716","audio-bed-t3-0716","fx-play-t3-0716"].forEach(function (id) {
+    ["chat-guide-t3-0715b","audio-bed-t3-0715b","fx-play-t3-0715b","chat-guide-t3-0811"].forEach(function (id) {
       var stale = document.getElementById(id);
       if (stale && stale.parentNode) stale.parentNode.removeChild(stale);
     });
-    injectPart("chat-guide-t3-0715b", "./chat-guide.js?v=t3-0715b", "__ahChatGuide", "t3-0715b");
-    injectPart("audio-bed-t3-0715b", "./audio-bed.js?v=t3-0715b", "__ahAudioBed", "t3-0715b");
-    injectPart("fx-play-t3-0715b", "./fx-play.js?v=t3-0715b", "__ahFxPlay", "t3-0715b");
+    injectPart("chat-guide-t3-0514h", "./chat-guide.js?v=t3-0514h", "__ahChatGuide", "t3-0514h");
+    injectPart("audio-bed-t3-0514h", "./audio-bed.js?v=t3-0514h", "__ahAudioBed", "t3-0514h");
+    injectPart("fx-play-t3-0514h", "./fx-play.js?v=t3-0514h", "__ahFxPlay", "t3-0514h");
   }
   function bootStart(id, fresh) {
-    fetch(FILES[id] + "?v=split1b").then(function (res) { return res.json(); }).then(function (story) {
+    fetch(FILES[id] + "?v=split1e5").then(function (res) { return res.json(); }).then(function (story) {
       story.portrait = faceOf(id);
       story.name = id === "sam" ? "Sammi" : id === "morgan" ? "Elise" : "Vera";
       story.chatName = story.name;
