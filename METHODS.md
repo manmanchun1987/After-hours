@@ -36,6 +36,7 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Lift call / 召掣按住 (enter lift, before doors) | BK CSS button squash + hold-LED | X floor-digit / AN keycard swipe / AW door close / A flat lift |
 | Lounge glass / 酒杯液面 (Morgan wait hold, glass on table) | BA CSS meniscus sway | A flat room / AM steam / C whole wash |
 | Lounge glass ice / 酒杯冰塊 (Morgan wait hold, cube in glass) | BI CSS ice tilt | BA meniscus-only / AM steam / A flat room / C whole wash |
+| Lounge pour / 斟酒入杯 (Morgan order, stream into glass) | BL CSS scaleY pour column | BA meniscus-only / BI ice tilt / AM steam / A flat room |
 | Review pen-cap click / 筆蓋一響 (n7 before ink) | BB CSS cap snap | AU ink stroke / I audio-only / A flat room |
 | Private chat / phone sheet over room + locked still | N CSS backdrop-filter frost | C whole wash / L blend |
 | Close-up on locked still (lean-in / after-hours intimacy) | O CSS crop-zoom still | A full room / C whole-scene |
@@ -148,6 +149,8 @@ BI CSS 2 small rect cubes + `@keyframes rotate` slow tilt inside existing lounge
 BJ CSS 2px warm `linear-gradient` streak + one-shot `@keyframes translateX` along locked still shoulder/sleeve on existing A office SVG (n2a 袖口掠過 after chair; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, BH chair-only (chair moves, sleeve does not brush), C whole-scene wash and O crop-zoom for an isolated sleeve-brush beat
 
 BK CSS `scaleY(0.82)` one-shot squash + inset amber `box-shadow` hold on existing lift call-button chrome (召掣按住; enter lift before AW doors; reuse A lift SVG + HUD only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat lift, X floor-digit LED (floor, not call), AN keycard swipe (grant, not call), AW door-close and C whole-scene wash for an isolated she-holds-the-call-button beat
+
+BL CSS `scaleY(0)`→`1` amber 3px column + one-shot `@keyframes` fill on existing lounge glass in A lounge SVG (斟酒入杯; Morgan order before hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full-bleed flat room, BA meniscus-only (surface already full), BI ice tilt (cube, not stream), AM steam wisps and C whole-scene wash for an isolated she-pours-the-glass beat
 
 
 ## Forbidden methods

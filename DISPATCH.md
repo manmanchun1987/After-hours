@@ -49,6 +49,9 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 #### CODE BK — lift call-button hold
 - **Status:** open. METHOD SCOUT 08:18 HKT。入升降機、門未合：現有 lift chrome 召掣加 BK（`scaleY` 一按壓扁 + inset amber hold-LED）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。服務：enter lift／召掣按住（門合上之前）。
 
+#### CODE BL — lounge pour column
+- **Status:** open. METHOD SCOUT 07:17 HKT。Morgan 落單斟酒、未入 wait hold：現有 lounge 酒杯加 BL（`scaleY` 琥珀柱由空到滿）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。服務：lounge order／斟酒入杯（液面晃之前）。
+
 #### CODE BE — roof wind shear
 - **Status:** open. METHOD SCOUT 06:16 HKT。天台 wait／欄風掠：現有 `assets/bg/roof.svg` 欄位加 BE（`repeating-linear-gradient` 1px 風線 + `translateX`）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。
 
