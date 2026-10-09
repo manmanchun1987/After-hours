@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261009-04
+- proposed_at: 2026-10-09
+- status: proposed
+- pain: 「三十一更未呀但我而家鑽入去」會同時中 off_topic（三十一更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問鑽入
+- how: F／引擎：enter_door≥1 且有鑽入／入通道時唔准 off_topic 獨贏；回覆先接三十一更再導向推門。未批唔改 engine
+- acceptance: 「三十一更未呀但我而家鑽入去」→ enter_door，唔係 off_topic；「三十一更未呀」仍 off_topic；「推門」仍 enter_door
+- rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261009-03
 - proposed_at: 2026-10-09
 - status: proposed
