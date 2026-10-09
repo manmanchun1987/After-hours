@@ -5,6 +5,15 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261010-01
+- proposed_at: 2026-10-10
+- status: proposed
+- pain: 「唔好幫我探入」係拒絕／停低，但句裡有「探入」，classify 被 enter_door 子串搶走；玩家講唔好入都會被當推門
+- how: F／引擎：句有唔好／咪／別 且語意係拒絕入時，唔准「探入／入去」子串獨贏 enter。未批唔改 engine
+- acceptance: 「唔好幫我探入」→ refuse 或 wait，唔係 enter_door；單獨「我而家探入去先」仍 enter_door；「推門」仍 enter_door
+- rationale: 否定入門唔好被動詞子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
+
 ### I-20261009-05
 - proposed_at: 2026-10-09
 - status: proposed
