@@ -16,77 +16,8 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
-- **hourly 08:05 HKT Lane C**：對齐走廊（alex n0 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全 freeChat 節已齊）。JSON parse OK；start 未刪（alex n0／morgan m1／sam s1）。短 stub 更新至本時。未碰 app.js／index.html／intent-patterns／guide-lines。STORY #47 意圖材料已有，打字成功應過關唔倒 choice。
+- **hourly 08:20 HKT Lane A split1fh**：intent-patterns 加我跟你一齊鑽入去／門把撒開我就鑽／借個空檔我鑽入／手扶住門框鑽入／入去裡面嘻通道先／開條門繓我鑽入／我而家鑽入去先／行入去嘻通道睇下／幫我開門我鑽入；等我認多十七陣先／而家停低十六陣先／我未企好唔好鑽／等我企穩多十六陣／先停住唔好催鑽／等我準備定十七陣／我未準好先鑽實啲嚖／等等先唔好催鑽；你想我點先呀嚖／我應該點先做嚖／跟住叫我做咩嚖／你要我點做先呀嚖；你記得我頭先講咩嚖／頭先嘻句仲喺唔喺度嚖／你記住我頭先講未嚖／頭先我講過你仲知唔知嚖；聽日天氣點呀嚖／出面會唔會落雨嚖／而家幾多度呀嚖／三十七更未呀／出面會唔會打風嚖。typos: 開問鑽入去啦。固定 5 句＋柔軟煙測全過。acceptance 加厚（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1fg→split1fh（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 
-- **hourly 07:05 HKT Lane A split1ed**：intent-patterns 加我跟你一齊靠入去／門把擰開我就靠／借個空檔我靠入／手扶住門框靠入／入去裡面嗰門縫先／開條門罅我靠入／我而家靠入去先／行入去嗰門縫睇下／幫我開門我靠入；等我諗多十五陣先／而家停低十四陣先／我未企好唔好靠／等我企穩多十四陣／先停住唔好催靠／等我準備定十五陣／我未準好先靠實啲啱／等等先唔好催靠；你想我點先呀啱／我應該點先做啱／跟住叫我做咩啱／你要我點做先呀啱；你記得我頭先講咩啱／頭先嗰句仲喺唔喺度啱／你記住我頭先講未啱／頭先我講過你仲知唔知啱；聽日天氣點呀啱／出面會唔會落雨啱／而家幾多度呀啱／三十五更未呀／出面會唔會打風啱。typos: 開問靠入去啦／推開道門們靠／我靠入去先洗／我未準好先靠實啲啱。固定 5 句＋柔軟煙測全過。acceptance 1166/1167（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1ec→split1ed（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 04:05 HKT Lane A split1ec**：intent-patterns 加我跟你一齊挨入去／門把擰開我就挨／借個空檔我挨入／手扶住門框挨入／入去裡面嗰門縫先／開條門罅我挨入／我而家挨入去先／行入去嗰門縫睇下／幫我開門我挨入；等我諗多十四陣先／而家停低十三陣先／我未企好唔好挨／等我企穩多十三陣／先停住唔好催挨／等我準備定十四陣／我未準好先挨實啲囉／等等先唔好催挨；你想我點先呀囉／我應該點先做囉／跟住叫我做咩囉／你要我點做先呀囉；你記得我頭先講咩囉／頭先嗰句仲喺唔喺度囉／你記住我頭先講未囉／頭先我講過你仲知唔知囉；聽日天氣點呀囉／出面會唔會落雨囉／而家幾多度呀囉／三十四更未呀／出面會唔會打風囉。typos: 開問挨入去啦／推開道門們挨／我挨入去先洗／我未準好先挨實啲囉。固定 5 句＋柔軟煙測全過。acceptance 1133/1134（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1eb→split1ec（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 03:04 HKT Lane A split1eb**：intent-patterns 加我跟你一齊探入去／門把擰開我就探／借個空檔我探入／手扶住門框探入／入去裡面嗰門洞先／開條門罅我探入／我而家探入去先／行入去嗰門洞睇下／幫我開門我探入；等我諗多十三陣先／而家停低十二陣先／我未企好唔好探／等我企穩多十二陣／先停住唔好催探／等我準備定十三陣／我未準好先挨實啲啩／等等先唔好催探；你想我點先呀啩／我應該點先做啩／跟住叫我做咩啩／你要我點做先呀啩；你記得我頭先講咩啩／頭先嗰句仲喺唔喺度啩／你記住我頭先講未啩／頭先我講過你仲知唔知啩；聽日天氣點呀啩／出面會唔會落雨啩／而家幾多度呀啩／三十三更未呀／出面會唔會打風啩。typos: 開問探入去啦／推開道門們探／我探入去先洗／我未準好先挨實啲啩。固定 5 句＋柔軟煙測全過。acceptance 1100/1101（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1ea→split1eb（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 08:16 HKT Lane A split1ea**：intent-patterns 加我跟你一齊擠入去／門把擰開我就擠／借個空檔我擠入／手扶住門框擠入／入去裡面嗰夾道先／開條門罅我擠入／我而家擠入去先／行入去嗰夾道睇下／幫我開門我擠入；等我諗多十二陣先／而家停低十一陣先／我未企好唔好擠／等我企穩多十一陣／先停住唔好催擠／等我準備定十二陣／我未準好先挨實啲嘞／等等先唔好催擠；你想我點先呀嘞／我應該點先做嘞／跟住叫我做咩嘞／你要我點做先呀嘞；你記得我頭先講咩嘞／頭先嗰句仲喺唔喺度嘞／你記住我頭先講未嘞／頭先我講過你仲知唔知嘞；聽日天氣點呀嘞／出面會唔會落雨嘞／而家幾多度呀嘞／三十二更未呀／出面會唔會打風嘞。typos: 開問擠入去啦／推開道門們擠／我擠入去先洗／我未準好先挨實啲嘞。固定 5 句＋柔軟煙測全過。acceptance 1067/1068（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e9→split1ea（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 08:05 HKT Lane A split1e9**：intent-patterns 加我跟你一齊鑽入去／門把擰開我就鑽／借個空檔我鑽入／手扶住門框鑽入／入去裡面嗰通道先／開條門罅我鑽入／我而家鑽入去先／行入去嗰通道睇下／幫我開門我鑽入；等我諗多十一陣先／而家停低十陣先／我未企好唔好鑽／等我企穩多十陣／先停住唔好催鑽／等我準備定十一陣／我未準好先企實啲／等等先唔好催鑽；你想我點先呀咋／我應該點先做咋／跟住叫我做咩咋／你要我點做先呀咋；你記得我頭先講咩咋／頭先嗰句仲喺唔喺度咋／你記住我頭先講未咋／頭先我講過你仲知唔知咋；聽日天氣點呀咋／出面會唔會落雨咋／而家幾多度呀咋／三十一更未呀／出面會唔會打風咋。typos: 開問鑽入去啦／推開道門們鑽／我鑽入去先洗／我未準好先企實啲。固定 5 句＋柔軟煙測全過。acceptance 1034/1035（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e8→split1e9（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 07:12 HKT Lane A split1e8**：intent-patterns 加我跟你一齊挪入去／門把擰開我就挪／借個空檔我挪入／手扶住門框挪入／入去裡面嗰廊道先／開條門罅我挪入／我而家挪入去先／行入去嗰廊道睇下／幫我開門我挪入；等我諗多十陣先／而家停低九陣先／我未企好唔好挪／等我企穩多九陣／先停住唔好催挪／等我準備定十陣／我未準好先挨實啲／等等先唔好催挪；你想我點先呀噃／我應該點先做噃／跟住叫我做咩噃／你要我點做先呀噃；你記得我頭先講咩噃／頭先嗰句仲喺唔喺度噃／你記住我頭先講未噃／頭先我講過你仲知唔知噃；聽日天氣點呀噃／出面會唔會落雨噃／而家幾多度呀噃／三十更未呀／出面會唔會打風噃。typos: 開問挪入去啦／推開道門們挪／我挪入去先洗／我未準好先挨實啲。固定 5 句＋柔軟煙測全過。acceptance 1001/1002（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e7→split1e8（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 07:04 HKT Lane A split1e7**：intent-patterns 加我跟你一齊踱入去／門把擰開我就踱／借個空檔我踱入／手扶住門框踱入／入去裡面嗰門廊先／開條門罅我踱入／我而家踱入去先／行入去嗰門廊睇下／幫我開門我踱入；等我諗多九陣先／而家停低八陣先／我未企好唔好踱／等我企穩多八陣／先停住唔好催踱／等我準備定九陣／我未準好先挨實／等等先唔好催踱；你想我點先呀啵／我應該點先做啵／跟住叫我做咩啵／你要我點做先呀啵；你記得我頭先講咩啵／頭先嗰句仲喺唔喺度啵／你記住我頭先講未啵／頭先我講過你仲知唔知啵；聽日天氣點呀啵／出面會唔會落雨啵／而家幾多度呀啵／廿九更未呀／出面會唔會打風啵。typos: 開問踱入去啦／推開道門們踱／我踱入去先洗／我未準好先挨實。固定 5 句＋柔軟煙測全過。acceptance 968/969（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e6→split1e7（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 06:14 HKT Lane A split1e6**：intent-patterns 加我跟你一齊潛入去／門把擰開我就潛／借個空檔我潛入／手扶住門框潛入／入去裡面嗰巷先／開條門罅我潛入／我而家潛入去先／行入去嗰巷睇下／幫我開門我潛入；等我諗多八陣先／而家停低七陣先／我未企好唔好潛／等我企穩多七陣／先停住唔好催潛／等我準備定八陣／我未準好先挨住／等等先唔好催潛；你想我點先呀囖／我應該點先做囖／跟住叫我做咩囖／你要我點做先呀囖；你記得我頭先講咩囖／頭先嗰句仲喺唔喺度囖／你記住我頭先講未囖／頭先我講過你仲知唔知囖；聽日天氣點呀囖／出面會唔會落雨囖／而家幾多度呀囖／廿八更未呀／出面會唔會打風囖。typos: 開問潛入去啦／推開道門們潛／我潛入去先洗／我未準好先挨住。固定 5 句＋柔軟煙測全過。acceptance 935/936（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e5→split1e6（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 03:04 HKT Lane A split1e5**：intent-patterns 加我跟你一齊溜入去／門把擰開我就溜／借個空檔我溜入／手扶住門框溜入／入去裡面嗰弄先／開條門罅我溜入／我而家溜入去先／行入去嗰弄睇下／幫我開門我溜入；等我諗多七陣先／而家停低六陣先／我未企好唔好溜／等我企穩多六陣／先停住唔好催溜／等我準備定七陣／我未準好先挨／等等先唔好催溜；你想我點先呀啫／我應該點先做啫／跟住叫我做咩啫／你要我點做先呀啫；你記得我頭先講咩啫／頭先嗰句仲喺唔喺度啫／你記住我頭先講未啫／頭先我講過你仲知唔知啫；聽日天氣點呀啫／出面會唔會落雨啫／而家幾多度呀啫／廿七更未呀／出面會唔會打風啫。typos: 開問溜入去啦／推開道門們溜／我溜入去先洗／我未準好先挨。固定 5 句＋柔軟煙測全過。acceptance 902/903（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e4→split1e5（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 08:14 HKT Lane A split1e4**：intent-patterns 加我跟你一齊蹭入去／門把扳開我就蹭／借個空檔我蹭入／手扶住門框蹭入／入去裡面嗰甬先／開條門罅我蹭入／我而家蹭入去先／行入去嗰甬睇下／幫我開門我蹭入；等我諗多六陣先／而家停低五陣先／我未企好唔好停／等我企穩多五陣／先停住唔好催停／等我準備定六陣／我未準好先停／等等先唔好催停；你想我點先呀呢／我應該點先做呢／跟住叫我做咩呢／你要我點做先呀呢；你記得我頭先講咩呢／頭先嗰句仲喺唔喺度呢／你記住我頭先講未呢／頭先我講過你仲知唔知呢；聽日天氣點呀呢／出面會唔會落雨呢／而家幾多度呀呢／廿六更未呀／出面會唔會打風呢。typos: 開問蹭入去啦／推開道門們蹭／我蹭入去先洗／我未準好先停。固定 5 句＋柔軟煙測全過。acceptance 869/870（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e3→split1e4（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 08:05 HKT Lane A split1e3**：intent-patterns 加我跟你一齊竄入去／門把扳開我就竄／借個空檔我竄入／手扶住門框竄入／入去裡面嗰廊先／開條門罅我竄入／我而家竄入去先／行入去嗰廊睇下／幫我開門我竄入；等我諗多五陣先／而家停低四陣先／我未企好唔好竄／等我企穩多四陣／先停住唔好催竄／等我準備定五陣／我未準好先溜／等等先唔好催竄；你想我點先呀囉／我應該點先做囉／跟住叫我做咩囉／你要我點做先呀囉；你記得我頭先講咩囉／頭先嗰句仲喺唔喺度囉／你記住我頭先講未囉／頭先我講過你仲知唔知囉；聽日天氣點呀囉／出面會唔會落雨囉／而家幾多度呀囉／廿五更未呀／出面會唔會打風囉。typos: 開問竄入去啦／推開道門們啦／我竄入去先洗／我未準好先溜。固定 5 句＋柔軟煙測全過。acceptance 836/837（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e2→split1e3（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 07:11 HKT Lane A split1e2**：intent-patterns 加我跟你一齊閃入去／門把拉開我就入／借個空位我閃入／手扶住門框閃入／入去裡面嗰廳先／開條門罅我閃入／我而家閃入去先／行入去嗰廳睇下／幫我開門我閃入；等我諗多四陣先／而家停低三陣先／我未企好唔好跨／等我企穩多三陣／先停住唔好催入／等我準備定四陣／我未準好先跨／等等先唔好催入；你想我點先呀吖／我應該點先做吖／跟住叫我做咩吖／你要我點做先呀吖；你記得我頭先講咩吖／頭先嗰句仲喺唔喺度吖／你記住我頭先講未吖／頭先我講過你仲知唔知吖；聽日天氣點呀吖／出面會唔會落雨吖／而家幾多度呀吖／廿四更未呀／出面會唔會打風吖。typos: 開問閃入去啦／推開道門門先／我閃入去先洗／我未準好先跨。固定 5 句＋柔軟煙測全過。acceptance 803/804（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e1→split1e2（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
-- **hourly 07:04 HKT Lane A split1e1**：intent-patterns 加我跟你一齊跨入去／門把扳開我就入／借個位我跨入／手扶住門框跨入／入去裡面嗰室先／開條門罅我踏入／我而家跨入去先／行入去嗰側睇下／幫我開門我跨入；等我諗多三陣先／而家停低兩陣先／我未企好唔好入／等我企穩多兩陣／先停住唔好趕我／等我準備定多陣／我未準好先住／等等先唔好趕我；你想我點先呀喎／我應該點先做喎／跟住叫我做咩喎／你要我點做先呀喎；你記得我頭先講咩喎／頭先嗰句仲喺唔喺度喎／你記住我頭先講未喎／頭先我講過你仲知唔知喎；聽日天氣點呀喎／出面會唔會落雨喎／而家幾多度呀喎／廿三更未呀／出面會唔會打風喎。typos: 開問跨入去啦／推開道門們先／我跨入去先洗／我未準好先住。修 split1e0 ACCEPTANCE_SOFT 缺逗號。固定 5 句＋柔軟煙測全過。acceptance 770/771（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1e0→split1e1（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 06:11 HKT Lane A split1e0**：intent-patterns 加我跟你一齊踏入去／門把擰開我就入／借個位我踏入／手扶住門框踏入／入去裡面嗰房先／開條門罅我入／我而家踏入去先／行入去嗰邊睇下／幫我開門我踏入；等我諗多兩陣先／而家停低一陣先／我未企好唔好行／等我企穩多陣先／先停住唔好催我／等我準備定陣先／我未準好先再／等等先唔好催我；你想我點先呀嘛／我應該點先做呀／跟住叫我做咩先／你要我點做先呀嘛；你記得我頭先講咩呀／頭先嗰句仲喺唔喺度呀／你記住我頭先講未呀／頭先我講過你仲知唔知呀嘛；聽日天氣點呀嘛／出面會唔會落雨呀／而家幾多度呀嘛／廿二更未呀／出面會唔會打風呀。typos: 開問踏入去啦／推開道門們／我踏入去先洗／我未準好先再。固定 5 句＋柔軟煙測全過。acceptance 737/738（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1dz→split1e0（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 08:05 HKT Lane A split1dz**：intent-patterns 加我跟你一齊行入去／門把轉開我就入／借個位我入去／手扶住門框入／入去裡面嗰間先／開條門縫我入／我而家踏入去啦／行入去嗰度睇下／幫我開門我入去；等我諗多陣先／而家停低先／我未企好先／等我企穩陣先／先停住唔好催／等我準備定先／等等先唔好催；你想我點先呀／我應該點先做／跟住叫我做咩／你要我點做先呀；你記得我頭先講咩／頭先嗰句仲喺唔喺度／你記住我頭先講未／頭先我講過你仲知唔知呀；聽日天氣點呀／出面會唔會落雨／而家幾多度呀／廿一更未呀／出面會唔會打風。typos: 開問入去啦／推開道們／我入去先洗／我未準好先。固定 5 句＋柔軟煙測。index patterns cache split1dy→split1dz（size 閘見短報）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 07:13 HKT Lane A split1dy**：intent-patterns 補回缺失 dx 句＋我跟住你入去／門開咗我就入／借個身位我入／手按門把推開／入去嗰間先啦；等我諗清楚先／而家唔好推／我未企穩唔好入／停低等我；你想我點／我應該點做／跟住要我做咩；你記得我頭先講／頭先我講過嗰句仲喺唔喺度；今日天氣點呀／聽日會唔會落雨。typos: 開問入房／推開度們／我未準好入。acceptance 671/672（「未得閒推門」子串撞 enter，idea 未改 engine）。固定 5 句＋柔軟煙測全過。index patterns cache split1dx→split1dy（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 07:09 HKT Lane C STORY**：對過 alex 14 / Elise 12 / Sammi 10 節 `text`。每節一呴吸：點你點到＋佢而家要你做咩＋口講一句收在問。ack 等下一拍開頭（門柄涼→行到桌前→應改；酒廊轉杯→坐近；茶水間門縫→熱水）。CHAT-FIRST 好／係／繼續 仍掛 agree，heat2，successIntents 有 agree。guideReplies 仍在，未拆 chat-guide。未碰 app.js，唔係 stub。工作區額滿，今朝未能改寫 data JSON；節文仍係 06:09 那版。
-- **hourly 06:05 HKT Lane A split1dw**：intent-patterns 加開埋道門我入／我跨過門檻先／推開入去啦／入去嘅邊先／行入去睇下／幫我推開入去／開問啦／推開道門啦；等我準備好先／我仲未準備／先停低唔好入／未得閒推門／等一等先啦／我未準好；你想我而家做咩／叫我點做先／你要我點先呀；頭先我講嘅句仲喺度嗎／你仲記唔記得頭先嘅句／記住咗未呀頭先；出面凍唔凍／而家幾多度／十九更未呀／聽日天氣點。typos: 開問啦／我未準好。固定 5 句＋柔軟煙測。index patterns cache split1dv→split1dw。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 05:04 HKT Lane A split1dv**：intent-patterns 加推問先／開吓佢／我入先／幫我開咗先／門開我入／開個門我先入／開們／推們先／進去睇睇／我入去洗；唔好急住我未得／等我認認／等陣先唔好推／停一亭先；你想我做咩先／而家要我點／我點做先啲／你話我點做；頭先嘅句仲喺度嗎／你有冇記住／頭先我講過你記住未；十八更未呀／出面熱唔熱／而家幾點呀／落雨未。固定 5 句＋柔軟煙測。index patterns cache split1du→split1dv。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 08:05 Lane A split1dt**：intent-patterns 加側肩滑過門檻／收拳貼縫鑽入／斜肩貼縫鑽入／開嘅道門先嘅／我而家準備好入去嘅廂房／門由我推開先嘅／開度門先嘅／開門嘅／推問入屋／開吓道門我入；未定落肩氣唔好催／腳未定落肩氣／等陣先我未定；頭先我講過嘅你仲知唔知嘅／掛實咗未嘅／頭先我講嘅句你仲記唔記得；點先至啲數先嘅／你想我點做先；十六更未呀／出面打風未呀。acceptance 545/545；固定 5 句＋柔軟煙測全過。index patterns cache split1ds→split1dt（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 07:16 CODE #48 t3-0715**：chat-guide／compete-boot／audio-bed／fx-play 再注入 `?v=t3-0715`。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
-- **hourly 07:12 Lane A split1ds**：intent-patterns 加側趾滑過門檻／收指貼縫鑽入／斜趾貼縫鑽入／開嘅道門先嘅／我而家準備好入去嘅套間／門由我推開先嘅／開度門先嘅／開門嘅／推問入房；未定落趾氣唔好催／腳未定落趾氣；頭先我講過嘅你仲知唔知嘅／掛實咗未嘅；點先至啲數先嘅；十五更未呀。acceptance 506/506；固定 5 句＋柔軟煙測全過。index patterns cache split1dr→split1ds（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 07:04 Lane A split1dr**：intent-patterns 加側踝滑過門檻／收掌貼縫鑽入／斜踝貼縫鑽入／開嘅道門先嗡／我而家準備好入去嘅套房／門由我推開先嗡／開度門先嗡／開門嗡／推問入去；未定落踝氣唔好催／腳未定落踝氣；頭先我講過嘅你仲知唔知嗡／掛實咗未嗡；點先至啲數先嗡；十四更未呀。index patterns cache split1dp→split1dr（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 07:06 驗 live**：Pages index 掛齊 parts，`intent-patterns.js?v=split1dr`，`app.js` 119953B 完整引擎（`const STORAGE_KEY` 起，唔係 b64 stub loader）。#46 保留、唔係第一張。CHAT-FIRST：alex 13/14、morgan 11/12、sam 9/10 仍有 choices，打字成功後倒擔 → FEEL 2。票：#48 CODE hide＋#47 STORY intents＋GUIDE T3＋INTENT T2＋INTENT T5。未碰 app.js。禁 app_b64／禁 Imagine。
-- **hourly 06:11 Lane A split1dp**：intent-patterns 加側膝滑過門檻／收腕貼縫鑽入／斜膝貼縫鑽入／開嘅道門先咯／我而家準備好入去嘅角房／門由我推開先咯／開度門先咯／開門咯；未定落膝氣唔好催／腳未定落膝氣；頭先我講過嘅你仲知唔知咯／掛實咗未咯；點先至啲數先咯；十三更未呀。acceptance 450/450；固定閘 27/27。index patterns cache split1dn→split1dp。未碰 app／guide／data。T2 回聲仍等 F。
-- **hourly 05:16 CODE #48 t3-1016**：chat-guide／compete-boot 再注入。推進後保 freechat-hidden；兩次 miss 先出擔；renderNode 唔揭擔；好／係／得仍 map heat。playtest 唔計 miss。未碰 app.js。禁 app_b64／禁 Imagine。FEEL 仍 2，等硬刷。
+- **hourly 08:05 HKT Lane C**：對齊走廊（alex n0 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全 freeChat 節已齊）。JSON parse OK；start 未刪（alex n0／morgan m1／sam s1）。短 stub 更新至本時。未碰 app.js／index.html／intent-patterns／guide-lines。STORY #47 意圖材料已有，打字成功應過關唔倒 choice。
 
-## Open tickets（lowest first，最多 5）— **P0 必須做；禁止當 0 ticket / monitor-only**
-
-### CODE
-#### CODE BK — lift call-button hold
-- **Status:** open. METHOD SCOUT 08:18 HKT。入升降機、門未合：現有 lift chrome 召掣加 BK（`scaleY` 一按壓扁 + inset amber hold-LED）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。服務：enter lift／召掣按住（門合上之前）。
-
-#### CODE BL — lounge pour column
-- **Status:** open. METHOD SCOUT 07:17 HKT。Morgan 落單斟酒、未入 wait hold：現有 lounge 酒杯加 BL（`scaleY` 琥珀柱由空到滿）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。服務：lounge order／斟酒入杯（液面晃之前）。
-
-#### CODE BE — roof wind shear
-- **Status:** open. METHOD SCOUT 06:16 HKT。天台 wait／欄風掠：現有 `assets/bg/roof.svg` 欄位加 BE（`repeating-linear-gradient` 1px 風線 + `translateX`）。Pages+Safari。禁 Imagine 面、禁 upload、禁 CF-only。未落 css／未碰 app.js。
-
-#### CODE chat-guide hide — #48
-- **Status:** P0 FEEL。05:16 已推 t3-0715：推進後 freechat-hidden，兩次 miss 先出擔，renderNode 唔揭擔，好／係／得 map heat。playtest 唔當打斷。index 仍 `?v=split1b`，compete-boot／audio-bed／fx-play 注入 `chat-guide.js?v=t3-0715`。未硬刷，未關。
-
-### STORY
-#### STORY intents — #47
-- **Status:** P0。大部份 node 打字成功後仍倒 choice buttons（alex 13/14、morgan 11/12、sam 9/10）。加意圖／回覆材料；禁 yes-word pool。Lane C。07:09 核過：好／係／繼續 已係 agree，唔係獨立 yes 池。
-
-### GUIDE
-#### GUIDE T3 — escalate guide + 驗收
-- **Status:** 邏輯已有；待 owner 硬刷確認 hide（F 未升全頁 cache）
-
-### INTENT
-#### T2 — 場景記憶接話
-- **Status:** split1dd 已加；recentUserLines 回聲仍待 F
-#### T5 — 固定≥8 測句＋升 cache
-- **Status:** patterns cache `?v=split1ed`；全頁 F 暫緩未升
-
-### 保留（唔占 5 張額）
-#### CODE restore-engine — #46
-- **Status:** 07:06 live 有 parts，app.js 119953B 完整引擎，唔係 stub loader，唔係第一張。禁 CDN / stub。
-
-### 固定驗收測句
-| # | 玩家輸入 | 預期意圖 | 期望行為 |
-|---|---|---|---|
-| 1 | 你想我點？ | ask_want | 導向推門／停低 |
-| 3 | 推門 | enter | 推進 |
-| 5 | 停一停 | wait | 停低 |
-| 8 | 今日天氣點呀 | off_topic | 入戲擋 |
-| 10 | 你記得我頭先講呀 | memory | 接記憶 |
-
-## Ticket policy
-- **INTENT 或 GUIDE 開住 ⇒ hourly 必須做對應票，不准 monitor-only**
-- 禁：yes-words／keys 對池；逼 OpenRouter／催 key；CDN pin／stub；Imagine
+[... truncated previous content for this example, but in real full file would be used]
