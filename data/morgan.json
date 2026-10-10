@@ -230,7 +230,7 @@
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你坐近一格，定只收條款？",
           "off_topic": "呢句唔關事。你坐近一格，定只收條款？",
@@ -474,7 +474,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你講你想點，定我先講？",
           "off_topic": "呢句唔關事。你講你想點，定我先講？",
@@ -716,7 +716,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你簽呢頁，定仲睇住我？",
           "off_topic": "呢句唔關事。你簽呢頁，定仲睇住我？",
@@ -959,7 +959,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你跟唔跟呢一句？",
           "off_topic": "呢句唔關事。你跟唔跟呢一句？",
@@ -1199,7 +1199,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你簽完仲留唔留？",
           "off_topic": "呢句唔關事。你簽完仲留唔留？",
@@ -1475,7 +1475,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你留低聽人，定而家走？",
           "off_topic": "呢句唔關事。你留低聽人，定而家走？",
@@ -1720,7 +1720,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你留嚟聽人，定留嚟簽尾頁？",
           "off_topic": "呢句唔關事。你留嚟聽人，定留嚟簽尾頁？",
@@ -1986,7 +1986,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？走之前，單你收未？",
           "off_topic": "呢句唔關事。走之前，單你收未？",
@@ -2224,7 +2224,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你聽人，定而家收單？",
           "off_topic": "呢句唔關事。你聽人，定而家收單？",
@@ -2461,7 +2461,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你留到歌完，定而家收單？",
           "off_topic": "呢句唔關事。你留到歌完，定而家收單？",
@@ -2546,7 +2546,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
+        "stub": "hourly C 09:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）確認齊全。JSON parse OK；start 未刪。未碰 app.js／index.html／intent-patterns／guide-lines。",
         "guideReplies": {
           "ask_want": "你想我點？你收單，定留低聽完？",
           "off_topic": "呢句唔關事。你收單，定留低聽完？",

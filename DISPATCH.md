@@ -16,8 +16,9 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 09:05 HKT Lane C**：對齊走廊（alex n0／morgan m1／sam s1 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全相關節已齊）。JSON parse OK；start 未刪。短 stub 更新至 09:05。未碰 app.js／index.html／intent-patterns／guide-lines。
+
 - **hourly 08:20 HKT Lane A split1fh**：intent-patterns 加我跟你一齊鑽入去／門把撒開我就鑽／借個空檔我鑽入／手扶住門框鑽入／入去裡面嘻通道先／開條門繓我鑽入／我而家鑽入去先／行入去嘻通道睇下／幫我開門我鑽入；等我認多十七陣先／而家停低十六陣先／我未企好唔好鑽／等我企穩多十六陣／先停住唔好催鑽／等我準備定十七陣／我未準好先鑽實啲嚖／等等先唔好催鑽；你想我點先呀嚖／我應該點先做嚖／跟住叫我做咩嚖／你要我點做先呀嚖；你記得我頭先講咩嚖／頭先嘻句仲喺唔喺度嚖／你記住我頭先講未嚖／頭先我講過你仲知唔知嚖；聽日天氣點呀嚖／出面會唔會落雨嚖／而家幾多度呀嚖／三十七更未呀／出面會唔會打風嚖。typos: 開問鑽入去啦。固定 5 句＋柔軟煙測全過。acceptance 加厚（「未得閒推門」子串撞 enter，idea 未改 engine）。index patterns cache split1fg→split1fh（7276=7276）。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 
 - **hourly 08:05 HKT Lane C**：對齊走廊（alex n0 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全 freeChat 節已齊）。JSON parse OK；start 未刪（alex n0／morgan m1／sam s1）。短 stub 更新至本時。未碰 app.js／index.html／intent-patterns／guide-lines。STORY #47 意圖材料已有，打字成功應過關唔倒 choice。
 
-[... the rest of the original content from the saved full]
