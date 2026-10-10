@@ -7,15 +7,17 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1fj`；guide `split1b`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
+- Live 驗收：patterns `?v=split1fk`；guide `split1b`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1fj`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1fk`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 05:13 HKT Lane A split1fk**：intent-patterns 加衝入／闖入同義 + refuse 否定（唔好幫我衝入等）；等我認多廿二陣先系列；typos 開問衝入。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fj→split1fk。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
+
 - **hourly 04:11 HKT Lane A split1fj**：intent-patterns 加塞入／溜入同義 + refuse 否定（唔好幫我塞入等）；等我認多二十陣先系列；typos 開問塞入。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fi→split1fj。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 
 - **hourly 09:05 HKT Lane C**：對齊走廊（alex n0／morgan m1／sam s1 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全相關節已齊）。JSON parse OK；start 未刪。短 stub 更新至 09:05。未碰 app.js／index.html／intent-patterns／guide-lines。
