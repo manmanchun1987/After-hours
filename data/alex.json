@@ -205,7 +205,7 @@
         },
         "section": "corridor",
         "goal": "enter_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你推門入嚟，定停低同我講？",
           "off_topic": "呢句唔關事。你推門入嚟，定停低同我講？",
@@ -227,7 +227,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n0b": {
       "id": "n0b",
@@ -429,7 +429,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？行過嚟桌前，定仲要我再叫？",
           "off_topic": "呢句唔關事。行過嚟桌前，定仲要我再叫？",
@@ -451,7 +451,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n1": {
       "id": "n1",
@@ -697,7 +697,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你而家起筆改，定要我講清楚？",
           "off_topic": "呢句唔關事。你而家起筆改，定要我講清楚？",
@@ -719,7 +719,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n2a": {
       "id": "n2a",
@@ -940,7 +940,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？坐低。你跟邊一行先？",
           "off_topic": "呢句唔關事。坐低。你跟邊一行先？",
@@ -962,7 +962,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n2b": {
       "id": "n2b",
@@ -1206,7 +1206,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？過嚟聽清楚，定仲留喺位？",
           "off_topic": "呢句唔關事。過嚟聽清楚，定仲留喺位？",
@@ -1228,7 +1228,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n2c": {
       "id": "n2c",
@@ -1451,7 +1451,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你轉身近少少，定專心改？",
           "off_topic": "呢句唔關事。你轉身近少少，定專心改？",
@@ -1473,7 +1473,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n3": {
       "id": "n3",
@@ -1696,7 +1696,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？下一行你跟唔跟我？",
           "off_topic": "呢句唔關事。下一行你跟唔跟我？",
@@ -1718,7 +1718,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n4": {
       "id": "n4",
@@ -1971,7 +1971,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你留低改完，定而家走？",
           "off_topic": "呢句唔關事。你留低改完，定而家走？",
@@ -1993,7 +1993,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n5": {
       "id": "n5",
@@ -2217,7 +2217,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你留嚟改完，定留嚟等我？",
           "off_topic": "呢句唔關事。你留嚟改完，定留嚟等我？",
@@ -2239,7 +2239,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n5b": {
       "id": "n5b",
@@ -2489,7 +2489,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？走之前，你改完未？",
           "off_topic": "呢句唔關事。走之前，你改完未？",
@@ -2511,7 +2511,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n6": {
       "id": "n6",
@@ -2732,7 +2732,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你講留嚟等我，定而家起筆？",
           "off_topic": "呢句唔關事。你講留嚟等我，定而家起筆？",
@@ -2754,7 +2754,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n7": {
       "id": "n7",
@@ -2975,7 +2975,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你而家落筆，定同我關燈？",
           "off_topic": "呢句唔關事。你而家落筆，定同我關燈？",
@@ -2997,7 +2997,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。"
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。"
     },
     "n8": {
       "id": "n8",
@@ -3060,7 +3060,7 @@
         },
         "section": "freeChat",
         "goal": "follow_or_wait",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？你收工，定留低？",
           "off_topic": "呢句唔關事。你收工，定留低？",
@@ -3082,7 +3082,7 @@
           "等等先"
         ]
       },
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
       "intents": [
         {
           "bucket": "leave",
@@ -3209,7 +3209,7 @@
       "freeChat": false,
       "choices": [],
       "intents": [],
-      "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+      "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
       "sceneGoal": {
         "successIntents": [],
         "optionalIntents": [],
@@ -3220,7 +3220,7 @@
         "replies": {},
         "section": "ending",
         "goal": "closed",
-        "stub": "hourly C 05:08 HKT: node.text 一句呼吸（點到＋而家要＋問句）。ack＝下一拍開頭。好／係／繼續仍掛 agree，唔開 yes-pool。ending successIntents 空。start 未刪。未碰 app／index／patterns／guide。",
+        "stub": "hourly C 08:05 HKT: 對齐走廊／freeChat 節 goal。補／修 sceneGoal.successIntents（enter／wait／agree／enter_door）。JSON parse OK；start 未刪。未碰 app／index／patterns／guide。短 stub 更新。",
         "guideReplies": {
           "ask_want": "你想我點？聽日門我再開，你嚟定唔嚟？",
           "off_topic": "呢句唔關事。聽日門我再開，你嚟定唔嚟？",
