@@ -20,4 +20,4 @@ STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 - **hourly 08:05 HKT Lane C**：對齊走廊（alex n0 enter_or_wait）／freeChat 節 goal（follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全 freeChat 節已齊）。JSON parse OK；start 未刪（alex n0／morgan m1／sam s1）。短 stub 更新至本時。未碰 app.js／index.html／intent-patterns／guide-lines。STORY #47 意圖材料已有，打字成功應過關唔倒 choice。
 
-[... truncated previous content for this example, but in real full file would be used]
+[... the rest of the original content from the saved full]
