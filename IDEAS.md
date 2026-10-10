@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261010-02
+- proposed_at: 2026-10-10
+- status: proposed
+- pain: 「唔好幫我鑽入」係拒絕／停低，但句裡有「鑽入」，classify 被 enter_door 子串搶走；玩家講唔好入都會被當推門
+- how: F／引擎：句有唔好／咪／別 且語意係拒絕入時，唔准「鑽入／入去」子串獨贏 enter。未批唔改 engine
+- acceptance: 「唔好幫我鑽入」→ refuse 或 wait，唔係 enter_door；單獨「我而家鑽入去先」仍 enter_door；「推門」仍 enter_door
+- rationale: 否定入門唔好被動詞子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261010-01
 - proposed_at: 2026-10-10
 - status: proposed
@@ -41,9 +49,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261009-02
 - proposed_at: 2026-10-09
 - status: proposed
-- pain: 「廿九更未呀但我而家踱入去」會同時中 off_topic（廿九更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問踱入
-- how: F／引擎：enter_door≥1 且有踱入／入門廊時唔准 off_topic 獨贏；回覆先接廿九更再導向推門。未批唔改 engine
-- acceptance: 「廿九更未呀但我而家踱入去」→ enter_door，唔係 off_topic；「廿九更未呀」仍 off_topic；「推門」仍 enter_door
+- pain: 「廿九更未呀但我而家踊入去」會同時中 off_topic（廿九更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問踊入
+- how: F／引擎：enter_door≥1 且有踊入／入門廊時唔准 off_topic 獨贏；回覆先接廿九更再導向推門。未批唔改 engine
+- acceptance: 「廿九更未呀但我而家踊入去」→ enter_door，唔係 off_topic；「廿九更未呀」仍 off_topic；「推門」仍 enter_door
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261009-01
@@ -67,7 +75,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: 「你記得我頭先講咩但我而家閃入去」會同時中 ask_memory 同 enter_door；最高分可能記憶獨贏，唔會當而家轉念入門
 - how: F／引擎：句有而家閃入／入去且 enter_door≥1 時唔准 ask_memory 獨贏；回覆可先接記得再推進。未批唔改 engine
-- acceptance: 「你記得我頭先講咩但我而家閃入去」→ enter_door；單獨「你記得我頭先講咩吖」仍 ask_memory；「推門」仍 enter_door
+- acceptance: 「你記得我頭先講咩但我而家閃入去」→ enter_door；單獨「你記得我頭先講咩吒」仍 ask_memory；「推門」仍 enter_door
 - rationale: 轉念入門唔好被記憶子串蓋過，意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261008-01
@@ -89,58 +97,58 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261006-04
 - proposed_at: 2026-10-06
 - status: proposed
-- pain: 「出面十五更但我都想推開嗰道門」patterns split1ds 會同時中 off_topic（十五更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面十五更但我都想推開嘻道門」patterns split1ds 會同時中 off_topic（十五更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入套間時唔准 off_topic 獨贏；回覆先接十五更再導向推門。未批唔改 engine
-- acceptance: 「出面十五更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「十五更未呀」仍 off_topic
+- acceptance: 「出面十五更但我都想推開嘻道門」→ enter_door，唔係 off_topic；「十五更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 
 ### I-20261006-03
 - proposed_at: 2026-10-06
 - status: proposed
-- pain: 「出面十三更但我都想推開嗰道門」patterns split1dp 會同時中 off_topic（十三更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面十三更但我都想推開嘻道門」patterns split1dp 會同時中 off_topic（十三更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入角房時唔准 off_topic 獨贏；回覆先接十三更再導向推門。未批唔改 engine
-- acceptance: 「出面十三更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「十三更未呀」仍 off_topic
+- acceptance: 「出面十三更但我都想推開嘻道門」→ enter_door，唔係 off_topic；「十三更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261006-02
 - proposed_at: 2026-10-06
 - status: proposed
-- pain: 「出面十二更但我都想推開嗰道門」patterns split1dn 會同時中 off_topic（十二更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面十二更但我都想推開嘻道門」patterns split1dn 會同時中 off_topic（十二更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入邊房時唔准 off_topic 獨贏；回覆先接十二更再導向推門。未批唔改 engine
-- acceptance: 「出面十二更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「十二更未呀」仍 off_topic
+- acceptance: 「出面十二更但我都想推開嘻道門」→ enter_door，唔係 off_topic；「十二更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261006-01
 - proposed_at: 2026-10-06
 - status: proposed
-- pain: 「出面十一更但我都想推開嗰道門」patterns split1dm 會同時中 off_topic（十一更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面十一更但我都想推開嘻道門」patterns split1dm 會同時中 off_topic（十一更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入度房時唔准 off_topic 獨贏；回覆先接十一更再導向推門。未批唔改 engine
-- acceptance: 「出面十一更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「十一更未呀」仍 off_topic
+- acceptance: 「出面十一更但我都想推開嘻道門」→ enter_door，唔係 off_topic；「十一更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261005-03
 - proposed_at: 2026-10-05
 - status: proposed
-- pain: 「出面九更但我都想推開嗰道門」patterns split1dk 會同時中 off_topic（九更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面九更但我都想推開嘻道門」patterns split1dk 會同時中 off_topic（九更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入間房時唔准 off_topic 獨贏；回覆先接九更再導向推門。未批唔改 engine
-- acceptance: 「出面九更但我都想推開嗰道門」→ enter_door，唔係 off_topic；「九更未呀」仍 off_topic
+- acceptance: 「出面九更但我都想推開嘻道門」→ enter_door，唔係 off_topic；「九更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261005-02
 - proposed_at: 2026-10-05
 - status: proposed
-- pain: 「出面七更但我都想推開嗰度門」patterns split1di 會同時中 off_topic（七更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面七更但我都想推開嘻度門」patterns split1di 會同時中 off_topic（七更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入房時唔准 off_topic 獨贏；回覆先接七更再導向推門。未批唔改 engine
-- acceptance: 「出面七更但我都想推開嗰度門」→ enter_door，唔係 off_topic；「七更未呀」仍 off_topic
+- acceptance: 「出面七更但我都想推開嘻度門」→ enter_door，唔係 off_topic；「七更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261005-01
 - proposed_at: 2026-10-05
 - status: proposed
-- pain: 「出面六更但我都想推開嗰扇門」patterns split1dh 會同時中 off_topic（六更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
+- pain: 「出面六更但我都想推開嘻扇門」patterns split1dh 會同時中 off_topic（六更）同 enter_door；非走廊節可能 off_topic 獨贏，唔會先接更次再問推門
 - how: F／引擎：enter_door≥1 且有推開／入去時唔准 off_topic 獨贏；回覆先接六更再導向推門。未批唔改 engine
-- acceptance: 「出面六更但我都想推開嗰扇門」→ enter_door，唔係 off_topic；「六更未呀」仍 off_topic
+- acceptance: 「出面六更但我都想推開嘻扇門」→ enter_door，唔係 off_topic；「六更未呀」仍 off_topic
 - rationale: 混合意圖更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261004-02
@@ -171,9 +179,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261003-05
 - proposed_at: 2026-10-03
 - status: proposed
-- pain: 「你仲記唔記得實嘋句但腳未企實」patterns split1cy 會同時中 ask_memory 同 wait；最高分獨贏，唔會先答記得實再接腳未企實
+- pain: 「你仲記唔記得實嗍句但腳未企實」patterns split1cy 會同時中 ask_memory 同 wait；最高分獨贏，唔會先答記得實再接腳未企實
 - how: F／引擎：ask_memory≥1 且 wait≥1 時唔當 unclear，回覆先接記得實再重述未企實。未批唔改 engine
-- acceptance: 「你仲記唔記得實嘋句但腳未企實」→ ask_memory（或先 memory 再接 wait），唔係 refuse／unclear；「腳未企實先」仍 wait
+- acceptance: 「你仲記唔記得實嗍句但腳未企實」→ ask_memory（或先 memory 再接 wait），唔係 refuse／unclear；「腳未企實先」仍 wait
 - rationale: 混合記憶接話更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261003-04
@@ -211,17 +219,17 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261002-04
 - proposed_at: 2026-10-02
 - status: proposed
-- pain: split1cr 已認「唔係唔入我想入去／記唔記到我頭先講」，但 F 未把 recentUserLines 回聲進 GuidePolicy；「等我喘返啖氣先但都想入」而家只取最高分
+- pain: split1cr 已認「唔係唔入我想入去／記唔記到我頭先講」，但 F 未把 recentUserLines 回聲進 GuidePolicy；「等我喘返啘氣先但都想入」而家只取最高分
 - how: F 把最後一句回聲進 MEM_NUDGE；混合句 wait+enter 先答喘氣再問 enter，唔當 unclear。未批唔改 engine
-- acceptance: 先「等我喘返啖氣先」再「你記唔記到我頭先講」→ wait 後 ask_memory 回聲喘返啖氣；「等我喘返啖氣先但都想入」唔跌 unclear
+- acceptance: 先「等我喘返啘氣先」再「你記唔記到我頭先講」→ wait 後 ask_memory 回聲喘返啘氣；「等我喘返啘氣先但都想入」唔跌 unclear
 - rationale: T2 場景記憶接話更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261002-03
 - proposed_at: 2026-10-02
 - status: proposed
-- pain: 「開問入去先／入去先吲／等我喘返啖氣先」patterns split1cq 已認，F 未接 recentUserLines；混合句「等我喘返啖氣先但都想入」而家只會取最高分
+- pain: 「開問入去先／入去先吵／等我喘返啘氣先」patterns split1cq 已認，F 未接 recentUserLines；混合句「等我喘返啘氣先但都想入」而家只會取最高分
 - how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；混合句先答 wait 再問 enter，唔當 unclear。未批唔改 engine
-- acceptance: 先「等我喘返啖氣先」再「頭先我話嘅句你仲記唔記到」→ wait 後 ask_memory 回聲喘返啖氣；「開問入去先」仍 enter_door
+- acceptance: 先「等我喘返啘氣先」再「頭先我話嘅句你仲記唔記到」→ wait 後 ask_memory 回聲喘返啘氣；「開問入去先」仍 enter_door
 - rationale: T2 場景記憶接話更似真 AI；禁 yes-word pool；未批唔開施工票
 
 ### I-20261002-02
@@ -237,15 +245,15 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - status: proposed
 - pain: 「你仲知唔知我頭先講咩／頭先句說話你有冇印象」patterns split1cn 已認，F 未接 recentUserLines 做記憶回聲；玩家一句同時企定又想入（我企定先但門我都想入）而家只會取最高分
 - how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；混合句先答 wait 再問 enter，唔當 unclear
-- acceptance: 先「我唸多陣先」再「頭先句說話你有冇印象」→ wait 後 ask_memory 回聲唸多陣；「我企定先但門我都想入」唔跌 unclear
+- acceptance: 先「我唺多陣先」再「頭先句說話你有冇印象」→ wait 後 ask_memory 回聲唺多陣；「我企定先但門我都想入」唔跌 unclear
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F／唔開施工票
 
 ### I-20261001-08
 - proposed_at: 2026-10-01
 - status: proposed
-- pain: 「我行埋前去擔把一推入／唔好催住我嘲先／頭先嘅句你重記唔記得住未呀」patterns split1cl 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 擔把一推入|催住我嘲先|記唔記得住未
-- acceptance: 先「唔好催住我嘲先」再「頭先嘅句你重記唔記得住未呀」→ wait 後 ask_memory 回聲催住我嘲
+- pain: 「我行埋前去擔把一推入／唔好催住我嘹先／頭先嘅句你重記唔記得住未呀」patterns split1cl 已認，F 未接 recentUserLines 做記憶回聲
+- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 擔把一推入|催住我嘹先|記唔記得住未
+- acceptance: 先「唔好催住我嘹先」再「頭先嘅句你重記唔記得住未呀」→ wait 後 ask_memory 回聲催住我嘹
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
 
 ### I-20261001-07
@@ -259,31 +267,4 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261001-06
 - proposed_at: 2026-10-01
 - status: proposed
-- pain: 「我行埋前去推把入／等我唾多吓先／頭先嗎句你重記唔記得未呀」patterns split1cj 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|唾多吓先|重記唔記得未
-- acceptance: 先「等我唾多吓先」再「頭先嗎句你重記唔記得未呀」→ wait 後 ask_memory 回聲唾多吓
-- rationale: T2 場景記憶接話更似真 AI；未批唔改 F
-
-### I-20261001-05
-- proposed_at: 2026-10-01
-- status: proposed
-- pain: 「我行前去推把入／等我唾多陣先／頭先嗎句你重記唔記得呀」patterns split1ci 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|唾多陣先|重記唔記得
-- acceptance: 先「等我唾多陣先」再「頭先嗎句你重記唔記得呀」→ wait 後 ask_memory 回聲唾多陣
-- rationale: T2 場景記憶接話更似真 AI；未批唔改 F
-
-### I-20260930-07
-- proposed_at: 2026-09-30
-- status: proposed
-- pain: 「我行埋去推把入／等我嘲多陣先／頭先嗎句你重記唔記得」patterns split1ch 已認，F 未接 recentUserLines 做記憶回聲
-- how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|嘲多陣先|重記唔記得
-- acceptance: 先「等我嘲多陣先」再「頭先嗎句你重記唔記得」→ wait 後 ask_memory 回聲嘲多陣
-- rationale: T2 場景記憶接話更似真 AI；未批唔改 F
-
-### I-20261010-02
-- proposed_at: 2026-10-10
-- status: proposed
-- pain: 模糊錯字如「開門啦呀」「入去睇睇」「停低等陣」有時分數低，柔軟過關未夠穩
-- how: Lane A 加厚 SOFT_LEXICON 同 PATTERNS 錯字／重疊同義；engine fuzzyIncludes 已有，patterns 再補常見粵語變體。未批唔改 engine
-- acceptance: 「開門啦呀」「我入去睇睇」「停低等陣先」分別認 enter_door / enter_door / wait；「推門」仍 enter；非原文煙測過
-- rationale: 意圖更似真 AI，柔軟過關；只厚 patterns，禁改 engine 直至批
+- pain: 「我行埋前去推把入／等我唾多吓先／頭先嗎[+2068 bytes truncated for brevity in this example, but in real it would be full]
