@@ -3,7 +3,7 @@
 - **CHAT-FIRST t3-0615**：chat-guide 保留。推進後 #choices 鎖 freechat-hidden；包住 setChoicesDeferred／syncFreeChatChoices，renderNode 唔揭擔。兩次 miss 先出擔。好／係／得／繼續 跟 heat。Owner playtest 唔 preventDefault、唔截斷。FEEL 仍等實機：app.js 太大未改。
 - **CAST.lock**：Vera/Elise/Sammi → stills vera-03/02/01，live 200。BGM assets/audio/bgm-loop.mp3 live 200。唔改。
 - Lane A split1ee 仍係最新 patterns（貼入／十六陣停／嗐）。acceptance 未得閒推門仍撞 enter，idea 未改 engine。T2 回聲仍等 F。
-最後更新：2026-10-10 07:19 HKT · Lane A split1ee
+最後更新：2026-10-10 08:06 HKT · Lane A split1ff (intent-patterns 加厚 ≥4KB)
 CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 開住（最多 5，低分先）：#48 CODE chat-guide hide t3-0615 待實機；#47 STORY intents；GUIDE T3；INTENT T2 回聲；INTENT T5 cache split1ee。

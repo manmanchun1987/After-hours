@@ -279,3 +279,11 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: F 把 recentUserLines 最後一句回聲進 GuidePolicy MEM_NUDGE；normalize 推把入|嘲多陣先|重記唔記得
 - acceptance: 先「等我嘲多陣先」再「頭先嗎句你重記唔記得」→ wait 後 ask_memory 回聲嘲多陣
 - rationale: T2 場景記憶接話更似真 AI；未批唔改 F
+
+### I-20261010-02
+- proposed_at: 2026-10-10
+- status: proposed
+- pain: 模糊錯字如「開門啦呀」「入去睇睇」「停低等陣」有時分數低，柔軟過關未夠穩
+- how: Lane A 加厚 SOFT_LEXICON 同 PATTERNS 錯字／重疊同義；engine fuzzyIncludes 已有，patterns 再補常見粵語變體。未批唔改 engine
+- acceptance: 「開門啦呀」「我入去睇睇」「停低等陣先」分別認 enter_door / enter_door / wait；「推門」仍 enter；非原文煙測過
+- rationale: 意圖更似真 AI，柔軟過關；只厚 patterns，禁改 engine 直至批
