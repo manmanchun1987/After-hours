@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t3-0716";
+  var STAMP = "t3-0820";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
