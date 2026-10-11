@@ -1,1 +1,22 @@
-PLACEHOLDER_SAM
+{
+  "id": "sam",
+  "name": "Sammi",
+  "start": "s1",
+  "nodes": {
+    "s1": {
+      "id": "s1",
+      "freeChat": true,
+      "text": "天台欄杆。「你上定停？」",
+      "sceneGoal": {
+        "successIntents": ["enter", "wait", "agree", "enter_door"],
+        "optionalIntents": ["ask_want"],
+        "goal": "follow_or_wait",
+        "section": "freeChat",
+        "maxMisses": 3,
+        "ask": "你上定停？"
+      },
+      "stub": "hourly C 08:04 HKT: short stub. 對齊 freeChat s1 follow_or_wait. successIntents 含 enter/wait/agree/enter_door. start s1 未刪. JSON OK."
+    }
+  },
+  "stub": "hourly C 08:04 HKT Lane C short stub. 對齊完成. 未碰 app/index/patterns/guide."
+}

@@ -1,1 +1,22 @@
-PLACEHOLDER_MORGAN
+{
+  "id": "morgan",
+  "name": "Elise",
+  "start": "m1",
+  "nodes": {
+    "m1": {
+      "id": "m1",
+      "freeChat": true,
+      "text": "私人樓層門前。「你跟定停？」",
+      "sceneGoal": {
+        "successIntents": ["enter", "wait", "agree", "enter_door"],
+        "optionalIntents": ["ask_want"],
+        "goal": "follow_or_wait",
+        "section": "freeChat",
+        "maxMisses": 3,
+        "ask": "你跟定停？"
+      },
+      "stub": "hourly C 08:04 HKT: short stub. 對齊 freeChat m1 follow_or_wait. successIntents 含 enter/wait/agree/enter_door. start m1 未刪. JSON OK."
+    }
+  },
+  "stub": "hourly C 08:04 HKT Lane C short stub. 對齊完成. 未碰 app/index/patterns/guide."
+}
