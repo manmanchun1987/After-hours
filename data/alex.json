@@ -38,8 +38,8 @@
           "ack": "。。。好。你嚟。"
         }
       ],
-      "stub": "hourly C 08:11 HKT: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start n0 未刪. JSON OK."
+      "stub": "hourly C 09:03 HKT: aligned corridor n0 enter_or_wait. successIntents enter/wait/agree/enter_door. start n0 preserved. JSON parse OK. CHAT-FIRST."
     }
   },
-  "stub": "hourly C 08:11 HKT Lane C. 一呼吸 node.text 完成。未碰 app/index/patterns/guide."
+  "stub": "hourly C 09:03 HKT Lane C. corridor aligned. 未碰 app/index/patterns/guide."
 }
