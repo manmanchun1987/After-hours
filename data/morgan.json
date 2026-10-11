@@ -6,17 +6,40 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "私人樓層門前。「你跟定停？」",
+      "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。「你跟我入，定停喺度？」",
       "sceneGoal": {
         "successIntents": ["enter", "wait", "agree", "enter_door"],
         "optionalIntents": ["ask_want"],
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你跟定停？"
+        "ask": "你跟我入，定停喺度？"
       },
-      "stub": "hourly C 08:04 HKT: short stub. 對齊 freeChat m1 follow_or_wait. successIntents 含 enter/wait/agree/enter_door. start m1 未刪. JSON OK."
+      "intents": [
+        {
+          "keys": ["跟", "入", "開門", "跟你"],
+          "next": "m2a",
+          "heat": 6,
+          "bucket": "enter",
+          "ack": "。。。門開。你跟。"
+        },
+        {
+          "keys": ["停", "等", "未定"],
+          "next": "m2b",
+          "tension": 4,
+          "bucket": "wait",
+          "ack": "。。。停低。講。"
+        },
+        {
+          "keys": ["好", "係", "得", "繼續"],
+          "next": "m2a",
+          "heat": 4,
+          "bucket": "agree",
+          "ack": "。。。好。跟我。"
+        }
+      ],
+      "stub": "hourly C 08:11 HKT: one-breath. 反應點嚟+而家想要+口白問。ack 下一拍開頭。CHAT-FIRST 好／係／繼續。start m1 未刪. JSON OK."
     }
   },
-  "stub": "hourly C 08:04 HKT Lane C short stub. 對齊完成. 未碰 app/index/patterns/guide."
+  "stub": "hourly C 08:11 HKT Lane C. 一呼吸完成。未碰 app/index/patterns/guide."
 }

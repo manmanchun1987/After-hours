@@ -6,17 +6,40 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "尾班車門合埋，你手指仲勾住門框。走廊唔算到，我要你入房認位。「你而家推門入嚟，定停低同我講？」",
+      "text": "尾班車門剛合埋，你手指仲勾住門框未放。走廊唔算入房，我而家要你入嚟認位。「你而家推門入嚟，定停低同我講清楚？」",
       "sceneGoal": {
         "successIntents": ["enter", "wait", "agree", "enter_door"],
         "optionalIntents": ["ask_want", "off_topic"],
         "goal": "enter_or_wait",
         "section": "corridor",
         "maxMisses": 3,
-        "ask": "你而家推門入嚟，定停低同我講？"
+        "ask": "你而家推門入嚟，定停低同我講清楚？"
       },
-      "stub": "hourly C 08:04 HKT: short stub. 對齊走廊 n0 enter_or_wait. successIntents 含 enter/wait/agree/enter_door. start n0 未刪. JSON OK."
+      "intents": [
+        {
+          "keys": ["推門", "入嚟", "開門", "入去", "跟你入"],
+          "next": "n0b",
+          "heat": 5,
+          "bucket": "enter",
+          "ack": "。。。門開咗。你入嚟先。"
+        },
+        {
+          "keys": ["停", "等", "未準備", "停低", "等等"],
+          "next": "n0b",
+          "tension": 5,
+          "bucket": "wait",
+          "ack": "。。。停低。講。"
+        },
+        {
+          "keys": ["好", "係", "得", "繼續", "好呀", "係呀"],
+          "next": "n0b",
+          "heat": 3,
+          "bucket": "agree",
+          "ack": "。。。好。你嚟。"
+        }
+      ],
+      "stub": "hourly C 08:11 HKT: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start n0 未刪. JSON OK."
     }
   },
-  "stub": "hourly C 08:04 HKT Lane C short stub. 對齊完成. 未碰 app/index/patterns/guide."
+  "stub": "hourly C 08:11 HKT Lane C. 一呼吸 node.text 完成。未碰 app/index/patterns/guide."
 }
