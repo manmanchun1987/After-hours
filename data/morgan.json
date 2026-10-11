@@ -38,8 +38,8 @@
           "ack": "。。。好。跟我。"
         }
       ],
-      "stub": "hourly C 08:11 HKT: one-breath. 反應點嚟+而家想要+口白問。ack 下一拍開頭。CHAT-FIRST 好／係／繼續。start m1 未刪. JSON OK."
+      "stub": "hourly C 09:03 HKT: aligned freeChat m1 follow_or_wait. successIntents enter/wait/agree/enter_door. start m1 preserved. JSON OK."
     }
   },
-  "stub": "hourly C 08:11 HKT Lane C. 一呼吸完成。未碰 app/index/patterns/guide."
+  "stub": "hourly C 09:03 HKT Lane C. freeChat aligned. 未碰 app/index/patterns/guide."
 }
