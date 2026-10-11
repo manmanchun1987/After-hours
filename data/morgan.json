@@ -8,7 +8,7 @@
       "freeChat": true,
       "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。「你跟我入，定停嘅度？」",
       "sceneGoal": {
-        "successIntents": ["enter", "wait", "agree", "enter_door"],
+        "successIntents": ["enter", "wait", "agree", "enter_door", "follow"],
         "optionalIntents": ["ask_want"],
         "goal": "follow_or_wait",
         "section": "freeChat",
@@ -17,14 +17,14 @@
       },
       "intents": [
         {
-          "keys": ["跟", "入", "開門", "跟你"],
+          "keys": ["跟", "入", "開門", "跟你", "步入"],
           "next": "m2a",
           "heat": 6,
           "bucket": "enter",
           "ack": "門開。你跟。入去傾人。"
         },
         {
-          "keys": ["停", "等", "未定"],
+          "keys": ["停", "等", "未定", "停低"],
           "next": "m2b",
           "tension": 4,
           "bucket": "wait",
@@ -38,8 +38,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 04:08 HKT STORY: one-breath. 反應點嚟+想要+問。ack 下一拍。CHAT-FIRST. start m1 OK."
+      "stub": "hourly 07:04 HKT STORY: one-breath. 反應點嚟+想要+問。ack 下一拍。CHAT-FIRST. start m1 OK. successIntents 含 enter/wait/agree/enter_door/follow."
     }
   },
-  "stub": "hourly 04:08 HKT Lane C STORY. freeChat aligned. 未碰 app/index/patterns/guide."
+  "stub": "hourly 07:04 HKT Lane C STORY. freeChat aligned. successIntents 補 follow. 未碰 app/index/patterns/guide."
 }

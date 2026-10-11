@@ -8,7 +8,7 @@
       "freeChat": true,
       "text": "天台欄杆邊，你未行近。加班室只剩我哋，我而家要你上嚟學潛規則。「你上嚟，定停低？」",
       "sceneGoal": {
-        "successIntents": ["enter", "wait", "agree", "enter_door"],
+        "successIntents": ["enter", "wait", "agree", "enter_door", "follow"],
         "optionalIntents": ["ask_want"],
         "goal": "follow_or_wait",
         "section": "freeChat",
@@ -17,14 +17,14 @@
       },
       "intents": [
         {
-          "keys": ["上", "行近", "跟", "入"],
+          "keys": ["上", "行近", "跟", "入", "上嚟"],
           "next": "s2",
           "heat": 4,
           "bucket": "enter",
           "ack": "上嚟。學。潛規則。"
         },
         {
-          "keys": ["停", "等", "未行"],
+          "keys": ["停", "等", "未行", "停低"],
           "next": "s2",
           "tension": 3,
           "bucket": "wait",
@@ -38,8 +38,8 @@
           "ack": "好。上嚟。學。"
         }
       ],
-      "stub": "hourly 04:08 HKT STORY: one-breath. 反應+想要+問。ack 下一拍。CHAT-FIRST. start s1 OK."
+      "stub": "hourly 07:04 HKT STORY: one-breath. 反應+想要+問。ack 下一拍。CHAT-FIRST. start s1 OK. successIntents 含 enter/wait/agree/enter_door/follow."
     }
   },
-  "stub": "hourly 04:08 HKT Lane C STORY. freeChat aligned. 未碰 app/index/patterns/guide."
+  "stub": "hourly 07:04 HKT Lane C STORY. freeChat aligned. successIntents 補 follow. 未碰 app/index/patterns/guide."
 }
