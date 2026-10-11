@@ -7,18 +7,19 @@
 - **C** → 只 `data/*.json`
 - **D／E／F 暫緩**；B／C **禁** app／index；F 僅 A 確認需要
 - Ideas：A ≤1/h proposed 或等批
-- Live 驗收：patterns `?v=split1fl`；guide `split1b`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
+- Live 驗收：patterns `?v=split1fn`；guide `split1b`（其餘 asset 仍 split1b）；柔軟過關＋guide＋禁空檔，禁 CDN／禁 Imagine
 
 ## 過關標準
-intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1fl`（patterns）。
+intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／我入去先／進去看看／等等／我未準備好。Cache `?v=split1fn`（patterns）。
 
 ## Scores
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 08:05 HKT Lane A split1fn**：intent-patterns 加鑽進去／潛進去／衝進去同義 + refuse 否定（唔好幫我鑽進去等）；等我認多廿五陣先系列；typos 開問鑽進去。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fn→split1fn。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 - **hourly 08:04 HKT Lane C**：對齊走廊（alex n0 enter_or_wait）／freeChat 節 goal（morgan m1／sam s1 follow_or_wait）。補／修 sceneGoal.successIntents 確認含 enter／wait／agree／enter_door（全相關節已齊）。JSON parse OK；start 未刪（alex n0／morgan m1／sam s1）。短 stub 更新至本時。未碰 app.js／index.html／intent-patterns／guide-lines。STORY 意圖材料已有，打字成功應過關唔倒 choice。
 
-- **hourly 07:04 HKT Lane A split1fl**：intent-patterns 加鑽進去／潛進去同義 + refuse 否定（唔好幫我鑽進去等）；等我認多卄四陣先系列；typos 開問鑽進去。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fk→split1fl。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
+- **hourly 07:04 HKT Lane A split1fn**：intent-patterns 加鑽進去／潛進去同義 + refuse 否定（唔好幫我鑽進去等）；等我認多卄四陣先系列；typos 開問鑽進去。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fk→split1fn。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 
 - **hourly 05:13 HKT Lane A split1fk**：intent-patterns 加衝入／闆入同義 + refuse 否定（唔好幫我衝入等）；等我認多卄二陣先系列；typos 開問衝入。固定 5 句＋柔軟煙測全過。acceptance 加厚。index cache split1fj→split1fk。未碰 app／guide／data。T2 回聲仍等 F。全頁 ?v=intent2 仍等 F。
 
