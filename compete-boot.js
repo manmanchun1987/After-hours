@@ -1,6 +1,6 @@
-/* compete-boot t3-0820 — boot stamp only */
+/* compete-boot t3-1012 — boot stamp only */
 (function () {
   "use strict";
-  window.CompeteBoot = { stamp: "t3-0820", ready: true };
-  console.log("[compete-boot] t3-0820");
+  window.CompeteBoot = { stamp: "t3-1012", ready: true };
+  console.log("[compete-boot] t3-1012");
 })();
