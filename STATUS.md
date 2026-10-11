@@ -1,15 +1,12 @@
-# STATUS — 2026-10-12 05:16 HKT
+# 而家進度
 
-## CODE ticket t3-1012
+* **hourly 05:12 HKT Lane A split1fq**：intent-patterns 加步入／踏進去同義 + refuse；cache split1fq。未碰其他。
 
-CHAT-FIRST 保持：chat-guide.js 不改邏輯。
-- story advance / goToNode / freechat:advance 後 #choices 保持 freechat-hidden + display:none
-- 只有 freechat:miss 累計 >=2 先 show
-- renderNode wrap 只隱藏，不強制 reveal buttons
-- yes-words (好 係 得) heat intent 保留在 intent-engine
-- Owner playtests (#pt / playtest / 特定句) 不計 miss
-
-Stub 檔 audio-bed.js / fx-play.js / compete-boot.js stamp → t3-1012。
-禁碰 app.js（file too big）。無 app_b64 stub。
-
-Live gate 過。
+* **CAST.lock**：Vera/Elise/Sammi → stills vera-03/02/01，live 200。BGM assets/audio/bgm-loop.mp3 live 200。唔改。
+* Lane A 最新 patterns。acceptance 未得閒推門仍撞 enter，idea 未改 engine。T2 回聲仍等 F。
+最後更新：2026-10-12 05:12 HKT · Lane A split1fq (步入同義)
+CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
+STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
+開住（最多 5，低分先）：#48 CODE chat-guide hide t3-0820 待實機；#47 STORY intents；GUIDE T3；INTENT T2 回聲；INTENT T5 cache
+#46 不占額。
+Owner playtest 預期：你想我點？／推門／停一停／今日天氣點呀／你記得我頭先講呀。打「好」「係」「得」「繼續」跟 heat 去下一拍開頭，唔好彈返選擇擔。
