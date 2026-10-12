@@ -19,8 +19,8 @@
         "section": "freeChat",
         "maxMisses": 3
       },
-      "stub": "hourly C 08:08 HKT: short stub. successIntents 含 enter/wait/agree/enter_door/follow. start n1 未刪."
+      "stub": "hourly C 07:04 HKT: short stub. successIntents 含 enter/wait/agree/enter_door/follow. start n1 未刪."
     }
   },
-  "stub": "hourly C 08:08 HKT mobile-safe short stub. corridor/freeChat aligned."
+  "stub": "hourly C 07:04 HKT mobile-safe short stub. corridor/freeChat aligned."
 }
