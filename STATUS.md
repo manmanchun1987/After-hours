@@ -1,7 +1,9 @@
 # 而家進度
-* **hourly 04:10 HKT Lane C STORY**：data/*.json one-breath node.text 對齊（反應點嚟 + 而家想要 + 一句口白收清晰問）。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 保留。keys 加溜進去／潛進去。無孤立歌詞碎片。未碰 app/index/patterns/guide。
+* **hourly 05:14 HKT Lane A split1fw**：intent-patterns 加入噓／走入噓／鑽入噓／推開噓／開門入噓同義 + wait 等陣先／停低先／三十二陣 + ask_memory 回聲加厚（你記得我講過／頭先我講嘅）；typos 開問入噓。cache split1fv→split1fw（index 7275=7275）。柔軟煙測全過。未碰 app／guide／data。T2 回聲進展；T5 cache 更新。
 
-* **hourly 09:10 HKT Lane C STORY**：data/*.json one-breath node.text 對齊（反應點嚟 + 而家想要 + 一句口白收清晰問）。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 保留。keys 加溜進去／潛進去。無孤立歌詞碎片。未碰 app/index/patterns/guide。
+* **hourly 04:10 HKT Lane C STORY**：data/*.json one-breath node.text 對齊（反應點噓 + 而家想要 + 一句口白收清晰問）。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 保留。keys 加溜進去／潛進去。無孤立歌詞碎片。未碰 app/index/patterns/guide。
+
+* **hourly 09:10 HKT Lane C STORY**：data/*.json one-breath node.text 對齊（反應點噓 + 而家想要 + 一句口白收清晰問）。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 保留。keys 加溜進去／潛進去。無孤立歌詞碎片。未碰 app/index/patterns/guide。
 
 * **hourly 09:05 HKT Lane A split1fv**：intent-patterns 加溜進去／潛進去／衝入去／躍進去／跑進去／爬進去／跳進去同義 + refuse 否定 + 三十一陣 wait；typos 開下門／開問入去。cache split1fu→split1fv。未碰其他。
 
@@ -13,8 +15,8 @@
 * **hourly 07:05 HKT Lane A split1fr**：intent-patterns 加步入／踏進去／踵入／蹲入同義 + refuse 否定 + 廿八陣 wait；cache split1fn→split1fr。未碰其他。
 
 * **CAST.lock**：Vera/Elise/Sammi → stills vera-03/02/01，live 200。BGM assets/audio/bgm-loop.mp3 live 200。唔改。
-* Lane A 最新 patterns。acceptance 未得閒推門仍撞 enter，idea 未改 engine。T2 回聲仍等 F。
-最後更新：2026-10-13 04:10 HKT · Lane C STORY (one-breath)
+* Lane A 最新 patterns。acceptance 未得閒推門仍撞 enter，idea 未改 engine。T2 回聲進展。
+最後更新：2026-10-13 05:14 HKT · Lane A split1fw (patterns thicken + memory echo)
 CAST.lock：Vera/Elise/Sammi → stills vera-03/02/01，唔改。
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 開住（最多 5，低分先）：#48 CODE chat-guide hide t3-0825 待實機；#47 STORY intents；GUIDE T3；INTENT T2 回聲；INTENT T5 cache
