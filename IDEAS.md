@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261013-01
+- proposed_at: 2026-10-13
+- status: proposed
+- pain: 入噓／走入噓等新同義已加，但混合句「入噓但等等」或長句多意圖時分類仍可能不穩；最長匹配優先未實作
+- how: F／引擎：匹配時優先最長 phrase match；當 refuse/wait 與 enter 同時命中，看否定／停詞權重決定。未批唔改 engine
+- acceptance: 「我而家入噓先」→ enter_door；「唔好幫我入噓」→ refuse；「入噓但等等先」→ wait 優先
+- rationale: 上下文／優先更似真 AI；禁 yes-word pool；未批唔開施工票
+
 ### I-20261012-02
 - proposed_at: 2026-10-12
 - status: proposed
