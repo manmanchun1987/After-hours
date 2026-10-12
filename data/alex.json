@@ -8,8 +8,17 @@
       "freeChat": true,
       "text": "尾班車門剛合埋，你手指仲勾住門框未放。走廊唔算入房，我而家要你入嚟認位。「你而家推門入嚟，定停低同我講清楚？」",
       "sceneGoal": {
-        "successIntents": ["enter", "wait", "agree", "enter_door", "follow"],
-        "optionalIntents": ["ask_want", "off_topic"],
+        "successIntents": [
+          "enter",
+          "wait",
+          "agree",
+          "enter_door",
+          "follow"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "off_topic"
+        ],
         "goal": "enter_or_wait",
         "section": "corridor",
         "maxMisses": 3,
@@ -17,29 +26,52 @@
       },
       "intents": [
         {
-          "keys": ["推門", "入嚟", "開門", "入去", "跟你入", "步入"],
+          "keys": [
+            "推門",
+            "入嚟",
+            "開門",
+            "入去",
+            "跟你入",
+            "步入",
+            "走進",
+            "走進去"
+          ],
           "next": "n0b",
           "heat": 5,
           "bucket": "enter",
           "ack": "門開咗。你入嚟先，認位。"
         },
         {
-          "keys": ["停", "等", "未準備", "停低", "等等", "未好"],
+          "keys": [
+            "停",
+            "等",
+            "未準備",
+            "停低",
+            "等等",
+            "未好"
+          ],
           "next": "n0b",
           "tension": 5,
           "bucket": "wait",
           "ack": "停低。講清楚你點解。"
         },
         {
-          "keys": ["好", "係", "得", "繼續", "好呀", "係呀"],
+          "keys": [
+            "好",
+            "係",
+            "得",
+            "繼續",
+            "好呀",
+            "係呀"
+          ],
           "next": "n0b",
           "heat": 3,
           "bucket": "agree",
           "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 07:04 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start n0 未刪. successIntents 含 enter/wait/agree/enter_door/follow. JSON OK."
+      "stub": "hourly 08:08 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start n0 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加走進／走進去. JSON OK."
     }
   },
-  "stub": "hourly 07:04 HKT Lane C STORY. corridor aligned. successIntents 補 follow. 未碰 app/index/patterns/guide."
+  "stub": "hourly 08:08 HKT Lane C STORY. corridor aligned. successIntents 補 follow. keys 加走進. 未碰 app/index/patterns/guide."
 }
