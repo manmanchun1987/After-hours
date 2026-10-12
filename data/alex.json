@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "尾班車門剛合埋，你手指仲勾住門框。走廊唔算入房，我而家要你入嚟認位。「你而家推門入嚟，定停低同我講清楚？」",
+      "text": "尾班車門剛合，你手指仲勾住門框。走廊唔算入房，我而家要你入嚟認位。「你而家推門入嚟，定停低同我講清楚？」",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -78,8 +78,8 @@
           "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 09:10 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加溜進去／潛進去. JSON OK."
+      "stub": "hourly 04:10 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加溜進去／潛進去. JSON OK."
     }
   },
-  "stub": "hourly 09:10 HKT Lane C STORY. corridor/freeChat aligned one-breath. successIntents 齊。CHAT-FIRST 保留。未碰 app/index/patterns/guide."
+  "stub": "hourly 04:10 HKT Lane C STORY. corridor/freeChat aligned one-breath. successIntents 齊。CHAT-FIRST 保留。未碰 app/index/patterns/guide."
 }
