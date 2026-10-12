@@ -1,4 +1,5 @@
 # 而家進度
+* **hourly 09:05 HKT Lane A split1fv**：intent-patterns 加溜進去／潛進去／衝入去／躍進去／跑進去／爬進去／跳進去同義 + refuse 否定 + 三十一陣 wait；typos 開下門／開問入去。cache split1fu→split1fv。未碰其他。
 
 * **hourly 08:28 HKT Lane A split1fu**：intent-patterns 加跳入／爬入／跑入／衝進去／躍入同義 + refuse 否定（唔好幫我跳入等）+ 三十陣 wait；cache split1ft→split1fu。修復 SOFT_LEXICON 截斷。未碰其他。
 * **hourly 08:24 HKT Lane B split1e4**：guide-lines 加厚 hint/pressure/callout（門鉅油、門檻銅條、鎖舌、合頁、門底膠、銅釘、漆爆邊、蛛絲、鞋跟地毯邊等）入戲導向推或停；miss 升級仍導向 sceneGoal；anti-repeat；禁客服腔。version split1e3→split1e4。未碰 app/index/patterns/data。wc -c ≥1KB。柔軟煙測導向全過。

@@ -16,6 +16,7 @@ intent∈sceneGoal 即過；禁打齊原文票。驗收非原文：開門啦／�
 STORY 3 · PICTURE 4 · SOUND 3 · FEEL 2
 
 ## Done this hour
+- **hourly 09:05 HKT Lane A split1fv**：intent-patterns 加溜進去／潛進去／衝入去／躍進去／跑進去／爬進去／跳進去同義 + refuse 否定（唔好幫我溜進去等）+ 等我認多三十一陣先；typos 開下門／開問入去啦。柔軟煙測（開門啦／我入去先／進去看看／等等／我未準備好）全過。index cache split1fu→split1fv（7275=7275）。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 08:28 HKT Lane A split1fu**：intent-patterns 加跳入／爬入／跑入／衝進去／躍入同義 + refuse 否定（唔好幫我跳入等）+ 等我認多三十陣先；typos 開問跳入去。柔軟煙測（開門啦／我入去先／進去看看／等等／我未準備好）全過。acceptance 加厚。index cache split1ft→split1fu（7275=7275）。修復截斷。未碰 app／guide／data。T2 回聲仍等 F。
 - **hourly 08:24 HKT Lane B split1e4**：guide-lines 加厚 hint/pressure/callout 入戲（門鉅油未乾／門檻銅條凉／鎖舌未響／合頁未咤／門底膠未貼／銅釘／漆爆邊／蛛絲／鞋跟地毯邊等）導向推或停；miss 升級仍導向 sceneGoal；anti-repeat；禁客服腔。version split1e3→split1e4。wc -c 95991。未碰 app／index／patterns／data。柔軟煙測（開門啦／我入去先／進去看看／等等／我未準備好／你想我點／今日天氣點呀／你記得我頭先講呀）全導向 goal。
 - **hourly 08:08 HKT Lane A split1ft**：intent-patterns 加跳入／爬入／跑入／衝進去／躍入同義 + refuse 否定（唔好幫我跳入等）+ 等我認多三十陣先；typos 開問跳入去。柔軟煙測（開門啦／我入去先／進去看看／等等／我未準備好）全過。acceptance 加厚。index cache split1fs→split1ft（7275=7275）。未碰 app／guide／data。T2 回聲仍等 F。
