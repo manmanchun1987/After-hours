@@ -6,7 +6,7 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。「你跟我入，定停嘅度？」",
+      "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。「你跟我入，定停喺度？」",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -21,7 +21,7 @@
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你跟我入，定停嘅度？"
+        "ask": "你跟我入，定停喺度？"
       },
       "intents": [
         {
@@ -39,6 +39,8 @@
             "跑入",
             "衝進去",
             "躍入",
+            "溜進去",
+            "潛進去",
             "跟入去"
           ],
           "next": "m2a",
@@ -71,8 +73,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 09:04 HKT STORY: one-breath text aligned. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加跳入／爬入／跑入／衝進去／躍入. JSON OK."
+      "stub": "hourly 09:10 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加溜進去／潛進去. JSON OK."
     }
   },
-  "stub": "hourly 09:04 HKT Lane C STORY. corridor/freeChat aligned. successIntents 補齊 enter/wait/agree/enter_door/follow. keys 加跳入等. 未碰 app/index/patterns/guide."
+  "stub": "hourly 09:10 HKT Lane C STORY. corridor/freeChat aligned one-breath. successIntents 齊。CHAT-FIRST 保留。未碰 app/index/patterns/guide."
 }
