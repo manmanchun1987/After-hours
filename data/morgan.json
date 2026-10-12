@@ -33,7 +33,13 @@
             "步入",
             "走進",
             "走進去",
-            "跟入"
+            "跟入",
+            "跳入",
+            "爬入",
+            "跑入",
+            "衝進去",
+            "躍入",
+            "跟入去"
           ],
           "next": "m2a",
           "heat": 6,
@@ -65,8 +71,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 08:08 HKT STORY: one-breath. 反應點嚟+想要+問。ack 下一拍。CHAT-FIRST. start m1 OK. successIntents 含 enter/wait/agree/enter_door/follow. keys 加走進."
+      "stub": "hourly 09:04 HKT STORY: one-breath text aligned. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加跳入／爬入／跑入／衝進去／躍入. JSON OK."
     }
   },
-  "stub": "hourly 08:08 HKT Lane C STORY. freeChat aligned. successIntents 補 follow. keys 加走進. 未碰 app/index/patterns/guide."
+  "stub": "hourly 09:04 HKT Lane C STORY. corridor/freeChat aligned. successIntents 補齊 enter/wait/agree/enter_door/follow. keys 加跳入等. 未碰 app/index/patterns/guide."
 }
