@@ -1,1 +1,38 @@
-$(cat /tmp/index.html)
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>加班之後 After Hours</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="fx.css">
+  <link rel="stylesheet" href="safari-fix.css">
+  <link rel="stylesheet" href="styles-beauty.css">
+  <link rel="stylesheet" href="styles-compete.css">
+</head>
+<body>
+  <div id="stage" class="stage">
+    <!-- game shell; full UI driven by app.js -->
+    <div id="chat-log"></div>
+    <form id="chat-form">
+      <input id="chat-input" type="text" autocomplete="off" placeholder="講…">
+      <button type="submit">送</button>
+    </form>
+    <div id="choices"></div>
+    <div id="thought"></div>
+  </div>
+  <!-- script order: patterns → engine → lines → policy → app -->
+  <script src="intent-patterns.js?v=intent2"></script>
+  <script src="intent-engine.js?v=intent2"></script>
+  <script src="guide-lines.js?v=intent2"></script>
+  <script src="guide-policy.js?v=intent2"></script>
+  <script src="chat-guide.js?v=intent2"></script>
+  <script src="app.js?v=intent2"></script>
+  <script src="play-engine.js?v=intent2"></script>
+  <script src="fx-play.js?v=intent2"></script>
+  <script src="life.js?v=intent2"></script>
+  <script src="audio-bed.js?v=intent2"></script>
+  <script src="cast-lock.js?v=intent2"></script>
+  <!-- cache-bust intent2 for live gate soft-pass -->
+</body>
+</html>
