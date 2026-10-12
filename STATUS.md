@@ -1,5 +1,6 @@
 # 而家進度
 
+* **hourly 08:08 HKT Lane A split1ft**：intent-patterns 加跳入／爬入／跑入／衝進去／躍入同義 + refuse 否定（唔好幫我跳入等）+ 三十陣 wait；cache split1fs→split1ft。未碰其他。
 * **hourly 07:14 HKT Lane A split1fs**：intent-patterns 加走進／走進去同義 + refuse 否定（唔好幫我走進等）+ 廿九陣 wait；cache split1fr→split1fs。未碰其他。
 * **hourly 07:05 HKT Lane A split1fr**：intent-patterns 加步入／踏進去／踵入／蹲入同義 + refuse 否定 + 廿八陣 wait；cache split1fn→split1fr。未碰其他。
 
