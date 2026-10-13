@@ -17,10 +17,14 @@
         ],
         "goal": "follow_or_wait",
         "section": "freeChat",
-        "maxMisses": 3
+        "maxMisses": 3,
+        "optionalIntents": [
+          "ask_want",
+          "off_topic"
+        ]
       },
-      "stub": "hourly C 07:04 HKT: short stub. successIntents 含 enter/wait/agree/enter_door/follow. start n1 未刪."
+      "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch. node-level."
     }
   },
-  "stub": "hourly C 07:04 HKT mobile-safe short stub. corridor/freeChat aligned."
+  "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch."
 }

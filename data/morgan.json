@@ -79,8 +79,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 07:04 HKT STORY: one-breath text. 反應點嚟 + 而家想要 + 一句口白收清晰問。ack 即下一拍開頭。CHAT-FIRST 好／係／繼續 跟 heat。無孤立歌詞碎片。start 未刪. successIntents 含 enter/wait/agree/enter_door/follow. keys 加進去看看／我入去先／等等／我未準備好. JSON OK."
+      "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch. node-level."
     }
   },
-  "stub": "hourly 07:04 HKT Lane C STORY. corridor/freeChat aligned one-breath. successIntents 齊。CHAT-FIRST 保留。未碰 app/index/patterns/guide."
+  "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch."
 }
