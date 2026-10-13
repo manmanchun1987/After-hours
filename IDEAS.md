@@ -5,6 +5,15 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261013-03
+- proposed_at: 2026-10-13
+- status: proposed
+- pain: 入嚟／踏入／開個門等新同義已加厚，但混合句「入嚟但等吓」「唔好幫我踏入」仍可能最長優先未穩；否定權重未實作
+- how: F／引擎：匹配時優先最長 phrase；同時命中 enter + wait/refuse 時，看否定／停／未準備權重決定。未批唔改 engine
+- acceptance: 「我而家入嚟先」→ enter_door；「唔好幫我踏入」→ refuse；「入嚟但等吓先」→ wait 優先
+- rationale: 上下文／優先更似真 AI；禁 yes-word pool；未批唔開施工票
+
+
 ### I-20261013-02
 - proposed_at: 2026-10-13
 - status: proposed
