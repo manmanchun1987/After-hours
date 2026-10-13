@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "你仲勾住剛合嘅尾班車門框。走廊唔算入房，我而家就要你入嚟認位。你推門入嚟，定停低同我講清楚點？",
+      "text": "你仲勾住尾班車剛合嘅門框。走廊唔算入房，我而家要你入嚟認位。你推門入嚟，定停低同我講清楚點？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -89,8 +89,8 @@
           "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 03:08 HKT Lane C: tighter one-breath text (arrival+want NOW+spoken ask), acks next-beat half. CHAT-FIRST 好係繼續 kept. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 04:08 HKT Lane C: tighter one-breath text (arrival+want NOW+spoken ask ends clear). acks next-beat first half. CHAT-FIRST 好係繼續 kept. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 03:08 HKT Lane C: one-breath text refined. JSON parse OK. start preserved. no JS/index touch."
+  "stub": "hourly 04:08 HKT Lane C: one-breath text refined. JSON parse OK. start preserved. no JS/index touch."
 }
