@@ -4,14 +4,12 @@
 
 ## Open
 
-（無有效開票。前次 placeholder 已修復核心檔。現時真·0 ticket。）
+- T1 CODE restore-engine — live stub loader without parts (P0, owner playtest expected)
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕
+- T3 CODE keep chat-guide hide — 成功 typed line 後仍 freechat-hidden，2 miss 先亮
 
 ## Closed / done this run
 
-- CODE t3-0822: 更新 chat-guide/audio-bed/fx-play/compete-boot stamps；CHAT-FIRST 確認（推進後隱 choices，2 miss 先亮）；owner quiet；yes-words heat intact。
-- Lane A intent4: 加厚 intent-patterns.js 同義／模糊／錯字（wc -c 9466）；cache ?v=intent4
-- 修復 intent-patterns.js（完整 patterns + soft lexicon，?v=intent2）
-- 修復 index.html（正確 loader + cache-bust）
-- 修復 DISPATCH / STATUS 自身
+- 前次修復核心檔
 
-下一小時：加厚意圖（Lane A patterns）或待批准 IDEAS 先搬。
+下一小時：優先 restore-engine 部件，再加厚 intents + 確保 hide。
