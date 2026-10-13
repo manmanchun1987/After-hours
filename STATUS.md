@@ -1,6 +1,6 @@
 # STATUS — hourly
 
-- 2026-10-14 04:13 HKT：LIVE-OK hourly: chat-guide.js referenced from index.html (full screens + script tag). app.js full engine (no b64 stub). fx-play click bind + AHAudio.cue stay. Keep playable. No story JSON. Owner open not interrupt.
+- 2026-10-14 05:16 HKT：CODE hourly: chat-guide.js confirmed CHAT-FIRST (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. Stamps t3-0516 on audio-bed/fx-play/compete-boot/chat-guide. No app.js/index. T3 closed.
 - Open P0：0（restore-engine closed by full index）
 - Live gate cache: `?v=intent7`
 - Open P0 INTENT tickets: T2 進度中（非真 0）

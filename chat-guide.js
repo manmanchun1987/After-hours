@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t3-0822";
+  var STAMP = "t3-0516";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -69,7 +69,7 @@
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
     }
 
-    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words heat intact. Owner quiet.");
+    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) heat intact. Owner quiet.");
   }
 
   if (document.readyState === "loading") {
