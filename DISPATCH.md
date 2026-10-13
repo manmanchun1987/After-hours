@@ -8,6 +8,7 @@
 
 ## Closed / done this run
 
+- CODE t3-0822: 更新 chat-guide/audio-bed/fx-play/compete-boot stamps；CHAT-FIRST 確認（推進後隱 choices，2 miss 先亮）；owner quiet；yes-words heat intact。
 - Lane A intent4: 加厚 intent-patterns.js 同義／模糊／錯字（wc -c 9466）；cache ?v=intent4
 - 修復 intent-patterns.js（完整 patterns + soft lexicon，?v=intent2）
 - 修復 index.html（正確 loader + cache-bust）

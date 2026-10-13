@@ -1,5 +1,6 @@
 # STATUS — hourly
 
+- 2026-10-13 08:22 HKT：CODE 更新 stamps t3-0822 於 chat-guide.js / audio-bed.js / fx-play.js / compete-boot.js；CHAT-FIRST 保持：推進後 #choices 仍 freechat-hidden，2 misses 先亮；owner playtest 不計 miss；yes-words ( 好 係 得 ) → heat 完整。
 - 2026-10-13 08:xx HKT：Lane A 加厚 intent-patterns.js（同義／模糊／錯字，intent4；wc -c 9466）。
 - 2026-10-13 08:xx HKT：Lane A 加厚 intent-patterns.js（同義／模糊／錯字，intent3；wc -c 8146）。
 - 2026-10-13 07:xx HKT：修復 placeholder 核心檔（index.html、intent-patterns.js、DISPATCH、STATUS）。
