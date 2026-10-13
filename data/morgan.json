@@ -79,8 +79,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 04:08 HKT Lane C: tighter one-breath text (arrival+want NOW+spoken ask). acks next-beat. CHAT-FIRST kept. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 06:03 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 04:08 HKT Lane C: one-breath refined. JSON parse OK. start preserved. no JS/index touch."
+  "stub": "hourly 06:03 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. no JS/index."
 }
