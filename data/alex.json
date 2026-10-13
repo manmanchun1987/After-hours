@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "尾班車門剛合，你手指仲勾住門框。走廊唔算入房，我而家要你入嚟認位。「你而家推門入嚟，定停低同我講清楚？」",
+      "text": "尾班車門剛合，你手指仲勾住門框。走廊唔算入房，我而家要你入嚟認位。你而家推門入嚟，定停低同我講清楚？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -47,7 +47,8 @@
             "我入去先",
             "開門啦",
             "鑽入",
-            "走入"
+            "走入",
+            "入去啦"
           ],
           "next": "n0b",
           "heat": 5,
@@ -62,9 +63,9 @@
             "停低",
             "等等",
             "未好",
-            "等等",
             "我未準備好",
-            "等陣"
+            "等陣",
+            "等下"
           ],
           "next": "n0b",
           "tension": 5,
@@ -78,7 +79,9 @@
             "得",
             "繼續",
             "好呀",
-            "係呀"
+            "係呀",
+            "好嘅",
+            "繼續啦"
           ],
           "next": "n0b",
           "heat": 3,
@@ -86,8 +89,8 @@
           "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch. node-level."
+      "stub": "hourly 09:10 HKT Lane C: one-breath text (arrival+want NOW+spoken ask), acks next-beat half. CHAT-FIRST  好係繼續 kept. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch."
+  "stub": "hourly 09:10 HKT Lane C: one-breath text refined. JSON parse OK. start preserved. no JS/index touch."
 }
