@@ -68,3 +68,11 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - how: F／引擎：匹配時優先最長 phrase match；當 refuse/wait 與 enter 同時命中，看否定／停詞權重決定。未批唔改 engine
 - acceptance: 「我而家溜進去先」→ enter_door；「唔好幫我溜進去」→ refuse；「溜進去但等等先」→ wait 優先
 - rationale: 上下文／優先更似真 AI；禁 yes-word pool；未批唔開施工票
+
+### I-20261014-01
+- proposed_at: 2026-10-14
+- status: proposed
+- pain: 更多口語變體如「推開喲度入去」「等我認定先」已覆蓋部分，但常見錯字「入去睇下」「開個们」或粵語諧音模糊仍可能漏；系統性模糊距離未在 patterns 層
+- how: A／patterns：加常見錯字／諧音同義（入去睇下、開個們、等我想吓）；或 F 加簡單編輯距離。未批唔改 engine
+- acceptance: 「推開喲度入去睇」→ enter_door；「等我認定先」→ wait；「唔好幫我開個们」→ refuse
+- rationale: 模糊／錯字更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
