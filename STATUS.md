@@ -6,3 +6,4 @@
 - Open P0 INTENT tickets: T2 進度中（非真 0）
 - 禁：CDN pin / stub / yes-words 對池 / 催 key。No Imagine。
 - 2026-10-14 05:13 HKT：Lane A hourly: intent-patterns.js thickened (intent7: 推開個門／等我認吓／唔好幫我開個門). T2 progress. Live gate ?v=intent7. T1 closed (full engine), T3 hide implemented. Core sizes OK.
+- 2026-10-14 07:10 HKT：Lane A hourly: intent-patterns.js thickened (intent8: 推開嘧度入去／開個們／等我認定先／唔好幫我開個們 + 錯字). T2 progress. Live gate ?v=intent8. wc -c 16709.
