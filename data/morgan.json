@@ -6,7 +6,7 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。「你跟我入，定停喺度？」",
+      "text": "私人樓層門前，你腳步未定。日頭紙講完，而家我要你跟我入去傾人。你跟我入，定停喺度？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -79,8 +79,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch. node-level."
+      "stub": "hourly 09:10 HKT Lane C: one-breath text (arrival+want NOW+spoken ask), acks next-beat. CHAT-FIRST kept. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 09:04 HKT Lane C: aligned corridor/freeChat sceneGoal.successIntents (enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. short stub updated. no JS/index touch."
+  "stub": "hourly 09:10 HKT Lane C: one-breath refined. JSON parse OK. start preserved. no JS/index touch."
 }
