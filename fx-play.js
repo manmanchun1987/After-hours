@@ -1,4 +1,5 @@
 (function () {
+  var STAMP = "t3-0822";
   var wrapped = false;
   function layer() {
     var el = document.getElementById("fx-layer");
@@ -81,4 +82,5 @@
     if (wrapped || ++n > 40) clearInterval(t);
   }, 250);
   layer();
+  console.log("[fx-play] " + STAMP);
 })();
