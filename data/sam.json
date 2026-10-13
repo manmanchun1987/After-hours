@@ -6,7 +6,7 @@
     "s1": {
       "id": "s1",
       "freeChat": true,
-      "text": "天台欄杆邊，你未行近。加班室只剩我哋，我而家要你上嚟學潛規則。你上嚟，定停低？",
+      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚟學潛規則。你上嚟，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -78,8 +78,8 @@
           "ack": "好。上嚟。學。"
         }
       ],
-      "stub": "hourly 09:10 HKT Lane C: one-breath text (arrival+want NOW+spoken ask), acks next-beat. CHAT-FIRST kept. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 03:08 HKT Lane C: tighter one-breath text (arrival+want NOW+spoken ask), acks next-beat. CHAT-FIRST kept. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 09:10 HKT Lane C: one-breath refined. JSON parse OK. start preserved. no JS/index touch."
+  "stub": "hourly 03:08 HKT Lane C: one-breath refined. JSON parse OK. start preserved. no JS/index touch."
 }
