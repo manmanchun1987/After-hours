@@ -6,7 +6,7 @@
     "s1": {
       "id": "s1",
       "freeChat": true,
-      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚟學潛規則。你上嚟，定停低？",
+      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚕學潛規則。你而家上嚕，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,7 +22,7 @@
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你上嚟，定停低？"
+        "ask": "你而家上嚕，定停低？"
       },
       "intents": [
         {
@@ -31,7 +31,7 @@
             "行近",
             "跟",
             "入",
-            "上嚟",
+            "上嚕",
             "走進",
             "走進去",
             "跳入",
@@ -41,16 +41,16 @@
             "躍入",
             "溜進去",
             "潛進去",
-            "行上嚟",
+            "行上嚕",
             "進去看看",
-            "我上嚟先",
-            "行上嚟",
+            "我上嚕先",
+            "行上嚕",
             "跳上"
           ],
           "next": "s2",
           "heat": 4,
           "bucket": "enter",
-          "ack": "上嚟。學。潛規則。"
+          "ack": "上嚕。學。潛規則。"
         },
         {
           "keys": [
@@ -76,11 +76,11 @@
           "next": "s2",
           "heat": 2,
           "bucket": "agree",
-          "ack": "好。上嚟。學。"
+          "ack": "好。上嚕。學。"
         }
       ],
-      "stub": "hourly 06:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional). JSON parse OK. start preserved. no JS/index."
+      "stub": "hourly 06:09 HKT STORY: one-breath s1. Acks next-beat. CHAT-FIRST kept. CANTONESE.md. No app.js stub."
     }
   },
-  "stub": "hourly 06:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional). JSON parse OK. start preserved. no JS/index."
+  "stub": "hourly 06:09 HKT STORY: one-breath s1. CHAT-FIRST kept."
 }
