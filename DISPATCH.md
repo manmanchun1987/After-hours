@@ -4,8 +4,7 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent11 加更多推開嗩度入去／開個門入去睇吓先／踏入去睇下 + typos/fuzzy）
-- T4 CODE BQ ash-flake — implement BQ CSS falling ash on office ashtray in styles or fx (after BN/BO); Pages+Safari only
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent12 再加厚推開嚟度入去／開個門入去睇吓先／踏入去睇下 + more typos/fuzzy；patterns 已restore）
 
 ## Closed / done this run
 

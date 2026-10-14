@@ -1,3 +1,11 @@
+### I-20261015-01
+- proposed_at: 2026-10-15
+- status: proposed
+- pain: intent12 加厚後，更多口語如「推開嚟度入去睇吓」「踏入去睇下先」已覆蓋，但混合否定「推開嚟度入去但等等」或諧音「開個們入去」仍可能漏；patterns 可再加厚模糊距離
+- how: A／patterns：加更多諧音／混合句同義（推開嚟度入去但等等、開個們入去睇下、踏入去睇下先）。未批唔改 engine
+- acceptance: 「推開嚟度入去睇吓」→ enter_door；「開個們入去睇下」→ enter_door；「踏入去睇下先」→ enter_door
+- rationale: 模糊／諧音更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
+
 # IDEAS — 兩段式閘（proposed → approved → 施工）
 
 Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
@@ -81,7 +89,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 - proposed_at: 2026-10-12
 - status: proposed
 - pain: 溜進去／潛進去等新同義已加，但混合句「溜進去但等等」或長句多意圖時分類仍可能不穩；最長匹配優先未實作
-- how: F／引擎：匹配時優先最長 phrase match；當 refuse/wait 與 enter 同時命中，看否定／停詞權重決定。未批唔改 engine
+- how: F／引擎：匹配時優先最長 phrase match；當 refuse/wait 與 enter 同時命中，看否定／停／未準備權重決定。未批唔改 engine
 - acceptance: 「我而家溜進去先」→ enter_door；「唔好幫我溜進去」→ refuse；「溜進去但等等先」→ wait 優先
 - rationale: 上下文／優先更似真 AI；禁 yes-word pool；未批唔開施工票
 
