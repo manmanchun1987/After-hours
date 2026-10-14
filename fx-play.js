@@ -1,5 +1,5 @@
 (function () {
-  var STAMP = "t3-0719";
+  var STAMP = "t3-0820";
   var wrapped = false;
   function layer() {
     var el = document.getElementById("fx-layer");

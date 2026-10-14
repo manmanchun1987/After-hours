@@ -1,5 +1,6 @@
 # STATUS — hourly
 
+- 2026-10-14 08:20 HKT：CODE hourly: stamps t3-0820 on audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST confirmed (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. No app.js/index. Live full engine no stub. T3 closed.
 - 2026-10-14 08:18 HKT：LIVE-OK hourly: chat-guide.js referenced in index, app.js full engine (no stub), fx-play click bind + AHAudio.cue stay. CHAT-FIRST intact. No story JSON touch. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 - 2026-10-14 08:11 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent9. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 - 2026-10-14 07:16 HKT：Lane A hourly: intent-patterns.js thickened (intent9: 推開啴度入去／等我認吓先／唔好幫我開個門入 + more typos/fuzzy). T2 progress. Live gate ?v=intent9. wc -c 17754. Core sizes OK. No Imagine. 禁 CDN pin/stub.
