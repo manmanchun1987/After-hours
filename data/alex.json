@@ -28,7 +28,7 @@
         {
           "keys": [
             "推門",
-            "入嚕",
+            "入嚟",
             "開門",
             "入去",
             "跟你入",
@@ -53,7 +53,7 @@
           "next": "n0b",
           "heat": 5,
           "bucket": "enter",
-          "ack": "門開咗。你入嚕先，認位。"
+          "ack": "門開咗。你入嚟先，認位。"
         },
         {
           "keys": [
@@ -86,11 +86,11 @@
           "next": "n0b",
           "heat": 3,
           "bucket": "agree",
-          "ack": "好。你嚕。入嚕認位。"
+          "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 06:09 HKT STORY: one-breath n0 (arrive react + want NOW + clear ask). Acks next-beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE.md. No app.js stub."
+      "stub": "hourly 07:08 HKT STORY: one-breath n0 (arrive react + want NOW + clear ask). Acks next-beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE.md. No app.js stub."
     }
   },
-  "stub": "hourly 06:09 HKT STORY: one-breath n0. CHAT-FIRST kept. CANTONESE. No app.js stub."
+  "stub": "hourly 07:08 HKT STORY: one-breath n0. CHAT-FIRST kept. CANTONESE. No app.js stub."
 }
