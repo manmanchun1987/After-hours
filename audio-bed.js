@@ -1,9 +1,9 @@
-/* audio-bed t3-0820 — Web Audio bed stub, no app.js touch */
+/* audio-bed t3-0717 — Web Audio bed stub, no app.js touch */
 (function () {
   "use strict";
   window.AudioBed = window.AudioBed || {
-    stamp: "t3-0820",
-    start: function () { console.log("[audio-bed] ready t3-0820"); },
+    stamp: "t3-0717",
+    start: function () { console.log("[audio-bed] ready t3-0717"); },
     stop: function () {}
   };
 })();
