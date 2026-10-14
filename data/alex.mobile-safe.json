@@ -23,8 +23,8 @@
           "off_topic"
         ]
       },
-      "stub": "hourly 06:03 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. no JS/index."
+      "stub": "hourly 09:05 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 06:03 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow). JSON parse OK. start preserved. no JS/index."
+  "stub": "hourly 09:05 HKT Lane C: aligned goals + successIntents. JSON parse OK. start preserved. no JS/index."
 }
