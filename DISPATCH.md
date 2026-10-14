@@ -4,7 +4,7 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent10 加更多推開個門入去睇吓／開個們睇下／踏進去先 + typos/fuzzy）
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent11 加更多推開嗰度入去／開個門入去睇吓先／踏入去睇下 + typos/fuzzy）
 
 ## Closed / done this run
 
