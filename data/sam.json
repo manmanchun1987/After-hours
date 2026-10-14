@@ -78,8 +78,8 @@
           "ack": "好。上嚟。學。"
         }
       ],
-      "stub": "hourly 09:11 HKT Lane C STORY: node.text one-breath (arrive+wantNOW+ask). JSON parse OK. start preserved. no JS/index."
+      "stub": "hourly 04:09 HKT Lane C STORY: node.text one-breath (arrive+wantNOW+ask). JSON parse OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 09:11 HKT Lane C STORY: node.text one-breath aligned. JSON parse OK. start preserved. no JS/index."
+  "stub": "hourly 04:09 HKT Lane C STORY: node.text one-breath aligned. JSON parse OK. start preserved. no JS/index."
 }
