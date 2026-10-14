@@ -89,8 +89,8 @@
           "ack": "好。你嚟。入嚟認位。"
         }
       ],
-      "stub": "hourly 04:09 HKT Lane C STORY: node.text one-breath (arrive+wantNOW+ask). JSON parse OK. start preserved. no JS/index."
+      "stub": "hourly 06:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional). JSON parse OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 04:09 HKT Lane C STORY: node.text one-breath aligned. JSON parse OK. start preserved. no JS/index."
+  "stub": "hourly 06:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional). JSON parse OK. start preserved. no JS/index."
 }
