@@ -1,3 +1,8 @@
+2026-10-15 23:45 HKT：HOTFIX CEO entryfix1: restore cast cards in renderCast (Vera/Elise/Sammi); pickStory loads data/*.json into full app.js engine; remove play-engine.js + life.js from index (they emptied/#hijacked cast). Live ?v=entryfix1.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-15 23:21 HKT：CODE hourly: stamp t3-2321 on chat-guide.js / fx-play.js / audio-bed.js / compete-boot.js.
 CHAT-FIRST: after advance #choices freechat-hidden, only show after 2 misses. renderNode 唔会 always reveal. Yes-words (好 係 得) heat intent kept. Owner playtest quiet.
 Live full engine no app_b64 stub.
