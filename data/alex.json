@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "尾班車門剛合上，你仲勾住門框未入。走廊唔係位，我而家要你推門入嚛認清楚。你而家推門入嚛，定停低同我講清楚點？",
+      "text": "尾班車門剛合上，你仲勾住門框未入嚟。我而家要你推門入嚟認清楚位。你而家推門入嚟，定停低同我講清楚點？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,13 +22,13 @@
         "goal": "enter_or_wait",
         "section": "corridor",
         "maxMisses": 3,
-        "ask": "你而家推門入嚛，定停低同我講清楚點？"
+        "ask": "你而家推門入嚟，定停低同我講清楚點？"
       },
       "intents": [
         {
           "keys": [
             "推門",
-            "入嚛",
+            "入嚟",
             "開門",
             "入去",
             "跟你入",
@@ -65,12 +65,15 @@
             "開個們入去",
             "入去覧吓",
             "推開彬度",
-            "開度門入"
+            "開度門入",
+            "好",
+            "係",
+            "繼續"
           ],
           "next": "n0b",
           "heat": 5,
           "bucket": "enter",
-          "ack": "門開咗。你入嚛先，認清楚位。"
+          "ack": "門開咗。你入嚟先，認清楚位。"
         },
         {
           "keys": [
@@ -109,11 +112,11 @@
           "next": "n0b",
           "heat": 3,
           "bucket": "agree",
-          "ack": "好。你嚛。入嚛認位先。"
+          "ack": "好。你嚟。入嚟認位先。"
         }
       ],
-      "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
     }
   },
-  "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
+  "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
 }
