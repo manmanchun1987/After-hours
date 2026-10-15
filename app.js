@@ -1526,16 +1526,22 @@ function applyStoryArt(story) {
       duckBgmForVideo(true);
       // Prefer clip audio over TTS while portrait video is active
       try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
-      const playPromise = vid.play();
-      if (playPromise && playPromise.catch) {
-        playPromise.catch(function () {
-          // Autoplay-with-sound may need a gesture; retry muted then unmute after click
-          vid.muted = true;
-          vid.play().then(function () {
-            vid.muted = false;
-            duckBgmForVideo(true);
-          }).catch(function () {});
-        });
+      // Never block cast→play on video; muted first, unmute best-effort
+      try {
+        vid.muted = true;
+        const playPromise = vid.play();
+        if (playPromise && playPromise.then) {
+          playPromise.then(function () {
+            try {
+              vid.muted = false;
+              duckBgmForVideo(true);
+            } catch (e) {}
+          }).catch(function () {
+            try { duckBgmForVideo(false); } catch (e) {}
+          });
+        }
+      } catch (e) {
+        try { duckBgmForVideo(false); } catch (e2) {}
       }
       if (mask) mask.setAttribute("hidden", "");
     } else {
