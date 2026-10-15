@@ -1,3 +1,10 @@
+2026-10-15 23:21 HKT：CODE hourly: stamp t3-2321 on chat-guide.js / fx-play.js / audio-bed.js / compete-boot.js.
+CHAT-FIRST: after advance #choices freechat-hidden, only show after 2 misses. renderNode 唔会 always reveal. Yes-words (好 係 得) heat intent kept. Owner playtest quiet.
+Live full engine no app_b64 stub.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-15 23:20 HKT：Lane A hourly: intent-patterns.js thickened (intent24: even longer mixed wait+enter fuzzy 我而家推開個門入去睇吓但等陣先／開個們入去認清楚但未敢停低／推開個門入去覽吓但等陣先認清楚位 + more 認清楚位 variants).
 T2 progress.
 Live gate ?v=intent24.
