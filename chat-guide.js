@@ -1,9 +1,10 @@
 (function () {
   "use strict";
-  var STAMP = "t5-0518";
+  var STAMP = "t5-0616";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
+  var YES_WORDS = /^(好|係|得|ok|yes|得啦|好呀)$/i;
 
   function getChoices() {
     if (!choicesEl) choicesEl = document.getElementById("choices");
@@ -34,6 +35,11 @@
            /\u4f60\u60f3\u6211\u9ede|\u63a8\u9580|\u505c\u4e00\u505c|\u4eca\u65e5\u5929\u6c23|\u4f60\u8a18\u5f97/.test(t);
   }
 
+  function isYesWord(text) {
+    if (!text) return false;
+    return YES_WORDS.test(String(text).trim());
+  }
+
   function wrapIfPresent(name, after) {
     if (typeof window[name] === "function") {
       var orig = window[name];
@@ -57,7 +63,7 @@
     });
     document.addEventListener("freechat:miss", function (ev) {
       var text = ev && ev.detail && ev.detail.text;
-      if (isOwnerPlaytest(text)) return;
+      if (isOwnerPlaytest(text) || isYesWord(text)) return;
       missCount += 1;
       showChoicesIfReady();
     });
@@ -86,7 +92,7 @@
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
     }
 
-    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) heat intact. Owner quiet.");
+    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) non-miss heat intact. Owner quiet.");
   }
 
   if (document.readyState === "loading") {
