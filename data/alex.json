@@ -115,8 +115,8 @@
           "ack": "好。你嚐。入嚐認位先。"
         }
       ],
-      "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
+      "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
     }
   },
-  "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
+  "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
 }

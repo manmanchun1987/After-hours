@@ -23,8 +23,8 @@
           "off_topic"
         ]
       },
-      "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+      "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
     }
   },
-  "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+  "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
 }
