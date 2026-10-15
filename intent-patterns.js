@@ -1,6 +1,6 @@
 /**
  * IntentPatterns (Lane A) — soft Cantonese synonyms / fuzzy / typos for IntentEngine.
- * intent30: further thickened for T2 CHAT-FIRST — even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好). Soft-pass.
+ * intent31: further thickened for T2 CHAT-FIRST — even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚位再等等／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好再認清楚). Soft-pass.
  * Soft-pass: intent ∈ sceneGoal.successIntents 即過。禁止 keys 唯一對池。
  */
 (function (global) {
@@ -29,6 +29,9 @@
       /我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等/,
       /推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚/,
       /踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好/,
+      /我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好/,
+      /推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚位再等等/,
+      /踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好再認清楚/,
       /開門啦/,
       /我入去先/
     ],
@@ -55,7 +58,7 @@
   };
 
   var SOFT_LEXICON = {
-    enter_door: ["開門啦", "我入去先", "我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等"],
+    enter_door: ["開門啦", "我入去先", "我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好"],
     wait: ["等等", "等吓先", "未準備好", "停低先"],
     refuse: ["唔好幫我", "唔入"],
     ask_want: ["你想我點"],
@@ -73,7 +76,7 @@
   };
 
   var ACCEPTANCE_SOFT = {
-    enter_door: ["開門啦", "我入去先", "我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等"],
+    enter_door: ["開門啦", "我入去先", "我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好"],
     wait: ["等等"],
     ask_want: ["你想我點"],
     off_topic: ["天氣"]
