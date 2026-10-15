@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "門剛合上，你仲勾住尾班車門框未入嚟。我而家要你推門入嚟認清楚位。你而家推門入嚟，定停低同我講清楚點？",
+      "text": "門剛合上。你仲勾住尾班車門框未入嚐。我而家要你推門入嚐認清楚位。你而家推門入嚐，定停低同我講清楚點？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,13 +22,13 @@
         "goal": "enter_or_wait",
         "section": "corridor",
         "maxMisses": 3,
-        "ask": "你而家推門入嚟，定停低同我講清楚點？"
+        "ask": "你而家推門入嚐，定停低同我講清楚點？"
       },
       "intents": [
         {
           "keys": [
             "推門",
-            "入嚟",
+            "入嚐",
             "開門",
             "入去",
             "跟你入",
@@ -53,17 +53,17 @@
             "推開個門入去",
             "入去睇吓先",
             "踏入去睇下先",
-            "開個門入去覧",
-            "入嚟認清楚",
+            "開個門入去覽",
+            "入嚐認清楚",
             "推開",
             "睇吓先",
-            "入嚟",
+            "入嚐",
             "認清楚位",
-            "開個嚥度",
+            "開個嚐度",
             "踏入先",
             "推開回度",
             "開個們入去",
-            "入去覧吓",
+            "入去覽吓",
             "推開彬度",
             "開度門入",
             "好",
@@ -73,7 +73,7 @@
           "next": "n0b",
           "heat": 5,
           "bucket": "enter",
-          "ack": "門開咗。你入嚟先，認清楚位。"
+          "ack": "入嚐。認清楚位先。"
         },
         {
           "keys": [
@@ -112,11 +112,11 @@
           "next": "n0b",
           "heat": 3,
           "bucket": "agree",
-          "ack": "好。你嚟。入嚟認位先。"
+          "ack": "好。你嚐。入嚐認位先。"
         }
       ],
-      "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+      "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
     }
   },
-  "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+  "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
 }

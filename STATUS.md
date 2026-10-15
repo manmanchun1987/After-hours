@@ -1,5 +1,10 @@
-2026-10-15 22:09 HKT：Live stub loader without parts。第一張 CODE restore-engine。
-STORY 3 / PICTURE 4 / SOUND 4 / FEEL 2。
-CHAT-FIRST: 成功 typed line 後仍投選項鈕 → FEEL 下，開 STORY intents + CODE keep chat-guide hide。
-Owner playtests expected。No Imagine。
-禁 CDN pin/stub。T2 加厚優先。
+2026-10-15 22:11 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear).
+Acks = next beat first half.
+CHAT-FIRST 好/係/繼續 kept.
+chat-guide glue intact.
+CANTONESE.md.
+No app.js stub.
+Live gate ?v=intent19.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。

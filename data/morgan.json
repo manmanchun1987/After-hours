@@ -55,7 +55,7 @@
             "入去先",
             "推開個門跟",
             "踏入去傾",
-            "入嚟傾",
+            "入嚐傾",
             "跟我上",
             "好",
             "係",
@@ -64,7 +64,7 @@
           "next": "m2a",
           "heat": 6,
           "bucket": "enter",
-          "ack": "門開。你跟。入去傾人。"
+          "ack": "跟。入去傾清楚。"
         },
         {
           "keys": [
@@ -98,8 +98,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+      "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
     }
   },
-  "stub": "hourly 2026-10-15 22:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support."
+  "stub": "hourly 2026-10-15 22:11 HKT Lane C STORY: node.text one-breath (arrive+want NOW+clear ask). Acks next-beat half. CHAT-FIRST  好/係/繼續 kept. CANTONESE. No stub."
 }
