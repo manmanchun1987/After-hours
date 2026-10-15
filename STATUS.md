@@ -1,3 +1,4 @@
+2026-10-16 00:51 HKT：HOTFIX entryfix3: cast→play no longer wedges. Chrome re-fires MutationObserver on classList.add even when the token is unchanged; hideChoices / setChoicesDeferred now write only on real changes, observer disconnects while hiding. portrait video never load()/play() (stills only). Story text committed before deferred TTS. Scripts stay ?v=entryfix3. intent-patterns 14963. alex/morgan/sam nodes 28/22/21.
 2026-10-16 00:34 HKT：HOTFIX CEO entryfix3: portraitVideoSrc always null (disable vera-loop autoplay hang); show("play") before TTS/art on start; chat-guide MutationObserver re-entrancy guard; cache-bust ?v=entryfix3.
 Core sizes OK.
 No Imagine.

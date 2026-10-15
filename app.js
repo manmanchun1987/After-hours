@@ -1476,7 +1476,8 @@ function duckBgmForVideo(on) {
 }
 
 function portraitVideoSrc(story) {
-  // entryfix3: disable portrait video autoplay (vera-loop) — stills via portraitSrc only
+  // entryfix3: never return vera-loop.mp4. Portrait stays a still (portraitSrc).
+  void story;
   return null;
 }
 
@@ -1507,52 +1508,18 @@ function applyStoryArt(story) {
   const stack = $("#alex-portrait-stack");
   const bg = document.querySelector("#screen-play .play-bg");
   const vid = $("#play-portrait-video");
-  const vsrc = portraitVideoSrc(story);
+  // entryfix3: stills only. vid.load()/play() (vera-loop) can wedge the entry turn
+  // so #screen-play never paints. portraitVideoSrc stays null.
+  portraitVideoSrc(story);
   if (vid) {
-    if (vsrc) {
-      vid.muted = false;
-      vid.volume = 1;
-      if (vid.getAttribute("src") !== vsrc) {
-        vid.setAttribute("src", vsrc);
-        vid.load();
-      }
-      vid.removeAttribute("hidden");
-      if (stack) stack.classList.add("has-video");
-      if (bg) bg.classList.add("has-video");
-      duckBgmForVideo(true);
-      // Prefer clip audio over TTS while portrait video is active
-      try { if (window.speechSynthesis) speechSynthesis.cancel(); } catch (e) {}
-      // Never block cast→play on video; muted first, unmute best-effort
-      try {
-        vid.muted = true;
-        const playPromise = vid.play();
-        if (playPromise && playPromise.then) {
-          playPromise.then(function () {
-            try {
-              vid.muted = false;
-              duckBgmForVideo(true);
-            } catch (e) {}
-          }).catch(function () {
-            try { duckBgmForVideo(false); } catch (e) {}
-          });
-        }
-      } catch (e) {
-        try { duckBgmForVideo(false); } catch (e2) {}
-      }
-      if (mask) mask.setAttribute("hidden", "");
-    } else {
-      duckBgmForVideo(false);
-      vid.removeAttribute("src");
-      vid.load();
-      vid.setAttribute("hidden", "");
-      if (stack) stack.classList.remove("has-video");
-      if (bg) bg.classList.remove("has-video");
-      if (mask) {
-        if (getCastId() === "alex") mask.removeAttribute("hidden");
-        else mask.setAttribute("hidden", "");
-      }
-    }
-  } else if (mask) {
+    duckBgmForVideo(false);
+    try { vid.pause(); } catch (e) {}
+    if (vid.hasAttribute("src")) vid.removeAttribute("src");
+    vid.setAttribute("hidden", "");
+    if (stack) stack.classList.remove("has-video");
+    if (bg) bg.classList.remove("has-video");
+  }
+  if (mask) {
     if (getCastId() === "alex") mask.removeAttribute("hidden");
     else mask.setAttribute("hidden", "");
   }
@@ -1997,9 +1964,16 @@ function applyFreeChatAdvance(intent) {
 function setChoicesDeferred(hidden) {
   const box = document.getElementById("choices");
   if (!box) return;
-  box.classList.toggle("freechat-hidden", !!hidden);
-  if (hidden) box.setAttribute("aria-hidden", "true");
-  else box.removeAttribute("aria-hidden");
+  const shouldHide = !!hidden;
+  const isHidden = box.classList.contains("freechat-hidden");
+  // Do not toggle an unchanged token: Chrome still emits a class mutation,
+  // and chat-guide's observer used to re-enter until the play screen never painted.
+  if (shouldHide !== isHidden) box.classList.toggle("freechat-hidden", shouldHide);
+  if (shouldHide) {
+    if (box.getAttribute("aria-hidden") !== "true") box.setAttribute("aria-hidden", "true");
+  } else if (box.hasAttribute("aria-hidden")) {
+    box.removeAttribute("aria-hidden");
+  }
 }
 
 function syncFreeChatChoices(node) {
@@ -2354,8 +2328,15 @@ function startAlex(fresh) {
     state.tension = 15;
     state.memories = [];
   }
-  // entryfix3: unhide play BEFORE art/TTS so cast→play cannot hang on media
+  // entryfix3: unhide play and put story text in the DOM before art/TTS.
   show("play");
+  const opening = state.story.nodes[state.nodeId];
+  if (opening && !opening.ending) {
+    const labelEl = $("#play-label");
+    const textEl = $("#play-text");
+    if (labelEl) labelEl.textContent = opening.label || "";
+    if (textEl) textEl.textContent = opening.text || "";
+  }
   applyStoryArt(state.story);
   renderMeters();
   save();
@@ -2383,12 +2364,14 @@ function renderNode() {
     return;
   }
 
-  // entryfix3: show play before TTS / choice DOM so screen is visible immediately
+  // entryfix3: show play and commit story text, then speak on a later turn
+  // so speechSynthesis cannot block the first paint of #screen-play.
   show("play");
   applyNodeMeta(node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;
-  speakStoryBeats(node.text);
+  const spoken = node.text;
+  setTimeout(function () { speakStoryBeats(spoken); }, 0);
 
   const box = $("#choices");
   box.innerHTML = "";
