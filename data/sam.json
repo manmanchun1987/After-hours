@@ -93,8 +93,8 @@
           "ack": "好。上嚙。學。"
         }
       ],
-      "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath. Acks next half. CHAT-FIRST. CANTONESE."
+      "stub": "hourly 2026-10-16 00:07 HKT Lane C: confirmed corridor/freeChat alignment. successIntents enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST T2 support. CANTONESE."
     }
   },
-  "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath texts. Acks next-beat half. CHAT-FIRST kept. CANTONESE. No app.js stub."
+  "stub": "hourly 2026-10-16 00:07 HKT Lane C: confirmed corridor/freeChat alignment. successIntents enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST T2 support. CANTONESE."
 }
