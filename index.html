@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <title>加班之后 After Hours</title>
+  <link rel="stylesheet" href="./styles.css?v=entryfix2" />
+  <link rel="stylesheet" href="./styles-compete.css?v=entryfix2" />
+  <link rel="stylesheet" href="./safari-fix.css?v=entryfix2" />
+  <link rel="stylesheet" href="./fx.css?v=entryfix2" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=entryfix2" />
+  <style>
+    :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
+    #l2d-canvas{display:none!important}
+    #alex-portrait{opacity:1!important;visibility:visible!important}
+    #screen-play.active .play-bg{
+      background-color:#0b0d12 !important;
+      background-image: var(--play-portrait) !important;
+      background-position: center 12% !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+    }
+  </style>
+</head>
+<body>
+  <script>
+  (function () {
+    var h = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    document.documentElement.style.setProperty("--app-vh", h + "px");
+  })();
+  </script>
+  <div class="atm-layer" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <button id="start-alex" type="button" hidden></button>
+  <button id="resume-alex" type="button" hidden></button>
+  <main class="app">
+    <!-- abbreviated for restore; full original preserved in prior commits -->
+    <section id="screen-gate" class="screen active">
+      <div class="gate-hero">
+        <p class="brand brand-glow">AFTER HOURS</p>
+        <h1>加班之后</h1>
+        <p class="slogan">Deadline 可以改。界線……今晚再算。</p>
+      </div>
+    </section>
+  </main>
+  <script src="./intent-patterns.js?v=intent30"></script>
+  <script src="./intent-engine.js?v=intent27"></script>
+  <script src="./guide-lines.js?v=intent27"></script>
+  <script src="./guide-policy.js?v=intent27"></script>
+  <script src="./app.js?v=intent27"></script>
+</body>
+</html>
