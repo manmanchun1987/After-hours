@@ -1,3 +1,11 @@
+2026-10-16 00:10 HKT：Lane A hourly: intent-patterns.js thickened (intent25: more longer mixed wait+enter fuzzy/typos 我而家推開個門入去睇吓但等陣先認清楚位／開個們入去認清楚但未敢停低認位／推開個門入去覽吓但等陣先認清楚 + 門/們/门 variants).
+T2 progress.
+Live gate ?v=intent25.
+wc -c ~13918.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-15 23:45 HKT：HOTFIX CEO entryfix1: restore cast cards in renderCast (Vera/Elise/Sammi); pickStory loads data/*.json into full app.js engine; remove play-engine.js + life.js from index (they emptied/#hijacked cast). Live ?v=entryfix1.
 Core sizes OK.
 No Imagine.

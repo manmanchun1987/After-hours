@@ -4,10 +4,11 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent24 再加厚 even longer mixed wait+enter 我而家推開個門入去睇吓但等陣先／開個們入去認清楚但未敢停低／推開個門入去覽吓但等陣先認清楚位 + more 認清楚位／停低 variants；patterns 已加厚）
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent25 再加厚 more longer mixed wait+enter 我而家推開個門入去睇吓但等陣先認清楚位／開個們入去認清楚但未敢停低認位／推開個門入去覽吓但等陣先認清楚 + 門/們/门 覽/睇 variants；patterns 已加厚）
 
 ## Closed / done this run
 
+- Lane A intent25 thicken patterns（同義加厚）
 - Lane A intent24 thicken patterns（同義加厚）
 - Lane A intent17 thicken patterns（同義加厚）
 - Lane A intent16 thicken patterns（同義加厚）
