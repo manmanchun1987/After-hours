@@ -6,7 +6,7 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "你腳步未定，停喺私人樓層門前。日頭文件講完，我而家要你跟我入去傾清楚人。你而家跟我入，定停低？",
+      "text": "腳步未定，你停喺私人樓層門前。日頭文件講完，我而家要你跟我入去傾清楚人。你而家跟我入，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -98,8 +98,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
+      "stub": "hourly 2026-10-15 21:15 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
     }
   },
-  "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
+  "stub": "hourly 2026-10-15 21:15 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
 }
