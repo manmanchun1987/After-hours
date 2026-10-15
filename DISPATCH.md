@@ -4,7 +4,7 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent22 再加厚 mixed wait+enter 推開個門入去但等陣先認清楚／開個們入去睇吓但停低認位／踏入去但未敢認清楚 + longer fuzzy；patterns 已加厚）
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent23 再加厚 longer mixed wait+enter 推開個門入去但等陣先認清楚／開個們入去睇吓但停低認位／踏入去但未敢認清楚 + more 認位 variants；patterns 已加厚）
 
 ## Closed / done this run
 
