@@ -48,7 +48,24 @@
             "開門啦",
             "鑽入",
             "走入",
-            "入去啦"
+            "入去啦",
+            "推開個門",
+            "推開個門入去",
+            "入去睇吓先",
+            "踏入去睇下先",
+            "開個門入去覧",
+            "入嚟認清楚",
+            "推開",
+            "睇吓先",
+            "入嚟",
+            "認清楚位",
+            "開個嚥度",
+            "踏入先",
+            "推開回度",
+            "開個們入去",
+            "入去覧吓",
+            "推開彬度",
+            "開度門入"
           ],
           "next": "n0b",
           "heat": 5,
@@ -65,7 +82,13 @@
             "未好",
             "我未準備好",
             "等陣",
-            "等下"
+            "等下",
+            "等陣先",
+            "未準備好",
+            "停一停",
+            "等等先",
+            "我未好",
+            "停低先"
           ],
           "next": "n0b",
           "tension": 5,
@@ -89,8 +112,8 @@
           "ack": "好。你嚛。入嚛認位先。"
         }
       ],
-      "stub": "hourly 08:13 HKT Lane C: one-breath refined (arrive+want NOW+clear ask). CHAT-FIRST kept. CANTONESE. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 08:13 HKT Lane C: one-breath refined. CHAT-FIRST kept. CANTONESE. no stub."
+  "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
 }

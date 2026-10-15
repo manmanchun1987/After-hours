@@ -46,7 +46,17 @@
             "進去看看",
             "我入去先",
             "開門啦",
-            "跟入去"
+            "跟入去",
+            "跟我入",
+            "入去傾",
+            "跟我入去",
+            "入去傾清楚",
+            "跟你入去",
+            "入去先",
+            "推開個門跟",
+            "踏入去傾",
+            "入嚟傾",
+            "跟我上"
           ],
           "next": "m2a",
           "heat": 6,
@@ -60,7 +70,12 @@
             "未定",
             "停低",
             "等等",
-            "我未準備好"
+            "我未準備好",
+            "等陣",
+            "未準備",
+            "停低先",
+            "等等先",
+            "我未好"
           ],
           "next": "m2b",
           "tension": 4,
@@ -80,8 +95,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 08:13 HKT Lane C: one-breath refined (arrive+want NOW+clear ask). CHAT-FIRST kept. CANTONESE. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 08:13 HKT Lane C: one-breath refined. CHAT-FIRST kept. CANTONESE. no stub."
+  "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
 }

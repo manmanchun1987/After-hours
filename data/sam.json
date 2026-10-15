@@ -45,7 +45,14 @@
             "進去看看",
             "我上嚛先",
             "行上嚛",
-            "跳上"
+            "跳上",
+            "上嚛學",
+            "上嚛先",
+            "踏入上",
+            "入去學",
+            "跟你上",
+            "推開上",
+            "入嚟學"
           ],
           "next": "s2",
           "heat": 4,
@@ -59,7 +66,11 @@
             "未行",
             "停低",
             "等等",
-            "我未準備好"
+            "我未準備好",
+            "等陣",
+            "未行近",
+            "停低先",
+            "等等先"
           ],
           "next": "s2",
           "tension": 3,
@@ -79,8 +90,8 @@
           "ack": "好。上嚛。學。"
         }
       ],
-      "stub": "hourly 08:13 HKT Lane C: one-breath refined (arrive+want NOW+clear ask). CHAT-FIRST kept. CANTONESE. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 08:13 HKT Lane C: one-breath refined. CHAT-FIRST kept. CANTONESE. no stub."
+  "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
 }
