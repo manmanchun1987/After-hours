@@ -6,7 +6,7 @@
     "n0": {
       "id": "n0",
       "freeChat": true,
-      "text": "尾班車門剛合，你仲勾住門框未入。走廊唔算位，我而家要你推門入嚟認清楚。你而家推門入嚟，定停低同我講清楚點？",
+      "text": "尾班車門剛合上，你仲勾住門框未入。走廊唔係位，我而家要你推門入嚛認清楚。你而家推門入嚛，定停低同我講清楚點？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,13 +22,13 @@
         "goal": "enter_or_wait",
         "section": "corridor",
         "maxMisses": 3,
-        "ask": "你而家推門入嚟，定停低同我講清楚點？"
+        "ask": "你而家推門入嚛，定停低同我講清楚點？"
       },
       "intents": [
         {
           "keys": [
             "推門",
-            "入嚟",
+            "入嚛",
             "開門",
             "入去",
             "跟你入",
@@ -53,7 +53,7 @@
           "next": "n0b",
           "heat": 5,
           "bucket": "enter",
-          "ack": "門開咗。你入嚟先，認位。"
+          "ack": "門開咗。你入嚛先，認清楚位。"
         },
         {
           "keys": [
@@ -86,11 +86,11 @@
           "next": "n0b",
           "heat": 3,
           "bucket": "agree",
-          "ack": "好。你嚟。入嚟認位。"
+          "ack": "好。你嚛。入嚛認位先。"
         }
       ],
-      "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
+      "stub": "hourly 08:13 HKT Lane C: one-breath refined (arrive+want NOW+clear ask). CHAT-FIRST kept. CANTONESE. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
+  "stub": "hourly 08:13 HKT Lane C: one-breath refined. CHAT-FIRST kept. CANTONESE. no stub."
 }

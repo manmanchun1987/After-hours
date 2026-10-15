@@ -6,7 +6,7 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "你腳步未定停的私人樓層門前。日頭紙講完，我而家要你跟我入去傾人。你而家跟我入，定停嘅度？",
+      "text": "你腳步未定，停喺私人樓層門前。日頭紙講完，我而家要你跟我入去傾清楚。你而家跟我入，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,7 +22,7 @@
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你而家跟我入，定停嘅度？"
+        "ask": "你而家跟我入，定停低？"
       },
       "intents": [
         {
@@ -80,8 +80,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
+      "stub": "hourly 08:13 HKT Lane C: one-breath refined (arrive+want NOW+clear ask). CHAT-FIRST kept. CANTONESE. JSON OK. start preserved. no JS/index."
     }
   },
-  "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
+  "stub": "hourly 08:13 HKT Lane C: one-breath refined. CHAT-FIRST kept. CANTONESE. no stub."
 }
