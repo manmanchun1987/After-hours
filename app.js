@@ -2237,14 +2237,108 @@ function clearProgress() {
   renderMeters();
 }
 
+const CAST_CARDS = [
+  {
+    id: "alex",
+    name: "Vera",
+    role: "部門主管 · 週五 23:47",
+    hook: "Deadline 可以改。態度唔可以。",
+    thumb: "./assets/stills/vera-03.jpg?v=3",
+    featured: true,
+  },
+  {
+    id: "morgan",
+    name: "Elise",
+    role: "客戶負責人 · 酒廊 21:10",
+    hook: "大單前夜。夜晚講人。",
+    thumb: "./assets/stills/vera-02.jpg?v=3",
+    featured: false,
+  },
+  {
+    id: "sam",
+    name: "Sammi",
+    role: "前輩同事 · 茶水間 22:40",
+    hook: "兩個杯麵。餓嘅人簽錯字。",
+    thumb: "./assets/stills/vera-01.jpg?v=3",
+    featured: false,
+  },
+];
+
+async function pickStory(id, fresh) {
+  const file = STORY_FILES[id] || STORY_FILES.alex;
+  try {
+    await AudioEngine.unlock();
+  } catch (_) {}
+  AudioEngine.sfxChoice();
+  const res = await fetch(file);
+  if (!res.ok) throw new Error("story " + id + " " + res.status);
+  state.story = await res.json();
+  state.storyId = id;
+  applyStoryArt(state.story);
+  startAlex(!!fresh);
+}
+
 function renderCast() {
-  const node = state.story && state.nodeId && state.story.nodes
-    ? state.story.nodes[state.nodeId]
-    : null;
-  const resume = $("#resume-alex");
-  if (resume) resume.hidden = true; // cast cards own the resume CTA; keep debug btn buried
-  const start = $("#start-alex");
-  if (start) start.hidden = true;
+  const box = document.getElementById("chars");
+  const resumeBtn = $("#resume-alex");
+  if (resumeBtn) resumeBtn.hidden = true;
+  const startBtn = $("#start-alex");
+  if (startBtn) startBtn.hidden = true;
+  if (!box) return;
+
+  const canResume = !!(
+    state.storyId &&
+    state.story &&
+    state.nodeId &&
+    state.story.nodes &&
+    state.story.nodes[state.nodeId] &&
+    !state.story.nodes[state.nodeId].ending
+  );
+
+  box.innerHTML = CAST_CARDS.map((c) => {
+    const featured = c.featured ? " char-card-featured" : "";
+    const showResume = canResume && state.storyId === c.id;
+    return (
+      '<article class="card glass char-card' + featured + '" data-cast="' + c.id + '">' +
+        '<div class="char-thumb-wrap">' +
+          '<img class="char-thumb" src="' + c.thumb + '" alt="' + c.name + '" />' +
+          '<div class="char-thumb-glow" aria-hidden="true"></div>' +
+        "</div>" +
+        "<h2>" + c.name + "</h2>" +
+        '<p class="role">' + c.role + "</p>" +
+        '<p class="hook">' + c.hook + "</p>" +
+        '<div class="stack">' +
+          (showResume
+            ? '<button type="button" class="btn btn-primary" data-cast-resume="' + c.id + '">繼續今晚</button>' +
+              '<button type="button" class="btn btn-ghost" data-cast-start="' + c.id + '">重新開始</button>'
+            : '<button type="button" class="btn btn-primary" data-cast-start="' + c.id + '">開始</button>') +
+        "</div>" +
+      "</article>"
+    );
+  }).join("");
+
+  box.querySelectorAll("[data-cast-start]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await pickStory(btn.getAttribute("data-cast-start"), true);
+      } catch (err) {
+        console.error(err);
+        box.insertAdjacentHTML(
+          "beforeend",
+          '<p class="hook">載入失敗：' + String(err.message || err) + "</p>"
+        );
+      }
+    });
+  });
+  box.querySelectorAll("[data-cast-resume]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await pickStory(btn.getAttribute("data-cast-resume"), false);
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  });
 }
 
 function startAlex(fresh) {
