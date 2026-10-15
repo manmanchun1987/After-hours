@@ -1,3 +1,8 @@
+2026-10-16 00:15 HKT：HOTFIX CEO entryfix2: restore data/alex|morgan|sam.json from 1dd36f8 (full graphs; Lane C had left 1-node stubs). Harden portrait video play so cast→play cannot hang. DISPATCH P0 ban stub wipe. Live ?v=entryfix2.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-16 00:20 HKT：STATUS pillars STORY 3 / PICTURE 4 / SOUND 4 / FEEL 4。
 Live full engine (app.js 非 stub，parts 齊)，chat-guide.js t3-2321 hide-after-advance intact（成功 typed 後 freechat-hidden，2 miss 先亮）。
 T2 STORY intents 加厚中（intent25）。
