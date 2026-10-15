@@ -6,7 +6,7 @@
     "s1": {
       "id": "s1",
       "freeChat": true,
-      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚛學潛規則。你而家上嚛，定停低？",
+      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚟學潛規則。你而家上嚟，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,7 +22,7 @@
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你而家上嚛，定停低？"
+        "ask": "你而家上嚟，定停低？"
       },
       "intents": [
         {
@@ -31,7 +31,7 @@
             "行近",
             "跟",
             "入",
-            "上嚛",
+            "上嚟",
             "走進",
             "走進去",
             "跳入",
@@ -41,23 +41,26 @@
             "躍入",
             "溜進去",
             "潛進去",
-            "行上嚛",
+            "行上嚟",
             "進去看看",
-            "我上嚛先",
-            "行上嚛",
+            "我上嚟先",
+            "行上嚟",
             "跳上",
-            "上嚛學",
-            "上嚛先",
+            "上嚟學",
+            "上嚟先",
             "踏入上",
             "入去學",
             "跟你上",
             "推開上",
-            "入嚟學"
+            "入嚟學",
+            "好",
+            "係",
+            "繼續"
           ],
           "next": "s2",
           "heat": 4,
           "bucket": "enter",
-          "ack": "上嚛。學。潛規則。"
+          "ack": "上嚟。學。潛規則。"
         },
         {
           "keys": [
@@ -87,11 +90,11 @@
           "next": "s2",
           "heat": 2,
           "bucket": "agree",
-          "ack": "好。上嚛。學。"
+          "ack": "好。上嚟。學。"
         }
       ],
-      "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
+      "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
     }
   },
-  "stub": "hourly 2026-10-15 02:04 HKT Lane C: thickened enter/wait keys for fuzzy/CHAT-FIRST (T2 support: 推開個門入去睇吓 etc). successIntents aligned. JSON OK. start preserved. no JS/index."
+  "stub": "hourly 2026-10-15 10:08 HKT STORY: node.text one-breath (arrive react + want NOW + spoken clear ask). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. CANTONESE. No app.js stub."
 }
