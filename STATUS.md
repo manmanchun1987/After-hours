@@ -1,3 +1,5 @@
+2026-10-16 03:14 HKT：Lane A hourly: intent-patterns.js further thickened intent31 for T2 CHAT-FIRST even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚位再等等／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好再認清楚). Cache-bust ?v=intent31. Soft-pass. Core sizes OK (patterns~4.3KB). No data push. No Imagine. 禁 CDN pin/stub。
+
 2026-10-16 03:04 HKT：Lane A hourly: intent-patterns.js further thickened intent30 for T2 CHAT-FIRST even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好). Cache-bust ?v=intent30. Soft-pass. Core sizes OK (patterns~4KB restored). No data push. No Imagine. 禁 CDN pin/stub。
 
 2026-10-16 02:16 HKT：CODE hourly t5-0216: stamp bump audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST intact — after story advance #choices stay freechat-hidden; show only after 2 missed chats; renderNode wrap hides only (never always reveal). Yes-words (好 係 得) heat mapping kept. Owner playtests ignored. No app_b64 stub. Core sizes OK. No Imagine. 禁 CDN pin/stub。
