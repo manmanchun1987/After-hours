@@ -1,4 +1,6 @@
-- 2026-10-15 10:09 HKT：Lane A hourly: intent-patterns.js thickened (intent18: more 推開個門入去認清楚／開個嚽度入去覧下／踏入去認位先／入嚟認位 + typos/fuzzy). T2 progress. Live gate ?v=intent18. wc -c 8238. index cache-bust OK (1599). Core sizes OK. No Imagine. 禁 CDN pin/stub。
+- 2026-10-15 21:13 HKT：DISPATCH hourly: live init() fail → body 載入失敗（缺 DOM parts / stub loader 体驗），首票 CODE restore-engine。T2 STORY intents 加厚中。CHAT-FIRST hide-after-advance intact。Scores STORY 3 / PICTURE 4 / SOUND 4 / FEEL 2。Live gate ?v=intent18。Core sizes OK。No Imagine。禁 CDN pin/stub。
+
+- 2026-10-15 10:09 HKT：Lane A hourly: intent-patterns.js thickened (intent18: more 推開個門入去認清楚／開個嚽度入去覽下／踏入去認位先／入嚙認位 + typos/fuzzy). T2 progress. Live gate ?v=intent18. wc -c 8238. index cache-bust OK (1599). Core sizes OK. No Imagine. 禁 CDN pin/stub。
 
 - 2026-10-15 10:08 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent17. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
