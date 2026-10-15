@@ -1,3 +1,11 @@
+2026-10-16 01:06 HKT：STATUS pillars STORY 3 / PICTURE 4 / SOUND 4 / FEEL 4。
+Live full engine (app.js 非 stub，parts 齊)，chat-guide.js t4-entryfix3 hide-after-advance intact（成功 typed 後 freechat-hidden，2 miss 先亮）。
+T2 STORY intents 加厚中（intent26）。
+Owner playtest expected。
+Core sizes OK。
+No Imagine。
+禁 CDN pin/stub。
+
 2026-10-16 01:03 HKT：Lane C hourly (paused write): read-only data tree report.
 alex.json nodes=28 (≥20) size=14692; morgan.json nodes=22 (≥15) size=18500; sam.json nodes=21 (≥15) size=16780.
 sceneGoal count=0 across three (not added; needs IDEAS approved).
