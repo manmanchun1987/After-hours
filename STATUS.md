@@ -1,13 +1,5 @@
-# STATUS — Lane C (2026-10-16)
+2026-10-16 03:04 HKT：Lane A hourly: intent-patterns.js further thickened intent30 for T2 CHAT-FIRST even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好). Cache-bust ?v=intent30. Soft-pass. Core sizes OK (patterns~4KB restored). No data push. No Imagine. 禁 CDN pin/stub。
 
-Lane C 暫停寫入 data/* （按 LANES.md / AUTOMATION.md）。只讀樹＋報 nodes。
+2026-10-16 02:16 HKT：CODE hourly t5-0216: stamp bump audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST intact — after story advance #choices stay freechat-hidden; show only after 2 missed chats; renderNode wrap hides only (never always reveal). Yes-words (好 係 得) heat mapping kept. Owner playtests ignored. No app_b64 stub. Core sizes OK. No Imagine. 禁 CDN pin/stub。
 
-## data/ nodes 與 size
-- data/alex.json: nodes=28 (≥20) ， size=14692 bytes (≥8KB)
-- data/morgan.json: nodes=22 (≥15) ， size=18500 bytes (≥5KB)
-- data/sam.json: nodes=21 (≥15) ， size=16780 bytes (≥5KB)
-- data/alex.mobile-safe.json: nodes=1 （stub，未碰）
-
-通過 size 閘。無單節 stub 事故。未推 data。
-
-短報：讀完；無改動；等 IDEAS approved 先補 sceneGoal。
+2026-10-16 02:10 HKT：Lane A hourly: intent-patterns.js further thickened intent28 for T2 CHAT-FIRST more longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位／推開個們入去覽吓但等陣先認清楚位但未好企定／踏入去瞧吓但停低認位先等陣認清楚再等等). Cache-bust ?v=intent28. Soft-pass. Core sizes OK (patterns~18KB). No data push. No Imagine. 禁 CDN pin/stub。
