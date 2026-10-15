@@ -1,17 +1,7 @@
-2026-10-16 01:06 HKT：STATUS pillars STORY 3 / PICTURE 4 / SOUND 4 / FEEL 4。
-Live full engine (app.js 非 stub，parts 齊)，chat-guide.js t4-entryfix3 hide-after-advance intact（成功 typed 後 freechat-hidden，2 miss 先亮）。
-T2 STORY intents 加厚中（intent26）。
-Owner playtest expected。
-Core sizes OK。
-No Imagine。
-禁 CDN pin/stub。
-
-2026-10-16 01:03 HKT：Lane C hourly (paused write): read-only data tree report.
-alex.json nodes=28 (≥20) size=14692; morgan.json nodes=22 (≥15) size=18500; sam.json nodes=21 (≥15) size=16780.
-sceneGoal count=0 across three (not added; needs IDEAS approved).
-alex.mobile-safe.json is 1-node stub (ignored).
-Live ?v=lanec-20261016: 18+ gate → three cast cards (Vera/Elise/Sammi) visible, no hang / white screen.
-No data/* push. Core sizes OK.
+2026-10-16 01:05 HKT：Lane A hourly: intent-patterns.js thickened (intent27: additional longer mixed wait+enter fuzzy/typos/同義 我而家開個門入去認清楚但未敢停低認位／推開個們入去覽吓但等陣先認清楚位／踏入去瞧吓但停低認位先等陣 + more 門/們/门 variants).
+T2 progress.
+wc -c ~15851.
+Core sizes OK.
 No Imagine.
 禁 CDN pin/stub。
 
@@ -61,53 +51,6 @@ No Imagine.
 2026-10-15 23:21 HKT：CODE hourly: stamp t3-2321 on chat-guide.js / fx-play.js / audio-bed.js / compete-boot.js.
 CHAT-FIRST: after advance #choices freechat-hidden, only show after 2 misses. renderNode 唔会 always reveal. Yes-words (好 係 得) heat intent kept. Owner playtest quiet.
 Live full engine no app_b64 stub.
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 23:20 HKT：Lane A hourly: intent-patterns.js thickened (intent24: even longer mixed wait+enter fuzzy 我而家推開個門入去睇吓但等陣先／開個們入去認清楚但未敢停低／推開個門入去覽吓但等陣先認清楚位 + more 認清楚位 variants).
-T2 progress.
-Live gate ?v=intent24.
-wc -c ~12461.
-index cache-bust OK (7322).
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 23:10 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear).
-Acks = next beat first half.
-CHAT-FIRST 好/係/繼續 kept.
-chat-guide glue intact.
-CANTONESE.md.
-No app.js stub.
-Live gate ?v=intent22.
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 23:02 HKT：HOTFIX CEO: restored intent-patterns.js from 2ddae75 (10148 bytes; HEAD was 0). Cache-bust ?v=hotfix1. Soft-pass patterns live again. Lane A empty-write false positive.
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 22:21 HKT：CODE hourly: stamp t3-2221 on chat-guide.js / fx-play.js / audio-bed.js / compete-boot.js.
-CHAT-FIRST: after advance #choices freechat-hidden, only show after 2 misses. renderNode 唔会 always reveal. Yes-words (好 係 得) heat intent kept. Owner playtest quiet.
-Live full engine no app_b64 stub.
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 22:16 HKT：Lane A hourly: intent-patterns.js thickened (intent22: more mixed wait+enter fuzzy/typos 推開個門入去但等陣先認清楚／開個們入去睇吓但停低認位／踏入去但未敢認清楚 + longer gaps & 覽 variants).
-T2 progress.
-Live gate ?v=intent22.
-wc -c 11590.
-index cache-bust OK (7337).
-Core sizes OK.
-No Imagine.
-禁 CDN pin/stub。
-
-2026-10-15 22:18 HKT：LIVE GATE hourly: live full engine (app.js 非 b64 stub，有 parts), chat-guide.js referenced from index.html + present, fx-play click bind + AHAudio.cue stay.
-CHAT-FIRST hide-after-advance intact.
 Core sizes OK.
 No Imagine.
 禁 CDN pin/stub。
