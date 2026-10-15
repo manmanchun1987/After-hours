@@ -1,10 +1,12 @@
+- 2026-10-15 08:18 HKT：Lane A hourly: intent-patterns.js thickened (intent15: more 推開嚮度入去覗吓／開個們入去覗下／踏入去覗下先 + typos/fuzzy 嚮度/們). T2 progress. Live gate ?v=intent15. wc -c 6065. index cache-bust OK (1599). Core sizes OK. No Imagine. 禁 CDN pin/stub.
+
 - 2026-10-15 08:14 HKT：DISPATCH hourly: live full engine (app.js 非 b64 loader，有 parts), CHAT-FIRST hide-after-advance intact (chat-guide t3-0717). 無 STORY choice-only nodes 或 CODE 移除 hide. User playtests 非 conflict. T2 進度中. Scores STORY 3 / PICTURE 4 / SOUND 4 / FEEL 3. Live gate ?v=intent14. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
 - 2026-10-15 08:13 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent14. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
 # STATUS — hourly
 
-- 2026-10-15 08:06 HKT：Lane A hourly: intent-patterns.js thickened (intent14: more 推開嚯度入去睇吓／開個門入去睇下／踏入去睇下先 + typos/fuzzy 嚯度/呢度). T2 progress. Live gate ?v=intent14. wc -c 5628. Core sizes OK. No Imagine. 禁 CDN pin/stub.
+- 2026-10-15 08:06 HKT：Lane A hourly: intent-patterns.js thickened (intent14: more 推開囡度入去覗吓／開個門入去覗下／踏入去覗下先 + typos/fuzzy 囡度/呢度). T2 progress. Live gate ?v=intent14. wc -c 5628. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
 - 2026-10-15 07:17 HKT：CODE hourly: stamps t3-0717 on audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST confirmed (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. No app.js/index. Live full engine no stub. T3 closed. Live gate ?v=intent13. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
@@ -14,13 +16,13 @@
 
 - 2026-10-15 06:09 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent13. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
-- 2026-10-15 06:05 HKT：Lane A hourly: intent-patterns.js thickened (intent13: more 推開噀度入去睇吓／開個門入去睇下先／踏入去睇吓先 + typos/fuzzy). T2 progress. Live gate ?v=intent13. wc -c 4788. Core sizes OK. No Imagine. 禁 CDN pin/stub.
+- 2026-10-15 06:05 HKT：Lane A hourly: intent-patterns.js thickened (intent13: more 推開囡度入去覗吓／開個門入去覗下先／踏入去覗吓先 + typos/fuzzy). T2 progress. Live gate ?v=intent13. wc -c 4788. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
-- 2026-10-15 04:14 HKT：Lane A hourly: intent-patterns.js restored+thickened (intent12: more 推開噀度入去／開個門入去睇吓先／踏入去睇下 + typos/fuzzy). T2 progress. Live gate ?v=intent12. wc -c ~3714. Core sizes OK. No Imagine. 禁 CDN pin/stub.
+- 2026-10-15 04:14 HKT：Lane A hourly: intent-patterns.js restored+thickened (intent12: more 推開囡度入去／開個門入去覗吓先／踏入去覗下 + typos/fuzzy). T2 progress. Live gate ?v=intent12. wc -c ~3714. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 
 - 2026-10-15 04:09 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent11. Core sizes OK. No Imagine. 禁 CDN pin/stub.
-- 2026-10-14 09:30 HKT：Lane A hourly: intent-patterns.js thickened (intent11: more 推開嘅度入去／開個門入去睇吓先／踏入去睇下 + typos/fuzzy). T2 progress. Live gate ?v=intent11. wc -c ~19781. Core sizes OK. No Imagine. 禁 CDN pin/stub.
-- 2026-10-14 09:17 HKT：Lane A hourly: intent-patterns.js thickened (intent10: more 推開個門入去睇吓／開個們睇下／踏進去先 + typos/fuzzy). T2 progress. Live gate ?v=intent10. wc -c ~18500. Core sizes OK. No Imagine. 禁 CDN pin/stub.
+- 2026-10-14 09:30 HKT：Lane A hourly: intent-patterns.js thickened (intent11: more 推開嘅度入去／開個門入去覗吓先／踏入去覗下 + typos/fuzzy). T2 progress. Live gate ?v=intent11. wc -c ~19781. Core sizes OK. No Imagine. 禁 CDN pin/stub.
+- 2026-10-14 09:17 HKT：Lane A hourly: intent-patterns.js thickened (intent10: more 推開個門入去覗吓／開個們覗下／踏進去先 + typos/fuzzy). T2 progress. Live gate ?v=intent10. wc -c ~18500. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 - 2026-10-14 09:11 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear). Acks = next beat first half. CHAT-FIRST 好/係/繼續 kept. chat-guide glue intact. CANTONESE.md. No app.js stub. Live gate ?v=intent9. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 - 2026-10-14 08:21 HKT：Lane B hourly: guide-lines.js thickened (split1e8: 緊急照明/對講靜/防火貼紙/門檻凉/閉門器臂/格柱鎖屑/喇叭蓋震/觀察窗灰/地漏水/樓層指示暗 + more). miss升級仍導向推或停; anti-repeat; 禁客服。 wc -c ~7475. No app/index/patterns/data. Live gate ?v=split1. Core sizes OK. No Imagine. 禁 CDN pin/stub.
 - 2026-10-14 08:20 HKT：CODE hourly: stamps t3-0820 on audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST confirmed (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. No app.js/index. Live full engine no stub. T3 closed.
@@ -30,7 +32,7 @@
 - 2026-10-14 07:19 HKT：CODE hourly: stamps t3-0719 on audio-bed/fx-play/compete-boot/chat-guide. CHAT-FIRST confirmed (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. No app.js/index. T3 closed. Live full engine no stub.
 - 2026-10-14 07:08 HKT：DISPATCH hourly: live full engine (no stub loader), scores STORY 3 / PICTURE 4 / SOUND 4 / FEEL 4. CHAT-FIRST hide confirmed (chat-guide t3-0516). T2 STORY intents 進度中（intent-patterns 已加厚）. Owner playtest expected. No Imagine. 禁 CDN pin/stub.
 - Open P0：0（restore-engine closed by full index）
-- Live gate cache: `?v=intent13`
+- Live gate cache: `?v=intent15`
 - Open P0 INTENT tickets: T2 進度中（非真 0）
 - 禁：CDN pin / stub / yes-words 對池 / 催 key。No Imagine。
 - 2026-10-14 05:16 HKT：CODE hourly: chat-guide.js confirmed CHAT-FIRST (advance → freechat-hidden; 2-miss reveal only; renderNode wrap hides, never always-reveal). Yes-words 好/係/得 heat intact. Owner playtest skip. Stamps t3-0516 on audio-bed/fx-play/compete-boot/chat-guide. No app.js/index. T3 closed.
