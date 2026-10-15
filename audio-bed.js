@@ -1,9 +1,9 @@
-/* audio-bed t5-0616 — Web Audio bed stub, no app.js touch */
+/* audio-bed t5-0719 — Web Audio bed stub, no app.js touch */
 (function () {
   "use strict";
   window.AudioBed = window.AudioBed || {
-    stamp: "t5-0616",
-    start: function () { console.log("[audio-bed] ready t5-0616"); },
+    stamp: "t5-0719",
+    start: function () { console.log("[audio-bed] ready t5-0719"); },
     stop: function () {}
   };
 })();
