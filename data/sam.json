@@ -79,8 +79,8 @@
           "ack": "好。上嚟。學。"
         }
       ],
-      "stub": "hourly 07:08 HKT STORY: one-breath s1. Acks next-beat. CHAT-FIRST kept. CANTONESE.md. No app.js stub."
+      "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
     }
   },
-  "stub": "hourly 07:08 HKT STORY: one-breath s1. CHAT-FIRST kept."
+  "stub": "hourly 08:04 HKT Lane C: aligned corridor/freeChat sceneGoal (successIntents enter/wait/agree/enter_door/follow + optional ask_want/off_topic). JSON parse OK. start preserved. no JS/index. CHAT-FIRST support."
 }
