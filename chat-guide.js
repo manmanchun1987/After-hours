@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t4-0020";
+  var STAMP = "t4-entryfix3";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -63,8 +63,20 @@
 
     var el = getChoices();
     if (el && window.MutationObserver) {
+      var obsBusy = false;
       var obs = new MutationObserver(function () {
-        if (missCount < MISS_THRESHOLD) hideChoices();
+        if (obsBusy) return;
+        if (missCount >= MISS_THRESHOLD) return;
+        var cur = getChoices();
+        if (!cur) return;
+        // already hidden — skip to avoid class/style toggle re-entry loop
+        if (cur.classList.contains("freechat-hidden") && cur.style.display === "none") return;
+        obsBusy = true;
+        try {
+          hideChoices();
+        } finally {
+          obsBusy = false;
+        }
       });
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
     }

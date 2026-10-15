@@ -1476,11 +1476,7 @@ function duckBgmForVideo(on) {
 }
 
 function portraitVideoSrc(story) {
-  const id = (story && story.id) || state.storyId || "alex";
-  // Use already-uploaded clips in assets/ (Vera / default cast only)
-  if (id === "alex") {
-    return "./assets/video/vera-loop.mp4"; // alt: ./assets/video/vera-alt.mp4
-  }
+  // entryfix3: disable portrait video autoplay (vera-loop) — stills via portraitSrc only
   return null;
 }
 
@@ -2358,6 +2354,8 @@ function startAlex(fresh) {
     state.tension = 15;
     state.memories = [];
   }
+  // entryfix3: unhide play BEFORE art/TTS so cast→play cannot hang on media
+  show("play");
   applyStoryArt(state.story);
   renderMeters();
   save();
@@ -2385,6 +2383,8 @@ function renderNode() {
     return;
   }
 
+  // entryfix3: show play before TTS / choice DOM so screen is visible immediately
+  show("play");
   applyNodeMeta(node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;
@@ -2429,7 +2429,6 @@ function renderNode() {
   }
   // else: keep node.thought from renderThoughtAside (no system idle line)
 
-  show("play");
   pulseIn($("#play-label"));
   pulseIn($("#play-text"));
 }

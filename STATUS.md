@@ -1,3 +1,8 @@
+2026-10-16 00:34 HKT：HOTFIX CEO entryfix3: portraitVideoSrc always null (disable vera-loop autoplay hang); show("play") before TTS/art on start; chat-guide MutationObserver re-entrancy guard; cache-bust ?v=entryfix3.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-16 00:26 HKT：CEO automation harden: LANES/AUTOMATION → A+B only; Lane C pause data writes; real wc gates; ban play-engine/life hijack & stub wipe; idea-approval routine paused. App one-liner仍「讀 LANES.md…」即跟新憲法。
 Core sizes OK.
 No Imagine.
