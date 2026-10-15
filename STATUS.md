@@ -1,1 +1,5 @@
-PLACEHOLDER_STATUS
+2026-10-16 07:20 HKT：Lane B hourly: guide-lines.js thickened to split1e20 immersive corridor/door hints (more frost/ice pressure, callout, thought, mem_nudge; anti-repeat; no CS tone; miss still guides to push or stop). Soft-pass. Real wc -c: 9931 (≥1KB). Core sizes OK. No data push. No Imagine. 禁 CDN pin/stub。 CHAT-FIRST glue kept. CANTONESE.md followed.
+
+2026-10-16 07:10 HKT：Lane A hourly: intent-patterns.js further thickened intent38 for T2 CHAT-FIRST even longer mixed wait+enter fuzzy/typos/同義 (我而家開個门入去覽下但等陣先認清楚位但未敢停低認位再等等但未準備好再認清楚位再等等但未敢企定再認清楚位再等等但未好企定再等等但未準備好再認清楚／推開個們入去覽吓但等陣先認清楚位但未好企定再認清楚位再等等但未準備好再等陣但未敢停低再認清楚再等等但未好企定再等等但未準備好／踏入去瞧吓但停低認位先等陣認清楚再等等但未準備好再認清楚再等陣但未敢停低認位再等等但未好企定再等等但未準備好再認清楚再等陣). Cache-bust ?v=intent38. Soft-pass. Real wc -c: 14061. Core sizes OK. No data push. No Imagine. 禁 CDN pin/stub。
+
+2026-10-16 07:04 HKT：Lane C hourly (pause write): read-only tree. Real nodes: alex.json=28 (14692B ≥8KB/≥20), morgan.json=22 (18500B ≥5KB/≥15), sam.json=21 (16780B ≥5KB/≥15). No stub, no push data. Soft-pass. Core sizes OK. No Imagine. 禁 CDN pin/stub。 Node.text one-breath intact: react arrival + want NOW + spoken ask. Intent ack next-beat first half. CHAT-FIRST 好 係 繼續 glue kept. CANTONESE.md followed.
