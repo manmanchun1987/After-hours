@@ -1,7 +1,10 @@
-2026-10-15 23:05 HKT：Lane A hourly: intent-patterns.js thickened (intent23: longer mixed wait+enter fuzzy/typos 推開個門入去但等陣先認清楚／開個們入去睇吓但停低認位／踏入去但未敢認清楚 + more 認位 variants).
-T2 progress.
-Live gate ?v=intent23.
-wc -c 11545.
+2026-10-15 23:10 HKT：STORY hourly: data/*.json node.text = one breath (arrive react + want NOW + spoken ask ends clear).
+Acks = next beat first half.
+CHAT-FIRST 好/係/繼續 kept.
+chat-guide glue intact.
+CANTONESE.md.
+No app.js stub.
+Live gate ?v=intent22.
 Core sizes OK.
 No Imagine.
 禁 CDN pin/stub。

@@ -6,7 +6,7 @@
     "m1": {
       "id": "m1",
       "freeChat": true,
-      "text": "腳步未定，你停喺私人樓層門前。日頭文件講完，我而家要你跟我入去傾清楚人。你而家跟我入，定停低？",
+      "text": "你腳步未定，停嘅私人樓層門前。日頭文件講完，我而家要你跟我入去傾清楚人。你而家跟我入，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -55,7 +55,7 @@
             "入去先",
             "推開個門跟",
             "踏入去傾",
-            "入嚐傾",
+            "入嚙傾",
             "跟我上",
             "好",
             "係",
@@ -98,8 +98,8 @@
           "ack": "好。跟我。入去。"
         }
       ],
-      "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
+      "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath. Acks next half. CHAT-FIRST. CANTONESE."
     }
   },
-  "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
+  "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath texts. Acks next-beat half. CHAT-FIRST kept. CANTONESE. No app.js stub."
 }

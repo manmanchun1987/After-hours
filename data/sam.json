@@ -6,7 +6,7 @@
     "s1": {
       "id": "s1",
       "freeChat": true,
-      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚐學潛規則。你而家上嚐，定停低？",
+      "text": "你未行近天台欄杆邊。加班室只剩我哋，我而家要你上嚙學潛規則。你而家上嚙，定停低？",
       "sceneGoal": {
         "successIntents": [
           "enter",
@@ -22,7 +22,7 @@
         "goal": "follow_or_wait",
         "section": "freeChat",
         "maxMisses": 3,
-        "ask": "你而家上嚐，定停低？"
+        "ask": "你而家上嚙，定停低？"
       },
       "intents": [
         {
@@ -31,7 +31,7 @@
             "行近",
             "跟",
             "入",
-            "上嚐",
+            "上嚙",
             "走進",
             "走進去",
             "跳入",
@@ -41,18 +41,18 @@
             "躍入",
             "溜進去",
             "潛進去",
-            "行上嚐",
+            "行上嚙",
             "進去看看",
-            "我上嚐先",
-            "行上嚐",
+            "我上嚙先",
+            "行上嚙",
             "跳上",
-            "上嚐學",
-            "上嚐先",
+            "上嚙學",
+            "上嚙先",
             "踏入上",
             "入去學",
             "跟你上",
             "推開上",
-            "入嚐學",
+            "入嚙學",
             "好",
             "係",
             "繼續"
@@ -60,7 +60,7 @@
           "next": "s2",
           "heat": 4,
           "bucket": "enter",
-          "ack": "上嚐。學潛規則。"
+          "ack": "上嚙。學潛規則。"
         },
         {
           "keys": [
@@ -90,11 +90,11 @@
           "next": "s2",
           "heat": 2,
           "bucket": "agree",
-          "ack": "好。上嚐。學。"
+          "ack": "好。上嚙。學。"
         }
       ],
-      "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
+      "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath. Acks next half. CHAT-FIRST. CANTONESE."
     }
   },
-  "stub": "hourly 2026-10-15 23:04 HKT Lane C: aligned corridor (alex n0 enter_or_wait) / freeChat (morgan m1 / sam s1 follow_or_wait). successIntents confirmed enter/wait/agree/enter_door/follow (+optional ask_want/off_topic). JSON parse OK; start preserved. no JS/index/patterns/guide. CHAT-FIRST support for T2 mixed. CANTONESE."
+  "stub": "hourly 2026-10-15 23:10 HKT Lane C: one-breath texts. Acks next-beat half. CHAT-FIRST kept. CANTONESE. No app.js stub."
 }
