@@ -4,10 +4,11 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent14 再加厚推開嚙度入去睇吓／開個門入去睇下／踏入去睇下先 + more typos/fuzzy 嚙度/呢度；patterns 已加厚）
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent15 再加厚推開嚮度入去覗吓／開個們入去覗下／踏入去覗下先 + more typos/fuzzy 嚮度/們；patterns 已加厚）
 
 ## Closed / done this run
 
+- Lane A intent15 thicken patterns（同義加厚）
 - T3 CODE keep chat-guide hide — 確認成功 typed line 後仍 freechat-hidden，2 miss 先亮；renderNode 唔會 always reveal。Yes-words heat kept。Owner quiet。
 - Lane A intent14 thicken patterns（同義加厚）
 - Lane A intent13 thicken patterns（同義加厚）
