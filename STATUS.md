@@ -1,3 +1,8 @@
+2026-10-16 00:26 HKT：CEO automation harden: LANES/AUTOMATION → A+B only; Lane C pause data writes; real wc gates; ban play-engine/life hijack & stub wipe; idea-approval routine paused. App one-liner仍「讀 LANES.md…」即跟新憲法。
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-16 00:20 HKT：CODE hourly: stamp t4-0020 on chat-guide.js / fx-play.js / audio-bed.js / compete-boot.js.
 CHAT-FIRST: after advance #choices freechat-hidden, only show after 2 misses. renderNode 唔会 always reveal. Yes-words (好 係 得) heat intent kept. Owner playtest quiet.
 Live full engine no app_b64 stub.
