@@ -5,6 +5,14 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 
 ## Proposed
 
+### I-20261015-07
+- proposed_at: 2026-10-15
+- status: proposed
+- pain: intent23 加厚後，更長混合「推開個門入去覧吓但等陣先認清楚位」已部分覆蓋，但更多口語距離如「我而家推開個門入去睇吓但等陣先」或「開個們入去認清楚但未敢停低」仍可能漏；可再加厚
+- how: A／patterns：加更多長距離混合諦音同義。未批唔改 engine
+- acceptance: 「推開個門入去但等陣先認清楚」→ enter_door 或 wait；「開個們入去睇吓但停低認位」→ enter_door
+- rationale: 更遠模糊／長混合句更似真 AI；服務柔軟過關；未批唔開施工票
+
 ### I-20261015-06
 - proposed_at: 2026-10-15
 - status: proposed

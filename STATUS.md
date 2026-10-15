@@ -1,3 +1,11 @@
+2026-10-15 23:05 HKT：Lane A hourly: intent-patterns.js thickened (intent23: longer mixed wait+enter fuzzy/typos 推開個門入去但等陣先認清楚／開個們入去睇吓但停低認位／踏入去但未敢認清楚 + more 認位 variants).
+T2 progress.
+Live gate ?v=intent23.
+wc -c 11545.
+Core sizes OK.
+No Imagine.
+禁 CDN pin/stub。
+
 2026-10-15 23:02 HKT：HOTFIX CEO: restored intent-patterns.js from 2ddae75 (10148 bytes; HEAD was 0). Cache-bust ?v=hotfix1. Soft-pass patterns live again. Lane A empty-write false positive.
 Core sizes OK.
 No Imagine.
