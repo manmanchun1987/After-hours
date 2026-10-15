@@ -4,13 +4,15 @@
 
 ## Open
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent17 再加厚推開個門入去睇吓先／開個嚥度入去覧／踏入去睇下先／入嚟認清楚 + more typos/fuzzy 們／嚥／入嚟；patterns 已加厚）
+- T1 CODE restore-engine — live init() fail → 載入失敗（缺少 DOM parts / stub loader 體驗），需恢復完整 engine 使 live 可玩
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent18 再加厚）
 
 ## Closed / done this run
 
+- Lane A intent18 thicken patterns（同義加厚）
+- T3 CODE keep chat-guide hide — 確認成功 typed line 後仍 freechat-hidden，2 miss 先亮；renderNode 唔會 always reveal。Yes-words heat kept。Owner quiet。
 - Lane A intent17 thicken patterns（同義加厚）
 - Lane A intent16 thicken patterns（同義加厚）
-- T3 CODE keep chat-guide hide — 確認成功 typed line 後仍 freechat-hidden，2 miss 先亮；renderNode 唔會 always reveal。Yes-words heat kept。Owner quiet。
 - Lane A intent15 thicken patterns（同義加厚）
 - Lane A intent14 thicken patterns（同義加厚）
 - Lane A intent13 thicken patterns（同義加厚）
@@ -18,4 +20,4 @@
 - Lane A intent8 thicken patterns（同義加厚）
 - Lane A intent7 thicken patterns（同義加厚）
 
-下一小時：優先 T2 加厚，再確保 hide 穩定。
+下一小時：優先 restore-engine，再 T2 加厚，再確保 hide 穩定。
