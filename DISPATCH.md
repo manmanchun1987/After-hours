@@ -4,12 +4,13 @@
 
 ## Open
 
-- **P0 STORY restore** — data/*.json 禁止單節 stub；Lane C 只補 sceneGoal，禁刪 nodes／choices／ending。驗收：alex.json nodes≥20。
+- **P0 STORY restore** — data/*.json 禁止單節 stub；Lane C 只補 sceneGoal，禁刪 nodes／choices／ending。驗收：alex.json nodes≥20。（已從 1dd36f8 復原完整 graphs，仍開作禁区）
 
-- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent25 再加厚 more longer mixed wait+enter 我而家推開個門入去睇吓但等陣先認清楚位／開個們入去認清楚但未敢停低認位／推開個門入去覽吓但等陣先認清楚 + 門/們/门 覽/睇 variants；patterns 已加厚）
+- T2 STORY intents — 加厚同義/模糊以支持 CHAT-FIRST，減少成功輸入後偷放選項鈕（進度：intent26 再加厚 more longer mixed wait+enter 我而家開個门入去認清楚但未敢停低認位／推開個們入去覽吓但等陣先認清楚／踏入去瞧吓但停低認位先等陣 + 門/們/门 覽/瞧 variants；patterns 已加厚）
 
 ## Closed / done this run
 
+- Lane A intent26 thicken patterns（同義加厚）
 - Lane A intent25 thicken patterns（同義加厚）
 - Lane A intent24 thicken patterns（同義加厚）
 - Lane A intent17 thicken patterns（同義加厚）
