@@ -1,10 +1,18 @@
+### I-20261015-02
+- proposed_at: 2026-10-15
+- status: proposed
+- pain: intent15 加厚後，更多口語如「推開嚮度入去覗吓」「開個們入去覗下」「踏入去覗下先」已覆蓋，但混合否定「推開嚮度入去但等等」或諦音「開個們入去覗」仍可能漏；patterns 可再加厚模糊距離
+- how: A／patterns：加更多諦音／混合句同義（推開嚮度入去但等等、開個們入去覗下、踏入去覗下先）。未批唔改 engine
+- acceptance: 「推開嚮度入去覗吓」→ enter_door；「開個們入去覗下」→ enter_door；「踏入去覗下先」→ enter_door
+- rationale: 模糊／諦音更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
+
 ### I-20261015-01
 - proposed_at: 2026-10-15
 - status: proposed
-- pain: intent12 加厚後，更多口語如「推開嚟度入去睇吓」「踏入去睇下先」已覆蓋，但混合否定「推開嚟度入去但等等」或諧音「開個們入去」仍可能漏；patterns 可再加厚模糊距離
-- how: A／patterns：加更多諧音／混合句同義（推開嚟度入去但等等、開個們入去睇下、踏入去睇下先）。未批唔改 engine
-- acceptance: 「推開嚟度入去睇吓」→ enter_door；「開個們入去睇下」→ enter_door；「踏入去睇下先」→ enter_door
-- rationale: 模糊／諧音更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
+- pain: intent12 加厚後，更多口語如「推開嚮度入去覗吓」「踏入去覗下先」已覆蓋，但混合否定「推開嚮度入去但等等」或諦音「開個們入去」仍可能漏；patterns 可再加厚模糊距離
+- how: A／patterns：加更多諦音／混合句同義（推開嚮度入去但等等、開個們入去覗下、踏入去覗下先）。未批唔改 engine
+- acceptance: 「推開嚮度入去覗吓」→ enter_door；「開個們入去覗下」→ enter_door；「踏入去覗下先」→ enter_door
+- rationale: 模糊／諦音更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
 
 # IDEAS — 兩段式閘（proposed → approved → 施工）
 
@@ -16,9 +24,9 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261014-03
 - proposed_at: 2026-10-14
 - status: proposed
-- pain: intent10 加厚後，口語變體如「推開個門入去睇吓先」「開個們睇下」已覆蓋部分，但常見錯字「踏進去睇下」「推開個門入去睇吓」或粵語諧音仍可能漏；patterns 層可再加厚同義以更似真 AI
-- how: A／patterns：加更多口語／錯字同義（踏進去睇下、推開個門入去睇吓先、開個們睇下先）。未批唔改 engine
-- acceptance: 「推開個門入去睇吓先」→ enter_door；「踏進去睇下」→ enter_door；「開個們睇下先」→ enter_door
+- pain: intent10 加厚後，口語變體如「推開個門入去覗吓先」「開個們覗下」已覆蓋部分，但常見錯字「踏進去覗下」「推開個門入去覗吓」或粵語諦音仍可能漏；patterns 層可再加厚同義以更似真 AI
+- how: A／patterns：加更多口語／錯字同義（踏進去覗下、推開個門入去覗吓先、開個們覗下先）。未批唔改 engine
+- acceptance: 「推開個門入去覗吓先」→ enter_door；「踏進去覗下」→ enter_door；「開個們覗下先」→ enter_door
 - rationale: 模糊／錯字更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
 
 ### I-20261014-02
@@ -96,7 +104,7 @@ Hourly **最多加 3 條** idea，**只寫本檔**，狀態一律 `proposed`。
 ### I-20261014-01
 - proposed_at: 2026-10-14
 - status: proposed
-- pain: 更多口語變體如「推開啄度入去」「等我認定先」已覆蓋部分，但常見錯字「入去睇下」「開個们」或粵語諧音模糊仍可能漏；系統性模糊距離未在 patterns 層
-- how: A／patterns：加常見錯字／諧音同義（入去睇下、開個們、等我想吓）；或 F 加簡單編輯距離。未批唔改 engine
-- acceptance: 「推開啄度入去睇」→ enter_door；「等我認定先」→ wait；「唔好幫我開個们」→ refuse
+- pain: 更多口語變體如「推開啄度入去」「等我認定先」已覆蓋部分，但常見錯字「入去覗下」「開個们」或粵語諦音模糊仍可能漏；系統性模糊距離未在 patterns 層
+- how: A／patterns：加常見錯字／諦音同義（入去覗下、開個們、等我想吓）；或 F 加簡單編輯距離。未批唔改 engine
+- acceptance: 「推開啄度入去覗」→ enter_door；「等我認定先」→ wait；「唔好幫我開個们」→ refuse
 - rationale: 模糊／錯字更似真 AI 理解；服務柔軟過關；禁 yes-word pool；未批唔開施工票
