@@ -22,6 +22,7 @@
 - Lane A intent17 thicken patterns（同義加厚）
 - Lane A intent16 thicken patterns（同義加厚）
 - T3 CODE keep chat-guide hide — 確認成功 typed line 後仍 freechat-hidden，2 miss 先亮；renderNode 唔會 always reveal。Yes-words heat kept。Owner quiet。
+- T3 CODE t5-0316 re-confirm hide — stamp bump only; CHAT-FIRST still freechat-hidden after advance; 2 miss reveal; yes-words heat; owner quiet。
 - Lane A intent15 thicken patterns（同義加厚）
 - Lane A intent14 thicken patterns（同義加厚）
 - Lane A intent13 thicken patterns（同義加厚）
