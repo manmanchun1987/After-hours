@@ -12,18 +12,19 @@
 
   function hideChoices() {
     var el = getChoices();
-    if (el) {
-      el.classList.add("freechat-hidden");
-      el.style.display = "none";
-    }
+    if (!el) return;
+    // Chrome fires a class mutation even when the token is already present.
+    // Writing again from the observer retriggers it and wedges the main thread
+    // before #screen-play can paint. Only write when the value actually changes.
+    if (!el.classList.contains("freechat-hidden")) el.classList.add("freechat-hidden");
+    if (el.style.display !== "none") el.style.display = "none";
   }
 
   function showChoicesIfReady() {
     var el = getChoices();
-    if (el && missCount >= MISS_THRESHOLD) {
-      el.classList.remove("freechat-hidden");
-      el.style.display = "";
-    }
+    if (!el || missCount < MISS_THRESHOLD) return;
+    if (el.classList.contains("freechat-hidden")) el.classList.remove("freechat-hidden");
+    if (el.style.display === "none") el.style.display = "";
   }
 
   function isOwnerPlaytest(text) {
@@ -69,13 +70,17 @@
         if (missCount >= MISS_THRESHOLD) return;
         var cur = getChoices();
         if (!cur) return;
-        // already hidden — skip to avoid class/style toggle re-entry loop
+        // already hidden — do not write class/style (that re-enters this observer)
         if (cur.classList.contains("freechat-hidden") && cur.style.display === "none") return;
         obsBusy = true;
+        obs.disconnect();
         try {
           hideChoices();
         } finally {
           obsBusy = false;
+          try {
+            obs.observe(cur, { attributes: true, attributeFilter: ["class", "style"] });
+          } catch (e) {}
         }
       });
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
