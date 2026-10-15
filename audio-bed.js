@@ -1,9 +1,9 @@
-/* audio-bed t3-2321 — Web Audio bed stub, no app.js touch */
+/* audio-bed t4-0020 — Web Audio bed stub, no app.js touch */
 (function () {
   "use strict";
   window.AudioBed = window.AudioBed || {
-    stamp: "t3-2321",
-    start: function () { console.log("[audio-bed] ready t3-2321"); },
+    stamp: "t4-0020",
+    start: function () { console.log("[audio-bed] ready t4-0020"); },
     stop: function () {}
   };
 })();
