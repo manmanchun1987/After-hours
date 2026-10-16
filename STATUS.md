@@ -1,3 +1,12 @@
+2026-10-17 04:07 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/CAST.lock/METHODS。
+Live 入局品（閘→三卡→開始）正常。app.js 全整非 stub（起頭 STORAGE_KEY，非 CDN pin）。
+No open P0 INTENT T1-T5。Monitor-only。
+Patterns thick intent40 wc=16953。Soft-pass ok。
+CHAT-FIRST：現有 #48 CODE hide 開住；成功 typed 後仍 freechat-hidden。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+No new tickets（禁發明追票）。No data push。No Imagine。禁 CDN pin/stub。
+Core sizes OK。
+
 2026-10-17 04:05 HKT：Lane A hourly (default)。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
