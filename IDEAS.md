@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261016-14: Natural ask_want mixed with soft enter hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 enter_door 長句已加厚，但 ask_want 與 enter 混合詢語（例：你想我點樣先開個門入去覽吓但等陣先認清楚位）識別仍偏模板。加多些更自然的「先問清楚再猶後猶後進」「你想我點先停低認位再踏入」同義變體，讓 IntentEngine 聽到更似真人對話式猶豫。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261016-11: Natural hesitation mixed wait+enter for corridor enter_door
 - status: proposed
 - lane: A
