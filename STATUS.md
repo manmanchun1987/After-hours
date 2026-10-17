@@ -1,3 +1,11 @@
+2026-10-17 19:16 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
+No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
+Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
+Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want。好/係/繼續 → agree。
+index.html 全整，cache-bust ?v=intent40 intact，size ≥1000。No patterns commit needed。No data push (Lane C pause)。No Imagine。禁 CDN pin/stub。
+Core sizes OK (app.js=122734, intent-engine.js=29001)。CHAT-FIRST glue kept。Live gate intact (闘→三卡→開始)。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-17 16:15 HKT：Lane CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 LIVE GATE：app.js 122734B 起頭 STORAGE_KEY，非 app_b64 stub。禁 stub／禁動 app.js。
 追數 stamp：**t5-1615**（9a072e8）。只補 chat-guide / audio-bed / fx-play / compete-boot。
@@ -10,7 +18,7 @@ No open GUIDE tickets (DISPATCH clear of GUIDE opens)。Monitor-only mode。
 Guide-lines already thick (split1e20, real wc -c guide-lines.js=9931 ≥1KB)。Immersive corridor/door, no CS tone。
 Miss escalation still to sceneGoal; anti-repeat via pickAnti ok。
 No guide-lines commit needed。No data push (Lane C pause)。No Imagine。禁 CDN pin/stub。
-Core sizes OK。Live gate intact (閘→三卡→開始)。
+Core sizes OK。Live gate intact (闘→三卡→開始)。
 
 2026-10-17 13:12 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
