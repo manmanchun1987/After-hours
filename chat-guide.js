@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t5-1615";
+  var STAMP = "t5-2220";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -41,21 +41,26 @@
   }
 
   function wrapIfPresent(name, after) {
-    if (typeof window[name] === "function") {
+    if (typeof window[name] === "function" && !window[name]._chatGuideWrapped) {
       var orig = window[name];
       window[name] = function () {
         var r = orig.apply(this, arguments);
         if (typeof after === "function") after();
         return r;
       };
+      window[name]._chatGuideWrapped = true;
     }
+  }
+
+  function tryWrap() {
+    wrapIfPresent("renderNode", hideChoices);
+    wrapIfPresent("goToNode", function () { missCount = 0; hideChoices(); });
+    wrapIfPresent("applyFreeChatAdvance", function () { missCount = 0; hideChoices(); });
   }
 
   function init() {
     hideChoices();
-    wrapIfPresent("renderNode", hideChoices);
-    wrapIfPresent("goToNode", function () { missCount = 0; hideChoices(); });
-    wrapIfPresent("applyFreeChatAdvance", function () { missCount = 0; hideChoices(); });
+    tryWrap();
 
     document.addEventListener("freechat:advance", function () {
       missCount = 0;
@@ -92,7 +97,14 @@
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
     }
 
-    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) non-miss heat intact. Owner quiet.");
+    // poll until app.js defines the functions (chat-guide loads first)
+    var n = 0;
+    var t = setInterval(function () {
+      tryWrap();
+      if (++n > 40) clearInterval(t);
+    }, 250);
+
+    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) non-miss heat intact. Owner quiet. Poll wrap.");
   }
 
   if (document.readyState === "loading") {
