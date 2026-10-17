@@ -1,3 +1,10 @@
+2026-10-17 16:14 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
+No open GUIDE tickets (DISPATCH clear of GUIDE opens)。Monitor-only mode。
+Guide-lines already thick (split1e20, real wc -c guide-lines.js=9931 ≥1KB)。Immersive corridor/door, no CS tone。
+Miss escalation still to sceneGoal; anti-repeat via pickAnti ok。
+No guide-lines commit needed。No data push (Lane C pause)。No Imagine。禁 CDN pin/stub。
+Core sizes OK。Live gate intact (閘→三卡→開始)。
+
 2026-10-17 13:12 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
