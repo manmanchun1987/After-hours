@@ -1,3 +1,10 @@
+2026-10-17 10:07 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
+Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
+Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want。好/係/繼續 → agree。
+index.html 全整，cache-bust intact，size ≥1000。No patterns commit needed。No data push (Lane C pause)。No Imagine。禁 CDN pin/stub。
+Core sizes OK (app.js=122734, intent-engine.js=29001)。CHAT-FIRST glue kept。node.text one-breath rule noted。
+
 2026-10-17 07:05 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT T1-T5 tickets (DISPATCH clear of INTENT opens)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
