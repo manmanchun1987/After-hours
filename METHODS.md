@@ -33,11 +33,12 @@ Read QUALITY.md · CAST.lock.md · TASTE.md · AUTOMATION.md.
 | Meet desk knuckle tap / 敲桌 (n1 tap knuckles) | AZ CSS radial ripple | A flat room / I audio-only / C whole wash |
 | She pulls chair / 拉椅坐下 (n2a sit, sleeve brush) | BH CSS chair translateX | A flat room / AZ knuckle ripple / AL long-shadow / C whole wash |
 | Sleeve brush / 袖口掠過 (n2a sit, after chair) | BJ CSS sleeve streak | BH chair-only / A flat room / C whole wash / O crop |
-| Lift call / 召擄按住 (enter lift, before doors) | BK CSS button squash + hold-LED | X floor-digit / AN keycard swipe / AW door close / A flat lift |
+| Lift call / 召擾按住 (enter lift, before doors) | BK CSS button squash + hold-LED | X floor-digit / AN keycard swipe / AW door close / A flat lift |
 | Lounge glass / 酒杯液面 (Morgan wait hold, glass on table) | BA CSS meniscus sway | A flat room / AM steam / C whole wash |
 | Lounge glass ice / 酒杯氷塊 (Morgan wait hold, cube in glass) | BI CSS ice tilt | BA meniscus-only / AM steam / A flat room / C whole wash |
-| Lounge pour / 斡酒入杯 (Morgan order, stream into glass) | BL CSS scaleY pour column | BA meniscus-only / BI ice tilt / AM steam / A flat room |
+| Lounge pour / 掩酒入杯 (Morgan order, stream into glass) | BL CSS scaleY pour column | BA meniscus-only / BI ice tilt / AM steam / A flat room |
 | Office ashtray ember / 煙灰缸餘燻 (wait hold smoke not rain) | BN CSS radial ember glow | A flat room / AQ dust mote / AM steam / C whole wash |
+| Office lighter flame / 打火機火光 (wait hold before ashtray) | BT CSS radial flame flicker | BN ember / AQ dust / A flat room / C whole wash |
 | Chin lift / 抬下巴 (n4b ECU jaw, one-shot) | BO CSS translateY lift on still | O crop-zoom / AJ breathe / C whole wash / A flat room |
 | Meet fingers on cup / 手指按杯 (n3a finger hold 0.5s) | BP CSS contact oval on cup | A flat room / BA meniscus / C whole wash |
 | Hand on switch / 手按摺未落 (n4x before kill) | BQ CSS switch plate contact | A flat room / AP cone-after / C whole wash |
@@ -132,14 +133,14 @@ AQ CSS `offset-path` + `offset-distance` 2–3px specks + slow `@keyframes` drif
 AR CSS `-webkit-box-reflect: below` + fade mask on locked repo still over existing A corridor/lift/office SVG (潮濕地反光; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat room, AL long-shadow-only and L static mix-blend plane for an isolated wet-floor reflection beat
 AS CSS `linear-gradient` warm gold slit + slow `@keyframes` opacity bloom on existing A office/review window (ending_a/b dawn leak / 窗漏晨光; reuse room + locked still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, AO blinds-shut stripes and L static mix-blend plane for an isolated dawn-leak beat
 AT CSS `::before`/`::after` double-check strokes + `@keyframes` color/opacity fill on existing private-chat bubble (已讀雙刺; reuse N frost sheet + AB bubble; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AB slide-only and E text-only for an isolated she-read-it beat
-AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD review paper (評核筆劃; n7/n8 pen on form; reuse review SVG + paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A full room, D FX file and E text-only
-AV CSS radial bokeh dots + slow `@keyframes` drift on existing A office/roof/lounge window (night city lights; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole wash, L plane, AS dawn, AQ dust
-AW CSS dual-panel `translateX` close on existing A lift SVG doors (enter lift trapped; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats M static slit, A full lift, C whole motion
-AX CSS 6px red `opacity` blink `@keyframes` on existing A hall/review CCTV dot (record live; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L static, S flicker, Q scanline
-AY CSS `scaleX(-1)` + mask fade on locked still over existing review/lift glass (n3b reflex; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, C wash, AR reflect, L plane
-AZ CSS radial ring + one-shot scale/opacity ripple on existing A office desk SVG (n1 knuckle tap; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, I audio, C wash
-BA CSS radial meniscus + slow scaleX sway on existing A lounge SVG glass (wait hold; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, AM steam, C wash
-BB CSS 4px cap + one-shot translateY snap on existing AD paper (n7 pen-cap click; reuse paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AU stroke, I audio, A flat
+AU CSS inline SVG `stroke-dashoffset` `@keyframes` ink line on existing AD review paper (評核筆劃; n7/n8 pen on form; reuse paper only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AD slide, AG stamp, E text, A flat
+AV CSS 3–5px bokeh dots + slow drift on existing A window (night city lights; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C wash, L plane, AS dawn, AQ dust
+AW CSS dual-panel translateX on existing A lift SVG (doors close; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats M slit, A full SVG, C motion
+AX CSS 6px red opacity blink on existing A corridor/review cam (record dot; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats L plane, S flicker, Q scan
+AY CSS scaleX(-1) mask on locked still over A review glass (CCTV reflex; reuse still + room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AR reflect, L plane, O crop
+AZ CSS radial ripple on existing A desk (n1 knuckle; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, I audio, C wash
+BA CSS meniscus sway on existing A lounge glass (Morgan wait; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, AM steam, C wash
+BB CSS cap snap on existing A review pen (n7; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats AU ink, I audio, A flat
 BC CSS rotateY door swing on existing A hall SVG (n0b shut behind; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats M slit, A flat, AW doors
 BD CSS 1px rotate steps(60) second hand on small dial over existing A office/review SVG (wall clock; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats V HUD, C wash, I audio
 BE CSS skewX + translateX wind shear on existing A roof railing (dry wind; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, AV bokeh, C wash, K rain
@@ -156,6 +157,7 @@ BP CSS 8px radial contact oval + one-shot scale on existing A cup SVG (n3a finge
 BQ CSS 12px switch plate + contact oval + one-shot scale on existing A office wall (n4x before kill; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, AP after, C wash
 BR CSS 6px contact oval + one-shot rotate(12deg) on existing A hall door handle (n0b before swing; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats A flat, BC after, C wash
 BS CSS radial-gradient soft white fog + one-shot `@keyframes` opacity/scale bloom near ear on locked repo still (n2c 耳邊氣霧 / breath at ear; reuse still only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats C whole-scene wash, AK pane-fog (not ear), AJ scale-breathe and O crop for an isolated close-up breath beat
+BT CSS 8px radial-gradient orange/yellow flame + irregular `@keyframes` scale/opacity flicker on existing A office desk lighter (wait hold before ashtray; reuse room only; no new face) — Pages + Safari; no Imagine, no upload, no CF; beats BN ember glow, AQ dust mote, A flat room and C whole wash for an isolated lighter-flame beat
 
 ## Forbidden methods
 Imagine faces · blocked CDN engine pin · stolen Live2D · user upload · Suno paid · stub `app.js`
