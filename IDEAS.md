@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261017-10: Natural off_topic mixed with soft return to ask_want for corridor
+- status: proposed
+- lane: A
+- why: 現時 off_topic 如天氣已能識別，但混合詢語（例：天氣咁熱但你想我點先停低認位再入去？）仍偏模板。加多些更自然的「先離題再問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式變題後回歸意圖。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261016-14: Natural ask_want mixed with soft enter hesitation for corridor
 - status: proposed
 - lane: A
