@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261017-19: Natural mixed ask_want with soft wait hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 ask_want 主要短句，但混合詢語（例：你想我點先停低認位再等等但未敢企定？）仍偏模板。加多些更自然的「先問清楚再猶後猶後」同義變體，讓 IntentEngine 聽到更似真人對話式猶豫後問意圖。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261017-10: Natural off_topic mixed with soft return to ask_want for corridor
 - status: proposed
 - lane: A
