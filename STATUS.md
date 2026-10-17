@@ -1,3 +1,10 @@
+2026-10-17 16:15 HKT：Lane CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+LIVE GATE：app.js 122734B 起頭 STORAGE_KEY，非 app_b64 stub。禁 stub／禁動 app.js。
+追數 stamp：**t5-1615**（9a072e8）。只補 chat-guide / audio-bed / fx-play / compete-boot。
+CHAT-FIRST：renderNode 不揭鈕；推進後 #choices 仍 freechat-hidden；showChoices 要 misses>=2。
+好／係／得 → heat intent；OWNER / #pt 唔計 miss；playtest 唔算打斷。
+開住：#48 hide／#47 intents。F 暫緩。No Imagine。
+
 2026-10-17 16:14 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
 No open GUIDE tickets (DISPATCH clear of GUIDE opens)。Monitor-only mode。
 Guide-lines already thick (split1e20, real wc -c guide-lines.js=9931 ≥1KB)。Immersive corridor/door, no CS tone。
