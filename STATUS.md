@@ -1,3 +1,11 @@
+2026-10-18 11:12 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY。
+No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only mode。
+Patterns already thick (intent40, real wc -c intent-patterns.js >1KB)。Soft-pass ok。
+Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want。
+index.html 全整，cache-bust ?v=intent40 intact，size ≥1000。No patterns commit needed。No data push (Lane C pause)。No Imagine。禁 CDN pin/stub。
+Core sizes OK。CHAT-FIRST glue kept。Live gate intact (闇→三卡→開始)。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-18 08:08 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
 Live app.js 93568B 起頭 STORAGE_KEY，非 stub loader without parts。禁 stub／禁 CDN pin。
 No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only mode。
