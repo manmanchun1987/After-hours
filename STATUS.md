@@ -1,3 +1,12 @@
+2026-10-18 08:08 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
+Live app.js 93568B 起頭 STORAGE_KEY，非 stub loader without parts。禁 stub／禁 CDN pin。
+No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only mode。
+Patterns already thick (intent40)。Soft-pass ok。
+CHAT-FIRST：成功 typed line 後 #choices 仍 freechat-hidden，唔 dump choice buttons。showChoices 要 misses>=2。
+index.html 全整，cache-bust intact，size ≥1000。No patterns commit needed。No data push (Lane C pause)。No Imagine。
+Core sizes OK。Live gate intact (闇→三卡→開始)。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-18 05:04 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js≈16953 ≥1KB)。Soft-pass ok。
