@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261018-14: Natural mixed agree with soft wait hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 agree 主要短句（好／係／得／繼續），但混合猶豫（例：好啦但等陣先停低認位再推門入去）識別仍偏模板。加多些更自然的「同意但猶後猶後」同義變體，讓 IntentEngine 聽到更似真人對話式同意後停低。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261018-12: Natural mixed refuse with soft wait hesitation for corridor
 - status: proposed
 - lane: A
@@ -21,7 +28,7 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 ### I-20261017-10: Natural off_topic mixed with soft return to ask_want for corridor
 - status: proposed
 - lane: A
-- why: 現時 off_topic 如天氣已能識別，但混合詢語（例：天氣咁熱但你想我點先停低認位再入去？）仍偏模板。加多些更自然的「先離題再問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式變題後回歸意圖。
+- why: 現時 off_topic 如天氣已能識別，但混合詢語（例：天氣咐熱但你想我點先停低認位再入去？）仍偏模板。加多些更自然的「先離題再問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式變題後回歸意圖。
 - serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
 - not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
 
