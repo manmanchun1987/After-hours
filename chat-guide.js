@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t5-2220";
+  var STAMP = "t5-1718";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -14,9 +14,6 @@
   function hideChoices() {
     var el = getChoices();
     if (!el) return;
-    // Chrome fires a class mutation even when the token is already present.
-    // Writing again from the observer retriggers it and wedges the main thread
-    // before #screen-play can paint. Only write when the value actually changes.
     if (!el.classList.contains("freechat-hidden")) el.classList.add("freechat-hidden");
     if (el.style.display !== "none") el.style.display = "none";
   }
@@ -81,7 +78,6 @@
         if (missCount >= MISS_THRESHOLD) return;
         var cur = getChoices();
         if (!cur) return;
-        // already hidden — do not write class/style (that re-enters this observer)
         if (cur.classList.contains("freechat-hidden") && cur.style.display === "none") return;
         obsBusy = true;
         obs.disconnect();
@@ -97,7 +93,6 @@
       obs.observe(el, { attributes: true, attributeFilter: ["class", "style"] });
     }
 
-    // poll until app.js defines the functions (chat-guide loads first)
     var n = 0;
     var t = setInterval(function () {
       tryWrap();

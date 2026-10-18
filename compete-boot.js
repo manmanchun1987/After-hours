@@ -1,6 +1,6 @@
-/* compete-boot t5-2220 — boot stamp only */
+/* compete-boot t5-1718 — boot stamp only */
 (function () {
   "use strict";
-  window.CompeteBoot = { stamp: "t5-2220", ready: true };
-  console.log("[compete-boot] t5-2220");
+  window.CompeteBoot = { stamp: "t5-1718", ready: true };
+  console.log("[compete-boot] t5-1718");
 })();
