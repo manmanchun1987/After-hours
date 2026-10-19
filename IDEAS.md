@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261019-07: Natural mixed enter_door with soft refuse hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 enter_door 長句已加厚，但混合拒絕猶豫（例：我入去先但唔好幫我推門等陣先認位再等等）識別仍偏單向模板。加多些更自然的「想進但帶拒絕停低」同義變體，讓 IntentEngine 聽到更似真人對話式猶豫進門。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261019-06: Natural mixed unclear with soft clarification hesitation for corridor
 - status: proposed
 - lane: A
