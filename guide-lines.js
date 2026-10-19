@@ -1,1 +1,1 @@
-$(cat /tmp/guide-lines-new.js)
+PLACEHOLDER_WILL_BE_REPLACED
