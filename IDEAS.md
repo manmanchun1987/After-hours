@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261020-05: Natural mixed agree with soft enter hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 agree 主要短句（好／係／得／繼續），但混合進門猶豫（例：好啦我入去先但等陣先停低認位再推門）識別仍偏模板。加多些更自然的「同意後猶後進門」同義變體，讓 IntentEngine 聽到更似真人對話式同意後停低再行動。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261020-04: Natural mixed challenge with soft wait hesitation for corridor
 - status: proposed
 - lane: A
