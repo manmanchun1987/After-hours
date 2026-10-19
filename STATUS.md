@@ -1,3 +1,10 @@
+2026-10-20 01:14 HKT：CODE hourly t8-0114。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only + glue stamp。
+Patches only audio-bed / fx-play / compete-boot / chat-guide（stamp t8-0114）。yes-words（好 係 得 繼續）→ heat，唔計 miss。
+推進後 #choices 仍 freechat-hidden；renderNode 只 hide，唔 always reveal。2 miss 先 showChoices。Owner playtest / #pt 唔計 miss。
+app.js full 非 stub。No Imagine。禁 CDN pin/stub。Live gate intact。
+CHAT-FIRST glue kept。四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-20 01:15 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open GUIDE tickets (DISPATCH clear for B)。Pools already thick (split1e24, real wc -c guide-lines.js=21512 ≥1KB PASS)。
 Miss escalation still guides to push or stop. Anti-repeat via large pools。Immersive soft Cantonese, no CS tone。
