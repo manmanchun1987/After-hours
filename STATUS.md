@@ -1,3 +1,9 @@
+2026-10-20 03:03 HKT：Lane C hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+Lane C 暫停寫 data（只讀＋STATUS 報 nodes）。No open P0 INTENT for C。DISPATCH 確認暫停。
+真實 nodes／wc -c：alex.json nodes=28 wc=14692（≥20／≥8KB PASS）；morgan.json nodes=22 wc=18500（≥15／≥5KB PASS）；sam.json nodes=21 wc=16780（≥15／≥5KB PASS）。
+No data push。No Imagine。禁 CDN pin/stub。Core sizes OK。Live gate intact。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-20 02:16 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open GUIDE tickets (DISPATCH clear for B)。Pools thickened to split1e25, real wc -c guide-lines.js≈3674 ≥1KB PASS。
 Miss escalation still guides to push or stop. Anti-repeat via expanded pools。Immersive soft Cantonese, no CS tone。
