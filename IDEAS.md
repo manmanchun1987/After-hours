@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261020-01: Natural mixed unclear with partial enter+ask hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 unclear 多落 default，混合部分進門＋詢問（例：呢...我可能入去但未企定你想我點先停低認位？）識別仍偏簡。加多些更自然的「含糊猶豫後問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式不確定後導向 goal。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261019-07: Natural mixed enter_door with soft refuse hesitation for corridor
 - status: proposed
 - lane: A
@@ -42,7 +49,7 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 ### I-20261017-10: Natural off_topic mixed with soft return to ask_want for corridor
 - status: proposed
 - lane: A
-- why: 現時 off_topic 如天氣已能識別，但混合詢語（例：天氣咗熱但你想我點先停低認位再入去？）仍偏模板。加多些更自然的「先離題再問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式變題後回歸意圖。
+- why: 現時 off_topic 如天氣已能識別，但混合詢語（例：天氣咩熱但你想我點先停低認位再入去？）仍偏模板。加多些更自然的「先離題再問清楚」同義變體，讓 IntentEngine 聽到更似真人對話式變題後回歸意圖。
 - serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
 - not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
 
