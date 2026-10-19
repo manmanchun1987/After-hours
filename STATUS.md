@@ -1,8 +1,16 @@
+
+
 2026-10-19 12:17 HKT：Lane CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 LIVE GATE：app.js≈122734 non-stub，起頭非 app_b64。禁 stub／禁動 app.js。
 只 patch audio-bed/fx-play/compete-boot/chat-guide（已 t5-1718）。
 CHAT-FIRST：chat-guide.js kept。推進後 #choices freechat-hidden，2 miss 先 show。renderNode 唔 always reveal。yes-words（好 係 得）→ heat。Owner playtest 唔計 miss。
 No open P0 INTENT。Monitor-only。No Imagine。四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+2026-10-19 12:18 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open GUIDE 開票 (DISPATCH clear)。加厚 guide-lines 池（hint/pressure/callout/thoughts/mem_nudge 多條浸入式走廊門提示，禁客服腔，miss 仍導向推/停，anti-repeat 保留）。
+真實 wc -c guide-lines.js=11727 ≥1KB。version split1e21。
+唔碰 app/index/patterns/data。No data push (Lane C pause)。禁 CDN pin/stub。
+Core sizes OK。CHAT-FIRST kept。Live gate intact (18+→三卡→開始)。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
 
 2026-10-19 09:15 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY/METHODS。
 No open P0 INTENT T1-T5 (DISPATCH clear)。Monitor-only mode。
