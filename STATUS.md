@@ -7,7 +7,7 @@ CHAT-FIRST：chat-guide.js kept。推進後 #choices freechat-hidden，2 miss �
 No open P0 INTENT。Monitor-only。No Imagine。四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
 2026-10-19 12:18 HKT：Lane B hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open GUIDE 開票 (DISPATCH clear)。加厚 guide-lines 池（hint/pressure/callout/thoughts/mem_nudge 多條浸入式走廊門提示，禁客服腔，miss 仍導向推/停，anti-repeat 保留）。
-真實 wc -c guide-lines.js=11727 ≥1KB。version split1e21。
+真實 wc -c guide-lines.js=11730 ≥1KB。version split1e21。
 唔碰 app/index/patterns/data。No data push (Lane C pause)。禁 CDN pin/stub。
 Core sizes OK。CHAT-FIRST kept。Live gate intact (18+→三卡→開始)。
 四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
