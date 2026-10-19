@@ -1,10 +1,10 @@
 (function () {
   "use strict";
-  var STAMP = "t5-1718";
+  var STAMP = "t6-2320";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
-  var YES_WORDS = /^(好|係|得|ok|yes|得啦|好呀)$/i;
+  var YES_WORDS = /^(好|係|得|ok|yes|得啦|好呀|繼續)$/i;
 
   function getChoices() {
     if (!choicesEl) choicesEl = document.getElementById("choices");
@@ -99,7 +99,7 @@
       if (++n > 40) clearInterval(t);
     }, 250);
 
-    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97) non-miss heat intact. Owner quiet. Poll wrap.");
+    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97 \u7e7c\u7e8c) non-miss heat intact. Owner quiet. Poll wrap.");
   }
 
   if (document.readyState === "loading") {
