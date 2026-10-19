@@ -4,6 +4,13 @@ Hourly ≤1 proposed only. No code / no 施工票 until user/CEO approved. Must 
 
 ## Proposed
 
+### I-20261020-07: Natural mixed flirt with soft wait hesitation for corridor
+- status: proposed
+- lane: A
+- why: 現時 flirt 較短或缺混合，混合調情後猶後（例：你睇起來幾吸引但等陣先停低認位再等等？）識別仍偏模板。加多些更自然的「先調情再猶後停低」同義變體，讓 IntentEngine 聽到更似真人對話式調情後停低。
+- serve: 意圖體感更接近真 AI，柔軟過關仍主；推進跟意圖結果。
+- not: 不改 Vera 鎖樣，不加 yes-words 對池，不催 OpenRouter，不 CDN pin。
+
 ### I-20261020-06: Natural mixed challenge with soft enter hesitation for corridor
 - status: proposed
 - lane: A
