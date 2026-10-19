@@ -1,5 +1,11 @@
 
 
+2026-10-19 15:18 HKT：Lane CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+LIVE GATE：app.js≈122734 non-stub，起頭非 app_b64。禁 stub／禁動 app.js。
+只 patch audio-bed/fx-play/compete-boot/chat-guide（已 t5-1718，無新改）。
+CHAT-FIRST：chat-guide.js kept。推進後 #choices freechat-hidden，2 miss 先 show。renderNode 唔 always reveal。yes-words（好 係 得）→ heat。Owner playtest 唔計 miss。
+No open P0 INTENT。Monitor-only。No Imagine。四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+
 2026-10-19 12:17 HKT：Lane CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 LIVE GATE：app.js≈122734 non-stub，起頭非 app_b64。禁 stub／禁動 app.js。
 只 patch audio-bed/fx-play/compete-boot/chat-guide（已 t5-1718）。
