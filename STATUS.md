@@ -1,3 +1,10 @@
+2026-10-20 06:06 HKT：Hourly DISPATCH。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/TASTE/METHODS/CAST.lock。
+Live 檢查：app.js full 非 stub，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide?v=entryfix3 + app.js?v=entryfix3）。restore-engine 已復原，非 stub loader without parts。
+CHAT-FIRST 守住：成功 typed 後 freechat-hidden，2 miss 先亮。FEEL 唔降。Owner playtests expected。
+Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（全部≥4，monitor-only）。Lane C pause data。
+
 2026-10-20 03:06 HKT：Hourly DISPATCH。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/TASTE/METHODS/CAST.lock。
 Live 檢查：app.js full 非 stub，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide?v=entryfix3 + app.js?v=entryfix3）。#46 restore-engine 仍開作首票，但實際已復原。
 CHAT-FIRST 守住：成功 typed 後 freechat-hidden，2 miss 先亮。FEEL 唔降。#48/#47 開住監察。Owner playtests expected。
