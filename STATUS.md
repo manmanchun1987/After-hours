@@ -1,3 +1,14 @@
+2026-10-21 01:14 HKT：Hourly CODE。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
+LIVE GATE：app.js full 非 stub (size≈122734 ≥50KB)，無 app_b64 stub。
+CHAT-FIRST 守住：chat-guide.js 保留：story advance 後 #choices freechat-hidden，2 missed chats 先 show，renderNode 唔 always reveal。
+Yes-words (好 係 得) 映 heat intent，owner playtest 唔算 miss。
+檢查：audio-bed.js / fx-play.js / compete-boot.js / chat-guide.js 已符規，無需 patch。
+Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（全部≥4，monitor-only）。Lane C pause data。
+No commit to code files。
+
 2026-10-21 01:11 HKT：Hourly Lane A。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
