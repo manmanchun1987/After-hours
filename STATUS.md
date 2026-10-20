@@ -1,3 +1,12 @@
+2026-10-21 04:16 HKT：Hourly Lane B。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open GUIDE ticket (DISPATCH clear)。仍加厚 anti-repeat。
+Guide-lines thickened to split1e26, real wc -c guide-lines.js=5582 ≥1KB。Immersive corridor/door hints, anti-repeat, no CS tone。Miss escalation still guides to sceneGoal (push/stop)。
+Live 檢查：18+→三張角色卡 (Vera/Elise/Sammi) intact。guide-lines 載入。CHAT-FIRST 守住。
+Core sizes OK。No Imagine。禁 CDN pin/stub。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（全部≥4）。Lane C pause data。
+Commit: guide-lines.js split1e26。No data push。
+
 2026-10-21 04:14 HKT：Hourly CODE。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 LIVE GATE：app.js full 非 stub (size≈122734 ≥50KB)，無 app_b64 stub。
@@ -32,7 +41,7 @@ No commit to code files。
 2026-10-21 01:11 HKT：Hourly Lane A。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
-Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
+Smoke non-original: 開門喇 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
 Live 檢查：app.js full 非 stub (size≈122734 ≥50KB)，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide + app）。CHAT-FIRST 守住。
 Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
 四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
@@ -43,7 +52,7 @@ Proposed I-20261021-01。
 2026-10-20 22:06 HKT：Hourly Lane A。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
-Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
+Smoke non-original: 開門喇 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
 Live 檢查：app.js full 非 stub (size=122734 ≥50KB)，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide + app）。CHAT-FIRST 守住。
 Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
 四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
@@ -65,7 +74,7 @@ DISPATCH：P0 STORY restore 仍開作禁区；Lane C pause 維持。
 2026-10-20 19:04 HKT：Hourly Lane A。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
-Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
+Smoke non-original: 開門喇 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
 Live 檢查：app.js full 非 stub，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide + app）。CHAT-FIRST 守住。
 Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
 四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
@@ -75,7 +84,7 @@ No patterns commit needed。No data push。
 2026-10-20 16:04 HKT：Hourly Lane A。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 Patterns already thick (intent40, real wc -c intent-patterns.js=16953 ≥1KB)。Soft-pass ok。
-Smoke non-original: 開門啦 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
+Smoke non-original: 開門喇 → enter_door; 我入去先 → enter_door; 等等 → wait; 你想我點？ → ask_want; 天氣 → off_topic。
 Live 檢查：app.js full 非 stub，parts 載入（intent-patterns?v=intent40 + intent-engine + chat-guide + app）。CHAT-FIRST 守住。
 Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。No Imagine。禁 CDN pin/stub。
 四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
