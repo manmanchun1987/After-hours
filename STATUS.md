@@ -1,3 +1,12 @@
+2026-10-21 07:14 HKT：Hourly Lane B。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open GUIDE ticket (DISPATCH clear)。仍加厚 anti-repeat。
+Guide-lines thickened to split1e27, real wc -c guide-lines.js=7447 ≥1KB。Immersive corridor/door hints, anti-repeat, no CS tone。Miss escalation still guides to sceneGoal (push/stop)。
+Live 檢查：18+→三張角色卡 (Vera/Elise/Sammi) intact。guide-lines 載入。CHAT-FIRST 守住。
+Core sizes OK。No Imagine。禁 CDN pin/stub。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（全部≥4）。Lane C pause data。
+Commit: guide-lines.js split1e27 (wc=7447)。No data push。
+
 2026-10-21 04:16 HKT：Hourly Lane B。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open GUIDE ticket (DISPATCH clear)。仍加厚 anti-repeat。
 Guide-lines thickened to split1e26, real wc -c guide-lines.js=5582 ≥1KB。Immersive corridor/door hints, anti-repeat, no CS tone。Miss escalation still guides to sceneGoal (push/stop)。
