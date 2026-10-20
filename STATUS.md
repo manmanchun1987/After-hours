@@ -1,3 +1,12 @@
+2026-10-21 01:15 HKT：Hourly Lane B。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open GUIDE ticket (DISPATCH clear)。Monitor-only mode。
+Guide-lines already thick (split1e25, real wc -c guide-lines.js=3674 ≥1KB)。Immersive corridor/door hints, anti-repeat, no CS tone。Miss escalation still guides to sceneGoal。
+Live 檢查：18+→三張角色卡 (Vera/Elise/Sammi) intact。guide-lines?v=guide19 載入。CHAT-FIRST 守住。
+Core sizes OK。No Imagine。禁 CDN pin/stub。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（全部≥4，monitor-only）。Lane C pause data。
+No guide-lines commit needed。No data push。
+
 2026-10-21 01:14 HKT：Hourly CODE。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT T1–T5 (DISPATCH clear)。Monitor-only mode。
 LIVE GATE：app.js full 非 stub (size≈122734 ≥50KB)，無 app_b64 stub。
