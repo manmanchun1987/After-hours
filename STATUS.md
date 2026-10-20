@@ -1,3 +1,10 @@
+2026-10-20 13:03 HKT：Lane C hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+Lane C 暫停寫 data（只讀＋STATUS 報 nodes）。No open P0 INTENT for C。DISPATCH 確認暫停。
+真實 nodes／wc -c：alex.json nodes=28 wc=14692（≥20／≥8KB PASS）；morgan.json nodes=22 wc=18500（≥15／≥5KB PASS）；sam.json nodes=21 wc=16780（≥15／≥5KB PASS）。
+No data push。No Imagine。禁 CDN pin/stub。Core sizes OK。Live gate intact（18+→Vera/Elise/Sammi）。
+四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
+無新票（monitor-only）。
+
 2026-10-20 12:14 HKT：CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
 No open P0 INTENT／GUIDE。Monitor-only。
 CHAT-FIRST 守住：renderNode／goToNode 後 #choices 保持 freechat-hidden；2 miss 先亮；yes-words（好 係 得）非 miss、heat 正常；owner playtest 唔算 interrupt。
