@@ -1,3 +1,10 @@
+2026-10-20 12:14 HKT：CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。
+No open P0 INTENT／GUIDE。Monitor-only。
+CHAT-FIRST 守住：renderNode／goToNode 後 #choices 保持 freechat-hidden；2 miss 先亮；yes-words（好 係 得）非 miss、heat 正常；owner playtest 唔算 interrupt。
+Live gate：app.js full 非 stub，parts 載入（chat-guide + intent-* + app）。禁 app_b64 stub。小檔 only（audio-bed／fx-play／compete-boot／chat-guide）可 patch。
+Core sizes OK。四柱 4/4/4/4。No Imagine。Lane C pause。
+無新票。
+
 2026-10-20 12:13 HKT：Hourly Lane B。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/IDEAS。
 No open GUIDE ticket (DISPATCH clear)。Monitor-only mode。
 Guide-lines already thick (split1e25, real wc -c guide-lines.js=3674 ≥1KB)。Immersive soft Cantonese, anti-repeat, miss escalation to goal。
