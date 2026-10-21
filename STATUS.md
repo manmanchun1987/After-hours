@@ -1,9 +1,6 @@
-2026-10-21 17:06 HKT：Hourly DISPATCH。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY/TASTE/METHODS/CAST.lock。
-Live 檢查：入局 18+→三卡 (Vera/Elise/Sammi) OK，parts 載入。
-但按指令：Live stub loader without parts → 第一票 CODE restore-engine。
-CHAT-FIRST 守住：成功 typed line 後仍 hide choices，2 miss 先亮。
-四柱：STORY 4 · PICTURE 4 · SOUND 4 · FEEL 4。
-無開 P0 INTENT T1-T5。Lane C pause data。No Imagine。
-開票：CODE restore-engine (max 5)。
-No data push。
-
+2026-10-21 20:10 HKT：Lane A intent41 executed。讀 AUTOMATION/LANES/DISPATCH。
+無開 P0 INTENT 票，按 checklist 加厚 fuzzy/typo/mixed 同義（開門啦 variants、入去先+wait hesitation、門/门、覽/览、等陣）。
+改檔：intent-patterns.js (real wc=16714 ≥1KB)、index.html cache-bust ?v=intent41 (size=7241≥1000)。
+Soft-pass 煙測：開門啦 → enter_door；我入去先 → enter_door；等等 → wait；你想我點？ → ask_want；天氣 → off_topic。
+未碰 guide/data/app。Live 入局未改壞。
+四柱仍 4。Lane C pause。
