@@ -5,3 +5,9 @@
 Soft-pass 煙測：開門啦 → enter_door；我入去先 → enter_door；等等 → wait；你想我點？ → ask_want；天氣 → off_topic；你想我點先停低認位再等等 → ask_want。
 未碰 guide/data/app。Live 入局未改壞。
 四柱仍 4。Lane C pause。
+
+2026-10-21 23:25 HKT：Lane B executed（加厚 guide-lines pools）。讀 AUTOMATION/LANES/DISPATCH。
+無開 GUIDE 票，按 checklist 加厚 hint/pressure/callout/thoughts/mem（浸入式走廊門，禁客服腔，anti-repeat）。
+改檔：guide-lines.js (real wc=10716 ≥1KB)、version=laneB-e28-20261021。
+未碰 app/index/patterns/data。Live 入局未改壞。
+四柱仍 4。Lane C pause。
