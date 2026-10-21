@@ -7,6 +7,7 @@
 
 - **Lane C 暫停寫 data**（AUTOMATION／LANES 2026-10-16）：只讀；sceneGoal 改動走 IDEAS approved。
 - **P0 STORY restore** — data/*.json 禁止單節 stub；Lane C 只補 sceneGoal，禁刪 nodes／choices／ending。驗收：alex.json nodes≥20。（已從完整 graphs 復原，仍開作禁区）
+- **CODE restore-engine** — Live stub loader without parts。第一票：確保 app.js 完整 + parts (intent-patterns/engine + guide + chat-guide) 載入，禁 stub。
 
 ## Closed / done
 
