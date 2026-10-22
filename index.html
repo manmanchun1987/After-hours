@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./styles-compete.css?v=kb-mobile-20261023e" />
   <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e" />
   <link rel="stylesheet" href="./fx.css?v=kb-mobile-20261023e" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=lux1" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=lux1-kb1" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -31,8 +31,15 @@
       max-height: 0 !important; opacity: 0 !important; pointer-events: none !important;
       position: absolute !important; left: -9999px !important; width: 0 !important;
     }
-    #screen-play .play-face-gap { height: 68vh !important; min-height: 60vh !important; max-height: 75vh !important; flex: 1 1 auto !important; }
-    #screen-play .play-lower { max-height: 22vh !important; }
+    body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
+    body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
+    #screen-play .play-face-gap {
+      height: calc(var(--app-vh) * 0.68) !important;
+      min-height: calc(var(--app-vh) * 0.60) !important;
+      max-height: calc(var(--app-vh) * 0.75) !important;
+      flex: 1 1 auto !important;
+    }
+    #screen-play .play-lower { max-height: calc(var(--app-vh) * 0.22) !important; }
     #screen-play .narrative-bubble { max-height: 4.8em !important; padding: 4px 8px !important; background: rgba(6,10,18,.32) !important; }
     #screen-play #play-text { font-size: .72rem !important; -webkit-line-clamp: 2 !important; display: -webkit-box !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
     #screen-play .chat-header, #screen-play .chat-messages { display: none !important; }
@@ -61,6 +68,8 @@
       padding-top: 4px !important;
       padding-bottom: 6px !important;
     }
+    body.keyboard-open.mode-play:has(#choices) #screen-play .play-face-gap,
+    html.keyboard-open body.mode-play:has(#choices) #screen-play .play-face-gap,
     body.keyboard-open #screen-play .play-face-gap {
       height: auto !important;
       min-height: 0 !important;
