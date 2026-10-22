@@ -1,9 +1,8 @@
 /**
- * GuidePolicy (split1 / intentsoft1 soft-pass) — steers freeChat toward node.sceneGoal.
+ * GuidePolicy (fakeai4) — steers freeChat toward node.sceneGoal.
  * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
+ * Thin goal-hint from sceneGoal.hints / successIntents labels. Memory = skim full chatUserLines/chatBotLines in state (cap 50), not a second brain.
  * Line pools live in guide-lines.js (Lane B); this file keeps sceneGoal/miss/advance rules.
- * Input: classified intent + sceneGoal + memory + missCount
- * Output: { strategy, reply, advance, showChoices, thought, missCount }
  * Requires GuideLines; IntentEngine optional for pickReply reuse.
  */
 (function (global) {
@@ -90,6 +89,137 @@
     return pickAnti(L.THOUGHTS_HINT, []);
   }
 
+
+  var INTENT_HINT_LABELS = {
+    enter_door: "推門入去",
+    wait: "停低等等",
+    agree: "應承繼續",
+    refuse: "唔入／離開",
+    ask_want: "講清楚你想點",
+    flirt: "再近啲",
+    challenge: "頂真講",
+    apologize: "認錯收斂",
+    ask_memory: "提頭先嗰句",
+    follow: "跟住入"
+  };
+
+  /** Thin clear hint from current sceneGoal (hints map, ask, or successIntents labels). */
+  function goalSteerPhrase(goal) {
+    if (!goal) return "";
+    if (goal.ask && String(goal.ask).trim()) return String(goal.ask).trim();
+    var hints = goal.hints || {};
+    var parts = [];
+    var seen = {};
+    function pushLabel(lab) {
+      lab = String(lab || "").trim();
+      if (!lab || seen[lab]) return;
+      seen[lab] = 1;
+      parts.push(lab);
+    }
+    var successes = Array.isArray(goal.successIntents) ? goal.successIntents : [];
+    for (var i = 0; i < successes.length; i++) {
+      var id = successes[i];
+      pushLabel(hints[id] || INTENT_HINT_LABELS[id] || "");
+    }
+    if (!parts.length) {
+      for (var k in hints) {
+        if (Object.prototype.hasOwnProperty.call(hints, k)) pushLabel(hints[k]);
+      }
+    }
+    if (!parts.length) return "講清楚你想點。";
+    if (parts.length === 1) return parts[0] + "。講清楚。";
+    if (parts.length === 2) return parts[0] + "，定" + parts[1] + "？講清楚。";
+    return parts.slice(0, 3).join("／") + "。講清楚。";
+  }
+
+  function applyGoalSteer(reply, goal, strategy) {
+    var steer = goalSteerPhrase(goal);
+    if (!steer) return reply;
+    // If pool line already names a success action, keep it; else append thin steer.
+    var successes = (goal && goal.successIntents) || [];
+    var labels = [];
+    var hints = (goal && goal.hints) || {};
+    for (var i = 0; i < successes.length; i++) {
+      labels.push(hints[successes[i]] || INTENT_HINT_LABELS[successes[i]] || "");
+    }
+    var joined = labels.join("");
+    var hasAction = false;
+    if (/推門|停低|入去|等等|講清楚你想點/.test(reply || "")) hasAction = true;
+    for (var j = 0; j < labels.length; j++) {
+      if (labels[j] && reply && reply.indexOf(labels[j].replace(/[。？?]/g, "")) >= 0) hasAction = true;
+    }
+    if (hasAction) return reply;
+    if (strategy === "callout" || strategy === "pressure") {
+      return (reply ? reply.replace(/[。．.\s]+$/, "") + "。" : "") + steer;
+    }
+    // hint: prefer steer-forward cold boss line
+    return steer;
+  }
+
+  var HISTORY_SKIM_CAP = 50; // safety only — use full chat history available in state
+
+  /** Skim full available dialogue transcript in state (user+bot), cap HISTORY_SKIM_CAP. Light reflect, not a second brain. */
+  function skimRecentDetail(state, memory) {
+    var lines = [];
+    if (state && Array.isArray(state.chatUserLines)) {
+      for (var u = 0; u < state.chatUserLines.length; u++) lines.push("U:" + state.chatUserLines[u]);
+    }
+    if (state && Array.isArray(state.chatBotLines)) {
+      for (var b = 0; b < state.chatBotLines.length; b++) lines.push("B:" + state.chatBotLines[b]);
+    }
+    if (Array.isArray(memory)) {
+      for (var i = 0; i < memory.length; i++) {
+        var m = memory[i];
+        if (typeof m === "string") lines.push(m);
+        else if (m && m.text) lines.push(String(m.text));
+        else if (m && m.line) lines.push(String(m.line));
+      }
+    }
+    if (lines.length > HISTORY_SKIM_CAP) lines = lines.slice(-HISTORY_SKIM_CAP);
+    var blob = lines.join("\n");
+    if (!blob) return null;
+    // Prefer the most recent matching detail by scanning from the end
+    for (var r = lines.length - 1; r >= 0; r--) {
+      var row = lines[r];
+      if (/^B:/.test(row)) continue; // reflect player detail primarily
+      if (/停低|等等|等陣|未準備|企定|猶豫/.test(row)) return "wait";
+      if (/推門|開門|入去|入嚟|進去|推開/.test(row)) return "enter";
+      if (/記得|頭先|之前|聽到未/.test(row)) return "memory";
+      if (/天氣|食飯|幾點/.test(row)) return "off";
+    }
+    // Fallback: whole transcript
+    if (/停低|等等|等陣|未準備|企定|猶豫/.test(blob)) return "wait";
+    if (/推門|開門|入去|入嚟|進去|推開/.test(blob)) return "enter";
+    if (/記得|頭先|之前|聽到未/.test(blob)) return "memory";
+    if (/天氣|食飯|幾點/.test(blob)) return "off";
+    return null;
+  }
+
+  function reflectFromHistory(detail, goal, recent) {
+    var steer = goalSteerPhrase(goal);
+    var pool = L.MEM_NUDGE || [];
+    if (detail === "wait") {
+      var w = pickAnti([
+        "你頭先話想等等。咁停低等等，定改推門入去？",
+        "記你講過停低。而家繼續等，定推門？講清楚。",
+        "你提過未準備好。停低等等，定推門入去？"
+      ].concat(pool.filter(function (l) { return /停|等/.test(l); })), recent);
+      return w || steer;
+    }
+    if (detail === "enter") {
+      var e = pickAnti([
+        "你頭先提過推門。而家推門入去，定仲停低？",
+        "記你講過入去。推門入去，定停低等等？",
+        "你提過開門。推定停，講清楚。"
+      ].concat(pool.filter(function (l) { return /推|入|門/.test(l); })), recent);
+      return e || steer;
+    }
+    if (detail === "memory") {
+      return pickAnti(pool, recent) || ("頭先嗰句我聽到。" + (steer ? steer : "推定停？"));
+    }
+    return pickAnti(pool, recent) || steer;
+  }
+
   function decide(input) {
     input = input || {};
     var intent = input.intent || {};
@@ -152,11 +282,18 @@
       }
     }
 
+    // Prefer current sceneGoal actions in the spoken line
+    reply = applyGoalSteer(reply, goal, strategy);
+
+    // Full-history skim (chatUserLines/chatBotLines, cap 50) — occasional reflect, no second brain
     try {
-      var memStr = JSON.stringify(memory || []).slice(0, 400);
-      if (/推門|門口|入去/.test(memStr) && nextMiss <= 2 && id === "ask_want") {
-        var memLine = pickAnti(L.MEM_NUDGE || [], recent);
-        if (memLine) reply = memLine;
+      var detail = skimRecentDetail(state, memory);
+      if (detail && nextMiss <= 2 && (id === "ask_want" || id === "unclear" || id === "ask_memory" || id === "off_topic")) {
+        var reflected = reflectFromHistory(detail, goal, recent);
+        if (reflected) reply = reflected;
+      } else if (detail && nextMiss === 1 && Math.random() < 0.45) {
+        var softRef = reflectFromHistory(detail, goal, recent);
+        if (softRef) reply = softRef;
       }
     } catch (e) {}
 
@@ -210,7 +347,8 @@
     isSuccess: isSuccess,
     isOptional: isOptional,
     applyMissToState: applyMissToState,
-    version: "split1-clear1"
+    goalSteerPhrase: goalSteerPhrase,
+    version: "split1-fakeai4"
   };
 
   global.GuidePolicy = api;

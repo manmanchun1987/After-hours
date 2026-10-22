@@ -535,7 +535,7 @@ function replayLastVoice() {
 /* ============================================================
    D) Rule-based Cantonese cold-boss chat (humanized, zero LLM)
    ============================================================ */
-const CHAT_MEM_N = 6;
+const CHAT_MEM_N = 50; // full recent transcript for guide/memory skim (safety cap)
 const CHAT_ANTIREPEAT_N = 5;
 const PROACTIVE_MAX_PER_NODE = 3;
 const PROACTIVE_COOLDOWN_MS = 50000;
@@ -1318,6 +1318,7 @@ function resetChatSessionMemory() {
   state.lastChatActivityAt = Date.now();
 }
 
+/** Player/bot dialogue transcript (cap CHAT_MEM_N). GuidePolicy skims full available history — no separate memory brain. */
 function pushChatMemory(role, text) {
   const line = String(text || "").trim();
   if (!line) return;

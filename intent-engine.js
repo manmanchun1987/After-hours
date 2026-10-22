@@ -1,5 +1,5 @@
 /**
- * IntentEngine (split1) — soft Cantonese intent → sceneGoal (not exact keys).
+ * IntentEngine (fakeai4) — soft Cantonese intent → sceneGoal (not exact keys).
  * Pattern data lives in intent-patterns.js (Lane A); this file is the thinner core.
  * Reply pools are materials only; selection is driven by intent + scene + Vera tone.
  * Requires IntentPatterns loaded first. Soft-pass intentsoft1 semantics preserved.
@@ -538,7 +538,7 @@
         var decision = global.GuidePolicy.decide({
           intent: classified,
           sceneGoal: node.sceneGoal,
-          memory: st && (st.chatMemory || st.memoryChips || []),
+          memory: st && (st.chatUserLines || st.chatMemory || st.memoryChips || []), // full transcript also on state.chatUserLines/chatBotLines (cap 50)
           missCount: (st && st.guideMissCount) || 0,
           state: st,
           node: node,

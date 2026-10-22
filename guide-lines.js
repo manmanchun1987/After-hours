@@ -1,5 +1,5 @@
 /**
- * GuideLines (Lane B) — laneB-clear1-20261022 spoken Cantonese.
+ * GuideLines (Lane B) — laneB-fakeai4-20261022 spoken Cantonese.
  * Clear what Vera wants: 推門入去 / 停低等等 / 講清楚你想點.
  * Soft cold boss tone. Ban cryptic poetry. Anti-repeat pools ≥25 where possible.
  * Pools for GuidePolicy: HINT / PRESSURE / CALLOUT / THOUGHTS / MEM_NUDGE.
@@ -359,7 +359,7 @@
     NONSENSE_CALLOUT: NONSENSE_CALLOUT,
     CS_BLOCK_REPLY: CS_BLOCK_REPLY,
     FALLBACK_REPLY: FALLBACK_REPLY,
-    version: "laneB-clear1-20261022"
+    version: "laneB-fakeai4-20261022"
   };
 
   global.GuideLines = api;

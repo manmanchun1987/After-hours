@@ -104,7 +104,25 @@
         "再推",
         "企喺度",
         "門口企"
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "agree",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去",
+          "wait": "停低等等",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "推門入去，定停低等等？"
+      }
     },
     "n0b": {
       "id": "n0b",
@@ -120,7 +138,23 @@
           "label": "走去桌前",
           "next": "n1"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "wait"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去",
+          "agree": "應承繼續"
+        },
+        "ask": "推門入去，定應承繼續？"
+      }
     },
     "n1": {
       "id": "n1",
@@ -144,7 +178,26 @@
           "heat": 8,
           "cg": true
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "challenge",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承改",
+          "ask_want": "講清楚邊部分",
+          "challenge": "頂真問點解留",
+          "flirt": "站近啲"
+        },
+        "ask": "應承改，定問清楚，定站近？"
+      }
     },
     "n2a": {
       "id": "n2a",
@@ -166,7 +219,21 @@
           "heat": 8,
           "cg": true
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續"
+        },
+        "ask": "應承繼續。"
+      }
     },
     "n2b": {
       "id": "n2b",
@@ -188,7 +255,23 @@
           "next": "n3a",
           "heat": 6
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去",
+          "agree": "應承繼續"
+        },
+        "ask": "推門入去，定應承繼續？"
+      }
     },
     "n2c": {
       "id": "n2c",
@@ -210,7 +293,23 @@
           "label": "「我專心改。」",
           "next": "n3a"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去",
+          "flirt": "再近啲"
+        },
+        "ask": "推門入去，定再近啲？"
+      }
     },
     "n3a": {
       "id": "n3a",
@@ -230,7 +329,22 @@
           "heat": 8,
           "cg": true
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "應承繼續，定講清楚你想點？"
+      }
     },
     "n3b": {
       "id": "n3b",
@@ -257,7 +371,25 @@
           "heat": 10,
           "cg": true
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "enter_door",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "enter_door": "推門入去",
+          "flirt": "再近啲"
+        },
+        "ask": "應承繼續，定推門入去？"
+      }
     },
     "n3c": {
       "id": "n3c",
@@ -277,7 +409,22 @@
           "next": "n4a",
           "tension": 4
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "應承繼續，定講清楚你想點？"
+      }
     },
     "n4a": {
       "id": "n4a",
@@ -291,7 +438,23 @@
           "next": "ending_c",
           "tension": 4
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "停低等等",
+          "refuse": "唔入／離開"
+        },
+        "ask": "停低等等，定唔入／離開？"
+      }
     },
     "n4b": {
       "id": "n4b",
@@ -315,7 +478,25 @@
           "label": "離開",
           "next": "ending_c"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "wait": "停低等等",
+          "refuse": "唔入／離開"
+        },
+        "ask": "應承繼續，定停低等等？"
+      }
     },
     "n4x": {
       "id": "n4x",
@@ -335,7 +516,21 @@
           "label": "「我收回。」",
           "next": "ending_c"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "停低等等"
+        },
+        "ask": "停低等等。"
+      }
     },
     "n4c": {
       "id": "n4c",
@@ -350,7 +545,21 @@
           "heat": 8,
           "cg": true
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去"
+        },
+        "ask": "推門入去。"
+      }
     },
     "n5": {
       "id": "n5",
@@ -378,7 +587,26 @@
           "next": "n6c",
           "tension": 8
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "wait",
+          "flirt",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "講清楚你想點",
+          "wait": "停低等等",
+          "flirt": "再近啲",
+          "agree": "應承繼續"
+        },
+        "ask": "講清楚你想點，定停低等等？"
+      }
     },
     "n6a": {
       "id": "n6a",
@@ -391,7 +619,21 @@
           "label": "迎向天亮",
           "next": "ending_a"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去"
+        },
+        "ask": "推門入去。"
+      }
     },
     "n6b": {
       "id": "n6b",
@@ -407,7 +649,21 @@
           "label": "迎向天亮",
           "next": "ending_b"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "enter_door"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "enter_door": "推門入去"
+        },
+        "ask": "推門入去。"
+      }
     },
     "n6c": {
       "id": "n6c",
@@ -429,7 +685,23 @@
           "label": "「走。」",
           "next": "ending_c"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "停低等等",
+          "refuse": "唔入／離開"
+        },
+        "ask": "停低等等，定唔入／離開？"
+      }
     },
     "ending_a": {
       "id": "ending_a",
@@ -446,7 +718,22 @@
           "label": "到此為止",
           "next": "ending_a_lock"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_b": {
       "id": "ending_b",
@@ -463,25 +750,85 @@
           "label": "到此為止",
           "next": "ending_b_lock"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_c": {
       "id": "ending_c",
       "ending": true,
       "endingTitle": "抽身",
-      "text": "電話：Vera「檔案我等。」你冇回。"
+      "text": "電話：Vera「檔案我等。」你冇回。",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_a_lock": {
       "id": "ending_a_lock",
       "ending": true,
       "endingTitle": "越界・規則內",
-      "text": "Vera：「檔案準時。其他——當未發生。」"
+      "text": "Vera：「檔案準時。其他——當未發生。」",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_b_lock": {
       "id": "ending_b_lock",
       "ending": true,
       "endingTitle": "對等一晚",
-      "text": "Vera：「週一我照樣評。呢晚唔入紙。」"
+      "text": "Vera：「週一我照樣評。呢晚唔入紙。」",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "n7": {
       "id": "n7",
@@ -511,7 +858,26 @@
           "label": "「當唔發生。」",
           "next": "ending_d"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "challenge",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點",
+          "challenge": "頂真講",
+          "wait": "停低等等"
+        },
+        "ask": "應承繼續，定講清楚你想點？"
+      }
     },
     "n8a": {
       "id": "n8a",
@@ -531,7 +897,25 @@
           "label": "「所以我走。」",
           "next": "ending_d"
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "wait": "停低等等",
+          "refuse": "唔入／離開"
+        },
+        "ask": "應承繼續，定停低等等？"
+      }
     },
     "n8b": {
       "id": "n8b",
@@ -554,25 +938,90 @@
           "tension": 14,
           "requireHeat": 30
         }
-      ]
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait",
+          "challenge",
+          "flirt",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "停低等等",
+          "challenge": "頂真講",
+          "flirt": "再近啲",
+          "agree": "應承繼續"
+        },
+        "ask": "停低等等，定頂真講？"
+      }
     },
     "ending_d": {
       "id": "ending_d",
       "ending": true,
       "endingTitle": "白紙",
-      "text": "Vera：「下週一準時。其他當白紙。」"
+      "text": "Vera：「下週一準時。其他當白紙。」",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_e": {
       "id": "ending_e",
       "ending": true,
       "endingTitle": "評核室規則",
-      "text": "Vera：「Deadline 照舊。評核表仍係我寫。」"
+      "text": "Vera：「Deadline 照舊。評核表仍係我寫。」",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     },
     "ending_f": {
       "id": "ending_f",
       "ending": true,
       "endingTitle": "對峙存檔",
-      "text": "「有種。小心。位次由我定。」"
+      "text": "「有種。小心。位次由我定。」",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承繼續",
+          "ask_want": "講清楚你想點"
+        },
+        "ask": "講清楚你想點。"
+      }
     }
   },
   "memoryLabels": {

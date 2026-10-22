@@ -1,3 +1,23 @@
+2026-10-22 21:48 HKT：fakeai4 memory steer — scan FULL dialogue transcript in state (chatUserLines+chatBotLines), safety cap 50 (CHAT_MEM_N=50). GuidePolicy skim prefers latest player detail. No second brain.
+
+2026-10-22 21:45 HKT：CEO fake-AI pack (local, no CloudAgent)。四項：
+1) IDEAS I-20261021-02/01 + I-20261020-09 → approved；DISPATCH INTENT/GUIDE/STORY/FEEL 開票後落地。intent-patterns fakeai4 加厚 mixed unclear/ask_memory/off_topic + wait/enter；matchIntent 偏長匹配。真實 wc patterns 見下。Soft-pass：開門啦→enter、等等→wait、你聽到未…→ask_memory、天氣嘅但…推門→off_topic、呢…含糊→unclear。
+2) GuidePolicy fakeai4：goalSteerPhrase 從 sceneGoal.hints/ask/successIntents 出薄提示；回覆對準當前 goal 行動（推門／停低等）；冷老闆白話，禁客服腔。
+3) sceneGoal 補齊（只補、不刪節）：alex nodes=28 goal=28 size≥8KB；morgan 22/22；sam 21/21。start goals：alex 推門/停低；morgan 頂真/坐近；sam 問清楚/教/走。
+4) 短記憶：唔建第二腦。GuidePolicy + IntentEngine 掃 state.chatUserLines（既有 pushChatMemory）；有等/推細節時偶發 MEM_NUDGE 反映。index ?v=fakeai4。
+未碰 play-engine/life；patterns 非空；無 stub wipe。四柱 4/4/4/4。
+
+wc:
+ 21870 intent-patterns.js
+ 12657 guide-policy.js
+ 16752 guide-lines.js
+ 30247 intent-engine.js
+ 25095 data/alex.json
+ 29646 data/morgan.json
+ 27393 data/sam.json
+  7234 index.html
+170894 total
+
 2026-10-22 21:36 HKT：Lane B T-natural-1 hotfix (over e29 literary). guide-lines clear spoken Cantonese (推門入去／停低等等／講清楚你想點) + NONSENSE_HINT/PRESSURE/CALLOUT；GuidePolicy.looksNonsense + IntentEngine keep gibberish as unclear；version=laneB-clear1-20261022；index ?v=guide-clear1 (guide-lines/policy/engine)。Replaces immersive frost poetry pools. GuidePolicy API kept (+nonsense). No OpenRouter；no data stub；app.js play path untouched。
 
 2026-10-22 ~21:32 HKT：Lane B 執行。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS。
