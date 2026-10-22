@@ -1,3 +1,5 @@
+2026-10-22 22:23 HKT：CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。無開 P0 INTENT T1–T5。Live gate：app.js 正常 src 載入（?v=fakeai4），無 app_b64 stub。只監察 audio-bed.js / fx-play.js / compete-boot.js / chat-guide.js（未改，已符合 CHAT-FIRST）。chat-guide.js 保持：story advance 後 #choices freechat-hidden，2 miss 先 show，renderNode wrap hide 唔 reveal，yes-words (好/係/得) 唔計 miss（heat 意圖保留），owner playtest 唔 interrupt。四柱 4/4/4/4。改檔：只 STATUS.md。
+
 2026-10-22 22:20 HKT：加 tools/auto-playtest.js（Node 本地假AI回覆閘，無付費LLM）。跑 battery：99P/31F/130 · human-avg 90.7。走廊 alex/n0 全過；系統性失敗：morgan/m1、alex/n1、alex/n2a（guide 池／history reflect 仍偏推門停低，未跟 mid-node sceneGoal）；sam/s1 偶發 agree「我應承」未入 success。DISPATCH 加 FEEL auto-playtest gate。改檔：tools/auto-playtest.js、tools/PLAYTEST-LAST.md、DISPATCH.md、STATUS.md。未碰 live play／data／patterns。用法：node tools/auto-playtest.js。四柱仍 4/4/4/4。
 
 2026-10-22 22:17 HKT：Lane A hourly 執行。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY。
