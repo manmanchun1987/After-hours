@@ -19,9 +19,9 @@
 
   var ASK_WANT_REPLIES = {
     cold: [
-      "你問我想？門就喺前面。",
-      "推定停。我唔代你揀。",
-      "指引？入去。或企定。",
+      "你問我想點。門喺你面前：推門入去，定停低等等？",
+      "我想你自己決定。推門入去，定停低？",
+      "唔使我教。推門入去，定你話停低。",
       "我點想唔緊要。你企喺門口。",
       "想我點？先對準門把。",
       "你問『應該』——答案就兩個。",
@@ -49,14 +49,14 @@
       "……我想你入。其餘你講。"
     ],
     sharp: [
-      "推。定停。",
-      "門。而家。",
-      "唔好問。做。",
-      "入。",
-      "停低都得。快。",
-      "少問我想。推門。",
-      "夠問。門。",
-      "選。"
+      "最後一次。你問我想點——推門入去，定停低等等？",
+      "夠問。門喺度：推門入去，定停低？",
+      "而家就要你答。推門入去，定停低等等？",
+      "唔好再問我。推門入去，定你話停低。",
+      "選邊樣。推門入去，定停低等等？",
+      "我唔再解釋。推門入去，定停低？",
+      "短答。推門入去，定停低等等？",
+      "而家。推門入去，定停低等等？"
     ]
   };
 
@@ -83,11 +83,11 @@
       "……一句離題。跟住——推，定停？"
     ],
     sharp: [
-      "停。門。",
-      "離題。推。",
-      "夠。入定企。",
-      "唔聽閑話。",
-      "而家。門。"
+      "最後一次。離題收起——推門入去，定停低等等？",
+      "夠喇。而家唔傾呢啲。推門入去，定停低？",
+      "閒話到此。推門入去，定停低等等？",
+      "我唔聽閒話。推門入去，定你話停低。",
+      "而家就要答。推門入去，定停低等等？"
     ]
   };
 
@@ -137,21 +137,34 @@
     return { score: score, hits: hits };
   }
 
-  /** Ordered-char match: all chars of token appear in order in hay (typo/word-order tolerant). */
-  function orderedChars(hay, token) {
-    if (!token || !hay) return false;
-    var i = 0;
-    for (var c = 0; c < hay.length && i < token.length; c++) {
-      if (hay.charAt(c) === token.charAt(i)) i++;
+  /**
+   * Near-ordered match for short tokens only.
+   * One inserted char is OK (食咗飯 ≈ 食飯). Long gaps are not a match.
+   */
+  function nearOrdered(hay, token, maxGap) {
+    if (!token || !hay || hay.length < token.length) return false;
+    var start, i, c, last, gap;
+    for (start = 0; start < hay.length; start++) {
+      if (hay.charAt(start) !== token.charAt(0)) continue;
+      i = 1;
+      last = start;
+      for (c = start + 1; c < hay.length && i < token.length; c++) {
+        if (hay.charAt(c) !== token.charAt(i)) continue;
+        gap = c - last - 1;
+        if (gap > maxGap) break;
+        last = c;
+        i++;
+      }
+      if (i === token.length) return true;
     }
-    return i === token.length;
+    return false;
   }
 
-  /** Light typo: allow one skip in token or hay for tokens length >= 3. */
+  /** Light typo: substring, one inserted particle, one skip, or one transposition. */
   function fuzzyIncludes(hay, token) {
     if (!token || token.length < 1) return false;
     if (hay.indexOf(token) >= 0) return true;
-    if (token.length >= 2 && orderedChars(hay, token)) return true;
+    if ((token.length === 2 || token.length === 3) && nearOrdered(hay, token, 1)) return true;
     if (token.length < 3) return false;
     // skip one char in token
     for (var s = 0; s < token.length; s++) {
@@ -177,10 +190,15 @@
     for (var i = 0; i < tokens.length; i++) {
       var tok = norm(tokens[i]);
       if (!tok) continue;
-      if (fuzzyIncludes(n, tok)) {
-        // longer tokens weigh more; single-char "入" alone is weak
-        var w = tok.length >= 2 ? 1 : 0.35;
-        if (tok.length >= 3) w = 1.25;
+      var hitTok = false;
+      if (tok.length === 1) {
+        // Single chars only count as the whole utterance (+ particle), never inside 你好 / 唔得 / 記得.
+        if (n.length <= 3 && n.charAt(0) === tok && /^[呀啊啦喇咯嘅噶嘛呢]?$/.test(n.slice(1))) hitTok = true;
+      } else if (fuzzyIncludes(n, tok)) {
+        hitTok = true;
+      }
+      if (hitTok) {
+        var w = tok.length >= 3 ? 1.25 : 1;
         score += w;
         hits.push(tok);
       }
@@ -207,6 +225,29 @@
     return false;
   }
 
+  function resolveAdvance(ctx) {
+    var goal = ctx && ctx.node && ctx.node.sceneGoal;
+    var success = (goal && goal.successIntents) || [];
+    if (success.indexOf("enter_door") >= 0 && success.indexOf("agree") < 0) return "enter_door";
+    if (success.indexOf("agree") >= 0 && success.indexOf("enter_door") < 0) return "agree";
+    if (success.indexOf("enter_door") >= 0) return "enter_door";
+    if (success.indexOf("agree") >= 0) return "agree";
+    if (success.indexOf("follow") >= 0) return "follow";
+    if (success.indexOf("wait") >= 0) return "wait";
+    return "enter_door";
+  }
+
+  function packResult(id, score, raw, scores, hits) {
+    return {
+      id: id,
+      score: score,
+      scores: scores || {},
+      hits: hits || [id],
+      intents: INTENTS.slice(),
+      text: raw
+    };
+  }
+
   function classify(text, ctx) {
     ctx = ctx || {};
     var raw = String(text || "").trim();
@@ -215,6 +256,20 @@
     var best = "unclear";
     var bestScore = 0;
     var detail = {};
+
+    // Garbage stays unclear. Real short speech is not garbage (see GuidePolicy.looksNonsense).
+    if (looksNonsense(raw)) {
+      return packResult("unclear", 0.1, raw, { unclear: 0.1 }, ["nonsense"]);
+    }
+
+    // Exact colloquial / mixed lines win before the loose pattern soup.
+    var shortId = P.matchShort ? P.matchShort(raw) : null;
+    if (shortId === "advance") shortId = resolveAdvance(ctx);
+    if (shortId) {
+      var shortScores = {};
+      shortScores[shortId] = 2;
+      return packResult(shortId, 2, raw, shortScores, [shortId]);
+    }
 
     Object.keys(PATTERNS).forEach(function (id) {
       var r = scorePatterns(raw, PATTERNS[id]);
@@ -297,15 +352,39 @@
 
     if (bestScore <= 0) best = "unclear";
 
+    // Greeting / weather / leftover unclear loses to a real scene action when both hit.
+    var actionBeatsSoft = ["enter_door", "wait", "refuse", "agree", "ask_want", "flirt", "challenge", "apologize", "ask_memory"];
+    if (best === "greet" || best === "off_topic" || best === "unclear") {
+      for (var ai = 0; ai < actionBeatsSoft.length; ai++) {
+        var scA = scores[actionBeatsSoft[ai]] || 0;
+        if (scA >= 1 && scA >= bestScore) {
+          best = actionBeatsSoft[ai];
+          bestScore = scA;
+          break;
+        }
+      }
+    }
+    if (/(做咩|做乜|搞咩|點算|what'?s up|so what)/i.test(raw) && (scores.ask_want || 0) >= 1) {
+      if ((scores.ask_want || 0) >= (scores.enter_door || 0) && (scores.ask_want || 0) >= (scores.wait || 0)) {
+        best = "ask_want";
+        bestScore = scores.ask_want;
+      }
+    }
+    if (/(你敢|頂真|點解要|憑乜|怕咩)/.test(raw) && (scores.challenge || 0) >= 1) {
+      best = "challenge";
+      bestScore = Math.max(bestScore, scores.challenge || 0);
+    }
+
     // Nonsense / empty meaning stays unclear (clear spoken steer via GuidePolicy)
     if (looksNonsense(raw)) {
       best = "unclear";
       bestScore = Math.min(bestScore, 0.1);
     }
 
-    // Default residual chatter on corridor → off_topic (in-character block path)
+    // Default residual chatter on corridor → off_topic (in-character block path).
+    // Real fillers stay unclear so Guide can ask for one next step without calling them 離題.
     if (best === "unclear" && isCorridor(ctx.node) && raw.length >= 2) {
-      if (!looksNonsense(raw) && !/^[嗯啊呃哦喔]+$/.test(raw)) {
+      if (!looksNonsense(raw) && !/^[嗯啊呃哦喔噢吓]+$/.test(raw) && !/^(huh|eh|um|hmm)$/i.test(raw)) {
         best = "off_topic";
         bestScore = 0.25;
       }
@@ -402,13 +481,31 @@
     return null;
   }
 
-  function pickFrom(pool, recent) {
-    var list = (pool || []).filter(Boolean);
+  function pickFrom(pool, recent, minLen) {
+    minLen = minLen || 10;
+    var all = (pool || []).filter(Boolean);
+    var list = all.filter(function (l) {
+      return String(l).replace(/\s/g, "").length >= minLen;
+    });
+    if (!list.length) list = all;
     if (!list.length) return "";
     recent = recent || [];
-    var fresh = list.filter(function (l) { return recent.indexOf(l) < 0; });
-    var use = fresh.length ? fresh : list;
-    return use[Math.floor(Math.random() * use.length)];
+    var i, line, head, r, clash;
+    for (i = 0; i < list.length; i++) {
+      line = list[(recent.length + i) % list.length];
+      if (recent.indexOf(line) >= 0) continue;
+      head = String(line).slice(0, 6);
+      clash = false;
+      for (r = Math.max(0, recent.length - 4); r < recent.length; r++) {
+        if (String(recent[r]).slice(0, 6) === head) clash = true;
+      }
+      if (!clash) return line;
+    }
+    for (i = 0; i < list.length; i++) {
+      line = list[(recent.length + i) % list.length];
+      if (recent.indexOf(line) < 0) return line;
+    }
+    return list[recent.length % list.length];
   }
 
   function pickReply(classified, ctx) {
@@ -429,36 +526,59 @@
     }
     if (id === "apologize") {
       return pickFrom([
-        "道歉收低。門仲喺度。",
-        "……知。跟住你推，定停。",
-        "唔使客套。決定。"
+        "道歉我收下。而家：推門入去，定停低等等？",
+        "對唔住我聽到。推門入去，定停低？",
+        "唔使客套。推門入去，定你話停低。"
       ], recent);
     }
     if (id === "challenge") {
       return pickFrom([
-        "頂嘴？門把仲凉。",
-        "你挑戰——先入嚟再算。",
-        "……有種。推門講。"
+        "頂嘴我收到。而家：推門入去，定停低等等？",
+        "你挑戰我，我聽到。推門入去，定停低？",
+        "膽大。先答呢步：推門入去，定停低等等？"
       ], recent);
     }
     if (id === "flirt") {
       return pickFrom([
-        "……走廊。收斂。想近——入去。",
-        "膽大。門後先繼續。",
-        "哼。推門。"
+        "想近我聽到。而家：推門入去，定停低等等？",
+        "心急我知。推門入去，定停低？",
+        "呢句夠膽。先答：推門入去，定停低等等？"
+      ], recent);
+    }
+    if (id === "greet") {
+      return pickFrom([
+        "你好。人到就答呢步：推門入去，定停低等等？",
+        "見到你。而家：推門入去，定停低？",
+        "招呼收到。推門入去，定停低等等？"
+      ], recent);
+    }
+    if (id === "refuse") {
+      return pickFrom([
+        "你想走我聽到。走之前：推門入去，定停低等等？",
+        "唔得我收到。而家：推門入去，定停低？",
+        "你話唔，我聽到。推門入去，定停低等等？"
       ], recent);
     }
     if (id === "ask_memory") {
       return null; // let app pickReply / memory chips handle
     }
     if (id === "unclear") {
+      var filler = /^(嗯|啊|哦|噢|呃|吓|咩話|唔明|huh|eh|um|hmm)[？?！!。.…]*$/i.test(String(classified.text || "").trim());
+      if (filler) {
+        return pickFrom([
+          "嗯一聲未夠。推門入去，定停低等等？",
+          "我聽到聲，未聽到決定。推門入去，定停低？",
+          "呢句太短。推門入去，定停低等等？",
+          "你係未聽明。推門入去，定停低等等？"
+        ], recent);
+      }
       if (isCorridor(ctx.node)) {
         return pickFrom([
-          "聽唔明。而家係走廊——你推門入去，定停低等等？",
-          "呢句無意思。講清楚：推門入去，定停低？",
-          "聽唔到重點。推門入去，定停低等等？講清楚。",
-          "亂打唔算。而家——推門，定停低？",
-          "我聽唔明。門就喺度：推門入去定停低等等？"
+          "聽唔明。而家：推門入去，定停低等等？",
+          "呢句無意思。推門入去，定停低？",
+          "亂打唔算。推門入去，定停低等等？",
+          "我聽唔明。推門入去，定停低等等？",
+          "無內容。推門入去，定停低？"
         ], recent);
       }
       return null;
@@ -737,7 +857,7 @@
       if (ok) pass++;
       rows.push({ text: row.text, want: row.intent, got: c.id, ok: ok });
     }
-    return { pass: pass, total: ACCEPTANCE_SOFT.length, rows: rows, version: "split1" };
+    return { pass: pass, total: ACCEPTANCE_SOFT.length, rows: rows, version: "colloq1" };
   }
 
   var api = {
@@ -751,7 +871,7 @@
     install: install,
     selfCheckSoft: selfCheckSoft,
     ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
-    version: "split1"
+    version: "colloq1"
   };
 
   global.IntentEngine = api;

@@ -592,6 +592,140 @@ function renderMarkdown(all, summary, meta) {
   return lines.join("\n");
 }
 
+/**
+ * Real-player short lines (純粵語、中英夾雜、極短、挑釁、求推進).
+ * advance phrases resolve the same way IntentEngine does.
+ */
+var SHORT_PHRASES = [
+  { text: "嗯", intent: "unclear", human: true },
+  { text: "係", intent: "agree", human: true },
+  { text: "做咩", intent: "ask_want", human: true },
+  { text: "你好", intent: "greet", human: true },
+  { text: "hi", intent: "greet", human: true },
+  { text: "hello vera", intent: "greet", human: true },
+  { text: "哈囉", intent: "greet", human: true },
+  { text: "ok lah", intent: "agree", human: true },
+  { text: "yes", intent: "agree", human: true },
+  { text: "no", intent: "refuse", human: true },
+  { text: "唔得", intent: "refuse", human: true },
+  { text: "我走先", intent: "refuse", human: true },
+  { text: "bye", intent: "refuse", human: true },
+  { text: "食咗飯未", intent: "off_topic", human: true },
+  { text: "what's up", intent: "ask_want", human: true },
+  { text: "我鐘意你", intent: "flirt", human: true },
+  { text: "come closer", intent: "flirt", human: true },
+  { text: "你敢唔敢", intent: "challenge", human: true },
+  { text: "快啲啦", intent: "advance", human: true },
+  { text: "go", intent: "advance", human: true },
+  { text: "推啦", intent: "enter_door", human: true },
+  { text: "等等啦", intent: "wait", human: true },
+  { text: "咩話", intent: "unclear", human: true },
+  { text: "huh", intent: "unclear", human: true },
+  { text: "asdfjk", intent: "unclear", nonsense: true },
+  { text: "哈哈", intent: "unclear", nonsense: true },
+  { text: "繼續啦", intent: "agree", human: true },
+  { text: "開門啦", intent: "enter_door", human: true },
+  { text: "so what", intent: "ask_want", human: true },
+  { text: "唔明", intent: "unclear", human: true },
+  { text: "好正", intent: "flirt", human: true },
+  { text: "wait", intent: "wait", human: true },
+  { text: "let's go", intent: "advance", human: true },
+  { text: "點解要我留", intent: "challenge", human: true },
+  { text: "今日天氣好熱", intent: "off_topic", human: true }
+];
+
+function resolveAdvanceExpect(success) {
+  success = success || [];
+  if (success.indexOf("enter_door") >= 0 && success.indexOf("agree") < 0) return "enter_door";
+  if (success.indexOf("agree") >= 0 && success.indexOf("enter_door") < 0) return "agree";
+  if (success.indexOf("enter_door") >= 0) return "enter_door";
+  if (success.indexOf("agree") >= 0) return "agree";
+  if (success.indexOf("wait") >= 0) return "wait";
+  return "enter_door";
+}
+
+function runShortScene(scene) {
+  var goal = scene.node.sceneGoal;
+  var success = (goal && goal.successIntents) || [];
+  var state = freshState();
+  var results = [];
+  SHORT_PHRASES.forEach(function (row) {
+    var expect = row.intent === "advance" ? resolveAdvanceExpect(success) : row.intent;
+    var classified = IntentEngine.classify(row.text, {
+      node: scene.node,
+      state: state,
+      tone: "cold"
+    });
+    var intent = {
+      id: classified.id,
+      text: row.text,
+      score: classified.score
+    };
+    var decision = GuidePolicy.decide({
+      intent: intent,
+      text: row.text,
+      node: scene.node,
+      sceneGoal: goal,
+      state: state,
+      missCount: 0,
+      tone: "cold"
+    });
+    if (typeof GuidePolicy.applyMissToState === "function" && decision) {
+      GuidePolicy.applyMissToState(state, decision);
+    }
+    var reply = (decision && decision.reply) || "";
+    var prior = (state.recentBotReplies || []).slice(-6);
+    if (reply) {
+      state.recentBotReplies = (state.recentBotReplies || []).concat([reply]).slice(-12);
+      state.chatBotLines = (state.chatBotLines || []).concat([reply]).slice(-50);
+    }
+    state.chatUserLines = (state.chatUserLines || []).concat([row.text]).slice(-50);
+    if (decision && decision.advance) state.guideMissCount = 0;
+
+    var fails = [];
+    var warns = [];
+    var advanced = !!(decision && decision.advance);
+    var shouldAdvance = success.indexOf(expect) >= 0;
+    if (classified.id !== expect) fails.push("intent_hit");
+    if (shouldAdvance && !advanced) fails.push("no_advance");
+    if (!shouldAdvance && advanced) fails.push("false_advance");
+    if (!advanced) {
+      var r = String(reply || "");
+      var len = r.replace(/\s/g, "").length;
+      var qs = (r.match(/[？?]/g) || []).length;
+      var ask = goal && goal.ask ? String(goal.ask).replace(/[？?。．!\s]+$/g, "") : "";
+      if (!r.trim()) fails.push("empty_reply");
+      if (len < 8) fails.push("short_reply");
+      if (qs > 1) fails.push("multi_question");
+      if (ask && r.indexOf(ask) < 0) fails.push("no_next_step");
+      if (ask.indexOf("推門") < 0 && /推門入去，定停低等等/.test(r) && ask) fails.push("stacked_door");
+      if (prior.indexOf(r) >= 0) fails.push("dup_last6");
+      if (row.nonsense && !/聽唔明|亂打|亂碼|無意思|無內容|砸字|鍵盤|無意義/.test(r)) {
+        fails.push("nonsense_no_ack");
+      }
+      if (row.human && /亂打|砸鍵盤|亂碼|鍵盤垃圾/.test(r)) fails.push("false_nonsense");
+      if (CS_RE.test(r)) fails.push("cs_tone");
+    }
+    results.push({
+      cat: row.nonsense ? "nonsense" : "short",
+      text: row.text,
+      intentGot: classified.id,
+      expectIntent: expect,
+      advance: advanced,
+      reply: advanced ? null : reply,
+      strategy: decision ? decision.strategy : null,
+      score: {
+        pass: fails.length === 0,
+        fails: fails,
+        warns: warns,
+        human: fails.length ? 40 : 100,
+        note: fails.length ? fails.join(",") : "ok"
+      }
+    });
+  });
+  return results;
+}
+
 function main() {
   var want = CHAR_FILTER.split(",").map(function (s) {
     return s.trim();
@@ -610,6 +744,24 @@ function main() {
         label: scene.label,
         results: runScene(scene)
       });
+    });
+  });
+
+  // Short-phrase battery: corridor + one mid-node. Enough to see greet/ask/flirt/refuse/advance.
+  ["n0", "n1"].forEach(function (id) {
+    var ch = loadChar("alex");
+    if (!ch || !ch.nodes[id] || !ch.nodes[id].sceneGoal) return;
+    var n = ch.nodes[id];
+    all.push({
+      char: "short",
+      id: id,
+      label: "short-phrases " + (n.label || id),
+      results: runShortScene({
+        char: "alex",
+        id: id,
+        label: n.label || id,
+        node: Object.assign({ id: id }, n)
+      })
     });
   });
 
