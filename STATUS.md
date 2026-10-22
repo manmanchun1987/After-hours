@@ -1,3 +1,5 @@
+2026-10-23 02:17 HKT：CEO 批 Lane C——第二次 18+ 情色加厚（用戶「聽落唔夠色情」）。相對 f802b50：由氣息／耳側／幾乎吻 → 明確身體／硬濕／衫底褲內觸摸／磨蹭／除衫除底褲／口交暗示／插入邊緣或發生（辦公室熄燈／酒廊房／天台盲區）。Vera 冷控（握／騎／規則）；Elise 交易式誘惑（窗前／條款＝慾望）；Sammi 軟但餓（手活／磨入／口頭版）。保留 50 節結構／邊／sceneGoal。auto-playtest --seed=42：135P/0F · human-avg 99.5。熱度 token 約 alex 159→180 · morgan 195→222 · sam 171→239。改檔：data/alex.json、data/morgan.json、data/sam.json、STATUS.md、tools/PLAYTEST-LAST.md。
+
 2026-10-23 02:05 HKT：CEO 批 Lane C——三線加厚 18+ 慾望／身體／權力熱度（改寫 text/thought/aside/mid，保留 50 節結構／邊／結局）。Vera（alex）優先由偏軟→中後段明顯更熱（下巴／燈暗規則／領口鈕／吻邊／評核室餘溫）；Elise（morgan）酒廊→房門→窗前交易＝慾望抬升；Sammi（sam）茶水間／影裏／天台吻線加厚。auto-playtest --seed=42：135P/0F · human-avg 99.5。熱度 token 約 alex 25→159 · morgan 109→195 · sam 67→171。改檔：data/alex.json、data/morgan.json、data/sam.json、STATUS.md、tools/PLAYTEST-LAST.md。
 
 2026-10-23 01:45 HKT：鍵盤開→關自測——keyboard-open 要 focus且viewport縮；收鍵盤（vv回大）即使仲focus都forceClose；加 window.__ahKbSelfTest()。?v=kb-mobile-20261023e
