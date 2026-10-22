@@ -1,4 +1,6 @@
-2026-10-23 01:30 HKT：手機鍵盤黑位——取消 position:fixed；focus 即 keyboard-open；舞台高度=visualViewport，composer margin-top:auto 貼底；打字時藏對白條。?v=kb-mobile-20261023b
+2026-10-23 01:35 HKT：收鍵盤唔還原——改為只跟 chat focus 開 keyboard-open；focusout 即清 inline 高度／transform／class，唔再俾 visualViewport 縮水卡住。
+
+2026-10-23 01:30 HKT：手機鍵盤黑位——取消 position:fixed；focus 即 keyboard-open；舞台高度=visualViewport，composer margin-top:auto 貼底；打字時藏對白條。?v=kb-mobile-20261023c
 
 2026-10-23 01:25 HKT：手機鍵盤彈出修——face-first 嘅 #screen-play 68vh 鎖死蓋過 keyboard-open；而家鍵盤開時跟 --app-vh／固定舞台、收對白條、輸入 16px 防 zoom、唔再 scrollIntoView 跳畫面。Cache ?v=kb-mobile-20261023a。
 
