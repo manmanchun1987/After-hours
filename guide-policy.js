@@ -1,5 +1,5 @@
 /**
- * GuidePolicy (fakeai4) — steers freeChat toward node.sceneGoal.
+ * GuidePolicy (p0-steer-20261022) — steers freeChat toward *current* node.sceneGoal.
  * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
  * Thin goal-hint from sceneGoal.hints / successIntents labels. Memory = skim full chatUserLines/chatBotLines in state (cap 50), not a second brain.
  * Line pools live in guide-lines.js (Lane B); this file keeps sceneGoal/miss/advance rules.
@@ -132,23 +132,111 @@
     return parts.slice(0, 3).join("／") + "。講清楚。";
   }
 
+  function goalIsDoorish(goal) {
+    var s = (goal && goal.successIntents) || [];
+    // Corridor-style only when enter_door is a success (wait alone e.g. sam/s1 is mid-node)
+    return s.indexOf("enter_door") >= 0;
+  }
+
+  var INTENT_STEER_TOKENS = {
+    enter_door: ["推門", "入去", "入嚟", "開門", "進去", "推開"],
+    wait: ["停低", "等等", "等陣", "企定"],
+    agree: ["應承", "繼續", "配合"],
+    refuse: ["唔入", "離開"],
+    ask_want: ["講清楚", "你想點", "想點"],
+    flirt: ["近", "站近", "靠近", "坐近"],
+    challenge: ["頂真", "點解"],
+    apologize: ["認錯", "道歉"],
+    ask_memory: ["頭先", "記得", "之前"]
+  };
+
+  function replyHasGoalAction(reply, goal) {
+    if (!reply || !goal) return false;
+    var successes = Array.isArray(goal.successIntents) ? goal.successIntents : [];
+    var hints = goal.hints || {};
+    var i, j, lab, toks, t;
+    var doorish = goalIsDoorish(goal);
+    var hasDoorLex = /推門|停低|入去|開門|推定停|門把|走廊/.test(reply);
+    var hasMidLex = /應承|配合|頂真|點解|企近|靠近|站近|坐近|認錯|唔入|離開/.test(reply);
+    // Mid-node: corridor door lines (even with bare 講清楚) do not count as goal action
+    if (!doorish && hasDoorLex && !hasMidLex) {
+      var hitSpecific = false;
+      if (goal.ask) {
+        var askCore = String(goal.ask).replace(/[，,／\/定？?。.\s講清楚你想點]+/g, "");
+        if (askCore.length >= 2 && reply.indexOf(askCore.slice(0, Math.min(4, askCore.length))) >= 0) {
+          // fall through to label checks below
+        }
+      }
+      for (i = 0; i < successes.length; i++) {
+        if (successes[i] === "ask_want" || successes[i] === "ask_memory") continue;
+        lab = String(hints[successes[i]] || INTENT_HINT_LABELS[successes[i]] || "").replace(/[。？?！!]/g, "").trim();
+        if (lab && reply.indexOf(lab) >= 0) { hitSpecific = true; break; }
+        toks = INTENT_STEER_TOKENS[successes[i]] || [];
+        for (j = 0; j < toks.length; j++) {
+          if (toks[j] && toks[j] !== "講清楚" && toks[j] !== "想點" && toks[j] !== "你想點" && reply.indexOf(toks[j]) >= 0) {
+            hitSpecific = true; break;
+          }
+        }
+        if (hitSpecific) break;
+      }
+      if (!hitSpecific) return false;
+    }
+    if (goal.ask) {
+      var askBits = String(goal.ask).split(/[，,／\/定？?。.\s]+/);
+      for (i = 0; i < askBits.length; i++) {
+        t = String(askBits[i] || "").replace(/[。？?！!]/g, "").trim();
+        if (t.length >= 2 && reply.indexOf(t) >= 0) {
+          if (!doorish && hasDoorLex && !hasMidLex && /^(講清楚|你想點|想點)$/.test(t)) continue;
+          return true;
+        }
+      }
+    }
+    for (i = 0; i < successes.length; i++) {
+      var sid = successes[i];
+      lab = String(hints[sid] || INTENT_HINT_LABELS[sid] || "").replace(/[。？?！!]/g, "").trim();
+      if (lab && reply.indexOf(lab) >= 0) return true;
+      // Mid-node: do not let corridor wait/enter lexicon (停低/推門) rubber-stamp door pool lines
+      if (!doorish && (sid === "enter_door" || sid === "wait")) {
+        if (lab) {
+          var frag = lab.replace(/[／\/定，,].*$/, "").trim();
+          if (frag.length >= 2 && reply.indexOf(frag) >= 0) return true;
+        }
+        continue;
+      }
+      toks = INTENT_STEER_TOKENS[sid] || [];
+      for (j = 0; j < toks.length; j++) {
+        if (!toks[j] || reply.indexOf(toks[j]) < 0) continue;
+        if (!doorish && hasDoorLex && !hasMidLex && (toks[j] === "講清楚" || toks[j] === "想點" || toks[j] === "你想點" || toks[j] === "繼續")) continue;
+        return true;
+      }
+    }
+    // Door defaults only count when current goal is door-ish
+    if (doorish && /推門|停低|入去|等等|推定停/.test(reply)) return true;
+    return false;
+  }
+
   function applyGoalSteer(reply, goal, strategy) {
     var steer = goalSteerPhrase(goal);
     if (!steer) return reply;
-    // If pool line already names a success action, keep it; else append thin steer.
-    var successes = (goal && goal.successIntents) || [];
-    var labels = [];
-    var hints = (goal && goal.hints) || {};
-    for (var i = 0; i < successes.length; i++) {
-      labels.push(hints[successes[i]] || INTENT_HINT_LABELS[successes[i]] || "");
+    if (replyHasGoalAction(reply, goal)) return reply;
+    // Mid-node / non-door goals: never keep corridor door pool lines — speak current sceneGoal
+    if (!goalIsDoorish(goal)) {
+      if (strategy === "callout") {
+        var cCue = pickAnti([
+          "而家決定。", "短答。", "唔再拖。", "即刻。", "講清楚。",
+          "夠喇。", "而家。", "答我。", "二揀一。", "最後一次。"
+        ], []);
+        return (cCue || "而家決定。") + steer;
+      }
+      if (strategy === "pressure") {
+        var pCue = pickAnti([
+          "再講一次。", "重複：", "唔好再兜。", "快啲。", "壓力嚟喇：",
+          "時間緊。", "再模糊無用。", "短句：", "聽清楚。", "而家要你揀："
+        ], []);
+        return (pCue || "再講一次。") + steer;
+      }
+      return steer;
     }
-    var joined = labels.join("");
-    var hasAction = false;
-    if (/推門|停低|入去|等等|講清楚你想點/.test(reply || "")) hasAction = true;
-    for (var j = 0; j < labels.length; j++) {
-      if (labels[j] && reply && reply.indexOf(labels[j].replace(/[。？?]/g, "")) >= 0) hasAction = true;
-    }
-    if (hasAction) return reply;
     if (strategy === "callout" || strategy === "pressure") {
       return (reply ? reply.replace(/[。．.\s]+$/, "") + "。" : "") + steer;
     }
@@ -184,12 +272,18 @@
       if (/^B:/.test(row)) continue; // reflect player detail primarily
       if (/停低|等等|等陣|未準備|企定|猶豫/.test(row)) return "wait";
       if (/推門|開門|入去|入嚟|進去|推開/.test(row)) return "enter";
+      if (/應承|答應|同意|繼續/.test(row)) return "agree";
+      if (/頂真|點解|質疑/.test(row)) return "challenge";
+      if (/企近|靠近|站近|坐近/.test(row)) return "flirt";
       if (/記得|頭先|之前|聽到未/.test(row)) return "memory";
       if (/天氣|食飯|幾點/.test(row)) return "off";
     }
     // Fallback: whole transcript
     if (/停低|等等|等陣|未準備|企定|猶豫/.test(blob)) return "wait";
     if (/推門|開門|入去|入嚟|進去|推開/.test(blob)) return "enter";
+    if (/應承|答應|同意|繼續/.test(blob)) return "agree";
+    if (/頂真|點解|質疑/.test(blob)) return "challenge";
+    if (/企近|靠近|站近|坐近/.test(blob)) return "flirt";
     if (/記得|頭先|之前|聽到未/.test(blob)) return "memory";
     if (/天氣|食飯|幾點/.test(blob)) return "off";
     return null;
@@ -198,6 +292,18 @@
   function reflectFromHistory(detail, goal, recent) {
     var steer = goalSteerPhrase(goal);
     var pool = L.MEM_NUDGE || [];
+    // History MEM must NOT force door lines when current goal is not enter/wait
+    if (!goalIsDoorish(goal)) {
+      var pref = "";
+      if (detail === "wait") pref = "你頭先似想停低。";
+      else if (detail === "enter") pref = "你頭先提過入去。";
+      else if (detail === "agree") pref = "你頭先似應承。";
+      else if (detail === "challenge") pref = "你頭先頂真問過。";
+      else if (detail === "flirt") pref = "你頭先想近啲。";
+      else if (detail === "memory") pref = "頭先嗰句我聽到。";
+      else if (detail === "off") pref = "閒話收低。";
+      return pref + (steer || "講清楚你想點。");
+    }
     if (detail === "wait") {
       var w = pickAnti([
         "你頭先話想等等。咁停低等等，定改推門入去？",
@@ -217,7 +323,10 @@
     if (detail === "memory") {
       return pickAnti(pool, recent) || ("頭先嗰句我聽到。" + (steer ? steer : "推定停？"));
     }
-    return pickAnti(pool, recent) || steer;
+    // Door-ish goal but non-door detail: still prefer steer over door MEM_NUDGE alone
+    var mem = pickAnti(pool, recent);
+    if (mem && replyHasGoalAction(mem, goal)) return mem;
+    return (mem ? mem.replace(/[。．.\s]+$/, "") + "。" : "") + (steer || "");
   }
 
   function decide(input) {
@@ -295,11 +404,14 @@
         var softRef = reflectFromHistory(detail, goal, recent);
         if (softRef) reply = softRef;
       }
+      // Reflect must still carry *current* sceneGoal steer (never leave door-only on mid-node)
+      reply = applyGoalSteer(reply, goal, strategy);
     } catch (e) {}
 
     if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你|請輸入正確)/i.test(reply || "") ||
         (/客服/.test(reply || "") && !/唔做客服/.test(reply || ""))) {
-      reply = L.CS_BLOCK_REPLY || "我唔做客服。門——推定停。";
+      var csSteer = goalSteerPhrase(goal);
+      reply = "我唔做客服。" + (csSteer || L.CS_BLOCK_REPLY || "門——推定停。");
     }
 
     var showChoices = false;
@@ -317,7 +429,7 @@
 
     return {
       strategy: strategy,
-      reply: reply || L.FALLBACK_REPLY || "門就喺度。推定停。",
+      reply: reply || goalSteerPhrase(goal) || L.FALLBACK_REPLY || "講清楚你想點。",
       advance: false,
       showChoices: showChoices,
       thought: thought,
@@ -348,7 +460,7 @@
     isOptional: isOptional,
     applyMissToState: applyMissToState,
     goalSteerPhrase: goalSteerPhrase,
-    version: "split1-fakeai4"
+    version: "split1-p0-steer-20261022"
   };
 
   global.GuidePolicy = api;

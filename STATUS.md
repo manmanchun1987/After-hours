@@ -1,3 +1,5 @@
+2026-10-22 22:32 HKT：P0 GUIDE mid-node goal steer + P0 INTENT agree soft-match。GuidePolicy 非走廊跟當前 sceneGoal；intent-patterns 加應承／challenge／flirt。auto-playtest --seed=42：**130 PASS / 0 FAIL**（前 99P/31F）· human-avg 97.2。Cache ?v=p0-steer-20261022 / p0-agree-20261022。DISPATCH 兩張 P0 關閉。改檔：guide-policy.js、guide-lines.js、intent-patterns.js、index.html、tools/PLAYTEST-LAST.md、DISPATCH.md、STATUS.md。一推 main。四柱仍 4/4/4/4。
+
 2026-10-22 22:28 HKT：LANES 加 App 顯示名建議表（AH-LaneA–F → 意圖加厚／引導回覆／劇情資料／點子／狀態打卡／整合上線）。只文件記錄；唔聲稱 Grok.com UI 已改名——要用戶或瀏覽器改。指令一句仍：「讀 LANES.md 該車並執行；守 AUTOMATION.md」。改檔：LANES.md、STATUS.md。未碰 app/data。四柱仍 4/4/4/4。
 
 2026-10-22 22:27 HKT：LANES A–F 對齊本地假 AI。A+B active；C pause write data（CEO sceneGoal 已 backfill）；D/E/F deferred。North star Intent+Guide 無付費LLM。下一優先：mid-node goal steer、agree soft-match、weak sceneGoal hand-tune、auto-playtest before FEEL。DISPATCH 開 P0 GUIDE mid-node + P0 INTENT agree soft-match；retain STORY/CODE restore monitors。改檔：LANES.md、AUTOMATION.md、DISPATCH.md、STATUS.md。未碰 app/data/patterns/guide。臨時：Pages 佇列塞少 push。四柱仍 4/4/4/4。

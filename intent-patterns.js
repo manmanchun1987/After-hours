@@ -1,6 +1,6 @@
 /**
  * IntentPatterns (Lane A) — soft Cantonese synonyms / fuzzy / typos for IntentEngine.
- * fakeai4: approved I-20261021-02/01 + I-20261020-09 — natural mixed unclear/ask_memory/off_topic + soft wait/enter synonyms. Soft-pass.
+ * p0-agree-20261022: agree soft-match (\u61c9\u627f/\u7b54\u61c9/\u540c\u610f) + challenge/flirt patterns. Soft-pass.
  */
 (function (global) {
   "use strict";
@@ -136,7 +136,21 @@
       /\u5614\u6211\u60f3\u5165\u53bb\u53c8\u60f3\u7b49\u7b49\u5148\u8a8d\u4f4d\u4f46\u4f60\u60f3\u6211\u9ede/
     ],
     agree: [
-      /\u597d|\u4fc2|\u5f97|\u7e7c\u7e8c|\u597d\u554a|\u4fc2\u554a|\u5f97\u5605|\u7e7c\u7e8c\u5566/
+      /\u597d|\u4fc2|\u5f97|\u7e7c\u7e8c|\u597d\u554a|\u4fc2\u554a|\u5f97\u5605|\u7e7c\u7e8c\u5566/,
+      /\u61c9\u627f|\u7b54\u61c9|\u540c\u610f|\u7121\u554f\u984c|\u6c92\u554f\u984c|\u5f97\u5566|\u597d\u5440|\u4fc2\u5481/,
+      /\u6211\u61c9\u627f|\u6211\u7b54\u61c9|\u6211\u540c\u610f|\u6211\u63a5\u53d7/,
+      /ok\s*(lah|la)?|okay|yes|sure/i,
+      /\u61c9\u627f|\u7b54\u61c9|\u540c\u610f|\u6211\u61c9\u627f|\u6211\u7b54\u61c9/
+    ],
+    challenge: [
+      /\u9ede\u89e3|\u9802\u771f|\u9802\u5634|\u8cea\u7591|\u6191\u4e5c|\u9ede\u89e3\u8981/,
+      /\u9ede\u89e3\u8981\u6211\u7559|\u6211\u9802\u771f\u554f|\u6211\u9802\u771f/,
+      /\u9ede\u89e3\u8981\u6211\u7559/
+    ],
+    flirt: [
+      /\u4f01\u8fd1|\u9760\u8fd1|\u518d\u8fd1|\u57c3\u8fd1|\u57cb\u5c11\u5c11|\u4ffe\u6211\u8fd1/,
+      /\u6211\u4f01\u8fd1\u5572|\u4ffe\u6211\u9760\u8fd1|\u5750\u8fd1/,
+      /\u6211\u4f01\u8fd1|\u4ffe\u6211\u9760\u8fd1/
     ]
   };
 
@@ -148,7 +162,9 @@
     off_topic: ["\u5929\u6c23", "天氣嘅但等陣先", "食飯但等等先推門"],
     ask_memory: ["你記得", "你聽到未", "頭先", "你聽到未但等陣先停低認位再等等"],
     unclear: ["呢我可能入去但等陣", "哦我唔知應該推定停", "呃我想入又想等等"],
-    agree: ["\u597d", "\u4fc2", "\u5f97"]
+    agree: ["\u597d", "\u4fc2", "\u5f97", "\u61c9\u627f", "\u7b54\u61c9", "\u540c\u610f", "\u6211\u61c9\u627f"],
+    challenge: ["\u9ede\u89e3", "\u9802\u771f", "\u9ede\u89e3\u8981\u6211\u7559", "\u6211\u9802\u771f\u554f"],
+    flirt: ["\u4f01\u8fd1", "\u9760\u8fd1", "\u6211\u4f01\u8fd1\u5572", "\u4ffe\u6211\u9760\u8fd1"]
   };
 
   var KEY_SYNONYMS = {
@@ -159,7 +175,9 @@
     off_topic: ["\u5929\u6c23"],
     ask_memory: ["你記得", "頭先", "你聽到未"],
     unclear: ["呢", "哦", "呃"],
-    agree: ["\u597d"]
+    agree: ["\u597d", "\u61c9\u627f", "\u7b54\u61c9", "\u540c\u610f"],
+    challenge: ["\u9ede\u89e3", "\u9802\u771f"],
+    flirt: ["\u4f01\u8fd1", "\u9760\u8fd1"]
   };
 
   var ACCEPTANCE_SOFT = {

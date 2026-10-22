@@ -5,10 +5,6 @@
 
 ## Open
 
-- **P0 GUIDE mid-node goal steer** — Guide pools／history reflect 必須跟**當前** `sceneGoal`，唔好永遠門心。`node tools/auto-playtest.js` 系統性失敗：alex/n1、alex/n2a、morgan/m1（仍偏推門停低）。Lane **B** 主做；驗收：上述節點 goal-steer 過、掃 `tools/PLAYTEST-LAST.md`。
-
-- **P0 INTENT agree soft-match** — 同意同義（如「我應承」）要入 `agree`／success，唔靠原文唯一。Lane **A** 主做；煙測含「我應承」；對照 playtest sam/s1 偶發 miss。
-
 - **auto-playtest gate (FEEL)** — Before claiming FEEL thicken / guide-feel work, run `node tools/auto-playtest.js` and skim `tools/PLAYTEST-LAST.md`. Local heuristics only (用字正確 · 有引導去目標 · 似唔似人). Do not claim FEEL up if corridor + mid-node battery shows systematic `no_goal_steer` / `literary_cryptic` / `cs_tone` fails. Tool only — does not change live play path.
 
 - **STORY weak sceneGoal hand-tune** — 推斷錯嘅 sceneGoal：開 IDEAS `proposed`，等 CEO **approved** 先准 Lane C 寫 data。而家 C 仍 pause write（fakeai4 已 backfill）。
@@ -18,6 +14,9 @@
 - **CODE restore-engine** — Live stub loader without parts。第一票：確保 app.js 完整 + parts (intent-patterns/engine + guide + chat-guide) 載入，禁 stub。（2026-10-21 檢查：live 無 stub，本地載入正常，IntentEngine 存在；保留作監察）
 
 ## Closed / done
+
+- **P0 GUIDE mid-node goal steer (2026-10-22)** GuidePolicy `split1-p0-steer-20261022`：miss/hint/pressure/callout + history MEM 跟*當前* sceneGoal（goalSteerPhrase／hints／ask）；非走廊唔再門心。Cache ?v=p0-steer-20261022。
+- **P0 INTENT agree soft-match (2026-10-22)** intent-patterns：應承／答應／同意 + challenge／flirt 同義。Cache ?v=p0-agree-20261022。auto-playtest --seed=42 → **130P/0F**（前 99P/31F）。
 
 - **fakeai4 pack (2026-10-22 CEO)** INTENT patterns thicken (I-20261021-02/01 + I-20261020-09) ?v=fakeai4；GUIDE goalSteerPhrase from sceneGoal；STORY sceneGoal backfill alex28/morgan22/sam21；FEEL full-history skim chatUserLines+chatBotLines cap 50 (no second brain).
 - Lane B T-natural-1: clear spoken Cantonese guide lines + nonsense steer (guide-clear1).
