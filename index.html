@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>加班之后 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=face-first-20261023c" />
-  <link rel="stylesheet" href="./styles-compete.css?v=face-first-20261023c" />
-  <link rel="stylesheet" href="./safari-fix.css?v=face-first-20261023c" />
-  <link rel="stylesheet" href="./fx.css?v=face-first-20261023c" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=face-first-20261023c" />
+  <link rel="stylesheet" href="./styles.css?v=kb-mobile-20261023a" />
+  <link rel="stylesheet" href="./styles-compete.css?v=kb-mobile-20261023a" />
+  <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023a" />
+  <link rel="stylesheet" href="./fx.css?v=kb-mobile-20261023a" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=kb-mobile-20261023a" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -24,7 +24,7 @@
       background-image: none !important;
     }
   
-    /* face-first-20261023c inline kill-switch */
+        /* kb-mobile-20261023a face-first + mobile keyboard */
     #screen-play #action-zone, #screen-play .action-zone, #screen-play #choices,
     #screen-play .choices, #screen-play .btn-choice, #screen-play .action-label {
       display: none !important; visibility: hidden !important; height: 0 !important;
@@ -37,6 +37,38 @@
     #screen-play #play-text { font-size: .72rem !important; -webkit-line-clamp: 2 !important; display: -webkit-box !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
     #screen-play .chat-header, #screen-play .chat-messages { display: none !important; }
     #screen-play .chat-panel { max-height: 48px !important; }
+    /* iOS: ≥16px input = no focus zoom */
+    #screen-play #chat-input { font-size: 16px !important; }
+    /* Keyboard open: lock to visualViewport; drop 68vh lock; composer only */
+    html.keyboard-open.mode-play #screen-play.active,
+    body.keyboard-open.mode-play #screen-play.active,
+    body.keyboard-open.mode-play #screen-play .play-stage,
+    body.keyboard-open.mode-play #screen-play .play-overlay {
+      height: var(--app-vh) !important; max-height: var(--app-vh) !important;
+      overflow: hidden !important;
+    }
+    body.keyboard-open.mode-play #screen-play .play-stage {
+      position: fixed !important; top: var(--vv-offset-top, 0px) !important;
+      left: 0 !important; right: 0 !important; width: 100% !important; z-index: 40 !important;
+    }
+    body.keyboard-open #screen-play .play-face-gap {
+      height: auto !important; min-height: 0 !important; max-height: none !important;
+      flex: 1 1 auto !important;
+    }
+    body.keyboard-open #screen-play .play-lower {
+      max-height: none !important; flex: 0 0 auto !important; gap: 2px !important;
+    }
+    body.keyboard-open #screen-play .narrative-bubble,
+    body.keyboard-open #screen-play .play-hud {
+      display: none !important;
+    }
+    body.keyboard-open #screen-play .chat-panel {
+      max-height: none !important; min-height: 48px !important;
+    }
+    body.keyboard-open #screen-play .chat-composer {
+      padding-bottom: 4px !important;
+    }
+    body.keyboard-open .global-controls { opacity: .25; pointer-events: none; }
 
   </style>
 </head>
@@ -149,8 +181,8 @@
   <script src="./intent-engine.js?v=fakeai4"></script>
   <script src="./guide-lines.js?v=p0-steer-20261022"></script>
   <script src="./guide-policy.js?v=wrong-react-20261022"></script>
-  <script src="./chat-guide.js?v=face-first-20261023c"></script>
-  <script src="./app.js?v=face-first-20261023c"></script>
+  <script src="./chat-guide.js?v=kb-mobile-20261023a"></script>
+  <script src="./app.js?v=kb-mobile-20261023a"></script>
   <script src="./fx-play.js?v=intent27"></script>
   <script src="./audio-bed.js?v=intent27"></script>
   <script src="./cast-lock.js?v=intent27"></script>

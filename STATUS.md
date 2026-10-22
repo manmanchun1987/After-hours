@@ -1,3 +1,5 @@
+2026-10-23 01:25 HKT：手機鍵盤彈出修——face-first 嘅 #screen-play 68vh 鎖死蓋過 keyboard-open；而家鍵盤開時跟 --app-vh／固定舞台、收對白條、輸入 16px 防 zoom、唔再 scrollIntoView 跳畫面。Cache ?v=kb-mobile-20261023a。
+
 2026-10-23 00:50 HKT：拆 Sammi 杯麵／售賣機道具——靜圖已有杯麵，劇情唔要求獨立郁；prop-layer 殼留低，有真正要郁嘅物件先加。Cache ?v=face-first-20261023c。
 
 2026-10-23 00:48 HKT：face-first 急修——用戶截圖仍見大字框＋金掣蓋住人。safari-fix／beauty 後載蓋過隱藏；改 inline＋末層 CSS 強藏選擇掣、字框縮2行、face~68vh；app 唔再 render btn-choice。Cache ?v=face-first-20261023b。

@@ -2608,21 +2608,15 @@ function wireKeyboardViewport() {
   }
 
   function pinComposerIntoView() {
-    const form = document.getElementById("chat-form");
-    const panel = document.querySelector(".chat-panel");
-    const target = form || panel;
-    if (!target) return;
-    try {
-      target.scrollIntoView({ block: "end", inline: "nearest", behavior: "auto" });
-    } catch (_) {
-      try {
-        target.scrollIntoView(false);
-      } catch (__) {}
-    }
-    // Re-lock page scroll after scrollIntoView (Safari may nudge document)
+    /* Mobile: do NOT scrollIntoView — it jumps the portrait under the keyboard.
+       Stage is fixed to visualViewport via CSS (--app-vh / --vv-offset-top). */
     window.scrollTo(0, 0);
     if (root.scrollTop) root.scrollTop = 0;
     if (document.body.scrollTop) document.body.scrollTop = 0;
+    const vv = window.visualViewport;
+    if (vv && typeof vv.offsetTop === "number" && vv.offsetTop) {
+      try { window.scrollTo(0, 0); } catch (_) {}
+    }
   }
 
   function setScrollLock(on) {
