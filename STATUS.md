@@ -1,3 +1,5 @@
+2026-10-22 21:36 HKT：Lane B T-natural-1 hotfix (over e29 literary). guide-lines clear spoken Cantonese (推門入去／停低等等／講清楚你想點) + NONSENSE_HINT/PRESSURE/CALLOUT；GuidePolicy.looksNonsense + IntentEngine keep gibberish as unclear；version=laneB-clear1-20261022；index ?v=guide-clear1 (guide-lines/policy/engine)。Replaces immersive frost poetry pools. GuidePolicy API kept (+nonsense). No OpenRouter；no data stub；app.js play path untouched。
+
 2026-10-22 ~21:32 HKT：Lane B 執行。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS。
 無開 GUIDE 票。禁發明追票。
 發現 guide-lines.js 有 placeholder 評論，PRESSURE_REPLIES 等未定義（runtime 會爆）。

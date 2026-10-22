@@ -188,6 +188,25 @@
     return { score: score, hits: hits };
   }
 
+
+  function looksNonsense(text) {
+    if (global.GuidePolicy && typeof global.GuidePolicy.looksNonsense === "function") {
+      return global.GuidePolicy.looksNonsense(text);
+    }
+    var raw = String(text || "").trim();
+    if (!raw) return true;
+    var compact = raw.replace(/\s+/g, "");
+    if (compact.length <= 1) {
+      if (/^[推開入進停等門走好係得睇]$/.test(compact)) return false;
+      return true;
+    }
+    if (/^(哈|呵|嘻|嘿|哼|哇|lol|haha|ha)+$/i.test(compact)) return true;
+    if (/^(.)\1{3,}$/.test(compact)) return true;
+    if (/^[asdfjkl;]+$/i.test(compact)) return true;
+    if (/^[a-z0-9]{3,24}$/i.test(compact) && !/door|wait|enter|push|stop|open|ok|hi|yes|no|go/i.test(compact)) return true;
+    return false;
+  }
+
   function classify(text, ctx) {
     ctx = ctx || {};
     var raw = String(text || "").trim();
@@ -278,9 +297,15 @@
 
     if (bestScore <= 0) best = "unclear";
 
+    // Nonsense / empty meaning stays unclear (clear spoken steer via GuidePolicy)
+    if (looksNonsense(raw)) {
+      best = "unclear";
+      bestScore = Math.min(bestScore, 0.1);
+    }
+
     // Default residual chatter on corridor → off_topic (in-character block path)
     if (best === "unclear" && isCorridor(ctx.node) && raw.length >= 2) {
-      if (!/^[嗯啊呃哦喔]+$/.test(raw)) {
+      if (!looksNonsense(raw) && !/^[嗯啊呃哦喔]+$/.test(raw)) {
         best = "off_topic";
         bestScore = 0.25;
       }
@@ -429,9 +454,11 @@
     if (id === "unclear") {
       if (isCorridor(ctx.node)) {
         return pickFrom([
-          "講清楚。推門——定停低。",
-          "我聽唔到重點。門，定停？",
-          "……再講一次。對準門。"
+          "聽唔明。而家係走廊——你推門入去，定停低等等？",
+          "呢句無意思。講清楚：推門入去，定停低？",
+          "聽唔到重點。推門入去，定停低等等？講清楚。",
+          "亂打唔算。而家——推門，定停低？",
+          "我聽唔明。門就喺度：推門入去定停低等等？"
         ], recent);
       }
       return null;
@@ -716,6 +743,7 @@
   var api = {
     INTENTS: INTENTS,
     classify: classify,
+    looksNonsense: looksNonsense,
     mapToNodeIntent: mapToNodeIntent,
     forceMapByIntentId: forceMapByIntentId,
     pickReply: pickReply,
