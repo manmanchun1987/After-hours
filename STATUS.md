@@ -1,3 +1,5 @@
+2026-10-23 00:48 HKT：face-first 急修——用戶截圖仍見大字框＋金掣蓋住人。safari-fix／beauty 後載蓋過隱藏；改 inline＋末層 CSS 強藏選擇掣、字框縮2行、face~68vh；app 唔再 render btn-choice。Cache ?v=face-first-20261023b。
+
 2026-10-23 00:41 HKT：Play portrait-first UI——隱藏 #choices／.action-zone（CHAT-FIRST 絕對）；story 薄底條、chat 主 composer、HUD 角落細；.play-face-gap ~55–70%。Cache ?v=portrait-first-20261023。改檔：styles.css、chat-guide.js、app.js、index.html、STATUS.md。
 
 2026-10-23 00:30 HKT：Sammi 茶水間三層舞台樣品——#scene-bg / 人像 / #prop-layer（杯麵＋販賣機光）；early pantry nodes 接線；photoreal pantry-01。Cache ?v=layers-sammi-20261023。改檔：index.html、styles.css、app.js、data/sam.json、assets/bg/pantry-01.jpg、assets/props/cup-noodles.png、STATUS.md。

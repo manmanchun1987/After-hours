@@ -2490,7 +2490,8 @@ function renderNode() {
 
   const box = $("#choices");
   box.innerHTML = "";
-  (node.choices || []).forEach((choice) => {
+  /* face-first: do not render gold MC buttons */
+  if (false) (node.choices || []).forEach((choice) => {
     const btn = document.createElement("button");
     btn.type = "button";
     btn.className = "btn btn-choice";

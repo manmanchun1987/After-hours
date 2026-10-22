@@ -329,3 +329,88 @@ body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
     max-height: 48px !important;
   }
 }
+
+/* ============================================================
+   face-first-20261023b — CEO screenshot: face must show; kill MC + shrink text
+   Loaded LAST / also inlined — beats safari-fix + beauty
+   ============================================================ */
+#screen-play #action-zone,
+#screen-play .action-zone,
+#screen-play #choices,
+#screen-play .choices,
+#screen-play .action-label,
+#screen-play .btn-choice,
+body.mode-play #action-zone,
+body.mode-play .action-zone,
+body.mode-play #choices,
+body.mode-play .choices,
+body.mode-play .btn-choice {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  min-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+}
+body.mode-play .play-face-gap,
+#screen-play .play-face-gap {
+  flex: 1 1 auto !important;
+  height: 68vh !important;
+  min-height: 60vh !important;
+  max-height: 75vh !important;
+}
+body.mode-play .play-lower,
+#screen-play .play-lower {
+  flex: 0 0 auto !important;
+  max-height: 22vh !important;
+  min-height: 0 !important;
+  gap: 3px !important;
+}
+#screen-play .narrative-bubble,
+#screen-play .zone-story.narrative-bubble,
+#screen-play .play-card.narrative-bubble {
+  max-height: 4.8em !important;
+  padding: 4px 8px !important;
+  background: rgba(6, 10, 18, 0.32) !important;
+  border: 1px solid rgba(201, 164, 106, 0.18) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+#screen-play .narrative-bubble .narrative,
+#screen-play #play-text {
+  font-size: 0.72rem !important;
+  line-height: 1.3 !important;
+  -webkit-line-clamp: 2 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+#screen-play .chat-panel,
+#screen-play .chat-panel.zone-chat {
+  max-height: 48px !important;
+  min-height: 44px !important;
+  background: rgba(6, 8, 14, 0.45) !important;
+}
+#screen-play .chat-header,
+#screen-play .chat-messages,
+#screen-play .chat-typing,
+#screen-play .incoming-toast {
+  display: none !important;
+}
+#screen-play .play-hud .meters {
+  transform: scale(0.78);
+  transform-origin: top left;
+  opacity: 0.75;
+}
+#screen-play .play-bg-scrim {
+  background: linear-gradient(180deg, transparent 0%, transparent 55%, rgba(8,10,16,.35) 78%, rgba(8,10,16,.7) 100%) !important;
+}
