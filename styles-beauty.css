@@ -59,17 +59,32 @@ body.mode-play .btn-choice {
   left: -9999px !important;
   width: 0 !important;
 }
+/* Track resting --app-vh, not raw vh. iOS leaves vh at the keyboard
+   height after dismiss, which fights the pixel / --app-vh restore.
+   The :has(#choices) selector is required: it outranks #screen-play
+   .play-face-gap, so the older 55vh/72vh and 68vh rules would still win.
+   .keyboard-open below is more specific and flexes this stack while
+   the keyboard is up. */
+body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
+body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
 body.mode-play .play-face-gap,
 #screen-play .play-face-gap {
   flex: 1 1 auto !important;
-  height: 68vh !important;
-  min-height: 60vh !important;
-  max-height: 75vh !important;
+  height: calc(var(--app-vh) * 0.68) !important;
+  min-height: calc(var(--app-vh) * 0.60) !important;
+  max-height: calc(var(--app-vh) * 0.75) !important;
+}
+body.keyboard-open.mode-play:has(#choices) #screen-play .play-face-gap,
+html.keyboard-open body.mode-play:has(#choices) #screen-play .play-face-gap {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  flex: 1 1 auto !important;
 }
 body.mode-play .play-lower,
 #screen-play .play-lower {
   flex: 0 0 auto !important;
-  max-height: 22vh !important;
+  max-height: calc(var(--app-vh) * 0.22) !important;
   min-height: 0 !important;
   gap: 3px !important;
 }
