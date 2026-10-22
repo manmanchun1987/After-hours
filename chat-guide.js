@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "kb-mobile-20261023a";
+  var STAMP = "kb-mobile-20261023b";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;

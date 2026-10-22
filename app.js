@@ -2664,24 +2664,67 @@ function wireKeyboardViewport() {
 
     root.style.setProperty("--app-vh", `${height}px`);
     root.style.setProperty("--vv-offset-top", `${offsetTop}px`);
-    /* alias for styles that prefer shorter name */
     root.style.setProperty("--vv-top", `${offsetTop}px`);
     root.style.setProperty("--keyboard-inset", `${inset}px`);
-    /* translate fix left to CSS via --vv-offset-top / --vv-top (畫面活感) */
 
     if (!baseline) captureBaseline();
 
     const gap = layoutH - height;
     const shrunkVsBaseline = baseline > 0 && height < baseline * KEYBOARD_RATIO;
     const openBySize = gap >= KEYBOARD_GAP_PX || shrunkVsBaseline;
-    // While chat focused, treat moderate shrink as keyboard (iOS timing lag)
-    const open = chatFocused ? openBySize || gap >= 80 : openBySize;
+    // Mobile: once chat focused, treat as keyboard-open immediately (WebView/Safari lag)
+    const open = chatFocused ? true : openBySize;
 
     setKeyboardOpen(open);
+    applyStageFrame(open, height, offsetTop);
 
     if (!open && !chatFocused) {
-      // Restore baseline once viewport is back
       baseline = Math.max(height, layoutH);
+    }
+  }
+
+  function applyStageFrame(open, height, offsetTop) {
+    const stage = document.querySelector("#screen-play .play-stage");
+    const overlay = document.querySelector("#screen-play .play-overlay");
+    const play = document.getElementById("screen-play");
+    if (!stage) return;
+    if (open && document.body.classList.contains("mode-play")) {
+      const h = Math.max(180, Math.round(height));
+      const y = Math.max(0, Math.round(offsetTop || 0));
+      /* No position:fixed — that left the black void above the keyboard on iOS. */
+      if (play) {
+        play.style.height = h + "px";
+        play.style.maxHeight = h + "px";
+        play.style.overflow = "hidden";
+      }
+      stage.style.height = h + "px";
+      stage.style.maxHeight = h + "px";
+      stage.style.minHeight = "0";
+      stage.style.transform = y ? `translateY(${y}px)` : "";
+      stage.style.overflow = "hidden";
+      if (overlay) {
+        overlay.style.height = "100%";
+        overlay.style.minHeight = "0";
+        overlay.style.maxHeight = "100%";
+        overlay.style.paddingBottom = "6px";
+      }
+    } else {
+      if (play) {
+        play.style.height = "";
+        play.style.maxHeight = "";
+        play.style.overflow = "";
+      }
+      stage.style.height = "";
+      stage.style.maxHeight = "";
+      stage.style.minHeight = "";
+      stage.style.transform = "";
+      stage.style.overflow = "";
+      if (overlay) {
+        overlay.style.height = "";
+        overlay.style.minHeight = "";
+        overlay.style.maxHeight = "";
+        overlay.style.paddingBottom = "";
+      }
     }
   }
 
@@ -2715,9 +2758,12 @@ function wireKeyboardViewport() {
       (t.closest && t.closest("#chat-form, .chat-form"));
     if (!isChat) return;
     chatFocused = true;
+    setKeyboardOpen(true);
+    syncViewport();
     later(syncViewport, 50);
-    later(syncViewport, 300);
-    later(pinComposerIntoView, 320);
+    later(syncViewport, 250);
+    later(syncViewport, 500);
+    later(pinComposerIntoView, 60);
   });
 
   document.addEventListener("focusout", (e) => {
