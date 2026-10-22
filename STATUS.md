@@ -1,3 +1,9 @@
+2026-10-22 21:30 HKT：CODE hourly 追數。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
+無開 INTENT T1-T5。禁發明追票。
+LIVE GATE：app.js 122KB+ 完整引擎，無 app_b64 stub。index 有 chat-guide.js。
+CHAT-FIRST intact：故事 advance 後 #choices freechat-hidden；2 missed chats 先 show；renderNode 只 hide 唔 always reveal；yes-words (好 係 得) non-miss heat intent 保留；owner playtest 非中斷。
+四柱仍 4/4/4/4。Lane C pause。改檔：只 STATUS.md。未碰其他。No Imagine。
+
 2026-10-22 21:27 HKT：LIVE GATE LIVE-OK. app.js full engine 122734B（非 b64 stub）. index 有 chat-guide.js script；chat-guide.js 存在。fx-play click＋AHAudio.cue 在。Live site 200／script tags 齊。未改碼、未 revert JSON。No Imagine。
 
 2026-10-22 ~21:24 HKT：Lane A monitor-only。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY。
