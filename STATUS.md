@@ -1,3 +1,12 @@
+2026-10-22 ~21:24 HKT：Lane A monitor-only。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY。
+無開 INTENT T1-T5。禁發明追票。
+intent-patterns.js intent42 真實 wc=17107B (≥1KB) 過閘。
+Soft-pass 煙測：開門啦/我入去先→enter；等等→wait；你想我點？→ask_want；天氣→off_topic 仍導向。OK。
+Live 煙測：硬刷 ?v=laneA-20261022-2124 → 18+ 閘 → 三張角色卡見到，開始按鈕存在。無白屏卡死。
+改檔：只 STATUS.md。未碰 intent-patterns.js / index / app / data / guide。
+IDEAS 有 proposed (I-20261021-02 等)，未批唔改碼。
+四柱仍 4/4/4/4。Lane C pause。
+
 2026-10-22 ~21:15 HKT：DISPATCH hourly。讀 AUTOMATION/LANES/DISPATCH/QUALITY/STATUS。
 無開 INTENT T1-T5。禁發明追票。
 Live：app.js + parts (intent-patterns/engine + guide + chat-guide) 載入，無 stub loader。CODE restore-engine 監察滿足。
