@@ -5,6 +5,8 @@
 
 ## Open
 
+- **auto-playtest gate (FEEL)** — Before claiming FEEL thicken / guide-feel work, run `node tools/auto-playtest.js` and skim `tools/PLAYTEST-LAST.md`. Local heuristics only (用字正確 · 有引導去目標 · 似唔似人). Do not claim FEEL up if corridor + mid-node battery shows systematic `no_goal_steer` / `literary_cryptic` / `cs_tone` fails. Tool only — does not change live play path.
+
 - **P0 STORY restore** — data/*.json 禁止單節 stub；Lane C 只補 sceneGoal，禁刪 nodes／choices／ending。驗收：alex.json nodes≥20。（已從完整 graphs 復原，仍開作禁区）
 - **CODE restore-engine** — Live stub loader without parts。第一票：確保 app.js 完整 + parts (intent-patterns/engine + guide + chat-guide) 載入，禁 stub。（2026-10-21 檢查：live 無 stub，本地載入正常，IntentEngine 存在；保留作監察）
 
