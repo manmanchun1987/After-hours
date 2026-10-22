@@ -152,18 +152,20 @@
       "sceneGoal": {
         "successIntents": [
           "wait",
-          "refuse"
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
+          "agree",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "wait": "想清楚再拍卡",
+          "refuse": "走",
+          "ask_want": "問門禁"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "想清楚再拍卡，定走，定問門禁？"
       }
     },
     "s2x": {
@@ -199,21 +201,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
           "wait",
-          "refuse"
+          "refuse",
+          "agree",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "wait": "返工位",
+          "refuse": "返工位走",
+          "agree": "跟去",
+          "ask_want": "問清楚"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "返工位當食完，定跟去，定問清楚？"
       }
     },
     "s2y": {
@@ -237,19 +240,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
+          "ask_want",
           "wait",
-          "refuse"
+          "refuse",
+          "agree"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "ask_want": "問答案",
+          "wait": "停低",
+          "refuse": "走",
+          "agree": "跟去樓梯"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "問答案喺樓梯，定停低，定走？"
       }
     },
     "s2z": {
@@ -273,19 +279,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
+          "ask_want",
           "wait",
           "refuse"
         ],
         "optionalIntents": [
-          "ask_want",
+          "agree",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "ask_want": "要知規則",
+          "wait": "停低",
+          "refuse": "走"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "要知紅燈規則，定停低，定走？"
       }
     },
     "s3": {
@@ -329,23 +337,24 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
+          "ask_want",
           "flirt",
           "wait",
-          "refuse"
+          "refuse",
+          "agree"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "flirt": "再近啲",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "ask_want": "想知盲區",
+          "flirt": "再近聽",
+          "wait": "停低",
+          "refuse": "走",
+          "agree": "跟住上"
         },
-        "ask": "推門入去，定再近啲？"
+        "ask": "想知盲區，定再近聽，定停／走？"
       }
     },
     "s3y": {
@@ -369,19 +378,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
+          "ask_want",
           "wait",
           "refuse"
         ],
         "optionalIntents": [
-          "ask_want",
+          "agree",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "ask_want": "要知盲區",
+          "wait": "停",
+          "refuse": "走"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "要知盲區，定停，定走？"
       }
     },
     "s3z": {
@@ -405,19 +416,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
+          "ask_want",
           "wait",
-          "refuse"
+          "refuse",
+          "agree"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "ask_want": "要知天台門",
+          "wait": "停",
+          "refuse": "走",
+          "agree": "跟去睇"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "要知天台門，定停，定走？"
       }
     },
     "s4": {
@@ -468,24 +482,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait",
+          "ask_want",
           "agree",
           "flirt",
-          "ask_want"
+          "wait"
         ],
         "optionalIntents": [
+          "refuse",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等",
-          "agree": "應承繼續",
-          "flirt": "再近啲",
-          "ask_want": "講清楚你想點"
+          "ask_want": "講清楚角色",
+          "agree": "應承唔只係",
+          "flirt": "再近",
+          "wait": "停低"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "只要前輩定唔只係，講清楚；定應承近啲？"
       }
     },
     "s4y": {
@@ -640,19 +653,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "agree"
+          "agree",
+          "ask_want",
+          "flirt",
+          "wait"
         ],
         "optionalIntents": [
-          "ask_want",
-          "wait"
+          "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "agree": "應承繼續"
+          "agree": "應承呢頁唔入檔",
+          "ask_want": "講清楚",
+          "flirt": "額近",
+          "wait": "停低"
         },
-        "ask": "推門入去，定應承繼續？"
+        "ask": "應承呢頁唔入檔，定講清楚，定停低？"
       }
     },
     "s5y": {

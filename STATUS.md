@@ -1,3 +1,5 @@
+2026-10-22 23:39 HKT：#2 劇情 hand-tune（CEO 批 1–4）：擴窄 sceneGoal；中場踢走誤用 enter_door（走廊 n0/n0b 保留）；過短中場 text 略加長；m4e 等酒店／樓梯改應承／問清楚／再近。alex 28n／26667B · morgan 22n／30574B · sam 21n／27795B。auto-playtest --seed=42：135P/0F · human-avg 99.3。Lane C 呢次例外寫入 data（批完即 pause）。改檔：data/alex.json、data/morgan.json、data/sam.json、LANES.md、STATUS.md、tools/PLAYTEST-LAST.md。
+
 2026-10-22 23:31 HKT：假AI「錯法→反應」：亂打／離題／含糊先認錯再帶而家目標（guide-policy 唔再洗走認錯）。auto-playtest --seed=42：130P/0F · human-avg 99.2（前 97.2）。Cache ?v=wrong-react-20261022。改檔：guide-policy.js、index.html、tools/PLAYTEST-LAST.md。
 
 2026-10-22 23:23 HKT：鎖成隻 game 工種 4＋管理（假AI｜劇情｜產品殼｜驗收；管理＝CEO批＋瞓覺先跑）。改檔：LANES.md、AUTOMATION.md、STATUS.md。未碰 app/data。

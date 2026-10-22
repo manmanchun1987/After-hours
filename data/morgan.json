@@ -102,7 +102,7 @@
         "kept_professional"
       ],
       "label": "收條款",
-      "text": "「惱。」Elise 靠後。「不過惱嘅人，有時最穩。」",
+      "text": "「惱。」Elise 靠後。「不過惱嘅人，有時最穩。」杯沿撞擊聲輕響。",
       "thought": "靠後唔等於退。",
       "aside": "距離反而更近。",
       "mid": "靠後之後，佢仍望住你手。袖口滑落一寸，露出腕骨。燈光在腕骨上停半秒。呼吸輕到幾乎聽唔到，但熱度仍在。杯壁餘溫傳過桌面。目光再鎖住你。袖口再滑半寸。腕骨反光再跳，熱度未散。袖口餘溫再傳一寸，距離再近半分。呼吸再輕半拍，熱度仍在。",
@@ -121,17 +121,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "agree"
+          "agree",
+          "ask_want",
+          "challenge"
         ],
         "optionalIntents": [
-          "ask_want",
-          "ask_memory"
+          "ask_memory",
+          "flirt"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續"
+          "agree": "應承繼續傾",
+          "ask_want": "問清楚",
+          "challenge": "頂真講"
         },
-        "ask": "應承繼續。"
+        "ask": "應承繼續傾，定問清楚，定頂真講？"
       }
     },
     "m2c": {
@@ -225,22 +229,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait",
+          "agree",
+          "flirt",
           "refuse",
           "ask_want"
         ],
         "optionalIntents": [
+          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等",
-          "refuse": "唔入／離開",
-          "ask_want": "講清楚你想點"
+          "agree": "伸手簽上樓",
+          "flirt": "跟住上樓",
+          "refuse": "拒絕",
+          "ask_want": "問清楚規則"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "伸手簽上樓，定拒絕，定問清楚規則？"
       }
     },
     "m3v": {
@@ -352,21 +357,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait",
-          "refuse"
+          "agree",
+          "refuse",
+          "ask_want",
+          "wait"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "agree": "應承上樓",
+          "refuse": "拒",
+          "ask_want": "再問",
+          "wait": "停低"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "應承上樓唔提公司，定拒，定再問？"
       }
     },
     "m3z": {
@@ -394,21 +400,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait",
-          "refuse"
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
+          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "agree": "自己伸手",
+          "flirt": "伸手近啲",
+          "refuse": "拒",
+          "ask_want": "問清楚"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "自己伸手，定拒，定問清楚佢想點？"
       }
     },
     "m3x": {
@@ -432,26 +440,29 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait"
+          "agree",
+          "refuse",
+          "wait",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等"
+          "agree": "跟住去當簽",
+          "refuse": "收回",
+          "wait": "停低",
+          "ask_want": "問清楚"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "跟住去當簽，定收回，定停低？"
       }
     },
     "m4": {
       "id": "m4",
       "mode": "call",
       "label": "高層走廊",
-      "text": "門開。Elise 問：\n\n「仲可唔可以？」",
+      "text": "門開。Elise 問：「仲可唔可以？」走廊冷氣湧入，等你一句。",
       "thought": "問句輕，決定重。",
       "aside": "鏡裏兩個影子。",
       "mid": "走廊燈暗半格，影子疊埋。空氣裏只剩香水尾調。鏡面反光把兩人拉近。呼吸差半拍就會碰到。門縫透出一點冷風。影子再重疊。冷風再入。鏡面再反光一次，熱度蓋過冷風。影子再疊半秒，決定落在門縫。冷風再入半寸，熱度仍蓋。",
@@ -494,19 +505,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "agree"
+          "agree",
+          "ask_want",
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_want",
-          "wait"
+          "wait",
+          "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "agree": "應承繼續"
+          "agree": "應承仲可以",
+          "ask_want": "講界線",
+          "flirt": "再近"
         },
-        "ask": "推門入去，定應承繼續？"
+        "ask": "應承仲可以，定講界線，定再近？"
       }
     },
     "m4b": {
@@ -605,19 +618,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "wait"
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
+          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等"
+          "agree": "伸手俾佢睇",
+          "flirt": "伸手",
+          "refuse": "拒",
+          "ask_want": "問清楚"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "伸手俾佢睇，定拒，定問清楚？"
       }
     },
     "m4e": {
@@ -642,19 +659,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "agree"
+          "agree",
+          "flirt",
+          "ask_want",
+          "refuse"
         ],
         "optionalIntents": [
-          "ask_want",
-          "wait"
+          "wait",
+          "ask_memory"
         ],
-        "maxMisses": 3,
+        "ask": "應承繼續，定再近，定問清楚，定走？",
         "hints": {
-          "enter_door": "推門入去",
-          "agree": "應承繼續"
+          "agree": "應承繼續",
+          "flirt": "再近",
+          "ask_want": "問清楚",
+          "refuse": "走"
         },
-        "ask": "推門入去，定應承繼續？"
+        "maxMisses": 3
       }
     },
     "m5": {
@@ -786,17 +807,22 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "wait"
+          "wait",
+          "agree",
+          "ask_want",
+          "refuse"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等"
+          "wait": "唔走留低",
+          "agree": "應承多一頁",
+          "ask_want": "問董事會",
+          "refuse": "走"
         },
-        "ask": "停低等等。"
+        "ask": "唔走留低，定應承多一頁，定問董事會？"
       }
     },
     "m5w": {
@@ -821,19 +847,23 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
+          "agree",
+          "flirt",
+          "ask_want",
           "wait"
         ],
         "optionalIntents": [
-          "ask_want",
+          "refuse",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "wait": "停低等等"
+          "agree": "自己伸手",
+          "flirt": "伸手近",
+          "ask_want": "問佢想要咩",
+          "wait": "停低"
         },
-        "ask": "推門入去，定停低等等？"
+        "ask": "自己伸手，定問佢想要咩，定停低？"
       }
     },
     "ending_m_a": {

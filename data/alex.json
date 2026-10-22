@@ -222,17 +222,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "agree"
+          "agree",
+          "ask_want",
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_want",
-          "ask_memory"
+          "ask_memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續"
+          "agree": "應承繼續",
+          "ask_want": "問清楚",
+          "flirt": "坐近啲"
         },
-        "ask": "應承繼續。"
+        "ask": "應承繼續改，定問清楚，定坐近啲？"
       }
     },
     "n2b": {
@@ -242,7 +246,7 @@
         "pushed_back"
       ],
       "label": "頂嘴",
-      "text": "Vera 笑得唔似笑。「你想要『清楚』？得。過來。」",
+      "text": "Vera 笑得唔似笑。「你想要『清楚』？得。過來。」桌燈只照到兩人中間嗰截。",
       "thought": "頂嘴？有趣。",
       "aside": "筆尖停在空白行。",
       "choices": [
@@ -258,19 +262,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "agree"
+          "agree",
+          "flirt",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
-          "ask_memory"
+          "ask_memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "agree": "應承繼續"
+          "agree": "應承過來",
+          "flirt": "再近啲",
+          "ask_want": "問清楚"
         },
-        "ask": "推門入去，定應承繼續？"
+        "ask": "應承過來，定再近啲，定問清楚？"
       }
     },
     "n2c": {
@@ -279,7 +285,7 @@
         "got_close"
       ],
       "label": "試探",
-      "text": "「大膽。今晚……我可以例外。」",
+      "text": "「大膽。今晚……我可以例外。」聲線放低，像只講俾你聽。枱燈只照到你半邊臉。",
       "thought": "例外兩字比評語重。",
       "aside": "呼吸擦過耳側。",
       "choices": [
@@ -296,25 +302,26 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door",
-          "flirt"
+          "flirt",
+          "agree",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去",
-          "flirt": "再近啲"
+          "flirt": "再近啲",
+          "agree": "應承例外",
+          "ask_want": "講清楚你想點"
         },
-        "ask": "推門入去，定再近啲？"
+        "ask": "再近啲，定應承例外，定講清楚你想點？"
       }
     },
     "n3a": {
       "id": "n3a",
       "label": "克制",
-      "text": "指尖碰上。「手震。驚我，定驚你自已？」",
+      "text": "指尖碰上。「手震。驚我，定驚你自己？」佢冇移開，等你答。",
       "thought": "控制權仍在佢度。",
       "aside": "螢幕藍光拉長影子。",
       "mid": "佢指尖停半秒。",
@@ -333,24 +340,27 @@
       "sceneGoal": {
         "successIntents": [
           "agree",
-          "ask_want"
+          "ask_want",
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_memory"
+          "ask_memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "hints": {
           "agree": "應承繼續",
-          "ask_want": "講清楚你想點"
+          "ask_want": "講清楚",
+          "flirt": "認近"
         },
-        "ask": "應承繼續，定講清楚你想點？"
+        "ask": "應承繼續，定講清楚，定認近？"
       }
     },
     "n3b": {
       "id": "n3b",
       "mode": "call",
       "label": "臨界",
-      "text": "「公司監控只覆走廊，唔覆呢間。」",
+      "text": "「公司監控只覆走廊，唔覆呢間。」門未關死，縫隙透走廊光。",
       "thought": "邀請同命令，差在語氣。",
       "aside": "監控紅點一眨。",
       "mid": "佢語氣平，像已經算定你會留。",
@@ -375,26 +385,25 @@
       "sceneGoal": {
         "successIntents": [
           "agree",
-          "enter_door",
-          "flirt"
+          "flirt",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
           "agree": "應承繼續",
-          "enter_door": "推門入去",
-          "flirt": "再近啲"
+          "flirt": "再近啲",
+          "ask_want": "問清楚"
         },
-        "ask": "應承繼續，定推門入去？"
+        "ask": "應承繼續，定再近啲，定問清楚？"
       }
     },
     "n3c": {
       "id": "n3c",
       "label": "靠近",
-      "text": "「你要清楚嘅係簡報，定係我想對你點？」",
+      "text": "「你要清楚嘅係簡報，定係我想對你點？」問題丟返你度，氣氛冇鬆。",
       "thought": "要清楚？靠近講。",
       "aside": "問句落在桌面。",
       "choices": [
@@ -412,18 +421,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
+          "ask_want",
           "agree",
-          "ask_want"
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_memory"
+          "ask_memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續",
-          "ask_want": "講清楚你想點"
+          "ask_want": "講清楚你想要咩",
+          "agree": "應承",
+          "flirt": "再近"
         },
-        "ask": "應承繼續，定講清楚你想點？"
+        "ask": "講清楚你想要咩，定應承，定再近？"
       }
     },
     "n4a": {
@@ -442,18 +454,19 @@
       "sceneGoal": {
         "successIntents": [
           "wait",
-          "refuse"
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "wait": "停低收檔",
+          "refuse": "走",
+          "ask_want": "問清楚評核"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "停低收檔，定走，定問清楚評核？"
       }
     },
     "n4b": {
@@ -463,7 +476,7 @@
         "chose_stay"
       ],
       "label": "承認",
-      "text": "手指抬起你下巴。「留低，就唔好再扮只係改簡報。」",
+      "text": "手指抬起你下巴。「留低，就唔好再扮只係改簡報。」目光冇笑。",
       "thought": "唔好再扮公事。",
       "aside": "燈管微顫。",
       "mid": "下巴被抬起喺下，規則已經改。",
@@ -483,7 +496,8 @@
         "successIntents": [
           "agree",
           "wait",
-          "refuse"
+          "refuse",
+          "flirt"
         ],
         "optionalIntents": [
           "ask_want",
@@ -491,11 +505,12 @@
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "agree": "留低應承",
+          "wait": "停低",
+          "refuse": "走",
+          "flirt": "留低近啲"
         },
-        "ask": "應承繼續，定停低等等？"
+        "ask": "留低應承，定停低，定走？"
       }
     },
     "n4x": {
@@ -519,23 +534,27 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "wait"
+          "wait",
+          "agree",
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等"
+          "wait": "停低等燈",
+          "agree": "應承繼續",
+          "refuse": "走"
         },
-        "ask": "停低等等。"
+        "ask": "停低等燈，定應承繼續，定走？"
       }
     },
     "n4c": {
       "id": "n4c",
       "label": "你主動",
-      "text": "「記住。係你先開始。」",
+      "text": "「記住。係你先開始。」語畢，像等你親口認——唔係佢代你講。",
       "thought": "再唔係單方面。",
       "aside": "簡報白光一跳。",
       "choices": [
@@ -548,24 +567,27 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door"
+          "agree",
+          "ask_want",
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去"
+          "agree": "應承你先開始",
+          "ask_want": "問清楚",
+          "flirt": "再近"
         },
-        "ask": "推門入去。"
+        "ask": "應承「你先開始」，定問清楚，定再近？"
       }
     },
     "n5": {
       "id": "n5",
       "mode": "call",
       "label": "燈關之後",
-      "text": "燈暗。規則喺佢度——要你親口講想要咧。",
+      "text": "燈暗。規則喺佢度——要你親口講想要咧。黑暗裏只剩呼吸同鍵盤餘溫。",
       "thought": "規則喺我度。",
       "aside": "只剩呼吸同錶聲。",
       "choices": [
@@ -591,27 +613,28 @@
       "sceneGoal": {
         "successIntents": [
           "ask_want",
-          "wait",
+          "agree",
           "flirt",
-          "agree"
+          "wait"
         ],
         "optionalIntents": [
-          "ask_memory"
+          "ask_memory",
+          "challenge"
         ],
         "maxMisses": 3,
         "hints": {
-          "ask_want": "講清楚你想點",
-          "wait": "停低等等",
-          "flirt": "再近啲",
-          "agree": "應承繼續"
+          "ask_want": "親口講想要咩",
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低"
         },
-        "ask": "講清楚你想點，定停低等等？"
+        "ask": "親口講想要咩，定應承，定停低？"
       }
     },
     "n6a": {
       "id": "n6a",
       "label": "交出控制",
-      "text": "升級前佢都問：「仲可唔可以？」",
+      "text": "升級前佢都問：「仲可唔可以？」答得慢，空間就收窄，等你一句。",
       "thought": "秩序比衝動危險。",
       "aside": "桌邊緣冰涼。",
       "choices": [
@@ -622,17 +645,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door"
+          "agree",
+          "ask_want",
+          "flirt"
         ],
         "optionalIntents": [
-          "ask_want",
+          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去"
+          "agree": "應承仲可以",
+          "ask_want": "講清楚界線",
+          "flirt": "再近"
         },
-        "ask": "推門入去。"
+        "ask": "應承仲可以，定講清楚界線，定再近？"
       }
     },
     "n6b": {
@@ -641,7 +668,7 @@
         "wanted_equal"
       ],
       "label": "對等",
-      "text": "「評核表……唔會寫呢頁。」",
+      "text": "「評核表……唔會寫呢頁。」意思係：寫得嘅，另有地方記，唔入公開檔。",
       "thought": "對等一晚。夠未？",
       "aside": "秘密比分數耐存。",
       "choices": [
@@ -652,17 +679,21 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "enter_door"
+          "agree",
+          "ask_want",
+          "wait"
         ],
         "optionalIntents": [
-          "ask_want",
+          "refuse",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "enter_door": "推門入去"
+          "agree": "應承呢頁唔入表",
+          "ask_want": "問清楚",
+          "wait": "停低"
         },
-        "ask": "推門入去。"
+        "ask": "應承呢頁唔入表，定問清楚，定停低？"
       }
     },
     "n6c": {
@@ -671,7 +702,7 @@
         "called_out_plan"
       ],
       "label": "拆穿",
-      "text": "deadline 可以早講。佢擇今晚。「仲留唔留？」",
+      "text": "deadline 可以早講。佢擇今晚。「仲留唔留？」時鐘聲忽然好大聲。",
       "thought": "選擇權回到你手。",
       "aside": "佢擇今晚。",
       "choices": [
@@ -689,18 +720,21 @@
       "sceneGoal": {
         "successIntents": [
           "wait",
-          "refuse"
+          "refuse",
+          "ask_want",
+          "agree"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "wait": "仲留",
+          "refuse": "走",
+          "ask_want": "問清楚 deadline",
+          "agree": "應承留"
         },
-        "ask": "停低等等，定唔入／離開？"
+        "ask": "仲留定走，定問清楚 deadline？"
       }
     },
     "ending_a": {
@@ -882,7 +916,7 @@
     "n8a": {
       "id": "n8a",
       "label": "交權",
-      "text": "評語：可造。「我會再留。你怕唔怕？」",
+      "text": "評語：可造。「我會再留。你怕唔怕？」問完仍望住你，等你應。",
       "thought": "怕同想可以並存。",
       "aside": "評語兩字很重。",
       "choices": [
@@ -902,26 +936,26 @@
         "successIntents": [
           "agree",
           "wait",
-          "refuse"
+          "refuse",
+          "ask_want"
         ],
         "optionalIntents": [
-          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續",
-          "wait": "停低等等",
-          "refuse": "唔入／離開"
+          "agree": "應承再留",
+          "wait": "停低",
+          "refuse": "走"
         },
-        "ask": "應承繼續，定停低等等？"
+        "ask": "應承再留，定停低怕，定走？"
       }
     },
     "n8b": {
       "id": "n8b",
       "mode": "call",
       "label": "寫事實",
-      "text": "「我可以毀你，都可以抬你。你擇。」",
+      "text": "「我可以毀你，都可以抬你。你擇。」兩個字一樣重，冇替你揀。",
       "thought": "選擇落在紙上。",
       "aside": "選擇落在紙上。",
       "choices": [
@@ -941,10 +975,10 @@
       ],
       "sceneGoal": {
         "successIntents": [
-          "wait",
           "challenge",
+          "agree",
           "flirt",
-          "agree"
+          "wait"
         ],
         "optionalIntents": [
           "ask_want",
@@ -952,12 +986,12 @@
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "challenge": "頂真講",
-          "flirt": "再近啲",
-          "agree": "應承繼續"
+          "challenge": "頂真揀",
+          "agree": "應承",
+          "flirt": "靠近聽",
+          "wait": "停低"
         },
-        "ask": "停低等等，定頂真講？"
+        "ask": "頂真揀毁定抬，定應承，定停低？"
       }
     },
     "ending_d": {

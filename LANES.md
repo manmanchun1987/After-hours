@@ -104,7 +104,7 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 
 | | |
 |---|---|
-| **寫入** | **唔准** push `data/*`（例外：CEO **approved** 嘅 sceneGoal 補丁——而家已 backfill，唔再開施工） |
+| **寫入** | **唔准** push `data/*`（例外：CEO **approved** hand-tune；**2026-10-22 23:39** 已做完 1–4 批，之後再 pause） |
 | **讀** | 讀樹＋STATUS 報 nodes／size；可對照 playtest 弱節點開 IDEAS `proposed` |
 | **狀態** | **pause write**；read-only／STATUS ok |
 | **禁碰** | 刪 nodes／choices／ending；整檔 stub |
