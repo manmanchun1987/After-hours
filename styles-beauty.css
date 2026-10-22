@@ -572,3 +572,317 @@ body.mode-play .play-lower,
   #screen-cast .char-thumb-wrap,
   #screen-cast .char-thumb { min-height: 96px !important; }
 }
+
+/* ============================================================
+   scene1 — option B layered play shell
+   .scene-stack
+     .scene-layer-bg[data-scene=office|pantry|lounge|lift]
+     .scene-layer-portrait
+     .scene-layer-fg > .fg-prop[data-prop]
+       monitor-glow | blinds | vending-glow | cup-noodles | wine-glass | floor-indicator
+       .fg-anim-float | .fg-anim-pulse | .fg-anim-sway
+   Visual only. Does not set .keyboard-open or --app-vh.
+   Does not change .play-face-gap / .play-lower heights.
+   Chat stays in .play-overlay, outside .scene-stack.
+   ============================================================ */
+
+/* Parent filter + contain:paint hides descendants of this stack in Chrome.
+   Grade the layers themselves. Portrait-stack still contain:paint for bounce. */
+#screen-play.active .play-bg:has(.scene-stack) {
+  filter: none !important;
+  contain: none !important;
+}
+
+#screen-play .scene-stack {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #07060a;
+}
+
+#screen-play .scene-layer-bg,
+#screen-play .scene-layer-portrait,
+#screen-play .scene-layer-fg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#screen-play .scene-layer-bg {
+  z-index: 0;
+  background-color: #07060a;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 40%;
+}
+
+#screen-play .scene-layer-bg[data-scene="office"],
+#screen-play .scene-layer-bg:not([data-scene]) {
+  background-image: url("./assets/bg/office.svg");
+}
+
+#screen-play .scene-layer-bg[data-scene="pantry"] {
+  background-image: url("./assets/bg/pantry.svg");
+}
+
+#screen-play .scene-layer-bg[data-scene="lounge"] {
+  background-image: url("./assets/bg/lounge.svg");
+}
+
+#screen-play .scene-layer-bg[data-scene="lift"] {
+  background-image: url("./assets/bg/lift.svg");
+  background-position: center center;
+}
+
+#screen-play .scene-layer-bg[data-scene="roof"] {
+  background-image: url("./assets/bg/roof.svg");
+}
+
+#screen-play .scene-layer-bg[data-scene="review"] {
+  background-image: url("./assets/bg/review.svg");
+}
+
+#screen-play .scene-layer-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 48% at 50% 32%, transparent 36%, rgba(0, 0, 0, 0.38) 100%),
+    linear-gradient(180deg, rgba(6, 5, 8, 0.18) 0%, transparent 28%, rgba(6, 5, 8, 0.28) 100%);
+}
+
+#screen-play .scene-layer-bg[data-scene="office"]::after,
+#screen-play .scene-layer-bg:not([data-scene])::after {
+  background:
+    radial-gradient(55% 36% at 50% 18%, rgba(212, 175, 110, 0.16), transparent 70%),
+    linear-gradient(180deg, rgba(6, 8, 14, 0.12), rgba(6, 5, 8, 0.45));
+}
+
+#screen-play .scene-layer-bg[data-scene="pantry"]::after {
+  background:
+    radial-gradient(50% 40% at 72% 22%, rgba(255, 168, 90, 0.22), transparent 68%),
+    linear-gradient(180deg, rgba(28, 14, 8, 0.08), rgba(8, 6, 8, 0.42));
+}
+
+#screen-play .scene-layer-bg[data-scene="lounge"]::after {
+  background:
+    radial-gradient(48% 36% at 36% 24%, rgba(255, 150, 70, 0.24), transparent 70%),
+    linear-gradient(180deg, rgba(12, 8, 10, 0.1), rgba(8, 5, 6, 0.4));
+}
+
+#screen-play .scene-layer-bg[data-scene="lift"]::after {
+  background:
+    radial-gradient(40% 28% at 50% 16%, rgba(190, 206, 220, 0.14), transparent 72%),
+    linear-gradient(180deg, rgba(8, 10, 16, 0.2), rgba(5, 6, 10, 0.5));
+}
+
+#screen-play .scene-layer-bg[data-scene="roof"]::after {
+  background:
+    radial-gradient(60% 30% at 50% 12%, rgba(180, 200, 230, 0.12), transparent 70%),
+    linear-gradient(180deg, rgba(4, 6, 12, 0.05), rgba(4, 4, 8, 0.55));
+}
+
+#screen-play .scene-layer-bg[data-scene="review"]::after {
+  background:
+    linear-gradient(180deg, rgba(230, 236, 245, 0.08), transparent 22%, rgba(6, 6, 10, 0.46)),
+    radial-gradient(40% 20% at 50% 0%, rgba(255, 255, 255, 0.12), transparent 70%);
+}
+
+#screen-play .scene-layer-portrait {
+  z-index: 1;
+}
+
+/* Face stays the hero in the column. Side gutters show the room. */
+#screen-play .scene-stack .scene-layer-portrait .portrait-stack {
+  position: absolute;
+  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  z-index: 1;
+  transform-origin: center 40%;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+#screen-play .scene-stack .portrait,
+#screen-play .scene-stack .portrait-video,
+#screen-play .scene-stack #alex-portrait {
+  position: relative;
+  z-index: 2;
+  width: 76%;
+  height: 92%;
+  margin-left: 12%;
+  object-fit: cover;
+  object-position: center 10%;
+  /* White stays visible under both alpha and luminance masking. */
+  -webkit-mask-image: linear-gradient(to bottom, #fff 0%, #fff 78%, transparent 97%);
+  mask-image: linear-gradient(to bottom, #fff 0%, #fff 78%, transparent 97%);
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+
+#screen-play .scene-layer-fg {
+  z-index: 2;
+}
+
+#screen-play .fg-prop {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+#screen-play .fg-prop[hidden] {
+  display: none !important;
+}
+
+/* Gutters only. Empty divs from app.js; ids match PR #68. */
+#screen-play .fg-prop[data-prop="monitor-glow"] {
+  right: 0;
+  top: 16%;
+  width: 14%;
+  height: 22%;
+  background: radial-gradient(ellipse at 90% 40%, rgba(232, 196, 122, 0.55), rgba(80, 140, 200, 0.08) 48%, transparent 74%);
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(to left, #fff 8%, transparent 80%);
+  mask-image: linear-gradient(to left, #fff 8%, transparent 80%);
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+}
+
+#screen-play .fg-prop[data-prop="blinds"] {
+  left: 0;
+  top: 8%;
+  width: 22px;
+  height: 46%;
+  transform-origin: left center;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(18, 14, 10, 0.2) 0 3px,
+    rgba(212, 175, 110, 0.55) 3px 5px
+  );
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.35);
+  opacity: 0.85;
+}
+
+#screen-play .fg-prop[data-prop="cup-noodles"] {
+  left: 4px;
+  bottom: 31%;
+  width: 42px;
+  height: 42px;
+  background: url("./assets/props/cup-noodles.png") center / contain no-repeat;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.5));
+}
+
+#screen-play .fg-prop[data-prop="wine-glass"] {
+  right: 10px;
+  bottom: 32%;
+  width: 26px;
+  height: 42px;
+  border-radius: 2px 2px 8px 8px;
+  border: 1px solid rgba(236, 220, 186, 0.55);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.02) 30%, rgba(120, 24, 48, 0.45) 70%, rgba(48, 10, 18, 0.55));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 8px 14px rgba(0, 0, 0, 0.4);
+  transform-origin: center bottom;
+}
+
+#screen-play .fg-prop[data-prop="wine-glass"]::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  width: 3px;
+  height: 46%;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.4);
+}
+
+#screen-play .fg-prop[data-prop="floor-indicator"] {
+  right: 8px;
+  top: 11%;
+  width: 34px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(224, 184, 106, 0.75);
+  background: rgba(8, 10, 16, 0.82);
+  box-shadow: 0 0 12px rgba(224, 184, 106, 0.28);
+}
+
+#screen-play .fg-prop[data-prop="floor-indicator"]::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  right: 7px;
+  top: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: #e4c37a;
+  box-shadow: 0 0 8px #e4c37a;
+}
+
+#screen-play .fg-prop[data-prop="vending-glow"] {
+  right: 0;
+  top: 24%;
+  width: 12%;
+  height: 30%;
+  background: radial-gradient(ellipse at 88% 50%, rgba(120, 214, 220, 0.5), rgba(70, 150, 170, 0.08) 46%, transparent 72%);
+  mix-blend-mode: screen;
+  -webkit-mask-image: linear-gradient(to left, #fff 10%, transparent 78%);
+  mask-image: linear-gradient(to left, #fff 10%, transparent 78%);
+  -webkit-mask-mode: alpha;
+  mask-mode: alpha;
+  opacity: 0.7;
+}
+
+#screen-play .fg-anim-float {
+  animation: fg-anim-float 3.8s ease-in-out infinite;
+}
+
+#screen-play .fg-anim-pulse {
+  animation: fg-anim-pulse 4.2s ease-in-out infinite;
+}
+
+#screen-play .fg-anim-sway {
+  animation: fg-anim-sway 5.6s ease-in-out infinite;
+}
+
+@keyframes fg-anim-float {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -7px, 0); }
+}
+
+@keyframes fg-anim-pulse {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 0.95; }
+}
+
+@keyframes fg-anim-sway {
+  0%, 100% { transform: rotate(-0.7deg); }
+  50% { transform: rotate(0.8deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #screen-play .fg-anim-float,
+  #screen-play .fg-anim-pulse,
+  #screen-play .fg-anim-sway {
+    animation: none;
+  }
+}
+
+/* Legacy sample nodes, if a script reinserts them, stay behind this shell. */
+#screen-play .play-bg:has(.scene-stack) > #scene-bg,
+#screen-play .play-bg:has(.scene-stack) > #prop-layer {
+  display: none !important;
+}
