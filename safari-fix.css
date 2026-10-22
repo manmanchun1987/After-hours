@@ -417,7 +417,7 @@ body.mode-play .play-lower,
 }
 
 /* ============================================================
-   kb-mobile-20261023d — mobile keyboard: fill vv height, composer at bottom
+   kb-mobile-20261023e — mobile keyboard: fill vv height, composer at bottom
    ============================================================ */
 html.keyboard-open.mode-play #screen-play.active,
 body.keyboard-open.mode-play #screen-play.active {
@@ -479,7 +479,7 @@ body.keyboard-open #screen-play #chat-input {
   font-size: 16px !important;
 }
 
-/* kb-mobile-20261023d — when keyboard closed, never trap shrunk --app-vh */
+/* kb-mobile-20261023e — when keyboard closed, never trap shrunk --app-vh */
 html:not(.keyboard-open) {
   --vv-offset-top: 0px;
   --vv-top: 0px;

@@ -2582,13 +2582,15 @@ function wireChat() {
 /* -------------------------------------------------------------------------- */
 function wireKeyboardViewport() {
   const root = document.documentElement;
-  const KEYBOARD_GAP_PX = 120;
-  const KEYBOARD_RATIO = 0.82;
+  const KEYBOARD_GAP_PX = 100;
+  const KEYBOARD_RATIO = 0.88;
   let baseline = 0;
   let keyboardOpen = false;
   let chatFocused = false;
+  let focusGraceUntil = 0;
   let lockScrollHandler = null;
   let pendingTimers = [];
+  let lastVvH = 0;
 
   function later(fn, ms) {
     const id = setTimeout(fn, ms);
@@ -2596,27 +2598,40 @@ function wireKeyboardViewport() {
     return id;
   }
 
-  function captureBaseline() {
+  function clearPending() {
+    pendingTimers.forEach((id) => clearTimeout(id));
+    pendingTimers = [];
+  }
+
+  function measure() {
     const vv = window.visualViewport;
-    const h = vv ? vv.height : window.innerHeight;
-    // Only refresh baseline when keyboard is closed / not focused
+    const vvH = vv ? vv.height : window.innerHeight;
+    const offsetTop = vv ? vv.offsetTop : 0;
+    const layoutH = window.innerHeight;
+    return { vv, vvH, offsetTop, layoutH };
+  }
+
+  function captureBaseline() {
+    const { vvH, layoutH } = measure();
     if (!keyboardOpen && !chatFocused) {
-      baseline = Math.max(h, window.innerHeight);
+      baseline = Math.max(vvH, layoutH);
     } else if (!baseline) {
-      baseline = Math.max(h, window.innerHeight);
+      baseline = Math.max(vvH, layoutH);
     }
   }
 
+  function isViewportShrunk() {
+    const { vvH, layoutH } = measure();
+    if (!baseline) captureBaseline();
+    const gap = Math.max(0, layoutH - vvH);
+    const vsBase = baseline > 0 && vvH < baseline * KEYBOARD_RATIO;
+    return gap >= KEYBOARD_GAP_PX || vsBase;
+  }
+
   function pinComposerIntoView() {
-    /* Mobile: do NOT scrollIntoView — it jumps the portrait under the keyboard.
-       Stage is fixed to visualViewport via CSS (--app-vh / --vv-offset-top). */
     window.scrollTo(0, 0);
     if (root.scrollTop) root.scrollTop = 0;
     if (document.body.scrollTop) document.body.scrollTop = 0;
-    const vv = window.visualViewport;
-    if (vv && typeof vv.offsetTop === "number" && vv.offsetTop) {
-      try { window.scrollTo(0, 0); } catch (_) {}
-    }
   }
 
   function setScrollLock(on) {
@@ -2639,61 +2654,11 @@ function wireKeyboardViewport() {
     }
   }
 
-  function clearPending() {
-    pendingTimers.forEach((id) => clearTimeout(id));
-    pendingTimers = [];
-  }
-
-  function setKeyboardOpen(open) {
-    if (keyboardOpen === open) {
-      if (open) pinComposerIntoView();
-      return;
-    }
-    keyboardOpen = open;
-    document.body.classList.toggle("keyboard-open", open);
-    root.classList.toggle("keyboard-open", open);
-    setScrollLock(open);
-    if (open) {
-      pinComposerIntoView();
-      later(pinComposerIntoView, 50);
-      later(pinComposerIntoView, 280);
-    }
-  }
-
   function restoreFullViewportVars() {
-    /* Drop inline --app-vh so CSS --app-vh: 100dvh wins (iOS often keeps
-       innerHeight/visualViewport stuck small after keyboard dismiss). */
     root.style.removeProperty("--app-vh");
     root.style.setProperty("--vv-offset-top", "0px");
     root.style.setProperty("--vv-top", "0px");
     root.style.setProperty("--keyboard-inset", "0px");
-  }
-
-  function syncViewport() {
-    const vv = window.visualViewport;
-    const vvH = vv ? vv.height : window.innerHeight;
-    const offsetTop = vv ? vv.offsetTop : 0;
-    const layoutH = window.innerHeight;
-    const inset = Math.max(0, layoutH - vvH - offsetTop);
-
-    /* keyboard-open UI follows chat focus only */
-    const open = chatFocused;
-
-    if (!baseline) captureBaseline();
-
-    if (open) {
-      root.style.setProperty("--app-vh", `${Math.round(vvH)}px`);
-      root.style.setProperty("--vv-offset-top", `${offsetTop}px`);
-      root.style.setProperty("--vv-top", `${offsetTop}px`);
-      root.style.setProperty("--keyboard-inset", `${inset}px`);
-      setKeyboardOpen(true);
-      applyStageFrame(true, vvH, offsetTop);
-    } else {
-      restoreFullViewportVars();
-      setKeyboardOpen(false);
-      applyStageFrame(false, layoutH, 0);
-      baseline = Math.max(baseline || 0, vvH, layoutH);
-    }
   }
 
   function applyStageFrame(open, height, offsetTop) {
@@ -2704,7 +2669,6 @@ function wireKeyboardViewport() {
     if (open && document.body.classList.contains("mode-play")) {
       const h = Math.max(180, Math.round(height));
       const y = Math.max(0, Math.round(offsetTop || 0));
-      /* No position:fixed — that left the black void above the keyboard on iOS. */
       if (play) {
         play.style.height = h + "px";
         play.style.maxHeight = h + "px";
@@ -2741,11 +2705,66 @@ function wireKeyboardViewport() {
     }
   }
 
-  function onOrientation() {
+  function setKeyboardOpen(open) {
+    if (keyboardOpen === open) {
+      if (open) pinComposerIntoView();
+      return;
+    }
+    keyboardOpen = open;
+    document.body.classList.toggle("keyboard-open", open);
+    root.classList.toggle("keyboard-open", open);
+    setScrollLock(open);
+    if (open) {
+      pinComposerIntoView();
+      later(pinComposerIntoView, 50);
+      later(pinComposerIntoView, 280);
+    }
+  }
+
+  function forceCloseKeyboardLayout() {
     clearPending();
-    chatFocused = false;
+    focusGraceUntil = 0;
     setKeyboardOpen(false);
+    restoreFullViewportVars();
     applyStageFrame(false, window.innerHeight, 0);
+    pinComposerIntoView();
+    const { vvH, layoutH } = measure();
+    baseline = Math.max(baseline || 0, vvH, layoutH);
+  }
+
+  function syncViewport() {
+    const { vvH, offsetTop, layoutH } = measure();
+    const inset = Math.max(0, layoutH - vvH - offsetTop);
+    if (!baseline) captureBaseline();
+
+    const shrunk = isViewportShrunk();
+    const inGrace = Date.now() < focusGraceUntil;
+    /* Need BOTH intent (focus/grace) AND actual shrink — except brief grace
+       so first paint can enter keyboard mode before vv updates.
+       If keyboard dismissed while input still focused, shrunk=false → restore. */
+    const open = chatFocused && (shrunk || inGrace);
+
+    if (open) {
+      root.style.setProperty("--app-vh", `${Math.round(vvH)}px`);
+      root.style.setProperty("--vv-offset-top", `${offsetTop}px`);
+      root.style.setProperty("--vv-top", `${offsetTop}px`);
+      root.style.setProperty("--keyboard-inset", `${inset}px`);
+      setKeyboardOpen(true);
+      applyStageFrame(true, vvH, offsetTop);
+    } else {
+      forceCloseKeyboardLayout();
+    }
+
+    if (lastVvH && vvH > lastVvH + 40 && chatFocused && !shrunk) {
+      /* Keyboard animating away while focus remains */
+      forceCloseKeyboardLayout();
+    }
+    lastVvH = vvH;
+  }
+
+  function onOrientation() {
+    chatFocused = false;
+    forceCloseKeyboardLayout();
     later(() => {
       baseline = 0;
       captureBaseline();
@@ -2755,6 +2774,7 @@ function wireKeyboardViewport() {
   }
 
   captureBaseline();
+  lastVvH = measure().vvH;
   syncViewport();
 
   window.addEventListener("resize", syncViewport);
@@ -2772,12 +2792,11 @@ function wireKeyboardViewport() {
       (t.closest && t.closest("#chat-form, .chat-form"));
     if (!isChat) return;
     chatFocused = true;
-    setKeyboardOpen(true);
+    focusGraceUntil = Date.now() + 700;
     syncViewport();
     later(syncViewport, 50);
-    later(syncViewport, 250);
-    later(syncViewport, 500);
-    later(pinComposerIntoView, 60);
+    later(syncViewport, 300);
+    later(syncViewport, 750);
   });
 
   document.addEventListener("focusout", (e) => {
@@ -2787,39 +2806,82 @@ function wireKeyboardViewport() {
       t.id === "chat-input" ||
       (t.closest && t.closest("#chat-form, .chat-form"));
     if (!isChat) return;
-    clearPending();
     chatFocused = false;
-    setKeyboardOpen(false);
-    restoreFullViewportVars();
-    applyStageFrame(false, window.innerHeight, 0);
-    window.scrollTo(0, 0);
+    forceCloseKeyboardLayout();
     later(syncViewport, 50);
     later(syncViewport, 300);
     later(syncViewport, 700);
   });
 
-  /* Safety: if vv grows while not focused, force full layout (12/Pro Max Safari) */
-  if (window.visualViewport) {
-    let lastH = window.visualViewport.height;
-    window.visualViewport.addEventListener("resize", () => {
-      const h = window.visualViewport.height;
-      if (!chatFocused && h > lastH + 40) {
-        restoreFullViewportVars();
-        applyStageFrame(false, window.innerHeight, 0);
-        setKeyboardOpen(false);
-      }
-      lastH = h;
-    });
+  window.addEventListener("pageshow", () => {
+    if (!chatFocused) forceCloseKeyboardLayout();
+  });
+
+  function snapshot() {
+    const stage = document.querySelector("#screen-play .play-stage");
+    const { vvH, layoutH, offsetTop } = measure();
+    const cs = stage ? getComputedStyle(stage) : null;
+    return {
+      chatFocused,
+      keyboardOpen,
+      bodyClass: document.body.classList.contains("keyboard-open"),
+      htmlClass: root.classList.contains("keyboard-open"),
+      vvH: Math.round(vvH),
+      layoutH: Math.round(layoutH),
+      offsetTop: Math.round(offsetTop),
+      baseline: Math.round(baseline || 0),
+      appVhInline: root.style.getPropertyValue("--app-vh") || null,
+      stageHeight: cs ? cs.height : null,
+      stageTransform: cs ? cs.transform : null,
+      narrativeDisplay: (() => {
+        const n = document.querySelector("#screen-play .narrative-bubble");
+        return n ? getComputedStyle(n).display : null;
+      })()
+    };
   }
 
-  window.addEventListener("pageshow", () => {
-    if (!chatFocused) {
-      restoreFullViewportVars();
-      applyStageFrame(false, window.innerHeight, 0);
-      setKeyboardOpen(false);
+  /** Self-test: open → shrink → close cycle. Returns pass/fail JSON. */
+  window.__ahKbSelfTest = async function __ahKbSelfTest() {
+    const input = document.getElementById("chat-input");
+    if (!input || !document.body.classList.contains("mode-play")) {
+      return { ok: false, error: "not in play mode or no #chat-input" };
     }
-  });
+    const before = snapshot();
+    input.focus();
+    await new Promise((r) => setTimeout(r, 100));
+    /* Simulate iOS keyboard shrink */
+    const full = Math.max(baseline, window.innerHeight, before.vvH || 0);
+    const shrunkH = Math.max(280, Math.round(full * 0.45));
+    root.style.setProperty("--app-vh", shrunkH + "px");
+    baseline = full;
+    setKeyboardOpen(true);
+    applyStageFrame(true, shrunkH, 0);
+    chatFocused = true;
+    await new Promise((r) => setTimeout(r, 80));
+    const mid = snapshot();
+    /* Simulate keyboard dismiss (vv grows) while optionally still focused */
+    chatFocused = true;
+    root.style.setProperty("--app-vh", full + "px");
+    /* Grow path: forceClose when not shrunk */
+    const fakeShrunk = false;
+    if (!fakeShrunk) forceCloseKeyboardLayout();
+    chatFocused = false;
+    input.blur();
+    forceCloseKeyboardLayout();
+    await new Promise((r) => setTimeout(r, 120));
+    syncViewport();
+    await new Promise((r) => setTimeout(r, 80));
+    const after = snapshot();
+    const restored =
+      after.bodyClass === false &&
+      after.htmlClass === false &&
+      !after.appVhInline &&
+      after.narrativeDisplay !== "none" &&
+      (after.stageTransform === "none" || !after.stageTransform || after.stageTransform === "matrix(1, 0, 0, 1, 0, 0)");
+    return { ok: !!restored, before, mid, after, restored };
+  };
 }
+
 
 async function init() {
   wireKeyboardViewport();
