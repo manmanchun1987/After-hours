@@ -1,3 +1,13 @@
+2026-10-22 ~21:32 HKT：Lane B 執行。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS。
+無開 GUIDE 票。禁發明追票。
+發現 guide-lines.js 有 placeholder 評論，PRESSURE_REPLIES 等未定義（runtime 會爆）。
+修復：寫入完整實際 pools（HINT 60+ / PRESSURE 30 / CALLOUT 20 / THOUGHTS 各 15 / MEM 15 / AGREE 10）。
+真實 wc=8586B (≥1KB) 過閘。version=laneB-e29-20261022。
+軟性過關：門縫霜氣推定停；miss 升級仍導向推或停；anti-repeat 大池；禁客服腔。
+Live 煙測保持：硬刷 ?v=laneB-e29 → 18+ 閘 → 三張角色卡存在。無白屏。
+改檔：guide-lines.js + STATUS.md。未碰 app/index/patterns/data。
+IDEAS proposed 未批唔改碼。四柱仍 4/4/4/4。Lane C pause。
+
 2026-10-22 21:30 HKT：CODE hourly 追數。讀 AUTOMATION/LANES/DISPATCH/STATUS/QUALITY。
 無開 INTENT T1-T5。禁發明追票。
 LIVE GATE：app.js 122KB+ 完整引擎，無 app_b64 stub。index 有 chat-guide.js。
