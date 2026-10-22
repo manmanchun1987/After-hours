@@ -1,3 +1,13 @@
+2026-10-22 21:43 HKT：PUSHED fakeai4 → main 34350c0 (42b50c9..34350c0). Full-history skim CHAT_MEM_N/HISTORY_SKIM_CAP=50. patterns wc=21870. sceneGoals added alex+28 morgan+22 sam+21. Live cache ?v=fakeai4. Soft-pass OK. No CloudAgent.
+
+wc:
+ 21870 intent-patterns.js
+ 13610 guide-policy.js
+ 25095 data/alex.json
+ 29646 data/morgan.json
+ 27393 data/sam.json
+117614 total
+
 2026-10-22 21:48 HKT：fakeai4 memory steer — scan FULL dialogue transcript in state (chatUserLines+chatBotLines), safety cap 50 (CHAT_MEM_N=50). GuidePolicy skim prefers latest player detail. No second brain.
 
 2026-10-22 21:45 HKT：CEO fake-AI pack (local, no CloudAgent)。四項：
