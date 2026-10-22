@@ -1,3 +1,11 @@
+2026-10-22 23:05 HKT：Lane A hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS。
+無開 P0 INTENT（agree soft-match 已關）。輕加厚 agree 同義（應承你／答應你／同意啦／無問題啦），服務柔軟過關。
+改檔：intent-patterns.js（加 3 agree regex）、index.html（cache-bust ?v=lanea-20261022-2305，只 patterns）。
+真實 wc intent-patterns.js = 23541 bytes（≥1KB 過閘）。
+非原文煙測：開門啦→enter_door、我入去先→enter_door、等等…→wait、你想我點？→ask_want、我應承→agree、我應承你→agree、答應你→agree、同意啦→agree、天氣→off_topic。Soft-pass ok。
+未碰 guide/data/app/play-engine。Lane C pause 保持。
+四柱仍 4/4/4/4。
+
 2026-10-22 22:56 HKT：CODE uichat3b — chat-guide: non-freeChat beats (門後) show #choices; freeChat still hide until unlock／2 misses; stop MutationObserver fighting app unlock. Cache ?v=uichat3b. Root cause of 金掣 FAIL: hide-always + no freechat:miss. No Imagine。
 
 2026-10-22 22:32 HKT：P0 GUIDE mid-node goal steer + P0 INTENT agree soft-match。GuidePolicy 非走廊跟當前 sceneGoal；intent-patterns 加應承／challenge／flirt。auto-playtest --seed=42：**130 PASS / 0 FAIL**（前 99P/31F）· human-avg 97.2。Cache ?v=p0-steer-20261022 / p0-agree-20261022。DISPATCH 兩張 P0 關閉。改檔：guide-policy.js、guide-lines.js、intent-patterns.js、index.html、tools/PLAYTEST-LAST.md、DISPATCH.md、STATUS.md。一推 main。四柱仍 4/4/4/4。
