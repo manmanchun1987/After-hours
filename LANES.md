@@ -1,22 +1,24 @@
 # LANES — A–F（對齊本地假 AI 優先）
 
-> **現行預設：A＋B 開工。** Lane C＝暫停寫 `data/*`（只讀／STATUS）。D／E／F＝暫緩可選。無標 → **A**。  
-> 用戶 App 自動化 id：`AH-LaneA`–`AH-LaneF`（而家常用 A／B；C 可留住但**唔准改 data**）— **唔開新 App 自動化。**  
+> **自動化哲學（2026-10-22）：** 自動化**只**用來喺用戶瞓覺／靜音 ≥2 小時時，**延續**已經吩咐過 CEO 嘅工作——**唔准**日間發明平行票、唔准自己開新施工線。  
+> **Grok.com App hourly A–F：已暫停／暫緩**（唔當日間定時開工）。閒置接力靠 **CEO Bot routine「瞓覺先跑 After Hours」**（靜音 ≥2h 先跑）。  
+> **該 routine 跑嘅時候工作內容仍係 A＋B**（Intent-Patterns／Guide-Lines）。**C＝pause write**（唔准改 `data/*`）。**D／E／F＝deferred**。無標 → **A**。  
 > 指令一句：「讀 LANES.md 該車並執行；守 AUTOMATION.md」。  
 > **北辰：** 本地假 AI（Intent＋Guide），無付費 LLM。  
+> **唔聲稱** Grok.com／App UI 顯示名（除非已核實）；repo 只記車道 id／狀態。  
 > **臨時：** Pages 佇列塞車時少 push（唔係永久停工）。
 
-### App 顯示名（建議中文；repo 只記錄）
-Grok.com／App 自動化**顯示名**要用戶或瀏覽器改；本檔唔聲稱 UI 已改名。建議對照：
+### 車道 id（參考；App UI 名唔保證）
+舊 App id（`AH-LaneA`–`AH-LaneF`）可留作對照，但**唔代表** grok.com 而家仍有 hourly 喺跑。對照：
 
-| id | 建議中文名 | 車 |
+| id | 車 | 狀態 |
 |---|---|---|
-| `AH-LaneA` | 意圖加厚 | A Intent-Patterns |
-| `AH-LaneB` | 引導回覆 | B Guide-Lines |
-| `AH-LaneC` | 劇情資料 | C Scene（pause write） |
-| `AH-LaneD` | 點子 | D Ideas（deferred） |
-| `AH-LaneE` | 狀態打卡 | E Status（deferred） |
-| `AH-LaneF` | 整合上線 | F Integrator（deferred） |
+| `AH-LaneA` | A Intent-Patterns | active **when idle routine runs** |
+| `AH-LaneB` | B Guide-Lines | active **when idle routine runs** |
+| `AH-LaneC` | C Scene | **pause write** |
+| `AH-LaneD` | D Ideas | **deferred** |
+| `AH-LaneE` | E Status | **deferred** |
+| `AH-LaneF` | F Integrator | **deferred** |
 
 ---
 
@@ -26,7 +28,7 @@ Grok.com／App 自動化**顯示名**要用戶或瀏覽器改；本檔唔聲稱 
 3. 有 INTENT／GUIDE 開票 → **禁止 monitor-only**，要開工  
 4. **硬禁**：CDN pin／stub、`play-engine.js`／`life.js` 搶主引擎、keys／原文唯一、催 OpenRouter、改 Vera 鎖樣、**空／&lt;1KB 核心檔**、白屏、**單節 stub 劇情**  
 5. **push 前必須印真實 `wc -c`**（唔准 STATUS 空口「已加厚」）；唔啱 size 閘 → **唔 commit**  
-6. Live 煙測：硬刷 `?v=…` → 18+ 閘 → 見到 **三張角色卡** →（A／B 唔使每小時撳入戲，但**禁**弄壞 `#chars`／`renderCast`／`data` 節點數）  
+6. Live 煙測：硬刷 `?v=…` → 18+ 閘 → 見到 **三張角色卡** →（A／B idle run 唔使每次撳入戲，但**禁**弄壞 `#chars`／`renderCast`／`data` 節點數）  
 7. FEEL 聲稱前：跑 `node tools/auto-playtest.js`，掃 `tools/PLAYTEST-LAST.md`（見 DISPATCH FEEL gate）  
 8. 短報：改檔、**真實 wc**、測句、commit（如有）
 
@@ -53,13 +55,13 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 
 ---
 
-## Lane A — Intent-Patterns · **active**
+## Lane A — Intent-Patterns · **active when idle routine**
 
 | | |
 |---|---|
 | **寫入** | 只 `intent-patterns.js`；可 STATUS **一行**；index 只必要 cache-bust（改前＋改後 size≥1000） |
 | **讀** | AUTOMATION／本車／DISPATCH INTENT 開票；可讀 `data/*` 睇 `successIntents`（唔改） |
-| **狀態** | **active**（預設車） |
+| **狀態** | **active when idle routine**（預設車；日間唔自己開工） |
 | **禁碰** | `guide-lines*`、`data/*`、`app.js`（除非 F 例外且印 wc）、`play-engine.js`、`life.js` |
 
 ### checklist
@@ -72,13 +74,13 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 
 ---
 
-## Lane B — Guide-Lines · **active**
+## Lane B — Guide-Lines · **active when idle routine**
 
 | | |
 |---|---|
 | **寫入** | 只 `guide-lines.js`（或 .json） |
 | **讀** | AUTOMATION／本車／DISPATCH GUIDE 開票；可讀 `data/*` 睇當前 `sceneGoal`（唔改）；可跑 auto-playtest |
-| **狀態** | **active** |
+| **狀態** | **active when idle routine**（日間唔自己開工） |
 | **禁碰** | `app.js`／`index.html`／`intent-patterns*`／`data/*`／`play-engine`／`life` |
 
 ### checklist
@@ -124,7 +126,7 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 | **禁碰** | 未批就改碼／開施工 |
 
 ### checklist
-- [ ] 無專屬 hourly 施工；有用戶／CEO 叫先開  
+- [ ] 無專屬定時施工；有用戶／CEO 叫先開（唔准日間發明）  
 - [ ] 新 idea 只 `proposed`；等批  
 
 ---
@@ -139,7 +141,7 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 | **禁碰** | 假「已加厚」、空口 FEEL 升分（要先 auto-playtest） |
 
 ### checklist
-- [ ] 無專屬 hourly；需要時由開工車順帶寫一行  
+- [ ] 無專屬定時；需要時由開工車順帶寫一行  
 - [ ] 寫真實 size／nodes／playtest 摘要  
 
 ---
