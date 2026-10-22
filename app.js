@@ -1512,7 +1512,8 @@ function resolveScene(story, node) {
 
 function resolveProps(story, node) {
   if (node && Array.isArray(node.props)) return node.props;
-  if (resolveScene(story, node) === "pantry") return ["cup-noodles", "vending-glow"];
+  // No default props — only when node.props set AND story needs them to move
+  return [];
   return [];
 }
 

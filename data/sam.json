@@ -49,11 +49,7 @@
         },
         "ask": "接麵應承，定問清楚，定坐低？"
       },
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2a": {
       "id": "s2a",
@@ -93,11 +89,7 @@
         },
         "ask": "問清楚，定應承食，定停低？"
       },
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2b": {
       "id": "s2b",
@@ -136,11 +128,7 @@
         },
         "ask": "停低等等，定應承繼續？"
       },
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2c": {
       "id": "s2c",
@@ -179,11 +167,7 @@
         },
         "ask": "想清楚再拍卡，定走，定問門禁？"
       },
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2x": {
       "id": "s2x",
@@ -267,11 +251,7 @@
         },
         "ask": "問答案喺樓梯，定停低，定走？"
       },
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2z": {
       "id": "s2z",
@@ -880,11 +860,7 @@
       },
       "thought": "壞鏡頭變成福利。",
       "aside": "微波爐燈暗。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2p2": {
       "id": "s2p2",
@@ -921,11 +897,7 @@
       },
       "thought": "第二口比第一口危險。",
       "aside": "蒸汽再繞。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2x2": {
       "id": "s2x2",
@@ -1478,11 +1450,7 @@
       },
       "thought": "筷子比規則輕。",
       "aside": "蒸汽繞指。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s1c": {
       "id": "s1c",
@@ -1527,11 +1495,7 @@
       },
       "thought": "兩個綠點，好顯眼。",
       "aside": "手機光一閃。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s3z2": {
       "id": "s3z2",
@@ -1644,11 +1608,7 @@
       },
       "thought": "氣氛比人名重。",
       "aside": "蒸汽遮臉。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2b2": {
       "id": "s2b2",
@@ -1687,11 +1647,7 @@
       },
       "thought": "矛盾講出口先真。",
       "aside": "匙羹停空中。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s2c2": {
       "id": "s2c2",
@@ -1729,11 +1685,7 @@
       },
       "thought": "第二次拍卡先係答案。",
       "aside": "腕錶冷光。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s3pre": {
       "id": "s3pre",
@@ -1991,11 +1943,7 @@
       },
       "thought": "咔聲像開場。",
       "aside": "熱氣繞。",
-      "scene": "pantry",
-      "props": [
-        "cup-noodles",
-        "vending-glow"
-      ]
+      "scene": "pantry"
     },
     "s3r3": {
       "id": "s3r3",

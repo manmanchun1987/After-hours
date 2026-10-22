@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "face-first-20261023b";
+  var STAMP = "face-first-20261023c";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
