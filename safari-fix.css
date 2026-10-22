@@ -297,3 +297,35 @@ body.mode-play .action-zone {
     background: rgba(8, 12, 20, 0.88) !important;
   }
 }
+
+
+/* uichat3 — iPhone: action row pinned under chat, IM collapses when choices on */
+body.mode-play .play-lower > .action-zone {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  z-index: 8 !important;
+  position: relative !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel.zone-chat,
+body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  max-height: 52px !important;
+  min-height: 48px !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .zone-chat .chat-header,
+body.mode-play:has(#choices:not(.freechat-hidden)) .zone-chat .chat-messages,
+body.mode-play:has(#choices:not(.freechat-hidden)) .zone-chat .chat-typing {
+  display: none !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
+  height: 14vh !important;
+  min-height: 10vh !important;
+  max-height: 18vh !important;
+}
+@media (max-height: 620px) {
+  body.mode-play:has(#choices:not(.freechat-hidden)) .chat-panel {
+    display: flex !important;
+    max-height: 48px !important;
+  }
+}

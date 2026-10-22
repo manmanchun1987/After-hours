@@ -2217,3 +2217,56 @@ body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
     max-height: min(14vh, 108px) !important;
   }
 }
+
+
+/* ============================================================
+   uichat3 — action CTA at bottom of play-lower (never under IM)
+   DOM: story → chat → action. When choices show, collapse IM body.
+   ============================================================ */
+.play-lower > .zone-story {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+}
+.play-lower > .zone-chat,
+.play-lower > .chat-panel.zone-chat {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  z-index: 1 !important;
+  position: relative !important;
+}
+.play-lower > .action-zone {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 8 !important;
+  background: linear-gradient(180deg, transparent, rgba(6, 8, 14, 0.92) 28%);
+  padding-top: 6px;
+  margin-top: 0;
+  padding-bottom: max(4px, env(safe-area-inset-bottom));
+}
+/* choices visible: IM becomes composer-only strip so gold buttons dominate */
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat .chat-header,
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat .chat-messages,
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat .chat-typing,
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat .incoming-toast {
+  display: none !important;
+}
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat,
+.play-lower:has(#choices:not(.freechat-hidden)) > .chat-panel.zone-chat {
+  flex: 0 0 auto !important;
+  max-height: 52px !important;
+  min-height: 48px !important;
+}
+.play-lower:has(#choices:not(.freechat-hidden)) > .zone-chat .chat-composer {
+  border-top: none !important;
+  padding-top: 4px !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
+  height: clamp(12vh, 16vh, 20vh) !important;
+  min-height: 12vh !important;
+  max-height: 20vh !important;
+}
+#screen-play .action-zone .btn-choice {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
+}
