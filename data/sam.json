@@ -17,39 +17,37 @@
       "mid": "杯麵熱氣繞住佢指尖。蒸汽在燈光下轉圈。匙羹輕輕敲碗邊一下。目光溫柔，像已經等你很久。熱氣慢慢散開，帶住一點笑。指尖再輕敲。蒸汽再轉半圈。熱氣再繞一圈，目光再對上半秒。蒸汽再轉半圈，熱氣再近一分。匙羹再敲半下，熱氣再繞。",
       "choices": [
         {
-          "label": "「你成日咁留？」",
-          "next": "s2a",
+          "label": "接過杯麵",
+          "next": "s1b",
+          "heat": 4
+        },
+        {
+          "label": "「你叫我嚟？」",
+          "next": "s1b",
+          "tension": 2
+        },
+        {
+          "label": "（坐低先）",
+          "next": "s1b",
           "heat": 6
-        },
-        {
-          "label": "「教第二條。」",
-          "next": "s2b",
-          "heat": 4,
-          "tension": 4
-        },
-        {
-          "label": "「我食完就走。」",
-          "next": "s2c",
-          "tension": 6
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "ask_want",
           "agree",
+          "ask_want",
           "wait"
         ],
         "optionalIntents": [
-          "ask_memory",
-          "flirt"
+          "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "ask_want": "問清楚留夜",
-          "agree": "教第二條",
-          "wait": "食完就走"
+          "agree": "接麵",
+          "ask_want": "問叫你",
+          "wait": "坐低"
         },
-        "ask": "問清楚，定聽第二條，定走？"
+        "ask": "接麵應承，定問清楚，定坐低？"
       }
     },
     "s2a": {
@@ -64,32 +62,31 @@
       "mid": "吹麵時，佢望你一眼就移開。匙羹在碗邊停半拍。蒸汽遮住半邊臉。指尖輕輕敲碗，像在數心跳。熱氣再繞一圈。目光再對上。匙羹再停半拍。蒸汽再轉，心跳差半拍。匙羹再敲半下，心跳再近一分。蒸汽再轉半圈，熱氣再近。",
       "choices": [
         {
-          "label": "「樓上係指邊個？」",
-          "next": "s2x",
-          "tension": 8
+          "label": "「唔放心？」",
+          "next": "s2a2",
+          "heat": 6
         },
         {
-          "label": "「……多謝你留。」",
-          "next": "s2x",
-          "heat": 10
+          "label": "繼續食",
+          "next": "s2a2"
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "agree",
           "ask_want",
-          "flirt"
+          "agree",
+          "wait"
         ],
         "optionalIntents": [
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續",
-          "ask_want": "講清楚你想點",
-          "flirt": "再近啲"
+          "ask_want": "問",
+          "agree": "應承",
+          "wait": "停低"
         },
-        "ask": "應承繼續，定講清楚你想點？"
+        "ask": "問清楚，定應承食，定停低？"
       }
     },
     "s2b": {
@@ -104,14 +101,13 @@
       "mid": "頓一頓之後，匙羹停在空中。熱氣仍在，空氣靜。碗邊水珠滑落。目光再對上你，未移開。匙羹再輕輕敲一下。蒸汽再轉。水珠再滑。目光再鎖半秒，熱氣未散。水珠再滑半下，目光再鎖緊一分。匙羹再敲半下，熱氣再繞。",
       "choices": [
         {
-          "label": "「幾麻煩？」",
-          "next": "s2x",
-          "heat": 10
+          "label": "「後者？」",
+          "next": "s2b2",
+          "heat": 6
         },
         {
-          "label": "「當我未聽過。」",
-          "next": "s2x",
-          "tension": 6
+          "label": "點頭聽住",
+          "next": "s2b2"
         }
       ],
       "sceneGoal": {
@@ -140,13 +136,14 @@
       "mid": "匙羹放慢時，熱氣仍在。佢手指在杯沿輕敲。敲聲同心跳差半拍。目光溫柔，等你改主意。蒸汽再轉一圈。熱氣未散。敲聲再輕。手指再敲半下，心跳再近。蒸汽再轉半圈，決定再近一分。手指再敲半下，熱氣再繞。",
       "choices": [
         {
-          "label": "「我再坐陣。」",
-          "next": "s2x",
-          "heat": 8
+          "label": "望腕錶",
+          "next": "s2c2",
+          "tension": 2
         },
         {
-          "label": "「我真走。」",
-          "next": "ending_s_c"
+          "label": "「23:15……」",
+          "next": "s2c2",
+          "heat": 4
         }
       ],
       "sceneGoal": {
@@ -177,26 +174,19 @@
       "mid": "影印機紅燈一閃，影子拉長。紙張味道混住熱氣。影子在牆上停半秒。佢手輕按你背一下，像在推你，又像在留你。紅燈再閃半秒。紙味仍在。影子再拉長。手背餘溫仍在，紅燈再熄半秒。紅燈再閃半下，餘溫再傳一分。影子再停半秒，餘溫仍在。",
       "choices": [
         {
-          "label": "「帶路。」",
-          "next": "s3",
-          "heat": 8
+          "label": "跟入影裏",
+          "next": "s2x4",
+          "heat": 6
         },
         {
-          "label": "「我返工位。」",
-          "next": "ending_s_c"
+          "label": "「影裏先講？」",
+          "next": "s2x4",
+          "tension": 4
         },
         {
-          "label": "「影印機後有冇第三條？」",
-          "next": "s2y",
-          "heat": 8,
-          "tension": 4,
-          "cg": true
-        },
-        {
-          "label": "「紅燈再閃幾耐？」",
-          "next": "s2z",
-          "heat": 9,
-          "cg": true
+          "label": "停在影邊",
+          "next": "s2x4",
+          "heat": 4
         }
       ],
       "sceneGoal": {
@@ -229,7 +219,7 @@
       "choices": [
         {
           "label": "「帶我去。」",
-          "next": "s3",
+          "next": "s2x2",
           "heat": 12,
           "cg": true
         },
@@ -268,7 +258,7 @@
       "choices": [
         {
           "label": "「我想知。」",
-          "next": "s3",
+          "next": "s2x2",
           "heat": 11,
           "cg": true
         },
@@ -307,7 +297,7 @@
       "choices": [
         {
           "label": "（靠近）「咁你睇住我？」",
-          "next": "s4",
+          "next": "s3r",
           "heat": 14,
           "remember": [
             "asked_watch"
@@ -315,7 +305,7 @@
         },
         {
           "label": "「帶我返工位。」",
-          "next": "s4",
+          "next": "s3r",
           "tension": 4
         },
         {
@@ -367,7 +357,7 @@
       "choices": [
         {
           "label": "「我想知。」",
-          "next": "s4",
+          "next": "s3y2",
           "heat": 13,
           "cg": true
         },
@@ -405,7 +395,7 @@
       "choices": [
         {
           "label": "「我想知。」",
-          "next": "s4",
+          "next": "s3z2",
           "heat": 13,
           "cg": true
         },
@@ -443,62 +433,40 @@
       "mid": "聲線一變，走廊靜得只剩風。工牌繩輕輕擺。呼吸差半拍就近。目光溫柔又認真，等你答。夜風再入門縫。工牌繩再晃。風再大半度。聲線再低半度，熱度蓋過風。工牌繩再擺半下，熱度再升一分。風再入半寸，熱度再蓋。",
       "choices": [
         {
-          "label": "「唔只係。」",
-          "next": "s5",
-          "heat": 16,
-          "requireHeat": 32
+          "label": "深呼吸",
+          "next": "s4pre",
+          "heat": 4
         },
         {
-          "label": "「只做前輩。」",
-          "next": "ending_s_c",
-          "tension": 2
+          "label": "「……我聽。」",
+          "next": "s4pre",
+          "heat": 6
         },
         {
-          "label": "「我想慢慢嚟。」",
-          "next": "ending_s_b",
+          "label": "（對視）",
+          "next": "s4pre",
           "heat": 8,
-          "remember": [
-            "go_slow"
-          ]
-        },
-        {
-          "label": "「你決定。」",
-          "next": "s4y",
-          "heat": 12,
-          "cg": true
-        },
-        {
-          "label": "「你想我點？」",
-          "next": "s4z",
-          "heat": 11,
-          "cg": true
-        },
-        {
-          "label": "「門縫風大唔大？」",
-          "next": "s4w",
-          "heat": 12,
           "cg": true
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "ask_want",
           "agree",
-          "flirt",
-          "wait"
+          "ask_want",
+          "wait",
+          "flirt"
         ],
         "optionalIntents": [
-          "refuse",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "ask_want": "講清楚角色",
-          "agree": "應承唔只係",
-          "flirt": "再近",
-          "wait": "停低"
+          "agree": "應承",
+          "ask_want": "問清楚",
+          "wait": "停低",
+          "flirt": "對視"
         },
-        "ask": "只要前輩定唔只係，講清楚；定應承近啲？"
+        "ask": "應承聽，定問清楚，定停低？"
       }
     },
     "s4y": {
@@ -511,7 +479,7 @@
       "choices": [
         {
           "label": "「得。」",
-          "next": "s5",
+          "next": "s4y2",
           "heat": 14,
           "requireHeat": 30,
           "cg": true
@@ -550,7 +518,7 @@
       "choices": [
         {
           "label": "「唔只係。」",
-          "next": "s5",
+          "next": "s4z2",
           "heat": 13,
           "requireHeat": 31,
           "cg": true
@@ -589,7 +557,7 @@
       "choices": [
         {
           "label": "「我量完。入。」",
-          "next": "s5",
+          "next": "s4w2",
           "heat": 14,
           "requireHeat": 33,
           "cg": true
@@ -627,21 +595,14 @@
       "mid": "額抵額時，呼吸同步半拍。夜風從門縫入。工牌繩輕輕夾在中間。溫度傳到皮膚，像秘密。風停半拍。餘溫傳開。工牌繩再夾緊。呼吸再同步一次，秘密落在皮膚。風再停半拍，餘溫再傳一分。工牌繩再夾緊半分，熱度再升。",
       "choices": [
         {
-          "label": "「我知。」",
-          "next": "ending_s_a",
-          "heat": 8,
-          "requireHeat": 40
+          "label": "「口頭版得。」",
+          "next": "s5q",
+          "heat": 8
         },
         {
           "label": "「再近啲。」",
-          "next": "s5y",
+          "next": "s5q",
           "heat": 12,
-          "cg": true
-        },
-        {
-          "label": "「呢頁我自己寫。」",
-          "next": "s5z",
-          "heat": 11,
           "cg": true
         },
         {
@@ -681,7 +642,7 @@
       "choices": [
         {
           "label": "「確定。」",
-          "next": "ending_s_a",
+          "next": "s5y2",
           "heat": 14,
           "requireHeat": 38,
           "cg": true
@@ -720,7 +681,7 @@
       "choices": [
         {
           "label": "「得。」",
-          "next": "ending_s_a",
+          "next": "s5z2",
           "heat": 13,
           "requireHeat": 36,
           "cg": true
@@ -759,7 +720,7 @@
       "choices": [
         {
           "label": "「唔只係。」",
-          "next": "ending_s_a",
+          "next": "s5w2",
           "heat": 14,
           "requireHeat": 37,
           "cg": true
@@ -856,6 +817,1209 @@
         },
         "ask": "講清楚你想點。"
       }
+    },
+    "s2p": {
+      "id": "s2p",
+      "label": "茶水間 CCTV",
+      "text": "Sammi 用筷子指天花板角落：「嗰粒黑點壞咗兩個月。行政話整，冇人整。所以——呢度講嘢，當半個秘密。」",
+      "choices": [
+        {
+          "label": "「半個夠。」",
+          "next": "s2p2",
+          "heat": 6
+        },
+        {
+          "label": "「你特登揀壞鏡頭？」",
+          "next": "s2p2",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "ask_want": "問鏡頭",
+          "flirt": "再近",
+          "wait": "停低"
+        },
+        "ask": "應承半個秘密，定問清楚，定停低？"
+      },
+      "thought": "壞鏡頭變成福利。",
+      "aside": "微波爐燈暗。"
+    },
+    "s2p2": {
+      "id": "s2p2",
+      "label": "杯麵第二口",
+      "text": "熱氣散一半。Sammi 把調味包推你：「第二口先有味道。加班同——其他，都係。」",
+      "choices": [
+        {
+          "label": "接過調味包",
+          "next": "s2x",
+          "heat": 6
+        },
+        {
+          "label": "「其他係指？」",
+          "next": "s2x",
+          "heat": 8
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "接過",
+          "ask_want": "問其他",
+          "flirt": "再近"
+        },
+        "ask": "應承接過，定問其他，定再近？"
+      },
+      "thought": "第二口比第一口危險。",
+      "aside": "蒸汽再繞。"
+    },
+    "s2x2": {
+      "id": "s2x2",
+      "label": "工牌拍卡",
+      "text": "走廊門禁紅燈。Sammi 拍自己工牌，門唔開。再拍——綠。\n\n「有時要兩次。好似人。第一次當試，第二次先算數。」",
+      "choices": [
+        {
+          "label": "「我都拍。」",
+          "next": "s2x3",
+          "heat": 6
+        },
+        {
+          "label": "笑：「你教門禁哲學？」",
+          "next": "s2x3",
+          "heat": 8
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "拍卡",
+          "flirt": "笑近",
+          "ask_want": "問清楚",
+          "wait": "停低"
+        },
+        "ask": "應承拍卡，定笑近，定問清楚？"
+      },
+      "thought": "兩次拍卡，兩次選擇。",
+      "aside": "紅轉綠。"
+    },
+    "s2x3": {
+      "id": "s2x3",
+      "label": "拍卡失敗",
+      "text": "你拍——紅。Sammi 靠近，手覆住你手背再拍一次，門開。\n\n「唔好意思。有時系統認前輩多過認新人。」",
+      "choices": [
+        {
+          "label": "「帶路。」",
+          "next": "s3pre",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「我返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "跟去",
+          "refuse": "返工位",
+          "flirt": "再近",
+          "ask_want": "問清楚"
+        },
+        "ask": "跟去，定返工位，定再近？"
+      },
+      "thought": "手背溫度比綠燈清楚。",
+      "aside": "門禁滴一聲。"
+    },
+    "s3r": {
+      "id": "s3r",
+      "label": "雨聲天台",
+      "text": "防火門縫透入雨氣。Sammi 推門一條縫：「落住雨。天台濕——但監控仍然盲呢五級。」",
+      "choices": [
+        {
+          "label": "「出睇雨。」",
+          "next": "s3r2",
+          "heat": 8
+        },
+        {
+          "label": "「留喺樓梯講。」",
+          "next": "s3r2",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "出睇",
+          "ask_want": "問清楚",
+          "wait": "留樓梯",
+          "flirt": "再近"
+        },
+        "ask": "應承出睇，定留樓梯，定問清楚？"
+      },
+      "thought": "雨同秘密一齊濕。",
+      "aside": "門縫風。"
+    },
+    "s3r2": {
+      "id": "s3r2",
+      "label": "雨同 slide",
+      "text": "雨打鐵皮棚好響。Sammi 聲線要靠近先聽到：\n\n「聽日 slide deadline。我可以通宵幫你改——價錢唔係加班費。」",
+      "choices": [
+        {
+          "label": "聽住雨聲",
+          "next": "s3r3",
+          "heat": 6
+        },
+        {
+          "label": "「通宵……」",
+          "next": "s3r3",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "refuse",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問價錢",
+          "agree": "只要改稿",
+          "refuse": "走",
+          "flirt": "再近問",
+          "wait": "停低"
+        },
+        "ask": "問價錢，定只要改稿，定走？"
+      },
+      "thought": "價錢兩個字突然好近。",
+      "aside": "雨更大。"
+    },
+    "s4p": {
+      "id": "s4p",
+      "label": "前輩界限",
+      "text": "Sammi 靠欄杆，雨絲沾濕袖口。「只做前輩——我熟手。唔只係——我亦未試過同下屬講出口。」",
+      "choices": [
+        {
+          "label": "「咁今晚試？」",
+          "next": "s4p2",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「我慢慢嚟。」",
+          "next": "ending_s_b",
+          "heat": 8,
+          "remember": [
+            "go_slow"
+          ]
+        },
+        {
+          "label": "「只做前輩。」",
+          "next": "ending_s_c",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "flirt",
+          "wait",
+          "refuse",
+          "ask_want",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "flirt": "試",
+          "wait": "慢慢",
+          "refuse": "只前輩",
+          "ask_want": "問清楚",
+          "agree": "應承試"
+        },
+        "ask": "試唔只係，定慢慢，定只做前輩？"
+      },
+      "thought": "未試過三字比規則重。",
+      "aside": "袖口雨點。"
+    },
+    "s4p2": {
+      "id": "s4p2",
+      "label": "門把雨",
+      "text": "天台門把濕涼。Sammi 把手覆上：「入咗防火門後——監控恢復。你仲要唔要？」",
+      "choices": [
+        {
+          "label": "「要。」",
+          "next": "s5",
+          "heat": 14,
+          "requireHeat": 30,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "要",
+          "refuse": "返工位",
+          "flirt": "再近",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承要，定返工位，定再近？"
+      },
+      "thought": "門後先恢復有人睇。",
+      "aside": "滴水聲。"
+    },
+    "s4y2": {
+      "id": "s4y2",
+      "label": "慢慢但唔退",
+      "text": "「唔退。」Sammi 重複，像對自己講。「聽日我照改 slide。今晚——你企近一格都得。」",
+      "choices": [
+        {
+          "label": "企近一格",
+          "next": "s5",
+          "heat": 14,
+          "requireHeat": 30,
+          "cg": true
+        },
+        {
+          "label": "「我返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "flirt",
+          "agree",
+          "refuse",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "flirt": "企近",
+          "agree": "應承",
+          "refuse": "返工位",
+          "wait": "停低"
+        },
+        "ask": "企近，定應承，定返工位？"
+      },
+      "thought": "一格已經好多。",
+      "aside": "風細咗。"
+    },
+    "s4z2": {
+      "id": "s4z2",
+      "label": "你自己講",
+      "text": "Sammi 等你。雨停半拍。\n\n「你講『唔只係』——我先跟。你講『前輩』——我送你返座。」",
+      "choices": [
+        {
+          "label": "「唔只係。」",
+          "next": "s5",
+          "heat": 13,
+          "requireHeat": 31,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "唔只係",
+          "flirt": "再近講",
+          "refuse": "返工位",
+          "ask_want": "問清楚"
+        },
+        "ask": "講唔只係，定返工位，定問清楚？"
+      },
+      "thought": "兩個出口，同一道門。",
+      "aside": "工牌繩晃。"
+    },
+    "s4w2": {
+      "id": "s4w2",
+      "label": "風量完",
+      "text": "「量完風？」Sammi 笑意淺。「規則其實一條：你冷——我借外套；你熱——我停手。」",
+      "choices": [
+        {
+          "label": "「入。」",
+          "next": "s5",
+          "heat": 14,
+          "requireHeat": 33,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "入",
+          "refuse": "返工位",
+          "flirt": "再近",
+          "wait": "停低"
+        },
+        "ask": "應承入，定返工位，定再近？"
+      },
+      "thought": "外套同停手，都係關心。",
+      "aside": "門縫風細。"
+    },
+    "s5p": {
+      "id": "s5p",
+      "label": "共享文件外",
+      "text": "額抵額。Sammi 氣音：「共享文件有版本紀錄。呢頁——我哋用口頭版。聽日茶水間見。」",
+      "choices": [
+        {
+          "label": "「口頭版得。」",
+          "next": "s5p2",
+          "heat": 6
+        },
+        {
+          "label": "點頭",
+          "next": "s5p2",
+          "heat": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "ask_want": "自己寫",
+          "wait": "停低"
+        },
+        "ask": "應承知，定再近，定自己寫？"
+      },
+      "thought": "口頭版冇回溯。",
+      "aside": "呼吸同步。"
+    },
+    "s5y2": {
+      "id": "s5y2",
+      "label": "確定之後",
+      "text": "「確定。」Sammi 眼彎。「咁聽日我改 slide 會心不在焉——你負責提醒我。」",
+      "choices": [
+        {
+          "label": "「得。我提醒你。」",
+          "next": "ending_s_a",
+          "heat": 14,
+          "requireHeat": 38,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "提醒",
+          "refuse": "返工位",
+          "flirt": "再近",
+          "wait": "停低"
+        },
+        "ask": "應承提醒，定返工位，定再近？"
+      },
+      "thought": "提醒變成暗號。",
+      "aside": "風停。"
+    },
+    "s5z2": {
+      "id": "s5z2",
+      "label": "自己寫之後",
+      "text": "「自己寫好。」Sammi 鬆開半寸。「杯麵多一格——唔係賄賂。係位置。」",
+      "choices": [
+        {
+          "label": "「我識。」",
+          "next": "ending_s_a",
+          "heat": 13,
+          "requireHeat": 36,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "refuse": "返工位",
+          "ask_want": "問位置",
+          "wait": "停低"
+        },
+        "ask": "應承識，定返工位，定問清楚？"
+      },
+      "thought": "位置比賄賂清楚。",
+      "aside": "工牌繩仍夾。"
+    },
+    "s5w2": {
+      "id": "s5w2",
+      "label": "想同杯麵",
+      "text": "「我想你留低。」Sammi 終於直說。「留低唔等於而家定終身。等於——聽日仲有第二碗。」",
+      "choices": [
+        {
+          "label": "「唔只係。我留。」",
+          "next": "ending_s_a",
+          "heat": 14,
+          "requireHeat": 37,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "留",
+          "flirt": "再近留",
+          "refuse": "返工位",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承留，定返工位，定問清楚？"
+      },
+      "thought": "第二碗比告白輕，但真。",
+      "aside": "餘溫傳開。"
+    },
+    "s1b": {
+      "id": "s1b",
+      "label": "微波爐餘溫",
+      "text": "叮聲餘韻未散。Sammi 把一雙即棄筷子掰開，遞一支俾你。\n\n「潛規則第零條：肯接筷子，先有下文。唔接——當路過。」",
+      "choices": [
+        {
+          "label": "接筷子",
+          "next": "s1d",
+          "heat": 4
+        },
+        {
+          "label": "「第零條你先講？」",
+          "next": "s1d",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "接筷",
+          "ask_want": "問第零條",
+          "wait": "停低",
+          "flirt": "再近接"
+        },
+        "ask": "接筷子應承，定問清楚，定停低？"
+      },
+      "thought": "筷子比規則輕。",
+      "aside": "蒸汽繞指。"
+    },
+    "s1c": {
+      "id": "s1c",
+      "label": "加班名單",
+      "text": "Sammi 打開手機給你瞥一眼加班群——大半灰燈。\n\n「今晚只得我哋兩個綠住。你想知點解我叫你嚟茶水間，定想先食？」",
+      "choices": [
+        {
+          "label": "「你成日咁留？」",
+          "next": "s2a",
+          "heat": 6
+        },
+        {
+          "label": "「教第二條。」",
+          "next": "s2b",
+          "heat": 4,
+          "tension": 4
+        },
+        {
+          "label": "「我食完就走。」",
+          "next": "s2c",
+          "tension": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "wait",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問留夜",
+          "agree": "聽第二條",
+          "wait": "食完走",
+          "flirt": "再近問"
+        },
+        "ask": "問留夜，定聽第二條，定走？"
+      },
+      "thought": "兩個綠點，好顯眼。",
+      "aside": "手機光一閃。"
+    },
+    "s3z2": {
+      "id": "s3z2",
+      "label": "鎖壞半年",
+      "text": "Sammi 輕輕拉門：鎖芯鬆動，一拉就開。\n\n「報修單我遞過三次。第三次行政話『低優先』。低優先——先有我哋。」",
+      "choices": [
+        {
+          "label": "「我想知。」",
+          "next": "s3r",
+          "heat": 13,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "refuse",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "要知",
+          "agree": "跟入",
+          "refuse": "返工位",
+          "wait": "停低"
+        },
+        "ask": "要知，定應承入，定返工位？"
+      },
+      "thought": "低優先變成特權。",
+      "aside": "鎖芯輕響。"
+    },
+    "s3y2": {
+      "id": "s3y2",
+      "label": "五級倒數",
+      "text": "Sammi 踩第一級，回頭：「一。二。三——到五之前你都可以返轉頭。五之後，當你自願。」",
+      "choices": [
+        {
+          "label": "跟上第五級",
+          "next": "s3r",
+          "heat": 13,
+          "cg": true
+        },
+        {
+          "label": "「返工位。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "ask_want",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "跟上",
+          "refuse": "返工位",
+          "ask_want": "問清楚",
+          "flirt": "近啲上"
+        },
+        "ask": "跟上，定返工位，定問清楚？"
+      },
+      "thought": "倒數比規則老實。",
+      "aside": "階梯冷光。"
+    },
+    "s2a2": {
+      "id": "s2a2",
+      "label": "樓上兩字",
+      "text": "Sammi 吹涼麵，聲線淡：「樓上有人。有時係老闆，有時係……你唔想半夜獨留嘅那種氣氛。」",
+      "choices": [
+        {
+          "label": "「樓上係指邊個？」",
+          "next": "s2p",
+          "tension": 8
+        },
+        {
+          "label": "「……多謝你留。」",
+          "next": "s2p",
+          "heat": 10
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問樓上",
+          "agree": "多謝",
+          "flirt": "再近"
+        },
+        "ask": "問樓上，定多謝，定再近？"
+      },
+      "thought": "氣氛比人名重。",
+      "aside": "蒸汽遮臉。"
+    },
+    "s2b2": {
+      "id": "s2b2",
+      "label": "麻煩份量",
+      "text": "「麻煩到我想叫你食完就走——又想你留。」Sammi 苦笑。「矛盾？前輩都有。」",
+      "choices": [
+        {
+          "label": "「幾麻煩？」",
+          "next": "s2p",
+          "heat": 10
+        },
+        {
+          "label": "「當我未聽過。」",
+          "next": "s2p",
+          "tension": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "wait",
+          "agree",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問麻煩",
+          "wait": "當未聽",
+          "agree": "應承",
+          "flirt": "再近"
+        },
+        "ask": "問幾麻煩，定當未聽，定應承？"
+      },
+      "thought": "矛盾講出口先真。",
+      "aside": "匙羹停空中。"
+    },
+    "s2c2": {
+      "id": "s2c2",
+      "label": "門禁倒數",
+      "text": "Sammi 睇腕錶：「23:15 前你走，我送你到閘。之後——雙拍卡，第二次先算你真走。」",
+      "choices": [
+        {
+          "label": "「我再坐陣。」",
+          "next": "s2p",
+          "heat": 8
+        },
+        {
+          "label": "「我真走。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait",
+          "refuse",
+          "ask_want",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "再坐",
+          "refuse": "走",
+          "ask_want": "問門禁",
+          "agree": "應承坐"
+        },
+        "ask": "再坐，定走，定問門禁？"
+      },
+      "thought": "第二次拍卡先係答案。",
+      "aside": "腕錶冷光。"
+    },
+    "s3pre": {
+      "id": "s3pre",
+      "label": "樓梯口",
+      "text": "影印機遠咗。Sammi 停在樓梯口，手按欄杆。\n\n「再上就係盲區。你跟——定我送你返座？」",
+      "choices": [
+        {
+          "label": "（靠近）「咁你睇住我？」",
+          "next": "s3",
+          "heat": 14,
+          "remember": [
+            "asked_watch"
+          ]
+        },
+        {
+          "label": "「帶我返工位。」",
+          "next": "s3",
+          "tension": 4
+        },
+        {
+          "label": "「呢種秘密我唔想要。」",
+          "next": "ending_s_c"
+        },
+        {
+          "label": "「五級之後仲有咩？」",
+          "next": "s3z",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「盲區有幾耐？」",
+          "next": "s3y",
+          "heat": 11,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "flirt",
+          "wait",
+          "refuse",
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問盲區",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走",
+          "agree": "跟上"
+        },
+        "ask": "想知盲區，定再近，定走？"
+      },
+      "thought": "欄杆涼，決定熱。",
+      "aside": "風開始入。"
+    },
+    "s4pre": {
+      "id": "s4pre",
+      "label": "防火門前",
+      "text": "雨氣仍在袖口。Sammi 聲線第一次完全唔笑：\n\n「我可以只做前輩。都可以……唔只係。你答之前——呼吸一下。」",
+      "choices": [
+        {
+          "label": "「唔只係。」",
+          "next": "s4p",
+          "heat": 16,
+          "requireHeat": 32
+        },
+        {
+          "label": "「只做前輩。」",
+          "next": "ending_s_c",
+          "tension": 2
+        },
+        {
+          "label": "「我想慢慢嚟。」",
+          "next": "ending_s_b",
+          "heat": 8,
+          "remember": [
+            "go_slow"
+          ]
+        },
+        {
+          "label": "「你決定。」",
+          "next": "s4y",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「你想我點？」",
+          "next": "s4z",
+          "heat": 11,
+          "cg": true
+        },
+        {
+          "label": "「門縫風大唔大？」",
+          "next": "s4w",
+          "heat": 12,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "講角色",
+          "agree": "唔只係",
+          "flirt": "再近",
+          "wait": "慢慢",
+          "refuse": "只前輩"
+        },
+        "ask": "唔只係，定只前輩，定慢慢？"
+      },
+      "thought": "呼吸一下，先算成年人。",
+      "aside": "防火門冷。"
+    },
+    "s5q": {
+      "id": "s5q",
+      "label": "額前最後",
+      "text": "距離額抵額只差半寸。Sammi 問：「聽日我改 slide 時——要唔要我裝唔記得今晚？」",
+      "choices": [
+        {
+          "label": "「唔使裝。」",
+          "next": "s5p",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「裝忘記，但茶水間見。」",
+          "next": "s5p",
+          "heat": 8
+        },
+        {
+          "label": "「你先講想點。」",
+          "next": "s5w",
+          "heat": 12,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "唔使裝",
+          "ask_want": "問想",
+          "flirt": "再近",
+          "wait": "停低"
+        },
+        "ask": "唔使裝，定裝忘記，定問想？"
+      },
+      "thought": "裝忘記同記得，都係親密。",
+      "aside": "呼吸差半拍。"
+    },
+    "s2x4": {
+      "id": "s2x4",
+      "label": "影印影",
+      "text": "紅燈再閃。Sammi 把你拉入影裏半步：「影裏講第三條都得。出影——返工位語氣。」",
+      "choices": [
+        {
+          "label": "「帶路。」",
+          "next": "s2x2",
+          "heat": 8
+        },
+        {
+          "label": "「我返工位。」",
+          "next": "ending_s_c"
+        },
+        {
+          "label": "「影印機後有冇第三條？」",
+          "next": "s2y",
+          "heat": 8,
+          "tension": 4,
+          "cg": true
+        },
+        {
+          "label": "「紅燈再閃幾耐？」",
+          "next": "s2z",
+          "heat": 9,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "跟去",
+          "refuse": "返工位",
+          "ask_want": "問第三條",
+          "wait": "停低"
+        },
+        "ask": "跟去，定返工位，定問第三條？"
+      },
+      "thought": "影同光，兩套話。",
+      "aside": "紙味。"
+    },
+    "s1d": {
+      "id": "s1d",
+      "label": "筷子咔",
+      "text": "筷子掰開咔一聲。Sammi 笑：「好聽過開會提示音。食一口——我先講點解叫你。」",
+      "choices": [
+        {
+          "label": "食一口",
+          "next": "s1c",
+          "heat": 4
+        },
+        {
+          "label": "「直接講點解。」",
+          "next": "s1c",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "食一口",
+          "ask_want": "問點解",
+          "wait": "停低"
+        },
+        "ask": "食一口，定問點解，定停低？"
+      },
+      "thought": "咔聲像開場。",
+      "aside": "熱氣繞。"
+    },
+    "s3r3": {
+      "id": "s3r3",
+      "label": "雨停半拍",
+      "text": "雨忽然細。Sammi 抹一下門把水珠：「deadline 可以通宵。通宵之後——你仲認我係前輩？」",
+      "choices": [
+        {
+          "label": "「價錢係咩？」",
+          "next": "s4",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「只幫改 slide 就夠。」",
+          "next": "s4",
+          "tension": 4
+        },
+        {
+          "label": "「呢種秘密我唔想要。」",
+          "next": "ending_s_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "refuse",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "問價錢",
+          "agree": "改稿",
+          "refuse": "走",
+          "flirt": "再近"
+        },
+        "ask": "問價錢，定只要改稿，定走？"
+      },
+      "thought": "認前輩同越界，同一場雨。",
+      "aside": "水珠滑落。"
+    },
+    "s5p2": {
+      "id": "s5p2",
+      "label": "口頭版確認",
+      "text": "「聽日茶水間見。」Sammi 重複一次，像蓋章。「共享文件外——呢句先作數。」",
+      "choices": [
+        {
+          "label": "「我知。」",
+          "next": "ending_s_a",
+          "heat": 8,
+          "requireHeat": 40
+        },
+        {
+          "label": "「再近啲。」",
+          "next": "s5y",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「呢頁我自己寫。」",
+          "next": "s5z",
+          "heat": 11,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "ask_want": "自己寫",
+          "wait": "停低"
+        },
+        "ask": "應承知，定再近，定自己寫？"
+      },
+      "thought": "蓋章用嘴，唔用印。",
+      "aside": "餘溫。"
     }
   },
   "memoryLabels": {

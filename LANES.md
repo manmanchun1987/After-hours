@@ -2,7 +2,7 @@
 
 > **自動化哲學（2026-10-22）：** 自動化**只**用來喺用戶瞓覺／靜音 ≥2 小時時，**延續**已經吩咐過 CEO 嘅工作——**唔准**日間發明平行票、唔准自己開新施工線。  
 > **Grok.com App hourly A–F：已暫停／暫緩**（唔當日間定時開工）。閒置接力靠 **CEO Bot routine「瞓覺先跑 After Hours」**（靜音 ≥2h 先跑）。  
-> **該 routine 跑嘅時候工作內容仍係 A＋B**（Intent-Patterns／Guide-Lines）。**C＝pause write**（唔准改 `data/*`）。**D／E／F＝deferred**。無標 → **A**。  
+> **該 routine 跑嘅時候工作內容仍係 A＋B**（Intent-Patterns／Guide-Lines）。**C＝pause write**（唔准改 `data/*`；例外：2026-10-22 CEO 批 50-node expand batch 已完成，之後再開 pause）。**D／E／F＝deferred**。無標 → **A**。  
 > 指令一句：「讀 LANES.md 該車並執行；守 AUTOMATION.md」。  
 > **北辰：** 本地假 AI（Intent＋Guide），無付費 LLM。  
 > **唔聲稱** Grok.com／App UI 顯示名（除非已核實）；repo 只記車道 id／狀態。  
@@ -22,7 +22,7 @@
 |---|---|---|
 | `AH-LaneA` | A Intent-Patterns | active **when idle routine runs** |
 | `AH-LaneB` | B Guide-Lines | active **when idle routine runs** |
-| `AH-LaneC` | C Scene | **pause write** |
+| `AH-LaneC` | C Scene | **pause write**（2026-10-22 CEO 批：50-node expand batch 已寫入；批後 resume pause） |
 | `AH-LaneD` | D Ideas | **deferred** |
 | `AH-LaneE` | E Status | **deferred** |
 | `AH-LaneF` | F Integrator | **deferred** |
@@ -106,7 +106,7 @@ fakeai4（patterns＋sceneGoal＋history skim cap 50）· guide-clear1 · `tools
 |---|---|
 | **寫入** | **唔准** push `data/*`（例外：CEO **approved** hand-tune；**2026-10-22 23:39** 已做完 1–4 批，之後再 pause） |
 | **讀** | 讀樹＋STATUS 報 nodes／size；可對照 playtest 弱節點開 IDEAS `proposed` |
-| **狀態** | **pause write**；read-only／STATUS ok |
+| **狀態** | **pause write**（CEO 2026-10-22 批 50-node expand 已 ship；resume pause）；read-only／STATUS ok |
 | **禁碰** | 刪 nodes／choices／ending；整檔 stub |
 
 ### checklist

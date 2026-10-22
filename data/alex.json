@@ -136,7 +136,7 @@
       "choices": [
         {
           "label": "走去桌前",
-          "next": "n1"
+          "next": "n0c"
         }
       ],
       "sceneGoal": {
@@ -164,39 +164,36 @@
       "aside": "錶針幾乎停。",
       "choices": [
         {
-          "label": "「我可以而家改。」",
-          "next": "n2a"
+          "label": "望住指節",
+          "next": "n1b"
         },
         {
-          "label": "「邊部分未夠？講清楚。」",
-          "next": "n2b",
-          "tension": 6
+          "label": "「……你講。」",
+          "next": "n1b",
+          "heat": 4
         },
         {
-          "label": "（站近）「你特登留到而家先講？」",
-          "next": "n2c",
-          "heat": 8,
-          "cg": true
+          "label": "（把簡報再推近）",
+          "next": "n1b",
+          "tension": 2
         }
       ],
       "sceneGoal": {
         "successIntents": [
           "agree",
           "ask_want",
-          "challenge",
-          "flirt"
+          "wait"
         ],
         "optionalIntents": [
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承改",
-          "ask_want": "講清楚邊部分",
-          "challenge": "頂真問點解留",
-          "flirt": "站近啲"
+          "agree": "應承聽",
+          "ask_want": "問清楚",
+          "wait": "停低"
         },
-        "ask": "應承改，定問清楚，定站近？"
+        "ask": "應承聽，定問清楚，定停低？"
       }
     },
     "n2a": {
@@ -211,7 +208,7 @@
       "choices": [
         {
           "label": "「……係，我聽緊。」",
-          "next": "n3a"
+          "next": "n2a2"
         },
         {
           "label": "（對視）「你咁近，我改唔到字。」",
@@ -297,7 +294,7 @@
         },
         {
           "label": "「我專心改。」",
-          "next": "n3a"
+          "next": "n2c2"
         }
       ],
       "sceneGoal": {
@@ -366,19 +363,19 @@
       "mid": "佢語氣平，像已經算定你會留。",
       "choices": [
         {
-          "label": "「所以你先留我？」",
-          "next": "n4b",
+          "label": "望監控紅點",
+          "next": "n3b2",
+          "tension": 4
+        },
+        {
+          "label": "「你特登講監控？」",
+          "next": "n3b2",
+          "heat": 6
+        },
+        {
+          "label": "（走近佢）",
+          "next": "n3b2",
           "heat": 8,
-          "cg": true
-        },
-        {
-          "label": "「我仲係員工。」",
-          "next": "n4a"
-        },
-        {
-          "label": "（主動拉近）",
-          "next": "n4c",
-          "heat": 10,
           "cg": true
         }
       ],
@@ -447,7 +444,7 @@
       "choices": [
         {
           "label": "離開",
-          "next": "ending_c",
+          "next": "n4a2",
           "tension": 4
         }
       ],
@@ -523,7 +520,7 @@
       "choices": [
         {
           "label": "「熄。」",
-          "next": "n5",
+          "next": "n4x2",
           "heat": 6,
           "cg": true
         },
@@ -560,7 +557,7 @@
       "choices": [
         {
           "label": "繼續",
-          "next": "n4x",
+          "next": "n4c2",
           "heat": 8,
           "cg": true
         }
@@ -592,43 +589,40 @@
       "aside": "只剩呼吸同錶聲。",
       "choices": [
         {
-          "label": "「你話點就點。」",
-          "next": "n6a",
-          "heat": 8,
-          "requireHeat": 36,
-          "cg": true
+          "label": "「……我聽規則。」",
+          "next": "n5b",
+          "heat": 4
         },
         {
-          "label": "「平等。今晚先。」",
-          "next": "n6b",
+          "label": "（靠近聽）",
+          "next": "n5b",
           "heat": 8,
           "cg": true
         },
         {
-          "label": "「你早計劃今晚。」",
-          "next": "n6c",
-          "tension": 8
+          "label": "「第三條係咩？」",
+          "next": "n5b",
+          "tension": 4
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "ask_want",
           "agree",
           "flirt",
+          "ask_want",
           "wait"
         ],
         "optionalIntents": [
-          "ask_memory",
-          "challenge"
+          "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "ask_want": "親口講想要咩",
-          "agree": "應承",
-          "flirt": "再近",
+          "agree": "聽規則",
+          "flirt": "靠近",
+          "ask_want": "問第三條",
           "wait": "停低"
         },
-        "ask": "親口講想要咩，定應承，定停低？"
+        "ask": "應承聽規則，定靠近，定問清楚？"
       }
     },
     "n6a": {
@@ -640,7 +634,7 @@
       "choices": [
         {
           "label": "迎向天亮",
-          "next": "ending_a"
+          "next": "n6a2"
         }
       ],
       "sceneGoal": {
@@ -674,7 +668,7 @@
       "choices": [
         {
           "label": "迎向天亮",
-          "next": "ending_b"
+          "next": "n6b2"
         }
       ],
       "sceneGoal": {
@@ -707,14 +701,14 @@
       "aside": "佢擇今晚。",
       "choices": [
         {
-          "label": "「留。」",
-          "next": "ending_a",
-          "heat": 8,
-          "cg": true
+          "label": "「……所以？」",
+          "next": "n6c2",
+          "tension": 4
         },
         {
-          "label": "「走。」",
-          "next": "ending_c"
+          "label": "望住佢",
+          "next": "n6c2",
+          "heat": 4
         }
       ],
       "sceneGoal": {
@@ -745,7 +739,7 @@
       "choices": [
         {
           "label": "去週一評核室",
-          "next": "n7",
+          "next": "n7pre",
           "heat": 6
         },
         {
@@ -777,7 +771,7 @@
       "choices": [
         {
           "label": "去週一評核室",
-          "next": "n7",
+          "next": "n7pre",
           "heat": 6
         },
         {
@@ -876,41 +870,40 @@
       "aside": "筆帽咕一聲。",
       "choices": [
         {
-          "label": "「寫你想寫嘅。」",
-          "next": "n8a",
-          "heat": 10,
-          "requireHeat": 40,
+          "label": "接過筆",
+          "next": "n7b",
+          "heat": 6
+        },
+        {
+          "label": "「你想我寫咩？」",
+          "next": "n7b",
+          "tension": 4
+        },
+        {
+          "label": "（對視）「你先講。」",
+          "next": "n7b",
+          "heat": 8,
           "cg": true
-        },
-        {
-          "label": "「寫事實。包括你留我。」",
-          "next": "n8b",
-          "tension": 12,
-          "requireHeat": 28
-        },
-        {
-          "label": "「當唔發生。」",
-          "next": "ending_d"
         }
       ],
       "sceneGoal": {
         "successIntents": [
           "agree",
           "ask_want",
-          "challenge",
-          "wait"
+          "flirt",
+          "challenge"
         ],
         "optionalIntents": [
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承繼續",
-          "ask_want": "講清楚你想點",
-          "challenge": "頂真講",
-          "wait": "停低等等"
+          "agree": "接筆",
+          "ask_want": "問寫咩",
+          "flirt": "對視",
+          "challenge": "頂真"
         },
-        "ask": "應承繼續，定講清楚你想點？"
+        "ask": "接筆應承，定問清楚，定對視？"
       }
     },
     "n8a": {
@@ -922,7 +915,7 @@
       "choices": [
         {
           "label": "「怕。但我留。」",
-          "next": "ending_e",
+          "next": "n8a2",
           "heat": 12,
           "requireHeat": 50,
           "cg": true
@@ -960,17 +953,20 @@
       "aside": "選擇落在紙上。",
       "choices": [
         {
-          "label": "「抬我。對等。」",
-          "next": "ending_e",
-          "heat": 8,
-          "requireHeat": 45,
-          "cg": true
+          "label": "望住兩隻印章",
+          "next": "n8b2",
+          "heat": 4
         },
         {
-          "label": "「你毀唔到我。」",
-          "next": "ending_f",
-          "tension": 14,
-          "requireHeat": 30
+          "label": "「你想我揀邊隻？」",
+          "next": "n8b2",
+          "tension": 6
+        },
+        {
+          "label": "（伸手）",
+          "next": "n8b2",
+          "heat": 8,
+          "cg": true
         }
       ],
       "sceneGoal": {
@@ -1056,6 +1052,844 @@
         },
         "ask": "講清楚你想點。"
       }
+    },
+    "n0c": {
+      "id": "n0c",
+      "label": "電話震",
+      "text": "你袋裏電話震兩下。Vera 仍望螢幕，聲線平：「睇完再收。而家，聽我。」\n\n震動停咗，空氣反而更靜。",
+      "choices": [
+        {
+          "label": "收電話入袋",
+          "next": "n0d"
+        },
+        {
+          "label": "「邊個打嚟？」",
+          "next": "n0d",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "收電話應承",
+          "ask_want": "問邊個",
+          "wait": "停低"
+        },
+        "ask": "收電話應承，定問清楚，定停低？"
+      },
+      "thought": "震完之後更難裝忙。",
+      "aside": "螢幕藍光一跳。"
+    },
+    "n0d": {
+      "id": "n0d",
+      "label": "香水同咖啡",
+      "text": "Vera 把咖啡杯推開半寸，冷香水擦過你袖口。\n\n「你驚嘅唔係咖啡。係我記得你今晚幾點仲企喺門邊。」",
+      "choices": [
+        {
+          "label": "「……我聽緊。」",
+          "next": "n0e"
+        },
+        {
+          "label": "（跟住坐近）",
+          "next": "n0e",
+          "heat": 6,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承聽",
+          "flirt": "坐近",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承聽，定坐近，定問清楚？"
+      },
+      "thought": "記得兩字比咖啡苦。",
+      "aside": "袖口涼意未散。"
+    },
+    "n0e": {
+      "id": "n0e",
+      "label": "百葉簾",
+      "text": "佢伸手拉死百葉簾。走廊光被切成一條細縫。\n\n「外面睇唔到入面。入面——我睇得到你。」",
+      "choices": [
+        {
+          "label": "走去桌前",
+          "next": "n1"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "過去桌前",
+          "ask_want": "問清楚",
+          "wait": "停低"
+        },
+        "ask": "應承過去桌前，定問清楚，定停低？"
+      },
+      "thought": "縫隙比門更窄。",
+      "aside": "簾葉咔一聲。"
+    },
+    "n2a2": {
+      "id": "n2a2",
+      "label": "Shared drive",
+      "text": "Vera 開 shared drive 預覽，游標停在你檔名上。\n\n「我可以而家刪。亦可以——留低，等你改到我滿意。」",
+      "choices": [
+        {
+          "label": "「唔好刪。我改。」",
+          "next": "n2a3"
+        },
+        {
+          "label": "「你威脅我？」",
+          "next": "n2a3",
+          "tension": 6,
+          "challenge": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "challenge",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承改",
+          "challenge": "頂真問威脅",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承改，定頂真問，定問清楚？"
+      },
+      "thought": "刪同留，都係權。",
+      "aside": "游標一閃。"
+    },
+    "n2a3": {
+      "id": "n2a3",
+      "label": "密碼畫面",
+      "text": "螢幕跳密碼。Vera 側身，讓你看得到鍵盤，又睇唔到完整字串。\n\n「打你自己嘅。今晚之後，呢個檔——只得我哋兩個知有第二版。」",
+      "choices": [
+        {
+          "label": "打密碼",
+          "next": "n3a"
+        },
+        {
+          "label": "「第二版寫咩？」",
+          "next": "n3a",
+          "heat": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "打密碼",
+          "ask_want": "問第二版",
+          "wait": "停低"
+        },
+        "ask": "打密碼應承，定問清楚，定停低？"
+      },
+      "thought": "第二版唔入公開資料夾。",
+      "aside": "鍵盤聲偏響。"
+    },
+    "n2c2": {
+      "id": "n2c2",
+      "label": "HR 傳聞",
+      "text": "Vera 忽然講：「HR 有人傳你同我加班太多。你想否認，定想我幫你否認？」",
+      "choices": [
+        {
+          "label": "「你幫我。」",
+          "next": "n3a",
+          "heat": 4
+        },
+        {
+          "label": "「我自己否認。」",
+          "next": "n3a",
+          "tension": 4
+        },
+        {
+          "label": "「……傳啱一半。」",
+          "next": "n3b",
+          "heat": 8,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "challenge",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承佢幫",
+          "challenge": "自己否認",
+          "flirt": "認近",
+          "ask_want": "問清楚傳聞"
+        },
+        "ask": "應承佢幫，定自己頂，定認近？"
+      },
+      "thought": "幫同否認，都要欠。",
+      "aside": "冷氣忽然大。"
+    },
+    "n4a2": {
+      "id": "n4a2",
+      "label": "評核預告",
+      "text": "Vera 把評核表空白頁翻過嚟，指尖敲在「態度」一欄。\n\n「你而家走，我照樣寫。寫完——你月曜先知自己值幾多。」",
+      "choices": [
+        {
+          "label": "「……我走。」",
+          "next": "n4a3",
+          "tension": 4
+        },
+        {
+          "label": "「咁我留低改完先。」",
+          "next": "n4b",
+          "heat": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "refuse",
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "refuse": "走",
+          "agree": "留低改",
+          "ask_want": "問評核",
+          "wait": "停低"
+        },
+        "ask": "走，定留低改，定問清楚評核？"
+      },
+      "thought": "態度欄比分數可怕。",
+      "aside": "紙邊捲起。"
+    },
+    "n4a3": {
+      "id": "n4a3",
+      "label": "門把最後",
+      "text": "你手搭上門把。Vera 冇叫停，只丟下一句：\n\n「檔案我等。等唔到——就當你自己選白紙。」",
+      "choices": [
+        {
+          "label": "離開",
+          "next": "ending_c",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "refuse",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "refuse": "離開",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "離開，定停低，定問清楚？"
+      },
+      "thought": "白紙兩字跟住你出走廊。",
+      "aside": "門縫光一閃。"
+    },
+    "n4x2": {
+      "id": "n4x2",
+      "label": "掣上停",
+      "text": "Vera 指尖仍按住燈掣，未落。\n\n「你話熄。我就熄。之後你唔好話係我逼你。」",
+      "choices": [
+        {
+          "label": "「熄。我知。」",
+          "next": "n5",
+          "heat": 6,
+          "cg": true
+        },
+        {
+          "label": "「……等陣。」",
+          "next": "n4x3",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承熄",
+          "wait": "停低等",
+          "refuse": "走",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承熄燈，定停低，定走？"
+      },
+      "thought": "逼同自願，差在你一句。",
+      "aside": "掣微震。"
+    },
+    "n4x3": {
+      "id": "n4x3",
+      "label": "最後出口",
+      "text": "「等？得。」Vera 鬆開掣，走廊光仍在。\n\n「出口喺你後面。你返頭，今晚當加班。你企低——就唔好再扮。」",
+      "choices": [
+        {
+          "label": "企低唔走",
+          "next": "n5",
+          "heat": 8,
+          "cg": true
+        },
+        {
+          "label": "返頭離開",
+          "next": "ending_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "wait",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "企低",
+          "refuse": "走",
+          "wait": "停低",
+          "flirt": "企近"
+        },
+        "ask": "企低應承，定走，定停低？"
+      },
+      "thought": "出口同陷阱，同一個門。",
+      "aside": "燈管嗡聲。"
+    },
+    "n5b": {
+      "id": "n5b",
+      "label": "黑暗規則",
+      "text": "黑暗裏 Vera 聲線更近：「規則一：你講想要。規則二：我決定給唔給。規則三——你仲可以反悔一次。」",
+      "choices": [
+        {
+          "label": "「我唔反悔。」",
+          "next": "n5c",
+          "heat": 6
+        },
+        {
+          "label": "「講清楚第三條。」",
+          "next": "n5c",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承唔反悔",
+          "ask_want": "問第三條",
+          "flirt": "再近",
+          "wait": "停低"
+        },
+        "ask": "應承唔反悔，定問清楚，定再近？"
+      },
+      "thought": "三條規則，重點在第三。",
+      "aside": "鍵盤餘溫。"
+    },
+    "n5c": {
+      "id": "n5c",
+      "label": "下巴距離",
+      "text": "指尖再次抬起你下巴，力度剛好夠你抬眼。\n\n「而家答。你話點就點——定你想同我對等？」",
+      "choices": [
+        {
+          "label": "「你話點就點。」",
+          "next": "n6a",
+          "heat": 8,
+          "requireHeat": 36,
+          "cg": true
+        },
+        {
+          "label": "「平等。今晚先。」",
+          "next": "n6b",
+          "heat": 8,
+          "cg": true
+        },
+        {
+          "label": "「你早計劃今晚。」",
+          "next": "n6c",
+          "tension": 8
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "challenge",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "交出",
+          "ask_want": "講對等",
+          "flirt": "再近",
+          "challenge": "拆穿計劃",
+          "wait": "停低"
+        },
+        "ask": "交出控制，定要對等，定拆穿？"
+      },
+      "thought": "對等同交出，同一個下巴。",
+      "aside": "呼吸擦過。"
+    },
+    "n6a2": {
+      "id": "n6a2",
+      "label": "天亮前問",
+      "text": "Vera 聲線仍穩：「仲可唔可以？答『可以』——天亮之後你仍然係我下屬。」",
+      "choices": [
+        {
+          "label": "「可以。」",
+          "next": "ending_a",
+          "heat": 6
+        },
+        {
+          "label": "「……界線喺邊？」",
+          "next": "ending_a",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承可以",
+          "ask_want": "問界線",
+          "flirt": "再近"
+        },
+        "ask": "應承可以，定問界線，定再近？"
+      },
+      "thought": "下屬同例外，同一句可以。",
+      "aside": "窗縫灰光。"
+    },
+    "n6b2": {
+      "id": "n6b2",
+      "label": "評核表外",
+      "text": "「呢頁唔入表。」Vera 把空白評核表合上。「但入我私人備註。你怕唔怕？」",
+      "choices": [
+        {
+          "label": "「唔怕。」",
+          "next": "ending_b",
+          "heat": 6
+        },
+        {
+          "label": "「私人備註寫咩？」",
+          "next": "ending_b",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承唔怕",
+          "ask_want": "問備註",
+          "wait": "停低"
+        },
+        "ask": "應承唔怕，定問清楚，定停低？"
+      },
+      "thought": "私人比公開更耐。",
+      "aside": "筆帽咔一聲。"
+    },
+    "n7pre": {
+      "id": "n7pre",
+      "label": "評核室外",
+      "text": "週一。你企在評核室外。門縫透出 Vera 香水。\n\n裏面聲線：「入嚟。準時——呢點我滿意。」",
+      "choices": [
+        {
+          "label": "推門入去",
+          "next": "n7",
+          "heat": 4
+        },
+        {
+          "label": "（深呼吸）再入",
+          "next": "n7",
+          "tension": 2
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "推門入",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "推門入去，定停低，定問清楚？"
+      },
+      "thought": "準時比勇敢易。",
+      "aside": "門牌冷光。"
+    },
+    "n7b": {
+      "id": "n7b",
+      "label": "百葉同筆",
+      "text": "Vera 把筆放你手心，指尖多停半秒。\n\n「你寫。寫『同意以上評核』——或者寫你真正想寫嘅。」",
+      "choices": [
+        {
+          "label": "「寫你想寫嘅。」",
+          "next": "n8a",
+          "heat": 10,
+          "requireHeat": 40,
+          "cg": true
+        },
+        {
+          "label": "「寫事實。包括你留我。」",
+          "next": "n8b",
+          "tension": 12,
+          "requireHeat": 28
+        },
+        {
+          "label": "「當唔發生。」",
+          "next": "ending_d"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "challenge",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "交權",
+          "challenge": "寫事實",
+          "ask_want": "問清楚",
+          "wait": "停低當無"
+        },
+        "ask": "交權俾佢寫，定寫事實，定當無？"
+      },
+      "thought": "筆比評語燙。",
+      "aside": "百葉縫一條光。"
+    },
+    "n8a2": {
+      "id": "n8a2",
+      "label": "再留條款",
+      "text": "「我會再留。」Vera 合上檔案。「你怕。但又應承。呢種人——我要。」",
+      "choices": [
+        {
+          "label": "「怕。但我留。」",
+          "next": "ending_e",
+          "heat": 12,
+          "requireHeat": 50,
+          "cg": true
+        },
+        {
+          "label": "「所以我走。」",
+          "next": "ending_d"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "再留",
+          "refuse": "走",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承再留，定走，定停低？"
+      },
+      "thought": "要同留，同一句怕。",
+      "aside": "檔案膠邊反光。"
+    },
+    "n8b2": {
+      "id": "n8b2",
+      "label": "毁同抬",
+      "text": "Vera 把兩隻印章推到桌中——一紅一黑。\n\n「毁用黑。抬用紅。你伸手。我唔代你蓋。」",
+      "choices": [
+        {
+          "label": "「抬我。對等。」",
+          "next": "ending_e",
+          "heat": 8,
+          "requireHeat": 45,
+          "cg": true
+        },
+        {
+          "label": "「你毁唔到我。」",
+          "next": "ending_f",
+          "tension": 14,
+          "requireHeat": 30
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "challenge",
+          "agree",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "challenge": "頂真揀",
+          "agree": "應承",
+          "flirt": "靠近揀",
+          "wait": "停低"
+        },
+        "ask": "揀抬定顶，定應承，定停低？"
+      },
+      "thought": "印章比說話重。",
+      "aside": "紅黑並排。"
+    },
+    "n3b2": {
+      "id": "n3b2",
+      "label": "監控紅點",
+      "text": "Vera 指走廊方向，聲線放低：「紅點只睇門口。睇唔到你而家企喺邊——近定遠，都係你自己揀。」",
+      "choices": [
+        {
+          "label": "「所以你先留我？」",
+          "next": "n4b",
+          "heat": 8,
+          "cg": true
+        },
+        {
+          "label": "「我仲係員工。」",
+          "next": "n4a"
+        },
+        {
+          "label": "（主動拉近）",
+          "next": "n4c",
+          "heat": 10,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "flirt",
+          "agree",
+          "ask_want",
+          "challenge"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "flirt": "再近",
+          "agree": "認員工",
+          "ask_want": "問清楚",
+          "challenge": "頂真問留"
+        },
+        "ask": "再近，定應承員工身份，定問清楚？"
+      },
+      "thought": "盲區同邀請同一句。",
+      "aside": "紅點一眨。"
+    },
+    "n4c2": {
+      "id": "n4c2",
+      "label": "你先開始",
+      "text": "Vera 重複一次，語氣更慢：「記住。係你先開始。之後——我先接手。接手之後你唔好裝唔知。」",
+      "choices": [
+        {
+          "label": "繼續",
+          "next": "n4x",
+          "heat": 8,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承繼續，定再近，定問清楚？"
+      },
+      "thought": "接手兩字比開始重。",
+      "aside": "簡報白光。"
+    },
+    "n1b": {
+      "id": "n1b",
+      "label": "指節兩下",
+      "text": "Vera 指節再敲兩下桌，停在簡報封面角。\n\n「未夠嘅部分，我可以逐條數。你想我數——定想你自己認？」",
+      "choices": [
+        {
+          "label": "「我可以而家改。」",
+          "next": "n2a"
+        },
+        {
+          "label": "「邊部分未夠？講清楚。」",
+          "next": "n2b",
+          "tension": 6
+        },
+        {
+          "label": "（站近）「你特登留到而家先講？」",
+          "next": "n2c",
+          "heat": 8,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "challenge"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承改",
+          "ask_want": "問邊部分",
+          "flirt": "站近",
+          "challenge": "頂真問留"
+        },
+        "ask": "應承改，定問清楚，定站近？"
+      },
+      "thought": "認同被數，都係交權。",
+      "aside": "封面角微卷。"
+    },
+    "n6c2": {
+      "id": "n6c2",
+      "label": "拆穿之後",
+      "text": "時鐘聲大。Vera 把筆放下：「你拆穿我。少見。仲留——就當你知規則仍然係我定。」",
+      "choices": [
+        {
+          "label": "「留。」",
+          "next": "ending_a",
+          "heat": 8,
+          "cg": true
+        },
+        {
+          "label": "「走。」",
+          "next": "ending_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "留",
+          "refuse": "走",
+          "wait": "停低",
+          "ask_want": "問規則"
+        },
+        "ask": "留，定走，定停低？"
+      },
+      "thought": "知規則同服規則，差半句。",
+      "aside": "筆滾半寸。"
     }
   },
   "memoryLabels": {

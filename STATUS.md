@@ -1,3 +1,5 @@
+2026-10-22 23:45 HKT：#3 劇情加長至約50節（CEO 批 Lane C）：三線中段插入可玩節拍（非葉叉垃圾），保留舊 start／endings。alex 50n／48485B · morgan 50n／59742B · sam 50n／57772B。auto-playtest --seed=42：135P/0F · human-avg 99.5。改檔：data/alex.json、data/morgan.json、data/sam.json、LANES.md、STATUS.md、tools/PLAYTEST-LAST.md。
+
 2026-10-22 23:39 HKT：#2 劇情 hand-tune（CEO 批 1–4）：擴窄 sceneGoal；中場踢走誤用 enter_door（走廊 n0/n0b 保留）；過短中場 text 略加長；m4e 等酒店／樓梯改應承／問清楚／再近。alex 28n／26667B · morgan 22n／30574B · sam 21n／27795B。auto-playtest --seed=42：135P/0F · human-avg 99.3。Lane C 呢次例外寫入 data（批完即 pause）。改檔：data/alex.json、data/morgan.json、data/sam.json、LANES.md、STATUS.md、tools/PLAYTEST-LAST.md。
 
 2026-10-22 23:31 HKT：假AI「錯法→反應」：亂打／離題／含糊先認錯再帶而家目標（guide-policy 唔再洗走認錯）。auto-playtest --seed=42：130P/0F · human-avg 99.2（前 97.2）。Cache ?v=wrong-react-20261022。改檔：guide-policy.js、index.html、tools/PLAYTEST-LAST.md。

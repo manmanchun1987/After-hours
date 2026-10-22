@@ -17,44 +17,40 @@
       "mid": "杯沿反光掠過佢眼。酒杯轉半圈，像在等你開標。燈光落在戒指上，一閃。指尖在杯壁停兩秒，像在量距離。杯底餘溫仍在，爵士樂低音慢慢推近。呼吸差半拍就近。杯壁再轉半圈，燈光再跳。指尖溫度隱約傳過桌面，酒氣再近一寸。燈光再掠過戒指一次，距離再縮半分。杯沿再反光半秒，熱度未散。",
       "choices": [
         {
-          "label": "「人同單，邊樣先成交？」",
-          "next": "m2a",
+          "label": "望海一眼再望返",
+          "next": "m1b",
+          "heat": 4
+        },
+        {
+          "label": "「你想講人。」",
+          "next": "m1b",
+          "heat": 6
+        },
+        {
+          "label": "（把杯靠近）",
+          "next": "m1b",
           "heat": 8,
-          "tension": 6,
-          "cg": true
-        },
-        {
-          "label": "「我嚟係收條款。」",
-          "next": "m2b",
-          "tension": 10
-        },
-        {
-          "label": "（坐近一格）「你想聽邊種答案？」",
-          "next": "m2c",
-          "heat": 14,
-          "tension": 4,
           "cg": true
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "challenge",
           "agree",
           "flirt",
-          "ask_want"
+          "ask_want",
+          "challenge"
         ],
         "optionalIntents": [
-          "ask_memory",
-          "off_topic"
+          "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "challenge": "頂真講條款",
-          "agree": "應承繼續",
-          "flirt": "坐近一格",
-          "ask_want": "講清楚你想點"
+          "agree": "應承",
+          "flirt": "再近",
+          "ask_want": "問清楚",
+          "challenge": "頂真"
         },
-        "ask": "頂真講，定坐近——講清楚你想點？"
+        "ask": "應承傾，定再近，定問清楚？"
       }
     },
     "m2a": {
@@ -70,13 +66,13 @@
       "choices": [
         {
           "label": "「代表我想贏。」",
-          "next": "m3",
+          "next": "m2a2",
           "heat": 10,
           "cg": true
         },
         {
           "label": "「代表公司。其他唔講。」",
-          "next": "m3",
+          "next": "m2a2",
           "tension": 8
         }
       ],
@@ -109,12 +105,12 @@
       "choices": [
         {
           "label": "「線唔好再伸。」",
-          "next": "m3",
+          "next": "m2b2",
           "tension": 10
         },
         {
           "label": "（唔縮手）",
-          "next": "m3",
+          "next": "m2b2",
           "heat": 12,
           "cg": true
         }
@@ -152,13 +148,13 @@
       "choices": [
         {
           "label": "「我唔賴。」",
-          "next": "m3",
+          "next": "m2c2",
           "heat": 12,
           "cg": true
         },
         {
           "label": "「……當我衝動。」",
-          "next": "m3",
+          "next": "m2c2",
           "heat": 6,
           "tension": 6
         }
@@ -188,64 +184,40 @@
       "mid": "卡推過來時，戒指擦過桌面。卡邊停在你指節旁半寸。爵士樂忽然靜一拍。空氣裏只剩杯壁餘溫同佢眼神。卡面反光再掠過一次。指尖仍停卡邊。卡邊再近半寸。戒指溫度再傳，空氣靜得只剩呼吸。卡面燈光再跳半下，決定落在指尖。卡邊再停半秒，熱度未散。",
       "choices": [
         {
-          "label": "收下",
-          "next": "m3x",
-          "heat": 16,
-          "remember": [
-            "took_key"
-          ],
-          "cg": true
+          "label": "望住房卡",
+          "next": "m3a2",
+          "heat": 6
         },
         {
-          "label": "推返去",
-          "next": "ending_m_c",
+          "label": "「呢張卡……」",
+          "next": "m3a2",
           "tension": 4
         },
         {
-          "label": "「先講清楚樓上規則。」",
-          "next": "m3y",
+          "label": "（伸手未觸）",
+          "next": "m3a2",
           "heat": 10,
-          "tension": 6,
-          "cg": true
-        },
-        {
-          "label": "「你想我點決定？」",
-          "next": "m3z",
-          "heat": 12,
-          "cg": true
-        },
-        {
-          "label": "「卡上有冇條款？」",
-          "next": "m3w",
-          "heat": 11,
-          "cg": true
-        },
-        {
-          "label": "「卡邊溫度點？」",
-          "next": "m3v",
-          "heat": 13,
           "cg": true
         }
       ],
       "sceneGoal": {
         "successIntents": [
           "agree",
+          "ask_want",
           "flirt",
-          "refuse",
-          "ask_want"
+          "wait"
         ],
         "optionalIntents": [
-          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "伸手簽上樓",
-          "flirt": "跟住上樓",
-          "refuse": "拒絕",
-          "ask_want": "問清楚規則"
+          "agree": "應承",
+          "ask_want": "問清楚",
+          "flirt": "再近",
+          "wait": "停低"
         },
-        "ask": "伸手簽上樓，定拒絕，定問清楚規則？"
+        "ask": "應承睇卡，定問清楚，定再近？"
       }
     },
     "m3v": {
@@ -258,7 +230,7 @@
       "choices": [
         {
           "label": "「我量完。簽。」",
-          "next": "m3x",
+          "next": "m3u",
           "heat": 15,
           "remember": [
             "took_key"
@@ -300,7 +272,7 @@
       "choices": [
         {
           "label": "「我簽。」",
-          "next": "m3x",
+          "next": "m3u",
           "heat": 14,
           "remember": [
             "took_key"
@@ -342,7 +314,7 @@
       "choices": [
         {
           "label": "「我收下。」",
-          "next": "m3x",
+          "next": "m3u",
           "heat": 14,
           "remember": [
             "took_key"
@@ -385,7 +357,7 @@
       "choices": [
         {
           "label": "伸手收下",
-          "next": "m3x",
+          "next": "m3u",
           "heat": 15,
           "remember": [
             "took_key"
@@ -429,7 +401,7 @@
       "choices": [
         {
           "label": "按樓層",
-          "next": "m4",
+          "next": "m3x2",
           "heat": 8,
           "cg": true
         },
@@ -468,38 +440,19 @@
       "mid": "走廊燈暗半格，影子疊埋。空氣裏只剩香水尾調。鏡面反光把兩人拉近。呼吸差半拍就會碰到。門縫透出一點冷風。影子再重疊。冷風再入。鏡面再反光一次，熱度蓋過冷風。影子再疊半秒，決定落在門縫。冷風再入半寸，熱度仍蓋。",
       "choices": [
         {
-          "label": "「可以。」",
-          "next": "m5",
-          "heat": 14,
-          "requireHeat": 35,
-          "cg": true
+          "label": "望鏡裏影子",
+          "next": "m4f",
+          "heat": 6
         },
         {
-          "label": "「停啲呢度就夠。」",
-          "next": "ending_m_c"
+          "label": "「你問『仲可以』？」",
+          "next": "m4f",
+          "tension": 4
         },
         {
-          "label": "「先睇窗外。」",
-          "next": "m4b",
-          "heat": 10,
-          "cg": true
-        },
-        {
-          "label": "「你先入。」",
-          "next": "m4c",
-          "heat": 12,
-          "cg": true
-        },
-        {
-          "label": "「先問你想唔想。」",
-          "next": "m4d",
-          "heat": 11,
-          "cg": true
-        },
-        {
-          "label": "「門把溫度點？」",
-          "next": "m4e",
-          "heat": 12,
+          "label": "（走近門）",
+          "next": "m4f",
+          "heat": 8,
           "cg": true
         }
       ],
@@ -507,19 +460,20 @@
         "successIntents": [
           "agree",
           "ask_want",
-          "flirt"
+          "flirt",
+          "wait"
         ],
         "optionalIntents": [
-          "wait",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "應承仲可以",
-          "ask_want": "講界線",
-          "flirt": "再近"
+          "agree": "應承",
+          "ask_want": "問清楚",
+          "flirt": "再近",
+          "wait": "停低"
         },
-        "ask": "應承仲可以，定講界線，定再近？"
+        "ask": "應承答，定問清楚，定再近？"
       }
     },
     "m4b": {
@@ -532,7 +486,7 @@
       "choices": [
         {
           "label": "「確認完再入。」",
-          "next": "m5",
+          "next": "m4b2",
           "heat": 12,
           "requireHeat": 30,
           "cg": true
@@ -569,7 +523,7 @@
       "choices": [
         {
           "label": "「一齊入。」",
-          "next": "m5",
+          "next": "m4c2",
           "heat": 14,
           "requireHeat": 32,
           "cg": true
@@ -606,7 +560,7 @@
       "choices": [
         {
           "label": "「我伸手。」",
-          "next": "m5",
+          "next": "m4d2",
           "heat": 13,
           "requireHeat": 33,
           "cg": true
@@ -647,7 +601,7 @@
       "choices": [
         {
           "label": "「我量完。入。」",
-          "next": "m5",
+          "next": "m4e2",
           "heat": 14,
           "requireHeat": 34,
           "cg": true
@@ -687,65 +641,40 @@
       "mid": "窗外維港燈一閃一閃。佢側臉在燈光裏半明半暗。呼吸近到能感覺溫度。指尖輕輕擦過你袖口，像在蓋最後一章。玻璃涼意仍在。餘溫傳開。燈光再閃。側臉再半明，餘溫在袖口未散。燈光再閃半下，餘溫再傳一寸。側臉再半明半分，餘溫再傳。",
       "choices": [
         {
-          "label": "「我要對等。唔好當籌碼。」",
-          "next": "ending_m_b",
+          "label": "望窗外燈",
+          "next": "m5pre",
+          "heat": 4
+        },
+        {
+          "label": "「聽日董事會……」",
+          "next": "m5pre",
+          "tension": 4
+        },
+        {
+          "label": "（靠近玻璃旁）",
+          "next": "m5pre",
           "heat": 8,
-          "remember": [
-            "wanted_equal"
-          ],
-          "requireHeat": 36,
-          "cg": true
-        },
-        {
-          "label": "「你話點。」",
-          "next": "ending_m_a",
-          "heat": 10,
-          "requireHeat": 40,
-          "cg": true
-        },
-        {
-          "label": "「聽日先算。今晚當唔。」",
-          "next": "ending_m_c"
-        },
-        {
-          "label": "「記住就夠。其他慢慢。」",
-          "next": "m5y",
-          "heat": 11,
-          "cg": true
-        },
-        {
-          "label": "「你記得就好。我唔走。」",
-          "next": "m5z",
-          "heat": 13,
-          "cg": true
-        },
-        {
-          "label": "「你先講想點。」",
-          "next": "m5w",
-          "heat": 12,
           "cg": true
         }
       ],
       "sceneGoal": {
         "successIntents": [
-          "wait",
           "agree",
-          "flirt",
           "ask_want",
-          "refuse"
+          "flirt",
+          "wait"
         ],
         "optionalIntents": [
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "wait": "停低等等",
-          "agree": "應承繼續",
-          "flirt": "再近啲",
-          "ask_want": "講清楚你想點",
-          "refuse": "唔入／離開"
+          "agree": "應承",
+          "ask_want": "問董事會",
+          "flirt": "再近",
+          "wait": "停低"
         },
-        "ask": "停低等等，定應承繼續？"
+        "ask": "應承傾，定問清楚，定再近？"
       }
     },
     "m5y": {
@@ -758,7 +687,7 @@
       "choices": [
         {
           "label": "「我知。」",
-          "next": "ending_m_a",
+          "next": "m5y2",
           "heat": 12,
           "requireHeat": 38,
           "cg": true
@@ -795,7 +724,7 @@
       "choices": [
         {
           "label": "「寫入帳。」",
-          "next": "ending_m_a",
+          "next": "m5z2",
           "heat": 14,
           "requireHeat": 36,
           "cg": true
@@ -835,7 +764,7 @@
       "choices": [
         {
           "label": "「我伸手。」",
-          "next": "ending_m_a",
+          "next": "m5w2",
           "heat": 14,
           "requireHeat": 37,
           "cg": true
@@ -934,6 +863,1205 @@
         },
         "ask": "講清楚你想點。"
       }
+    },
+    "m2x": {
+      "id": "m2x",
+      "label": "酒廊帳單前",
+      "text": "侍應遠遠望過來。Elise 抬手示意再等，戒指在燈下閃一下。\n\n「你仲有三分鐘扮公事。之後帳單到——我就唔再聽條款。」",
+      "choices": [
+        {
+          "label": "「三分鐘夠。」",
+          "next": "m2x2",
+          "tension": 4
+        },
+        {
+          "label": "「……唔使三分鐘。」",
+          "next": "m2x2",
+          "heat": 8,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "ask_want": "問清楚",
+          "wait": "停低"
+        },
+        "ask": "應承倒數，定再近，定問清楚？"
+      },
+      "thought": "倒數比報價直接。",
+      "aside": "爵士樂低半度。"
+    },
+    "m2x2": {
+      "id": "m2x2",
+      "label": "董事會預告",
+      "text": "Elise 轉杯：「聽日董事會，你坐邊——影響今日我點樣簽。人同單，仍然綁住。」",
+      "choices": [
+        {
+          "label": "聽完董事會預告",
+          "next": "m2x3",
+          "heat": 4
+        },
+        {
+          "label": "「座位同今晚有關？」",
+          "next": "m2x3",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "challenge",
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "challenge": "頂真開標",
+          "agree": "應承分開",
+          "ask_want": "問清楚"
+        },
+        "ask": "頂真開標，定應承分開，定問清楚？"
+      },
+      "thought": "聽日座位決定今晚語氣。",
+      "aside": "杯沿一圈水痕。"
+    },
+    "m3x2": {
+      "id": "m3x2",
+      "label": "大堂地毯",
+      "text": "電梯未到。大堂地毯吸走腳步。Elise 聲線放低：\n\n「監視器對住大堂，唔對住廂內。你而家退，我當酒廊傾完。」",
+      "choices": [
+        {
+          "label": "等電梯",
+          "next": "m3x3"
+        },
+        {
+          "label": "「你特登揀呢度講？」",
+          "next": "m3x3",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "等電梯",
+          "ask_want": "問清楚",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "等電梯應承，定問清楚，定停／走？"
+      },
+      "thought": "大堂同廂內，兩套規則。",
+      "aside": "行李轆聲遠。"
+    },
+    "m3x3": {
+      "id": "m3x3",
+      "label": "電梯靜音",
+      "text": "門合。樓層鍵已亮。廂內鏡把兩人叠成四個影子。\n\nElise：「上到去就算簽。鏡唔會幫你作證——亦唔會幫我。」",
+      "choices": [
+        {
+          "label": "望住鏡不語",
+          "next": "m3x5",
+          "heat": 6
+        },
+        {
+          "label": "「我知。」",
+          "next": "m3x5",
+          "heat": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "近啲",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承知，定再近，定停低？"
+      },
+      "thought": "鏡比合同安靜。",
+      "aside": "鍵燈一跳。"
+    },
+    "m3x4": {
+      "id": "m3x4",
+      "label": "走廊靜",
+      "text": "門開。高層走廊冷氣同香水同時湧。地毯花紋把腳步切碎。\n\nElise 停在房門前，未刷卡：「最後問——你跟嘅係單，定係我？」",
+      "choices": [
+        {
+          "label": "「跟你。」",
+          "next": "m4",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「單同你一齊。」",
+          "next": "m4",
+          "heat": 8
+        },
+        {
+          "label": "「我收回。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "跟上",
+          "flirt": "再近",
+          "refuse": "收回",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承跟上，定再近，定收回？"
+      },
+      "thought": "單同人，門前分帳。",
+      "aside": "門號冷光。"
+    },
+    "m4x": {
+      "id": "m4x",
+      "label": "房門卡聲",
+      "text": "卡「嘀」一聲。Elise 推門未入，側身讓你。\n\n「你踏入，就係你簽名。唔係我拉你。」",
+      "choices": [
+        {
+          "label": "踏入",
+          "next": "m4x2",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「你先入。」",
+          "next": "m4c",
+          "heat": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "踏入",
+          "flirt": "近入",
+          "ask_want": "問清楚",
+          "wait": "停低"
+        },
+        "ask": "踏入應承，定讓佢先，定問清楚？"
+      },
+      "thought": "簽名用腳，唔用筆。",
+      "aside": "門縫暖光。"
+    },
+    "m4x2": {
+      "id": "m4x2",
+      "label": "城市燈火",
+      "text": "落地玻璃外維港一串燈。Elise 把外套脫下搭椅，動作慢得像談價。\n\n「燈火好靚。但你唔係嚟睇景——對唔對？」",
+      "choices": [
+        {
+          "label": "「對。唔係睇景。」",
+          "next": "m5",
+          "heat": 12,
+          "requireHeat": 30,
+          "cg": true
+        },
+        {
+          "label": "「先俾我睇陣。」",
+          "next": "m4b",
+          "heat": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "ask_want": "問清楚",
+          "flirt": "再近",
+          "wait": "睇景停"
+        },
+        "ask": "應承唔係睇景，定問清楚，定停低睇？"
+      },
+      "thought": "景同人，佢要你認。",
+      "aside": "玻璃涼。"
+    },
+    "m4b2": {
+      "id": "m4b2",
+      "label": "窗霧",
+      "text": "你呼吸在玻璃留一層薄霧。Elise 指尖劃過霧氣，寫下一個「簽」字又抹走。\n\n「確認完未？未完我就當你仲喺酒廊。」",
+      "choices": [
+        {
+          "label": "「確認完。入。」",
+          "next": "m5",
+          "heat": 12,
+          "requireHeat": 30,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "入去",
+          "refuse": "走",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承入，定夠喇走，定停低？"
+      },
+      "thought": "霧上簽名比紙更快消失。",
+      "aside": "指尖涼。"
+    },
+    "m4c2": {
+      "id": "m4c2",
+      "label": "門把交手",
+      "text": "Elise 把手覆在你按門把嘅手上，力度剛好。\n\n「一齊入——就係一齊負責。聽日董事會，我唔幫你裝唔認識。」",
+      "choices": [
+        {
+          "label": "「一齊入。」",
+          "next": "m5",
+          "heat": 14,
+          "requireHeat": 32,
+          "cg": true
+        },
+        {
+          "label": "「我停。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "一齊入",
+          "refuse": "停",
+          "flirt": "再近",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承一齊，定停，定再近？"
+      },
+      "thought": "負責比熱度長。",
+      "aside": "門把金屬涼。"
+    },
+    "m4d2": {
+      "id": "m4d2",
+      "label": "伸手之前",
+      "text": "Elise 後退半步，雙臂交叠，卻笑。\n\n「伸手。伸完就唔好話我逼。逼同請——差在你條手臂。」",
+      "choices": [
+        {
+          "label": "伸手",
+          "next": "m5",
+          "heat": 13,
+          "requireHeat": 33,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "伸手",
+          "flirt": "伸近",
+          "refuse": "拒",
+          "ask_want": "問清楚"
+        },
+        "ask": "伸手應承，定拒，定問清楚？"
+      },
+      "thought": "手臂比合約誠實。",
+      "aside": "鏡面再閃。"
+    },
+    "m4e2": {
+      "id": "m4e2",
+      "label": "溫度成交",
+      "text": "「量完？」Elise 眼角揚。「溫度唔寫入合約附頁。但會寫入我對你嘅報價。」",
+      "choices": [
+        {
+          "label": "「入。」",
+          "next": "m5",
+          "heat": 14,
+          "requireHeat": 34,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "入",
+          "refuse": "走",
+          "flirt": "再近",
+          "ask_want": "問報價"
+        },
+        "ask": "應承入，定走，定再近？"
+      },
+      "thought": "報價兩字突然私人。",
+      "aside": "冷光一閃。"
+    },
+    "m5x": {
+      "id": "m5x",
+      "label": "聽日座位",
+      "text": "Elise 指尖點你鎖骨位置一下，像點簡報頁。\n\n「聽日你坐第三排左側。我會望過去。你望唔望返——自己揀。」",
+      "choices": [
+        {
+          "label": "「我會望返。」",
+          "next": "m5x2",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「只做生意。」",
+          "next": "ending_m_c",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "望返",
+          "flirt": "再近應承",
+          "refuse": "只做生意",
+          "ask_want": "問座位"
+        },
+        "ask": "應承望返，定只做生意，定問清楚？"
+      },
+      "thought": "座位變成暗號。",
+      "aside": "窗燈一閃。"
+    },
+    "m5x2": {
+      "id": "m5x2",
+      "label": "簽名定觸",
+      "text": "茶几上合約複印本仍摊开。Elise 把筆同自己的手並排。\n\n「你而家簽數字——定簽溫度？兩樣都算數。只係帳本唔同。」",
+      "choices": [
+        {
+          "label": "望住筆同手",
+          "next": "m5x3",
+          "heat": 6
+        },
+        {
+          "label": "「兩欄……」",
+          "next": "m5x3",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "flirt",
+          "refuse",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "要對等",
+          "agree": "交出",
+          "flirt": "簽溫度",
+          "refuse": "當無",
+          "wait": "停低"
+        },
+        "ask": "要對等，定交出，定當無？"
+      },
+      "thought": "兩本帳，同一個夜。",
+      "aside": "筆帽反光。"
+    },
+    "m5y2": {
+      "id": "m5y2",
+      "label": "帳本多頁",
+      "text": "「寫入帳。」Elise 重複，像確認成交。「聽日朝早，數字電郵照發。人——另附口頭。」",
+      "choices": [
+        {
+          "label": "「我知。」",
+          "next": "ending_m_a",
+          "heat": 12,
+          "requireHeat": 38,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "wait",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "refuse": "夠喇",
+          "wait": "停低",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承知，定夠喇，定停低？"
+      },
+      "thought": "口頭比電郵危險。",
+      "aside": "燈火再暗。"
+    },
+    "m5z2": {
+      "id": "m5z2",
+      "label": "唔走之後",
+      "text": "Elise 把房卡重新放你掌心，蓋住。\n\n「唔走就握實。握到聽日朝——先算你唔係籌碼。」",
+      "choices": [
+        {
+          "label": "握實",
+          "next": "ending_m_a",
+          "heat": 14,
+          "requireHeat": 36,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "握實",
+          "flirt": "握近",
+          "refuse": "走",
+          "wait": "停低"
+        },
+        "ask": "握實應承，定走，定停低？"
+      },
+      "thought": "握同簽，同一個掌心。",
+      "aside": "卡邊熱。"
+    },
+    "m5w2": {
+      "id": "m5w2",
+      "label": "主動落定",
+      "text": "「伸手我見到。」Elise 聲線輕。「聽日董事會第三排——你望返，呢晚先算數。」",
+      "choices": [
+        {
+          "label": "「我伸手。」",
+          "next": "ending_m_a",
+          "heat": 14,
+          "requireHeat": 37,
+          "cg": true
+        },
+        {
+          "label": "「夠喇。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "伸手",
+          "flirt": "再近",
+          "refuse": "走",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承伸手，定走，定問清楚？"
+      },
+      "thought": "望返同伸手綁死。",
+      "aside": "香水尾調。"
+    },
+    "m2a2": {
+      "id": "m2a2",
+      "label": "代表邊個",
+      "text": "Elise 身體前傾半寸：「代表想贏——贏單，定贏我注意？答錯，酒費你出。」",
+      "choices": [
+        {
+          "label": "「兩樣都要。」",
+          "next": "m2x",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「先贏單。」",
+          "next": "m2x",
+          "tension": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "challenge",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "贏注意",
+          "challenge": "先贏單",
+          "ask_want": "問清楚"
+        },
+        "ask": "兩樣都要，定先贏單，定問清楚？"
+      },
+      "thought": "酒費係最小嘅賭注。",
+      "aside": "杯壁一敲。"
+    },
+    "m2b2": {
+      "id": "m2b2",
+      "label": "線同手",
+      "text": "Elise 指尖停在你手背邊緣，未壓落。\n\n「線你自己劃。劃完就唔好話我越界——越界嘅人，有時係縮手嗰個。」",
+      "choices": [
+        {
+          "label": "唔縮手",
+          "next": "m2x",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「線唔好再伸。」",
+          "next": "m2x",
+          "tension": 10
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "flirt",
+          "challenge",
+          "agree",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "flirt": "唔縮",
+          "challenge": "劃線",
+          "agree": "應承",
+          "ask_want": "問清楚"
+        },
+        "ask": "唔縮手，定劃線，定問清楚？"
+      },
+      "thought": "縮手都可以越界。",
+      "aside": "腕骨燈光。"
+    },
+    "m2c2": {
+      "id": "m2c2",
+      "label": "危險同帳",
+      "text": "「賴帳？」Elise 重複你可能未講完嘅字。「我帳本分兩欄：危險，同負責。你而家揀欄。」",
+      "choices": [
+        {
+          "label": "「我唔賴。」",
+          "next": "m2x",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「……當我衝動。」",
+          "next": "m2x",
+          "heat": 6,
+          "tension": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "ask_want",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "唔賴",
+          "flirt": "再近",
+          "ask_want": "問欄",
+          "wait": "停低"
+        },
+        "ask": "應承唔賴，定承認衝動，定問清楚？"
+      },
+      "thought": "兩欄都要簽名。",
+      "aside": "酒氣再近。"
+    },
+    "m3u": {
+      "id": "m3u",
+      "label": "最後一口",
+      "text": "Elise 把杯推到你面前：「乾咗先走。乾完——先算你收得起呢張卡。」",
+      "choices": [
+        {
+          "label": "乾咗",
+          "next": "m3u2",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "望住杯底",
+          "next": "m3u2",
+          "heat": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "refuse",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "乾酒",
+          "refuse": "拒",
+          "flirt": "近啲乾",
+          "ask_want": "問清楚"
+        },
+        "ask": "乾酒應承，定拒，定問清楚？"
+      },
+      "thought": "酒同卡，同一口承諾。",
+      "aside": "杯底最後反光。"
+    },
+    "m1b": {
+      "id": "m1b",
+      "label": "夜燈維港",
+      "text": "維港燈一串一串跳。Elise 唔望海，只轉杯。\n\n「外面好靚。但你坐喺呢度，唔係買夜景——對唔對？」",
+      "choices": [
+        {
+          "label": "「人同單，邊樣先成交？」",
+          "next": "m2a",
+          "heat": 8,
+          "tension": 6,
+          "cg": true
+        },
+        {
+          "label": "「我嚟係收條款。」",
+          "next": "m2b",
+          "tension": 10
+        },
+        {
+          "label": "（坐近一格）「你想聽邊種答案？」",
+          "next": "m2c",
+          "heat": 14,
+          "tension": 4,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "challenge",
+          "agree",
+          "flirt",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "challenge": "頂真",
+          "agree": "應承",
+          "flirt": "坐近",
+          "ask_want": "問清楚"
+        },
+        "ask": "頂真講，定坐近，定問清楚？"
+      },
+      "thought": "夜景係煙幕。",
+      "aside": "戒指再敲。"
+    },
+    "m3a2": {
+      "id": "m3a2",
+      "label": "房卡溫度",
+      "text": "卡面金屬涼，Elise 指尖卻熱。卡停在桌心，像未拆嘅標。\n\n「收唔收之前，你可問價。問完——就唔好裝純。」",
+      "choices": [
+        {
+          "label": "收下",
+          "next": "m3u",
+          "heat": 16,
+          "remember": [
+            "took_key"
+          ],
+          "cg": true
+        },
+        {
+          "label": "推返去",
+          "next": "ending_m_c",
+          "tension": 4
+        },
+        {
+          "label": "「先講清楚樓上規則。」",
+          "next": "m3y",
+          "heat": 10,
+          "tension": 6,
+          "cg": true
+        },
+        {
+          "label": "「你想我點決定？」",
+          "next": "m3z",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「卡上有冇條款？」",
+          "next": "m3w",
+          "heat": 11,
+          "cg": true
+        },
+        {
+          "label": "「卡邊溫度點？」",
+          "next": "m3v",
+          "heat": 13,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "收下",
+          "flirt": "跟住",
+          "refuse": "拒",
+          "ask_want": "問規則"
+        },
+        "ask": "收下，定拒，定問規則？"
+      },
+      "thought": "問價同裝純，二揀一。",
+      "aside": "卡面反光。"
+    },
+    "m4f": {
+      "id": "m4f",
+      "label": "走廊鏡",
+      "text": "鏡裏兩個影子叠住。Elise 聲線貼你耳側半寸：\n\n「仲可唔可以——呢句，我要聽清楚。含糊當否。」",
+      "choices": [
+        {
+          "label": "「可以。」",
+          "next": "m4x",
+          "heat": 14,
+          "requireHeat": 35,
+          "cg": true
+        },
+        {
+          "label": "「停啲呢度就夠。」",
+          "next": "ending_m_c"
+        },
+        {
+          "label": "「先睇窗外。」",
+          "next": "m4b",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「你先入。」",
+          "next": "m4c",
+          "heat": 12,
+          "cg": true
+        },
+        {
+          "label": "「先問你想唔想。」",
+          "next": "m4d",
+          "heat": 11,
+          "cg": true
+        },
+        {
+          "label": "「門把溫度點？」",
+          "next": "m4e",
+          "heat": 12,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "ask_want",
+          "flirt",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "可以",
+          "ask_want": "問想",
+          "flirt": "再近",
+          "refuse": "停"
+        },
+        "ask": "應承可以，定問界線，定停？"
+      },
+      "thought": "含糊冇成交。",
+      "aside": "鏡面霧一點。"
+    },
+    "m5pre": {
+      "id": "m5pre",
+      "label": "窗前談價",
+      "text": "Elise 背靠玻璃，城市燈在佢肩後。\n\n「今晚唔寫電郵。你而家講——對等、交出、定當無？」",
+      "choices": [
+        {
+          "label": "「我要對等。唔好當籌碼。」",
+          "next": "m5x",
+          "heat": 8,
+          "remember": [
+            "wanted_equal"
+          ],
+          "requireHeat": 36,
+          "cg": true
+        },
+        {
+          "label": "「你話點。」",
+          "next": "m5x",
+          "heat": 10,
+          "requireHeat": 40,
+          "cg": true
+        },
+        {
+          "label": "「聽日先算。今晚當唔。」",
+          "next": "m5x"
+        },
+        {
+          "label": "「記住就夠。其他慢慢。」",
+          "next": "m5y",
+          "heat": 11,
+          "cg": true
+        },
+        {
+          "label": "「你記得就好。我唔走。」",
+          "next": "m5z",
+          "heat": 13,
+          "cg": true
+        },
+        {
+          "label": "「你先講想點。」",
+          "next": "m5w",
+          "heat": 12,
+          "cg": true
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "wait",
+          "agree",
+          "flirt",
+          "ask_want",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "wait": "慢慢",
+          "agree": "交出",
+          "flirt": "再近",
+          "ask_want": "對等",
+          "refuse": "當無"
+        },
+        "ask": "對等、交出、定當無？"
+      },
+      "thought": "三個答案，同一個窗。",
+      "aside": "玻璃震微。"
+    },
+    "m3x5": {
+      "id": "m3x5",
+      "label": "樓層叮",
+      "text": "叮一聲。門開。冷氣先入。Elise 伸手擋門，等你踏出先。\n\n「你踏出廂，就唔好再講酒廊嗰套。」",
+      "choices": [
+        {
+          "label": "踏出",
+          "next": "m3x4",
+          "heat": 6
+        },
+        {
+          "label": "「……我知。」",
+          "next": "m3x4",
+          "heat": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "wait",
+          "ask_want",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "踏出",
+          "wait": "停低",
+          "ask_want": "問清楚",
+          "flirt": "近啲踏"
+        },
+        "ask": "踏出應承，定停低，定問清楚？"
+      },
+      "thought": "酒廊規則留在樓下。",
+      "aside": "擋門嘅手穩。"
+    },
+    "m2x3": {
+      "id": "m2x3",
+      "label": "三分鐘盡",
+      "text": "侍應遠遠再望。Elise 把帳單按住，未翻開。\n\n「時間到。人定單——你開口。」",
+      "choices": [
+        {
+          "label": "「所以今晚係開標。」",
+          "next": "m3",
+          "heat": 8,
+          "cg": true
+        },
+        {
+          "label": "「單歸單，人歸人。」",
+          "next": "m3",
+          "tension": 6
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "challenge",
+          "agree",
+          "ask_want",
+          "flirt"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "challenge": "開標",
+          "agree": "分開",
+          "ask_want": "問清楚",
+          "flirt": "再近講"
+        },
+        "ask": "開標，定分開，定問清楚？"
+      },
+      "thought": "開口即落標。",
+      "aside": "帳單邊角。"
+    },
+    "m3u2": {
+      "id": "m3u2",
+      "label": "酒意未散",
+      "text": "杯放下。Elise 擦過你指節，像不經意。\n\n「乾完就算。電梯在後面——你帶路，定我帶？」",
+      "choices": [
+        {
+          "label": "「你帶。」",
+          "next": "m3x",
+          "heat": 10,
+          "cg": true
+        },
+        {
+          "label": "「我帶。」",
+          "next": "m3x",
+          "heat": 8
+        },
+        {
+          "label": "推開杯勢",
+          "next": "ending_m_c",
+          "tension": 4
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "refuse",
+          "ask_want"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "你帶",
+          "flirt": "近啲",
+          "refuse": "拒",
+          "ask_want": "問清楚"
+        },
+        "ask": "應承跟上，定自己帶，定拒？"
+      },
+      "thought": "帶路權比房卡細，一樣重。",
+      "aside": "杯底空。"
+    },
+    "m5x3": {
+      "id": "m5x3",
+      "label": "帳本兩欄",
+      "text": "Elise 比劃兩下：「左欄合約。右欄——你今晚伸手次數。聽日我兩欄都記得。」",
+      "choices": [
+        {
+          "label": "「我要對等。唔好當籌碼。」",
+          "next": "ending_m_b",
+          "heat": 8,
+          "remember": [
+            "wanted_equal"
+          ],
+          "requireHeat": 36,
+          "cg": true
+        },
+        {
+          "label": "「你話點。」",
+          "next": "ending_m_a",
+          "heat": 10,
+          "requireHeat": 40,
+          "cg": true
+        },
+        {
+          "label": "「聽日先算。今晚當唔。」",
+          "next": "ending_m_c"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "ask_want",
+          "agree",
+          "flirt",
+          "refuse",
+          "wait"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "ask_want": "對等",
+          "agree": "交出",
+          "flirt": "再近",
+          "refuse": "當無",
+          "wait": "停低"
+        },
+        "ask": "要對等，定交出，定當無？"
+      },
+      "thought": "次數都入帳。",
+      "aside": "指尖停空中。"
     }
   },
   "memoryLabels": {
