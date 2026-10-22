@@ -48,7 +48,12 @@
           "wait": "坐低"
         },
         "ask": "接麵應承，定問清楚，定坐低？"
-      }
+      },
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2a": {
       "id": "s2a",
@@ -87,7 +92,12 @@
           "wait": "停低"
         },
         "ask": "問清楚，定應承食，定停低？"
-      }
+      },
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2b": {
       "id": "s2b",
@@ -125,7 +135,12 @@
           "agree": "應承繼續"
         },
         "ask": "停低等等，定應承繼續？"
-      }
+      },
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2c": {
       "id": "s2c",
@@ -163,7 +178,12 @@
           "ask_want": "問門禁"
         },
         "ask": "想清楚再拍卡，定走，定問門禁？"
-      }
+      },
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2x": {
       "id": "s2x",
@@ -246,7 +266,12 @@
           "agree": "跟去樓梯"
         },
         "ask": "問答案喺樓梯，定停低，定走？"
-      }
+      },
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2z": {
       "id": "s2z",
@@ -854,7 +879,12 @@
         "ask": "應承半個秘密，定問清楚，定停低？"
       },
       "thought": "壞鏡頭變成福利。",
-      "aside": "微波爐燈暗。"
+      "aside": "微波爐燈暗。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2p2": {
       "id": "s2p2",
@@ -890,7 +920,12 @@
         "ask": "應承接過，定問其他，定再近？"
       },
       "thought": "第二口比第一口危險。",
-      "aside": "蒸汽再繞。"
+      "aside": "蒸汽再繞。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2x2": {
       "id": "s2x2",
@@ -1442,7 +1477,12 @@
         "ask": "接筷子應承，定問清楚，定停低？"
       },
       "thought": "筷子比規則輕。",
-      "aside": "蒸汽繞指。"
+      "aside": "蒸汽繞指。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s1c": {
       "id": "s1c",
@@ -1486,7 +1526,12 @@
         "ask": "問留夜，定聽第二條，定走？"
       },
       "thought": "兩個綠點，好顯眼。",
-      "aside": "手機光一閃。"
+      "aside": "手機光一閃。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s3z2": {
       "id": "s3z2",
@@ -1598,7 +1643,12 @@
         "ask": "問樓上，定多謝，定再近？"
       },
       "thought": "氣氛比人名重。",
-      "aside": "蒸汽遮臉。"
+      "aside": "蒸汽遮臉。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2b2": {
       "id": "s2b2",
@@ -1636,7 +1686,12 @@
         "ask": "問幾麻煩，定當未聽，定應承？"
       },
       "thought": "矛盾講出口先真。",
-      "aside": "匙羹停空中。"
+      "aside": "匙羹停空中。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s2c2": {
       "id": "s2c2",
@@ -1673,7 +1728,12 @@
         "ask": "再坐，定走，定問門禁？"
       },
       "thought": "第二次拍卡先係答案。",
-      "aside": "腕錶冷光。"
+      "aside": "腕錶冷光。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s3pre": {
       "id": "s3pre",
@@ -1930,7 +1990,12 @@
         "ask": "食一口，定問點解，定停低？"
       },
       "thought": "咔聲像開場。",
-      "aside": "熱氣繞。"
+      "aside": "熱氣繞。",
+      "scene": "pantry",
+      "props": [
+        "cup-noodles",
+        "vending-glow"
+      ]
     },
     "s3r3": {
       "id": "s3r3",

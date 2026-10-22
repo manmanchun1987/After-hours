@@ -1338,6 +1338,157 @@ body.mode-play .play-bg.has-video {
   background-image: none !important;
 }
 
+/* —— 3-layer play stage (bg / character / props) —— */
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: #0b0d12;
+  background-size: cover;
+  background-position: center 40%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+}
+.play-bg.layered-scene .scene-bg {
+  opacity: 1;
+}
+.play-bg.layered-scene {
+  background-image: none !important;
+}
+/* Character framed mid-stage so pantry reads around her */
+.play-bg.layered-scene .portrait-stack {
+  inset: auto;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 4%;
+  top: 10%;
+  width: min(88%, 420px);
+  height: 78%;
+  max-height: 78%;
+  z-index: 2;
+  position: absolute;
+  transform-origin: center 70%;
+  -webkit-mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 6%,
+      #000 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      #000 6%,
+      #000 82%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to right,
+      transparent 0%,
+      #000 10%,
+      #000 90%,
+      transparent 100%
+    );
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+.play-bg.layered-scene .portrait,
+.play-bg.layered-scene .portrait-video {
+  object-fit: cover;
+  object-position: center 8%;
+  filter: saturate(1.02) contrast(1.06) brightness(0.94);
+}
+.play-bg.layered-scene .play-bg-vignette {
+  z-index: 4;
+  background:
+    radial-gradient(ellipse at 50% 28%, rgba(255, 200, 160, 0.1), transparent 48%),
+    radial-gradient(ellipse at 78% 42%, rgba(80, 200, 220, 0.12), transparent 36%),
+    radial-gradient(ellipse at 50% 50%, transparent 28%, rgba(0, 0, 0, 0.5) 100%);
+}
+.play-bg.layered-scene .play-bg-scrim {
+  z-index: 5;
+}
+.prop-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+}
+.prop {
+  position: absolute;
+  pointer-events: none;
+}
+.prop-cup-noodles {
+  width: clamp(64px, 17vw, 112px);
+  height: auto;
+  right: 9%;
+  bottom: 26%;
+  opacity: 0;
+  transform: translate3d(10px, 18px, 0) scale(0.88);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45));
+  transition:
+    opacity 0.55s ease,
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 2;
+}
+.prop-cup-noodles.is-on {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+  animation: prop-steam-bob 3.6s ease-in-out infinite;
+}
+@keyframes prop-steam-bob {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -5px, 0) scale(1.02); }
+}
+.prop-vending-glow {
+  right: -4%;
+  top: 18%;
+  width: 42%;
+  height: 52%;
+  border-radius: 40% 20% 30% 40%;
+  background: radial-gradient(
+    ellipse at 60% 45%,
+    rgba(70, 210, 230, 0.38),
+    rgba(40, 140, 170, 0.12) 45%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+.prop-vending-glow.is-on {
+  opacity: 1;
+  animation: vending-pulse 4.2s ease-in-out infinite;
+}
+@keyframes vending-pulse {
+  0%, 100% { opacity: 0.72; }
+  50% { opacity: 1; }
+}
+@media (max-height: 700px) {
+  .play-bg.layered-scene .portrait-stack {
+    top: 6%;
+    bottom: 2%;
+    width: min(92%, 380px);
+  }
+  .prop-cup-noodles {
+    bottom: 22%;
+    width: clamp(52px, 15vw, 88px);
+  }
+}
+
+
 
 /* ============================================================
    UI polish pass — one viewport, neat hierarchy, all screens

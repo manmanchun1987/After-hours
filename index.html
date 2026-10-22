@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>加班之后 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=sammi-body-20261023" />
+  <link rel="stylesheet" href="./styles.css?v=layers-sammi-20261023" />
   <link rel="stylesheet" href="./styles-compete.css?v=entryfix2" />
   <link rel="stylesheet" href="./safari-fix.css?v=uichat3" />
   <link rel="stylesheet" href="./fx.css?v=entryfix2" />
@@ -19,6 +19,9 @@
       background-position: center 12% !important;
       background-size: cover !important;
       background-repeat: no-repeat !important;
+    }
+    #screen-play.active .play-bg.layered-scene{
+      background-image: none !important;
     }
   </style>
 </head>
@@ -57,13 +60,18 @@
     <section id="screen-play" class="screen">
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
+          <div id="scene-bg" class="scene-bg" hidden></div>
           <div class="portrait-stack" id="alex-portrait-stack">
             <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg?v=3" alt="" />
-            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" hidden></video>
-            <div id="blink-mask" class="blink-mask" aria-hidden="true">
+            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" muted hidden></video>
+            <div id="blink-mask" class="blink-mask" aria-hidden="true" hidden>
               <span class="blink-lid blink-lid-l"></span>
               <span class="blink-lid blink-lid-r"></span>
             </div>
+          </div>
+          <div id="prop-layer" class="prop-layer" aria-hidden="true">
+            <img id="prop-cup-noodles" class="prop prop-cup-noodles" src="./assets/props/cup-noodles.png" alt="" hidden />
+            <div id="prop-vending-glow" class="prop prop-vending-glow" hidden></div>
           </div>
           <div class="play-bg-vignette"></div>
           <div class="play-bg-scrim"></div>
@@ -127,7 +135,7 @@
   <script src="./guide-lines.js?v=p0-steer-20261022"></script>
   <script src="./guide-policy.js?v=wrong-react-20261022"></script>
   <script src="./chat-guide.js?v=uichat3b"></script>
-  <script src="./app.js?v=sammi-body-20261023"></script>
+  <script src="./app.js?v=layers-sammi-20261023"></script>
   <script src="./fx-play.js?v=intent27"></script>
   <script src="./audio-bed.js?v=intent27"></script>
   <script src="./cast-lock.js?v=intent27"></script>

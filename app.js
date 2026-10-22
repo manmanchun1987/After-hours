@@ -1485,6 +1485,87 @@ function portraitVideoSrc(story) {
   return null;
 }
 
+
+const SCENE_BG = {
+  pantry: "./assets/bg/pantry-01.jpg",
+  office: "./assets/bg/office.svg",
+  lounge: "./assets/bg/lounge.svg",
+  lift: "./assets/bg/lift.svg",
+  roof: "./assets/bg/roof.svg",
+  review: "./assets/bg/review.svg",
+};
+
+/* Sammi early pantry beats (茶水間 / 杯麵) — fallback if node.scene omitted */
+const SAM_PANTRY_NODES = {
+  s1: 1, s1b: 1, s1c: 1, s1d: 1,
+  s2a: 1, s2a2: 1, s2b: 1, s2b2: 1, s2c: 1, s2c2: 1,
+  s2p: 1, s2p2: 1, s2y: 1
+};
+
+function resolveScene(story, node) {
+  if (node && node.scene) return node.scene;
+  const id = (story && story.id) || state.storyId || getCastId();
+  const nid = (node && node.id) || state.nodeId;
+  if (id === "sam" && nid && SAM_PANTRY_NODES[nid]) return "pantry";
+  return null;
+}
+
+function resolveProps(story, node) {
+  if (node && Array.isArray(node.props)) return node.props;
+  if (resolveScene(story, node) === "pantry") return ["cup-noodles", "vending-glow"];
+  return [];
+}
+
+function applySceneLayers(story, node) {
+  const bg = document.querySelector("#screen-play .play-bg");
+  const sceneEl = $("#scene-bg");
+  const cup = $("#prop-cup-noodles");
+  const glow = $("#prop-vending-glow");
+  if (!bg) return;
+  const scene = resolveScene(story, node);
+  const props = resolveProps(story, node);
+  const src = scene && SCENE_BG[scene] ? SCENE_BG[scene] : null;
+  if (src) {
+    bg.classList.add("layered-scene");
+    bg.setAttribute("data-scene", scene);
+    if (sceneEl) {
+      const url = 'url("' + src + '")';
+      if (sceneEl.style.backgroundImage !== url) sceneEl.style.backgroundImage = url;
+      sceneEl.removeAttribute("hidden");
+    }
+  } else {
+    bg.classList.remove("layered-scene");
+    bg.removeAttribute("data-scene");
+    if (sceneEl) {
+      sceneEl.style.backgroundImage = "";
+      sceneEl.setAttribute("hidden", "");
+    }
+  }
+  if (cup) {
+    if (props.indexOf("cup-noodles") >= 0) {
+      cup.removeAttribute("hidden");
+      // next frame so CSS transition runs
+      requestAnimationFrame(function () { cup.classList.add("is-on"); });
+    } else {
+      cup.classList.remove("is-on");
+      setTimeout(function () {
+        if (cup && !cup.classList.contains("is-on")) cup.setAttribute("hidden", "");
+      }, 560);
+    }
+  }
+  if (glow) {
+    if (props.indexOf("vending-glow") >= 0) {
+      glow.removeAttribute("hidden");
+      requestAnimationFrame(function () { glow.classList.add("is-on"); });
+    } else {
+      glow.classList.remove("is-on");
+      setTimeout(function () {
+        if (glow && !glow.classList.contains("is-on")) glow.setAttribute("hidden", "");
+      }, 700);
+    }
+  }
+}
+
 function portraitSrc(story) {
   if (story && story.portrait) return story.portrait;
   const id = (story && story.id) || state.storyId;
@@ -1498,6 +1579,10 @@ function applyStoryArt(story) {
   const img = $("#alex-portrait");
   if (img && img.getAttribute("src") !== src) img.setAttribute("src", src);
   document.documentElement.style.setProperty("--play-portrait", 'url("' + src + '")');
+  const nodeForScene = (state.story && state.nodeId && state.story.nodes)
+    ? state.story.nodes[state.nodeId]
+    : null;
+  applySceneLayers(story, nodeForScene);
   const tint = (story && story.tint) || "";
   if (tint) document.body.setAttribute("data-tint", tint);
   else document.body.removeAttribute("data-tint");
@@ -2396,6 +2481,7 @@ function renderNode() {
   // so speechSynthesis cannot block the first paint of #screen-play.
   show("play");
   applyNodeMeta(node);
+  applySceneLayers(state.story, node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;
   const spoken = node.text;

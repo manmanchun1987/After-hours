@@ -1,3 +1,5 @@
+2026-10-23 00:30 HKT：Sammi 茶水間三層舞台樣品——#scene-bg / 人像 / #prop-layer（杯麵＋販賣機光）；early pantry nodes 接線；photoreal pantry-01。Cache ?v=layers-sammi-20261023。改檔：index.html、styles.css、app.js、data/sam.json、assets/bg/pantry-01.jpg、assets/props/cup-noodles.png、STATUS.md。
+
 2026-10-23 00:22 HKT：Sammi loop 換身體動作版（CEO OK）；仍靜音。表情／動作跟劇情＝用少量 mood clip 切換，唔係每節出一條片。Cache ?v=sammi-body-20261023。改檔：assets/video/sammi-loop.mp4、index.html、STATUS.md。
 
 2026-10-23 00:15 HKT：人像片——Sammi 用用戶鎖定靜圖＋loop（眨眼／呼吸在片內）；延遲播＋靜音＋失敗退靜圖（修舊入場卡死）。Vera 開 repo vera-loop；Elise 未批唔開。廣東話對白仍係文字／TTS，唔跟嘴。Cache ?v=sammi-vid-20261023。改檔：app.js、index.html、styles.css、data/sam.json、data/alex.json、assets/stills/sammi-01.jpg、assets/video/sammi-loop.mp4、STATUS.md。
