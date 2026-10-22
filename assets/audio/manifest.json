@@ -1,31 +1,26 @@
 {
-  "version": 3,
-  "note": "Procedural original audio v3. Louder ping/call for at-a-glance hearability; Web Audio fallback.",
+  "version": 4,
+  "note": "Pixabay BGM + Kenney CC0 SFX batch1. Scene loops in BGM.md names; Web Audio synth remains fallback.",
   "bgm": {
     "src": "./assets/audio/bgm-loop.mp3",
     "loop": true,
-    "volume": 0.35
+    "volume": 0.35,
+    "scenes": {
+      "office": { "src": "./assets/audio/bgm-office.mp3", "loop": true, "volume": 0.35 },
+      "call": { "src": "./assets/audio/bgm-call.mp3", "loop": true, "volume": 0.32 },
+      "lounge": { "src": "./assets/audio/bgm-lounge.mp3", "loop": true, "volume": 0.34 },
+      "pantry": { "src": "./assets/audio/bgm-pantry.mp3", "loop": true, "volume": 0.34 }
+    }
   },
   "sfx": {
-    "click": {
-      "src": "./assets/audio/sfx-click.mp3",
-      "volume": 0.55
-    },
-    "choice": {
-      "src": "./assets/audio/sfx-choice.mp3",
-      "volume": 0.55
-    },
-    "transition": {
-      "src": "./assets/audio/sfx-transition.mp3",
-      "volume": 0.5
-    },
-    "ping": {
-      "src": "./assets/audio/sfx-ping.mp3",
-      "volume": 0.75
-    },
-    "call": {
-      "src": "./assets/audio/sfx-call.mp3",
-      "volume": 0.72
-    }
+    "click": { "src": "./assets/audio/sfx-click.mp3", "volume": 0.55 },
+    "choice": { "src": "./assets/audio/sfx-choice.mp3", "volume": 0.55 },
+    "transition": { "src": "./assets/audio/sfx-transition.mp3", "volume": 0.5 },
+    "ping": { "src": "./assets/audio/sfx-ping.mp3", "volume": 0.75 },
+    "call": { "src": "./assets/audio/sfx-call.mp3", "volume": 0.72 },
+    "notify": { "src": "./assets/audio/sfx-notify.mp3", "volume": 0.65 },
+    "doorOpen": { "src": "./assets/audio/sfx-door-open.mp3", "volume": 0.55 },
+    "doorClose": { "src": "./assets/audio/sfx-door-close.mp3", "volume": 0.55 },
+    "cloth": { "src": "./assets/audio/sfx-cloth.mp3", "volume": 0.5 }
   }
 }
