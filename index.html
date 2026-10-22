@@ -175,13 +175,19 @@
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
           <div id="scene-bg" class="scene-bg" hidden></div>
-          <div class="portrait-stack" id="alex-portrait-stack">
-            <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg?v=3" alt="" />
-            <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" muted hidden></video>
-            <div id="blink-mask" class="blink-mask" aria-hidden="true" hidden>
-              <span class="blink-lid blink-lid-l"></span>
-              <span class="blink-lid blink-lid-r"></span>
+          <div class="scene-stack">
+            <div class="scene-layer-bg" data-scene="office"></div>
+            <div class="scene-layer-portrait">
+              <div class="portrait-stack" id="alex-portrait-stack">
+                <img id="alex-portrait" class="portrait" src="./assets/stills/vera-03.jpg?v=3" alt="" />
+                <video id="play-portrait-video" class="portrait portrait-video" loop playsinline preload="auto" muted hidden></video>
+                <div id="blink-mask" class="blink-mask" aria-hidden="true" hidden>
+                  <span class="blink-lid blink-lid-l"></span>
+                  <span class="blink-lid blink-lid-r"></span>
+                </div>
+              </div>
             </div>
+            <div class="scene-layer-fg" aria-hidden="true"></div>
           </div>
           <div id="prop-layer" class="prop-layer" aria-hidden="true">
             <img id="prop-cup-noodles" class="prop prop-cup-noodles" src="./assets/props/cup-noodles.png" alt="" hidden />
@@ -249,7 +255,7 @@
   <script src="./guide-lines.js?v=human-step-20261022"></script>
   <script src="./guide-policy.js?v=human-step-20261022"></script>
   <script src="./chat-guide.js?v=colloq-guide-20261022"></script>
-  <script src="./app.js?v=kb-mobile-20261023g"></script>
+  <script src="./app.js?v=scene-stack-20261022"></script>
   <script src="./fx-play.js?v=intent27"></script>
   <script src="./audio-bed.js?v=intent27"></script>
   <script src="./cast-lock.js?v=intent27"></script>

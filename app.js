@@ -1495,36 +1495,240 @@ const SCENE_BG = {
   review: "./assets/bg/review.svg",
 };
 
-/* Sammi early pantry beats (茶水間 / 杯麵) — fallback if node.scene omitted */
+/* Contract B scenes. roof/review fold in; they are not data-scene values. */
+const SCENE_IDS = { office: 1, pantry: 1, lounge: 1, lift: 1 };
+const SCENE_FOLD = { review: "office", roof: "lift" };
+const FG_ANIMS = { "fg-anim-float": 1, "fg-anim-pulse": 1, "fg-anim-sway": 1 };
+const PROP_ANIM = {
+  "cup-noodles": "fg-anim-float",
+  "vending-glow": "fg-anim-pulse",
+  "monitor-glow": "fg-anim-pulse",
+  blinds: "fg-anim-sway",
+  "wine-glass": "fg-anim-sway",
+  "floor-indicator": "fg-anim-pulse",
+};
+
+/* Cast home when a node has no scene and no exception. */
+const CAST_SCENE = { alex: "office", morgan: "lounge", sam: "pantry" };
+
+/*
+ * Exceptions only. Everything else uses node.scene (folded) or CAST_SCENE.
+ * alex n0: player is still at the lift; Vera is behind the office door.
+ * morgan m3x–m3x5: lobby wait + lift car. Suite/window stays lounge (no suite key).
+ * sam office: copier + badge corridor. sam lift: stairs / roof / after-door
+ *   (contract B has no roof key, so that night folds to lift).
+ */
+const NODE_SCENE = {
+  alex: { n0: "lift" },
+  morgan: { m3x: "lift", m3x2: "lift", m3x3: "lift", m3x5: "lift" },
+  sam: {
+    s2x: "office", s2z: "office", s2x2: "office", s2x3: "office", s2x4: "office",
+    s3: "lift", s3y: "lift", s3z: "lift", s3z2: "lift", s3y2: "lift",
+    s3r: "lift", s3r2: "lift", s3r3: "lift", s3pre: "lift",
+    s4: "lift", s4y: "lift", s4z: "lift", s4w: "lift", s4p: "lift", s4p2: "lift",
+    s4y2: "lift", s4z2: "lift", s4w2: "lift", s4pre: "lift",
+    s5: "lift", s5y: "lift", s5z: "lift", s5w: "lift", s5p: "lift",
+    s5y2: "lift", s5z2: "lift", s5w2: "lift", s5p2: "lift", s5q: "lift",
+  },
+};
+
+/* One living prop per scene. Extras are beat-specific and stay off the face. */
+const SCENE_PROPS = {
+  office: [{ id: "monitor-glow", anim: "fg-anim-pulse" }],
+  pantry: [{ id: "vending-glow", anim: "fg-anim-pulse" }],
+  lounge: [],
+  lift: [{ id: "floor-indicator", anim: "fg-anim-pulse" }],
+};
+
+const LOUNGE_BAR_NODES = {
+  m1: 1, m1b: 1,
+  m2a: 1, m2b: 1, m2c: 1, m2a2: 1, m2b2: 1, m2c2: 1,
+  m2x: 1, m2x2: 1, m2x3: 1,
+  m3: 1, m3v: 1, m3w: 1, m3y: 1, m3z: 1, m3u: 1, m3u2: 1, m3a2: 1,
+};
+
+const NODE_PROP_EXTRA = {
+  alex: {
+    n0e: [{ id: "blinds", anim: "fg-anim-sway" }],
+    n7: [{ id: "blinds", anim: "fg-anim-sway" }],
+    n7b: [{ id: "blinds", anim: "fg-anim-sway" }],
+  },
+  sam: {
+    s1: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s1b: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s1d: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s2p2: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+  },
+};
+
+/* Sammi early pantry beats — legacy #scene-bg photo only, if node.scene omitted */
 const SAM_PANTRY_NODES = {
   s1: 1, s1b: 1, s1c: 1, s1d: 1,
   s2a: 1, s2a2: 1, s2b: 1, s2b2: 1, s2c: 1, s2c2: 1,
   s2p: 1, s2p2: 1, s2y: 1
 };
 
+function storyCastId(story) {
+  return (story && story.id) || state.storyId || getCastId();
+}
+
+function foldScene(scene) {
+  if (!scene) return null;
+  if (SCENE_IDS[scene]) return scene;
+  if (SCENE_FOLD[scene]) return SCENE_FOLD[scene];
+  return null;
+}
+
 function resolveScene(story, node) {
-  if (node && node.scene) return node.scene;
-  const id = (story && story.id) || state.storyId || getCastId();
+  const fromNode = foldScene(node && node.scene);
+  if (fromNode) return fromNode;
+  const id = storyCastId(story);
+  const nid = (node && node.id) || state.nodeId;
+  const mapped = nid && NODE_SCENE[id] && NODE_SCENE[id][nid];
+  if (mapped && SCENE_IDS[mapped]) return mapped;
+  if (CAST_SCENE[id]) return CAST_SCENE[id];
+  /* Old shell still present: read its scene key, do not treat it as primary. */
+  const legacy = readLegacySceneKey();
+  if (legacy) return legacy;
+  return "office";
+}
+
+function normalizeProp(entry) {
+  if (!entry) return null;
+  const id = typeof entry === "string" ? entry : entry.id;
+  if (!id) return null;
+  let anim = typeof entry === "string" ? PROP_ANIM[entry] : entry.anim;
+  if (anim && !FG_ANIMS[anim]) anim = PROP_ANIM[id] || "";
+  if (!anim) anim = PROP_ANIM[id] || "";
+  return { id: String(id), anim: anim || "" };
+}
+
+function dedupeProps(list) {
+  const seen = {};
+  const out = [];
+  list.forEach((entry) => {
+    const prop = normalizeProp(entry);
+    if (!prop || seen[prop.id]) return;
+    seen[prop.id] = 1;
+    out.push(prop);
+  });
+  return out;
+}
+
+function resolveProps(story, node) {
+  if (node && Array.isArray(node.props)) return dedupeProps(node.props);
+  const id = storyCastId(story);
+  const nid = (node && node.id) || state.nodeId || "";
+  const scene = resolveScene(story, node);
+  let list = (SCENE_PROPS[scene] || []).slice();
+  if (scene === "lounge" && LOUNGE_BAR_NODES[nid]) {
+    list = list.concat([{ id: "wine-glass", anim: "fg-anim-sway" }]);
+  }
+  const extra = NODE_PROP_EXTRA[id] && NODE_PROP_EXTRA[id][nid];
+  if (extra) list = list.concat(extra);
+  return dedupeProps(list);
+}
+
+function readLegacySceneKey() {
+  const sceneEl = document.getElementById("scene-bg");
+  if (!sceneEl) return null;
+  const fromAttr = foldScene(sceneEl.getAttribute("data-scene"));
+  if (fromAttr) return fromAttr;
+  const classes = (sceneEl.className || "").split(/\s+/);
+  for (let i = 0; i < classes.length; i++) {
+    const folded = foldScene(classes[i]);
+    if (folded) return folded;
+  }
+  return null;
+}
+
+function ensureSceneStack(bg) {
+  let stack = bg.querySelector(".scene-stack");
+  if (!stack) {
+    stack = document.createElement("div");
+    stack.className = "scene-stack";
+    const legacyBg = document.getElementById("scene-bg");
+    if (legacyBg && legacyBg.parentNode === bg) bg.insertBefore(stack, legacyBg.nextSibling);
+    else bg.insertBefore(stack, bg.firstChild);
+  }
+  let layerBg = stack.querySelector(".scene-layer-bg");
+  if (!layerBg) {
+    layerBg = document.createElement("div");
+    layerBg.className = "scene-layer-bg";
+    stack.insertBefore(layerBg, stack.firstChild);
+  }
+  let portraitLayer = stack.querySelector(".scene-layer-portrait");
+  if (!portraitLayer) {
+    portraitLayer = document.createElement("div");
+    portraitLayer.className = "scene-layer-portrait";
+    stack.appendChild(portraitLayer);
+  }
+  let fg = stack.querySelector(".scene-layer-fg");
+  if (!fg) {
+    fg = document.createElement("div");
+    fg.className = "scene-layer-fg";
+    fg.setAttribute("aria-hidden", "true");
+    stack.appendChild(fg);
+  }
+  const portrait = document.getElementById("alex-portrait-stack");
+  if (portrait && portrait.parentNode !== portraitLayer) portraitLayer.appendChild(portrait);
+  const overlay = document.querySelector("#screen-play .play-overlay");
+  if (overlay && stack.contains(overlay)) {
+    const stage = document.querySelector("#screen-play .play-stage");
+    if (stage) stage.appendChild(overlay);
+  }
+  return { stack: stack, layerBg: layerBg, fg: fg };
+}
+
+function setFgAnim(el, anim) {
+  el.classList.remove("fg-anim-float", "fg-anim-pulse", "fg-anim-sway");
+  if (anim && FG_ANIMS[anim]) el.classList.add(anim);
+}
+
+function syncFgProps(fg, props) {
+  if (!fg) return;
+  const want = {};
+  props.forEach((prop) => { want[prop.id] = prop.anim || ""; });
+  const existing = fg.querySelectorAll(".fg-prop");
+  for (let i = existing.length - 1; i >= 0; i--) {
+    const el = existing[i];
+    const id = el.getAttribute("data-prop");
+    if (!Object.prototype.hasOwnProperty.call(want, id)) {
+      fg.removeChild(el);
+      continue;
+    }
+    setFgAnim(el, want[id]);
+    delete want[id];
+  }
+  Object.keys(want).forEach((id) => {
+    const el = document.createElement("div");
+    el.className = "fg-prop";
+    el.setAttribute("data-prop", id);
+    setFgAnim(el, want[id]);
+    fg.appendChild(el);
+  });
+}
+
+function legacySceneKey(story, node) {
+  if (node && node.scene && SCENE_BG[node.scene]) return node.scene;
+  const id = storyCastId(story);
   const nid = (node && node.id) || state.nodeId;
   if (id === "sam" && nid && SAM_PANTRY_NODES[nid]) return "pantry";
   return null;
 }
 
-function resolveProps(story, node) {
-  if (node && Array.isArray(node.props)) return node.props;
-  // No default props — only when node.props set AND story needs them to move
-  return [];
-  return [];
+function legacyPropIds(node) {
+  if (!node || !Array.isArray(node.props)) return [];
+  return node.props.map((entry) => (typeof entry === "string" ? entry : entry && entry.id)).filter(Boolean);
 }
 
-function applySceneLayers(story, node) {
-  const bg = document.querySelector("#screen-play .play-bg");
+/* #scene-bg / #prop-layer stay readable for the old shell. Contract B does not use them as primary. */
+function applyLegacySceneShell(bg, story, node) {
   const sceneEl = $("#scene-bg");
   const cup = $("#prop-cup-noodles");
   const glow = $("#prop-vending-glow");
-  if (!bg) return;
-  const scene = resolveScene(story, node);
-  const props = resolveProps(story, node);
+  const scene = legacySceneKey(story, node);
+  const props = legacyPropIds(node);
   const src = scene && SCENE_BG[scene] ? SCENE_BG[scene] : null;
   if (src) {
     bg.classList.add("layered-scene");
@@ -1533,6 +1737,8 @@ function applySceneLayers(story, node) {
       const url = 'url("' + src + '")';
       if (sceneEl.style.backgroundImage !== url) sceneEl.style.backgroundImage = url;
       sceneEl.removeAttribute("hidden");
+      const folded = foldScene(scene);
+      if (folded) sceneEl.setAttribute("data-scene", folded);
     }
   } else {
     bg.classList.remove("layered-scene");
@@ -1540,12 +1746,12 @@ function applySceneLayers(story, node) {
     if (sceneEl) {
       sceneEl.style.backgroundImage = "";
       sceneEl.setAttribute("hidden", "");
+      sceneEl.removeAttribute("data-scene");
     }
   }
   if (cup) {
     if (props.indexOf("cup-noodles") >= 0) {
       cup.removeAttribute("hidden");
-      // next frame so CSS transition runs
       requestAnimationFrame(function () { cup.classList.add("is-on"); });
     } else {
       cup.classList.remove("is-on");
@@ -1565,6 +1771,16 @@ function applySceneLayers(story, node) {
       }, 700);
     }
   }
+}
+
+function applySceneLayers(story, node) {
+  const bg = document.querySelector("#screen-play .play-bg");
+  if (!bg) return;
+  const parts = ensureSceneStack(bg);
+  const scene = resolveScene(story, node);
+  if (parts.layerBg) parts.layerBg.setAttribute("data-scene", scene);
+  syncFgProps(parts.fg, resolveProps(story, node));
+  applyLegacySceneShell(bg, story, node);
 }
 
 function portraitSrc(story) {
