@@ -1477,17 +1477,20 @@ function duckBgmForVideo(on) {
 }
 
 function portraitVideoSrc(story) {
-  // entryfix3: never return vera-loop.mp4. Portrait stays a still (portraitSrc).
-  void story;
+  // Per-cast loop clips. Only return paths that are shipped (missing → still via onerror).
+  // Sammi loop CEO-approved 2026-10-23; Vera repo clip; Elise pending approval.
+  const id = (story && story.id) || state.storyId || getCastId();
+  if (id === "sam") return "./assets/video/sammi-loop.mp4";
+  if (id === "alex") return "./assets/video/vera-loop.mp4";
   return null;
 }
 
 function portraitSrc(story) {
   if (story && story.portrait) return story.portrait;
   const id = (story && story.id) || state.storyId;
-  if (id === "morgan") return "./assets/morgan.jpg";
-  if (id === "sam") return "./assets/sam.jpg";
-  return "./assets/alex.png";
+  if (id === "morgan") return "./assets/stills/elise-01.jpg";
+  if (id === "sam") return "./assets/stills/sammi-01.jpg";
+  return "./assets/stills/vera-03.jpg";
 }
 
 function applyStoryArt(story) {
@@ -1509,19 +1512,63 @@ function applyStoryArt(story) {
   const stack = $("#alex-portrait-stack");
   const bg = document.querySelector("#screen-play .play-bg");
   const vid = $("#play-portrait-video");
-  // entryfix3: stills only. vid.load()/play() (vera-loop) can wedge the entry turn
-  // so #screen-play never paints. portraitVideoSrc stays null.
-  portraitVideoSrc(story);
-  if (vid) {
+  // blink mask retired — keep hidden
+  if (mask) mask.setAttribute("hidden", "");
+  const vsrc = portraitVideoSrc(story);
+  if (!vid) return;
+  // Always clear previous clip first
+  try { vid.pause(); } catch (e) {}
+  vid.onloadeddata = null;
+  vid.onerror = null;
+  if (!vsrc) {
     duckBgmForVideo(false);
-    try { vid.pause(); } catch (e) {}
     if (vid.hasAttribute("src")) vid.removeAttribute("src");
+    try { vid.load(); } catch (e2) {}
     vid.setAttribute("hidden", "");
     if (stack) stack.classList.remove("has-video");
     if (bg) bg.classList.remove("has-video");
+    return;
   }
-  // blink mask retired (hard stills never align lids) — keep hidden
-  if (mask) mask.setAttribute("hidden", "");
+  // Defer play until after #screen-play paints (entryfix3 hang was sync load/play).
+  vid.muted = true;
+  vid.defaultMuted = true;
+  vid.setAttribute("muted", "");
+  vid.setAttribute("playsinline", "");
+  vid.setAttribute("webkit-playsinline", "");
+  vid.loop = true;
+  vid.setAttribute("preload", "metadata");
+  const applyClip = function () {
+    if (vid.getAttribute("data-src") === vsrc && !vid.hasAttribute("hidden") && stack && stack.classList.contains("has-video")) {
+      const p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+      return;
+    }
+    vid.setAttribute("data-src", vsrc);
+    vid.src = vsrc;
+    vid.onerror = function () {
+      // Missing clip → stay on still
+      duckBgmForVideo(false);
+      try { vid.removeAttribute("src"); vid.load(); } catch (e3) {}
+      vid.setAttribute("hidden", "");
+      if (stack) stack.classList.remove("has-video");
+      if (bg) bg.classList.remove("has-video");
+    };
+    vid.onloadeddata = function () {
+      vid.removeAttribute("hidden");
+      if (stack) stack.classList.add("has-video");
+      if (bg) bg.classList.add("has-video");
+      duckBgmForVideo(true);
+      const p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    try { vid.load(); } catch (e4) {}
+  };
+  // Two rAFs + timeout: paint story text first, then start media
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      setTimeout(applyClip, 0);
+    });
+  });
 }
 
 function renderMeters() {

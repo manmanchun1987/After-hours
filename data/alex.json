@@ -4,7 +4,7 @@
   "title": "部門主管",
   "hook": "Deadline 可以改。態度唔可以。",
   "start": "n0",
-  "portrait": "./assets/IMG_1412.jpeg",
+  "portrait": "./assets/stills/vera-03.jpg",
   "nodes": {
     "n0": {
       "id": "n0",

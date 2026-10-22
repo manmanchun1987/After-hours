@@ -1331,6 +1331,7 @@ body.mode-speaking .speaking-pill {
   background: #0a0e14;
 }
 .portrait-stack.has-video #alex-portrait { opacity: 0; }
+.portrait-stack.has-video { animation: none; } /* motion comes from the clip */
 .portrait-stack.has-video .blink-mask { display: none !important; }
 .portrait-stack.has-video .portrait-video { display: block; }
 body.mode-play .play-bg.has-video {
