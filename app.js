@@ -1520,10 +1520,8 @@ function applyStoryArt(story) {
     if (stack) stack.classList.remove("has-video");
     if (bg) bg.classList.remove("has-video");
   }
-  if (mask) {
-    if (getCastId() === "alex") mask.removeAttribute("hidden");
-    else mask.setAttribute("hidden", "");
-  }
+  // blink mask retired (hard stills never align lids) — keep hidden
+  if (mask) mask.setAttribute("hidden", "");
 }
 
 function renderMeters() {
@@ -1655,29 +1653,11 @@ function applyNodeMeta(node) {
    P1) Blink mask, incoming pings, memory panel
    ============================================================ */
 function triggerBlink() {
-  const mask = $("#blink-mask");
-  if (!mask) return;
-  mask.classList.remove("on");
-  void mask.offsetWidth;
-  mask.classList.add("on");
-  setTimeout(() => mask.classList.remove("on"), 240);
+  /* retired: hard-image lid overlay never aligns eyes */
 }
 
 function startLifeMotion() {
-  // first blink soon so hard-refresh users "一眼見到"
-  setTimeout(() => {
-    const play = $("#screen-play");
-    if (play && play.classList.contains("active")) triggerBlink();
-  }, 700);
-  const loop = () => {
-    const play = $("#screen-play");
-    if (play && play.classList.contains("active")) {
-      triggerBlink();
-      if (Math.random() < 0.4) setTimeout(triggerBlink, 220);
-    }
-    setTimeout(loop, 1600 + Math.random() * 1800);
-  };
-  setTimeout(loop, 1600);
+  /* blink loop off; portrait-breathe CSS + mode-speaking stay */
 }
 
 function setUnread(n) {

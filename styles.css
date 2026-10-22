@@ -1147,8 +1147,9 @@ body.mode-call .play-bg-scrim {
 
 
 /* —— P1: blink mask / speaking / incoming / memory panel —— */
-/* blink3: lids over eyes (was too high/thin); stronger contrast for 一眼見到 */
+/* CEO 2026-10-22：硬圖眼皮罩對唔準五官 → 永久關閉；只留呼吸＋講緊 */
 .blink-mask {
+  display: none !important;
   position: absolute;
   inset: 0;
   pointer-events: none;
