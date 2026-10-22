@@ -2281,6 +2281,7 @@ function show(name) {
     el.classList.toggle("active", key === name);
   });
   document.body.classList.toggle("mode-play", name === "play");
+  if (typeof window.__ahSyncKeyboard === "function") window.__ahSyncKeyboard();
   if (name !== "play") duckBgmForVideo(false);
   if (name === "play") startIncomingRhythm();
   else stopIncomingRhythm();
@@ -2577,26 +2578,28 @@ function wireChat() {
 
 /* -------------------------------------------------------------------------- */
 /* keyboard1 — iPhone Safari / in-app browser keyboard viewport               */
+/* kb-mobile-20261023g                                                        */
 /*                                                                            */
-/* Root cause of the black void + stuck gap:                                 */
-/* 1. Open: stage was sized to visualViewport.height but left in normal flow */
-/*    (or translateY'd) while Safari scrolls the visual viewport by          */
-/*    offsetTop. overflow:hidden on a shrunk body clips that shift, so the   */
-/*    portrait/dialogue sit mid-screen and the rest of the visible area is   */
-/*    empty. position:fixed; top:0 (an earlier try) pins to the layout       */
-/*    viewport, which is scrolled off-screen — same void.                    */
-/* 2. Close: --app-vh was removed so CSS fell through to 100dvh. On iOS,     */
-/*    dvh/innerHeight often stay at the keyboard height after dismiss, so    */
-/*    the shell never grows back. The pre-keyboard pixel height was unused.  */
+/* 723c719 put --app-vh back to the pre-keyboard pixel height and cleared    */
+/* the fixed pin. Chrome then reported a full #screen-play / .play-stage     */
+/* border box, so __ahKbSelfTest passed. On iPhone the paint stayed short:   */
+/*                                                                            */
+/* html is height:100% + max-height:100dvh + overflow:hidden. After Done,    */
+/* Safari / the in-app webview often leaves BOTH visualViewport.height and   */
+/* window.innerHeight (and 100dvh / 100vh) at the keyboard height. The play  */
+/* box can be 800px tall and still be clipped by that short root, so the     */
+/* portrait fills only the top half and the rest of the screen is the black  */
+/* canvas (#080b12 / .play-stage #05070c). An inner stage / .play-bg /       */
+/* 68vh face-gap can stay on the stuck vh even after the pin is gone.        */
 /*                                                                            */
 /* Rules:                                                                     */
-/* - --app-vh is only ever the resting (full) pixel height, never the        */
-/*   keyboard height, and it is not removed after a keyboard session.        */
+/* - baseline / --app-vh is only ever the resting pixel height. After a      */
+/*   keyboard session it is never lowered to a stuck vv or innerHeight.      */
 /* - While open, #screen-play is position:fixed over the visual viewport.    */
-/*   If fixed is already visual-relative, top stays 0; if it is layout-      */
-/*   relative, top is offsetTop. getBoundingClientRect tells which.          */
-/* - Face-gap / play-lower / dialogue display are forced inline so 68vh and  */
-/*   keyboard-open { display:none } cannot float or hide the stack.          */
+/* - On close, that pin (position / top / height / transform) is removed     */
+/*   from #screen-play. html, body, .app, stage, overlay, and .play-bg are   */
+/*   locked to the baseline pixels so 100dvh cannot clip them. The face gap  */
+/*   is restored to the pre-keyboard pixel height, not a stuck 68vh.         */
 /* -------------------------------------------------------------------------- */
 function wireKeyboardViewport() {
   const root = document.documentElement;
@@ -2604,6 +2607,7 @@ function wireKeyboardViewport() {
   const STAY_DROP = 80;
   const TOOLBAR_SLOP = 140;
   let baseline = 0;
+  let restingFacePx = 0;
   let keyboardOpen = false;
   let chatFocused = false;
   let sawKeyboard = false;
@@ -2647,7 +2651,10 @@ function wireKeyboardViewport() {
     return Math.max(vvH || 0, layoutH || 0);
   }
 
-  /* Never let the keyboard viewport shrink the resting height. */
+  /* Never let the keyboard viewport shrink the resting height.
+     After the keyboard has opened once, a stuck short vv/innerHeight must
+     not replace the pre-keyboard baseline (toolbar slop is only for the
+     address bar, before any keyboard session). */
   function rememberFullHeight() {
     const live = liveHeight();
     if (live < 160) return;
@@ -2655,11 +2662,22 @@ function wireKeyboardViewport() {
       if (!keyboardOpen && !chatFocused) baseline = live;
       return;
     }
-    if (live > baseline) {
+    if (live > baseline + 1) {
       baseline = live;
       return;
     }
-    if (!keyboardOpen && !chatFocused && live >= baseline - TOOLBAR_SLOP) baseline = live;
+    if (sawKeyboard || keyboardOpen || chatFocused) return;
+    if (live >= baseline - TOOLBAR_SLOP) baseline = live;
+  }
+
+  function rememberFace() {
+    if (keyboardOpen || chatFocused) return;
+    const live = liveHeight();
+    if (baseline && live < baseline - 40) return;
+    const face = document.querySelector("#screen-play .play-face-gap");
+    if (!face) return;
+    const h = Math.round(face.getBoundingClientRect().height);
+    if (h >= 40) restingFacePx = h;
   }
 
   function isShrunkNow() {
@@ -2716,6 +2734,102 @@ function wireKeyboardViewport() {
     eachPlay(".narrative-bubble, .play-hud, .play-topbar", (el) => {
       el.style.removeProperty("display");
     });
+    eachPlay(".play-bg, .portrait-stack", (el) => {
+      clearProps(el, ["height", "max-height", "min-height", "top", "right", "bottom", "left", "transform"]);
+    });
+  }
+
+  function lockPx(el, px) {
+    if (!el) return;
+    el.style.setProperty("height", px, "important");
+    el.style.setProperty("min-height", px, "important");
+    el.style.setProperty("max-height", "none", "important");
+  }
+
+  /* Beat a stuck 100dvh / 100% / 100vh clamp on the boxes that actually paint.
+     #screen-play itself stays on --app-vh with no inline pin. */
+  function applyRestingFrame() {
+    const h = Math.round(baseline);
+    if (h < 160) return;
+    const px = h + "px";
+    const stageNow = document.querySelector("#screen-play .play-stage");
+    const stageNowH = stageNow ? stageNow.getBoundingClientRect().height : h;
+    /* Bump only when the paint is still the keyboard height, so a healthy
+       resize does not flicker --app-vh by a pixel. */
+    if (stageNowH < h - 8 || viewportStuck()) {
+      root.style.setProperty("--app-vh", (h + 1) + "px");
+      void root.offsetHeight;
+    }
+    root.style.setProperty("--app-vh", px);
+    lockPx(root, px);
+    lockPx(document.body, px);
+    lockPx(document.querySelector(".app"), px);
+    eachPlay(".play-stage, .play-overlay", (el) => {
+      lockPx(el, px);
+      el.style.removeProperty("top");
+      el.style.removeProperty("transform");
+      el.style.removeProperty("position");
+    });
+    eachPlay(".play-bg", (el) => {
+      lockPx(el, px);
+      el.style.setProperty("top", "0px", "important");
+      el.style.setProperty("right", "0px", "important");
+      el.style.setProperty("bottom", "0px", "important");
+      el.style.setProperty("left", "0px", "important");
+      el.style.removeProperty("transform");
+    });
+    eachPlay(".portrait-stack", (el) => {
+      /* Keep the resting inset crop; only stop a stuck vh height from collapsing it. */
+      el.style.setProperty("height", "auto", "important");
+      el.style.setProperty("min-height", "100%", "important");
+      el.style.setProperty("max-height", "none", "important");
+    });
+    if (restingFacePx >= 40) {
+      const facePx = restingFacePx + "px";
+      eachPlay(".play-face-gap", (el) => {
+        el.style.setProperty("height", facePx, "important");
+        el.style.setProperty("min-height", facePx, "important");
+        el.style.setProperty("max-height", facePx, "important");
+        el.style.setProperty("flex", "0 0 auto", "important");
+      });
+    }
+    void root.offsetHeight;
+  }
+
+  function clearRestingFrame() {
+    [root, document.body, document.querySelector(".app")].forEach((el) => {
+      if (!el) return;
+      ["height", "min-height", "max-height"].forEach((p) => el.style.removeProperty(p));
+    });
+    eachPlay(".play-stage, .play-overlay, .play-bg, .portrait-stack, .play-face-gap", (el) => {
+      clearProps(el, [
+        "height", "max-height", "min-height", "top", "right", "bottom", "left",
+        "transform", "position", "flex"
+      ]);
+    });
+  }
+
+  function viewportStuck() {
+    if (!baseline) return false;
+    return liveHeight() < baseline - STAY_DROP;
+  }
+
+  /* Ask WebKit to rebuild a viewport that stayed at the keyboard height. */
+  function nudgeViewport() {
+    if (testReading) return;
+    const meta = document.querySelector('meta[name="viewport"]');
+    if (!meta || meta.dataset.ahNudging === "1") return;
+    const content = meta.getAttribute("content") || "";
+    meta.dataset.ahNudging = "1";
+    const next = /maximum-scale=1(?![0-9.])/.test(content)
+      ? content.replace("maximum-scale=1", "maximum-scale=1.0001")
+      : content + ",maximum-scale=1.0001";
+    meta.setAttribute("content", next);
+    later(() => {
+      meta.setAttribute("content", content);
+      delete meta.dataset.ahNudging;
+      scrollToOrigin();
+    }, 60);
   }
 
   /*
@@ -2791,6 +2905,20 @@ function wireKeyboardViewport() {
     /* keyboard-open CSS hides these; keep the face-first stack on the usable box. */
     eachPlay(".narrative-bubble", (el) => el.style.setProperty("display", "block", "important"));
     eachPlay(".play-hud, .play-topbar", (el) => el.style.setProperty("display", "flex", "important"));
+    eachPlay(".play-bg", (el) => {
+      el.style.setProperty("height", "100%", "important");
+      el.style.setProperty("min-height", "0", "important");
+      el.style.setProperty("max-height", "none", "important");
+      el.style.setProperty("top", "0px", "important");
+      el.style.setProperty("right", "0px", "important");
+      el.style.setProperty("bottom", "0px", "important");
+      el.style.setProperty("left", "0px", "important");
+    });
+    eachPlay(".portrait-stack", (el) => {
+      el.style.setProperty("height", "100%", "important");
+      el.style.setProperty("min-height", "0", "important");
+      el.style.setProperty("max-height", "none", "important");
+    });
   }
 
   function setKeyboardOpen(open) {
@@ -2804,16 +2932,26 @@ function wireKeyboardViewport() {
     setKeyboardOpen(false);
     clearGeometry();
     rememberFullHeight();
-    if (sawKeyboard) writeShellHeight();
-    else root.style.removeProperty("--app-vh");
+    const inPlay = document.body.classList.contains("mode-play");
+    if (inPlay && baseline >= 160) {
+      /* Pixel locks, not 100dvh. A stuck visual viewport must not clip the portrait. */
+      applyRestingFrame();
+    } else {
+      clearRestingFrame();
+      if (sawKeyboard && baseline >= 160) writeShellHeight();
+      else root.style.removeProperty("--app-vh");
+    }
     writeInsets(false, 0, 0);
+    scrollToOrigin();
+    if (!chatFocused && sawKeyboard && viewportStuck()) nudgeViewport();
   }
 
   function scrollToOrigin() {
-    if (testReading) return;
     window.scrollTo(0, 0);
     root.scrollTop = 0;
     document.body.scrollTop = 0;
+    const scroller = document.scrollingElement;
+    if (scroller) scroller.scrollTop = 0;
   }
 
   function syncViewport() {
@@ -2823,6 +2961,8 @@ function wireKeyboardViewport() {
     const shrunk = keyboardOpen ? shouldStayOpen() : isShrunkNow();
     const open = !!(chatFocused && shrunk && inPlay && vvH >= 160);
 
+    if (!open) rememberFace();
+
     if (open) {
       setKeyboardOpen(true);
       pinPlay(vvH, offsetTop);
@@ -2831,7 +2971,7 @@ function wireKeyboardViewport() {
       settleClosed();
       /* Retry after dismiss: iOS sometimes applies offsetTop a frame late. */
       const { offsetTop: off } = measure();
-      if (!chatFocused && (wasOpen || (sawKeyboard && (off > 1 || window.scrollY > 1)))) scrollToOrigin();
+      if (!chatFocused && (wasOpen || (sawKeyboard && (off > 1 || (window.scrollY || 0) > 1)))) scrollToOrigin();
     }
   }
 
@@ -2853,6 +2993,7 @@ function wireKeyboardViewport() {
 
   rememberFullHeight();
   syncViewport();
+  window.__ahSyncKeyboard = syncViewport;
 
   window.addEventListener("resize", syncViewport);
   window.addEventListener("orientationchange", onOrientation);
@@ -2867,6 +3008,7 @@ function wireKeyboardViewport() {
   document.addEventListener("focusin", (e) => {
     if (!isChatTarget(e.target)) return;
     clearPending();
+    rememberFace();
     chatFocused = true;
     syncViewport();
     later(syncViewport, 60);
@@ -2887,6 +3029,34 @@ function wireKeyboardViewport() {
     later(syncViewport, 1200);
   });
 
+  function boxH(el) {
+    if (!el) return null;
+    return Math.round(el.getBoundingClientRect().height);
+  }
+
+  /* Visible paint after ancestor overflow:hidden. A full border-box clipped by
+     a short html/body is the black band 723c719 missed. */
+  function visibleH(el) {
+    if (!el) return 0;
+    const rect = el.getBoundingClientRect();
+    let top = rect.top;
+    let bottom = rect.bottom;
+    let node = el.parentElement;
+    while (node) {
+      const cs = getComputedStyle(node);
+      const oy = cs.overflowY;
+      const ox = cs.overflow;
+      if (oy === "hidden" || oy === "clip" || oy === "auto" || oy === "scroll" || ox === "hidden" || ox === "clip") {
+        const pr = node.getBoundingClientRect();
+        top = Math.max(top, pr.top);
+        bottom = Math.min(bottom, pr.bottom);
+      }
+      if (node === root) break;
+      node = node.parentElement;
+    }
+    return Math.max(0, Math.round(bottom - top));
+  }
+
   function snapshot() {
     const stage = document.querySelector("#screen-play .play-stage");
     const play = document.getElementById("screen-play");
@@ -2894,11 +3064,16 @@ function wireKeyboardViewport() {
     const face = document.querySelector("#screen-play .play-face-gap");
     const narr = document.querySelector("#screen-play .narrative-bubble");
     const hud = document.querySelector("#screen-play .play-hud");
+    const bg = document.querySelector("#screen-play .play-bg");
+    const portrait = document.querySelector("#screen-play .portrait-stack");
+    const app = document.querySelector(".app");
     const { vvH, layoutH, offsetTop } = measure();
     const playRect = play ? play.getBoundingClientRect() : null;
     const inputRect = input ? input.getBoundingClientRect() : null;
+    const narrRect = narr ? narr.getBoundingClientRect() : null;
     const stageCs = stage ? getComputedStyle(stage) : null;
     const playCs = play ? getComputedStyle(play) : null;
+    const inlineTransform = play ? (play.style.getPropertyValue("transform") || "") : "";
     return {
       chatFocused,
       keyboardOpen,
@@ -2913,14 +3088,32 @@ function wireKeyboardViewport() {
       playPosition: playCs ? playCs.position : null,
       playTop: playRect ? Math.round(playRect.top) : null,
       playHeight: playRect ? Math.round(playRect.height) : null,
+      playVisible: visibleH(play),
       inlinePlayHeight: play ? (play.style.getPropertyValue("height") || null) : null,
       inlinePlayTop: play ? (play.style.getPropertyValue("top") || null) : null,
-      stageHeight: stageCs ? stageCs.height : null,
+      inlinePlayPosition: play ? (play.style.getPropertyValue("position") || null) : null,
+      inlinePlayTransform: inlineTransform || null,
+      stageHeight: stage ? boxH(stage) : null,
+      stageComputed: stageCs ? stageCs.height : null,
       stageTransform: stageCs ? stageCs.transform : null,
+      inlineStageHeight: stage ? (stage.style.getPropertyValue("height") || null) : null,
+      stageVisible: visibleH(stage),
+      bgHeight: boxH(bg),
+      bgVisible: visibleH(bg),
+      portraitHeight: boxH(portrait),
+      portraitVisible: visibleH(portrait),
+      htmlHeight: boxH(root),
+      bodyHeight: boxH(document.body),
+      appHeight: boxH(app),
       faceGap: face ? getComputedStyle(face).height : null,
       narrativeDisplay: narr ? getComputedStyle(narr).display : null,
+      narrTop: narrRect ? Math.round(narrRect.top) : null,
+      narrVisible: visibleH(narr),
       hudDisplay: hud ? getComputedStyle(hud).display : null,
-      inputGap: playRect && inputRect ? Math.round(playRect.bottom - inputRect.bottom) : null
+      inputTop: inputRect ? Math.round(inputRect.top) : null,
+      inputVisible: visibleH(input),
+      inputGap: playRect && inputRect ? Math.round(playRect.bottom - inputRect.bottom) : null,
+      scrollY: Math.round(window.scrollY || root.scrollTop || document.body.scrollTop || 0)
     };
   }
 
@@ -2962,6 +3155,30 @@ function wireKeyboardViewport() {
     let afterGrow = null;
     const branches = {};
 
+    /* Both metrics stay at the keyboard height. measure() reads testReading;
+       this also patches the live objects when the browser allows it. */
+    function stickViewport(vvH, layoutH) {
+      const undo = [];
+      function patch(obj, prop, value) {
+        if (!obj) return;
+        try {
+          const desc = Object.getOwnPropertyDescriptor(obj, prop);
+          Object.defineProperty(obj, prop, { configurable: true, get: () => value });
+          undo.push(() => {
+            try {
+              if (desc) Object.defineProperty(obj, prop, desc);
+              else delete obj[prop];
+            } catch (e) { /* ignore */ }
+          });
+        } catch (e) { /* innerHeight / vv.height often not configurable */ }
+      }
+      patch(window, "innerHeight", layoutH);
+      patch(window.visualViewport, "height", vvH);
+      return function undoStick() {
+        undo.splice(0).reverse().forEach((fn) => fn());
+      };
+    }
+
     try {
       document.body.classList.add("mode-play");
       screens.forEach(({ el }) => {
@@ -2973,11 +3190,17 @@ function wireKeyboardViewport() {
         window.innerHeight,
         (window.visualViewport && window.visualViewport.height) || 0
       ));
+      const freeze = document.createElement("style");
+      freeze.id = "ah-kb-freeze";
+      freeze.textContent = "#screen-play,#screen-play *{animation:none!important;transition:none!important}";
+      document.head.appendChild(freeze);
+
       testReading = { vvH: full, offsetTop: 0, layoutH: full };
       chatFocused = false;
       keyboardOpen = false;
       sawKeyboard = false;
       baseline = 0;
+      restingFacePx = 0;
       syncViewport();
       await raf();
       before = snapshot();
@@ -3021,23 +3244,68 @@ function wireKeyboardViewport() {
       expect(iosPin.playPosition === "fixed", "layout-relative pin lost fixed");
       expect(Math.abs(num(iosPin.appVhInline) - full) <= 2, "layout-relative pin poisoned --app-vh " + iosPin.appVhInline);
 
-      /* WebView/Safari often leave vv AND innerHeight at the keyboard size after Done. */
-      testReading = { vvH: shrunkH, offsetTop: 0, layoutH: shrunkH };
-      chatFocused = false;
-      syncViewport();
+      /* iOS Done: BOTH visualViewport.height and window.innerHeight stay at the
+         keyboard height, and 100dvh/100% keep clipping html. 723c719 only restored
+         the #screen-play border box, so this clamp used to false-pass. */
+      const faceStuck = Math.max(36, Math.round(shrunkH * 0.42));
+      const clamp = document.createElement("style");
+      clamp.id = "ah-stuck-dvh-style";
+      clamp.textContent = [
+        "html.ah-stuck-dvh, html.ah-stuck-dvh body, html.ah-stuck-dvh body.mode-play .app {",
+        "height:" + shrunkH + "px !important; min-height:0 !important; max-height:" + shrunkH + "px !important;",
+        "overflow:hidden !important;}",
+        "html.ah-stuck-dvh body.mode-play #screen-play.active .play-stage,",
+        "html.ah-stuck-dvh body.mode-play #screen-play.active .play-overlay,",
+        "html.ah-stuck-dvh body.mode-play #screen-play.active .play-bg,",
+        "html.ah-stuck-dvh body.mode-play #screen-play.active .portrait-stack {",
+        "height:" + shrunkH + "px !important; min-height:0 !important; max-height:" + shrunkH + "px !important;}",
+        "html.ah-stuck-dvh body.mode-play #screen-play.active .play-face-gap {",
+        "height:" + faceStuck + "px !important; min-height:0 !important; max-height:" + faceStuck + "px !important;",
+        "flex:0 0 auto !important;}"
+      ].join("");
+      document.head.appendChild(clamp);
+      root.classList.add("ah-stuck-dvh");
+      const undoStick = stickViewport(shrunkH, shrunkH);
+      try {
+        testReading = { vvH: shrunkH, offsetTop: 0, layoutH: shrunkH };
+        root.scrollTop = 120;
+        document.body.scrollTop = 120;
+        chatFocused = false;
+        syncViewport();
+      } finally {
+        undoStick();
+      }
       await raf();
       after = snapshot();
+      root.classList.remove("ah-stuck-dvh");
+      clamp.remove();
       expect(!after.bodyClass && !after.htmlClass, "keyboard-open stuck after blur");
       expect(Math.abs(num(after.appVhInline) - full) <= 2, "resting --app-vh not restored to " + full + "px (" + after.appVhInline + ")");
       expect(after.playPosition !== "fixed", "position stuck fixed");
+      expect(!after.inlinePlayPosition, "inline play position lingered " + after.inlinePlayPosition);
       expect(!after.inlinePlayHeight, "inline play height lingered " + after.inlinePlayHeight);
       expect(!after.inlinePlayTop, "inline play top lingered " + after.inlinePlayTop);
-      expect(Math.abs(num(after.stageHeight) - full) <= 6, "stage height " + after.stageHeight + " != " + full);
-      expect(Math.abs(after.playHeight - full) <= 8, "play box " + after.playHeight + " != " + full);
+      expect(!after.inlinePlayTransform || after.inlinePlayTransform === "none", "inline play transform lingered " + after.inlinePlayTransform);
+      expect(after.scrollY === 0, "scroll offset lingered " + after.scrollY);
+      expect(Math.abs(after.playHeight - full) <= 8, "play box " + after.playHeight + " != baseline " + full);
+      expect(Math.abs(after.playVisible - full) <= 8, "play visible " + after.playVisible + " leaves a black band (baseline " + full + ")");
+      expect(Math.abs(after.stageHeight - full) <= 8, "stage height " + after.stageHeight + " != baseline " + full);
+      expect(Math.abs(after.stageVisible - full) <= 8, "stage visible " + after.stageVisible + " leaves a black band");
+      expect(after.bgHeight != null && Math.abs(after.bgHeight - full) <= 8, "portrait layer " + after.bgHeight + " != baseline " + full);
+      expect(Math.abs(after.bgVisible - full) <= 8, "portrait visible " + after.bgVisible + " leaves a black band");
+      expect(after.portraitHeight == null || after.portraitHeight >= full - 12, "portrait stack " + after.portraitHeight + " shorter than shell " + full);
       expect(Math.abs(after.playHeight - shrunkH) > 80, "play box still keyboard-sized " + after.playHeight);
+      expect(Math.abs(after.htmlHeight - full) <= 8, "html stayed at stuck viewport " + after.htmlHeight);
+      expect(Math.abs(after.bodyHeight - full) <= 8, "body stayed at stuck viewport " + after.bodyHeight);
+      expect(Math.abs(after.appHeight - full) <= 8, "app stayed at stuck viewport " + after.appHeight);
       expect(after.narrativeDisplay !== "none", "dialogue hidden after close");
       expect(after.hudDisplay !== "none", "HUD hidden after close");
-      expect(Math.abs(num(after.faceGap) - num(before.faceGap)) <= 2, "face-gap " + after.faceGap + " != before " + before.faceGap);
+      expect(Math.abs(num(after.faceGap) - num(before.faceGap)) <= 4, "face-gap " + after.faceGap + " != before " + before.faceGap);
+      expect(after.narrVisible > 8, "dialogue clipped after dismiss");
+      expect(after.inputVisible > 8, "composer clipped after dismiss");
+      expect(after.narrTop != null && after.narrTop > full * 0.45, "dialogue still in the top band " + after.narrTop);
+      expect(after.inputTop != null && after.inputTop > full * 0.5, "composer still in the top band " + after.inputTop);
+      expect(after.inputGap != null && after.inputGap >= -4, "composer below the restored shell, gap " + after.inputGap);
 
       testReading = { vvH: shrunkH, offsetTop: offset, layoutH: full };
       chatFocused = true;
@@ -3056,6 +3324,11 @@ function wireKeyboardViewport() {
       testReading = null;
       chatFocused = false;
       keyboardOpen = false;
+      root.classList.remove("ah-stuck-dvh");
+      const clamp = document.getElementById("ah-stuck-dvh-style");
+      if (clamp) clamp.remove();
+      const freeze = document.getElementById("ah-kb-freeze");
+      if (freeze) freeze.remove();
       screens.forEach(({ el, className }) => {
         el.className = className;
       });
@@ -3064,14 +3337,16 @@ function wireKeyboardViewport() {
       document.body.classList.remove("keyboard-open");
       root.classList.remove("keyboard-open");
       clearGeometry();
+      clearRestingFrame();
       const live = Math.max(window.innerHeight, (window.visualViewport && window.visualViewport.height) || 0);
       if (document.body.classList.contains("mode-play")) {
         if (live >= 160) baseline = live;
         sawKeyboard = true;
-        writeShellHeight();
+        applyRestingFrame();
         writeInsets(false, 0, 0);
       } else {
         sawKeyboard = false;
+        restingFacePx = 0;
         baseline = live >= 160 ? live : 0;
         root.style.removeProperty("--app-vh");
         writeInsets(false, 0, 0);

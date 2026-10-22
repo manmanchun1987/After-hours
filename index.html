@@ -88,6 +88,23 @@
     }
     body.keyboard-open .global-controls { opacity: .2; pointer-events: none; }
 
+    /* kb-mobile-20261023g — after dismiss, 100dvh/100% must not clip the portrait */
+    html:not(.keyboard-open),
+    html:not(.keyboard-open) body {
+      height: var(--app-vh, 100%) !important;
+      min-height: var(--app-vh, 100%) !important;
+      max-height: none !important;
+    }
+    html:not(.keyboard-open) body.mode-play .app,
+    html:not(.keyboard-open) body.mode-play #screen-play.active,
+    html:not(.keyboard-open) body.mode-play #screen-play .play-stage,
+    html:not(.keyboard-open) body.mode-play #screen-play .play-overlay,
+    html:not(.keyboard-open) body.mode-play #screen-play .play-bg {
+      height: var(--app-vh, 100dvh) !important;
+      min-height: var(--app-vh, 100dvh) !important;
+      max-height: none !important;
+    }
+
 
   </style>
 </head>
@@ -201,7 +218,7 @@
   <script src="./guide-lines.js?v=p0-steer-20261022"></script>
   <script src="./guide-policy.js?v=wrong-react-20261022"></script>
   <script src="./chat-guide.js?v=kb-mobile-20261023e"></script>
-  <script src="./app.js?v=kb-mobile-20261023f"></script>
+  <script src="./app.js?v=kb-mobile-20261023g"></script>
   <script src="./fx-play.js?v=intent27"></script>
   <script src="./audio-bed.js?v=intent27"></script>
   <script src="./cast-lock.js?v=intent27"></script>
