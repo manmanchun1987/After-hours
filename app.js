@@ -2660,6 +2660,15 @@ function wireKeyboardViewport() {
     }
   }
 
+  function restoreFullViewportVars() {
+    /* Drop inline --app-vh so CSS --app-vh: 100dvh wins (iOS often keeps
+       innerHeight/visualViewport stuck small after keyboard dismiss). */
+    root.style.removeProperty("--app-vh");
+    root.style.setProperty("--vv-offset-top", "0px");
+    root.style.setProperty("--vv-top", "0px");
+    root.style.setProperty("--keyboard-inset", "0px");
+  }
+
   function syncViewport() {
     const vv = window.visualViewport;
     const vvH = vv ? vv.height : window.innerHeight;
@@ -2667,23 +2676,23 @@ function wireKeyboardViewport() {
     const layoutH = window.innerHeight;
     const inset = Math.max(0, layoutH - vvH - offsetTop);
 
-    /* Layout "keyboard mode" follows chat focus only — size shrink alone used to
-       leave keyboard-open stuck after dismiss on iOS/WebView. */
+    /* keyboard-open UI follows chat focus only */
     const open = chatFocused;
-    const height = open ? vvH : Math.max(vvH, layoutH);
-
-    root.style.setProperty("--app-vh", `${height}px`);
-    root.style.setProperty("--vv-offset-top", open ? `${offsetTop}px` : "0px");
-    root.style.setProperty("--vv-top", open ? `${offsetTop}px` : "0px");
-    root.style.setProperty("--keyboard-inset", open ? `${inset}px` : "0px");
 
     if (!baseline) captureBaseline();
 
-    setKeyboardOpen(open);
-    applyStageFrame(open, height, open ? offsetTop : 0);
-
-    if (!open) {
-      baseline = Math.max(vvH, layoutH);
+    if (open) {
+      root.style.setProperty("--app-vh", `${Math.round(vvH)}px`);
+      root.style.setProperty("--vv-offset-top", `${offsetTop}px`);
+      root.style.setProperty("--vv-top", `${offsetTop}px`);
+      root.style.setProperty("--keyboard-inset", `${inset}px`);
+      setKeyboardOpen(true);
+      applyStageFrame(true, vvH, offsetTop);
+    } else {
+      restoreFullViewportVars();
+      setKeyboardOpen(false);
+      applyStageFrame(false, layoutH, 0);
+      baseline = Math.max(baseline || 0, vvH, layoutH);
     }
   }
 
@@ -2778,19 +2787,37 @@ function wireKeyboardViewport() {
       t.id === "chat-input" ||
       (t.closest && t.closest("#chat-form, .chat-form"));
     if (!isChat) return;
-    /* Restore layout immediately — do not wait for vv (often stays "shrunk"). */
     clearPending();
     chatFocused = false;
     setKeyboardOpen(false);
+    restoreFullViewportVars();
     applyStageFrame(false, window.innerHeight, 0);
-    root.style.setProperty("--app-vh", `${Math.max(window.innerHeight, (window.visualViewport && window.visualViewport.height) || 0)}px`);
-    root.style.setProperty("--vv-offset-top", "0px");
-    root.style.setProperty("--vv-top", "0px");
-    root.style.setProperty("--keyboard-inset", "0px");
     window.scrollTo(0, 0);
     later(syncViewport, 50);
     later(syncViewport, 300);
-    later(syncViewport, 600);
+    later(syncViewport, 700);
+  });
+
+  /* Safety: if vv grows while not focused, force full layout (12/Pro Max Safari) */
+  if (window.visualViewport) {
+    let lastH = window.visualViewport.height;
+    window.visualViewport.addEventListener("resize", () => {
+      const h = window.visualViewport.height;
+      if (!chatFocused && h > lastH + 40) {
+        restoreFullViewportVars();
+        applyStageFrame(false, window.innerHeight, 0);
+        setKeyboardOpen(false);
+      }
+      lastH = h;
+    });
+  }
+
+  window.addEventListener("pageshow", () => {
+    if (!chatFocused) {
+      restoreFullViewportVars();
+      applyStageFrame(false, window.innerHeight, 0);
+      setKeyboardOpen(false);
+    }
   });
 }
 
