@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "t23-2325";
+  var STAMP = "uichat3b";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -11,6 +11,27 @@
     return choicesEl;
   }
 
+  function currentNode() {
+    try {
+      var st = window.state;
+      if (!st || !st.story || !st.story.nodes || !st.nodeId) return null;
+      return st.story.nodes[st.nodeId] || null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  /** CHAT-FIRST only defers on freeChat nodes; story beats with choices must show. */
+  function shouldHideChoices() {
+    var node = currentNode();
+    if (!node) return false;
+    if (!node.freeChat) return false;
+    try {
+      if (window.state && window.state.freeChatChoicesVisible) return false;
+    } catch (e) {}
+    return missCount < MISS_THRESHOLD;
+  }
+
   function hideChoices() {
     var el = getChoices();
     if (!el) return;
@@ -18,11 +39,16 @@
     if (el.style.display !== "none") el.style.display = "none";
   }
 
-  function showChoicesIfReady() {
+  function showChoices() {
     var el = getChoices();
-    if (!el || missCount < MISS_THRESHOLD) return;
+    if (!el) return;
     if (el.classList.contains("freechat-hidden")) el.classList.remove("freechat-hidden");
     if (el.style.display === "none") el.style.display = "";
+  }
+
+  function syncChoices() {
+    if (shouldHideChoices()) hideChoices();
+    else showChoices();
   }
 
   function isOwnerPlaytest(text) {
@@ -50,39 +76,82 @@
   }
 
   function tryWrap() {
-    wrapIfPresent("renderNode", hideChoices);
-    wrapIfPresent("goToNode", function () { missCount = 0; hideChoices(); });
-    wrapIfPresent("applyFreeChatAdvance", function () { missCount = 0; hideChoices(); });
+    wrapIfPresent("renderNode", syncChoices);
+    wrapIfPresent("goToNode", function () {
+      missCount = 0;
+      syncChoices();
+    });
+    wrapIfPresent("applyFreeChatAdvance", function () {
+      missCount = 0;
+      syncChoices();
+    });
+    wrapIfPresent("unlockFreeChatChoices", function () {
+      syncChoices();
+    });
+    wrapIfPresent("setChoicesDeferred", function () {
+      syncChoices();
+    });
   }
 
   function init() {
-    hideChoices();
+    syncChoices();
     tryWrap();
 
     document.addEventListener("freechat:advance", function () {
       missCount = 0;
-      hideChoices();
+      syncChoices();
     });
     document.addEventListener("freechat:miss", function (ev) {
       var text = ev && ev.detail && ev.detail.text;
       if (isOwnerPlaytest(text) || isYesWord(text)) return;
       missCount += 1;
-      showChoicesIfReady();
+      syncChoices();
     });
+
+    // Fallback miss count: freeChat chat submits that are not yes-words / owner playtests.
+    document.addEventListener(
+      "submit",
+      function (ev) {
+        var form = ev.target;
+        if (!form || form.id !== "chat-form") return;
+        var node = currentNode();
+        if (!node || !node.freeChat) return;
+        try {
+          if (window.state && window.state.freeChatChoicesVisible) return;
+        } catch (e) {}
+        var input = document.getElementById("chat-input");
+        var text = input ? input.value : "";
+        if (isOwnerPlaytest(text) || isYesWord(text)) return;
+        // Defer so app handleChatSubmit can unlock first; then re-sync.
+        setTimeout(function () {
+          try {
+            if (window.state && window.state.freeChatChoicesVisible) {
+              syncChoices();
+              return;
+            }
+          } catch (e) {}
+          missCount += 1;
+          syncChoices();
+        }, 50);
+      },
+      true
+    );
 
     var el = getChoices();
     if (el && window.MutationObserver) {
       var obsBusy = false;
       var obs = new MutationObserver(function () {
         if (obsBusy) return;
-        if (missCount >= MISS_THRESHOLD) return;
         var cur = getChoices();
         if (!cur) return;
-        if (cur.classList.contains("freechat-hidden") && cur.style.display === "none") return;
+        var wantHide = shouldHideChoices();
+        var isHidden =
+          cur.classList.contains("freechat-hidden") && cur.style.display === "none";
+        if (wantHide === isHidden) return;
         obsBusy = true;
         obs.disconnect();
         try {
-          hideChoices();
+          syncChoices();
         } finally {
           obsBusy = false;
           try {
@@ -96,10 +165,15 @@
     var n = 0;
     var t = setInterval(function () {
       tryWrap();
+      syncChoices();
       if (++n > 40) clearInterval(t);
     }, 250);
 
-    console.log("[chat-guide] " + STAMP + " CHAT-FIRST: hide after advance, reveal only after " + MISS_THRESHOLD + " misses. Yes-words (\u597d \u4fc2 \u5f97 \u7e7c\u7e8c) non-miss heat intact. Owner quiet. Poll wrap.");
+    console.log(
+      "[chat-guide] " +
+        STAMP +
+        " CHAT-FIRST: hide only on freeChat until unlock/2 misses; non-freeChat beats show choices. Yes-words heat intact."
+    );
   }
 
   if (document.readyState === "loading") {
