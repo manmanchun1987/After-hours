@@ -1,10 +1,22 @@
 # LANES — A–F（對齊本地假 AI 優先）
 
 > **現行預設：A＋B 開工。** Lane C＝暫停寫 `data/*`（只讀／STATUS）。D／E／F＝暫緩可選。無標 → **A**。  
-> 用戶 App 自動化名：`AH-LaneA`／`AH-LaneB`；（`AH-LaneC` 可留住但**唔准改 data**）— **唔開新 App 自動化。**  
+> 用戶 App 自動化 id：`AH-LaneA`–`AH-LaneF`（而家常用 A／B；C 可留住但**唔准改 data**）— **唔開新 App 自動化。**  
 > 指令一句：「讀 LANES.md 該車並執行；守 AUTOMATION.md」。  
 > **北辰：** 本地假 AI（Intent＋Guide），無付費 LLM。  
 > **臨時：** Pages 佇列塞車時少 push（唔係永久停工）。
+
+### App 顯示名（建議中文；repo 只記錄）
+Grok.com／App 自動化**顯示名**要用戶或瀏覽器改；本檔唔聲稱 UI 已改名。建議對照：
+
+| id | 建議中文名 | 車 |
+|---|---|---|
+| `AH-LaneA` | 意圖加厚 | A Intent-Patterns |
+| `AH-LaneB` | 引導回覆 | B Guide-Lines |
+| `AH-LaneC` | 劇情資料 | C Scene（pause write） |
+| `AH-LaneD` | 點子 | D Ideas（deferred） |
+| `AH-LaneE` | 狀態打卡 | E Status（deferred） |
+| `AH-LaneF` | 整合上線 | F Integrator（deferred） |
 
 ---
 

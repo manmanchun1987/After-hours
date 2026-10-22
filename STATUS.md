@@ -1,3 +1,5 @@
+2026-10-22 22:28 HKT：LANES 加 App 顯示名建議表（AH-LaneA–F → 意圖加厚／引導回覆／劇情資料／點子／狀態打卡／整合上線）。只文件記錄；唔聲稱 Grok.com UI 已改名——要用戶或瀏覽器改。指令一句仍：「讀 LANES.md 該車並執行；守 AUTOMATION.md」。改檔：LANES.md、STATUS.md。未碰 app/data。四柱仍 4/4/4/4。
+
 2026-10-22 22:27 HKT：LANES A–F 對齊本地假 AI。A+B active；C pause write data（CEO sceneGoal 已 backfill）；D/E/F deferred。North star Intent+Guide 無付費LLM。下一優先：mid-node goal steer、agree soft-match、weak sceneGoal hand-tune、auto-playtest before FEEL。DISPATCH 開 P0 GUIDE mid-node + P0 INTENT agree soft-match；retain STORY/CODE restore monitors。改檔：LANES.md、AUTOMATION.md、DISPATCH.md、STATUS.md。未碰 app/data/patterns/guide。臨時：Pages 佇列塞少 push。四柱仍 4/4/4/4。
 
 2026-10-22 22:23 HKT：CODE hourly。讀 AUTOMATION/LANES/DISPATCH/STATUS。無開 P0 INTENT T1–T5。Live gate：app.js 正常 src 載入（?v=fakeai4），無 app_b64 stub。只監察 audio-bed.js / fx-play.js / compete-boot.js / chat-guide.js（未改，已符合 CHAT-FIRST）。chat-guide.js 保持：story advance 後 #choices freechat-hidden，2 miss 先 show，renderNode wrap hide 唔 reveal，yes-words (好/係/得) 唔計 miss（heat 意圖保留），owner playtest 唔 interrupt。四柱 4/4/4/4。改檔：只 STATUS.md。

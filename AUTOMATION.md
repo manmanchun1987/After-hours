@@ -2,7 +2,7 @@
 
 > **每次 run 必須讀 `LANES.md` 自己車道並跟 checklist。** 無標 → **Lane A**。  
 > **現行預設＝A＋B。Lane C 暫停寫 data。** D／E／F＝暫緩可選。  
-> **唔開新 App 自動化**（沿用 AH-LaneA／B；C 可留住但唔改 data）。  
+> **唔開新 App 自動化**（沿用 AH-LaneA／B；C 可留住但唔改 data）。建議中文顯示名見 `LANES.md` 表（用戶／瀏覽器改 App UI；repo 唔改）。  
 > **北辰：** 本地假 AI（Intent＋Guide），無付費 LLM。  
 > **臨時：** Pages 佇列塞車時少 push（唔係永久停工）。
 
