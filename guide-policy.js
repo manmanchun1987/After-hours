@@ -1,9 +1,9 @@
 /**
- * GuidePolicy (p0-steer-20261022) — steers freeChat toward *current* node.sceneGoal.
+ * GuidePolicy (wrong-react-20261022) — steers freeChat toward *current* node.sceneGoal.
  * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
- * Thin goal-hint from sceneGoal.hints / successIntents labels. Memory = skim full chatUserLines/chatBotLines in state (cap 50), not a second brain.
- * Line pools live in guide-lines.js (Lane B); this file keeps sceneGoal/miss/advance rules.
- * Requires GuideLines; IntentEngine optional for pickReply reuse.
+ * 錯法（假 AI 要記住並反應）：亂打／無意思、離題、含糊、客服腔 → 先認「咩錯」再講清楚而家目標（口語）。
+ * Thin goal-hint from sceneGoal.hints / successIntents labels. Memory = skim chat history cap 50.
+ * Line pools in guide-lines.js; this file keeps sceneGoal/miss/advance + wrong-case reactions.
  */
 (function (global) {
   "use strict";
@@ -43,6 +43,54 @@
     if (strategy === "pressure") return L.NONSENSE_PRESSURE || L.PRESSURE_REPLIES;
     return L.NONSENSE_HINT || L.HINT_REPLIES;
   }
+
+  /** Playtest + live: reply must show we noticed the wrong input. */
+  function hasWrongAck(reply) {
+    return /聽唔明|亂打|亂碼|無意思|無內容|砸字|哈+|鍵盤|無意義|呢句無|温吞|唔好再|離題|閒話|無重點|講清楚你想點/.test(String(reply || ""));
+  }
+
+  function wrongAckCue(kind, strategy) {
+    var nonsense = [
+      "聽唔明。", "呢句無意思。", "亂打唔算。", "無內容。", "聽唔明你講乜。",
+      "唔好再砸鍵盤。", "哈完未？", "亂碼夠喇。"
+    ];
+    var off = [
+      "閒話收低。", "離題啦。", "而家唔傾呢啲。", "收返嚟。", "無重點。嗰句當未講。"
+    ];
+    var vague = [
+      "太含糊。", "聽唔明重點。", "講清楚你想點。", "呢句無重點。"
+    ];
+    var pool = nonsense;
+    if (kind === "off_topic") pool = off;
+    else if (kind === "unclear") pool = vague;
+    if (strategy === "callout") pool = pool.concat(["夠喇。", "最後一次。"]);
+    return pool[Math.floor(Math.random() * pool.length)] || "聽唔明。";
+  }
+
+  /** 錯 → 反應：永遠「認錯法 + 而家目標」，唔好淨係目標洗走認錯。 */
+  function reactToWrong(kind, goal, strategy, recent) {
+    recent = recent || [];
+    var steer = goalSteerPhrase(goal) || L.FALLBACK_REPLY || "講清楚你想點。";
+    var base = "";
+    if (kind === "nonsense") {
+      base = pickAnti(nonsensePoolFor(strategy), recent);
+    } else if (kind === "off_topic") {
+      base = pickAnti(poolFor(strategy, "off_topic"), recent);
+    } else {
+      base = pickAnti(poolFor(strategy, "unclear"), recent);
+    }
+    if (!hasWrongAck(base)) {
+      base = wrongAckCue(kind, strategy) + (steer || "");
+    } else if (!replyHasGoalAction(base, goal)) {
+      base = String(base).replace(/[。．.\s]+$/, "") + "。" + steer;
+    }
+    // Mid-node applyGoalSteer used to wipe ack — never wipe if we already acknowledged wrong.
+    if (!hasWrongAck(base)) {
+      base = wrongAckCue(kind, strategy) + steer;
+    }
+    return base;
+  }
+
 
   function recentOf(state) {
     return (state && state.recentBotReplies) || [];
@@ -368,11 +416,17 @@
     }
 
     var reply = null;
-    if (nonsense) {
-      reply = pickAnti(nonsensePoolFor(strategy), recent);
+    var wrongKind = null;
+    if (nonsense) wrongKind = "nonsense";
+    else if (id === "off_topic") wrongKind = "off_topic";
+    else if (id === "unclear" && (!userText || String(userText).trim().length <= 2)) wrongKind = "unclear";
+
+    if (wrongKind) {
+      // 記住錯法 → 反應：認錯 + 帶而家目標（唔經 applyGoalSteer 洗走認錯）
+      reply = reactToWrong(wrongKind, goal, strategy, recent);
       if (nextMiss >= 2) {
-        var coldN = pickAnti(nonsensePoolFor(strategy), recent.concat(reply ? [reply] : []));
-        if (coldN) reply = coldN;
+        var coldW = reactToWrong(wrongKind, goal, strategy, recent.concat(reply ? [reply] : []));
+        if (coldW && coldW !== reply) reply = coldW;
       }
     } else {
       if (global.IntentEngine && typeof global.IntentEngine.pickReply === "function") {
@@ -389,24 +443,23 @@
         var cold = pickAnti(poolFor(strategy, id), recent.concat(reply ? [reply] : []));
         if (cold) reply = cold;
       }
-    }
 
-    // Prefer current sceneGoal actions in the spoken line
-    reply = applyGoalSteer(reply, goal, strategy);
-
-    // Full-history skim (chatUserLines/chatBotLines, cap 50) — occasional reflect, no second brain
-    try {
-      var detail = skimRecentDetail(state, memory);
-      if (detail && nextMiss <= 2 && (id === "ask_want" || id === "unclear" || id === "ask_memory" || id === "off_topic")) {
-        var reflected = reflectFromHistory(detail, goal, recent);
-        if (reflected) reply = reflected;
-      } else if (detail && nextMiss === 1 && Math.random() < 0.45) {
-        var softRef = reflectFromHistory(detail, goal, recent);
-        if (softRef) reply = softRef;
-      }
-      // Reflect must still carry *current* sceneGoal steer (never leave door-only on mid-node)
+      // Prefer current sceneGoal actions in the spoken line
       reply = applyGoalSteer(reply, goal, strategy);
-    } catch (e) {}
+
+      // Full-history skim — occasional reflect, then re-steer
+      try {
+        var detail = skimRecentDetail(state, memory);
+        if (detail && nextMiss <= 2 && (id === "ask_want" || id === "unclear" || id === "ask_memory" || id === "off_topic")) {
+          var reflected = reflectFromHistory(detail, goal, recent);
+          if (reflected) reply = reflected;
+        } else if (detail && nextMiss === 1 && Math.random() < 0.45) {
+          var softRef = reflectFromHistory(detail, goal, recent);
+          if (softRef) reply = softRef;
+        }
+        reply = applyGoalSteer(reply, goal, strategy);
+      } catch (e) {}
+    }
 
     if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你|請輸入正確)/i.test(reply || "") ||
         (/客服/.test(reply || "") && !/唔做客服/.test(reply || ""))) {
@@ -455,12 +508,14 @@
   var api = {
     decide: decide,
     looksNonsense: looksNonsense,
+    hasWrongAck: hasWrongAck,
+    reactToWrong: reactToWrong,
     getGoal: getGoal,
     isSuccess: isSuccess,
     isOptional: isOptional,
     applyMissToState: applyMissToState,
     goalSteerPhrase: goalSteerPhrase,
-    version: "split1-p0-steer-20261022"
+    version: "split1-wrong-react-20261022"
   };
 
   global.GuidePolicy = api;

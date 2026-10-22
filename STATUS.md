@@ -1,3 +1,5 @@
+2026-10-22 23:31 HKT：假AI「錯法→反應」：亂打／離題／含糊先認錯再帶而家目標（guide-policy 唔再洗走認錯）。auto-playtest --seed=42：130P/0F · human-avg 99.2（前 97.2）。Cache ?v=wrong-react-20261022。改檔：guide-policy.js、index.html、tools/PLAYTEST-LAST.md。
+
 2026-10-22 23:23 HKT：鎖成隻 game 工種 4＋管理（假AI｜劇情｜產品殼｜驗收；管理＝CEO批＋瞓覺先跑）。改檔：LANES.md、AUTOMATION.md、STATUS.md。未碰 app/data。
 
 2026-10-22 23:07 HKT：整合自動化哲學——App hourly A–F 喺 grok.com 暫停／暫緩；閒置接力改由 CEO Bot routine「瞓覺先跑 After Hours」（靜音 ≥2h）延續已吩咐工作，唔准日間發明平行票。Routine 跑時內容仍係 A＋B；C pause write；D/E/F deferred。北辰 Intent＋Guide。改檔：LANES.md、AUTOMATION.md、STATUS.md。未碰 app/data/patterns/guide。
