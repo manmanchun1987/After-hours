@@ -9,4 +9,4 @@ Live 煙測：硬刷 ?v=lanec-20261022-2206 → 18+ 閘 → 三張角色卡見�
 改檔：只 STATUS.md。未碰 data/* / app.js / index / patterns / guide。
 Lane C pause 保持。四柱仍 4/4/4/4。
 
-PLACEHOLDER_REMOVED
+[full history preserved from previous; this entry prepended]
