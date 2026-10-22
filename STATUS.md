@@ -1,3 +1,10 @@
+2026-10-22 22:17 HKT：Lane A hourly 執行。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS/QUALITY。
+無開 P0 INTENT T1–T5（DISPATCH open 只有 STORY restore / CODE restore-engine 監察）。四柱皆 4，真·0 ticket INTENT，只監察回歸。
+Live gate：index patterns ?v=lanea-20261022；app/guide ?v=fakeai4。intent-patterns.js 約 22KB（過 1KB 閘）。
+非原文煙測：開門啦→enter_door、我入去先→enter_door、等等…→wait、你想我點？→ask_want、天氣→off_topic。Soft-pass ok。
+未改碼。未碰 guide/data/app。Lane C pause 保持。
+四柱仍 4/4/4/4。
+
 2026-10-22 22:10 HKT：Lane A run。讀 AUTOMATION/LANES/DISPATCH/STATUS/IDEAS。
 無開票 INTENT T1–T5（DISPATCH open 只有 STORY/CODE monitor）。輕加厚 enter/wait 模糊／錯字同義，服務柔軟過關。
 改檔：intent-patterns.js（加 3 enter + 2 wait regex）、index.html（cache-bust ?v=lanea-20261022，只 patterns script）。
