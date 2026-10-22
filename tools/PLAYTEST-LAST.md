@@ -1,6 +1,6 @@
 # Fake-AI auto-playtest
 
-- When: **2026-10-22 23:45:06 HKT**
+- When: **2026-10-23 02:05:51 HKT**
 - Seed: `42`
 - Engines: IntentEngine `split1` · GuidePolicy `split1-wrong-react-20261022` · GuideLines `laneB-p0-steer-20261022`
 - Result: **135 PASS** / **0 FAIL** / 135 turns · human-avg **99.5** · warn-turns 10
