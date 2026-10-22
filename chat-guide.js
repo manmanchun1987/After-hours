@@ -1,10 +1,10 @@
 (function () {
   "use strict";
-  var STAMP = "kb-mobile-20261023e";
+  var STAMP = "colloq-guide-20261022";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
-  var YES_WORDS = /^(好|係|得|ok|yes|得啦|好呀|繼續)$/i;
+  var YES_WORDS = /^(好|好呀|好啊|好啦|係|係呀|係啦|得|得啦|得嘅|ok|okay|ok lah|yes|yeah|sure|繼續|繼續啦|應承|我應承)$/i;
 
   function getChoices() {
     if (!choicesEl) choicesEl = document.getElementById("choices");

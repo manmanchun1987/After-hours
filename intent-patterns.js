@@ -1,13 +1,14 @@
 /**
  * IntentPatterns (Lane A) — soft Cantonese synonyms / fuzzy / typos for IntentEngine.
- * p0-agree-20261022 + laneA thicken: more agree soft-match (應承你/答應你/同意啦). Soft-pass.
+ * colloq-20261022: anchored agree (no bare 好/係/得), colloquial + Cantonese/English
+ * short-utterance rules (greet/ask/flirt/refuse/advance/confuse). Soft-pass kept.
  */
 (function (global) {
   "use strict";
 
   var INTENTS = [
     "enter_door", "wait", "refuse", "ask_want", "off_topic",
-    "agree", "apologize", "challenge", "flirt", "ask_memory", "unclear"
+    "agree", "apologize", "challenge", "flirt", "ask_memory", "greet", "unclear"
   ];
 
   var PATTERNS = {
@@ -83,9 +84,12 @@
       /\u7b49\u7b49\u5566/,
       /\u7b49\u9663\u5148/,
       /\u505c\u4e00\u505c|\u4f01\u5b9a\u5148|\u672a\u6e96\u5099\u597d\u5566/,
+      /等等啦|等陣先|等吓先|停低先|停一停|hold on|holdon|^wait$/i,
+      /未準備好|未敢|企喺度先/
     ],
     refuse: [
-      /\u5514\u597d\u5e6b\u6211|\u5514\u5165|\u8d70\u5148|\u9583|\u95dc|\u9396|\u5514\u63a8|\u5514\u958b/
+      /\u5514\u597d\u5e6b\u6211|\u5514\u5165|\u8d70\u5148|\u9583|\u95dc|\u9396|\u5514\u63a8|\u5514\u958b/,
+      /唔得|唔好啦|唔制|唔要|算啦|我走先|我走|走先啦|唔入喇|bye|goodbye|^no$|^nah$|^nope$/i
     ],
     ask_want: [
       /\u4f60\u60f3\u6211\u9ede|\u4f60\u60f3\u6211\u9ede\u6a23|\u61c9\u8a72\u9ede|\u9ede\u505a|\u6307\u5f15|\u4f60\u60f3\u9ede/,
@@ -98,6 +102,7 @@
       /\u6307\u5f15\u6211\u4e00\u4e0b/,
       /\u4f60\u60f3\u6211\u9ede\u5148\u505c\u4f4e\u8a8d\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u6562/,
       /\u61c9\u8a72\u9ede\u505a\u4f46\u7b49\u9663\u5148\u8a8d\u6e05\u695a/,
+      /做咩|做乜|搞咩|點算|咩事|你想點|點做|應該點|what'?s up|whats up|what now|so what/i
     ],
     off_topic: [
       /\u5929\u6c23|\u98df\u98ef|\u4e2d\u5348|\u4eca\u665a|\u908a\u5ea6|\u5e7e\u9ede|\u5929\u6c23\u9ede/,
@@ -110,6 +115,7 @@
       /\u5e7e\u9ede\u5566\u4f46\u6211\u60f3\u5165\u53bb\u5148\u8a8d\u6e05\u695a\u4f4d/,
       /\u5929\u6c23\u5605\u4f46\u7b49\u9663\u5148\u505c\u4f4e\u8a8d\u4f4d\u518d\u63a8\u958b\u500b\u9580\u5165\u53bb\uff1f/,
       /\u4eca\u665a\u5929\u6c23\u4f46\u6211\u53ef\u80fd\u5148\u63a8\u958b\u500b\u9580\u5165\u53bb/,
+      /食咗飯|食咗未|食飯未|午餐|晚餐|幾點|weather|lunch|dinner/i
     ],
     ask_memory: [
       /\u4f60\u8a18\u5f97|\u8a18\u5f97\u5514|\u8a18\u5514\u8a18\u5f97|\u4f60\u807d\u5230\u672a|\u982d\u5148|\u4e4b\u524d|\u4f60\u77e5\u5514\u77e5\u6211/,
@@ -136,26 +142,63 @@
       /\u5614\u6211\u60f3\u5165\u53bb\u53c8\u60f3\u7b49\u7b49\u5148\u8a8d\u4f4d\u4f46\u4f60\u60f3\u6211\u9ede/
     ],
     agree: [
-      /\u597d|\u4fc2|\u5f97|\u7e7c\u7e8c|\u597d\u554a|\u4fc2\u554a|\u5f97\u5605|\u7e7c\u7e8c\u5566/,
-      /\u61c9\u627f|\u7b54\u61c9|\u540c\u610f|\u7121\u554f\u984c|\u6c92\u554f\u984c|\u5f97\u5566|\u597d\u5440|\u4fc2\u5481/,
-      /\u6211\u61c9\u627f|\u6211\u7b54\u61c9|\u6211\u540c\u610f|\u6211\u63a5\u53d7/,
-      /ok\s*(lah|la)?|okay|yes|sure/i,
-      /\u61c9\u627f|\u7b54\u61c9|\u540c\u610f|\u6211\u61c9\u627f|\u6211\u7b54\u61c9/,
-      /\u61c9\u627f\u4f60|\u7b54\u61c9\u4f60|\u540c\u610f\u5566|\u61c9\u627f\u5566|\u7121\u554f\u984c\u5566/,
-      /\u6211\u61c9\u627f\u4f60|\u6211\u7b54\u61c9\u4f60|\u6211\u540c\u610f\u5566|\u5f97\u4f60\u8a71/,
-      /\u61c9\u627f\u5481|\u7b54\u61c9\u5481|\u540c\u610f\u5481|\u597d\u5605\u6211\u61c9\u627f/
+      /好呀|好啊|好啦|係呀|係啊|係啦|得啦|得嘅|繼續啦|繼續|得啦繼續/,
+      /應承|答應|同意|無問題|沒問題|得啦|好呀|係咁|我應承|我答應|我同意|我接受/,
+      /應承你|答應你|同意啦|應承啦|無問題啦|得你話/,
+      /\b(?:ok(?:\s*lah|\s*la)?|okay|yes|yeah|yep|sure|fine)\b/i,
+      /應承咁|答應咁|同意咁|好嘅我應承/
+    ],
+    apologize: [
+      /對唔住|唔好意思|sorry|my bad|道歉/i
     ],
     challenge: [
-      /\u9ede\u89e3|\u9802\u771f|\u9802\u5634|\u8cea\u7591|\u6191\u4e5c|\u9ede\u89e3\u8981/,
-      /\u9ede\u89e3\u8981\u6211\u7559|\u6211\u9802\u771f\u554f|\u6211\u9802\u771f/,
-      /\u9ede\u89e3\u8981\u6211\u7559/
+      /點解|頂真|頂嘴|質疑|憑乜|點解要/,
+      /點解要我留|我頂真問|我頂真/,
+      /你敢|怕咩|叻咩|咁又點|whatever|關你咩事/i
     ],
     flirt: [
-      /\u4f01\u8fd1|\u9760\u8fd1|\u518d\u8fd1|\u57c3\u8fd1|\u57cb\u5c11\u5c11|\u4ffe\u6211\u8fd1/,
-      /\u6211\u4f01\u8fd1\u5572|\u4ffe\u6211\u9760\u8fd1|\u5750\u8fd1/,
-      /\u6211\u4f01\u8fd1|\u4ffe\u6211\u9760\u8fd1/
+      /企近|靠近|再近|挨近|埋少少|俾我近/,
+      /我企近啲|俾我靠近|坐近/,
+      /我企近|俾我靠近|鐘意你|我鐘意|好正|好吸引|靚女|埋嚟|like you|so hot|come closer/i
+    ],
+    greet: [
+      /你好|哈囉|嗨|早晨|早安|晚安|晚上好|hello|hey there|\bhi\b|\bhey\b|\byo\b/i
     ]
   };
+
+  /** Exact short utterances (colloquial + mixed). First match wins. Longer phrases use PATTERNS. */
+  var SHORT_RULES = [
+    { intent: "flirt", re: /^(好正|好吸引|鐘意你|我鐘意你|靚女|埋嚟|企近啲|再近啲|comecloser|sohot|likeyou|ilikeyou)$/i },
+    { intent: "challenge", re: /^(你敢|你敢唔敢|怕咩|叻咩|咁又點|點解呀|whatever|關你咩事)$/i },
+    { intent: "ask_want", re: /^(做咩|做乜|搞咩|點算|點呀|咩事|what|whatnow|whatsup|sowhat|你想我點|你想點|你想點啊|點做|應該點|我應該點做)(啊|呀|吖|呢)?$/i },
+    { intent: "greet", re: /^(你好|你好呀|你好啊|哈囉|嗨|喂|早晨|早安|晚安|晚上好|hi|hey|hello|yo|hivera|hellovera|hithere|heyvera|yovera)$/i },
+    { intent: "apologize", re: /^(對唔住|唔好意思|sorry|sorrey|mybad|道歉)$/i },
+    { intent: "agree", re: /^(好|好呀|好啊|好啦|係|係呀|係啊|係啦|得|得啦|得嘅|得啦繼續|ok|okay|oklah|okla|yes|yeah|yep|yup|sure|fine|繼續|繼續啦|應承|應承你|我應承|答應|答應你|同意|同意啦|無問題|沒問題|得你話)$/i },
+    { intent: "refuse", re: /^(唔|唔得|唔好|唔好啦|唔制|唔入|唔入喇|唔要|算啦|算|走先|走先啦|我走|我走先|bye|goodbye|no|nah|nope)$/i },
+    { intent: "wait", re: /^(等等|等等啦|等陣|等陣先|等吓|等吓先|等啦|停|停低|停低先|停一停|wait|holdon|等)$/i },
+    { intent: "enter_door", re: /^(入|入去|入去啦|入去先|我入去先|推|推啦|推門|推門啦|開門|開門啦|開個門先|開啦|行入去|openthedoor|push|pushthedoor)$/i },
+    { intent: "advance", re: /^(快啲|快啲啦|next|continue|行啦|行得啦|go|letsgo|嚟啦)$/i },
+    { intent: "off_topic", re: /^(天氣|今日天氣|今日天氣點|今日天氣好熱|食飯|食咗飯未|食咗未|食飯未|幾點|幾點啦|lunch|weather|dinner)$/i },
+    { intent: "unclear", re: /^(嗯|啊|哦|噢|呃|吓|咩話|唔明|huh|eh|um|hmm)$/i }
+  ];
+
+  function foldShort(text) {
+    return String(text || "")
+      .trim()
+      .toLowerCase()
+      .replace(/['’`]/g, "")
+      .replace(/\s+/g, "")
+      .replace(/[？?！!。．.，,、~～…]/g, "");
+  }
+
+  function matchShort(text) {
+    var folded = foldShort(text);
+    if (!folded) return null;
+    for (var i = 0; i < SHORT_RULES.length; i++) {
+      if (SHORT_RULES[i].re.test(folded)) return SHORT_RULES[i].intent;
+    }
+    return null;
+  }
 
   var SOFT_LEXICON = {
     enter_door: ["\u958b\u9580\u5566", "\u6211\u5165\u53bb\u5148", "\u6211\u800c\u5bb6\u958b\u500b\u95e8\u5165\u53bb\u89bd\u4e0b\u4f46\u7b49\u9663\u5148\u8a8d\u6e05\u695a\u4f4d\u4f46\u672a\u6562\u505c\u4f4e\u8a8d\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u6e96\u5099\u597d\u518d\u8a8d\u6e05\u695a\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u6562\u4f01\u5b9a\u518d\u8a8d\u6e05\u695a\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u597d\u4f01\u5b9a\u518d\u7b49\u7b49\u4f46\u672a\u6e96\u5099\u597d\u518d\u8a8d\u6e05\u695a", "開門啦", "推開個門入去", "我入去先認位"],
@@ -165,9 +208,11 @@
     off_topic: ["\u5929\u6c23", "天氣嘅但等陣先", "食飯但等等先推門"],
     ask_memory: ["你記得", "你聽到未", "頭先", "你聽到未但等陣先停低認位再等等"],
     unclear: ["呢我可能入去但等陣", "哦我唔知應該推定停", "呃我想入又想等等"],
-    agree: ["\u597d", "\u4fc2", "\u5f97", "\u61c9\u627f", "\u7b54\u61c9", "\u540c\u610f", "\u6211\u61c9\u627f"],
-    challenge: ["\u9ede\u89e3", "\u9802\u771f", "\u9ede\u89e3\u8981\u6211\u7559", "\u6211\u9802\u771f\u554f"],
-    flirt: ["\u4f01\u8fd1", "\u9760\u8fd1", "\u6211\u4f01\u8fd1\u5572", "\u4ffe\u6211\u9760\u8fd1"]
+    agree: ["好呀", "係呀", "得啦", "應承", "答應", "同意", "我應承", "繼續啦", "得啦繼續"],
+    challenge: ["點解", "頂真", "點解要我留", "我頂真問", "你敢唔敢", "怕咩"],
+    flirt: ["企近", "靠近", "我企近啲", "俾我靠近", "鐘意你", "我鐘意你", "好正", "埋嚟"],
+    greet: ["你好", "哈囉", "早晨", "hello"],
+    apologize: ["對唔住", "唔好意思", "sorry"]
   };
 
   var KEY_SYNONYMS = {
@@ -178,22 +223,47 @@
     off_topic: ["\u5929\u6c23"],
     ask_memory: ["你記得", "頭先", "你聽到未"],
     unclear: ["呢", "哦", "呃"],
-    agree: ["\u597d", "\u61c9\u627f", "\u7b54\u61c9", "\u540c\u610f"],
-    challenge: ["\u9ede\u89e3", "\u9802\u771f"],
-    flirt: ["\u4f01\u8fd1", "\u9760\u8fd1"]
+    agree: ["好呀", "應承", "答應", "同意", "繼續"],
+    challenge: ["點解", "頂真", "你敢"],
+    flirt: ["企近", "靠近", "鐘意你", "好正"],
+    greet: ["你好", "哈囉", "hello"],
+    apologize: ["對唔住", "sorry"]
   };
 
-  var ACCEPTANCE_SOFT = {
-    enter_door: ["\u958b\u9580\u5566", "\u6211\u5165\u53bb\u5148", "\u6211\u800c\u5bb6\u958b\u500b\u95e8\u5165\u53bb\u89bd\u4e0b\u4f46\u7b49\u9663\u5148\u8a8d\u6e05\u695a\u4f4d\u4f46\u672a\u6562\u505c\u4f4e\u8a8d\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u6e96\u5099\u597d\u518d\u8a8d\u6e05\u695a\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u6562\u4f01\u5b9a\u518d\u8a8d\u6e05\u695a\u4f4d\u518d\u7b49\u7b49\u4f46\u672a\u597d\u4f01\u5b9a\u518d\u7b49\u7b49\u4f46\u672a\u6e96\u5099\u597d\u518d\u8a8d\u6e05\u695a"],
-    wait: ["\u7b49\u7b49"],
-    ask_want: ["\u4f60\u60f3\u6211\u9ede"],
-    ask_memory: ["你聽到未但等陣先停低認位再等等", "你記得唔"],
-    unclear: ["呢...我可能入去但等陣先停低認位再等等你想我點？"],
-    off_topic: ["\u5929\u6c23"]
-  };
+  var ACCEPTANCE_SOFT = [
+    { text: "開門啦", intent: "enter_door" },
+    { text: "我入去先", intent: "enter_door" },
+    { text: "推啦", intent: "enter_door" },
+    { text: "等等", intent: "wait" },
+    { text: "wait", intent: "wait" },
+    { text: "你想我點", intent: "ask_want" },
+    { text: "做咩", intent: "ask_want" },
+    { text: "what's up", intent: "ask_want" },
+    { text: "你好", intent: "greet" },
+    { text: "hi", intent: "greet" },
+    { text: "hello vera", intent: "greet" },
+    { text: "係", intent: "agree" },
+    { text: "好呀", intent: "agree" },
+    { text: "ok lah", intent: "agree" },
+    { text: "我應承", intent: "agree" },
+    { text: "唔得", intent: "refuse" },
+    { text: "no", intent: "refuse" },
+    { text: "我走先", intent: "refuse" },
+    { text: "我鐘意你", intent: "flirt" },
+    { text: "好正", intent: "flirt" },
+    { text: "你敢唔敢", intent: "challenge" },
+    { text: "食咗飯未", intent: "off_topic" },
+    { text: "嗯", intent: "unclear" },
+    { text: "咩話", intent: "unclear" },
+    { text: "快啲啦", intent: "enter_door" },
+    { text: "let's go", intent: "enter_door" },
+    { text: "你記得唔", intent: "ask_memory" }
+  ];
 
   function matchIntent(text) {
     if (!text || typeof text !== "string") return "unclear";
+    var shortId = matchShort(text);
+    if (shortId) return shortId;
     var t = text.trim().toLowerCase();
     var best = "unclear";
     var bestScore = 0;
@@ -219,7 +289,11 @@
     SOFT_LEXICON: SOFT_LEXICON,
     KEY_SYNONYMS: KEY_SYNONYMS,
     ACCEPTANCE_SOFT: ACCEPTANCE_SOFT,
-    matchIntent: matchIntent
+    SHORT_RULES: SHORT_RULES,
+    matchShort: matchShort,
+    foldShort: foldShort,
+    matchIntent: matchIntent,
+    version: "colloq-20261022"
   };
 })(typeof window !== "undefined" ? window : this);
 

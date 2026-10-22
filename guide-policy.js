@@ -1,5 +1,5 @@
 /**
- * GuidePolicy (wrong-react-20261022) — steers freeChat toward *current* node.sceneGoal.
+ * GuidePolicy (human-step-20261022) — one spoken next step toward *current* node.sceneGoal.
  * Pass/advance = intent ∈ successIntents (soft paraphrase OK); never CS「請輸入正確選項」.
  * 錯法（假 AI 要記住並反應）：亂打／無意思、離題、含糊、客服腔 → 先認「咩錯」再講清楚而家目標（口語）。
  * Thin goal-hint from sceneGoal.hints / successIntents labels. Memory = skim chat history cap 50.
@@ -18,22 +18,22 @@
     var raw = String(text || "").trim();
     if (!raw) return true;
     var compact = raw.replace(/\s+/g, "");
+    if (/^[\s\u3000.,!?;:'"~`…。，！？、；：「」『』（）()\[\]{}<>\/\\|@#$%^&*+=_\-]+$/.test(raw)) return true;
     if (compact.length <= 1) {
-      if (/^[推開入進停等門走好係得睇]$/.test(compact)) return false;
+      // Real one-word speech, not a smashed key.
+      if (/^[推開入進停等門走好係得睇嗯啊哦噢呃唔吓咩]$/.test(compact)) return false;
       return true;
     }
-    if (/^[\s\u3000.,!?;:'"~`…。，！？、；：「」『』（）()\[\]{}<>\/\\|@#$%^&*+=_\-]+$/.test(raw)) return true;
-    if (/^(哈|呵|嘻|嘿|哼|哇|咯|咯咯|lol|haha|ha|kk|www)+$/i.test(compact)) return true;
+    if (/^(哈|呵|嘻|嘿|哼|哇|咯|lol|haha|hahaha|ha|kk|kkk|www)+$/i.test(compact)) return true;
     if (/^(.)\1{3,}$/.test(compact)) return true;
-    if (/^(..)\1{2,}$/.test(compact)) return true;
+    if (/^(..)\1{2,}$/.test(compact) && compact.length >= 6) return true;
     if (/^[asdfjkl;]+$/i.test(compact) || /^[qwertyuiop]+$/i.test(compact) || /^[zxcvbnm]+$/i.test(compact)) return true;
-    if (/^[a-z0-9]{2,24}$/i.test(compact) && !/^(ok|hi|hey|yes|no|go|in|out|wait|push|door|enter|stop|open)$/i.test(compact)) {
-      if (!/[aeiou]{2}/i.test(compact) || compact.length >= 5) {
-        if (!/door|wait|enter|push|stop|open/i.test(compact)) return true;
+    if (/^[a-z0-9'’]+$/i.test(compact)) {
+      var folded = compact.toLowerCase().replace(/['’]/g, "");
+      if (/^(ok|okay|oklah|okla|hi|hey|hello|yo|yes|yeah|yep|no|nah|nope|bye|huh|what|wait|go|stop|sure|fine|next|open|enter|push|door|hmm|um|uh|eh|oh)$/.test(folded)) {
+        return false;
       }
-    }
-    if (!/[\u4e00-\u9fff]/.test(compact) && /^[\x00-\x7F]+$/.test(compact) && compact.length <= 24) {
-      if (!/push|door|wait|enter|stop|open|go|in|out/i.test(compact)) return true;
+      if (!/[aeiou]/i.test(folded)) return true;
     }
     return false;
   }
@@ -67,28 +67,10 @@
     return pool[Math.floor(Math.random() * pool.length)] || "聽唔明。";
   }
 
-  /** 錯 → 反應：永遠「認錯法 + 而家目標」，唔好淨係目標洗走認錯。 */
+  /** One ack + the current scene ask. Never a second question. */
   function reactToWrong(kind, goal, strategy, recent) {
-    recent = recent || [];
-    var steer = goalSteerPhrase(goal) || L.FALLBACK_REPLY || "講清楚你想點。";
-    var base = "";
-    if (kind === "nonsense") {
-      base = pickAnti(nonsensePoolFor(strategy), recent);
-    } else if (kind === "off_topic") {
-      base = pickAnti(poolFor(strategy, "off_topic"), recent);
-    } else {
-      base = pickAnti(poolFor(strategy, "unclear"), recent);
-    }
-    if (!hasWrongAck(base)) {
-      base = wrongAckCue(kind, strategy) + (steer || "");
-    } else if (!replyHasGoalAction(base, goal)) {
-      base = String(base).replace(/[。．.\s]+$/, "") + "。" + steer;
-    }
-    // Mid-node applyGoalSteer used to wipe ack — never wipe if we already acknowledged wrong.
-    if (!hasWrongAck(base)) {
-      base = wrongAckCue(kind, strategy) + steer;
-    }
-    return base;
+    var mapped = kind === "nonsense" ? "nonsense" : kind === "off_topic" ? "off_topic" : "confuse";
+    return composeFresh(mapped, strategy || "hint", goal, recent || []);
   }
 
 
@@ -100,9 +82,97 @@
     var list = (pool || []).filter(Boolean);
     if (!list.length) return "";
     recent = recent || [];
-    var fresh = list.filter(function (l) { return recent.indexOf(l) < 0; });
-    var use = fresh.length ? fresh : list;
-    return use[Math.floor(Math.random() * use.length)];
+    var i, line, head, r, clash;
+    for (i = 0; i < list.length; i++) {
+      line = list[(recent.length + i) % list.length];
+      if (recent.indexOf(line) >= 0) continue;
+      head = String(line).slice(0, 4);
+      clash = false;
+      for (r = Math.max(0, recent.length - 4); r < recent.length; r++) {
+        if (String(recent[r]).slice(0, 4) === head) clash = true;
+      }
+      if (!clash) return line;
+    }
+    for (i = 0; i < list.length; i++) {
+      line = list[(recent.length + i) % list.length];
+      if (recent.indexOf(line) < 0) return line;
+    }
+    return list[recent.length % list.length];
+  }
+
+  function questionCount(text) {
+    return (String(text || "").match(/[？?]/g) || []).length;
+  }
+
+  function steerText(goal) {
+    var steer = goalSteerPhrase(goal);
+    return steer || L.FALLBACK_REPLY || "你話我知下一步。";
+  }
+
+  function joinAckSteer(ack, steer) {
+    ack = String(ack || "").replace(/[。．.\s]+$/g, "").trim();
+    steer = String(steer || "").trim();
+    ack = ack.replace(/[？?]/g, "").trim();
+    if (!ack) return steer;
+    if (!steer) return ack + "。";
+    if (steer.indexOf(ack) === 0) return steer;
+    return ack + "。" + steer;
+  }
+
+  function ackPool(kind, strategy) {
+    var acks = L.ACKS || {};
+    var bucket = acks[kind] || acks.generic || {};
+    var pool = bucket[strategy] || bucket.hint || (acks.generic && acks.generic[strategy]) || [];
+    if (!pool.length && acks.generic) pool = acks.generic.hint || [];
+    return pool;
+  }
+
+  function composeFresh(kind, strategy, goal, recent) {
+    recent = recent || [];
+    var pool = ackPool(kind, strategy);
+    var steer = steerText(goal);
+    var i, ack, line;
+    for (i = 0; i < pool.length; i++) {
+      ack = pool[(recent.length + i) % pool.length];
+      line = joinAckSteer(ack, steer);
+      if (recent.indexOf(line) >= 0) continue;
+      if (questionCount(line) > 1) continue;
+      if (line.replace(/\s/g, "").length < 8) continue;
+      return line;
+    }
+    ack = pool.length ? pool[recent.length % pool.length] : "我聽緊";
+    return joinAckSteer(ack, steer);
+  }
+
+  function memoryAck(detail) {
+    if (detail === "wait") return "你頭先似想停低";
+    if (detail === "enter") return "你頭先提過入去";
+    if (detail === "agree") return "你頭先似應承";
+    if (detail === "challenge") return "你頭先頂真問過";
+    if (detail === "flirt") return "你頭先想近啲";
+    if (detail === "memory") return "頭先嗰句我聽到";
+    if (detail === "off") return "閒話我聽到，收低";
+    return "";
+  }
+
+  function kindOf(id, text, nonsense) {
+    if (nonsense) return "nonsense";
+    if (id === "off_topic") return "off_topic";
+    if (id === "greet") return "greet";
+    if (id === "flirt") return "flirt";
+    if (id === "challenge") return "challenge";
+    if (id === "refuse") return "refuse";
+    if (id === "ask_want") return "ask";
+    if (id === "agree") return "agree";
+    if (id === "enter_door") return "enter";
+    if (id === "wait") return "wait";
+    if (id === "ask_memory") return "memory";
+    if (id === "apologize") return "apologize";
+    var compact = String(text || "").replace(/\s+/g, "").replace(/[。．.…？?！!]/g, "");
+    if (/^(嗯|啊|哦|噢|呃)+$/.test(compact)) return "filler";
+    if (/^(吓|咩話|唔明|huh|eh|um|hmm)$/i.test(compact)) return "confuse";
+    if (id === "unclear") return compact.length <= 2 ? "filler" : "confuse";
+    return "generic";
   }
 
   function getGoal(node) {
@@ -174,10 +244,10 @@
         if (Object.prototype.hasOwnProperty.call(hints, k)) pushLabel(hints[k]);
       }
     }
-    if (!parts.length) return "講清楚你想點。";
-    if (parts.length === 1) return parts[0] + "。講清楚。";
-    if (parts.length === 2) return parts[0] + "，定" + parts[1] + "？講清楚。";
-    return parts.slice(0, 3).join("／") + "。講清楚。";
+    if (!parts.length) return "你話我知下一步。";
+    if (parts.length === 1) return parts[0] + "。";
+    if (parts.length === 2) return parts[0] + "，定" + parts[1] + "？";
+    return parts[0] + "，定" + parts[1] + "，定" + parts[2] + "？";
   }
 
   function goalIsDoorish(goal) {
@@ -200,96 +270,23 @@
 
   function replyHasGoalAction(reply, goal) {
     if (!reply || !goal) return false;
-    var successes = Array.isArray(goal.successIntents) ? goal.successIntents : [];
-    var hints = goal.hints || {};
-    var i, j, lab, toks, t;
-    var doorish = goalIsDoorish(goal);
-    var hasDoorLex = /推門|停低|入去|開門|推定停|門把|走廊/.test(reply);
-    var hasMidLex = /應承|配合|頂真|點解|企近|靠近|站近|坐近|認錯|唔入|離開/.test(reply);
-    // Mid-node: corridor door lines (even with bare 講清楚) do not count as goal action
-    if (!doorish && hasDoorLex && !hasMidLex) {
-      var hitSpecific = false;
-      if (goal.ask) {
-        var askCore = String(goal.ask).replace(/[，,／\/定？?。.\s講清楚你想點]+/g, "");
-        if (askCore.length >= 2 && reply.indexOf(askCore.slice(0, Math.min(4, askCore.length))) >= 0) {
-          // fall through to label checks below
-        }
-      }
-      for (i = 0; i < successes.length; i++) {
-        if (successes[i] === "ask_want" || successes[i] === "ask_memory") continue;
-        lab = String(hints[successes[i]] || INTENT_HINT_LABELS[successes[i]] || "").replace(/[。？?！!]/g, "").trim();
-        if (lab && reply.indexOf(lab) >= 0) { hitSpecific = true; break; }
-        toks = INTENT_STEER_TOKENS[successes[i]] || [];
-        for (j = 0; j < toks.length; j++) {
-          if (toks[j] && toks[j] !== "講清楚" && toks[j] !== "想點" && toks[j] !== "你想點" && reply.indexOf(toks[j]) >= 0) {
-            hitSpecific = true; break;
-          }
-        }
-        if (hitSpecific) break;
-      }
-      if (!hitSpecific) return false;
+    var ask = goal.ask ? String(goal.ask).trim() : "";
+    if (ask) {
+      var askCore = ask.replace(/[？?。．!\s]+$/g, "");
+      if (askCore && reply.indexOf(askCore) >= 0) return true;
     }
-    if (goal.ask) {
-      var askBits = String(goal.ask).split(/[，,／\/定？?。.\s]+/);
-      for (i = 0; i < askBits.length; i++) {
-        t = String(askBits[i] || "").replace(/[。？?！!]/g, "").trim();
-        if (t.length >= 2 && reply.indexOf(t) >= 0) {
-          if (!doorish && hasDoorLex && !hasMidLex && /^(講清楚|你想點|想點)$/.test(t)) continue;
-          return true;
-        }
-      }
-    }
-    for (i = 0; i < successes.length; i++) {
-      var sid = successes[i];
-      lab = String(hints[sid] || INTENT_HINT_LABELS[sid] || "").replace(/[。？?！!]/g, "").trim();
-      if (lab && reply.indexOf(lab) >= 0) return true;
-      // Mid-node: do not let corridor wait/enter lexicon (停低/推門) rubber-stamp door pool lines
-      if (!doorish && (sid === "enter_door" || sid === "wait")) {
-        if (lab) {
-          var frag = lab.replace(/[／\/定，,].*$/, "").trim();
-          if (frag.length >= 2 && reply.indexOf(frag) >= 0) return true;
-        }
-        continue;
-      }
-      toks = INTENT_STEER_TOKENS[sid] || [];
-      for (j = 0; j < toks.length; j++) {
-        if (!toks[j] || reply.indexOf(toks[j]) < 0) continue;
-        if (!doorish && hasDoorLex && !hasMidLex && (toks[j] === "講清楚" || toks[j] === "想點" || toks[j] === "你想點" || toks[j] === "繼續")) continue;
-        return true;
-      }
-    }
-    // Door defaults only count when current goal is door-ish
-    if (doorish && /推門|停低|入去|等等|推定停/.test(reply)) return true;
-    return false;
+    // Door lexicon only counts on a door scene. 「停低」inside a corridor line
+    // must not pretend a mid-node goal was answered.
+    if (!goalIsDoorish(goal)) return false;
+    return /推門|停低|入去|等等|開門/.test(reply);
   }
 
   function applyGoalSteer(reply, goal, strategy) {
-    var steer = goalSteerPhrase(goal);
-    if (!steer) return reply;
-    if (replyHasGoalAction(reply, goal)) return reply;
-    // Mid-node / non-door goals: never keep corridor door pool lines — speak current sceneGoal
-    if (!goalIsDoorish(goal)) {
-      if (strategy === "callout") {
-        var cCue = pickAnti([
-          "而家決定。", "短答。", "唔再拖。", "即刻。", "講清楚。",
-          "夠喇。", "而家。", "答我。", "二揀一。", "最後一次。"
-        ], []);
-        return (cCue || "而家決定。") + steer;
-      }
-      if (strategy === "pressure") {
-        var pCue = pickAnti([
-          "再講一次。", "重複：", "唔好再兜。", "快啲。", "壓力嚟喇：",
-          "時間緊。", "再模糊無用。", "短句：", "聽清楚。", "而家要你揀："
-        ], []);
-        return (pCue || "再講一次。") + steer;
-      }
-      return steer;
-    }
-    if (strategy === "callout" || strategy === "pressure") {
-      return (reply ? reply.replace(/[。．.\s]+$/, "") + "。" : "") + steer;
-    }
-    // hint: prefer steer-forward cold boss line
-    return steer;
+    if (!goal) return reply;
+    if (reply && replyHasGoalAction(reply, goal) && questionCount(reply) <= 1) return reply;
+    var kind = "generic";
+    if (strategy === "callout" || strategy === "pressure") kind = "generic";
+    return composeFresh(kind, strategy || "hint", goal, []);
   }
 
   var HISTORY_SKIM_CAP = 50; // safety only — use full chat history available in state
@@ -312,12 +309,15 @@
       }
     }
     if (lines.length > HISTORY_SKIM_CAP) lines = lines.slice(-HISTORY_SKIM_CAP);
-    var blob = lines.join("\n");
-    if (!blob) return null;
-    // Prefer the most recent matching detail by scanning from the end
-    for (var r = lines.length - 1; r >= 0; r--) {
-      var row = lines[r];
-      if (/^B:/.test(row)) continue; // reflect player detail primarily
+    // Player lines only. Bot steers mention 停低/推門 and must not echo as the player's intent.
+    var userRows = [];
+    for (var u = 0; u < lines.length; u++) {
+      if (/^B:/.test(lines[u])) continue;
+      userRows.push(lines[u]);
+    }
+    if (!userRows.length) return null;
+    for (var r = userRows.length - 1; r >= 0; r--) {
+      var row = userRows[r];
       if (/停低|等等|等陣|未準備|企定|猶豫/.test(row)) return "wait";
       if (/推門|開門|入去|入嚟|進去|推開/.test(row)) return "enter";
       if (/應承|答應|同意|繼續/.test(row)) return "agree";
@@ -326,14 +326,6 @@
       if (/記得|頭先|之前|聽到未/.test(row)) return "memory";
       if (/天氣|食飯|幾點/.test(row)) return "off";
     }
-    // Fallback: whole transcript
-    if (/停低|等等|等陣|未準備|企定|猶豫/.test(blob)) return "wait";
-    if (/推門|開門|入去|入嚟|進去|推開/.test(blob)) return "enter";
-    if (/應承|答應|同意|繼續/.test(blob)) return "agree";
-    if (/頂真|點解|質疑/.test(blob)) return "challenge";
-    if (/企近|靠近|站近|坐近/.test(blob)) return "flirt";
-    if (/記得|頭先|之前|聽到未/.test(blob)) return "memory";
-    if (/天氣|食飯|幾點/.test(blob)) return "off";
     return null;
   }
 
@@ -415,56 +407,25 @@
       nonsense = true;
     }
 
-    var reply = null;
-    var wrongKind = null;
-    if (nonsense) wrongKind = "nonsense";
-    else if (id === "off_topic") wrongKind = "off_topic";
-    else if (id === "unclear" && (!userText || String(userText).trim().length <= 2)) wrongKind = "unclear";
+    var kind = kindOf(id, userText, nonsense);
+    var reply = composeFresh(kind, strategy, goal, recent);
 
-    if (wrongKind) {
-      // 記住錯法 → 反應：認錯 + 帶而家目標（唔經 applyGoalSteer 洗走認錯）
-      reply = reactToWrong(wrongKind, goal, strategy, recent);
-      if (nextMiss >= 2) {
-        var coldW = reactToWrong(wrongKind, goal, strategy, recent.concat(reply ? [reply] : []));
-        if (coldW && coldW !== reply) reply = coldW;
+    // Light memory: one clause, same single ask. Skip if that line was just said.
+    try {
+      var detail = skimRecentDetail(state, memory);
+      var canReflect = detail && nextMiss <= 2 &&
+        (kind === "filler" || kind === "confuse" || kind === "memory" || kind === "ask" || kind === "generic");
+      if (canReflect) {
+        var mAck = memoryAck(detail);
+        var mLine = joinAckSteer(mAck, steerText(goal));
+        if (mAck && mLine && recent.indexOf(mLine) < 0 && questionCount(mLine) <= 1) reply = mLine;
       }
-    } else {
-      if (global.IntentEngine && typeof global.IntentEngine.pickReply === "function") {
-        var engLine = global.IntentEngine.pickReply(intent, {
-          node: input.node,
-          state: state,
-          tone: input.tone || (state && state.chatTone) || "cold"
-        });
-        if (engLine) reply = engLine;
-      }
-      if (!reply) reply = pickAnti(poolFor(strategy, id), recent);
-
-      if (nextMiss >= 2) {
-        var cold = pickAnti(poolFor(strategy, id), recent.concat(reply ? [reply] : []));
-        if (cold) reply = cold;
-      }
-
-      // Prefer current sceneGoal actions in the spoken line
-      reply = applyGoalSteer(reply, goal, strategy);
-
-      // Full-history skim — occasional reflect, then re-steer
-      try {
-        var detail = skimRecentDetail(state, memory);
-        if (detail && nextMiss <= 2 && (id === "ask_want" || id === "unclear" || id === "ask_memory" || id === "off_topic")) {
-          var reflected = reflectFromHistory(detail, goal, recent);
-          if (reflected) reply = reflected;
-        } else if (detail && nextMiss === 1 && Math.random() < 0.45) {
-          var softRef = reflectFromHistory(detail, goal, recent);
-          if (softRef) reply = softRef;
-        }
-        reply = applyGoalSteer(reply, goal, strategy);
-      } catch (e) {}
-    }
+    } catch (e) {}
 
     if (/(有什麼可以幫|很樂意為你|AI助手|語言模型|請重試|我唔明白你|請輸入正確)/i.test(reply || "") ||
         (/客服/.test(reply || "") && !/唔做客服/.test(reply || ""))) {
       var csSteer = goalSteerPhrase(goal);
-      reply = "我唔做客服。" + (csSteer || L.CS_BLOCK_REPLY || "門——推定停。");
+      reply = joinAckSteer("我唔做客服", csSteer || L.CS_BLOCK_REPLY || "你話我知下一步。");
     }
 
     var showChoices = false;
@@ -482,7 +443,7 @@
 
     return {
       strategy: strategy,
-      reply: reply || goalSteerPhrase(goal) || L.FALLBACK_REPLY || "講清楚你想點。",
+      reply: reply || goalSteerPhrase(goal) || L.FALLBACK_REPLY || "你話我知下一步。",
       advance: false,
       showChoices: showChoices,
       thought: thought,
@@ -515,7 +476,7 @@
     isOptional: isOptional,
     applyMissToState: applyMissToState,
     goalSteerPhrase: goalSteerPhrase,
-    version: "split1-wrong-react-20261022"
+    version: "human-step-20261022"
   };
 
   global.GuidePolicy = api;
