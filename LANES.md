@@ -8,6 +8,13 @@
 > **唔聲稱** Grok.com／App UI 顯示名（除非已核實）；repo 只記車道 id／狀態。  
 > **臨時：** Pages 佇列塞車時少 push（唔係永久停工）。
 
+### 成隻 game 工種（鎖 · 2026-10-22）
+1. **假 AI 對話** — Intent＋Guide＋auto-playtest（北辰）
+2. **劇情資料** — `data/*`；pause write，批先改
+3. **產品殼** — 邏輯上線＋畫面活感＋內容音效（三執行位，同一類）
+4. **驗收對標** — 硬刷／金掣／競品清單
+**管理**（唔算第 5 產線）：CEO 批票；「瞓覺先跑」（靜≥2h 延續已交工）。App hourly 已 pause。
+
 ### 車道 id（參考；App UI 名唔保證）
 舊 App id（`AH-LaneA`–`AH-LaneF`）可留作對照，但**唔代表** grok.com 而家仍有 hourly 喺跑。對照：
 
