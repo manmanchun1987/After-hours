@@ -2090,16 +2090,16 @@ function setChoicesDeferred(hidden) {
 }
 
 function syncFreeChatChoices(node) {
-  if (!node || !node.freeChat) {
-    state.freeChatChoicesVisible = true;
-    setChoicesDeferred(false);
-    return;
-  }
-  if (state.freeChatNodeId !== node.id) {
-    state.freeChatNodeId = node.id;
+  /* portrait-first: never reveal gold MC buttons; keep choice data for intent fallback */
+  if (node && node.freeChat) {
+    if (state.freeChatNodeId !== node.id) {
+      state.freeChatNodeId = node.id;
+      state.freeChatChoicesVisible = false;
+    }
+  } else {
     state.freeChatChoicesVisible = false;
   }
-  setChoicesDeferred(!state.freeChatChoicesVisible);
+  setChoicesDeferred(true);
 }
 
 function unlockFreeChatChoices(_reason) {
@@ -2108,8 +2108,9 @@ function unlockFreeChatChoices(_reason) {
     : null;
   if (!node || !node.freeChat) return false;
   if (state.freeChatChoicesVisible) return false;
+  /* portrait-first: mark unlocked for intent fallback, but never show gold MC */
   state.freeChatChoicesVisible = true;
-  setChoicesDeferred(false);
+  setChoicesDeferred(true);
   setThoughtVoice("……門把就喺度。你推，定停？");
   return true;
 }

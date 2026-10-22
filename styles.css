@@ -2423,3 +2423,274 @@ body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap {
 #screen-play .action-zone .btn-choice {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35) !important;
 }
+
+/* ============================================================
+   portrait-first-20261023 — CEO: character/scene is the sell.
+   Minimize overlays; fixed framing; chat-first (no gold MC).
+   ============================================================ */
+
+/* Absolute: never show multiple-choice / action-zone on play */
+#screen-play .action-zone,
+#screen-play #action-zone,
+#screen-play #choices,
+#screen-play .action-label,
+#screen-play .choices {
+  display: none !important;
+  max-height: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  border: 0 !important;
+  visibility: hidden !important;
+}
+
+/* Face region dominates (~55–70% vertical) */
+.play-face-gap {
+  flex: 1 1 auto !important;
+  height: clamp(55vh, 62vh, 70vh) !important;
+  min-height: 55vh !important;
+  max-height: 72vh !important;
+}
+body.mode-call .play-face-gap {
+  height: clamp(48vh, 55vh, 62vh) !important;
+  min-height: 45vh !important;
+  max-height: 65vh !important;
+}
+body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
+body.mode-play:has(#choices.freechat-hidden) .play-face-gap {
+  height: clamp(55vh, 62vh, 70vh) !important;
+  min-height: 55vh !important;
+  max-height: 72vh !important;
+}
+
+/* Lower chrome stays in bottom ~25–30% */
+.play-lower {
+  flex: 0 0 auto !important;
+  max-height: 30vh !important;
+  min-height: 0 !important;
+  gap: 4px !important;
+  justify-content: flex-end !important;
+}
+.play-lower > .action-zone {
+  display: none !important;
+}
+
+/* Thin translucent story strip — 2–3 lines, does not cover mid/upper portrait */
+#play-text,
+.narrative-bubble,
+.zone-story.narrative-bubble,
+.narrative-bubble.zone-story,
+.play-card.narrative-bubble {
+  flex: 0 0 auto !important;
+  max-height: clamp(44px, 8.5vh, 68px) !important;
+  padding: 5px 10px !important;
+  border-radius: 10px !important;
+  background: rgba(6, 10, 18, 0.38) !important;
+  border: 1px solid rgba(201, 164, 106, 0.22) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  overflow: hidden !important;
+}
+.zone-story .narrative,
+.narrative-bubble .narrative,
+.narrative-bubble.zone-story .narrative,
+#play-text.narrative {
+  font-size: 0.78rem !important;
+  line-height: 1.35 !important;
+  font-weight: 450 !important;
+  color: rgba(244, 239, 230, 0.92) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 3 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+}
+
+/* Chat chrome = mainly bottom composer; message list ~10vh max total panel */
+.chat-panel,
+.chat-panel.zone-chat,
+.zone-chat.chat-panel,
+.play-lower > .zone-chat,
+.play-lower > .chat-panel.zone-chat {
+  flex: 0 0 auto !important;
+  max-height: 10vh !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  border-radius: 12px !important;
+  background: rgba(6, 8, 14, 0.55) !important;
+  border: 1px solid rgba(70, 90, 120, 0.28) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  overflow: hidden !important;
+  z-index: 2 !important;
+}
+.zone-chat .chat-header {
+  display: none !important;
+}
+.zone-chat .chat-messages,
+.chat-messages {
+  flex: 0 0 auto !important;
+  max-height: 3.5vh !important;
+  min-height: 0 !important;
+  padding: 2px 8px !important;
+  overflow-y: auto !important;
+  gap: 2px !important;
+}
+.zone-chat .chat-bubble,
+.chat-bubble {
+  font-size: 0.7rem !important;
+  padding: 3px 7px !important;
+  max-width: 92%;
+  line-height: 1.3 !important;
+}
+.zone-chat .chat-typing,
+.zone-chat .incoming-toast {
+  display: none !important;
+}
+.zone-chat .chat-composer {
+  flex: 0 0 auto !important;
+  padding: 4px 6px max(4px, env(safe-area-inset-bottom)) !important;
+  background: rgba(4, 6, 12, 0.72) !important;
+  border-top: 1px solid rgba(70, 90, 120, 0.25) !important;
+}
+.zone-chat .chat-form input,
+.zone-chat #chat-input {
+  min-height: 32px !important;
+  padding: 6px 10px !important;
+  font-size: 0.82rem !important;
+  background: rgba(12, 16, 26, 0.75) !important;
+}
+.zone-chat .btn-send {
+  min-height: 32px !important;
+  min-width: 42px !important;
+  padding: 6px 10px !important;
+  font-size: 0.8rem !important;
+}
+
+/* Tiny HUD / topbar — corner, don't cover face */
+.play-topbar {
+  min-height: 28px !important;
+  padding: 2px 100px 2px 2px !important;
+}
+.play-label { font-size: 0.68rem !important; opacity: 0.85; }
+.play-actions .btn-tiny {
+  padding: 3px 7px !important;
+  font-size: 0.68rem !important;
+}
+.play-hud {
+  gap: 2px !important;
+  padding: 0 0 2px !important;
+  max-width: 46% !important;
+  align-self: flex-start !important;
+}
+.meters {
+  gap: 4px !important;
+  padding: 3px 6px !important;
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.28) !important;
+  border-color: rgba(201, 164, 106, 0.14) !important;
+}
+.meter { font-size: 0.55rem !important; letter-spacing: 0.04em; }
+.meter i { height: 0.22rem !important; }
+.memory-strip {
+  padding: 3px 7px !important;
+  border-radius: 8px !important;
+  background: rgba(0, 0, 0, 0.32) !important;
+  max-width: 100%;
+}
+.memory-title { font-size: 0.62rem !important; }
+.memory-chip { font-size: 0.62rem !important; padding: 2px 6px !important; }
+.call-chrome {
+  padding: 3px 8px !important;
+  font-size: 0.64rem !important;
+}
+
+/* Soften bottom scrim so portrait reads through lower strip */
+.play-bg-scrim {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 8, 14, 0.28) 0%,
+      rgba(5, 8, 14, 0.04) 16%,
+      rgba(5, 8, 14, 0.02) 48%,
+      rgba(5, 8, 14, 0.22) 68%,
+      rgba(5, 8, 14, 0.48) 82%,
+      rgba(4, 6, 12, 0.62) 100%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(4, 6, 12, 0.22) 0%,
+      transparent 16%,
+      transparent 84%,
+      rgba(4, 6, 12, 0.22) 100%
+    ) !important;
+}
+
+/* Keep composer on short viewports (do not kill chat) */
+@media (max-height: 700px) {
+  .play-face-gap {
+    height: clamp(48vh, 55vh, 62vh) !important;
+    min-height: 46vh !important;
+    max-height: 64vh !important;
+  }
+  .narrative-bubble,
+  .zone-story.narrative-bubble {
+    max-height: clamp(40px, 8vh, 60px) !important;
+    padding: 4px 8px !important;
+  }
+  .chat-panel,
+  .chat-panel.zone-chat {
+    display: flex !important;
+    max-height: 11vh !important;
+  }
+}
+@media (max-height: 600px) {
+  .chat-panel,
+  .chat-panel.zone-chat {
+    display: flex !important;
+    max-height: 12vh !important;
+  }
+  .play-face-gap {
+    height: clamp(42vh, 50vh, 56vh) !important;
+    min-height: 40vh !important;
+  }
+}
+@media (max-width: 420px) {
+  .zone-story .narrative,
+  .narrative-bubble.zone-story .narrative {
+    font-size: 0.74rem !important;
+  }
+  .chat-panel.zone-chat { max-height: 11vh !important; }
+}
+
+/* Keyboard: keep composer; leave portrait room above */
+body.keyboard-open.mode-play .play-face-gap {
+  height: clamp(28vh, 36vh, 42vh) !important;
+  min-height: 24vh !important;
+  max-height: 44vh !important;
+}
+body.keyboard-open.mode-play .zone-story.narrative-bubble,
+body.keyboard-open.mode-play .narrative-bubble {
+  max-height: clamp(36px, 7vh, 56px) !important;
+  padding: 4px 8px !important;
+}
+body.keyboard-open.mode-play .action-zone {
+  display: none !important;
+}
+body.keyboard-open.mode-play .chat-panel.zone-chat,
+body.keyboard-open.mode-play .chat-panel {
+  display: flex !important;
+  max-height: 14vh !important;
+  flex: 0 0 auto !important;
+}
+body.keyboard-open.mode-play .zone-chat .chat-messages {
+  max-height: 3vh !important;
+  min-height: 0 !important;
+}

@@ -1,3 +1,5 @@
+2026-10-23 00:41 HKT：Play portrait-first UI——隱藏 #choices／.action-zone（CHAT-FIRST 絕對）；story 薄底條、chat 主 composer、HUD 角落細；.play-face-gap ~55–70%。Cache ?v=portrait-first-20261023。改檔：styles.css、chat-guide.js、app.js、index.html、STATUS.md。
+
 2026-10-23 00:30 HKT：Sammi 茶水間三層舞台樣品——#scene-bg / 人像 / #prop-layer（杯麵＋販賣機光）；early pantry nodes 接線；photoreal pantry-01。Cache ?v=layers-sammi-20261023。改檔：index.html、styles.css、app.js、data/sam.json、assets/bg/pantry-01.jpg、assets/props/cup-noodles.png、STATUS.md。
 
 2026-10-23 00:22 HKT：Sammi loop 換身體動作版（CEO OK）；仍靜音。表情／動作跟劇情＝用少量 mood clip 切換，唔係每節出一條片。Cache ?v=sammi-body-20261023。改檔：assets/video/sammi-loop.mp4、index.html、STATUS.md。

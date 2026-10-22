@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var STAMP = "uichat3b";
+  var STAMP = "portrait-first-20261023";
   var MISS_THRESHOLD = 2;
   var missCount = 0;
   var choicesEl = null;
@@ -21,15 +21,13 @@
     }
   }
 
-  /** CHAT-FIRST only defers on freeChat nodes; story beats with choices must show. */
+  /**
+   * CHAT-FIRST absolute (CEO 2026-10-23): never show #choices / gold MC buttons.
+   * Choice JSON still drives intent fallback next-targets; advance via chat only.
+   * Prior rule that showed choices on non-freeChat beats is revoked.
+   */
   function shouldHideChoices() {
-    var node = currentNode();
-    if (!node) return false;
-    if (!node.freeChat) return false;
-    try {
-      if (window.state && window.state.freeChatChoicesVisible) return false;
-    } catch (e) {}
-    return missCount < MISS_THRESHOLD;
+    return true;
   }
 
   function hideChoices() {
@@ -37,18 +35,17 @@
     if (!el) return;
     if (!el.classList.contains("freechat-hidden")) el.classList.add("freechat-hidden");
     if (el.style.display !== "none") el.style.display = "none";
+    var zone = document.getElementById("action-zone");
+    if (zone && zone.style.display !== "none") zone.style.display = "none";
   }
 
   function showChoices() {
-    var el = getChoices();
-    if (!el) return;
-    if (el.classList.contains("freechat-hidden")) el.classList.remove("freechat-hidden");
-    if (el.style.display === "none") el.style.display = "";
+    /* Revoked: never reveal gold buttons on play. */
+    hideChoices();
   }
 
   function syncChoices() {
-    if (shouldHideChoices()) hideChoices();
-    else showChoices();
+    hideChoices();
   }
 
   function isOwnerPlaytest(text) {
@@ -172,7 +169,7 @@
     console.log(
       "[chat-guide] " +
         STAMP +
-        " CHAT-FIRST: hide only on freeChat until unlock/2 misses; non-freeChat beats show choices. Yes-words heat intact."
+        " CHAT-FIRST absolute: never show #choices; advance via chat+intent. Yes-words heat intact."
     );
   }
 
