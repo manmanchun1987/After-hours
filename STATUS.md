@@ -1,3 +1,5 @@
+2026-10-23 00:22 HKT：Sammi loop 換身體動作版（CEO OK）；仍靜音。表情／動作跟劇情＝用少量 mood clip 切換，唔係每節出一條片。Cache ?v=sammi-body-20261023。改檔：assets/video/sammi-loop.mp4、index.html、STATUS.md。
+
 2026-10-23 00:15 HKT：人像片——Sammi 用用戶鎖定靜圖＋loop（眨眼／呼吸在片內）；延遲播＋靜音＋失敗退靜圖（修舊入場卡死）。Vera 開 repo vera-loop；Elise 未批唔開。廣東話對白仍係文字／TTS，唔跟嘴。Cache ?v=sammi-vid-20261023。改檔：app.js、index.html、styles.css、data/sam.json、data/alex.json、assets/stills/sammi-01.jpg、assets/video/sammi-loop.mp4、STATUS.md。
 
 2026-10-23 00:05 HKT：CEO 批——停眨眼罩，只留呼吸＋講緊（硬圖眼皮永遠對唔準）。blink-mask display:none；triggerBlink／startLifeMotion no-op；mode-speaking／portrait-breathe 保留。Cache ?v=noblink-20261023。改檔：styles.css、app.js、index.html、STATUS.md。
