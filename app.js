@@ -84,7 +84,8 @@ const AudioEngine = (() => {
   let bgmPlaying = false;
   let bgmDuck = false;
   let manifest = null;
-  let buffers = { bgm: null, click: null, choice: null, transition: null, ping: null, call: null };
+  let buffers = { bgm: null, bgmScenes: {}, click: null, choice: null, transition: null, ping: null, call: null };
+  let bgmTrackKey = null;
   let loadPromise = null;
 
   function ensure() {
@@ -102,10 +103,18 @@ const AudioEngine = (() => {
     return ctx;
   }
 
+  function volumeForKey(key) {
+    if (key && key !== "default" && manifest && manifest.bgm && manifest.bgm.scenes && manifest.bgm.scenes[key]
+        && typeof manifest.bgm.scenes[key].volume === "number") {
+      return manifest.bgm.scenes[key].volume;
+    }
+    return (manifest && manifest.bgm && manifest.bgm.volume) || 0.35;
+  }
+
   function applyVolumes() {
     if (!masterGain || !ctx) return;
     const master = audioPrefs.masterMute ? 0 : 1;
-    const bgmVol = (manifest && manifest.bgm && manifest.bgm.volume) || 0.35;
+    const bgmVol = volumeForKey(bgmTrackKey || "default");
     const bgmTarget = audioPrefs.bgmMute || audioPrefs.masterMute || bgmDuck ? 0 : bgmVol * 0.22;
     masterGain.gain.setTargetAtTime(master, ctx.currentTime, 0.05);
     bgmGain.gain.setTargetAtTime(bgmTarget, ctx.currentTime, 0.08);
@@ -139,6 +148,17 @@ const AudioEngine = (() => {
         if (manifest.bgm && manifest.bgm.src) {
           buffers.bgm = await decodeUrl(bust(manifest.bgm.src));
         }
+        buffers.bgmScenes = {};
+        const scenes = (manifest.bgm && manifest.bgm.scenes) || {};
+        await Promise.all(Object.keys(scenes).map(async (key) => {
+          const item = scenes[key];
+          if (!item || !item.src) return;
+          try {
+            buffers.bgmScenes[key] = await decodeUrl(bust(item.src));
+          } catch (err) {
+            console.warn("BGM scene load failed: " + key, err);
+          }
+        }));
         for (const key of ["click", "choice", "transition", "ping", "call"]) {
           const item = manifest.sfx && manifest.sfx[key];
           if (item && item.src) buffers[key] = await decodeUrl(bust(item.src));
@@ -229,21 +249,66 @@ const AudioEngine = (() => {
     bgmNodes = [o1, o2, o3, lfo, noise, pulse];
   }
 
+  function pickBgmKey(scene, inCall) {
+    if (inCall && buffers.bgmScenes && buffers.bgmScenes.call) return "call";
+    if (scene && buffers.bgmScenes && buffers.bgmScenes[scene]) return scene;
+    return "default";
+  }
+
+  function bufferForKey(key) {
+    if (key && key !== "default" && buffers.bgmScenes && buffers.bgmScenes[key]) {
+      return buffers.bgmScenes[key];
+    }
+    return buffers.bgm;
+  }
+
+  function loopForKey(key) {
+    if (key && key !== "default" && manifest && manifest.bgm && manifest.bgm.scenes && manifest.bgm.scenes[key]) {
+      return manifest.bgm.scenes[key].loop !== false;
+    }
+    return !!(manifest && manifest.bgm && manifest.bgm.loop !== false);
+  }
+
   function startBgmFile() {
+    const key = bgmTrackKey || "default";
+    const buf = bufferForKey(key);
+    if (!buf) return false;
     const src = ctx.createBufferSource();
-    src.buffer = buffers.bgm;
-    src.loop = !!(manifest && manifest.bgm && manifest.bgm.loop !== false);
+    src.buffer = buf;
+    src.loop = loopForKey(key);
     src.connect(bgmGain);
     src.start(0);
     bgmSource = src;
     bgmNodes = [src];
+    return true;
   }
 
   function startBgm() {
     if (!ensure() || bgmPlaying) return;
+    if (!bgmTrackKey) bgmTrackKey = "default";
     bgmPlaying = true;
-    if (buffers.bgm) startBgmFile();
+    if (bufferForKey(bgmTrackKey)) startBgmFile();
     else startBgmSynth();
+  }
+
+  function setBgmScene(scene, inCall) {
+    const key = pickBgmKey(scene, !!inCall);
+    if (key === bgmTrackKey && bgmPlaying) {
+      applyVolumes();
+      return;
+    }
+    if (audioPrefs.bgmMute || audioPrefs.masterMute) {
+      bgmTrackKey = key;
+      applyVolumes();
+      return;
+    }
+    if (!started) {
+      bgmTrackKey = key;
+      return;
+    }
+    stopBgm();
+    bgmTrackKey = key;
+    startBgm();
   }
 
   function stopBgm() {
@@ -359,6 +424,7 @@ const AudioEngine = (() => {
     if (audioPrefs.bgmMute || audioPrefs.masterMute) {
       if (bgmPlaying) applyVolumes();
     } else if (!bgmPlaying) {
+      if (!bgmTrackKey) bgmTrackKey = "default";
       startBgm();
     }
   }
@@ -373,6 +439,7 @@ const AudioEngine = (() => {
     sfxPing,
     sfxCall,
     setBgmDuck,
+    setBgmScene,
     get started() { return started; },
   };
 })();
@@ -1846,6 +1913,16 @@ function resolveScene(story, node) {
   return "office";
 }
 
+function syncSceneBgm() {
+  try {
+    const node = (state.story && state.nodeId && state.story.nodes)
+      ? state.story.nodes[state.nodeId] : null;
+    const scene = resolveScene(state.story, node);
+    const inCall = !!(state.callMode || state.callWanted);
+    if (AudioEngine.setBgmScene) AudioEngine.setBgmScene(scene, inCall);
+  } catch (_) {}
+}
+
 function normalizeProp(entry) {
   if (!entry) return null;
   const id = typeof entry === "string" ? entry : entry.id;
@@ -2034,6 +2111,7 @@ function applySceneLayers(story, node) {
   if (parts.layerBg) parts.layerBg.setAttribute("data-scene", scene);
   syncFgProps(parts.fg, resolveProps(story, node));
   applyLegacySceneShell(bg, story, node);
+  syncSceneBgm();
 }
 
 function portraitSrc(story) {
@@ -2248,6 +2326,7 @@ function finishCallExit() {
   stopCallTimer();
   const el = $("#call-timer");
   if (el) el.textContent = "00:00";
+  syncSceneBgm();
 }
 
 function setCallMode(on) {
@@ -2266,6 +2345,7 @@ function setCallMode(on) {
       startCallTimer();
       playCallSfx();
     }
+    syncSceneBgm();
     return;
   }
   if (!state.callWanted && !state.callMode) return;
