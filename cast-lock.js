@@ -14,9 +14,9 @@
     portraitSrc = function (story) {
       if (story && story.portrait && String(story.portrait).indexOf("stills/") >= 0) return story.portrait;
       var id = (story && story.id) || (typeof state !== "undefined" && state.storyId) || "alex";
-      if (id === "sam") return "./assets/stills/vera-01.jpg?v=3";
-      if (id === "morgan") return "./assets/stills/vera-02.jpg?v=3";
-      return "./assets/stills/vera-03.jpg?v=3";
+      if (id === "sam") return "./assets/stills/sammi-01.jpg?v=elise-lock1";
+      if (id === "morgan") return "./assets/stills/vera-02.jpg?v=elise-lock1";
+      return "./assets/stills/vera-03.jpg?v=elise-lock1";
     };
   }
 })();
