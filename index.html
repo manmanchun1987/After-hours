@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="./styles-compete.css?v=kb-mobile-20261023e" />
   <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e" />
   <link rel="stylesheet" href="./fx.css?v=kb-mobile-20261023e" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=lux1-kb1" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=scene1" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -174,6 +174,16 @@
     <section id="screen-play" class="screen">
       <div class="play-stage">
         <div class="play-bg" aria-hidden="true">
+          <!--
+            Option B scene shell. 邏輯上線 sets data-scene and syncs .fg-prop nodes.
+            .scene-stack
+              .scene-layer-bg[data-scene="office|pantry|lounge|lift"]
+              .scene-layer-portrait  — existing #alex-portrait-stack
+              .scene-layer-fg
+                .fg-prop[data-prop="monitor-glow|blinds|vending-glow|cup-noodles|wine-glass|floor-indicator"]
+                .fg-anim-float | .fg-anim-pulse | .fg-anim-sway
+            Chat stays in .play-overlay. #scene-bg and #prop-layer stay for the legacy shell.
+          -->
           <div id="scene-bg" class="scene-bg" hidden></div>
           <div class="scene-stack">
             <div class="scene-layer-bg" data-scene="office"></div>
@@ -187,7 +197,14 @@
                 </div>
               </div>
             </div>
-            <div class="scene-layer-fg" aria-hidden="true"></div>
+            <div class="scene-layer-fg" aria-hidden="true">
+              <div class="fg-prop fg-anim-pulse" data-prop="monitor-glow"></div>
+              <div class="fg-prop fg-anim-sway" data-prop="blinds"></div>
+              <div class="fg-prop fg-anim-pulse" data-prop="vending-glow"></div>
+              <div class="fg-prop fg-anim-float" data-prop="cup-noodles"></div>
+              <div class="fg-prop fg-anim-sway" data-prop="wine-glass"></div>
+              <div class="fg-prop fg-anim-pulse" data-prop="floor-indicator"></div>
+            </div>
           </div>
           <div id="prop-layer" class="prop-layer" aria-hidden="true">
             <img id="prop-cup-noodles" class="prop prop-cup-noodles" src="./assets/props/cup-noodles.png" alt="" hidden />
