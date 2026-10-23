@@ -4198,12 +4198,8 @@ async function init() {
 
   renderCast();
 
-  if (!state.ageOk) {
-    show("gate");
-  } else {
-    renderCast();
-    show("cast");
-  }
+  // Always show gate on boot so cover (加班之後) is seen even when ageOk is saved; enter-btn unlocks audio and goes to cast.
+  show("gate");
 }
 
 installExperienceHooks();
