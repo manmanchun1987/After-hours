@@ -40,6 +40,20 @@ const state = {
   proactiveCountOnNode: 0,
   proactiveNodeId: null,
   lastChatActivityAt: 0,
+  // player-said facts (chips + 「你頭先講…」). Story beat ids stay in memories.
+  playerFacts: [],
+  pendingFactId: null,
+  lastNotedTurn: "",
+  lastNotedAt: 0,
+  sessionFirstPingSent: false,
+  callWanted: false,
+  callFromIntent: false,
+  callIntentNodeId: null,
+  callIntentCountOnNode: 0,
+  callIntentCooldownUntil: 0,
+  callExitTimer: null,
+  callIntentEndTimer: null,
+  lastCallSfxAt: 0,
 };
 
 const audioPrefs = {
@@ -537,8 +551,15 @@ function replayLastVoice() {
    ============================================================ */
 const CHAT_MEM_N = 50; // full recent transcript for guide/memory skim (safety cap)
 const CHAT_ANTIREPEAT_N = 5;
-const PROACTIVE_MAX_PER_NODE = 3;
-const PROACTIVE_COOLDOWN_MS = 50000;
+const PROACTIVE_MAX_PER_NODE = 2;
+const PROACTIVE_COOLDOWN_MS = 28000;
+const INCOMING_FIRST_MIN_MS = 11000;
+const INCOMING_IDLE_MIN_MS = 32000;
+const CALL_EXIT_MS = 380;
+const CALL_SFX_GAP_MS = 14000;
+const CALL_INTENT_MS = 48000;
+const CALL_INTENT_COOLDOWN_MS = 70000;
+const MAX_PLAYER_FACTS = 6;
 
 const TOPIC_KEYS = [
   { keys: ["加班", "遲", "夜班"], topic: "加班" },
@@ -747,6 +768,16 @@ const CAST_VOICE = {
       "我記得今晚啲事——你呢？",
       "走廊燈仲亮。你企喺邊？",
       "電話震完你都唔回？",
+      "你靜咗陣。我未走。",
+      "唔好淨係望住我。打字。",
+      "我數到你未回。",
+      "檔放低一秒。回我。",
+    ],
+    firstPing: [
+      "你入到嚟未？回我一句。",
+      "我見到你上線。唔好裝睇檔。",
+      "你喺走廊定辦公室？講。",
+      "今晚你喺邊？回。",
     ],
     replies: null,
     rules: null,
@@ -762,6 +793,16 @@ const CAST_VOICE = {
       "房卡仲喺枱面。",
       "數字我朝早發——除非你今晚另有答覆。",
       "窗外人聲遠。你仲未走？",
+      "你靜咗。酒會涼。",
+      "唔好淨係望住杯。回我。",
+      "你喺窗邊定吧台？講。",
+      "我數緊你未回。",
+    ],
+    firstPing: [
+      "你到酒廊未？回我。",
+      "杯我幫你留低。你喺邊？",
+      "夜未完。回一句。",
+      "我留咗位。你上線未？",
     ],
     replies: null,
     rules: null,
@@ -777,6 +818,16 @@ const CAST_VOICE = {
       "天台風涼。你喺邊？",
       "我留低……唔係勤力。",
       "茶水間燈仲亮。你返唔返？",
+      "你靜咗陣。燈我未關。",
+      "影印機停咗。你呢？",
+      "唔好淨係睇手機。回我。",
+      "我喺度。你喺邊？",
+    ],
+    firstPing: [
+      "你喺茶水間定走廊？",
+      "杯麵仲熱。你呢？",
+      "你上線我見到。唔使扮忙。",
+      "燈仲亮。回我一句。",
     ],
     replies: null,
     rules: null,
@@ -1284,6 +1335,7 @@ function getCast() {
     toast: pack.toast,
     greeting: pack.greeting,
     incoming: pack.incoming,
+    firstPing: pack.firstPing || pack.incoming,
     replies: pack.replies || CHAT_REPLIES,
     rules: pack.rules || CHAT_RULES,
   };
@@ -1299,6 +1351,7 @@ function clampMeter(n) {
 
 function noteChatActivity() {
   state.lastChatActivityAt = Date.now();
+  hideIncomingToast();
   scheduleProactivePing();
 }
 
@@ -1316,6 +1369,10 @@ function resetChatSessionMemory() {
   state.proactiveNodeId = state.nodeId;
   state.proactiveCooldownUntil = 0;
   state.lastChatActivityAt = Date.now();
+  state.sessionFirstPingSent = false;
+  state.pendingFactId = null;
+  state.lastNotedTurn = "";
+  state.lastNotedAt = 0;
 }
 
 /** Player/bot dialogue transcript (cap CHAT_MEM_N). GuidePolicy skims full available history — no separate memory brain. */
@@ -1429,6 +1486,197 @@ function memoryChipLine(tone) {
   return pickAvoidRepeat(bank[tone] || bank.cold);
 }
 
+const PLAYER_FACT_RULES = [
+  { id: "name", re: /(?:我叫|叫我|我個名(?:係|是))\s*([A-Za-z\u4e00-\u9fff]{1,8})/, quote: (m) => cleanFactName(m[1]), label: (m) => "你叫" + cleanFactName(m[1]) },
+  { id: "overtime", re: /加班|夜班|做到好夜|未收工/, quote: () => "加班", label: () => "你話加班" },
+  { id: "tired", re: /好攰|好累|好眼瞓|想瞓|頂唔順/, quote: () => "好攰", label: () => "你話好攰" },
+  { id: "report", re: /簡報|報告|交唔切/, quote: () => "簡報", label: () => "你話簡報" },
+  { id: "like", re: /鍾意你|中意你|想錫你|心動/, quote: () => "鍾意我", label: () => "你話鍾意" },
+  { id: "leave", re: /想走(?!去)|想返屋企|想收工|想閃/, quote: () => "想走", label: () => "你話想走" },
+  { id: "drink", re: /飲酒|想醉|再斟/, quote: () => "飲酒", label: () => "你話飲酒" },
+  { id: "hungry", re: /好餓|未食飯|食麵|宵夜/, quote: () => "肚餓", label: () => "你話肚餓" },
+  { id: "nervous", re: /好驚|好緊張|手震/, quote: () => "緊張", label: () => "你話緊張" },
+  { id: "home", re: /屋企人|我屋企|我爸|我媽|父母/, quote: () => "屋企", label: () => "你提過屋企" },
+];
+
+const FACT_NAME_BLOCK = {
+  你: 1, 我: 1, 佢: 1, 她: 1, 他: 1,
+  vera: 1, elise: 1, sammi: 1, morgan: 1, sam: 1, alex: 1,
+  上司: 1, 老闆: 1,
+};
+
+function cleanFactName(raw) {
+  return String(raw || "").replace(/[，。！？、,.!?\s].*$/, "").slice(0, 6);
+}
+
+function sanitizeFacts(raw) {
+  if (!Array.isArray(raw)) return [];
+  const out = [];
+  const seen = {};
+  raw.forEach((f) => {
+    if (!f || !f.id || !f.label || !f.quote || seen[f.id]) return;
+    seen[f.id] = 1;
+    out.push({
+      id: String(f.id).slice(0, 24),
+      label: String(f.label).slice(0, 24),
+      quote: String(f.quote).slice(0, 16),
+    });
+  });
+  return out.slice(-MAX_PLAYER_FACTS);
+}
+
+function extractPlayerFact(text) {
+  const raw = String(text || "").trim();
+  if (raw.length < 2) return null;
+  for (let i = 0; i < PLAYER_FACT_RULES.length; i++) {
+    const rule = PLAYER_FACT_RULES[i];
+    const m = raw.match(rule.re);
+    if (!m) continue;
+    const quote = rule.quote(m);
+    const label = rule.label(m);
+    if (!quote || !label) continue;
+    if (rule.id === "name" && FACT_NAME_BLOCK[String(quote).toLowerCase()]) continue;
+    return { id: rule.id, label: label, quote: quote };
+  }
+  return null;
+}
+
+function upsertPlayerFact(fact) {
+  if (!fact) return null;
+  const list = state.playerFacts || (state.playerFacts = []);
+  const idx = list.findIndex((f) => f.id === fact.id);
+  if (idx >= 0) {
+    if (list[idx].quote === fact.quote) return null;
+    if (fact.id !== "name") return null;
+    list[idx] = fact;
+  } else {
+    list.push(fact);
+    if (list.length > MAX_PLAYER_FACTS) state.playerFacts = list.slice(-MAX_PLAYER_FACTS);
+  }
+  state.pendingFactId = fact.id;
+  return fact;
+}
+
+function notePlayerFact(text) {
+  const fact = upsertPlayerFact(extractPlayerFact(text));
+  if (!fact) return null;
+  renderMemoryStrip();
+  try { save(); } catch (_) {}
+  return fact;
+}
+
+function recentHasFact(fact) {
+  if (!fact || !fact.quote) return false;
+  const token = "你頭先講" + fact.quote;
+  return (state.recentBotReplies || []).some((r) => String(r).indexOf(token) >= 0);
+}
+
+function factCallbackLine(fact) {
+  const q = fact.quote;
+  return pickAvoidRepeat([
+    "你頭先講" + q + "。",
+    "你頭先講" + q + "，我記得。",
+    "你頭先講" + q + "——我留低。",
+  ]);
+}
+
+function factForCallback(askMemory) {
+  const facts = state.playerFacts || [];
+  if (state.pendingFactId) {
+    for (let i = facts.length - 1; i >= 0; i--) {
+      if (facts[i].id === state.pendingFactId) return facts[i];
+    }
+  }
+  if (!askMemory) return null;
+  for (let i = facts.length - 1; i >= 0; i--) {
+    if (!recentHasFact(facts[i])) return facts[i];
+  }
+  if (state.memories && state.memories.length) {
+    const id = state.memories[state.memories.length - 1];
+    const quote = memoryLabel(id);
+    const pseudo = { id: "story:" + id, quote: quote, label: quote };
+    if (quote && !recentHasFact(pseudo)) return pseudo;
+  }
+  return null;
+}
+
+/** Prefix 「你頭先講…」 once. Keeps the guide's single next step. */
+function weaveFactCallback(line, opts) {
+  const ask = !!(opts && opts.askMemory);
+  const fact = factForCallback(ask);
+  const base = String(line || "");
+  if (!fact) return base;
+  const token = "你頭先講" + fact.quote;
+  if (base.indexOf(token) >= 0) {
+    state.pendingFactId = null;
+    return base;
+  }
+  if (recentHasFact(fact) && !state.pendingFactId) return base;
+  const cb = factCallbackLine(fact);
+  state.pendingFactId = null;
+  return base ? cb + base : cb;
+}
+
+function currentStoryNode() {
+  if (!state.story || !state.story.nodes || !state.nodeId) return null;
+  return state.story.nodes[state.nodeId] || null;
+}
+
+function nodeWantsCall(node) {
+  if (!node) return false;
+  const tags = Array.isArray(node.tags) ? node.tags : [];
+  return node.mode === "call" || tags.indexOf("call") >= 0;
+}
+
+function storyNodeWantsCall() {
+  return nodeWantsCall(currentStoryNode());
+}
+
+function prefersReducedMotion() {
+  try {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  } catch (_) {
+    return false;
+  }
+}
+
+function notePlayerTurn(text) {
+  const t = String(text || "").trim();
+  if (!t || state.chatBusy) return;
+  const now = Date.now();
+  if (state.lastNotedTurn === t && now - (state.lastNotedAt || 0) < 1500) return;
+  state.lastNotedTurn = t;
+  state.lastNotedAt = now;
+  state.sessionFirstPingSent = true;
+  notePlayerFact(t);
+  noteCallIntent(t);
+}
+
+function noteCallIntent(text) {
+  const t = String(text || "");
+  if (/(收線|掛線|掛咗|放下電話)/.test(t)) {
+    if (state.callFromIntent && !storyNodeWantsCall()) setCallMode(false);
+    return;
+  }
+  if (!/(打(電話|畀|俾)|通(個)?話|接聽|聽電話)/.test(t)) return;
+  if (storyNodeWantsCall() || state.callWanted) return;
+  if (state.callIntentNodeId !== state.nodeId) {
+    state.callIntentNodeId = state.nodeId;
+    state.callIntentCountOnNode = 0;
+  }
+  if (state.callIntentCountOnNode >= 1) return;
+  if (Date.now() < (state.callIntentCooldownUntil || 0)) return;
+  state.callIntentCountOnNode += 1;
+  state.callIntentCooldownUntil = Date.now() + CALL_INTENT_COOLDOWN_MS;
+  state.callFromIntent = true;
+  setCallMode(true);
+  if (state.callIntentEndTimer) clearTimeout(state.callIntentEndTimer);
+  state.callIntentEndTimer = setTimeout(() => {
+    state.callIntentEndTimer = null;
+    if (state.callFromIntent && !storyNodeWantsCall()) setCallMode(false);
+  }, CALL_INTENT_MS);
+}
+
 function matchBucket(userText) {
   const t = (userText || "").toLowerCase();
   if (isSilence(userText)) return "silence";
@@ -1444,6 +1692,11 @@ function matchBucket(userText) {
 
 function pickProactiveLine() {
   const tone = syncChatTone();
+  const facts = state.playerFacts || [];
+  if (facts.length && Math.random() < 0.42) {
+    const fact = facts[facts.length - 1];
+    if (fact && !recentHasFact(fact)) return factCallbackLine(fact);
+  }
   if (Math.random() < 0.35) {
     const echo = topicEchoLine(tone);
     if (echo) return echo;
@@ -1897,19 +2150,32 @@ function addMemories(ids) {
   state.memories = next.slice(-MAX_MEMORIES);
 }
 
+function memoryRows() {
+  const rows = [];
+  (state.playerFacts || []).forEach((f) => {
+    if (f && f.label) rows.push({ key: "f:" + f.id, label: f.label });
+  });
+  (state.memories || []).forEach((id) => {
+    rows.push({ key: "s:" + id, label: memoryLabel(id) });
+  });
+  return rows;
+}
+
 function renderMemoryStrip() {
   const strip = $("#memory-strip");
   const chips = $("#memory-chips");
   if (!strip || !chips) return;
   chips.innerHTML = "";
-  if (!state.memories.length) {
+  const rows = memoryRows();
+  if (!rows.length) {
     strip.setAttribute("hidden", "");
   } else {
     strip.removeAttribute("hidden");
-    state.memories.forEach((id) => {
+    rows.slice(0, 5).forEach((row) => {
       const span = document.createElement("span");
       span.className = "memory-chip";
-      span.textContent = memoryLabel(id);
+      span.dataset.memKey = row.key;
+      span.textContent = row.label;
       chips.appendChild(span);
     });
   }
@@ -1939,23 +2205,86 @@ function startCallTimer() {
   state.callTimerId = setInterval(tick, 1000);
 }
 
-function setCallMode(on) {
-  const was = state.callMode;
-  state.callMode = !!on;
-  document.body.classList.toggle("mode-call", state.callMode);
+function showCallChrome(animate) {
   const chrome = $("#call-chrome");
-  if (chrome) {
-    if (state.callMode) chrome.removeAttribute("hidden");
-    else chrome.setAttribute("hidden", "");
+  if (!chrome) return;
+  const who = $("#call-who");
+  if (who) who.textContent = "通話中 · " + getCast().name;
+  chrome.removeAttribute("hidden");
+  if (animate && !prefersReducedMotion()) {
+    chrome.style.transition = "none";
+    chrome.style.opacity = "0";
+    void chrome.offsetWidth;
+    chrome.style.transition = "opacity .36s ease";
+    chrome.style.opacity = "1";
+  } else {
+    chrome.style.transition = "";
+    chrome.style.opacity = "1";
   }
-  if (state.callMode && !was) {
-    const who = $("#call-who");
-    if (who) who.textContent = "通話中 · " + getCast().name;
-    startCallTimer();
-    try { AudioEngine.sfxCall(); } catch (_) {}
-  } else if (!state.callMode) {
-    stopCallTimer();
+}
+
+function hideCallChrome() {
+  const chrome = $("#call-chrome");
+  if (!chrome) return;
+  chrome.setAttribute("hidden", "");
+  chrome.style.transition = "";
+  chrome.style.opacity = "";
+}
+
+function playCallSfx() {
+  const now = Date.now();
+  if (now - (state.lastCallSfxAt || 0) < CALL_SFX_GAP_MS) return;
+  if (audioPrefs.masterMute) return;
+  state.lastCallSfxAt = now;
+  try { AudioEngine.sfxCall(); } catch (_) {}
+}
+
+function finishCallExit() {
+  if (state.callWanted) return;
+  state.callMode = false;
+  state.callFromIntent = false;
+  document.body.classList.remove("mode-call");
+  hideCallChrome();
+  stopCallTimer();
+  const el = $("#call-timer");
+  if (el) el.textContent = "00:00";
+}
+
+function setCallMode(on) {
+  const want = !!on;
+  if (state.callExitTimer) {
+    clearTimeout(state.callExitTimer);
+    state.callExitTimer = null;
   }
+  if (want) {
+    const fresh = !state.callWanted;
+    state.callWanted = true;
+    state.callMode = true;
+    document.body.classList.add("mode-call");
+    showCallChrome(fresh);
+    if (fresh) {
+      startCallTimer();
+      playCallSfx();
+    }
+    return;
+  }
+  if (!state.callWanted && !state.callMode) return;
+  state.callWanted = false;
+  if (state.callIntentEndTimer) {
+    clearTimeout(state.callIntentEndTimer);
+    state.callIntentEndTimer = null;
+  }
+  const chrome = $("#call-chrome");
+  if (!chrome || prefersReducedMotion()) {
+    finishCallExit();
+    return;
+  }
+  chrome.style.transition = "opacity .36s ease";
+  chrome.style.opacity = "0";
+  state.callExitTimer = setTimeout(() => {
+    state.callExitTimer = null;
+    finishCallExit();
+  }, CALL_EXIT_MS);
 }
 
 function renderThoughtAside(node) {
@@ -1988,9 +2317,17 @@ function renderThoughtAside(node) {
 }
 
 function applyNodeMeta(node) {
-  const tags = Array.isArray(node.tags) ? node.tags : [];
-  const call = node.mode === "call" || tags.includes("call");
-  setCallMode(call);
+  const storyCall = nodeWantsCall(node);
+  if (storyCall) {
+    state.callFromIntent = false;
+    if (state.callIntentEndTimer) {
+      clearTimeout(state.callIntentEndTimer);
+      state.callIntentEndTimer = null;
+    }
+    setCallMode(true);
+  } else if (!(state.callFromIntent && state.callIntentNodeId === state.nodeId)) {
+    setCallMode(false);
+  }
   addMemories(node.remember || []);
   renderMemoryStrip();
   renderThoughtAside(node);
@@ -2024,22 +2361,55 @@ function setUnread(n) {
 function showIncomingToast(text) {
   const toast = $("#incoming-toast");
   const label = $("#incoming-toast-text");
+  const hud = $("#play-hud");
   if (!toast) return;
+  if (hud && toast.parentElement !== hud) hud.appendChild(toast);
   if (label) label.textContent = text || getCast().toast;
   toast.removeAttribute("hidden");
+  // Portrait-first CSS hides this node. Reveal it in the HUD without editing those stylesheets.
+  toast.style.setProperty("display", "flex", "important");
+  toast.style.setProperty("max-width", "100%", "important");
 }
 
 function hideIncomingToast() {
   const toast = $("#incoming-toast");
-  if (toast) toast.setAttribute("hidden", "");
+  if (!toast) return;
+  toast.setAttribute("hidden", "");
+  toast.style.removeProperty("display");
+}
+
+function userHasChatted() {
+  return (state.chatUserLines || []).length > 0;
+}
+
+function incomingWaitMs() {
+  if (!state.sessionFirstPingSent && !userHasChatted()) {
+    return INCOMING_FIRST_MIN_MS + Math.random() * 5000;
+  }
+  return INCOMING_IDLE_MIN_MS + Math.random() * 16000;
+}
+
+function pickFirstPingLine() {
+  const cast = getCast();
+  const pack = (cast.firstPing && cast.firstPing.length) ? cast.firstPing : (cast.incoming || []);
+  if (state.callMode) {
+    return pickAvoidRepeat(["線路通咗。你聽到未？", "通話中。回我一句。"].concat(pack));
+  }
+  const node = currentStoryNode();
+  const blob = node ? ((node.label || "") + (node.text || "")) : "";
+  if (/門|走廊/.test(blob)) {
+    return pickAvoidRepeat(["你喺門口未？回我一句。", "走廊定入面？講。"].concat(pack));
+  }
+  return pickAvoidRepeat(pack);
 }
 
 function pushIncomingPing() {
   const play = $("#screen-play");
   if (!play || !play.classList.contains("active") || state.chatBusy) return;
   if (screens.ending && screens.ending.classList.contains("active")) return;
+  if (state.unreadCount > 0) return;
+  if (state.callMode && Date.now() - (state.lastCallSfxAt || 0) < 6000) return;
 
-  // per-node cap + cooldown
   if (state.proactiveNodeId !== state.nodeId) {
     state.proactiveNodeId = state.nodeId;
     state.proactiveCountOnNode = 0;
@@ -2047,8 +2417,10 @@ function pushIncomingPing() {
   if (state.proactiveCountOnNode >= PROACTIVE_MAX_PER_NODE) return;
   if (Date.now() < (state.proactiveCooldownUntil || 0)) return;
 
-  const line = pickProactiveLine();
+  const first = !state.sessionFirstPingSent && !userHasChatted();
+  const line = first ? pickFirstPingLine() : pickProactiveLine();
   if (!line) return;
+  if (first) state.sessionFirstPingSent = true;
   appendChat("alex", line);
   pushChatMemory("bot", line);
   state.proactiveCountOnNode += 1;
@@ -2061,25 +2433,29 @@ function pushIncomingPing() {
   if (!speaking && !audioPrefs.voiceMute) {
     try { speakChat(line); } catch (_) {}
   }
-  noteChatActivity();
+  state.lastChatActivityAt = Date.now();
+  scheduleProactivePing();
 }
 
-function stopIncomingRhythm() {
+function clearIncomingTimer() {
   if (state.incomingTimerId) {
     clearTimeout(state.incomingTimerId);
     state.incomingTimerId = null;
   }
+}
+
+function stopIncomingRhythm() {
+  clearIncomingTimer();
   hideIncomingToast();
 }
 
 function scheduleProactivePing() {
-  stopIncomingRhythm();
+  clearIncomingTimer();
   const play = $("#screen-play");
   if (!play || !play.classList.contains("active")) return;
   if (screens.ending && screens.ending.classList.contains("active")) return;
 
-  // idle 25–45s, then chance to ping; reschedule after
-  const wait = 25000 + Math.random() * 20000;
+  const wait = incomingWaitMs();
   state.incomingTimerId = setTimeout(() => {
     state.incomingTimerId = null;
     const stillPlay = $("#screen-play");
@@ -2088,9 +2464,12 @@ function scheduleProactivePing() {
       scheduleProactivePing();
       return;
     }
+    if (userHasChatted()) state.sessionFirstPingSent = true;
+    const first = !state.sessionFirstPingSent && !userHasChatted();
     const idleFor = Date.now() - (state.lastChatActivityAt || 0);
+    const minIdle = first ? INCOMING_FIRST_MIN_MS - 500 : INCOMING_IDLE_MIN_MS - 500;
     const cooled = Date.now() >= (state.proactiveCooldownUntil || 0);
-    if (idleFor >= 25000 && cooled && Math.random() < 0.72) {
+    if (state.unreadCount === 0 && idleFor >= minIdle && cooled && (first || Math.random() < 0.8)) {
       pushIncomingPing();
     }
     scheduleProactivePing();
@@ -2098,12 +2477,12 @@ function scheduleProactivePing() {
 }
 
 function startIncomingRhythm() {
-  state.lastChatActivityAt = Date.now();
+  if (!state.lastChatActivityAt) state.lastChatActivityAt = Date.now();
   if (state.proactiveNodeId !== state.nodeId) {
     state.proactiveNodeId = state.nodeId;
     state.proactiveCountOnNode = 0;
   }
-  scheduleProactivePing();
+  if (!state.incomingTimerId) scheduleProactivePing();
 }
 
 
@@ -2112,14 +2491,19 @@ function renderMemoryPanel() {
   const empty = $("#memory-panel-empty");
   if (!list) return;
   list.innerHTML = "";
-  if (!state.memories.length) {
-    if (empty) empty.removeAttribute("hidden");
+  const rows = memoryRows();
+  if (!rows.length) {
+    if (empty) {
+      empty.textContent = "未有記住嘅事。";
+      empty.removeAttribute("hidden");
+    }
     return;
   }
   if (empty) empty.setAttribute("hidden", "");
-  state.memories.forEach((id) => {
+  rows.forEach((row) => {
     const li = document.createElement("li");
-    li.textContent = memoryLabel(id);
+    li.dataset.memKey = row.key;
+    li.textContent = row.label;
     list.appendChild(li);
   });
 }
@@ -2145,7 +2529,6 @@ function wireMemoryPanel() {
   if (strip) {
     strip.addEventListener("click", () => {
       setMemoryPanelOpen(!state.memoryPanelOpen);
-      if (state.memoryPanelOpen) setUnread(0);
       try { AudioEngine.sfxClick(); } catch (_) {}
     });
   }
@@ -2164,7 +2547,17 @@ function wireMemoryPanel() {
   }
   const chatForm = $("#chat-form");
   if (chatForm) {
-    chatForm.addEventListener("focusin", () => setUnread(0));
+    chatForm.addEventListener("focusin", () => {
+      hideIncomingToast();
+      setUnread(0);
+    });
+  }
+  const messages = $("#chat-messages");
+  if (messages) {
+    messages.addEventListener("click", () => {
+      hideIncomingToast();
+      setUnread(0);
+    });
   }
 }
 
@@ -2356,14 +2749,14 @@ function pickReply(userText) {
     return pickAvoidRepeat(pool);
   }
 
-  if (state.memories.length && (askMem || matchBucket(userText) === "memory")) {
+  if ((state.playerFacts.length || state.memories.length) && (askMem || matchBucket(userText) === "memory")) {
     state.offTopicStreak = 0;
     updateChatHint("memory", false);
-    const line = memoryChipLine(tone);
-    if (line) return line;
+    const remembered = weaveFactCallback(memoryChipLine(tone) || "", { askMemory: true });
+    if (remembered) return remembered;
   }
-  if (state.memories.length && Math.random() < 0.18) {
-    const line = memoryChipLine(tone);
+  if ((state.playerFacts.length || state.memories.length) && Math.random() < 0.18) {
+    const line = weaveFactCallback(memoryChipLine(tone) || "", { askMemory: false });
     if (line) return line;
   }
 
@@ -2399,7 +2792,7 @@ function pickReply(userText) {
   if (/人工智能|聊天機器人|我是AI|我是机器人|我是機械人|語言模型|ChatGPT/i.test(line)) {
     line = pickAvoidRepeat(poolFor("ai_ask", "cold"));
   }
-  return line;
+  return weaveFactCallback(line, { askMemory: false });
 }
 
 
@@ -2421,6 +2814,7 @@ function setChatTyping(on) {
 async function handleChatSubmit(text) {
   const cleaned = (text || "").trim();
   if (!cleaned || state.chatBusy) return;
+  notePlayerTurn(cleaned);
   state.chatBusy = true;
   noteChatActivity();
   appendChat("user", cleaned);
@@ -2429,6 +2823,7 @@ async function handleChatSubmit(text) {
   AudioEngine.sfxClick();
   setChatTyping(true);
   setUnread(0);
+  hideIncomingToast();
 
   const intent = matchFreeChatIntent(cleaned);
   const shouldReveal = matchFreeChatReveal(cleaned);
@@ -2438,9 +2833,10 @@ async function handleChatSubmit(text) {
   if (intent && intent.next) {
     const tone = syncChatTone();
     const ackPool = poolFor(intent.bucket || "greet", tone);
-    const ack = intent.ack
-      ? intent.ack
-      : pickAvoidRepeat(ackPool);
+    const ack = weaveFactCallback(
+      intent.ack ? intent.ack : pickAvoidRepeat(ackPool),
+      { askMemory: false }
+    );
     setChatTyping(false);
     appendChat("alex", ack);
     pushChatMemory("bot", ack);
@@ -2479,6 +2875,9 @@ function resetChat() {
   const greet = getCast().greeting;
   appendChat("alex", greet);
   pushChatMemory("bot", greet);
+  if ($("#screen-play") && $("#screen-play").classList.contains("active")) {
+    scheduleProactivePing();
+  }
 }
 
 
@@ -2524,6 +2923,7 @@ function save() {
       nodeId: state.nodeId,
       path: state.path,
       memories: state.memories,
+      playerFacts: sanitizeFacts(state.playerFacts),
       heat: state.heat,
       tension: state.tension,
     })
@@ -2537,6 +2937,11 @@ function clearProgress() {
   state.nodeId = null;
   state.path = [];
   state.memories = [];
+  state.playerFacts = [];
+  state.pendingFactId = null;
+  state.callFromIntent = false;
+  state.callIntentCountOnNode = 0;
+  state.callIntentCooldownUntil = 0;
   state.heat = 20;
   state.tension = 15;
   resetChatSessionMemory();
@@ -2659,6 +3064,11 @@ function startAlex(fresh) {
     state.heat = 20;
     state.tension = 15;
     state.memories = [];
+    state.playerFacts = [];
+    state.pendingFactId = null;
+    state.callFromIntent = false;
+    state.callIntentCountOnNode = 0;
+    state.callIntentCooldownUntil = 0;
   }
   // entryfix3: unhide play and put story text in the DOM before art/TTS.
   show("play");
@@ -3585,7 +3995,39 @@ function wireKeyboardViewport() {
 }
 
 
+function installExperienceHooks() {
+  const GP = window.GuidePolicy;
+  if (GP && typeof GP.decide === "function" && !GP.decide.__factV2) {
+    const origDecide = GP.decide.bind(GP);
+    const hooked = function (input) {
+      const text = input && input.intent && input.intent.text;
+      if (text && !state.chatBusy) notePlayerTurn(text);
+      const decision = origDecide(input);
+      if (decision && !decision.advance && decision.reply) {
+        const id = (input && input.intent && input.intent.id) || decision.intentId || "";
+        decision.reply = weaveFactCallback(decision.reply, { askMemory: id === "ask_memory" });
+      }
+      return decision;
+    };
+    hooked.__factV2 = true;
+    GP.decide = hooked;
+  }
+  const fn = window.handleChatSubmit;
+  if (fn && fn.__intent1 && !fn.__experienceV2) {
+    const wrapped = async function (text) {
+      const cleaned = String(text || "").trim();
+      if (cleaned && !state.chatBusy) notePlayerTurn(cleaned);
+      return fn.apply(this, arguments);
+    };
+    wrapped.__intent1 = true;
+    wrapped.__experienceV2 = true;
+    window.handleChatSubmit = wrapped;
+    try { handleChatSubmit = wrapped; } catch (_) {}
+  }
+}
+
 async function init() {
+  installExperienceHooks();
   wireKeyboardViewport();
   waitForVoices();
   wireAudioControls();
@@ -3603,6 +4045,7 @@ async function init() {
   state.nodeId = saved.nodeId || null;
   state.path = Array.isArray(saved.path) ? saved.path : [];
   state.memories = Array.isArray(saved.memories) ? saved.memories.slice(0, MAX_MEMORIES) : [];
+  state.playerFacts = sanitizeFacts(saved.playerFacts);
   state.heat = saved.heat == null ? 20 : clampMeter(saved.heat);
   state.tension = saved.tension == null ? 15 : clampMeter(saved.tension);
 
@@ -3682,6 +4125,13 @@ async function init() {
     show("cast");
   }
 }
+
+installExperienceHooks();
+let experienceHookTries = 0;
+const experienceHookTimer = setInterval(() => {
+  installExperienceHooks();
+  if (++experienceHookTries > 40) clearInterval(experienceHookTimer);
+}, 200);
 
 init().catch((err) => {
   console.error(err);
