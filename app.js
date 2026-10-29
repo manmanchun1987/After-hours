@@ -65,6 +65,7 @@ const audioPrefs = {
 const $ = (sel) => document.querySelector(sel);
 const screens = {
   gate: $("#screen-gate"),
+  cover: $("#screen-cover"),
   cast: $("#screen-cast"),
   play: $("#screen-play"),
   ending: $("#screen-ending"),
@@ -4151,6 +4152,13 @@ async function init() {
     AudioEngine.sfxChoice();
     state.ageOk = true;
     save();
+    show("cover");
+  });
+
+  $("#cover-enter").addEventListener("click", async () => {
+    await AudioEngine.unlock();
+    AudioEngine.sfxChoice();
+    renderCast();
     show("cast");
   });
 
@@ -4201,8 +4209,7 @@ async function init() {
   if (!state.ageOk) {
     show("gate");
   } else {
-    renderCast();
-    show("cast");
+    show("cover");
   }
 }
 
