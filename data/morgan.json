@@ -2811,6 +2811,7 @@
         "lift"
       ],
       "look": "open",
+      "portrait": "./assets/stills/elise-open-collar-cutout.jpg",
       "text": "電梯裡她解開絲衫多一顆鈕。領口未扣，落到心口，外套仍掛肩。她拉你掌心貼住自己乳，拇指擦過乳尖。另一隻手隔住褲，握住已經硬嘅位置，慢慢套。\n\n「衣冠仲掛住。你應承再入，定停喺我手心，定走？」",
       "thought": "領口先開。裡面等你自己講。",
       "aside": "乳尖頂住你掌心。套弄慢。",
@@ -2909,6 +2910,8 @@
         "lift"
       ],
       "look": "dark",
+      "portrait": "./assets/stills/elise-lift-dark-cutout.jpg",
+      "props": [{ "id": "lift-blackout-veil", "anim": "fg-anim-pulse" }],
       "text": "燈關。只剩樓層紅點。她跨住你，絲衫散開，底褲撥到一邊，慢慢坐落去，納到最深。每一下都壓住你唔出聲。\n\n「射之前叫我 Elise。出面當冇人上過嚟。你應承入到底，定停，定走？」",
       "thought": "黑裡面先算私人條款。",
       "aside": "燈關住。濕熱夾實。",
@@ -3009,6 +3012,8 @@
         "lift"
       ],
       "look": "dark",
+      "portrait": "./assets/stills/elise-lift-dark-cutout.jpg",
+      "props": [{ "id": "lift-blackout-veil", "anim": "fg-anim-pulse" }],
       "text": "燈關住。她夾緊，等到你射喺裡面，先慢慢起身。絲衫扣返兩顆，外套拉順，底褲拉好。\n\n「聽日見面，我只同你講數字。呢層——我記得你幾深。」\n\n門一開，她先出。耳環未亂。",
       "aside": "腿間仍黏。紅點滅。",
       "mid": "成交寫喺身體，唔寫喺紙。她唇擦過你一下，酒氣同熱一齊留低。出到光裡，她又係客戶負責人。",

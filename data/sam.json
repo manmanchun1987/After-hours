@@ -2494,6 +2494,7 @@
         "pantry"
       ],
       "look": "open",
+      "portrait": "./assets/stills/sammi-open-collar-cutout.jpg",
       "text": "熱氣撲上眼鏡。灰外套滑落一邊肩，白裇領口未扣，工牌垂住。她拉你手貼住自己腰側，隔住裇衫，乳尖頂住你掌心一下。\n\n「茶水間人會入。你應承出呢度，定停喺蒸汽裡，定走？」",
       "thought": "肩滑落係仍，唔係換衫。",
       "aside": "領口未扣。蒸汽熱。",
@@ -2691,6 +2692,7 @@
         "lift"
       ],
       "look": "open",
+      "portrait": "./assets/stills/sammi-open-collar-cutout.jpg",
       "text": "電梯。灰外套滑落一邊肩。領口未扣。她拉你手入白裇，掌心覆住乳，另一隻手伸入你褲，握住，拇指抹過頂端濕。眼鏡起霧。\n\n「你應承再入黑，定停低換個位，定走？」",
       "thought": "手先入。黑未落。",
       "aside": "領口未扣。頂端濕。",
@@ -2789,6 +2791,8 @@
         "lift"
       ],
       "look": "dark",
+      "portrait": "./assets/stills/sammi-lift-dark-cutout.jpg",
+      "props": [{ "id": "lift-blackout-veil", "anim": "fg-anim-pulse" }],
       "text": "燈關。電梯紅點。她除眼鏡放口袋，聲貼住你耳。\n\n「我唔只係前輩。你入。我咬住袖口，唔出聲。」\n\n她自己坐低，納你入去，慢，濕，每一下都縮。底褲撥到一邊。工牌繩敲你胸口。\n\n「應承入到底，定停，定走？」",
       "thought": "黑裡她先唔做前輩。",
       "aside": "燈關住。袖口咬實。",
@@ -2887,6 +2891,8 @@
         "roof"
       ],
       "look": "rain",
+      "portrait": "./assets/stills/sammi-rain-wet-cutout.jpg",
+      "props": [{ "id": "roof-rain-streaks" }],
       "text": "天台又落雨。灰外套濕貼肩，白裇透少少，眼鏡掛水。她拉你入欄杆後，掌心仍握着你。雨水沿手腕流。\n\n「衫濕。同尋晚一樣位置。你應承入，定停，定落去？」\n\n她拉你手入濕透嘅褲腰，底褲撥開，兩指位已經分唔清雨水定她自己。",
       "thought": "雨裡盲角。尋晚未做完。",
       "aside": "衫濕。欄杆涼。",
@@ -2987,6 +2993,8 @@
         "lift"
       ],
       "look": "dark",
+      "portrait": "./assets/stills/sammi-lift-dark-cutout.jpg",
+      "props": [{ "id": "lift-blackout-veil", "anim": "fg-anim-pulse" }],
       "text": "燈關住。她夾到你射喺裡面，先咬你肩一下，聲好細。底褲拉好，眼鏡未戴返。\n\n「……腿會軟。聽日我再等你。工牌外，呢句先作數。」",
       "aside": "紅點。肩上有齒印。",
       "mid": "同盟仍唔寫入文件。她額抵住你一下就退開，熱度留喺裡面。門開之前，她先整好白裇。",
@@ -3021,6 +3029,8 @@
         "roof"
       ],
       "look": "rain",
+      "portrait": "./assets/stills/sammi-rain-wet-cutout.jpg",
+      "props": [{ "id": "roof-rain-streaks" }],
       "text": "天台雨未停。衫濕貼住。她坐到底，等到你射，先撐住欄杆起身。眼鏡戴返，水霧未散。\n\n「同盟。雨停先落。而家唔好出聲。」",
       "aside": "衫濕。欄杆有你手印。",
       "mid": "雨蓋過聲。她手指同你十指交一下就放。熱度同雨水一齊留喺褲腰。落去之前，她先拉好灰外套。",

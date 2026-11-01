@@ -2628,6 +2628,8 @@ function portraitVideoSrc(story, node) {
     ? story.nodes[state.nodeId]
     : null);
   if (current && current.portraitVideo) return current.portraitVideo;
+  /* Continuity still owns this beat. Idle loops stay on dressed defaults. */
+  if (current && current.look !== "dressed" && (current.portrait || current.still)) return null;
   const id = (story && story.id) || state.storyId || getCastId();
   if (id === "sam") return "./assets/video/sammi-loop.mp4";
   if (id === "alex") return "./assets/video/vera-loop.mp4";
@@ -2728,6 +2730,7 @@ const PROP_ANIM = {
   blinds: "fg-anim-sway",
   "wine-glass": "fg-anim-sway",
   "floor-indicator": "fg-anim-pulse",
+  "lift-blackout-veil": "fg-anim-pulse",
 };
 
 /* Cast home when a node has no scene and no exception. */
@@ -3046,7 +3049,23 @@ function portraitSrc(story) {
   return "./assets/stills/vera-03.jpg";
 }
 
-function beatStillSrc(story) {
+function bustStill(src) {
+  if (!src) return src;
+  const path = String(src);
+  if (path.indexOf("?") >= 0) return path;
+  return path + "?v=act2hot1";
+}
+
+/* node.portrait, else node.still, else the cast lock.
+   Dressed beats stay on vera-02 / sammi-01 / vera-03. */
+function beatStillSrc(story, node) {
+  const current = node || ((story && story.nodes && state.nodeId && story.nodes[state.nodeId])
+    ? story.nodes[state.nodeId]
+    : null);
+  if (current && current.look !== "dressed") {
+    const custom = current.portrait || current.still;
+    if (custom) return bustStill(custom);
+  }
   const id = storyCastId(story);
   if (id === "sam") return "./assets/stills/sammi-01.jpg?v=elise-lock1";
   if (id === "morgan") return "./assets/stills/vera-02.jpg?v=elise-lock1";
@@ -3072,7 +3091,7 @@ function applyBeatContinuity(story, node) {
     body.setAttribute("data-beat-heat", intimacyBand());
     body.setAttribute("data-beat-tone", tone || "cold");
   }
-  const src = beatStillSrc(story);
+  const src = beatStillSrc(story, node);
   const img = $("#alex-portrait");
   if (img && src) {
     const file = src.split("?")[0].split("/").pop();
@@ -4248,6 +4267,7 @@ function renderNode() {
   applyBeatContinuity(state.story, node);
 
   if (node.ending) {
+    applySceneLayers(state.story, node);
     noteStoryEnding(node);
     cancelSpeech();
     setCallMode(false);
@@ -5321,6 +5341,8 @@ try {
     typingDelayMs: typingDelayMs,
     splitHumanLine: splitHumanLine,
     applyBeatContinuity: applyBeatContinuity,
+    beatStillSrc: beatStillSrc,
+    portraitVideoSrc: portraitVideoSrc,
     boundaryTone: boundaryTone,
     state: state,
     notePlayerTurn: notePlayerTurn,
