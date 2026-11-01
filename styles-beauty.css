@@ -702,6 +702,8 @@ body.mode-play .play-lower,
   margin-top: 8px !important;
   gap: 6px !important;
   align-items: flex-start;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
 }
 #screen-cast .char-card .stack .btn {
   width: auto !important;

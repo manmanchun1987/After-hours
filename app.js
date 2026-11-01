@@ -2723,6 +2723,7 @@ const LOUNGE_BAR_NODES = {
   m2a: 1, m2b: 1, m2c: 1, m2a2: 1, m2b2: 1, m2c2: 1,
   m2x: 1, m2x2: 1, m2x3: 1,
   m3: 1, m3v: 1, m3w: 1, m3y: 1, m3z: 1, m3u: 1, m3u2: 1, m3a2: 1,
+  m6: 1, m6a: 1, m6b: 1, m6c: 1, m6bar: 1,
 };
 
 const NODE_PROP_EXTRA = {
@@ -2736,6 +2737,11 @@ const NODE_PROP_EXTRA = {
     s1b: [{ id: "cup-noodles", anim: "fg-anim-float" }],
     s1d: [{ id: "cup-noodles", anim: "fg-anim-float" }],
     s2p2: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s6: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s6a: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s6b: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s6c: [{ id: "cup-noodles", anim: "fg-anim-float" }],
+    s6near: [{ id: "cup-noodles", anim: "fg-anim-float" }],
   },
 };
 
@@ -2743,7 +2749,8 @@ const NODE_PROP_EXTRA = {
 const SAM_PANTRY_NODES = {
   s1: 1, s1b: 1, s1c: 1, s1d: 1,
   s2a: 1, s2a2: 1, s2b: 1, s2b2: 1, s2c: 1, s2c2: 1,
-  s2p: 1, s2p2: 1, s2y: 1
+  s2p: 1, s2p2: 1, s2y: 1,
+  s6: 1, s6a: 1, s6b: 1, s6c: 1, s6near: 1
 };
 
 function storyCastId(story) {
@@ -3924,6 +3931,7 @@ const CAST_CARDS = [
     hook: "大單前夜。夜晚講人。",
     thumb: "./assets/stills/vera-02.jpg?v=3",
     featured: false,
+    act2: true,
   },
   {
     id: "sam",
@@ -3932,10 +3940,11 @@ const CAST_CARDS = [
     hook: "兩個杯麵。餓嘅人簽錯字。",
     thumb: "./assets/stills/sammi-01.jpg?v=3",
     featured: false,
+    act2: true,
   },
 ];
 
-async function pickStory(id, fresh) {
+async function pickStory(id, fresh, entry) {
   const file = STORY_FILES[id] || STORY_FILES.alex;
   try {
     await AudioEngine.unlock();
@@ -3946,7 +3955,7 @@ async function pickStory(id, fresh) {
   state.story = await res.json();
   state.storyId = id;
   applyStoryArt(state.story);
-  startAlex(!!fresh);
+  startAlex(!!fresh, entry || "");
 }
 
 function renderCast() {
@@ -3969,6 +3978,9 @@ function renderCast() {
   box.innerHTML = CAST_CARDS.map((c) => {
     const featured = c.featured ? " char-card-featured" : "";
     const showResume = canResume && state.storyId === c.id;
+    const act2Btn = c.act2
+      ? '<button type="button" class="btn btn-ghost" data-cast-act2="' + c.id + '">第二晚</button>'
+      : "";
     return (
       '<article class="card glass char-card' + featured + '" data-cast="' + c.id + '">' +
         '<div class="char-thumb-wrap">' +
@@ -3983,6 +3995,7 @@ function renderCast() {
             ? '<button type="button" class="btn btn-primary" data-cast-resume="' + c.id + '">繼續今晚</button>' +
               '<button type="button" class="btn btn-ghost" data-cast-start="' + c.id + '">重新開始</button>'
             : '<button type="button" class="btn btn-primary" data-cast-start="' + c.id + '">開始</button>') +
+          act2Btn +
         "</div>" +
       "</article>"
     );
@@ -4010,18 +4023,65 @@ function renderCast() {
       }
     });
   });
+  box.querySelectorAll("[data-cast-act2]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await pickStory(btn.getAttribute("data-cast-act2"), true, "act2");
+      } catch (err) {
+        console.error(err);
+        box.insertAdjacentHTML(
+          "beforeend",
+          '<p class="hook">載入失敗：' + String(err.message || err) + "</p>"
+        );
+      }
+    });
+  });
 }
 
-function startAlex(fresh) {
+function act2ContinueTarget(node) {
+  const map = (state.story && state.story.act2From) || {};
+  const raw = node && map[node.id];
+  if (!raw) return null;
+  if (typeof raw === "string") return { next: raw, heat: 0, remember: ["from_" + node.id] };
+  if (!raw.next) return null;
+  return {
+    next: raw.next,
+    heat: Number(raw.heat) || 0,
+    remember: raw.remember || ["from_" + node.id],
+  };
+}
+
+function continueNextNight() {
+  const node = state.story && state.story.nodes && state.story.nodes[state.nodeId];
+  const target = act2ContinueTarget(node);
+  if (!target || !state.story.nodes[target.next]) return;
+  if (target.heat) state.heat = clampMeter(Math.max(state.heat || 0, target.heat));
+  addMemories(target.remember);
+  state.nodeId = target.next;
+  state.path = (state.path || []).concat([target.next]);
+  state.callFromIntent = false;
+  state.callIntentCountOnNode = 0;
+  state.callIntentCooldownUntil = 0;
+  state.proactiveNodeId = state.nodeId;
+  state.proactiveCountOnNode = 0;
+  save();
+  resetChat();
+  show("play");
+  renderNode();
+}
+
+function startAlex(fresh, entry) {
   AudioEngine.sfxChoice();
   if (!state.story || !state.story.nodes) return;
   state.storyId = state.story.id || state.storyId || "alex";
-  if (fresh || !state.nodeId || !state.story.nodes[state.nodeId]) {
-    state.nodeId = state.story.start;
+  const act2Id = state.story.act2;
+  const wantAct2 = entry === "act2" && act2Id && state.story.nodes[act2Id];
+  if (wantAct2 || fresh || !state.nodeId || !state.story.nodes[state.nodeId]) {
+    state.nodeId = wantAct2 ? act2Id : state.story.start;
     state.path = [state.nodeId];
-    state.heat = 20;
-    state.tension = 15;
-    state.memories = [];
+    state.heat = wantAct2 ? 24 : 20;
+    state.tension = wantAct2 ? 18 : 15;
+    state.memories = wantAct2 ? ["act2_from_cast"] : [];
     state.playerFacts = [];
     state.pendingFactId = null;
     state.factTurn = 0;
@@ -4058,6 +4118,9 @@ function renderNode() {
     $("#ending-kicker").textContent = node.label || "結局";
     $("#ending-title").textContent = node.endingTitle || "";
     $("#ending-text").textContent = node.text;
+    const nextBtn = $("#ending-next");
+    const nextNight = act2ContinueTarget(node);
+    if (nextBtn) nextBtn.hidden = !(nextNight && state.story.nodes[nextNight.next]);
     speakStoryBeats(node.text);
     save();
     show("ending");
@@ -5067,6 +5130,15 @@ async function init() {
   $("#btn-replay-voice").addEventListener("click", () => {
     replayLastVoice();
   });
+
+  const endingNext = $("#ending-next");
+  if (endingNext) {
+    endingNext.addEventListener("click", () => {
+      cancelSpeech();
+      AudioEngine.sfxChoice();
+      continueNextNight();
+    });
+  }
 
   $("#ending-replay").addEventListener("click", () => {
     cancelSpeech();
