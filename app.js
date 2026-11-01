@@ -1797,13 +1797,90 @@ function duckBgmForVideo(on) {
   } catch (e) {}
 }
 
-function portraitVideoSrc(story) {
-  // Per-cast loop clips. Only return paths that are shipped (missing → still via onerror).
-  // Sammi loop CEO-approved 2026-10-23; Vera repo clip; Elise pending approval.
+let portraitVideoGen = 0;
+
+function portraitVideoSrc(story, node) {
+  // Node clip wins (one mood file on a stretch). Else per-cast loop.
+  // Missing file → still via onerror. Sammi loop CEO-approved 2026-10-23;
+  // Vera idle is vera-loop; Elise stays on the still until a clip is approved.
+  const current = node || ((story && story.nodes && state.nodeId && story.nodes[state.nodeId])
+    ? story.nodes[state.nodeId]
+    : null);
+  if (current && current.portraitVideo) return current.portraitVideo;
   const id = (story && story.id) || state.storyId || getCastId();
   if (id === "sam") return "./assets/video/sammi-loop.mp4";
   if (id === "alex") return "./assets/video/vera-loop.mp4";
   return null;
+}
+
+function syncPortraitVideo(story, node) {
+  const stack = $("#alex-portrait-stack");
+  const bg = document.querySelector("#screen-play .play-bg");
+  const vid = $("#play-portrait-video");
+  if (!vid) return;
+  const vsrc = portraitVideoSrc(story, node);
+  // Same clip already chosen: don't reload (renderNode follows applyStoryArt).
+  if (vsrc && vid.getAttribute("data-src") === vsrc) {
+    if (!vid.hasAttribute("hidden")) {
+      const p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+    return;
+  }
+  const gen = ++portraitVideoGen;
+  try { vid.pause(); } catch (e) {}
+  vid.onloadeddata = null;
+  vid.onerror = null;
+  if (!vsrc) {
+    duckBgmForVideo(false);
+    vid.removeAttribute("data-src");
+    if (vid.hasAttribute("src")) vid.removeAttribute("src");
+    try { vid.load(); } catch (e2) {}
+    vid.setAttribute("hidden", "");
+    if (stack) stack.classList.remove("has-video");
+    if (bg) bg.classList.remove("has-video");
+    return;
+  }
+  vid.setAttribute("data-src", vsrc);
+  // Defer play until after #screen-play paints (entryfix3 hang was sync load/play).
+  vid.muted = true;
+  vid.defaultMuted = true;
+  vid.setAttribute("muted", "");
+  vid.setAttribute("playsinline", "");
+  vid.setAttribute("webkit-playsinline", "");
+  vid.loop = true;
+  vid.setAttribute("preload", "metadata");
+  const applyClip = function () {
+    if (gen !== portraitVideoGen) return;
+    if (vid.getAttribute("data-src") !== vsrc) return;
+    vid.src = vsrc;
+    vid.onerror = function () {
+      if (gen !== portraitVideoGen) return;
+      // Missing clip → stay on still
+      duckBgmForVideo(false);
+      try { vid.removeAttribute("src"); vid.load(); } catch (e3) {}
+      vid.removeAttribute("data-src");
+      vid.setAttribute("hidden", "");
+      if (stack) stack.classList.remove("has-video");
+      if (bg) bg.classList.remove("has-video");
+    };
+    vid.onloadeddata = function () {
+      if (gen !== portraitVideoGen) return;
+      vid.removeAttribute("hidden");
+      if (stack) stack.classList.add("has-video");
+      if (bg) bg.classList.add("has-video");
+      duckBgmForVideo(true);
+      const p = vid.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+    try { vid.load(); } catch (e4) {}
+  };
+  // Two rAFs + timeout: paint story text first, then start media
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      setTimeout(applyClip, 0);
+    });
+  });
 }
 
 
@@ -2143,66 +2220,9 @@ function applyStoryArt(story) {
   const toastDefault = $("#incoming-toast-text");
   if (toastDefault && !state.unreadCount) toastDefault.textContent = cast.toast;
   const mask = $("#blink-mask");
-  const stack = $("#alex-portrait-stack");
-  const bg = document.querySelector("#screen-play .play-bg");
-  const vid = $("#play-portrait-video");
   // blink mask retired — keep hidden
   if (mask) mask.setAttribute("hidden", "");
-  const vsrc = portraitVideoSrc(story);
-  if (!vid) return;
-  // Always clear previous clip first
-  try { vid.pause(); } catch (e) {}
-  vid.onloadeddata = null;
-  vid.onerror = null;
-  if (!vsrc) {
-    duckBgmForVideo(false);
-    if (vid.hasAttribute("src")) vid.removeAttribute("src");
-    try { vid.load(); } catch (e2) {}
-    vid.setAttribute("hidden", "");
-    if (stack) stack.classList.remove("has-video");
-    if (bg) bg.classList.remove("has-video");
-    return;
-  }
-  // Defer play until after #screen-play paints (entryfix3 hang was sync load/play).
-  vid.muted = true;
-  vid.defaultMuted = true;
-  vid.setAttribute("muted", "");
-  vid.setAttribute("playsinline", "");
-  vid.setAttribute("webkit-playsinline", "");
-  vid.loop = true;
-  vid.setAttribute("preload", "metadata");
-  const applyClip = function () {
-    if (vid.getAttribute("data-src") === vsrc && !vid.hasAttribute("hidden") && stack && stack.classList.contains("has-video")) {
-      const p = vid.play();
-      if (p && p.catch) p.catch(function () {});
-      return;
-    }
-    vid.setAttribute("data-src", vsrc);
-    vid.src = vsrc;
-    vid.onerror = function () {
-      // Missing clip → stay on still
-      duckBgmForVideo(false);
-      try { vid.removeAttribute("src"); vid.load(); } catch (e3) {}
-      vid.setAttribute("hidden", "");
-      if (stack) stack.classList.remove("has-video");
-      if (bg) bg.classList.remove("has-video");
-    };
-    vid.onloadeddata = function () {
-      vid.removeAttribute("hidden");
-      if (stack) stack.classList.add("has-video");
-      if (bg) bg.classList.add("has-video");
-      duckBgmForVideo(true);
-      const p = vid.play();
-      if (p && p.catch) p.catch(function () {});
-    };
-    try { vid.load(); } catch (e4) {}
-  };
-  // Two rAFs + timeout: paint story text first, then start media
-  requestAnimationFrame(function () {
-    requestAnimationFrame(function () {
-      setTimeout(applyClip, 0);
-    });
-  });
+  syncPortraitVideo(story, nodeForScene);
 }
 
 function renderMeters() {
@@ -3192,6 +3212,7 @@ function renderNode() {
   show("play");
   applyNodeMeta(node);
   applySceneLayers(state.story, node);
+  syncPortraitVideo(state.story, node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;
   const spoken = node.text;
