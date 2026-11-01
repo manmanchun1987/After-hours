@@ -714,9 +714,15 @@
             document.body.classList.add("show-choices");
           }
 
-          var replyG = decision.reply || "門就喺度。推定停。";
+          var steerG = "";
+          try {
+            if (global.GuidePolicy && typeof global.GuidePolicy.goalSteerPhrase === "function") {
+              steerG = global.GuidePolicy.goalSteerPhrase(node.sceneGoal) || "";
+            }
+          } catch (eSteer) {}
+          var replyG = decision.reply || steerG || "你話我知下一步。";
           if (/(有什麼可以幫|很樂意為你|AI助手|語言模型)/i.test(replyG) || (/客服/.test(replyG) && !/唔做客服/.test(replyG))) {
-            replyG = "我唔做客服。門——推定停。";
+            replyG = "我唔做客服。" + (steerG || "你話我知下一步。");
           }
           await emitBot(replyG);
           try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxTransition(); } catch (eg2) {}

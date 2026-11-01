@@ -961,11 +961,26 @@ body.mode-play .play-lower,
     radial-gradient(40% 20% at 50% 0%, rgba(255, 255, 255, 0.12), transparent 70%);
 }
 
+/* Friday lights-out: same office plate, no new art. Face stays on the portrait layer. */
+#screen-play .scene-layer-bg[data-scene="dark"] {
+  background-image: url("./assets/bg/office.svg");
+  background-color: #05060a;
+}
+#screen-play .scene-layer-bg[data-scene="dark"]::after {
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.62) 42%, rgba(0, 0, 0, 0.84));
+}
+
 #screen-play .scene-layer-portrait {
   z-index: 1;
 }
 
 /* Face stays the hero in the column. Side gutters show the room. */
+/* Clip already moves. Do not stack the still breathe on top of it. */
+#screen-play .portrait-stack.has-video {
+  animation: none !important;
+}
+
 #screen-play .scene-stack .scene-layer-portrait .portrait-stack {
   position: absolute;
   inset: 0;

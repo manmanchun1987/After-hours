@@ -122,7 +122,10 @@ const AudioEngine = (() => {
     if (!masterGain || !ctx) return;
     const master = audioPrefs.masterMute ? 0 : 1;
     const bgmVol = volumeForKey(bgmTrackKey || "default");
-    const bgmTarget = audioPrefs.bgmMute || audioPrefs.masterMute || bgmDuck ? 0 : bgmVol * 0.22;
+    /* Portrait clips are muted. A full duck deleted the night bed for the whole
+       Vera/Sammi play. Keep the scene bed audible under the silent loop. */
+    const bed = bgmVol * 0.22 * (bgmDuck ? 0.55 : 1);
+    const bgmTarget = audioPrefs.bgmMute || audioPrefs.masterMute ? 0 : bed;
     masterGain.gain.setTargetAtTime(master, ctx.currentTime, 0.05);
     bgmGain.gain.setTargetAtTime(bgmTarget, ctx.currentTime, 0.08);
     sfxGain.gain.setTargetAtTime(audioPrefs.masterMute ? 0 : 0.55, ctx.currentTime, 0.05);
@@ -258,7 +261,14 @@ const AudioEngine = (() => {
 
   function pickBgmKey(scene, inCall) {
     if (inCall && buffers.bgmScenes && buffers.bgmScenes.call) return "call";
+    /* BGM.md: 燈關 + 評核室 share the close call bed. No new files. */
+    if ((scene === "dark" || scene === "review") && buffers.bgmScenes && buffers.bgmScenes.call) return "call";
     if (scene && buffers.bgmScenes && buffers.bgmScenes[scene]) return scene;
+    /* No lift/roof/suite bed. Hold the line's night track instead of the procedural blip. */
+    const cast = (state.story && state.story.id) || state.storyId || "";
+    if (cast === "sam" && (scene === "roof" || scene === "lift") && buffers.bgmScenes && buffers.bgmScenes.pantry) return "pantry";
+    if (cast === "morgan" && scene === "lift" && buffers.bgmScenes && buffers.bgmScenes.lounge) return "lounge";
+    if (cast === "alex" && scene === "lift" && buffers.bgmScenes && buffers.bgmScenes.office) return "office";
     return "default";
   }
 
@@ -1358,44 +1368,75 @@ const TOPIC_ECHO = {
   },
 };
 
-const SCENE_ASIDES = [
-  { tag: "corridor", re: /走廊|門邊|門禁/, lines: {
-    cold: ["走廊燈仲亮。你唔好裝睇唔到。", "門把涼。你手熱？"],
-    wary: ["走廊有耳。細聲。", "你企喺門邊做咩？"],
-    warmer: ["……走廊無人。暫時。", "門後你仲喘緊？我聽到。"],
-    sharp: ["走廊。快。", "唔好擋門。"],
-  }},
-  { tag: "call", re: /電話|通話|來電/, lines: {
-    cold: ["通話只講重點。", "電話另一邊我都忙。"],
-    wary: ["線路清楚。你呢？", "通話中唔好裝傻。"],
-    warmer: ["……聽筒好近。你知。", "你聲音低咗。怕人聽到？"],
-    sharp: ["講。", "線路費時間。"],
-  }},
-  { tag: "lounge", re: /酒廊|酒吧/, lines: {
-    cold: ["酒味散未？講事。", "杯放低。"],
-    wary: ["酒後決定，朝早作數。", "再斟之前想清楚。"],
-    warmer: ["……杯沿仲有你指紋。", "酒可以。人要在。"],
-    sharp: ["收杯。", "醒。"],
-  }},
-  { tag: "roof", re: /天台/, lines: {
-    cold: ["天台風大。講完返入。", "天台。唔好靠太出。"],
-    wary: ["風大。檔未好睇。", "吹完講重點。"],
-    warmer: ["……風大。你仲挨近？", "天台人聲遠。剛好。"],
-    sharp: ["返入。", "唔好玩命。"],
-  }},
-  { tag: "window", re: /窗邊|夜景/, lines: {
-    cold: ["窗邊。講完返入。", "窗邊唔好靠太出。"],
-    wary: ["夜景好睇。檔未好睇。", "吹完講重點。"],
-    warmer: ["……風大。你仲挨近？", "窗外人聲遠。剛好。"],
-    sharp: ["返入。", "窗邊。快。"],
-  }},
-  { tag: "meeting", re: /會議室/, lines: {
+/* Spoken asides follow the resolved place, not the first 「門」 in the prose.
+   Bare 門 used to put corridor lines on the roof, the suite, and lights-out. */
+const SCENE_ASIDE_BY_KEY = {
+  office: {
     cold: ["會議室之外先講。", "簡報先。"],
     wary: ["會未散。收聲。", "題外話留會後。"],
     warmer: ["……會開完，我未必趕你走。", "會議室燈光冷。你臉熱？"],
     sharp: ["開會。", "私人之後。"],
-  }},
-];
+  },
+  corridor: {
+    cold: ["走廊燈仲亮。你唔好裝睇唔到。", "門把涼。你手熱？"],
+    wary: ["走廊有耳。細聲。", "你企喺門邊做咩？"],
+    warmer: ["……走廊無人。暫時。", "門後你仲喘緊？我聽到。"],
+    sharp: ["走廊。快。", "唔好擋門。"],
+  },
+  pantry: {
+    cold: ["茶水間。食完先講。", "杯麵未涼。講重點。"],
+    wary: ["微波爐聲完。你仲未答。", "熱氣散緊。你想點？"],
+    warmer: ["……杯麵多一格。你坐近啲？", "蒸汽遮住鏡頭。剛好。"],
+    sharp: ["食完。答。", "筷子放下。"],
+  },
+  lounge: {
+    cold: ["酒味散未？講事。", "杯放低。"],
+    wary: ["酒後決定，朝早作數。", "再斟之前想清楚。"],
+    warmer: ["……杯沿仲有你指紋。", "酒可以。人要在。"],
+    sharp: ["收杯。", "醒。"],
+  },
+  lift: {
+    cold: ["電梯好擠。講重點。", "上下都一樣——對齊檔。"],
+    wary: ["電梯裡唔好試探。", "到層先講。"],
+    warmer: ["……電梯門關上嗰下，你識收聲未？", "到咗。望我。"],
+    sharp: ["出電梯。", "收聲。"],
+  },
+  stairs: {
+    cold: ["樓梯。講完先上。", "盲區唔係遊樂場。"],
+    wary: ["風從上面落。你跟定停？", "監控過咗呢級就返。"],
+    warmer: ["……梯間窄。你仲挨近？", "呢級冇紅點。你知。"],
+    sharp: ["上定返。", "唔好停喺級中。"],
+  },
+  roof: {
+    cold: ["天台風大。講完返入。", "欄杆邊唔好靠太出。"],
+    wary: ["雨打鐵皮。檔未好睇。", "吹完講重點。"],
+    warmer: ["……風大。你仲挨近？", "天台人聲遠。剛好。"],
+    sharp: ["返入。", "唔好玩命。"],
+  },
+  review: {
+    cold: ["評核室。寫。", "百葉拉死。桌面先算。"],
+    wary: ["表在你手。字你自己落。", "週一。唔好講成週五走廊。"],
+    warmer: ["……簾後只得我哋。", "筆在你手心。我等。"],
+    sharp: ["寫。", "表唔等。"],
+  },
+  dark: {
+    cold: ["燈關咗。規則仍然在。", "黑暗裏。講。"],
+    wary: ["唔好裝睇到。你聽到就得。", "出口你知。你未走。"],
+    warmer: ["……黑。你仲留。", "呼吸我聽到。近啲。"],
+    sharp: ["答。", "燈唔會自己著。"],
+  },
+  /* After the fire door there is no interior plate. Do not name stairs, roof, or the bar. */
+  close: {
+    cold: ["近。講。", "而家呢步。"],
+    wary: ["你仲未答。", "距離你自己量。"],
+    warmer: ["……你仲挨近。", "呼吸我聽到。"],
+    sharp: ["答。", "唔好再拖。"],
+  },
+};
+
+const SAM_STAIR_NODES = {
+  s3: 1, s3y: 1, s3z: 1, s3z2: 1, s3y2: 1, s3pre: 1,
+};
 
 
 /* ============================================================
@@ -1640,6 +1681,17 @@ function isSilence(text) {
   return !t || /^[\.。．…·\s]+$/.test(t) || t === "..." || t === "。。。" || t === "……";
 }
 
+function asidePackKey(story, node) {
+  const scene = resolveScene(story, node);
+  const id = storyCastId(story);
+  const nid = (node && node.id) || "";
+  if (id === "sam" && SAM_STAIR_NODES[nid]) return "stairs";
+  if (scene === "lift" && id === "sam") return "close";
+  if (scene === "lift" && id === "alex") return "corridor";
+  if (scene === "office" && id === "sam") return "corridor";
+  return scene;
+}
+
 /* ============================================================
    連戲 — beat glue (place + costume + heat). One profile per node.
    node.tags / node.look / node.costume win when the story JSON sets them.
@@ -1663,10 +1715,12 @@ const BEAT_PLACE_WORD = {
   lounge: "酒廊",
   pantry: "茶水間",
   lift: "電梯",
+  stairs: "樓梯",
   meeting: "會議室",
   window: "窗邊",
   call: "聽筒",
   bar: "酒廊",
+  close: "",
 };
 
 const BEAT_LOOK_WORD = {
@@ -1684,7 +1738,9 @@ const BEAT_FALLBACK = {
   lounge: { cold: "酒廊。講。", wary: "杯邊。簡短。", warmer: "酒廊。我聽住。", sharp: "酒廊。快。" },
   pantry: { cold: "茶水間。講。", wary: "茶水間。簡短。", warmer: "茶水間。我聽住。", sharp: "茶水間。快。" },
   lift: { cold: "電梯。講重點。", wary: "廂內。簡短。", warmer: "電梯。我聽住。", sharp: "電梯。快。" },
+  stairs: { cold: "樓梯。講完先上。", wary: "梯間。簡短。", warmer: "樓梯。我聽住。", sharp: "樓梯。快。" },
   meeting: { cold: "會議室。簡報先。", wary: "會未散。簡短。", warmer: "會議室。我聽住。", sharp: "會議室。快。" },
+  close: { cold: "近。講。", wary: "近。簡短。", warmer: "近。我聽住。", sharp: "近。快。" },
   window: { cold: "窗邊。講。", wary: "夜景。簡短。", warmer: "窗邊。我聽住。", sharp: "窗邊。返入。" },
   call: { cold: "聽筒。講重點。", wary: "線路。簡短。", warmer: "聽筒。我聽住。", sharp: "通話。快。" },
 };
@@ -1772,7 +1828,17 @@ function beatProfile(node) {
   if (!place) place = placeFromText(label) || placeFromText(head);
   if (!place) {
     const scene = resolveScene(state.story, n);
-    place = scene === "lounge" ? "lounge" : scene === "pantry" ? "pantry" : scene === "lift" ? "lift" : "office";
+    const nid = (n && n.id) || "";
+    const id = storyCastId(state.story);
+    if (id === "sam" && SAM_STAIR_NODES[nid]) place = "stairs";
+    else if (scene === "roof") place = "roof";
+    else if (scene === "review") place = "meeting";
+    else if (scene === "dark") place = "office";
+    else if (id === "sam" && scene === "office") place = "corridor";
+    else if (id === "alex" && scene === "lift") place = "corridor";
+    else if (id === "sam" && scene === "lift") place = "close";
+    else if (scene === "lounge" || scene === "pantry" || scene === "lift") place = scene;
+    else place = "office";
   }
   add(place);
   if (place === "lounge") add("bar");
@@ -1783,6 +1849,7 @@ function beatProfile(node) {
   if (!BEAT_LOOK_WORD[look]) {
     look = lookFromText(label + "\n" + head + "\n" + ((n && n.aside) || ""));
   }
+  if (resolveScene(state.story, n) === "dark" && look === "dressed") look = "dark";
   add(look);
 
   const mood = inferMoodFromNode(n);
@@ -2007,15 +2074,14 @@ async function deliverBotLine(line) {
 }
 
 function sceneAsideLine(tone) {
-  const beat = beatProfile(currentStoryNode());
-  const pool = [];
-  SCENE_ASIDES.forEach((row) => {
-    if (row.tag && !beat.tags[row.tag]) return;
-    const lines = row.lines[tone] || row.lines.cold || [];
-    lines.forEach((l) => {
-      if (lineFitsBeat(l, beat)) pool.push(l);
-    });
-  });
+  const node = currentStoryNode();
+  if (!node) return null;
+  const beat = beatProfile(node);
+  const pack = SCENE_ASIDE_BY_KEY[asidePackKey(state.story, node)];
+  if (!pack) return null;
+  const raw = pack[tone] || pack.cold || [];
+  const fitted = raw.filter((l) => lineFitsBeat(l, beat));
+  const pool = fitted.length ? fitted : raw;
   if (!pool.length) return null;
   return pickAvoidRepeat(pool, "aside");
 }
@@ -2586,11 +2652,13 @@ const SCENE_BG = {
   lift: "./assets/bg/lift.svg",
   roof: "./assets/bg/roof.svg",
   review: "./assets/bg/review.svg",
+  /* Same office plate, graded dark in CSS. No new art. */
+  dark: "./assets/bg/office.svg",
 };
 
-/* Contract B scenes. roof/review fold in; they are not data-scene values. */
-const SCENE_IDS = { office: 1, pantry: 1, lounge: 1, lift: 1 };
-const SCENE_FOLD = { review: "office", roof: "lift" };
+/* roof/review/dark are real plates (existing svg + a dark grade). Do not fold them away. */
+const SCENE_IDS = { office: 1, pantry: 1, lounge: 1, lift: 1, roof: 1, review: 1, dark: 1 };
+const SCENE_FOLD = {};
 const FG_ANIMS = { "fg-anim-float": 1, "fg-anim-pulse": 1, "fg-anim-sway": 1 };
 const PROP_ANIM = {
   "cup-noodles": "fg-anim-float",
@@ -2605,21 +2673,32 @@ const PROP_ANIM = {
 const CAST_SCENE = { alex: "office", morgan: "lounge", sam: "pantry" };
 
 /*
- * Exceptions only. Everything else uses node.scene (folded) or CAST_SCENE.
- * alex n0: player is still at the lift; Vera is behind the office door.
- * morgan m3x–m3x5: lobby wait + lift car. Suite/window stays lounge (no suite key).
- * sam office: copier + badge corridor. sam lift: stairs / roof / after-door
- *   (contract B has no roof key, so that night folds to lift).
+ * Exceptions only. Everything else uses node.scene or CAST_SCENE.
+ * alex n0: corridor outside her door (no corridor plate — lift is the shell; aside stays corridor).
+ * alex dark: Friday lights-out stretch that already plays vera-i2v. Same office, grade only.
+ * alex review: Monday 評核室 (n7pre stays office — still outside the door).
+ * morgan m3x–m3x5: lobby + lift car. Suite/window stays lounge (no suite plate).
+ * sam office: copier + badge corridor.
+ * sam roof: rain / railing / 天台門, before they step through the fire door.
+ * sam lift plate: stairwell (s3*) and the post-door interior (s5*). No stair or inside plate.
  */
 const NODE_SCENE = {
-  alex: { n0: "lift" },
+  alex: {
+    n0: "lift",
+    n5: "dark", n5b: "dark", n5c: "dark",
+    n6a: "dark", n6b: "dark", n6c: "dark",
+    n6a2: "dark", n6b2: "dark", n6c2: "dark",
+    ending_a: "dark", ending_b: "dark",
+    n7: "review", n7b: "review",
+    n8a: "review", n8b: "review", n8a2: "review", n8b2: "review",
+  },
   morgan: { m3x: "lift", m3x2: "lift", m3x3: "lift", m3x5: "lift" },
   sam: {
     s2x: "office", s2z: "office", s2x2: "office", s2x3: "office", s2x4: "office",
-    s3: "lift", s3y: "lift", s3z: "lift", s3z2: "lift", s3y2: "lift",
-    s3r: "lift", s3r2: "lift", s3r3: "lift", s3pre: "lift",
-    s4: "lift", s4y: "lift", s4z: "lift", s4w: "lift", s4p: "lift", s4p2: "lift",
-    s4y2: "lift", s4z2: "lift", s4w2: "lift", s4pre: "lift",
+    s3: "lift", s3y: "lift", s3z: "lift", s3z2: "lift", s3y2: "lift", s3pre: "lift",
+    s3r: "roof", s3r2: "roof", s3r3: "roof",
+    s4: "roof", s4y: "roof", s4z: "roof", s4w: "roof", s4p: "roof", s4p2: "roof",
+    s4y2: "roof", s4z2: "roof", s4w2: "roof", s4pre: "roof",
     s5: "lift", s5y: "lift", s5z: "lift", s5w: "lift", s5p: "lift",
     s5y2: "lift", s5z2: "lift", s5w2: "lift", s5p2: "lift", s5q: "lift",
   },
@@ -2631,6 +2710,9 @@ const SCENE_PROPS = {
   pantry: [{ id: "vending-glow", anim: "fg-anim-pulse" }],
   lounge: [],
   lift: [{ id: "floor-indicator", anim: "fg-anim-pulse" }],
+  roof: [],
+  review: [{ id: "blinds", anim: "fg-anim-sway" }],
+  dark: [],
 };
 
 const LOUNGE_BAR_NODES = {
@@ -2890,7 +2972,7 @@ function applySceneLayers(story, node) {
 function portraitSrc(story) {
   if (story && story.portrait) return story.portrait;
   const id = (story && story.id) || state.storyId;
-  if (id === "morgan") return "./assets/stills/elise-01.jpg";
+  if (id === "morgan") return "./assets/stills/vera-02.jpg";
   if (id === "sam") return "./assets/stills/sammi-01.jpg";
   return "./assets/stills/vera-03.jpg";
 }
@@ -3845,7 +3927,7 @@ const CAST_CARDS = [
     name: "Sammi",
     role: "前輩同事 · 茶水間 22:40",
     hook: "兩個杯麵。餓嘅人簽錯字。",
-    thumb: "./assets/stills/vera-01.jpg?v=3",
+    thumb: "./assets/stills/sammi-01.jpg?v=3",
     featured: false,
   },
 ];
