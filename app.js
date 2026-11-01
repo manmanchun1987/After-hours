@@ -43,6 +43,7 @@ const state = {
   // player-said facts (chips + 「你頭先講…」). Story beat ids stay in memories.
   playerFacts: [],
   pendingFactId: null,
+  factTurn: 0,
   lastNotedTurn: "",
   lastNotedAt: 0,
   sessionFirstPingSent: false,
@@ -662,7 +663,7 @@ const CHAT_REPLIES = {
   flirt: {
     cold: ["……你知唔知自己講緊咩。", "會議室外先再講呢句。", "距離。而家。", "大膽。監控亮住。", "呢度有耳。收聲。", "試探要代價。你知未？", "語氣收一收。", "你越界之前，先睇門牌。"],
     wary: ["大膽。我未必介意——但你要承擔。", "呢度有耳。收聲。", "你試探得太明顯。", "靠近可以。越界另計。", "你講完，我反而想聽你點收科。", "酒後先講？定清醒？", "危險答案。我記下。", "距離縮一寸——你負責。"],
-    warmer: ["……哼。你以為我會慌？", "靠近可以。越界另計。", "你講完未？定想我回你一句更危險。", "……你敢講，我反而想聽第二句。", "危險。繼續——細聲。", "你望住我講呢句。記住後果。", "……有趣。你仲企喺度。", "再近一點。然後停。"],
+    warmer: ["……哼。你以為我會慌？", "靠近可以。越界另計。", "你講完未？定想我回你一句更危險。", "……你敢講，我反而想聽第二句。", "危險。繼續——細聲。", "你望住我講呢句。記住後果。", "……有趣。你仲企喺度。", "再近一點。然後停。", "我回你。再近半寸。細聲。", "哼。你撩得準。我唔裝聽唔到。", "危險嘅暖。我留你多一刻。"],
     sharp: ["收起。而家。", "唔好玩火——除非你準備好燒。", "一句過界，評估你自己睇。", "夠。", "收聲。", "走廊見——如果你仲敢。", "唔好玩。", "距離。立刻。"],
   },
   tired: {
@@ -740,7 +741,7 @@ const CHAT_REPLIES = {
   nsfw_probe: {
     cold: ["……界線。而家。", "會議室燈光下唔講呢啲。", "你試探身體？先睇評估。", "收起。監控亮住。", "色情換唔到寬限。", "距離。立刻。", "呢句我當越界。", "講工作。"],
     wary: ["大膽。代價你知未？", "呢度有耳。收聲。", "試探可以。越界另計。", "你想聽危險答案？走廊。", "收低聲。再講一次——清醒未？", "我記下呢句。", "靠近唔等於許可。", "停喺口。"],
-    warmer: ["……你敢。我反而想睇你點收科。", "危險。細聲。", "……哼。你以為我會慌？", "越界之前，先望我眼。", "……有趣。你仲未走。", "再近——然後停。", "你講完，我未必放你走。"],
+    warmer: ["……你敢。我反而想睇你點收科。", "危險。細聲。", "……哼。你以為我會慌？", "越界之前，先望我眼。", "……有趣。你仲未走。", "再近——然後停。", "你講完，我未必放你走。", "我回你。再近半寸。細聲。", "哼。你撩得準。我唔裝聽唔到。"],
     sharp: ["收起。而家。", "夠。", "走廊——如果你仲敢。", "停。", "唔好玩火。", "評估你自己睇。", "收聲。"],
   },
   ai_ask: {
@@ -806,7 +807,7 @@ const CHAT_REPLIES = {
   date_hug: {
     cold: ["約會？唔喺今晚議程。", "攬——距離。而家。", "私人邀約日頭再談。", "身體接觸要許可。你未有。", "收起。", "職場先。", "門牌唔係約會 App。", "唔好越界。"],
     wary: ["你約我？大膽。", "攬之前先講清楚代價。", "約會可以——唔喺監控下。", "試探親密？記下。", "走廊。細聲。", "許可未發。", "停喺口。", "再講一次清醒版。"],
-    warmer: ["……約會？你想清楚未？", "攬可以。越界另計。", "……哼。你靠近得太直。", "今晚先把門後處理完。", "……短擁？你負責後果。", "你敢約。我敢記。", "……靠近。然後停。"],
+    warmer: ["……約會？你想清楚未？", "攬可以。越界另計。", "……哼。你靠近得太直。", "今晚先把門後處理完。", "……短擁？你負責後果。", "你敢約。我敢記。", "……靠近。然後停。", "我回你。再近半寸。然後停。", "危險嘅暖。我留你多一刻。"],
     sharp: ["唔約。", "距離。", "收起。", "停。", "許可未有。", "夠。", "退。"],
   },
   gossip: {
@@ -1352,33 +1353,39 @@ const TOPIC_ECHO = {
 };
 
 const SCENE_ASIDES = [
-  { re: /走廊|門|閘|門禁/, lines: {
+  { tag: "corridor", re: /走廊|門邊|門禁/, lines: {
     cold: ["走廊燈仲亮。你唔好裝睇唔到。", "門把涼。你手熱？"],
     wary: ["走廊有耳。細聲。", "你企喺門邊做咩？"],
     warmer: ["……走廊無人。暫時。", "門後你仲喘緊？我聽到。"],
     sharp: ["走廊。快。", "唔好擋門。"],
   }},
-  { re: /電話|通話|來電/, lines: {
+  { tag: "call", re: /電話|通話|來電/, lines: {
     cold: ["通話只講重點。", "電話另一邊我都忙。"],
     wary: ["線路清楚。你呢？", "通話中唔好裝傻。"],
     warmer: ["……聽筒好近。你知。", "你聲音低咗。怕人聽到？"],
     sharp: ["講。", "線路費時間。"],
   }},
-  { re: /酒|酒吧|杯/, lines: {
+  { tag: "lounge", re: /酒廊|酒吧/, lines: {
     cold: ["酒味散未？講事。", "杯放低。"],
     wary: ["酒後決定，朝早作數。", "再斟之前想清楚。"],
     warmer: ["……杯沿仲有你指紋。", "酒可以。人要在。"],
     sharp: ["收杯。", "醒。"],
   }},
-  { re: /天台|窗|夜景/, lines: {
-    cold: ["天台風大。講完返入。", "窗邊唔好靠太出。"],
-    wary: ["夜景好睇。檔未好睇。", "吹完講重點。"],
-    warmer: ["……風大。你仲挨近？", "窗外人聲遠。剛好。"],
+  { tag: "roof", re: /天台/, lines: {
+    cold: ["天台風大。講完返入。", "天台。唔好靠太出。"],
+    wary: ["風大。檔未好睇。", "吹完講重點。"],
+    warmer: ["……風大。你仲挨近？", "天台人聲遠。剛好。"],
     sharp: ["返入。", "唔好玩命。"],
   }},
-  { re: /會議室|會議/, lines: {
+  { tag: "window", re: /窗邊|夜景/, lines: {
+    cold: ["窗邊。講完返入。", "窗邊唔好靠太出。"],
+    wary: ["夜景好睇。檔未好睇。", "吹完講重點。"],
+    warmer: ["……風大。你仲挨近？", "窗外人聲遠。剛好。"],
+    sharp: ["返入。", "窗邊。快。"],
+  }},
+  { tag: "meeting", re: /會議室/, lines: {
     cold: ["會議室之外先講。", "簡報先。"],
-    wary: ["會未散。收聲。", "題外話留走廊。"],
+    wary: ["會未散。收聲。", "題外話留會後。"],
     warmer: ["……會開完，我未必趕你走。", "會議室燈光冷。你臉熱？"],
     sharp: ["開會。", "私人之後。"],
   }},
@@ -1514,29 +1521,380 @@ function isSilence(text) {
   return !t || /^[\.。．…·\s]+$/.test(t) || t === "..." || t === "。。。" || t === "……";
 }
 
-function sceneAsideLine(tone) {
-  const node = state.story && state.story.nodes && state.nodeId
-    ? state.story.nodes[state.nodeId]
-    : null;
-  if (!node) return null;
-  const blob = `${node.label || ""}\n${node.text || ""}\n${node.aside || ""}`;
-  for (const row of SCENE_ASIDES) {
-    if (row.re.test(blob)) {
-      const lines = row.lines[tone] || row.lines.cold;
-      return pickAvoidRepeat(lines);
+/* ============================================================
+   連戲 — beat glue (place + costume + heat). One profile per node.
+   node.tags / node.look / node.costume win when the story JSON sets them.
+   ============================================================ */
+const PLACE_LINE = [
+  { tag: "roof", re: /天台/ },
+  { tag: "lounge", re: /酒廊|房卡/ },
+  { tag: "pantry", re: /茶水間|杯麵|影印/ },
+  { tag: "lift", re: /電梯/ },
+  { tag: "meeting", re: /會議室/ },
+  { tag: "corridor", re: /走廊/ },
+  { tag: "window", re: /窗邊|夜景/ },
+  { tag: "bar", re: /杯沿/ },
+];
+
+const BEAT_PLACE_WORD = {
+  corridor: "走廊",
+  office: "枱邊",
+  desk: "枱邊",
+  roof: "天台",
+  lounge: "酒廊",
+  pantry: "茶水間",
+  lift: "電梯",
+  meeting: "會議室",
+  window: "窗邊",
+  call: "聽筒",
+  bar: "酒廊",
+};
+
+const BEAT_LOOK_WORD = {
+  dressed: "衫仍齊",
+  open: "領口未扣",
+  dark: "燈關住",
+  rain: "衫濕",
+};
+
+const BEAT_FALLBACK = {
+  corridor: { cold: "走廊。講。", wary: "門邊。簡短。", warmer: "走廊。我聽住。", sharp: "走廊。快。" },
+  office: { cold: "枱邊。講重點。", wary: "枱邊。簡短。", warmer: "枱邊。我聽住。", sharp: "枱邊。快。" },
+  desk: { cold: "枱邊。講重點。", wary: "檔前。簡短。", warmer: "枱邊。我聽住。", sharp: "檔前。交。" },
+  roof: { cold: "天台。講完返入。", wary: "風大。簡短。", warmer: "天台。我聽住。", sharp: "天台。返入。" },
+  lounge: { cold: "酒廊。講。", wary: "杯邊。簡短。", warmer: "酒廊。我聽住。", sharp: "酒廊。快。" },
+  pantry: { cold: "茶水間。講。", wary: "茶水間。簡短。", warmer: "茶水間。我聽住。", sharp: "茶水間。快。" },
+  lift: { cold: "電梯。講重點。", wary: "廂內。簡短。", warmer: "電梯。我聽住。", sharp: "電梯。快。" },
+  meeting: { cold: "會議室。簡報先。", wary: "會未散。簡短。", warmer: "會議室。我聽住。", sharp: "會議室。快。" },
+  window: { cold: "窗邊。講。", wary: "夜景。簡短。", warmer: "窗邊。我聽住。", sharp: "窗邊。返入。" },
+  call: { cold: "聽筒。講重點。", wary: "線路。簡短。", warmer: "聽筒。我聽住。", sharp: "通話。快。" },
+};
+
+const BOUNDARY_BUCKETS = { nsfw_probe: 1, date_hug: 1, flirt: 1, nickname: 1 };
+const BOUNDARY_TEXT_RE = /色情|脫衣|脫衫|裸|做愛|性交|鹹濕|污糟|黃腔|上床|錫嘴|想要你|攬住|鍾意你|中意你|我鐘意|好正|靚女|吻|摸我|除衫/;
+
+const FLIRT_BACK = {
+  alex: {
+    mid: ["大膽。我聽到。未過線。", "你試。我未應。"],
+    high: ["我回你。再近半寸。細聲。", "哼。你撩得準。我唔裝聽唔到。", "危險嘅暖。我留你多一刻。"],
+  },
+  morgan: {
+    mid: ["大膽。我聽到。未許可。", "你試。杯未放低。"],
+    high: ["我回你。靠近。你負責。", "危險。我想聽第二句。"],
+  },
+  sam: {
+    mid: ["我聽到。未准。", "你試探。我未應。"],
+    high: ["我回你。細聲。望住我。", "危險。我可以唔只係前輩。"],
+  },
+};
+
+const FACT_META = {
+  name: { ttl: 0, rank: 0, maxUses: 3, ttlMs: 0 },
+  promise: { ttl: 14, rank: 1, maxUses: 2, ttlMs: 45 * 60 * 1000 },
+  mistake: { ttl: 10, rank: 2, maxUses: 2, ttlMs: 25 * 60 * 1000 },
+  like: { ttl: 8, rank: 3, maxUses: 2, ttlMs: 20 * 60 * 1000 },
+  tired: { ttl: 5, rank: 6, maxUses: 1, ttlMs: 8 * 60 * 1000 },
+  hungry: { ttl: 5, rank: 6, maxUses: 1, ttlMs: 8 * 60 * 1000 },
+  nervous: { ttl: 5, rank: 6, maxUses: 1, ttlMs: 8 * 60 * 1000 },
+};
+
+function factMeta(id) {
+  return FACT_META[id] || { ttl: 8, rank: 4, maxUses: 2, ttlMs: 20 * 60 * 1000 };
+}
+
+function placeFromText(text) {
+  const s = String(text || "");
+  const rows = [
+    ["roof", /天台/],
+    ["lounge", /酒廊|酒吧/],
+    ["pantry", /茶水間/],
+    ["meeting", /會議室/],
+    ["lift", /電梯/],
+    ["corridor", /走廊|門邊|門禁/],
+    ["window", /窗邊|夜景/],
+  ];
+  let best = null;
+  let at = 1e9;
+  rows.forEach((row) => {
+    const m = s.match(row[1]);
+    if (m && m.index < at) {
+      at = m.index;
+      best = row[0];
+    }
+  });
+  return best;
+}
+
+function lookFromText(text) {
+  const s = String(text || "");
+  if (/燈關|燈暗|熄燈|黑暗/.test(s)) return "dark";
+  if (/敞開|解開.*鈕|除衫|底褲|領口/.test(s)) return "open";
+  if (/落雨|雨聲|濕衫|雨水|衫濕/.test(s)) return "rain";
+  return "dressed";
+}
+
+function beatProfile(node) {
+  const n = node || currentStoryNode();
+  const tags = {};
+  const add = (t) => { if (t) tags[t] = 1; };
+  const explicit = []
+    .concat((n && n.tags) || [])
+    .concat((n && n.chatTags) || []);
+  explicit.forEach((t) => add(String(t)));
+  if (n && n.look) add(String(n.look));
+  if (n && n.costume) add(String(n.costume));
+
+  let place = null;
+  explicit.forEach((t) => {
+    if (!place && BEAT_PLACE_WORD[t]) place = t;
+  });
+  const label = (n && n.label) || "";
+  const head = ((n && n.text) || "").slice(0, 180);
+  if (!place) place = placeFromText(label) || placeFromText(head);
+  if (!place) {
+    const scene = resolveScene(state.story, n);
+    place = scene === "lounge" ? "lounge" : scene === "pantry" ? "pantry" : scene === "lift" ? "lift" : "office";
+  }
+  add(place);
+  if (place === "lounge") add("bar");
+  if (place === "office") add("desk");
+  if (state.callMode || nodeWantsCall(n)) add("call");
+
+  let look = (n && (n.look || n.costume)) || "";
+  if (!BEAT_LOOK_WORD[look]) {
+    look = lookFromText(label + "\n" + head + "\n" + ((n && n.aside) || ""));
+  }
+  add(look);
+
+  const mood = inferMoodFromNode(n);
+  return { tags: tags, place: place, look: look, mood: mood };
+}
+
+function lineFitsBeat(line, beat) {
+  const text = String(line || "");
+  if (!text) return false;
+  const b = beat || beatProfile(null);
+  for (let i = 0; i < PLACE_LINE.length; i++) {
+    if (PLACE_LINE[i].re.test(text) && !b.tags[PLACE_LINE[i].tag]) return false;
+  }
+  if (b.look !== "dark" && /燈暗|熄燈|燈關|黑暗/.test(text)) return false;
+  if (b.look === "dark" && /走廊燈|螢光燈|燈唔使開/.test(text)) return false;
+  if (b.look === "dressed" && /底褲|敞開|除衫|解皮帶/.test(text)) return false;
+  if (b.look !== "rain" && /雨聲|濕衫|落雨|雨水|衫濕/.test(text)) return false;
+  if (b.look !== "open" && b.look !== "dark" && /領口未扣|衫未扣/.test(text)) return false;
+  return true;
+}
+
+function beatFallback(beat, tone) {
+  const b = beat || beatProfile(null);
+  const t = tone || state.chatTone || "cold";
+  if (b.look === "dark") {
+    const bank = { cold: "燈關住。講。", wary: "黑暗。簡短。", warmer: "燈關住。我聽住。", sharp: "燈關住。快。" };
+    return bank[t] || bank.cold;
+  }
+  if (b.look === "rain") {
+    const bank = { cold: "衫濕。講。", wary: "雨未停。簡短。", warmer: "雨聲。我聽住。", sharp: "雨裡。快。" };
+    return bank[t] || bank.cold;
+  }
+  if (b.look === "open") {
+    const bank = { cold: "領口未扣。講。", wary: "領口未扣。簡短。", warmer: "領口未扣。我聽住。", sharp: "領口未扣。快。" };
+    return bank[t] || bank.cold;
+  }
+  const pack = BEAT_FALLBACK[b.place] || BEAT_FALLBACK.office;
+  return pack[t] || pack.cold;
+}
+
+function glueBeat(line, beat) {
+  const b = beat || beatProfile(null);
+  const tone = state.chatTone || "cold";
+  const raw = String(line || "").trim();
+  const parts = raw.split(/(?<=[。！？?])/).map((s) => s.trim()).filter(Boolean);
+  const kept = [];
+  parts.forEach((p) => {
+    if (lineFitsBeat(p, b)) kept.push(p);
+  });
+  let out = kept.join("");
+  if (!out) out = beatFallback(b, tone);
+  const placeBit = BEAT_PLACE_WORD[b.place] || "";
+  const lookBit = BEAT_LOOK_WORD[b.look] || "";
+  const bits = [];
+  if (placeBit && out.indexOf(placeBit) < 0) bits.push(placeBit);
+  if (b.tags.call && out.indexOf("聽筒") < 0 && out.indexOf("通話") < 0) bits.push("聽筒");
+  if (lookBit && out.indexOf(lookBit) < 0) bits.push(lookBit);
+  if (!bits.length) return out;
+  const prefix = bits.join("。") + "。";
+  if ((prefix + out).length <= 118) return prefix + out;
+  if (placeBit && out.indexOf(placeBit) < 0 && (placeBit + "。" + out).length <= 118) return placeBit + "。" + out;
+  return out.length <= 118 ? out : out.slice(0, 118);
+}
+
+function intimacyBand() {
+  const heat = clampMeter(state.heat);
+  const mood = state.currentMood || inferMoodFromNode(currentStoryNode());
+  let score = heat;
+  if (mood === "intimate") score += 10;
+  if (mood === "tense" && heat < 50) score -= 8;
+  if (score >= 55) return "high";
+  if (score >= 35) return "mid";
+  return "low";
+}
+
+function boundaryTone(bucket) {
+  const band = intimacyBand();
+  if (!BOUNDARY_BUCKETS[bucket]) return state.chatTone || "cold";
+  if (band === "low") return "cold";
+  if (band === "mid") return "wary";
+  if ((state.chatTone === "sharp" || clampMeter(state.tension) >= 70) && clampMeter(state.heat) < 48) return "wary";
+  return "warmer";
+}
+
+function isBoundaryText(text) {
+  return BOUNDARY_TEXT_RE.test(String(text || ""));
+}
+
+function boundaryBucket(text, intentId) {
+  if (intentId === "flirt" || isBoundaryText(text)) {
+    const via = text ? matchBucket(text) : "flirt";
+    if (BOUNDARY_BUCKETS[via]) return via;
+    if (/色情|脫|裸|做愛|性交|鹹濕|黃腔/.test(text || "")) return "nsfw_probe";
+    if (/約|攬|抱抱|上床|錫|摸我|脫衫|除衫/.test(text || "")) return "date_hug";
+    return "flirt";
+  }
+  return "flirt";
+}
+
+function flirtBackLine(band) {
+  if (band !== "mid" && band !== "high") return "";
+  const id = getCastId();
+  const pack = (FLIRT_BACK[id] || FLIRT_BACK.alex)[band] || [];
+  const beat = beatProfile(null);
+  const ok = pack.filter((l) => lineFitsBeat(l, beat));
+  if (!ok.length) return "";
+  return pickAvoidRepeat(ok);
+}
+
+function peelQuestion(line) {
+  const s = String(line || "");
+  const q = s.match(/([^。！？?]*[？?])\s*$/);
+  if (!q) return { head: s.replace(/[。\s]+$/, ""), steer: "" };
+  return {
+    head: s.slice(0, q.index).replace(/[。\s]+$/, ""),
+    steer: q[1],
+  };
+}
+
+function boundaryAck(bucket, beat) {
+  const tone = boundaryTone(bucket);
+  const band = intimacyBand();
+  const raw = poolFor(bucket, tone) || [];
+  let pool = raw.filter((l) => lineFitsBeat(l, beat) && !/[？?]/.test(l) && String(l).length <= 28);
+  if (!pool.length) pool = raw.filter((l) => lineFitsBeat(l, beat) && !/[？?]/.test(l));
+  if (band === "low") {
+    const hard = pool.filter((l) => /距離|界線|收起|收聲|而家|監控|退/.test(l));
+    if (hard.length) pool = hard;
+  }
+  if (!pool.length) pool = [beatFallback(beat, tone)];
+  let line = String(pickAvoidRepeat(pool)).replace(/[？?]/g, "").replace(/[。\s]+$/, "");
+  if (band === "high") {
+    const back = flirtBackLine("high");
+    if (back && line.indexOf("我回你") < 0 && line.indexOf("撩") < 0) line = line + "。" + back.replace(/[。\s]+$/, "");
+  } else if (band === "mid") {
+    const back = flirtBackLine("mid");
+    if (back && line.indexOf("未") < 0) line = line + "。" + back.replace(/[。\s]+$/, "");
+  }
+  return line;
+}
+
+function finishBeatLine(line, opts) {
+  opts = opts || {};
+  syncChatTone();
+  const beat = beatProfile(currentStoryNode());
+  let out = String(line || "").trim();
+  const bucket = opts.bucket || (opts.userText ? matchBucket(opts.userText) : "");
+  const ladder = opts.ladder || BOUNDARY_BUCKETS[bucket] || isBoundaryText(opts.userText || "");
+  if (ladder) {
+    const peeled = peelQuestion(out);
+    const useBucket = BOUNDARY_BUCKETS[bucket] ? bucket : boundaryBucket(opts.userText || "", opts.intentId);
+    const ack = boundaryAck(useBucket, beat);
+    const steer = peeled.steer && lineFitsBeat(peeled.steer, beat) ? peeled.steer : peeled.steer;
+    out = steer ? ack + "。" + steer : ack;
+  }
+  const ask = !!opts.askMemory;
+  out = weaveFactCallback(out, { askMemory: ask });
+  out = glueBeat(out, beat);
+  return out;
+}
+
+function typingDelayMs(text) {
+  const len = Array.from(String(text || "")).length;
+  let ms = 400 + len * 34 + Math.floor(Math.random() * 240);
+  if (state.callMode) ms = Math.round(ms * 1.75);
+  const cap = state.callMode ? 4800 : 2700;
+  const floor = state.callMode ? 780 : 460;
+  ms = Math.max(floor, Math.min(cap, ms));
+  if (prefersReducedMotion()) ms = Math.min(ms, 540);
+  return ms;
+}
+
+function splitHumanLine(line) {
+  const text = String(line || "").trim();
+  if (text.length < 16) return [text];
+  const rate = state.callMode ? 0.16 : 0.24;
+  if (Math.random() > rate) return [text];
+  let cut = -1;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text.charAt(i);
+    if ("。！？?".indexOf(ch) < 0) continue;
+    if (i >= 4 && i <= text.length * 0.62) {
+      cut = i;
+      break;
     }
   }
-  return null;
+  if (cut < 0) return [text];
+  const a = text.slice(0, cut + 1).trim();
+  const b = text.slice(cut + 1).trim();
+  if (a.length < 4 || b.length < 4) return [text];
+  return [a, b];
+}
+
+async function deliverBotLine(line) {
+  const parts = splitHumanLine(line).filter(Boolean);
+  if (!parts.length) return;
+  for (let i = 0; i < parts.length; i++) {
+    setChatTyping(true);
+    await new Promise((r) => setTimeout(r, typingDelayMs(parts[i])));
+    setChatTyping(false);
+    appendChat("alex", parts[i]);
+    pushChatMemory("bot", parts[i]);
+  }
+  if (!audioPrefs.voiceMute) {
+    try { speakChat(parts.join("")); } catch (_) {}
+  }
+}
+
+function sceneAsideLine(tone) {
+  const beat = beatProfile(currentStoryNode());
+  const pool = [];
+  SCENE_ASIDES.forEach((row) => {
+    if (row.tag && !beat.tags[row.tag]) return;
+    const lines = row.lines[tone] || row.lines.cold || [];
+    lines.forEach((l) => {
+      if (lineFitsBeat(l, beat)) pool.push(l);
+    });
+  });
+  if (!pool.length) return null;
+  return pickAvoidRepeat(pool);
 }
 
 function topicEchoLine(tone) {
   if (!state.chatTopics.length) return null;
+  const beat = beatProfile(currentStoryNode());
   for (let i = state.chatTopics.length - 1; i >= 0; i--) {
     const topic = state.chatTopics[i];
     const pack = TOPIC_ECHO[topic];
     if (!pack) continue;
-    const lines = pack[tone] || pack.cold;
-    if (lines && lines.length) return pickAvoidRepeat(lines);
+    const lines = (pack[tone] || pack.cold || []).filter((l) => lineFitsBeat(l, beat));
+    if (lines.length) return pickAvoidRepeat(lines);
   }
   return null;
 }
@@ -1556,6 +1914,8 @@ function memoryChipLine(tone) {
 
 const PLAYER_FACT_RULES = [
   { id: "name", re: /(?:我叫|叫我|我個名(?:係|是))\s*([A-Za-z\u4e00-\u9fff]{1,8})/, quote: (m) => cleanFactName(m[1]), label: (m) => "你叫" + cleanFactName(m[1]) },
+  { id: "promise", re: /我應承|我答應|我保證|我會交|聽日交|下次一定|我交到|包在我/, quote: () => "應承", label: () => "你應承過" },
+  { id: "mistake", re: /我錯|打錯|寫錯|交遲|漏頁|搞錯|遲咗交|我失誤/, quote: () => "認錯", label: () => "你認過錯" },
   { id: "overtime", re: /加班|夜班|做到好夜|未收工/, quote: () => "加班", label: () => "你話加班" },
   { id: "tired", re: /好攰|好累|好眼瞓|想瞓|頂唔順/, quote: () => "好攰", label: () => "你話好攰" },
   { id: "report", re: /簡報|報告|交唔切/, quote: () => "簡報", label: () => "你話簡報" },
@@ -1577,20 +1937,80 @@ function cleanFactName(raw) {
   return String(raw || "").replace(/[，。！？、,.!?\s].*$/, "").slice(0, 6);
 }
 
+function stampFact(fact) {
+  const meta = factMeta(fact.id);
+  const turn = state.factTurn || 0;
+  fact.turn = turn;
+  fact.at = Date.now();
+  fact.nodeId = state.nodeId || "";
+  fact.ttl = meta.ttl;
+  fact.rank = meta.rank;
+  fact.maxUses = meta.maxUses;
+  fact.ttlMs = meta.ttlMs;
+  if (fact.uses == null) fact.uses = 0;
+  fact.echoAfter = turn + 1;
+  return fact;
+}
+
+function capPlayerFacts() {
+  const list = state.playerFacts || [];
+  if (list.length <= MAX_PLAYER_FACTS) return;
+  const ranked = list.slice().sort((a, b) => {
+    const ra = a.rank != null ? a.rank : 5;
+    const rb = b.rank != null ? b.rank : 5;
+    if (ra !== rb) return ra - rb;
+    return (b.turn || 0) - (a.turn || 0);
+  });
+  state.playerFacts = ranked.slice(0, MAX_PLAYER_FACTS);
+}
+
+function expirePlayerFacts() {
+  const turn = state.factTurn || 0;
+  const now = Date.now();
+  state.playerFacts = (state.playerFacts || []).filter((f) => {
+    if (!f || !f.id) return false;
+    const meta = factMeta(f.id);
+    const ttl = f.ttl != null ? f.ttl : meta.ttl;
+    if (ttl && f.turn != null && turn - f.turn > ttl) return false;
+    const ms = f.ttlMs != null ? f.ttlMs : meta.ttlMs;
+    if (ms && f.at && now - f.at > ms) return false;
+    return true;
+  });
+  capPlayerFacts();
+}
+
 function sanitizeFacts(raw) {
   if (!Array.isArray(raw)) return [];
   const out = [];
   const seen = {};
+  const now = Date.now();
   raw.forEach((f) => {
     if (!f || !f.id || !f.label || !f.quote || seen[f.id]) return;
+    const meta = factMeta(f.id);
+    const at = Number(f.at) || 0;
+    const ms = f.ttlMs != null ? Number(f.ttlMs) : meta.ttlMs;
+    if (ms && at && now - at > ms) return;
     seen[f.id] = 1;
     out.push({
       id: String(f.id).slice(0, 24),
       label: String(f.label).slice(0, 24),
       quote: String(f.quote).slice(0, 16),
+      turn: Number(f.turn) || 0,
+      at: at || now,
+      nodeId: String(f.nodeId || "").slice(0, 24),
+      ttl: f.ttl != null ? Number(f.ttl) : meta.ttl,
+      rank: f.rank != null ? Number(f.rank) : meta.rank,
+      maxUses: f.maxUses != null ? Number(f.maxUses) : meta.maxUses,
+      ttlMs: ms || 0,
+      uses: Number(f.uses) || 0,
+      echoAfter: Number(f.echoAfter) || 0,
     });
   });
-  return out.slice(-MAX_PLAYER_FACTS);
+  const ranked = out.sort((a, b) => {
+    if (a.rank !== b.rank) return a.rank - b.rank;
+    return (b.turn || 0) - (a.turn || 0);
+  });
+  return ranked.slice(0, MAX_PLAYER_FACTS);
 }
 
 function extractPlayerFact(text) {
@@ -1614,15 +2034,17 @@ function upsertPlayerFact(fact) {
   const list = state.playerFacts || (state.playerFacts = []);
   const idx = list.findIndex((f) => f.id === fact.id);
   if (idx >= 0) {
-    if (list[idx].quote === fact.quote) return null;
-    if (fact.id !== "name") return null;
-    list[idx] = fact;
+    const prev = list[idx];
+    const same = prev.quote === fact.quote;
+    if (same && fact.id !== "name" && fact.id !== "promise" && fact.id !== "mistake") return null;
+    fact.uses = prev.uses || 0;
+    list[idx] = stampFact(fact);
   } else {
-    list.push(fact);
-    if (list.length > MAX_PLAYER_FACTS) state.playerFacts = list.slice(-MAX_PLAYER_FACTS);
+    list.push(stampFact(fact));
   }
+  expirePlayerFacts();
   state.pendingFactId = fact.id;
-  return fact;
+  return list.find((f) => f.id === fact.id) || fact;
 }
 
 function notePlayerFact(text) {
@@ -1634,12 +2056,45 @@ function notePlayerFact(text) {
 }
 
 function recentHasFact(fact) {
-  if (!fact || !fact.quote) return false;
-  const token = "你頭先講" + fact.quote;
-  return (state.recentBotReplies || []).some((r) => String(r).indexOf(token) >= 0);
+  if (!fact) return false;
+  const token = factPhrase(fact);
+  if (!token) return false;
+  return (state.recentBotReplies || []).slice(-3).some((r) => String(r).indexOf(token) >= 0);
+}
+
+function factPhrase(fact) {
+  if (!fact) return "";
+  if (fact.id === "name") return "你叫" + fact.quote;
+  if (fact.id === "promise") return "你應承過";
+  if (fact.id === "mistake") return "你認過錯";
+  return "你頭先講" + fact.quote;
 }
 
 function factCallbackLine(fact) {
+  const tone = state.chatTone || "cold";
+  const phrase = factPhrase(fact);
+  const bank = {
+    name: {
+      cold: [phrase + "。我記得。", phrase + "。名我留低。"],
+      wary: [phrase + "。你自己報嘅。", phrase + "。唔好裝唔識。"],
+      warmer: ["……" + phrase + "。我叫得出口。", phrase + "。"],
+      sharp: [phrase + "。夠。", phrase + "。"],
+    },
+    promise: {
+      cold: [phrase + "。我等結果。", phrase + "。我留低。"],
+      wary: [phrase + "。證明。", phrase + "。唔好裝忘。"],
+      warmer: ["……" + phrase + "。我等你。", phrase + "。我記得。"],
+      sharp: [phrase + "。交。", phrase + "。"],
+    },
+    mistake: {
+      cold: [phrase + "。改到先算。", phrase + "。我記得。"],
+      wary: [phrase + "。下一手。", phrase + "。唔好再犯。"],
+      warmer: ["……" + phrase + "。改就得。", phrase + "。我留低。"],
+      sharp: [phrase + "。快改。", phrase + "。"],
+    },
+  };
+  const pack = bank[fact.id];
+  if (pack) return pickAvoidRepeat(pack[tone] || pack.cold);
   const q = fact.quote;
   return pickAvoidRepeat([
     "你頭先講" + q + "。",
@@ -1649,16 +2104,25 @@ function factCallbackLine(fact) {
 }
 
 function factForCallback(askMemory) {
+  expirePlayerFacts();
   const facts = state.playerFacts || [];
-  if (state.pendingFactId) {
-    for (let i = facts.length - 1; i >= 0; i--) {
-      if (facts[i].id === state.pendingFactId) return facts[i];
-    }
-  }
+  const turn = state.factTurn || 0;
+  const due = facts.filter((f) => {
+    if (!f || !f.quote) return false;
+    if (recentHasFact(f)) return false;
+    if (askMemory) return true;
+    if ((f.uses || 0) >= (f.maxUses || 2)) return false;
+    if ((f.echoAfter || 0) > turn) return false;
+    return true;
+  });
+  due.sort((a, b) => {
+    const ra = a.rank != null ? a.rank : 5;
+    const rb = b.rank != null ? b.rank : 5;
+    if (ra !== rb) return ra - rb;
+    return (a.turn || 0) - (b.turn || 0);
+  });
+  if (due.length) return due[0];
   if (!askMemory) return null;
-  for (let i = facts.length - 1; i >= 0; i--) {
-    if (!recentHasFact(facts[i])) return facts[i];
-  }
   if (state.memories && state.memories.length) {
     const id = state.memories[state.memories.length - 1];
     const quote = memoryLabel(id);
@@ -1674,13 +2138,15 @@ function weaveFactCallback(line, opts) {
   const fact = factForCallback(ask);
   const base = String(line || "");
   if (!fact) return base;
-  const token = "你頭先講" + fact.quote;
+  const token = factPhrase(fact) || ("你頭先講" + fact.quote);
   if (base.indexOf(token) >= 0) {
     state.pendingFactId = null;
     return base;
   }
-  if (recentHasFact(fact) && !state.pendingFactId) return base;
+  if (recentHasFact(fact) && !ask) return base;
   const cb = factCallbackLine(fact);
+  if (!ask && (cb + base).length > 110) return base;
+  if (fact.uses != null) fact.uses += 1;
   state.pendingFactId = null;
   return base ? cb + base : cb;
 }
@@ -1716,6 +2182,8 @@ function notePlayerTurn(text) {
   state.lastNotedTurn = t;
   state.lastNotedAt = now;
   state.sessionFirstPingSent = true;
+  state.factTurn = (state.factTurn || 0) + 1;
+  expirePlayerFacts();
   notePlayerFact(t);
   noteCallIntent(t);
 }
@@ -1760,25 +2228,24 @@ function matchBucket(userText) {
 
 function pickProactiveLine() {
   const tone = syncChatTone();
+  const beat = beatProfile(currentStoryNode());
   const facts = state.playerFacts || [];
+  let line = "";
   if (facts.length && Math.random() < 0.42) {
     const fact = facts[facts.length - 1];
-    if (fact && !recentHasFact(fact)) return factCallbackLine(fact);
+    if (fact && !recentHasFact(fact) && (fact.echoAfter || 0) <= (state.factTurn || 0)) {
+      line = factCallbackLine(fact);
+      if (fact.uses != null) fact.uses += 1;
+    }
   }
-  if (Math.random() < 0.35) {
-    const echo = topicEchoLine(tone);
-    if (echo) return echo;
+  if (!line && Math.random() < 0.35) line = topicEchoLine(tone) || "";
+  if (!line && Math.random() < 0.3) line = sceneAsideLine(tone) || "";
+  if (!line && state.memories.length && Math.random() < 0.25) line = memoryChipLine(tone) || "";
+  if (!line) {
+    const incoming = (getCast().incoming || []).filter((l) => lineFitsBeat(l, beat));
+    line = incoming.length ? pickAvoidRepeat(incoming) : beatFallback(beat, tone);
   }
-  if (Math.random() < 0.3) {
-    const aside = sceneAsideLine(tone);
-    if (aside) return aside;
-  }
-  if (state.memories.length && Math.random() < 0.25) {
-    const mem = memoryChipLine(tone);
-    if (mem) return mem;
-  }
-  const lines = getCast().incoming || [];
-  return pickAvoidRepeat(lines);
+  return glueBeat(line, beat);
 }
 
 
@@ -2200,6 +2667,44 @@ function portraitSrc(story) {
   return "./assets/stills/vera-03.jpg";
 }
 
+function beatStillSrc(story) {
+  const id = storyCastId(story);
+  if (id === "sam") return "./assets/stills/sammi-01.jpg?v=elise-lock1";
+  if (id === "morgan") return "./assets/stills/vera-02.jpg?v=elise-lock1";
+  return "./assets/stills/vera-03.jpg?v=elise-lock1";
+}
+
+function clearBeatAtmosphere() {
+  const body = document.body;
+  if (!body) return;
+  ["data-beat-mood", "data-beat-place", "data-beat-look", "data-beat-heat", "data-beat-tone"].forEach((key) => {
+    body.removeAttribute(key);
+  });
+}
+
+function applyBeatContinuity(story, node) {
+  const beat = beatProfile(node);
+  const tone = syncChatTone();
+  const body = document.body;
+  if (body) {
+    body.setAttribute("data-beat-mood", beat.mood || "cold");
+    body.setAttribute("data-beat-place", beat.place || "office");
+    body.setAttribute("data-beat-look", beat.look || "dressed");
+    body.setAttribute("data-beat-heat", intimacyBand());
+    body.setAttribute("data-beat-tone", tone || "cold");
+  }
+  const src = beatStillSrc(story);
+  const img = $("#alex-portrait");
+  if (img && src) {
+    const file = src.split("?")[0].split("/").pop();
+    const cur = img.getAttribute("src") || "";
+    if (cur.indexOf(file) < 0) img.setAttribute("src", src);
+  }
+  if (src && document.documentElement) {
+    document.documentElement.style.setProperty("--play-portrait", 'url("' + src + '")');
+  }
+}
+
 function applyStoryArt(story) {
   const src = portraitSrc(story);
   const img = $("#alex-portrait");
@@ -2492,16 +2997,18 @@ function incomingWaitMs() {
 
 function pickFirstPingLine() {
   const cast = getCast();
-  const pack = (cast.firstPing && cast.firstPing.length) ? cast.firstPing : (cast.incoming || []);
-  if (state.callMode) {
-    return pickAvoidRepeat(["線路通咗。你聽到未？", "通話中。回我一句。"].concat(pack));
+  const beat = beatProfile(currentStoryNode());
+  const pack = ((cast.firstPing && cast.firstPing.length) ? cast.firstPing : (cast.incoming || []))
+    .filter((l) => lineFitsBeat(l, beat));
+  let line = "";
+  if (state.callMode || beat.tags.call) {
+    line = pickAvoidRepeat(["聽筒。你聽到未？", "通話中。回我一句。"].concat(pack));
+  } else if (beat.place === "corridor") {
+    line = pickAvoidRepeat(["你喺走廊未？回我一句。", "門口。講。"].concat(pack));
+  } else {
+    line = pack.length ? pickAvoidRepeat(pack) : beatFallback(beat, syncChatTone());
   }
-  const node = currentStoryNode();
-  const blob = node ? ((node.label || "") + (node.text || "")) : "";
-  if (/門|走廊/.test(blob)) {
-    return pickAvoidRepeat(["你喺門口未？回我一句。", "走廊定入面？講。"].concat(pack));
-  }
-  return pickAvoidRepeat(pack);
+  return glueBeat(line, beat);
 }
 
 function pushIncomingPing() {
@@ -2673,10 +3180,12 @@ function moodBucketBoost(bucket) {
 function inferMoodFromNode(node) {
   if (!node) return "cold";
   const label = (node.label || "") + (node.endingTitle || "");
-  const text = node.text || "";
-  if (/臨界|越界|靠近|試探|主動/.test(label + text)) return "intimate";
-  if (/頂嘴|對峙|清楚|威脅/.test(label + text)) return "tense";
-  if (/克制|收斂|專業|結局/.test(label + text)) return "soft";
+  const text = (node.text || "").slice(0, 420);
+  const blob = label + text;
+  if (/燈關|燈暗|熄燈|黑暗/.test(blob)) return "intimate";
+  if (/臨界|越界|靠近|試探|主動/.test(blob)) return "intimate";
+  if (/頂嘴|對峙|清楚|威脅/.test(blob)) return "tense";
+  if (/克制|收斂|專業|結局/.test(blob)) return "soft";
   return "cold";
 }
 
@@ -2838,37 +3347,49 @@ function matchFreeChatReveal(userText) {
   return keys.some((k) => t.includes(String(k).toLowerCase()));
 }
 
+function linesForBeat(bucket, tone) {
+  const beat = beatProfile(currentStoryNode());
+  const raw = poolFor(bucket, tone) || [];
+  const ok = raw.filter((l) => lineFitsBeat(l, beat));
+  return ok.length ? ok : [beatFallback(beat, tone)];
+}
+
 function pickReply(userText) {
   const tone = syncChatTone();
   const t = (userText || "").toLowerCase();
   const askMem = /記得|之前|頭先|今晚|你知|你記得/.test(t);
+  const beatOpts = {
+    userText: userText,
+    ladder: isBoundaryText(userText) || BOUNDARY_BUCKETS[matchBucket(userText)],
+    bucket: boundaryBucket(userText, null),
+    askMemory: askMem || matchBucket(userText) === "memory",
+  };
 
   if (detectRepeat(userText)) {
     state.offTopicStreak = (state.offTopicStreak || 0) + 1;
-    const pool = poolFor("repeat", state.offTopicStreak >= 2 ? "sharp" : tone);
+    const useTone = state.offTopicStreak >= 2 ? "sharp" : tone;
     updateChatHint("repeat", false);
-    return pickAvoidRepeat(pool);
+    return finishBeatLine(pickAvoidRepeat(linesForBeat("repeat", useTone)), beatOpts);
   }
 
   if ((state.playerFacts.length || state.memories.length) && (askMem || matchBucket(userText) === "memory")) {
     state.offTopicStreak = 0;
     updateChatHint("memory", false);
-    const remembered = weaveFactCallback(memoryChipLine(tone) || "", { askMemory: true });
-    if (remembered) return remembered;
+    return finishBeatLine(memoryChipLine(tone) || "", { askMemory: true, userText: userText });
   }
   if ((state.playerFacts.length || state.memories.length) && Math.random() < 0.18) {
-    const line = weaveFactCallback(memoryChipLine(tone) || "", { askMemory: false });
+    const line = finishBeatLine(memoryChipLine(tone) || "", { askMemory: false, userText: userText });
     if (line) return line;
   }
 
   if (state.chatTopics.length && Math.random() < 0.32) {
     const echo = topicEchoLine(tone);
-    if (echo) return echo;
+    if (echo) return finishBeatLine(echo, { userText: userText });
   }
 
   if (Math.random() < 0.16) {
     const aside = sceneAsideLine(tone);
-    if (aside) return aside;
+    if (aside) return finishBeatLine(aside, { userText: userText });
   }
 
   let bucket = matchBucket(userText);
@@ -2881,19 +3402,22 @@ function pickReply(userText) {
   }
 
   let useTone = tone;
-  if ((state.offTopicStreak || 0) >= 2 && isOffTopicBucket(bucket)) {
+  if (BOUNDARY_BUCKETS[bucket]) useTone = boundaryTone(bucket);
+  else if ((state.offTopicStreak || 0) >= 2 && isOffTopicBucket(bucket)) {
     useTone = state.offTopicStreak >= 4 ? "sharp" : (tone === "warmer" ? "cold" : "sharp");
-    // prefer shorter cold/sharp lines from same bucket
   }
 
   updateChatHint(bucket, false);
-  const pool = poolFor(bucket, useTone);
-  let line = pickAvoidRepeat(pool);
-  // never admit bot/AI
+  let line = pickAvoidRepeat(linesForBeat(bucket, useTone));
   if (/人工智能|聊天機器人|我是AI|我是机器人|我是機械人|語言模型|ChatGPT/i.test(line)) {
-    line = pickAvoidRepeat(poolFor("ai_ask", "cold"));
+    line = pickAvoidRepeat(linesForBeat("ai_ask", "cold"));
   }
-  return weaveFactCallback(line, { askMemory: false });
+  return finishBeatLine(line, {
+    userText: userText,
+    ladder: !!BOUNDARY_BUCKETS[bucket] || isBoundaryText(userText),
+    bucket: bucket,
+    askMemory: false,
+  });
 }
 
 
@@ -2928,20 +3452,18 @@ async function handleChatSubmit(text) {
 
   const intent = matchFreeChatIntent(cleaned);
   const shouldReveal = matchFreeChatReveal(cleaned);
-  const delay = 400 + Math.random() * 800;
-  await new Promise((r) => setTimeout(r, delay));
 
   if (intent && intent.next) {
     const tone = syncChatTone();
-    const ackPool = poolFor(intent.bucket || "greet", tone);
-    const ack = weaveFactCallback(
-      intent.ack ? intent.ack : pickAvoidRepeat(ackPool),
-      { askMemory: false }
-    );
-    setChatTyping(false);
-    appendChat("alex", ack);
-    pushChatMemory("bot", ack);
-    if (!audioPrefs.voiceMute) speakChat(ack);
+    const bucket = intent.bucket || "greet";
+    const useTone = BOUNDARY_BUCKETS[bucket] ? boundaryTone(bucket) : tone;
+    const rawAck = intent.ack ? intent.ack : pickAvoidRepeat(linesForBeat(bucket, useTone));
+    const ack = finishBeatLine(rawAck, {
+      userText: cleaned,
+      ladder: !!BOUNDARY_BUCKETS[bucket] || isBoundaryText(cleaned),
+      bucket: bucket,
+    });
+    await deliverBotLine(ack);
     AudioEngine.sfxTransition();
     updateChatHint(intent.bucket || "greet", true);
     state.chatBusy = false;
@@ -2957,10 +3479,7 @@ async function handleChatSubmit(text) {
   }
 
   const reply = pickReply(cleaned);
-  setChatTyping(false);
-  appendChat("alex", reply);
-  pushChatMemory("bot", reply);
-  if (!audioPrefs.voiceMute) speakChat(reply);
+  await deliverBotLine(reply);
   AudioEngine.sfxTransition();
   state.chatBusy = false;
   noteChatActivity();
@@ -2973,7 +3492,7 @@ function resetChat() {
   setChatTyping(false);
   state.chatBusy = false;
   resetChatSessionMemory();
-  const greet = getCast().greeting;
+  const greet = glueBeat(getCast().greeting, beatProfile(currentStoryNode()));
   appendChat("alex", greet);
   pushChatMemory("bot", greet);
   if ($("#screen-play") && $("#screen-play").classList.contains("active")) {
@@ -2997,6 +3516,7 @@ function show(name) {
     el.classList.toggle("active", key === name);
   });
   document.body.classList.toggle("mode-play", name === "play");
+  if (name !== "play") clearBeatAtmosphere();
   if (typeof window.__ahSyncKeyboard === "function") window.__ahSyncKeyboard();
   if (name !== "play") duckBgmForVideo(false);
   if (name === "play") startIncomingRhythm();
@@ -3040,6 +3560,7 @@ function clearProgress() {
   state.memories = [];
   state.playerFacts = [];
   state.pendingFactId = null;
+  state.factTurn = 0;
   state.callFromIntent = false;
   state.callIntentCountOnNode = 0;
   state.callIntentCooldownUntil = 0;
@@ -3167,6 +3688,7 @@ function startAlex(fresh) {
     state.memories = [];
     state.playerFacts = [];
     state.pendingFactId = null;
+    state.factTurn = 0;
     state.callFromIntent = false;
     state.callIntentCountOnNode = 0;
     state.callIntentCooldownUntil = 0;
@@ -3192,6 +3714,7 @@ function renderNode() {
   if (!node) return;
 
   state.currentMood = inferMoodFromNode(node);
+  applyBeatContinuity(state.story, node);
 
   if (node.ending) {
     cancelSpeech();
@@ -4107,7 +4630,13 @@ function installExperienceHooks() {
       const decision = origDecide(input);
       if (decision && !decision.advance && decision.reply) {
         const id = (input && input.intent && input.intent.id) || decision.intentId || "";
-        decision.reply = weaveFactCallback(decision.reply, { askMemory: id === "ask_memory" });
+        decision.reply = finishBeatLine(decision.reply, {
+          userText: text,
+          intentId: id,
+          ladder: id === "flirt" || isBoundaryText(text),
+          bucket: id === "flirt" ? "flirt" : boundaryBucket(text, id),
+          askMemory: id === "ask_memory",
+        });
       }
       return decision;
     };
@@ -4233,6 +4762,26 @@ async function init() {
     show("cover");
   }
 }
+
+try {
+  window.__ahDeliverBot = deliverBotLine;
+  window.__ahThicken = {
+    beatProfile: beatProfile,
+    lineFitsBeat: lineFitsBeat,
+    glueBeat: glueBeat,
+    finishBeatLine: finishBeatLine,
+    extractPlayerFact: extractPlayerFact,
+    intimacyBand: intimacyBand,
+    typingDelayMs: typingDelayMs,
+    splitHumanLine: splitHumanLine,
+    applyBeatContinuity: applyBeatContinuity,
+    boundaryTone: boundaryTone,
+    state: state,
+    notePlayerTurn: notePlayerTurn,
+    sanitizeFacts: sanitizeFacts,
+    expirePlayerFacts: expirePlayerFacts,
+  };
+} catch (_) {}
 
 installExperienceHooks();
 let experienceHookTries = 0;
