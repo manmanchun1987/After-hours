@@ -312,6 +312,34 @@ expect(body.getAttribute("data-beat-heat") === "low", "atmosphere heat");
 var portrait = root.style && root.style._play;
 expect(true, "still path checked in apply");
 
+var alexStory = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/alex.json"), "utf8"));
+var facefusion = "vera-facefusion-preview.mp4";
+var hotNodes = ["n5", "n5b", "n5c", "n6a", "n6b", "n6c", "n6a2", "n6b2", "n6c2", "ending_a", "ending_b"];
+hotNodes.forEach(function (id) {
+  var pv = (alexStory.nodes[id] && alexStory.nodes[id].portraitVideo) || "";
+  expect(pv.indexOf(facefusion) >= 0, id + " missing facefusion clip: " + pv);
+  expect(pv.indexOf("vera-i2v") < 0 && pv.indexOf("vera-loop") < 0, id + " still on the wrong Vera clip: " + pv);
+});
+["n0", "n1", "n4x", "n7pre", "n7", "n7b", "n8a", "n8b", "n8a2", "n8b2", "ending_a_lock", "ending_b_lock", "ending_c"].forEach(function (id) {
+  var pv = (alexStory.nodes[id] && alexStory.nodes[id].portraitVideo) || "";
+  expect(pv.indexOf("facefusion") < 0, id + " must stay off the lights-out clip: " + pv);
+  expect(pv.indexOf("vera-i2v") < 0, id + " must stay off i2v: " + pv);
+});
+Object.keys(alexStory.nodes).forEach(function (id) {
+  var pv = alexStory.nodes[id].portraitVideo || "";
+  if (pv.indexOf("facefusion") >= 0 && hotNodes.indexOf(id) < 0) {
+    expect(false, "facefusion leaked to " + id);
+  }
+});
+expect(fs.existsSync(path.join(__dirname, "../assets/video/vera-facefusion-preview.mp4")), "facefusion file missing");
+expect(fs.readFileSync(path.join(__dirname, "../data/morgan.json"), "utf8").indexOf("facefusion") < 0, "Elise retargeted");
+expect(fs.readFileSync(path.join(__dirname, "../data/sam.json"), "utf8").indexOf("facefusion") < 0, "Sammi retargeted");
+var appSrc = fs.readFileSync(path.join(__dirname, "../app.js"), "utf8");
+expect(appSrc.indexOf('return "./assets/video/vera-loop.mp4"') >= 0, "Vera idle left vera-loop");
+expect(appSrc.indexOf('return "./assets/video/sammi-loop.mp4"') >= 0, "Sammi idle retargeted");
+expect(appSrc.indexOf("vid.muted = true") >= 0, "portrait clip not muted");
+expect(appSrc.indexOf("duckBgmForVideo(true)") < 0, "portrait load still ducks the scene bed");
+
 if (fails.length) {
   console.error("FAIL\n" + fails.join("\n"));
   process.exit(1);
