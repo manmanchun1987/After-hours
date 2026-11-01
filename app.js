@@ -2,7 +2,7 @@ const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
 
 const STORY_FILES = {
-  alex: "./data/alex.json",
+  alex: "./data/alex.json?v=ff-20261101",
   morgan: "./data/morgan.json",
   sam: "./data/sam.json",
 };
@@ -2562,8 +2562,9 @@ let portraitVideoGen = 0;
 
 function portraitVideoSrc(story, node) {
   // Node clip wins (one mood file on a stretch). Else per-cast loop.
-  // Missing file → still via onerror. Sammi loop CEO-approved 2026-10-23;
-  // Vera idle is vera-loop; Elise stays on the still until a clip is approved.
+  // Missing file → still via onerror. Sammi loop CEO-approved 2026-10-23.
+  // Vera idle is vera-loop (blazer on). Lights-out nodes set
+  // vera-facefusion-preview; Elise stays on the still until a clip is approved.
   const current = node || ((story && story.nodes && state.nodeId && story.nodes[state.nodeId])
     ? story.nodes[state.nodeId]
     : null);
@@ -2630,7 +2631,8 @@ function syncPortraitVideo(story, node) {
       vid.removeAttribute("hidden");
       if (stack) stack.classList.add("has-video");
       if (bg) bg.classList.add("has-video");
-      duckBgmForVideo(true);
+      // Muted portrait clips have no track to make room for (#78).
+      duckBgmForVideo(false);
       const p = vid.play();
       if (p && p.catch) p.catch(function () {});
     };
@@ -2675,7 +2677,8 @@ const CAST_SCENE = { alex: "office", morgan: "lounge", sam: "pantry" };
 /*
  * Exceptions only. Everything else uses node.scene or CAST_SCENE.
  * alex n0: corridor outside her door (no corridor plate — lift is the shell; aside stays corridor).
- * alex dark: Friday lights-out stretch that already plays vera-i2v. Same office, grade only.
+ * alex dark: Friday lights-out / 天亮前. FaceFusion preview (lingerie, blazer off).
+ * Same office plate, dark grade. Lit office and Monday review stay vera-loop.
  * alex review: Monday 評核室 (n7pre stays office — still outside the door).
  * morgan m3x–m3x5: lobby + lift car. Suite/window stays lounge (no suite plate).
  * sam office: copier + badge corridor.
