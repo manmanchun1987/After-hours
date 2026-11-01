@@ -851,6 +851,7 @@ body.mode-play .play-lower,
      .scene-layer-portrait
      .scene-layer-fg > .fg-prop[data-prop]
        monitor-glow | blinds | vending-glow | cup-noodles | wine-glass | floor-indicator
+       lift-blackout-veil | roof-rain-streaks
        .fg-anim-float | .fg-anim-pulse | .fg-anim-sway
    Visual only. Does not set .keyboard-open or --app-vh.
    Does not change .play-face-gap / .play-lower heights.
@@ -1130,6 +1131,21 @@ body.mode-play .play-lower,
   -webkit-mask-mode: alpha;
   mask-mode: alpha;
   opacity: 0.7;
+}
+
+/* Atmosphere only. Screen drops the black field so the portrait layer stays visible.
+   Overscan crops the generator matte in the corners of the veil plate. */
+#screen-play .fg-prop[data-prop="lift-blackout-veil"] {
+  inset: 0;
+  background: url("./assets/props/lift-blackout-veil.jpg?v=act2hot1") center / 112% 112% no-repeat;
+  mix-blend-mode: screen;
+}
+
+#screen-play .fg-prop[data-prop="roof-rain-streaks"] {
+  inset: 0;
+  background: url("./assets/props/roof-rain-streaks.jpg?v=act2hot1") center / cover no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.85;
 }
 
 #screen-play .fg-anim-float {

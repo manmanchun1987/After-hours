@@ -340,6 +340,82 @@ expect(appSrc.indexOf('return "./assets/video/sammi-loop.mp4"') >= 0, "Sammi idl
 expect(appSrc.indexOf("vid.muted = true") >= 0, "portrait clip not muted");
 expect(appSrc.indexOf("duckBgmForVideo(true)") < 0, "portrait load still ducks the scene bed");
 
+var morganStory = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/morgan.json"), "utf8"));
+var samStory = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/sam.json"), "utf8"));
+var hotStill = {
+  m7hot: "elise-open-collar-cutout.jpg",
+  m8: "elise-lift-dark-cutout.jpg",
+  ending_m2_a: "elise-lift-dark-cutout.jpg",
+  s6near: "sammi-open-collar-cutout.jpg",
+  s7hot: "sammi-open-collar-cutout.jpg",
+  s8: "sammi-lift-dark-cutout.jpg",
+  ending_s2_a: "sammi-lift-dark-cutout.jpg",
+  s8r: "sammi-rain-wet-cutout.jpg",
+  ending_s2_r: "sammi-rain-wet-cutout.jpg"
+};
+var hotLook = {
+  m7hot: "open", m8: "dark", ending_m2_a: "dark",
+  s6near: "open", s7hot: "open", s8: "dark", ending_s2_a: "dark",
+  s8r: "rain", ending_s2_r: "rain"
+};
+var hotScene = {
+  m7hot: "lift", m8: "lift", ending_m2_a: "lift",
+  s6near: "pantry", s7hot: "lift", s8: "lift", ending_s2_a: "lift",
+  s8r: "roof", ending_s2_r: "roof"
+};
+var veilNodes = { m8: 1, ending_m2_a: 1, s8: 1, ending_s2_a: 1 };
+var rainNodes = { s8r: 1, ending_s2_r: 1 };
+function propIds(node) {
+  return (node.props || []).map(function (p) { return typeof p === "string" ? p : (p && p.id); });
+}
+function storyFor(id) {
+  return id.charAt(0) === "m" || id.indexOf("ending_m") === 0 ? morganStory : samStory;
+}
+Object.keys(hotStill).forEach(function (id) {
+  var node = storyFor(id).nodes[id];
+  expect(!!node, id + " missing");
+  if (!node) return;
+  expect((node.portrait || "").indexOf(hotStill[id]) >= 0, id + " portrait " + node.portrait);
+  expect(!node.still, id + " should use portrait, not still");
+  expect(node.look === hotLook[id], id + " look " + node.look);
+  expect(node.scene === hotScene[id], id + " scene " + node.scene);
+  var props = propIds(node);
+  expect(props.indexOf("lift-blackout-veil") >= 0 === !!veilNodes[id], id + " veil " + props.join(","));
+  expect(props.indexOf("roof-rain-streaks") >= 0 === !!rainNodes[id], id + " rain " + props.join(","));
+  var src = api.beatStillSrc(storyFor(id), node);
+  expect(src.indexOf(hotStill[id]) >= 0, id + " beatStillSrc " + src);
+  expect(src.indexOf("v=act2hot1") >= 0, id + " cache bust " + src);
+  var file = hotStill[id].indexOf("elise") === 0
+    ? path.join(__dirname, "../assets/stills", hotStill[id])
+    : path.join(__dirname, "../assets/stills", hotStill[id]);
+  expect(fs.existsSync(file), hotStill[id] + " missing");
+});
+expect(fs.existsSync(path.join(__dirname, "../assets/props/lift-blackout-veil.jpg")), "veil file missing");
+expect(fs.existsSync(path.join(__dirname, "../assets/props/roof-rain-streaks.jpg")), "rain file missing");
+[morganStory, samStory].forEach(function (story) {
+  Object.keys(story.nodes).forEach(function (id) {
+    var node = story.nodes[id];
+    var custom = (node.portrait || "") + (node.still || "");
+    if (node.look === "dressed") {
+      expect(custom.indexOf("cutout") < 0, id + " dressed still swapped " + custom);
+      var lock = story.id === "sam" ? "sammi-01.jpg" : "vera-02.jpg";
+      var src = api.beatStillSrc(story, node);
+      expect(src.indexOf(lock) >= 0, id + " dressed left lock " + src);
+    }
+  });
+});
+expect(api.beatStillSrc(morganStory, { id: "x", look: "dark", still: "./assets/stills/elise-lift-dark-cutout.jpg" }).indexOf("elise-lift-dark-cutout.jpg") >= 0, "node.still fallback");
+expect(api.beatStillSrc(morganStory, {
+  id: "y",
+  look: "open",
+  portrait: "./assets/stills/elise-open-collar-cutout.jpg",
+  still: "./assets/stills/elise-lift-dark-cutout.jpg"
+}).indexOf("elise-open-collar-cutout.jpg") >= 0, "portrait wins over still");
+expect(api.portraitVideoSrc(samStory, samStory.nodes.s7).indexOf("sammi-loop.mp4") >= 0, "dressed s7 lost sammi loop");
+expect(api.portraitVideoSrc(samStory, samStory.nodes.s7hot) == null, "s7hot still covered by loop");
+expect(api.portraitVideoSrc(samStory, samStory.nodes.s8r) == null, "s8r still covered by loop");
+expect(api.portraitVideoSrc(alexStory, alexStory.nodes.n0).indexOf("vera-loop.mp4") >= 0, "Vera idle left vera-loop via src");
+
 if (fails.length) {
   console.error("FAIL\n" + fails.join("\n"));
   process.exit(1);
