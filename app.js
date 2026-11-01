@@ -2,9 +2,9 @@ const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
 
 const STORY_FILES = {
-  alex: "./data/alex.json?v=ff-20261101",
-  morgan: "./data/morgan.json",
-  sam: "./data/sam.json",
+  alex: "./data/alex.json?v=phone-20261101",
+  morgan: "./data/morgan.json?v=phone-20261101",
+  sam: "./data/sam.json?v=phone-20261101",
 };
 
 const state = {
@@ -60,6 +60,9 @@ const state = {
   callExitTimer: null,
   callIntentEndTimer: null,
   lastCallSfxAt: 0,
+  callBeatNodeId: "",
+  endings: {},
+  nightFrom: {},
 };
 
 const audioPrefs = {
@@ -868,8 +871,8 @@ const CAST_VOICE = {
     rules: null,
   },
   morgan: {
-    name: "Morgan",
-    toast: "Morgan 傳咗訊息",
+    name: "Elise",
+    toast: "Elise 傳咗訊息",
     greeting: "夜晚先傾人。你想講邊條？",
     incoming: [
       "合約……定你？",
@@ -893,8 +896,8 @@ const CAST_VOICE = {
     rules: null,
   },
   sam: {
-    name: "Sam",
-    toast: "Sam 傳咗訊息",
+    name: "Sammi",
+    toast: "Sammi 傳咗訊息",
     greeting: "杯麵未涼。有事？",
     incoming: [
       "你仲未走？",
@@ -1496,6 +1499,7 @@ function resetChatSessionMemory() {
   state.proactiveCooldownUntil = 0;
   state.lastChatActivityAt = Date.now();
   state.sessionFirstPingSent = false;
+  state.callBeatNodeId = "";
   state.pendingFactId = null;
   state.lastNotedTurn = "";
   state.lastNotedAt = 0;
@@ -2104,9 +2108,62 @@ function topicEchoLine(tone, onlyTopic) {
   return null;
 }
 
+function storyPhone() {
+  return (state.story && state.story.phone) || {};
+}
+
+/** Ending tags win, then heat-floor tags, then the latest story chip. */
+function preferredMemoryId() {
+  const list = state.memories || [];
+  for (let i = list.length - 1; i >= 0; i--) {
+    if (/^from_ending_/.test(list[i])) return list[i];
+  }
+  for (let i = list.length - 1; i >= 0; i--) {
+    if (/^act2_from_/.test(list[i])) return list[i];
+  }
+  return list.length ? list[list.length - 1] : "";
+}
+
+function memoryChipLabel(id) {
+  const chips = storyPhone().chips || {};
+  return chips[id] || memoryLabel(id);
+}
+
+function takePhoneLine(kind) {
+  const pack = storyPhone()[kind];
+  if (!pack || typeof pack !== "object") return "";
+  const band = intimacyBand();
+  const rows = [].concat(pack[band] || [], pack.any || []);
+  const beat = beatProfile(currentStoryNode());
+  const ok = rows.filter((l) => l && lineFitsBeat(l, beat));
+  if (!ok.length) return "";
+  return pickAvoidRepeat(ok, "phone:" + kind + ":" + band);
+}
+
+function takeInboxLine(preferContinuity) {
+  const phone = storyPhone();
+  const beat = beatProfile(currentStoryNode());
+  const id = preferredMemoryId();
+  const map = phone.inboxContinuity || {};
+  const fit = (l) => l && lineFitsBeat(l, beat);
+  const cont = (id && map[id] ? map[id] : []).filter(fit);
+  const band = intimacyBand();
+  const heat = ((phone.inbox && phone.inbox[band]) || []).filter(fit);
+  const rows = preferContinuity && cont.length ? cont : cont.concat(heat);
+  if (!rows.length) return "";
+  return pickAvoidRepeat(rows, "inbox:" + (preferContinuity && cont.length ? id : band));
+}
+
 function memoryChipLine(tone) {
-  if (!state.memories.length) return null;
-  const id = state.memories[state.memories.length - 1];
+  const id = preferredMemoryId();
+  if (!id) return null;
+  const voice = (storyPhone().memory || {})[id];
+  const beat = beatProfile(currentStoryNode());
+  if (voice) {
+    const raw = voice[tone] || voice.cold || [];
+    const ok = raw.filter((l) => lineFitsBeat(l, beat));
+    if (ok.length) return pickAvoidRepeat(ok, "memory:" + id);
+  }
   const label = memoryLabel(id);
   const bank = {
     cold: [`……我記得。${label}。唔好當我善忘。`, `${label}——你以為我會刪低？`, `你而家先問？${label}，我一路記住。`],
@@ -2535,6 +2592,8 @@ function pickProactiveLine() {
   if (!line && Math.random() < 0.35) line = topicEchoLine(tone) || "";
   if (!line && Math.random() < 0.3) line = sceneAsideLine(tone) || "";
   if (!line && state.memories.length && Math.random() < 0.25) line = memoryChipLine(tone) || "";
+  if (!line && (state.callMode || beat.tags.call)) line = takePhoneLine("call") || "";
+  if (!line) line = takeInboxLine(false) || "";
   if (!line) {
     const incoming = (getCast().incoming || []).filter((l) => lineFitsBeat(l, beat));
     line = incoming.length ? pickAvoidRepeat(incoming, "incoming") : beatFallback(beat, tone);
@@ -3076,11 +3135,20 @@ function addMemories(ids) {
 
 function memoryRows() {
   const rows = [];
+  const cont = [];
+  const rest = [];
+  (state.memories || []).forEach((id) => {
+    if (/^(from_ending_|act2_from_)/.test(id)) cont.push(id);
+    else rest.push(id);
+  });
+  cont.forEach((id) => {
+    rows.push({ key: "s:" + id, label: memoryChipLabel(id) });
+  });
   (state.playerFacts || []).forEach((f) => {
     if (f && f.label) rows.push({ key: "f:" + f.id, label: f.label });
   });
-  (state.memories || []).forEach((id) => {
-    rows.push({ key: "s:" + id, label: memoryLabel(id) });
+  rest.forEach((id) => {
+    rows.push({ key: "s:" + id, label: memoryChipLabel(id) });
   });
   return rows;
 }
@@ -3258,6 +3326,20 @@ function applyNodeMeta(node) {
   renderMemoryStrip();
   renderThoughtAside(node);
   renderMeters();
+  maybePushCallBeat(node);
+}
+
+function maybePushCallBeat(node) {
+  if (!node || !nodeWantsCall(node)) return;
+  const id = node.id || state.nodeId || "";
+  if (!id || state.callBeatNodeId === id) return;
+  state.callBeatNodeId = id;
+  const raw = takePhoneLine("call");
+  if (!raw) return;
+  const line = glueBeat(raw, beatProfile(node));
+  if (!line) return;
+  appendChat("alex", line);
+  pushChatMemory("bot", line);
 }
 
 
@@ -3318,6 +3400,14 @@ function incomingWaitMs() {
 function pickFirstPingLine() {
   const cast = getCast();
   const beat = beatProfile(currentStoryNode());
+  if (state.callMode || beat.tags.call) {
+    const callLine = takePhoneLine("call");
+    if (callLine) return glueBeat(callLine, beat);
+  }
+  if (preferredMemoryId()) {
+    const inbox = takeInboxLine(true);
+    if (inbox) return glueBeat(inbox, beat);
+  }
   const pack = ((cast.firstPing && cast.firstPing.length) ? cast.firstPing : (cast.incoming || []))
     .filter((l) => lineFitsBeat(l, beat));
   let line = "";
@@ -3736,6 +3826,11 @@ function pickReply(userText) {
     if (aside) return finishBeatLine(aside, { userText: userText });
   }
 
+  if (!lockJump && (state.callMode || beatProfile(currentStoryNode()).tags.call) && Math.random() < 0.55) {
+    const callLine = takePhoneLine("call");
+    if (callLine) return finishBeatLine(callLine, { userText: userText });
+  }
+
   if (!held) bucket = moodBucketBoost(liveBucket);
 
   if (isOffTopicBucket(bucket)) {
@@ -3890,6 +3985,8 @@ function save() {
       playerFacts: sanitizeFacts(state.playerFacts),
       heat: state.heat,
       tension: state.tension,
+      endings: state.endings || {},
+      nightFrom: state.nightFrom || {},
     })
   );
 }
@@ -3897,7 +3994,9 @@ function save() {
 function clearProgress() {
   const ageOk = state.ageOk;
   const storyId = state.storyId;
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ageOk, storyId }));
+  const endings = state.endings || {};
+  const nightFrom = state.nightFrom || {};
+  localStorage.setItem(STORAGE_KEY, JSON.stringify({ ageOk, storyId, endings, nightFrom }));
   state.nodeId = null;
   state.path = [];
   state.memories = [];
@@ -4051,6 +4150,39 @@ function act2ContinueTarget(node) {
   };
 }
 
+function noteStoryEnding(node) {
+  if (!node || !node.ending || !node.id || !state.storyId) return;
+  if (!state.endings || typeof state.endings !== "object") state.endings = {};
+  state.endings[state.storyId] = node.id;
+  if (!act2ContinueTarget(node)) return;
+  if (!state.nightFrom || typeof state.nightFrom !== "object") state.nightFrom = {};
+  state.nightFrom[state.storyId] = node.id;
+}
+
+function secondNightSeed() {
+  const id = state.storyId;
+  const fromMap = state.nightFrom || {};
+  const endMap = state.endings || {};
+  const endingId = fromMap[id] || endMap[id] || "";
+  const target = endingId ? act2ContinueTarget({ id: endingId }) : null;
+  const memories = ["act2_from_cast"];
+  let heat = 24;
+  if (target) {
+    if (target.heat) heat = Math.max(heat, target.heat);
+    (target.remember || []).forEach((mem) => {
+      if (mem && memories.indexOf(mem) < 0) memories.push(mem);
+    });
+  }
+  return { heat: clampMeter(heat), memories: memories.slice(0, MAX_MEMORIES) };
+}
+
+function applySecondNight() {
+  const seed = secondNightSeed();
+  state.heat = seed.heat;
+  state.tension = 18;
+  state.memories = seed.memories.slice();
+}
+
 function continueNextNight() {
   const node = state.story && state.story.nodes && state.story.nodes[state.nodeId];
   const target = act2ContinueTarget(node);
@@ -4079,9 +4211,12 @@ function startAlex(fresh, entry) {
   if (wantAct2 || fresh || !state.nodeId || !state.story.nodes[state.nodeId]) {
     state.nodeId = wantAct2 ? act2Id : state.story.start;
     state.path = [state.nodeId];
-    state.heat = wantAct2 ? 24 : 20;
-    state.tension = wantAct2 ? 18 : 15;
-    state.memories = wantAct2 ? ["act2_from_cast"] : [];
+    if (wantAct2) applySecondNight();
+    else {
+      state.heat = 20;
+      state.tension = 15;
+      state.memories = [];
+    }
     state.playerFacts = [];
     state.pendingFactId = null;
     state.factTurn = 0;
@@ -4113,6 +4248,7 @@ function renderNode() {
   applyBeatContinuity(state.story, node);
 
   if (node.ending) {
+    noteStoryEnding(node);
     cancelSpeech();
     setCallMode(false);
     $("#ending-kicker").textContent = node.label || "結局";
@@ -5078,6 +5214,8 @@ async function init() {
   state.playerFacts = sanitizeFacts(saved.playerFacts);
   state.heat = saved.heat == null ? 20 : clampMeter(saved.heat);
   state.tension = saved.tension == null ? 15 : clampMeter(saved.tension);
+  state.endings = saved.endings && typeof saved.endings === "object" ? saved.endings : {};
+  state.nightFrom = saved.nightFrom && typeof saved.nightFrom === "object" ? saved.nightFrom : {};
 
   if (state.storyId) {
     try {
@@ -5191,6 +5329,13 @@ try {
     pickReply: pickReply,
     topicOf: topicOf,
     pickProactiveLine: pickProactiveLine,
+    pickFirstPingLine: pickFirstPingLine,
+    memoryChipLine: memoryChipLine,
+    memoryChipLabel: memoryChipLabel,
+    preferredMemoryId: preferredMemoryId,
+    takePhoneLine: takePhoneLine,
+    takeInboxLine: takeInboxLine,
+    secondNightSeed: secondNightSeed,
     sanitizeFacts: sanitizeFacts,
     expirePlayerFacts: expirePlayerFacts,
   };
