@@ -207,6 +207,104 @@ var parts = api.splitHumanLine("走廊。衫仍齊。然後先講第二句先再
 Math.random = rnd;
 expect(parts.length === 2, "half-line split " + JSON.stringify(parts));
 
+state.nodeId = "n0";
+state.currentMood = "cold";
+state.heat = 20;
+state.tension = 15;
+state.chatTone = "cold";
+state.callMode = false;
+state.chatBusy = false;
+state.playerFacts = [];
+state.memories = [];
+state.chatTopics = ["酒", "簡報"];
+state.chatUserLines = [];
+state.chatBotLines = [];
+state.recentBotReplies = [];
+state.replyLedger = {};
+state.replyCursor = {};
+state.openPlayer = null;
+state.halfFollow = null;
+state.lastNotedTurn = "";
+state.lastNotedAt = 0;
+
+expect(api.nearDuplicate("嗯。有事直說。", "嗯。有事直說"), "punctuation twin not caught");
+expect(!api.nearDuplicate("簡報邊頁？講。", "酒之後仲要清醒講事。"), "different topics marked near");
+
+state.recentBotReplies = ["甲句", "乙句", "丙句", "丁句", "戊句"];
+state.replyLedger = { "topic:酒": ["酒之後仲要清醒講事。"] };
+var thinNext = api.pickAvoidRepeat(["酒之後仲要清醒講事。", "醉唔係通行證。"], "topic:酒");
+expect(thinNext === "醉唔係通行證。", "thin bucket redrew inside a long window " + thinNext);
+
+state.recentBotReplies = [];
+state.replyLedger = {};
+state.replyCursor = {};
+var thinPool = ["酒之後仲要清醒講事。", "醉唔係通行證。"];
+var prevThin = "";
+var thinRepeat = 0;
+for (var tr = 0; tr < 6; tr++) {
+  var drawn = api.pickAvoidRepeat(thinPool, "topic:酒");
+  if (prevThin && api.nearDuplicate(prevThin, drawn)) thinRepeat += 1;
+  prevThin = drawn;
+}
+expect(thinRepeat === 0, "thin pool near-repeated " + thinRepeat);
+
+state.replyLedger = {};
+state.replyCursor = {};
+state.recentBotReplies = [];
+var fatPool = [
+  "頁碼對齊先再交版本",
+  "門禁時間你自己記住",
+  "杯沿唔好再斟第三杯",
+  "聽筒另一邊只講重點",
+  "評估表喺我手唔好爭",
+  "風大講完即刻返入",
+  "杯麵唔算晚餐",
+  "廂內唔好試探上司"
+];
+var fatSeen = [];
+for (var fr = 0; fr < 6; fr++) fatSeen.push(api.pickAvoidRepeat(fatPool, "fat"));
+expect(fatSeen.lastIndexOf(fatSeen[0]) === 0, "fat pool repeated inside window " + fatSeen.join("|"));
+
+state.playerFacts = [];
+state.memories = [];
+state.chatUserLines = [];
+state.recentBotReplies = [];
+state.replyLedger = {};
+state.openPlayer = { text: "簡報第三頁", bucket: "work", topic: "簡報", answered: false, carry: true };
+state.halfFollow = null;
+var rndTopic = Math.random;
+Math.random = function () { return 0.99; };
+var heldReply = api.pickReply("今日天氣點");
+Math.random = rndTopic;
+expect(/簡報|檔/.test(heldReply), "unanswered line left the report " + heldReply);
+expect(heldReply.indexOf("天氣") < 0 && heldReply.indexOf("酒") < 0, "unanswered line jumped topic " + heldReply);
+
+state.halfFollow = { active: true, bucket: "work", topic: "簡報", rest: "簡報先。情緒之後。", userText: "簡報第三頁" };
+var halfReply = api.pickReply("食咗飯未");
+expect(halfReply.indexOf("簡報") >= 0, "half follow dropped the report " + halfReply);
+expect(halfReply.indexOf("飯") < 0, "half follow jumped to food " + halfReply);
+expect(api.pickProactiveLine() === "", "proactive jumped mid half-line");
+state.halfFollow = null;
+
+state.openPlayer = { text: "簡報第三頁", bucket: "work", topic: "簡報", answered: false, carry: false };
+state.lastNotedTurn = "簡報第三頁";
+state.lastNotedAt = Date.now() - 5000;
+state.chatBusy = false;
+api.notePlayerTurn("今晚飲酒");
+expect(state.openPlayer.topic === "簡報" && state.openPlayer.carry === true, "new topic adopted while unanswered");
+
+state.openPlayer = { text: "簡報第三頁", bucket: "work", topic: "簡報", answered: true, carry: false };
+state.lastNotedTurn = "簡報第三頁";
+state.lastNotedAt = Date.now() - 5000;
+api.notePlayerTurn("然後呢");
+expect(state.openPlayer.topic === "簡報" && state.openPlayer.carry === true && state.openPlayer.answered === false, "fragment follow-up jumped");
+
+state.openPlayer = { text: "簡報第三頁", bucket: "work", topic: "簡報", answered: true, carry: false };
+state.lastNotedTurn = "";
+state.lastNotedAt = 0;
+api.notePlayerTurn("今晚飲酒");
+expect(state.openPlayer.topic === "酒" && state.openPlayer.carry === false, "answered line refused a new topic " + (state.openPlayer && state.openPlayer.topic));
+
 api.applyBeatContinuity(state.story, state.story.nodes.n0);
 expect(body.getAttribute("data-beat-place") === "corridor", "atmosphere place");
 expect(body.getAttribute("data-beat-look") === "dressed", "atmosphere look");

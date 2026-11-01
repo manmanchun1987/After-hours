@@ -30,6 +30,11 @@ const state = {
   chatBotLines: [],
   chatTopics: [],
   recentBotReplies: [],
+  // Layer 4: per-bucket draw ledger (longer than CHAT_ANTIREPEAT_N when a pool is thin).
+  replyLedger: {},
+  replyCursor: {},
+  openPlayer: null,
+  halfFollow: null,
   offTopicStreak: 0,
   freeChatChoicesVisible: false,
   freeChatNodeId: null,
@@ -620,6 +625,7 @@ function replayLastVoice() {
    ============================================================ */
 const CHAT_MEM_N = 50; // full recent transcript for guide/memory skim (safety cap)
 const CHAT_ANTIREPEAT_N = 5;
+const CHAT_ANTIREPEAT_THIN_MAX = 18;
 const PROACTIVE_MAX_PER_NODE = 2;
 const PROACTIVE_COOLDOWN_MS = 28000;
 const INCOMING_FIRST_MIN_MS = 11000;
@@ -1435,6 +1441,10 @@ function resetChatSessionMemory() {
   state.chatBotLines = [];
   state.chatTopics = [];
   state.recentBotReplies = [];
+  state.replyLedger = {};
+  state.replyCursor = {};
+  state.openPlayer = null;
+  state.halfFollow = null;
   state.offTopicStreak = 0;
   state.freeChatChoicesVisible = false;
   state.freeChatNodeId = null;
@@ -1501,13 +1511,122 @@ function poolFor(bucket, tone) {
   return pack[t] || pack.cold || pack.wary || Object.values(pack).find(Array.isArray) || CHAT_REPLIES.default.cold;
 }
 
-function pickAvoidRepeat(pool) {
+const REPLY_GLUE_TOKENS = ["走廊", "枱邊", "天台", "酒廊", "茶水間", "電梯", "會議室", "窗邊", "聽筒", "通話", "衫仍齊", "領口未扣", "燈關住", "衫濕", "黑暗", "雨聲"];
+
+function normReplyKey(line) {
+  let s = String(line || "").toLowerCase();
+  s = s.replace(/[。！？?，,、…\.!\s「」『』""''·・—\-：:～~]/g, "");
+  REPLY_GLUE_TOKENS.forEach((token) => {
+    s = s.split(token).join("");
+  });
+  return s;
+}
+
+function bigramJaccard(a, b) {
+  if (!a || !b || a.length < 2 || b.length < 2) return 0;
+  const used = {};
+  let inter = 0;
+  const as = a.length - 1;
+  const bs = b.length - 1;
+  for (let i = 0; i < as; i++) {
+    const g = a.slice(i, i + 2);
+    for (let j = 0; j < bs; j++) {
+      if (used[j]) continue;
+      if (b.slice(j, j + 2) === g) {
+        used[j] = 1;
+        inter += 1;
+        break;
+      }
+    }
+  }
+  const union = as + bs - inter;
+  return union ? inter / union : 0;
+}
+
+/** Same bucket, punctuation-insensitive. Short lines only collapse when the key matches. */
+function nearDuplicate(a, b) {
+  if (String(a || "").trim() === String(b || "").trim()) return true;
+  const na = normReplyKey(a);
+  const nb = normReplyKey(b);
+  if (!na || !nb) return false;
+  if (na === nb) return true;
+  const short = na.length <= nb.length ? na : nb;
+  const long = na.length <= nb.length ? nb : na;
+  if (short.length < 6) return false;
+  if (long.indexOf(short) >= 0 && short.length / long.length >= 0.72) return true;
+  let i = 0;
+  const lim = Math.min(na.length, nb.length);
+  while (i < lim && na.charAt(i) === nb.charAt(i)) i += 1;
+  if (i >= 8 && i / short.length >= 0.65) return true;
+  if (short.length >= 8 && bigramJaccard(na, nb) >= 0.78) return true;
+  return false;
+}
+
+function replyClusters(list) {
+  const reps = [];
+  list.forEach((line) => {
+    if (reps.some((r) => nearDuplicate(r, line))) return;
+    reps.push(line);
+  });
+  return reps.length;
+}
+
+/** Thin pools look further back than CHAT_ANTIREPEAT_N so the few lines cannot recycle at once. */
+function antiRepeatSpan(list) {
+  const clusters = replyClusters(list);
+  if (clusters <= CHAT_ANTIREPEAT_N) {
+    return Math.max(CHAT_ANTIREPEAT_N + 3, Math.min(CHAT_ANTIREPEAT_THIN_MAX, Math.max(clusters, 1) * 3));
+  }
+  return CHAT_ANTIREPEAT_N;
+}
+
+function bucketLog(bucket) {
+  if (!state.replyLedger) state.replyLedger = {};
+  const key = bucket || "_";
+  if (!state.replyLedger[key]) state.replyLedger[key] = [];
+  return state.replyLedger[key];
+}
+
+function rememberBucketDraw(bucket, line) {
+  const log = bucketLog(bucket);
+  log.push(line);
+  if (log.length > CHAT_ANTIREPEAT_THIN_MAX + 6) {
+    state.replyLedger[bucket || "_"] = log.slice(-(CHAT_ANTIREPEAT_THIN_MAX + 6));
+  }
+}
+
+function pickFallbackLine(list, bucket, ledger) {
+  const latest = ledger.length ? ledger[ledger.length - 1] : "";
+  let pool = list.filter((l) => !latest || (l !== latest && !nearDuplicate(l, latest)));
+  if (!pool.length) pool = list.filter((l) => l !== latest);
+  if (!pool.length) pool = list;
+  if (!state.replyCursor) state.replyCursor = {};
+  const key = bucket || "_";
+  const cursor = state.replyCursor[key] || 0;
+  const chosen = pool[cursor % pool.length];
+  state.replyCursor[key] = cursor + 1;
+  return chosen;
+}
+
+function pickAvoidRepeat(pool, bucket) {
   const list = (pool || []).filter(Boolean);
   if (!list.length) return "……";
-  const recent = state.recentBotReplies || [];
-  const fresh = list.filter((l) => !recent.includes(l));
-  const use = fresh.length ? fresh : list;
-  return use[Math.floor(Math.random() * use.length)];
+  const key = bucket || "_";
+  const span = antiRepeatSpan(list);
+  const ledger = bucketLog(key);
+  const bucketRecent = ledger.slice(-span);
+  const globalExact = (state.recentBotReplies || []).slice(-CHAT_ANTIREPEAT_N);
+  const blocked = (line) => {
+    if (globalExact.some((r) => r === line || (normReplyKey(line) && normReplyKey(r) === normReplyKey(line)))) return true;
+    return bucketRecent.some((r) => r === line || nearDuplicate(r, line));
+  };
+  const fresh = list.filter((l) => !blocked(l));
+  const chosen = fresh.length
+    ? fresh[Math.floor(Math.random() * fresh.length)]
+    : pickFallbackLine(list, key, ledger);
+  rememberBucketDraw(key, chosen);
+  state.replyBucket = key;
+  return chosen;
 }
 
 function isEmojiOnly(text) {
@@ -1770,7 +1889,7 @@ function flirtBackLine(band) {
   const beat = beatProfile(null);
   const ok = pack.filter((l) => lineFitsBeat(l, beat));
   if (!ok.length) return "";
-  return pickAvoidRepeat(ok);
+  return pickAvoidRepeat(ok, "flirt");
 }
 
 function peelQuestion(line) {
@@ -1794,7 +1913,7 @@ function boundaryAck(bucket, beat) {
     if (hard.length) pool = hard;
   }
   if (!pool.length) pool = [beatFallback(beat, tone)];
-  let line = String(pickAvoidRepeat(pool)).replace(/[？?]/g, "").replace(/[。\s]+$/, "");
+  let line = String(pickAvoidRepeat(pool, bucket)).replace(/[？?]/g, "").replace(/[。\s]+$/, "");
   if (band === "high") {
     const back = flirtBackLine("high");
     if (back && line.indexOf("我回你") < 0 && line.indexOf("撩") < 0) line = line + "。" + back.replace(/[。\s]+$/, "");
@@ -1860,12 +1979,27 @@ function splitHumanLine(line) {
 async function deliverBotLine(line) {
   const parts = splitHumanLine(line).filter(Boolean);
   if (!parts.length) return;
-  for (let i = 0; i < parts.length; i++) {
-    setChatTyping(true);
-    await new Promise((r) => setTimeout(r, typingDelayMs(parts[i])));
-    setChatTyping(false);
-    appendChat("alex", parts[i]);
-    pushChatMemory("bot", parts[i]);
+  const open = state.openPlayer;
+  if (parts.length > 1) {
+    state.halfFollow = {
+      active: true,
+      bucket: (open && open.bucket) || state.replyBucket || "",
+      topic: (open && open.topic) || topicOf(line) || "",
+      rest: parts.slice(1).join(""),
+      userText: (open && open.text) || "",
+    };
+  }
+  try {
+    for (let i = 0; i < parts.length; i++) {
+      setChatTyping(true);
+      await new Promise((r) => setTimeout(r, typingDelayMs(parts[i])));
+      setChatTyping(false);
+      appendChat("alex", parts[i]);
+      pushChatMemory("bot", parts[i]);
+    }
+  } finally {
+    state.halfFollow = null;
+    if (state.openPlayer) state.openPlayer.answered = true;
   }
   if (!audioPrefs.voiceMute) {
     try { speakChat(parts.join("")); } catch (_) {}
@@ -1883,18 +2017,23 @@ function sceneAsideLine(tone) {
     });
   });
   if (!pool.length) return null;
-  return pickAvoidRepeat(pool);
+  return pickAvoidRepeat(pool, "aside");
 }
 
-function topicEchoLine(tone) {
-  if (!state.chatTopics.length) return null;
+function topicEchoLine(tone, onlyTopic) {
   const beat = beatProfile(currentStoryNode());
-  for (let i = state.chatTopics.length - 1; i >= 0; i--) {
-    const topic = state.chatTopics[i];
+  const topics = [];
+  if (onlyTopic) topics.push(onlyTopic);
+  else {
+    for (let i = (state.chatTopics || []).length - 1; i >= 0; i--) topics.push(state.chatTopics[i]);
+  }
+  if (!topics.length) return null;
+  for (let t = 0; t < topics.length; t++) {
+    const topic = topics[t];
     const pack = TOPIC_ECHO[topic];
     if (!pack) continue;
     const lines = (pack[tone] || pack.cold || []).filter((l) => lineFitsBeat(l, beat));
-    if (lines.length) return pickAvoidRepeat(lines);
+    if (lines.length) return pickAvoidRepeat(lines, "topic:" + topic);
   }
   return null;
 }
@@ -1909,7 +2048,7 @@ function memoryChipLine(tone) {
     warmer: [`……我記得。${label}。你講過，我留住。`, `${label}——所以你先唔好當冇事。`, `你問記唔記得？${label}。記得。`],
     sharp: [`記得。${label}。所以你更冇藉口。`, `${label}。唔好再問。`, `我記得：${label}。`],
   };
-  return pickAvoidRepeat(bank[tone] || bank.cold);
+  return pickAvoidRepeat(bank[tone] || bank.cold, "memory");
 }
 
 const PLAYER_FACT_RULES = [
@@ -2094,13 +2233,14 @@ function factCallbackLine(fact) {
     },
   };
   const pack = bank[fact.id];
-  if (pack) return pickAvoidRepeat(pack[tone] || pack.cold);
+  const factBucket = "fact:" + (fact.id || "x");
+  if (pack) return pickAvoidRepeat(pack[tone] || pack.cold, factBucket);
   const q = fact.quote;
   return pickAvoidRepeat([
     "你頭先講" + q + "。",
     "你頭先講" + q + "，我記得。",
     "你頭先講" + q + "——我留低。",
-  ]);
+  ], factBucket);
 }
 
 function factForCallback(askMemory) {
@@ -2186,6 +2326,7 @@ function notePlayerTurn(text) {
   expirePlayerFacts();
   notePlayerFact(t);
   noteCallIntent(t);
+  noteOpenPlayerLine(t);
 }
 
 function noteCallIntent(text) {
@@ -2226,9 +2367,96 @@ function matchBucket(userText) {
   return "default";
 }
 
+function topicOf(text) {
+  const t = String(text || "").toLowerCase();
+  let found = "";
+  TOPIC_KEYS.forEach((row) => {
+    if (row.keys.some((k) => t.includes(String(k).toLowerCase()))) found = row.topic;
+  });
+  return found;
+}
+
+function isConcreteBucket(bucket) {
+  return !!bucket && bucket !== "default" && bucket !== "silence" && bucket !== "emoji" && bucket !== "smalltalk";
+}
+
+/** Short continuation of the line already on the table — not a new subject. */
+function isFollowUpFragment(text) {
+  const t = String(text || "").trim();
+  if (!t || isSilence(t)) return true;
+  if (topicOf(t)) return false;
+  if (isConcreteBucket(matchBucket(t))) return false;
+  if (/推門|開門|入去|停低|等等|應承|唔該|掰|bye/i.test(t)) return false;
+  if (/^(然後|之後|即係|咁|嗰句|頭先|繼續|未講完|下半|跟住|同埋|仲有)/.test(t) && t.length <= 8) return true;
+  return t.length <= 2;
+}
+
+function noteOpenPlayerLine(t) {
+  const bucket = matchBucket(t);
+  const topic = topicOf(t);
+  const open = state.openPlayer;
+  if (state.halfFollow && state.halfFollow.active) {
+    if (open) open.carry = true;
+    return;
+  }
+  if (open && !open.answered && open.text !== t) {
+    open.carry = true;
+    return;
+  }
+  if (open && open.answered && isFollowUpFragment(t) && (open.topic || isConcreteBucket(open.bucket))) {
+    open.answered = false;
+    open.carry = true;
+    return;
+  }
+  state.openPlayer = {
+    text: t,
+    bucket: bucket,
+    topic: topic || "",
+    answered: false,
+    carry: false,
+  };
+}
+
+/** Previous line still open, or the second half of a split reply is still owed. */
+function heldReplyTarget() {
+  const half = state.halfFollow && state.halfFollow.active ? state.halfFollow : null;
+  if (half) {
+    return {
+      half: true,
+      bucket: half.bucket || "",
+      topic: half.topic || "",
+      userText: half.userText || "",
+      rest: half.rest || "",
+    };
+  }
+  const open = state.openPlayer;
+  if (open && !open.answered && open.carry) {
+    return {
+      half: false,
+      bucket: open.bucket || "",
+      topic: open.topic || "",
+      userText: open.text || "",
+      rest: "",
+    };
+  }
+  return null;
+}
+
 function pickProactiveLine() {
+  if (state.halfFollow && state.halfFollow.active) return "";
   const tone = syncChatTone();
   const beat = beatProfile(currentStoryNode());
+  const open = state.openPlayer;
+  if (open && !open.answered) {
+    if (open.topic) {
+      const echo = topicEchoLine(tone, open.topic);
+      if (echo) return glueBeat(echo, beat);
+    }
+    if (isConcreteBucket(open.bucket)) {
+      return glueBeat(pickAvoidRepeat(linesForBeat(open.bucket, tone), open.bucket), beat);
+    }
+    return "";
+  }
   const facts = state.playerFacts || [];
   let line = "";
   if (facts.length && Math.random() < 0.42) {
@@ -2243,7 +2471,7 @@ function pickProactiveLine() {
   if (!line && state.memories.length && Math.random() < 0.25) line = memoryChipLine(tone) || "";
   if (!line) {
     const incoming = (getCast().incoming || []).filter((l) => lineFitsBeat(l, beat));
-    line = incoming.length ? pickAvoidRepeat(incoming) : beatFallback(beat, tone);
+    line = incoming.length ? pickAvoidRepeat(incoming, "incoming") : beatFallback(beat, tone);
   }
   return glueBeat(line, beat);
 }
@@ -3002,11 +3230,11 @@ function pickFirstPingLine() {
     .filter((l) => lineFitsBeat(l, beat));
   let line = "";
   if (state.callMode || beat.tags.call) {
-    line = pickAvoidRepeat(["聽筒。你聽到未？", "通話中。回我一句。"].concat(pack));
+    line = pickAvoidRepeat(["聽筒。你聽到未？", "通話中。回我一句。"].concat(pack), "incoming");
   } else if (beat.place === "corridor") {
-    line = pickAvoidRepeat(["你喺走廊未？回我一句。", "門口。講。"].concat(pack));
+    line = pickAvoidRepeat(["你喺走廊未？回我一句。", "門口。講。"].concat(pack), "incoming");
   } else {
-    line = pack.length ? pickAvoidRepeat(pack) : beatFallback(beat, syncChatTone());
+    line = pack.length ? pickAvoidRepeat(pack, "incoming") : beatFallback(beat, syncChatTone());
   }
   return glueBeat(line, beat);
 }
@@ -3356,44 +3584,67 @@ function linesForBeat(bucket, tone) {
 
 function pickReply(userText) {
   const tone = syncChatTone();
-  const t = (userText || "").toLowerCase();
-  const askMem = /記得|之前|頭先|今晚|你知|你記得/.test(t);
+  const held = heldReplyTarget();
+  if (held && held.half && held.rest) {
+    // Second bubble is the rest of the line already chosen. Do not re-roll a topic.
+    return held.rest;
+  }
+
+  const sourceText = held ? (held.userText || userText) : userText;
+  const liveBucket = matchBucket(sourceText);
+  let bucket = held && held.bucket ? held.bucket : liveBucket;
+  const topic = held && held.topic ? held.topic : topicOf(sourceText);
+  const concrete = !!(topic || isConcreteBucket(bucket));
+  const lockJump = !!(held || concrete);
+  const askMem = /記得|之前|頭先|今晚|你知|你記得/.test(String(userText || "").toLowerCase());
   const beatOpts = {
-    userText: userText,
-    ladder: isBoundaryText(userText) || BOUNDARY_BUCKETS[matchBucket(userText)],
-    bucket: boundaryBucket(userText, null),
-    askMemory: askMem || matchBucket(userText) === "memory",
+    userText: sourceText,
+    ladder: isBoundaryText(sourceText) || BOUNDARY_BUCKETS[bucket] || BOUNDARY_BUCKETS[liveBucket],
+    bucket: BOUNDARY_BUCKETS[bucket] ? bucket : boundaryBucket(sourceText, null),
+    askMemory: askMem || bucket === "memory" || liveBucket === "memory",
   };
 
-  if (detectRepeat(userText)) {
+  if (!held && detectRepeat(userText)) {
     state.offTopicStreak = (state.offTopicStreak || 0) + 1;
     const useTone = state.offTopicStreak >= 2 ? "sharp" : tone;
     updateChatHint("repeat", false);
-    return finishBeatLine(pickAvoidRepeat(linesForBeat("repeat", useTone)), beatOpts);
+    return finishBeatLine(pickAvoidRepeat(linesForBeat("repeat", useTone), "repeat"), beatOpts);
   }
 
-  if ((state.playerFacts.length || state.memories.length) && (askMem || matchBucket(userText) === "memory")) {
+  const wantMemory = (state.playerFacts.length || state.memories.length) && (
+    bucket === "memory" || liveBucket === "memory" || (!held && askMem)
+  );
+  if (wantMemory) {
     state.offTopicStreak = 0;
     updateChatHint("memory", false);
-    return finishBeatLine(memoryChipLine(tone) || "", { askMemory: true, userText: userText });
+    return finishBeatLine(memoryChipLine(tone) || "", { askMemory: true, userText: sourceText, bucket: "memory" });
   }
-  if ((state.playerFacts.length || state.memories.length) && Math.random() < 0.18) {
+  if (!lockJump && (state.playerFacts.length || state.memories.length) && Math.random() < 0.18) {
     const line = finishBeatLine(memoryChipLine(tone) || "", { askMemory: false, userText: userText });
     if (line) return line;
   }
 
-  if (state.chatTopics.length && Math.random() < 0.32) {
+  if (!lockJump && state.chatTopics.length && Math.random() < 0.32) {
     const echo = topicEchoLine(tone);
     if (echo) return finishBeatLine(echo, { userText: userText });
   }
 
-  if (Math.random() < 0.16) {
+  if (held && topic) {
+    const echo = topicEchoLine(tone, topic);
+    if (echo) return finishBeatLine(echo, { userText: sourceText, bucket: bucket });
+  }
+
+  if (lockJump && topic && Math.random() < 0.32) {
+    const echo = topicEchoLine(tone, topic);
+    if (echo) return finishBeatLine(echo, { userText: sourceText, bucket: bucket });
+  }
+
+  if (!lockJump && Math.random() < 0.16) {
     const aside = sceneAsideLine(tone);
     if (aside) return finishBeatLine(aside, { userText: userText });
   }
 
-  let bucket = matchBucket(userText);
-  bucket = moodBucketBoost(bucket);
+  if (!held) bucket = moodBucketBoost(liveBucket);
 
   if (isOffTopicBucket(bucket)) {
     state.offTopicStreak = (state.offTopicStreak || 0) + 1;
@@ -3408,13 +3659,13 @@ function pickReply(userText) {
   }
 
   updateChatHint(bucket, false);
-  let line = pickAvoidRepeat(linesForBeat(bucket, useTone));
+  let line = pickAvoidRepeat(linesForBeat(bucket, useTone), bucket);
   if (/人工智能|聊天機器人|我是AI|我是机器人|我是機械人|語言模型|ChatGPT/i.test(line)) {
-    line = pickAvoidRepeat(linesForBeat("ai_ask", "cold"));
+    line = pickAvoidRepeat(linesForBeat("ai_ask", "cold"), "ai_ask");
   }
   return finishBeatLine(line, {
-    userText: userText,
-    ladder: !!BOUNDARY_BUCKETS[bucket] || isBoundaryText(userText),
+    userText: sourceText,
+    ladder: !!BOUNDARY_BUCKETS[bucket] || isBoundaryText(sourceText),
     bucket: bucket,
     askMemory: false,
   });
@@ -3457,7 +3708,7 @@ async function handleChatSubmit(text) {
     const tone = syncChatTone();
     const bucket = intent.bucket || "greet";
     const useTone = BOUNDARY_BUCKETS[bucket] ? boundaryTone(bucket) : tone;
-    const rawAck = intent.ack ? intent.ack : pickAvoidRepeat(linesForBeat(bucket, useTone));
+    const rawAck = intent.ack ? intent.ack : pickAvoidRepeat(linesForBeat(bucket, useTone), bucket);
     const ack = finishBeatLine(rawAck, {
       userText: cleaned,
       ladder: !!BOUNDARY_BUCKETS[bucket] || isBoundaryText(cleaned),
@@ -4778,6 +5029,11 @@ try {
     boundaryTone: boundaryTone,
     state: state,
     notePlayerTurn: notePlayerTurn,
+    nearDuplicate: nearDuplicate,
+    pickAvoidRepeat: pickAvoidRepeat,
+    pickReply: pickReply,
+    topicOf: topicOf,
+    pickProactiveLine: pickProactiveLine,
     sanitizeFacts: sanitizeFacts,
     expirePlayerFacts: expirePlayerFacts,
   };
