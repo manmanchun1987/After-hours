@@ -4,6 +4,33 @@
   "title": "客戶負責人",
   "hook": "大單前夜，酒廊「只係傾生意」。",
   "start": "m1",
+  "act2": "m6",
+  "act2From": {
+    "ending_m_a": {
+      "next": "m6a",
+      "heat": 48,
+      "remember": [
+        "from_ending_m_a",
+        "act2_from_heat"
+      ]
+    },
+    "ending_m_b": {
+      "next": "m6b",
+      "heat": 36,
+      "remember": [
+        "from_ending_m_b",
+        "act2_from_equal"
+      ]
+    },
+    "ending_m_c": {
+      "next": "m6c",
+      "heat": 22,
+      "remember": [
+        "from_ending_m_c",
+        "act2_from_walk"
+      ]
+    }
+  },
   "portrait": "./assets/stills/vera-02.jpg",
   "tint": "amber",
   "chatName": "Elise",
@@ -2064,6 +2091,1011 @@
       },
       "thought": "次數都入帳。",
       "aside": "指尖停空中。"
+    },
+    "m6": {
+      "id": "m6",
+      "act": 2,
+      "label": "聽日酒廊 21:40",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "落地玻璃外仲係維港夜燈。Elise 坐返同一角，絲衫、金耳環、炭灰外套都未換，戒指敲一下杯壁。\n\n「董事會日頭過咗。單我簽咗。尋晚嗰頁——你當留低，定當走咗，定你要對等？」",
+      "thought": "杯沿轉半圈。她等你落標。",
+      "aside": "爵士樂壓得好低。酒氣未散。",
+      "mid": "杯壁餘溫傳過桌面。目光停半秒，再移到你眼。絲衫反光一下。距離比尋晚近一寸，熱度未開口。戒指再敲半下，像蓋章之前嗰下停。",
+      "choices": [
+        {
+          "label": "「尋晚我留低。」",
+          "next": "m6a",
+          "heat": 8,
+          "remember": [
+            "act2_from_heat"
+          ],
+          "cg": true
+        },
+        {
+          "label": "「我要對等。」",
+          "next": "m6b",
+          "tension": 6,
+          "remember": [
+            "act2_from_equal"
+          ]
+        },
+        {
+          "label": "「尋晚我走咗。」",
+          "next": "m6c",
+          "tension": 4,
+          "remember": [
+            "act2_from_walk"
+          ]
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m6a",
+          "heat": 8,
+          "bucket": "heat",
+          "remember": [
+            "act2_from_heat"
+          ],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "m6b",
+          "tension": 6,
+          "bucket": "tired",
+          "remember": [
+            "act2_from_equal"
+          ],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "m6c",
+          "tension": 4,
+          "bucket": "leave",
+          "remember": [
+            "act2_from_walk"
+          ],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "m6a": {
+      "id": "m6a",
+      "act": 2,
+      "label": "成交未寫完",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "Elise 杯沿停住。\n\n「留低。我記得。絲衫未換，單日頭簽完。今晚唔騎你——除非你再開口。你應承跟我多一程，定坐住？」",
+      "thought": "尋晚入過帳。今晚等你自己再伸。",
+      "aside": "戒指停喺杯壁。",
+      "mid": "她膝頭喺檯下輕輕碰上你膝，未退。香水尾調同酒氣一齊近。呼吸差半拍。杯底餘溫未散，目光卻已經問你跟唔跟。",
+      "choices": [
+        {
+          "label": "「我跟。」",
+          "next": "m7",
+          "heat": 10,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「坐住先。」",
+          "next": "m6bar",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「今晚唔跟。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7",
+          "heat": 10,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "m6bar",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      },
+      "remember": [
+        "act2_from_heat"
+      ]
+    },
+    "m6b": {
+      "id": "m6b",
+      "act": 2,
+      "label": "對等再寫一條",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "「對等。你尋晚唔肯做籌碼。我接受過。」Elise 靠後少少，目光未放。\n\n「今晚我唔逼。你應承跟我走多一程，先算對等落實。定你坐住，只講條款？」",
+      "thought": "對等唔係退。係你要自己簽。",
+      "aside": "杯未放低。",
+      "mid": "靠後之後她仍望住你手。袖口滑落一寸，腕骨燈下一閃。呼吸輕，熱度仍喺膝頭未碰你嗰一寸空位。",
+      "choices": [
+        {
+          "label": "「一齊行。」",
+          "next": "m7",
+          "heat": 8,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「坐住講。」",
+          "next": "m6bar",
+          "tension": 5,
+          "remember": []
+        },
+        {
+          "label": "「我唔簽。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7",
+          "heat": 8,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "m6bar",
+          "tension": 5,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      },
+      "remember": [
+        "act2_from_equal"
+      ]
+    },
+    "m6c": {
+      "id": "m6c",
+      "act": 2,
+      "label": "第二次開口",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "「你走咗。單照過。人我未勾。」Elise 轉酒杯，唔笑。\n\n「我仲訂同一張檯。第二次開口——你應承留，定再走？」",
+      "thought": "走咗一次。她俾第二次，唔追第三次。",
+      "aside": "爵士樂照播。",
+      "mid": "杯沿一圈水痕未乾。她眼神平，戒指敲得慢。熱度收住，但檯底下隻腳未移開。你一開口，距離就會變。",
+      "choices": [
+        {
+          "label": "「今次我留。」",
+          "next": "m7",
+          "heat": 6,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「坐多一陣。」",
+          "next": "m6bar",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「我再走。」",
+          "next": "ending_m2_c",
+          "tension": 8,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7",
+          "heat": 6,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "m6bar",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 8,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      },
+      "remember": [
+        "act2_from_walk"
+      ]
+    },
+    "m6bar": {
+      "id": "m6bar",
+      "act": 2,
+      "label": "杯沿再轉",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "侍應遠遠望過嚟。Elise 抬手，示意再等。絲衫同外套都齊。\n\n「坐得。三分鐘。之後你應承行，定停到我放杯？」",
+      "thought": "坐住唔等於退。杯係計時器。",
+      "aside": "杯壁一圈水痕。",
+      "mid": "爵士樂低音推近。她目光鎖住你，戒指再敲一下。熱度藏喺杯底。膝頭仍保持一寸，等你自己收埋或者伸過去。",
+      "choices": [
+        {
+          "label": "「三分鐘夠，我行。」",
+          "next": "m7",
+          "heat": 8,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「停到你放杯。」",
+          "next": "ending_m2_b",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「我走。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7",
+          "heat": 8,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "ending_m2_b",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "酒廊。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "m7": {
+      "id": "m7",
+      "act": 2,
+      "label": "行政層電梯",
+      "scene": "lift",
+      "tags": [
+        "lift"
+      ],
+      "look": "dressed",
+      "text": "電梯門合上。樓層燈跳過她耳環。絲衫、炭灰外套、戒指都仲喺。她按住關門，唔撳樓層。\n\n「盲角。監控死位我識。你應承近，定停低，定走？」",
+      "thought": "廂內只得兩個人。規則換咗場。",
+      "aside": "樓層數字一格一格跳。",
+      "mid": "她肩線未塌。外套鈕未解。呼吸近到幾乎碰到你耳，又停住。熱度喺袖口，未過你胸口。樓層燈再跳一格，門仍然合死。",
+      "choices": [
+        {
+          "label": "「我近。」",
+          "next": "m7hot",
+          "heat": 12,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「停低。我講。」",
+          "next": "m7talk",
+          "tension": 5,
+          "remember": []
+        },
+        {
+          "label": "「開門。我走。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7hot",
+          "heat": 12,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "m7talk",
+          "tension": 5,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "m7talk": {
+      "id": "m7talk",
+      "act": 2,
+      "label": "只講唔掂",
+      "scene": "lift",
+      "tags": [
+        "lift"
+      ],
+      "look": "dressed",
+      "text": "「你停。嘴硬。」Elise 望住樓層燈，聲平。\n\n「隻手我未掂。再俾你一次：應承近，定落去當無。」",
+      "thought": "講完先算數。她等你隻手。",
+      "aside": "廂壁涼。她肩未靠過嚟。",
+      "mid": "絲衫最上顆仍扣住，外套齊。呼吸放慢。她手指停喺關門掣上面，唔撳樓層，亦未碰你。熱度懸住。",
+      "choices": [
+        {
+          "label": "「我近。」",
+          "next": "m7hot",
+          "heat": 10,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「停。當對等。」",
+          "next": "ending_m2_b",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「我落去。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m7hot",
+          "heat": 10,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "ending_m2_b",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "電梯。衫仍齊。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "m7hot": {
+      "id": "m7hot",
+      "act": 2,
+      "label": "領口未扣",
+      "scene": "lift",
+      "tags": [
+        "lift"
+      ],
+      "look": "open",
+      "text": "電梯裡她解開絲衫多一顆鈕。領口未扣，落到心口，外套仍掛肩。她拉你掌心貼住自己乳，拇指擦過乳尖。另一隻手隔住褲，握住已經硬嘅位置，慢慢套。\n\n「衣冠仲掛住。你應承再入，定停喺我手心，定走？」",
+      "thought": "領口先開。裡面等你自己講。",
+      "aside": "乳尖頂住你掌心。套弄慢。",
+      "mid": "外套肩線未掉。絲衫熱。她掌心濕咗少少，拇指每一下都抹過頂端。樓層燈停住。呼吸打喺你頸側，熱度已經過褲，未過最後一步。",
+      "choices": [
+        {
+          "label": "「關燈。我入。」",
+          "next": "m8",
+          "heat": 14,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「停喺你手。」",
+          "next": "ending_m2_b",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「夠。我走。」",
+          "next": "ending_m2_c",
+          "tension": 6,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "m8",
+          "heat": 14,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "電梯。領口未扣。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "ending_m2_b",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "電梯。領口未扣。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 6,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "電梯。領口未扣。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "m8": {
+      "id": "m8",
+      "act": 2,
+      "label": "燈關",
+      "scene": "lift",
+      "tags": [
+        "lift"
+      ],
+      "look": "dark",
+      "text": "燈關。只剩樓層紅點。她跨住你，絲衫散開，底褲撥到一邊，慢慢坐落去，納到最深。每一下都壓住你唔出聲。\n\n「射之前叫我 Elise。出面當冇人上過嚟。你應承入到底，定停，定走？」",
+      "thought": "黑裡面先算私人條款。",
+      "aside": "燈關住。濕熱夾實。",
+      "mid": "每一下都慢，深，像蓋一個唔寫得出嚟嘅章。她乳貼住你，外套滑到臂彎仍未落地。紅點一閃。你頂到最深嗰下，她咬住自己下唇，熱度整廂都係。",
+      "choices": [
+        {
+          "label": "「Elise。我入到底。」",
+          "next": "ending_m2_a",
+          "heat": 16,
+          "remember": [],
+          "cg": true
+        },
+        {
+          "label": "「停。唔射。」",
+          "next": "ending_m2_b",
+          "tension": 4,
+          "remember": []
+        },
+        {
+          "label": "「開燈。我走。」",
+          "next": "ending_m2_c",
+          "tension": 8,
+          "remember": []
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "再近",
+            "靠近",
+            "留低",
+            "伸手",
+            "要你"
+          ],
+          "next": "ending_m2_a",
+          "heat": 16,
+          "bucket": "heat",
+          "remember": [],
+          "ack": "電梯。燈關住。我聽到。"
+        },
+        {
+          "keys": [
+            "停低",
+            "等等",
+            "等陣",
+            "企定"
+          ],
+          "next": "ending_m2_b",
+          "tension": 4,
+          "bucket": "tired",
+          "remember": [],
+          "ack": "電梯。燈關住。我聽到。"
+        },
+        {
+          "keys": [
+            "我走",
+            "走先",
+            "唔入",
+            "閃",
+            "算啦"
+          ],
+          "next": "ending_m2_c",
+          "tension": 8,
+          "bucket": "leave",
+          "remember": [],
+          "ack": "電梯。燈關住。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "應承，定再近，定停低，定走？"
+      }
+    },
+    "ending_m2_a": {
+      "id": "ending_m2_a",
+      "act": 2,
+      "ending": true,
+      "endingTitle": "盲角入帳",
+      "label": "燈關·成交",
+      "scene": "lift",
+      "tags": [
+        "lift"
+      ],
+      "look": "dark",
+      "text": "燈關住。她夾緊，等到你射喺裡面，先慢慢起身。絲衫扣返兩顆，外套拉順，底褲拉好。\n\n「聽日見面，我只同你講數字。呢層——我記得你幾深。」\n\n門一開，她先出。耳環未亂。",
+      "aside": "腿間仍黏。紅點滅。",
+      "mid": "成交寫喺身體，唔寫喺紙。她唇擦過你一下，酒氣同熱一齊留低。出到光裡，她又係客戶負責人。",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "講清楚你想點。"
+      }
+    },
+    "ending_m2_b": {
+      "id": "ending_m2_b",
+      "act": 2,
+      "ending": true,
+      "endingTitle": "對等停低",
+      "label": "第二晚·停",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "她停你隻手。絲衫同耳環都未除，外套仍掛肩。\n\n「對等。停到呢度。出面你仲係對手。入面我記得你停得及。」\n\n戒指敲一下，像蓋一個未做完嘅章。",
+      "aside": "熱度停喺掌心。衣冠齊。",
+      "mid": "停低唔係冇發生。她眼神仍熱，身體退後半寸。秘密留到聽日，條款未撕。",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "講清楚你想點。"
+      }
+    },
+    "ending_m2_c": {
+      "id": "ending_m2_c",
+      "act": 2,
+      "ending": true,
+      "endingTitle": "第二晚只係單",
+      "label": "第二晚·走",
+      "scene": "lounge",
+      "tags": [
+        "lounge"
+      ],
+      "look": "dressed",
+      "text": "Elise 退後半步。絲衫扣好，戒指敲一下自己指節。\n\n「得。你走。聽日我只發數字。秘密冇你份。」",
+      "aside": "距離拉返開。酒氣淡。",
+      "mid": "她冇追。單照舊。人停喺門檻外。夜燈仍亮，熱度散。",
+      "sceneGoal": {
+        "successIntents": [
+          "agree",
+          "flirt",
+          "wait",
+          "refuse"
+        ],
+        "optionalIntents": [
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承",
+          "flirt": "再近",
+          "wait": "停低",
+          "refuse": "走"
+        },
+        "ask": "講清楚你想點。"
+      }
     }
   },
   "memoryLabels": {
@@ -2071,6 +3103,13 @@
     "kept_professional": "你收住",
     "sat_closer": "你坐近過",
     "took_key": "你收咗房卡",
-    "wanted_equal": "你要對等"
+    "wanted_equal": "你要對等",
+    "act2_from_cast": "你由第二晚入",
+    "act2_from_heat": "你話尋晚留低",
+    "act2_from_equal": "你要對等",
+    "act2_from_walk": "你話尋晚走咗",
+    "from_ending_m_a": "尋晚酒廊之上",
+    "from_ending_m_b": "尋晚你要對等",
+    "from_ending_m_c": "尋晚你走咗"
   }
 }
