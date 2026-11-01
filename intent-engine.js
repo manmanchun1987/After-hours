@@ -642,6 +642,21 @@
     };
   }
 
+  async function emitBot(reply) {
+    if (typeof global.__ahDeliverBot === "function") {
+      await global.__ahDeliverBot(reply);
+      return;
+    }
+    await new Promise(function (r) { setTimeout(r, 320 + Math.random() * 520); });
+    if (typeof setChatTyping === "function") setChatTyping(false);
+    if (typeof appendChat === "function") appendChat("alex", reply);
+    if (typeof pushChatMemory === "function") pushChatMemory("bot", reply);
+    noteReply(reply);
+    try {
+      if (typeof audioPrefs !== "undefined" && !audioPrefs.voiceMute && typeof speakChat === "function") speakChat(reply);
+    } catch (eEmit) {}
+  }
+
   function enhanceSubmit(orig) {
     return async function handleChatSubmit(text) {
       var cleaned = String(text || "").trim();
@@ -688,7 +703,6 @@
           try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxClick(); } catch (eg0) {}
           if (typeof setChatTyping === "function") setChatTyping(true);
           if (typeof setUnread === "function") setUnread(0);
-          await new Promise(function (r) { setTimeout(r, 320 + Math.random() * 520); });
 
           if (decision.thought && typeof setThoughtVoice === "function") {
             setThoughtVoice(decision.thought);
@@ -704,13 +718,7 @@
           if (/(有什麼可以幫|很樂意為你|AI助手|語言模型)/i.test(replyG) || (/客服/.test(replyG) && !/唔做客服/.test(replyG))) {
             replyG = "我唔做客服。門——推定停。";
           }
-          if (typeof setChatTyping === "function") setChatTyping(false);
-          if (typeof appendChat === "function") appendChat("alex", replyG);
-          if (typeof pushChatMemory === "function") pushChatMemory("bot", replyG);
-          noteReply(replyG);
-          try {
-            if (typeof audioPrefs !== "undefined" && !audioPrefs.voiceMute && typeof speakChat === "function") speakChat(replyG);
-          } catch (eg1) {}
+          await emitBot(replyG);
           try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxTransition(); } catch (eg2) {}
           if (st) st.chatBusy = false;
           if (typeof noteChatActivity === "function") noteChatActivity();
@@ -730,7 +738,6 @@
         try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxClick(); } catch (e) {}
         if (typeof setChatTyping === "function") setChatTyping(true);
         if (typeof setUnread === "function") setUnread(0);
-        await new Promise(function (r) { setTimeout(r, 350 + Math.random() * 500); });
 
         if (typeof setThoughtVoice === "function") setThoughtVoice(askWantThought());
         if (typeof unlockFreeChatChoices === "function") {
@@ -743,13 +750,7 @@
 
         var reply = pickReply(classified, { node: node, state: typeof state !== "undefined" ? state : null, tone: currentTone() })
           || "推定停。門把就喺度。";
-        if (typeof setChatTyping === "function") setChatTyping(false);
-        if (typeof appendChat === "function") appendChat("alex", reply);
-        if (typeof pushChatMemory === "function") pushChatMemory("bot", reply);
-        noteReply(reply);
-        try {
-          if (typeof audioPrefs !== "undefined" && !audioPrefs.voiceMute && typeof speakChat === "function") speakChat(reply);
-        } catch (e2) {}
+        await emitBot(reply);
         try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxTransition(); } catch (e3) {}
         if (typeof state !== "undefined") state.chatBusy = false;
         if (typeof noteChatActivity === "function") noteChatActivity();
@@ -771,7 +772,6 @@
         try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxClick(); } catch (e4) {}
         if (typeof setChatTyping === "function") setChatTyping(true);
         if (typeof setUnread === "function") setUnread(0);
-        await new Promise(function (r) { setTimeout(r, 300 + Math.random() * 600); });
 
         var streak = (typeof state !== "undefined" && state.offTopicStreak) || 1;
         if (streak >= 2 && typeof setThoughtVoice === "function") {
@@ -786,13 +786,7 @@
         if (/(有什麼可以幫|很樂意為你|AI助手|語言模型)/i.test(reply2) || (/客服/.test(reply2) && !/唔做客服/.test(reply2))) {
           reply2 = "我唔做客服。門——推定停。";
         }
-        if (typeof setChatTyping === "function") setChatTyping(false);
-        if (typeof appendChat === "function") appendChat("alex", reply2);
-        if (typeof pushChatMemory === "function") pushChatMemory("bot", reply2);
-        noteReply(reply2);
-        try {
-          if (typeof audioPrefs !== "undefined" && !audioPrefs.voiceMute && typeof speakChat === "function") speakChat(reply2);
-        } catch (e5) {}
+        await emitBot(reply2);
         try { if (typeof AudioEngine !== "undefined") AudioEngine.sfxTransition(); } catch (e6) {}
         if (typeof state !== "undefined") state.chatBusy = false;
         if (typeof noteChatActivity === "function") noteChatActivity();
