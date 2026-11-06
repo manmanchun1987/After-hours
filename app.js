@@ -2657,13 +2657,21 @@ function syncPortraitVideo(story, node) {
   if (!vsrc) {
     duckBgmForVideo(false);
     vid.removeAttribute("data-src");
-    if (vid.hasAttribute("src")) vid.removeAttribute("src");
-    try { vid.load(); } catch (e2) {}
-    vid.setAttribute("hidden", "");
-    if (stack) stack.classList.remove("has-video");
-    if (bg) bg.classList.remove("has-video");
+    if (clipCoversStill(stack) && playStageLive() && !prefersReducedMotion()) {
+      if (vid.classList) vid.classList.add("is-releasing");
+      if (stack && stack.classList) stack.classList.add("is-still-reveal");
+      setTimeout(function () {
+        if (gen !== portraitVideoGen) return;
+        if (vid.getAttribute("data-src")) return;
+        finishClipHide(vid, stack, bg);
+      }, 900);
+      return;
+    }
+    finishClipHide(vid, stack, bg);
     return;
   }
+  if (vid.classList) vid.classList.remove("is-releasing");
+  if (stack && stack.classList) stack.classList.remove("is-still-reveal");
   vid.setAttribute("data-src", vsrc);
   // Defer play until after #screen-play paints (entryfix3 hang was sync load/play).
   vid.muted = true;
@@ -2951,10 +2959,10 @@ function syncFgProps(fg, props) {
     const el = existing[i];
     const id = el.getAttribute("data-prop");
     if (!Object.prototype.hasOwnProperty.call(want, id)) {
-      fg.removeChild(el);
+      dropFgProp(fg, el);
       continue;
     }
-    setFgAnim(el, want[id]);
+    keepFgProp(el, want[id]);
     delete want[id];
   }
   Object.keys(want).forEach((id) => {
@@ -2962,6 +2970,10 @@ function syncFgProps(fg, props) {
     el.className = "fg-prop";
     el.setAttribute("data-prop", id);
     setFgAnim(el, want[id]);
+    if (playStageLive() && (id === "roof-rain-streaks" || id === "lift-blackout-veil")) {
+      el.classList.add("is-entering");
+      setTimeout(function () { el.classList.remove("is-entering"); }, 920);
+    }
     fg.appendChild(el);
   });
 }
@@ -3035,10 +3047,23 @@ function applySceneLayers(story, node) {
   if (!bg) return;
   const parts = ensureSceneStack(bg);
   const scene = resolveScene(story, node);
-  if (parts.layerBg) parts.layerBg.setAttribute("data-scene", scene);
-  syncFgProps(parts.fg, resolveProps(story, node));
+  const props = resolveProps(story, node);
+  const prevIds = fgPropIds(parts.fg);
+  const nextIds = props.map(function (p) { return p.id; });
+  const sceneChanged = swapScenePlate(parts.layerBg, scene);
+  syncFgProps(parts.fg, props);
   applyLegacySceneShell(bg, story, node);
   syncSceneBgm();
+  const rain = nextIds.indexOf("roof-rain-streaks") >= 0;
+  const flicker = nextIds.indexOf("lift-blackout-veil") >= 0;
+  const hadRain = prevIds.indexOf("roof-rain-streaks") >= 0;
+  const hadFlicker = prevIds.indexOf("lift-blackout-veil") >= 0;
+  if (sceneChanged || rain !== hadRain || flicker !== hadFlicker) {
+    queueSceneCut({ rain: rain, flicker: flicker });
+  } else if (cutPending) {
+    cutPending.rain = rain;
+    cutPending.flicker = flicker;
+  }
 }
 
 function portraitSrc(story) {
@@ -3080,6 +3105,212 @@ function clearBeatAtmosphere() {
   });
 }
 
+/* Portrait / room dissolves. First painted beat stays a hard cut so entry
+   does not dissolve the HTML default. Later still, room, rain, and blackout
+   changes share one dim. beatStillSrc itself is unchanged. */
+let stageSettled = false;
+let cutPending = null;
+let sceneCutTimer = 0;
+let stillToken = 0;
+let stillGhostTimer = 0;
+let sceneGhostTimer = 0;
+
+function playStageLive() {
+  const play = document.getElementById("screen-play");
+  return !!(stageSettled && play && play.classList && play.classList.contains("active"));
+}
+
+function stillFileName(src) {
+  return String(src || "").split("?")[0].split("/").pop();
+}
+
+function fgPropIds(fg) {
+  const ids = [];
+  if (!fg || !fg.querySelectorAll) return ids;
+  const nodes = fg.querySelectorAll(".fg-prop");
+  for (let i = 0; i < nodes.length; i++) {
+    if (nodes[i].classList && nodes[i].classList.contains("is-leaving")) continue;
+    const id = nodes[i].getAttribute("data-prop");
+    if (id) ids.push(id);
+  }
+  return ids;
+}
+
+function clipCoversStill(stack) {
+  if (!stack || !stack.classList || !stack.classList.contains("has-video")) return false;
+  const vid = stack.querySelector ? stack.querySelector(".portrait-video") : null;
+  if (!vid || vid.hasAttribute("hidden")) return false;
+  const img = stack.querySelector("#alex-portrait");
+  if (!img || typeof window.getComputedStyle !== "function") return false;
+  const opacity = parseFloat(window.getComputedStyle(img).opacity);
+  return opacity < 0.2;
+}
+
+function dropFgProp(fg, el) {
+  const id = el.getAttribute("data-prop") || "";
+  const veil = id === "roof-rain-streaks" || id === "lift-blackout-veil";
+  if (!veil || prefersReducedMotion() || !playStageLive() || !el.classList) {
+    if (el.parentNode) el.parentNode.removeChild(el);
+    return;
+  }
+  if (el.classList.contains("is-leaving")) return;
+  el.classList.add("is-leaving");
+  clearTimeout(el._leaveTimer);
+  el._leaveTimer = setTimeout(function () {
+    if (el.parentNode) el.parentNode.removeChild(el);
+  }, 760);
+}
+
+function keepFgProp(el, anim) {
+  if (!el) return;
+  if (el._leaveTimer) {
+    clearTimeout(el._leaveTimer);
+    el._leaveTimer = 0;
+  }
+  if (el.classList) el.classList.remove("is-leaving");
+  setFgAnim(el, anim);
+}
+
+function queueSceneCut(flags) {
+  if (prefersReducedMotion() || !playStageLive()) return;
+  flags = flags || {};
+  if (!cutPending) {
+    cutPending = { rain: false, flicker: false };
+    requestAnimationFrame(function () {
+      const pending = cutPending;
+      cutPending = null;
+      if (pending) beginSceneCut(pending);
+    });
+  }
+  if (flags.rain) cutPending.rain = true;
+  if (flags.flicker) cutPending.flicker = true;
+}
+
+function beginSceneCut(flags) {
+  const bg = document.querySelector("#screen-play .play-bg");
+  if (!bg || !bg.classList) return;
+  bg.classList.remove("is-cut", "is-rain", "is-flicker");
+  void bg.offsetWidth;
+  bg.classList.add("is-cut");
+  if (flags.rain) bg.classList.add("is-rain");
+  if (flags.flicker) bg.classList.add("is-flicker");
+  clearTimeout(sceneCutTimer);
+  sceneCutTimer = setTimeout(function () {
+    bg.classList.remove("is-cut", "is-rain", "is-flicker");
+  }, 980);
+}
+
+function clearPortraitGhosts(stack) {
+  if (!stack || !stack.querySelectorAll) return;
+  const old = stack.querySelectorAll(".portrait-ghost");
+  for (let i = 0; i < old.length; i++) {
+    if (old[i].parentNode) old[i].parentNode.removeChild(old[i]);
+  }
+}
+
+function swapStill(img, src) {
+  if (!img || !src) return;
+  const nextFile = stillFileName(src);
+  const cur = img.getAttribute("src") || "";
+  if (!nextFile || cur.indexOf(nextFile) >= 0) return;
+  const stack = img.parentNode;
+  if (clipCoversStill(stack)) {
+    img.setAttribute("src", src);
+    return;
+  }
+  if (prefersReducedMotion() || !playStageLive() || !stack || typeof Image !== "function") {
+    img.setAttribute("src", src);
+    return;
+  }
+  const token = ++stillToken;
+  const ghost = document.createElement("img");
+  ghost.className = "portrait portrait-ghost";
+  ghost.alt = "";
+  ghost.setAttribute("aria-hidden", "true");
+  ghost.src = img.currentSrc || cur;
+  clearPortraitGhosts(stack);
+  try {
+    stack.appendChild(ghost);
+  } catch (e) {
+    img.setAttribute("src", src);
+    return;
+  }
+  let revealed = false;
+  const reveal = function () {
+    if (revealed || token !== stillToken) return;
+    revealed = true;
+    img.setAttribute("src", src);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if (token !== stillToken || !ghost.parentNode) return;
+        ghost.classList.add("is-out");
+      });
+    });
+    clearTimeout(stillGhostTimer);
+    stillGhostTimer = setTimeout(function () {
+      if (token !== stillToken) return;
+      if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+    }, 940);
+  };
+  const pre = new Image();
+  const cap = setTimeout(reveal, 640);
+  pre.onload = function () {
+    clearTimeout(cap);
+    reveal();
+  };
+  pre.onerror = function () {
+    clearTimeout(cap);
+    if (token !== stillToken) return;
+    revealed = true;
+    img.setAttribute("src", src);
+    if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+  };
+  pre.src = src;
+  queueSceneCut({});
+}
+
+function swapScenePlate(layerBg, scene) {
+  if (!layerBg || !scene) return false;
+  const prev = layerBg.getAttribute("data-scene") || "";
+  if (prev === scene) return false;
+  const parent = layerBg.parentNode;
+  if (prefersReducedMotion() || !playStageLive() || !parent || typeof layerBg.cloneNode !== "function") {
+    layerBg.setAttribute("data-scene", scene);
+    return true;
+  }
+  if (parent.querySelectorAll) {
+    const old = parent.querySelectorAll(".scene-layer-bg-ghost");
+    for (let i = 0; i < old.length; i++) {
+      if (old[i].parentNode) old[i].parentNode.removeChild(old[i]);
+    }
+  }
+  const ghost = layerBg.cloneNode(false);
+  if (ghost.classList) ghost.classList.add("scene-layer-bg-ghost");
+  ghost.removeAttribute("id");
+  parent.insertBefore(ghost, layerBg.nextSibling);
+  layerBg.setAttribute("data-scene", scene);
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      if (ghost.classList) ghost.classList.add("is-out");
+    });
+  });
+  clearTimeout(sceneGhostTimer);
+  sceneGhostTimer = setTimeout(function () {
+    if (ghost.parentNode) ghost.parentNode.removeChild(ghost);
+  }, 960);
+  return true;
+}
+
+function finishClipHide(vid, stack, bg) {
+  if (!vid) return;
+  if (vid.classList) vid.classList.remove("is-releasing");
+  if (vid.hasAttribute("src")) vid.removeAttribute("src");
+  try { vid.load(); } catch (e) {}
+  vid.setAttribute("hidden", "");
+  if (stack && stack.classList) stack.classList.remove("has-video", "is-still-reveal");
+  if (bg && bg.classList) bg.classList.remove("has-video");
+}
+
 function applyBeatContinuity(story, node) {
   const beat = beatProfile(node);
   const tone = syncChatTone();
@@ -3093,11 +3324,7 @@ function applyBeatContinuity(story, node) {
   }
   const src = beatStillSrc(story, node);
   const img = $("#alex-portrait");
-  if (img && src) {
-    const file = src.split("?")[0].split("/").pop();
-    const cur = img.getAttribute("src") || "";
-    if (cur.indexOf(file) < 0) img.setAttribute("src", src);
-  }
+  if (img && src) swapStill(img, src);
   if (src && document.documentElement) {
     document.documentElement.style.setProperty("--play-portrait", 'url("' + src + '")');
   }
@@ -3106,7 +3333,7 @@ function applyBeatContinuity(story, node) {
 function applyStoryArt(story) {
   const src = portraitSrc(story);
   const img = $("#alex-portrait");
-  if (img && img.getAttribute("src") !== src) img.setAttribute("src", src);
+  if (img && src) swapStill(img, src);
   document.documentElement.style.setProperty("--play-portrait", 'url("' + src + '")');
   const nodeForScene = (state.story && state.nodeId && state.story.nodes)
     ? state.story.nodes[state.nodeId]
@@ -3973,7 +4200,10 @@ function show(name) {
     el.classList.toggle("active", key === name);
   });
   document.body.classList.toggle("mode-play", name === "play");
-  if (name !== "play") clearBeatAtmosphere();
+  if (name !== "play") {
+    stageSettled = false;
+    clearBeatAtmosphere();
+  }
   if (typeof window.__ahSyncKeyboard === "function") window.__ahSyncKeyboard();
   if (name !== "play") duckBgmForVideo(false);
   if (name === "play") startIncomingRhythm();
@@ -4338,6 +4568,7 @@ function renderNode() {
 
   pulseIn($("#play-label"));
   pulseIn($("#play-text"));
+  stageSettled = true;
 }
 
 function wireAudioControls() {
