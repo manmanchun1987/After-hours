@@ -2856,3 +2856,140 @@ html:not(.keyboard-open) body.mode-play .play-overlay {
   height: var(--app-vh, 100dvh) !important;
   max-height: var(--app-vh, 100dvh) !important;
 }
+
+/* ============================================================
+   Still / scene dissolves — phone stage, under the HUD.
+   .play-bg.is-cut            soft dim + vignette (any still or room swap)
+   .play-bg.is-cut.is-rain    rain veil, only if the beat has roof-rain-streaks
+   .play-bg.is-cut.is-flicker light flicker, only if it has lift-blackout-veil
+   ============================================================ */
+#screen-play .scene-cut {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+}
+#screen-play .play-bg.is-cut .scene-cut {
+  opacity: 1;
+  visibility: visible;
+}
+#screen-play .scene-cut-dim,
+#screen-play .scene-cut-rain,
+#screen-play .scene-cut-flicker {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+#screen-play .scene-cut-dim {
+  background:
+    radial-gradient(ellipse at 50% 34%, rgba(8, 10, 16, 0.08) 0%, rgba(6, 8, 14, 0.28) 50%, rgba(2, 3, 8, 0.62) 100%);
+}
+#screen-play .play-bg.is-cut .scene-cut-dim {
+  animation: scene-cut-dim 0.92s ease both;
+}
+#screen-play .scene-cut-rain {
+  background: repeating-linear-gradient(
+    104deg,
+    transparent 0 12px,
+    rgba(198, 214, 228, 0.2) 13px,
+    transparent 15px
+  );
+  mix-blend-mode: screen;
+}
+#screen-play .play-bg.is-cut.is-rain .scene-cut-rain {
+  animation: scene-rain-veil 0.92s linear both;
+}
+#screen-play .scene-cut-flicker {
+  background:
+    linear-gradient(180deg, rgba(186, 206, 222, 0.18), transparent 26%),
+    rgba(3, 5, 10, 0.5);
+}
+#screen-play .play-bg.is-cut.is-flicker .scene-cut-flicker {
+  animation: scene-light-flicker 0.96s ease both;
+}
+@keyframes scene-cut-dim {
+  0% { opacity: 0; }
+  34% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes scene-rain-veil {
+  0% { opacity: 0; transform: translate3d(0, -8%, 0); }
+  30% { opacity: 0.72; }
+  100% { opacity: 0; transform: translate3d(-3%, 12%, 0); }
+}
+@keyframes scene-light-flicker {
+  0% { opacity: 0; }
+  16% { opacity: 0.62; }
+  30% { opacity: 0.08; }
+  48% { opacity: 0.48; }
+  100% { opacity: 0; }
+}
+@keyframes scene-atmos-in {
+  from { opacity: 0; }
+  to { opacity: 0.88; }
+}
+@keyframes scene-still-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#screen-play .scene-layer-bg.scene-layer-bg-ghost {
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.88s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+#screen-play .scene-layer-bg.scene-layer-bg-ghost.is-out {
+  opacity: 0;
+}
+#screen-play .scene-stack .portrait.portrait-ghost {
+  position: absolute;
+  z-index: 4;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 92%;
+  margin: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.86s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#screen-play .scene-stack .portrait.portrait-ghost.is-out {
+  opacity: 0;
+}
+#screen-play .portrait-stack.has-video.is-still-reveal #alex-portrait {
+  opacity: 1 !important;
+  animation: scene-still-in 0.88s ease both;
+}
+#screen-play .portrait-video.is-releasing {
+  opacity: 0 !important;
+  transition: opacity 0.88s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#screen-play .fg-prop.is-entering {
+  animation: scene-atmos-in 0.88s ease both !important;
+}
+#screen-play .fg-prop.is-leaving {
+  opacity: 0 !important;
+  animation: none !important;
+  transition: opacity 0.72s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #screen-play .portrait-ghost,
+  #screen-play .scene-layer-bg-ghost,
+  #screen-play .scene-cut,
+  #screen-play .portrait-video.is-releasing,
+  #screen-play .fg-prop.is-entering,
+  #screen-play .fg-prop.is-leaving {
+    animation: none !important;
+    transition: none !important;
+  }
+  #screen-play .portrait-ghost,
+  #screen-play .scene-layer-bg-ghost,
+  #screen-play .scene-cut {
+    opacity: 0 !important;
+  }
+}
