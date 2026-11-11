@@ -314,11 +314,38 @@ expect(true, "still path checked in apply");
 
 var alexStory = JSON.parse(fs.readFileSync(path.join(__dirname, "../data/alex.json"), "utf8"));
 var facefusion = "vera-facefusion-preview.mp4";
-var hotNodes = ["n5", "n5b", "n5c", "n6a", "n6b", "n6c", "n6a2", "n6b2", "n6c2", "ending_a", "ending_b"];
+var shot1Still = "vera-ending-a-shot1.jpg";
+var shot1Clip = "vera-ending-a-shot1.mp4";
+var hotNodes = ["n5", "n5b", "n5c", "n6a", "n6b", "n6c", "n6a2", "n6b2", "n6c2", "ending_b"];
 hotNodes.forEach(function (id) {
   var pv = (alexStory.nodes[id] && alexStory.nodes[id].portraitVideo) || "";
   expect(pv.indexOf(facefusion) >= 0, id + " missing facefusion clip: " + pv);
   expect(pv.indexOf("vera-i2v") < 0 && pv.indexOf("vera-loop") < 0, id + " still on the wrong Vera clip: " + pv);
+  expect(pv.indexOf(shot1Clip) < 0, id + " picked up ending_a shot 1: " + pv);
+});
+var endingA = alexStory.nodes.ending_a;
+var endingAText = "天亮前。窗縫漏入灰白曙光。Vera 騎在你腿上，裙擺撩起，肩帶同外套滑落，深深吻住你，牙齒輕咬下唇。手指扣住你後頸，下身隔住最後一層布磨你硬處，兩邊都喘。\n\n鏡頭落到相接處：濕熱再沉半寸，幾乎要入。另一隻手却還握著你，慢套到你差點失控才鬆。\n\n「簡報。一小時內。其他——當唔發生。」\n「……下次熄燈，我唔再問。」";
+expect(!!endingA, "ending_a missing");
+expect(endingA.look === "dark", "ending_a look " + (endingA && endingA.look));
+expect((endingA.portrait || "").indexOf(shot1Still) >= 0, "ending_a portrait " + (endingA && endingA.portrait));
+expect(!endingA.still, "ending_a should use portrait, not still");
+expect((endingA.portraitVideo || "").indexOf(shot1Clip) >= 0, "ending_a clip " + (endingA && endingA.portraitVideo));
+expect((endingA.portraitVideo || "").indexOf("facefusion") < 0, "ending_a still on facefusion");
+expect(endingA.text === endingAText, "ending_a text drifted");
+expect((alexStory.portrait || "").indexOf("vera-03.jpg") >= 0, "Vera lock portrait drifted");
+var endingAStill = api.beatStillSrc(alexStory, endingA);
+expect(endingAStill.indexOf(shot1Still) >= 0, "ending_a beatStillSrc " + endingAStill);
+expect(endingAStill.indexOf("v=act2hot1") >= 0, "ending_a still cache bust " + endingAStill);
+expect(api.portraitVideoSrc(alexStory, endingA).indexOf(shot1Clip) >= 0, "ending_a portraitVideoSrc");
+expect(api.beatStillSrc(alexStory, alexStory.nodes.n0).indexOf("vera-03.jpg") >= 0, "dressed n0 left Vera lock");
+expect(api.portraitVideoSrc(alexStory, alexStory.nodes.ending_b).indexOf(facefusion) >= 0, "ending_b left facefusion");
+expect(fs.existsSync(path.join(__dirname, "../assets/stills", shot1Still)), "ending_a still missing");
+expect(fs.existsSync(path.join(__dirname, "../assets/video", shot1Clip)), "ending_a clip missing");
+Object.keys(alexStory.nodes).forEach(function (id) {
+  if (id === "ending_a") return;
+  var node = alexStory.nodes[id];
+  var blob = (node.portrait || "") + (node.still || "") + (node.portraitVideo || "");
+  expect(blob.indexOf("vera-ending-a-shot1") < 0, "shot 1 leaked to " + id);
 });
 ["n0", "n1", "n4x", "n7pre", "n7", "n7b", "n8a", "n8b", "n8a2", "n8b2", "ending_a_lock", "ending_b_lock", "ending_c"].forEach(function (id) {
   var pv = (alexStory.nodes[id] && alexStory.nodes[id].portraitVideo) || "";

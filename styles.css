@@ -1332,6 +1332,17 @@ body.mode-speaking .speaking-pill {
   background: #0a0e14;
 }
 .portrait-stack.has-video #alex-portrait { opacity: 0; }
+/* Beat still stays underneath. The clip sits in the same frame.
+   Other portrait videos (no custom still) are unchanged. */
+#screen-play .portrait-stack.has-beat-clip .portrait-video {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 92%;
+  margin: 0;
+  z-index: 3;
+}
 .portrait-stack.has-video { animation: none; } /* motion comes from the clip */
 .portrait-stack.has-video .blink-mask { display: none !important; }
 .portrait-stack.has-video .portrait-video { display: block; }

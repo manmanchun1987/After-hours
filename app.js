@@ -2,7 +2,7 @@ const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
 
 const STORY_FILES = {
-  alex: "./data/alex.json?v=phone-20261101",
+  alex: "./data/alex.json?v=ea-shot1-20261111",
   morgan: "./data/morgan.json?v=phone-20261101",
   sam: "./data/sam.json?v=phone-20261101",
 };
@@ -2636,12 +2636,19 @@ function portraitVideoSrc(story, node) {
   return null;
 }
 
+/* A beat still plus a clip (ending plates). FaceFusion-only nodes stay put:
+   the shared preview is not pulled over vera-03. */
+function beatClipOwnsFrame(node, vsrc) {
+  return !!(vsrc && node && node.look !== "dressed" && (node.portrait || node.still));
+}
+
 function syncPortraitVideo(story, node) {
   const stack = $("#alex-portrait-stack");
   const bg = document.querySelector("#screen-play .play-bg");
   const vid = $("#play-portrait-video");
   if (!vid) return;
   const vsrc = portraitVideoSrc(story, node);
+  if (stack && stack.classList) stack.classList.toggle("has-beat-clip", beatClipOwnsFrame(node, vsrc));
   // Same clip already chosen: don't reload (renderNode follows applyStoryArt).
   if (vsrc && vid.getAttribute("data-src") === vsrc) {
     if (!vid.hasAttribute("hidden")) {
@@ -2692,7 +2699,7 @@ function syncPortraitVideo(story, node) {
       try { vid.removeAttribute("src"); vid.load(); } catch (e3) {}
       vid.removeAttribute("data-src");
       vid.setAttribute("hidden", "");
-      if (stack) stack.classList.remove("has-video");
+      if (stack) stack.classList.remove("has-video", "has-beat-clip");
       if (bg) bg.classList.remove("has-video");
     };
     vid.onloadeddata = function () {
@@ -3307,7 +3314,7 @@ function finishClipHide(vid, stack, bg) {
   if (vid.hasAttribute("src")) vid.removeAttribute("src");
   try { vid.load(); } catch (e) {}
   vid.setAttribute("hidden", "");
-  if (stack && stack.classList) stack.classList.remove("has-video", "is-still-reveal");
+  if (stack && stack.classList) stack.classList.remove("has-video", "is-still-reveal", "has-beat-clip");
   if (bg && bg.classList) bg.classList.remove("has-video");
 }
 

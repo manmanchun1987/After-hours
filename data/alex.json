@@ -751,10 +751,12 @@
     },
     "ending_a": {
       "id": "ending_a",
-      "portraitVideo": "./assets/video/vera-facefusion-preview.mp4?v=ff-20261101",
+      "look": "dark",
+      "portrait": "./assets/stills/vera-ending-a-shot1.jpg",
+      "portraitVideo": "./assets/video/vera-ending-a-shot1.mp4?v=ea-shot1-20261111",
       "ending": false,
       "label": "天亮",
-      "text": "天亮前。Vera 騎在你腿上，裙擺撩起，濕熱隔住最後一層布磨你硬處到兩邊都喘——終於深深吻住你，牙齒輕咬下唇，下身再沉半寸，幾乎要入。\n\n「簡報。一小時內。其他——當唔發生。」手指仍扣住你後頸，另一隻手却還握著你，慢套到你差點失控才鬆。「……下次熄燈，我唔再問。」",
+      "text": "天亮前。窗縫漏入灰白曙光。Vera 騎在你腿上，裙擺撩起，肩帶同外套滑落，深深吻住你，牙齒輕咬下唇。手指扣住你後頸，下身隔住最後一層布磨你硬處，兩邊都喘。\n\n鏡頭落到相接處：濕熱再沉半寸，幾乎要入。另一隻手却還握著你，慢套到你差點失控才鬆。\n\n「簡報。一小時內。其他——當唔發生。」\n「……下次熄燈，我唔再問。」",
       "choices": [
         {
           "label": "去週一評核室",
