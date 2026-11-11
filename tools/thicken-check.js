@@ -324,7 +324,7 @@ hotNodes.forEach(function (id) {
   expect(pv.indexOf(shot1Clip) < 0, id + " picked up ending_a shot 1: " + pv);
 });
 var endingA = alexStory.nodes.ending_a;
-var endingAText = "天亮前。窗縫漏入灰白曙光。Vera 騎在你腿上，裙擺撩起，肩帶同外套滑落，深深吻住你，牙齒輕咬下唇。手指扣住你後頸，下身隔住最後一層布磨你硬處，兩邊都喘。\n\n鏡頭落到相接處：濕熱再沉半寸，幾乎要入。另一隻手却還握著你，慢套到你差點失控才鬆。\n\n「簡報。一小時內。其他——當唔發生。」\n「……下次熄燈，我唔再問。」";
+var endingAText = "天亮前。窗縫漏入啲灰白光。Vera 騎喺你腿上，裙擺撩起，肩帶同外套滑落，深深吻住你，牙齒輕咬你下唇。手指扣住你後頸，下身隔住最後一層布磨住你，你同佢都喘緊氣。\n\n視線落到相接嗰度：又熱又濕，再沉半寸，幾乎要入。另一隻手仲握住你，慢慢套到你差點失控先鬆。\n\n「簡報。一小時內。其他——當唔發生。」\n「……下次熄燈，我唔再問。」";
 expect(!!endingA, "ending_a missing");
 expect(endingA.look === "dark", "ending_a look " + (endingA && endingA.look));
 expect((endingA.portrait || "").indexOf(shot1Still) >= 0, "ending_a portrait " + (endingA && endingA.portrait));
@@ -443,9 +443,16 @@ expect(api.portraitVideoSrc(samStory, samStory.nodes.s7hot) == null, "s7hot stil
 expect(api.portraitVideoSrc(samStory, samStory.nodes.s8r) == null, "s8r still covered by loop");
 expect(api.portraitVideoSrc(alexStory, alexStory.nodes.n0).indexOf("vera-loop.mp4") >= 0, "Vera idle left vera-loop via src");
 
+var canto = require("./cantonese-check");
+var cantoResult = canto.run();
+if (cantoResult.fails.length) {
+  cantoResult.fails.forEach(function (msg) { fails.push("cantonese: " + msg); });
+}
+
 if (fails.length) {
   console.error("FAIL\n" + fails.join("\n"));
   process.exit(1);
 }
 console.log("thicken-check PASS");
+console.log("cantonese-check PASS (" + cantoResult.scanned + " player-visible strings)");
 process.exit(0);

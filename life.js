@@ -1,7 +1,7 @@
 /* live65 stills */
 (function () {
   var BASE = location.pathname.indexOf("/After-hours") === 0 ? "/After-hours" : ".";
-  var FILES = { alex: BASE + "/data/alex.json", morgan: BASE + "/data/morgan.json", sam: BASE + "/data/sam.json" };
+  var FILES = { alex: BASE + "/data/alex.json?v=canto-20261111b", morgan: BASE + "/data/morgan.json?v=canto-20261111b", sam: BASE + "/data/sam.json?v=canto-20261111b" };
   var IDLE = BASE + "/assets/video/vera-loop.mp4";
   var LINE = {
     n1: BASE + "/assets/video/vera-loop.mp4",
