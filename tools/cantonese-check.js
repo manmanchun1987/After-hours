@@ -55,6 +55,21 @@ function wholeWord(s, word) {
   return hits;
 }
 
+var CHUAN_SKIP = "緊住勻得到唔不過";
+
+function lintChuan(s, hits) {
+  var from = 0;
+  var at = s.indexOf("喘");
+  while (at !== -1) {
+    var i = at + 1;
+    while (i < s.length && CHUAN_SKIP.indexOf(s.charAt(i)) >= 0) i++;
+    var next = s.charAt(i);
+    if (next !== "氣" && next !== "息") hits.push({ name: "喘缺氣", index: at });
+    from = at + 1;
+    at = s.indexOf("喘", from);
+  }
+}
+
 function lintString(s) {
   var hits = [];
   if (!s) return hits;
@@ -83,6 +98,7 @@ function lintString(s) {
   });
   wholeWord(s, "Sam").forEach(function (h) { hits.push(h); });
   wholeWord(s, "Morgan").forEach(function (h) { hits.push(h); });
+  lintChuan(s, hits);
   return hits;
 }
 
@@ -333,8 +349,8 @@ function scanHtml(file, src, fails) {
 }
 
 function selfTest() {
-  var bad = ["騎在你腿上", "把你手", "你擇", "選擇角色", "自已", "叫 Sam。", "Morgan。", "升級前", "却還握著", "握着", "才鬆", "才剛開始", "兩邊都喘", "說完", "直說", "有野", "坐進"];
-  var good = ["門把就喺度", "現在", "實在", "心不在焉", "在意", "把手", "一把", "把握", "Sammi", "Elise", "人才", "她係邊個", "那一下", "視線卻落", "着數", "……門把就喺度。你推，定停？"];
+  var bad = ["騎在你腿上", "把你手", "你擇", "選擇角色", "自已", "叫 Sam。", "Morgan。", "升級前", "却還握著", "握着", "才鬆", "才剛開始", "兩邊都喘", "說完", "直說", "有野", "坐進", "你同佢都喘緊", "喘住嗰下", "吻帶喘", "帶一點酒、喘同濕響", "等你喘", "你喘勻再講", "我喘得到", "喘勻", "喘得到", "聽得到你喘", "你仲喘緊？"];
+  var good = ["門把就喺度", "現在", "實在", "心不在焉", "在意", "把手", "一把", "把握", "Sammi", "Elise", "人才", "她係邊個", "那一下", "視線卻落", "着數", "……門把就喺度。你推，定停？", "你同佢都喘緊氣", "喘住氣嗰下", "吻帶喘氣", "帶一點酒、喘氣同濕響", "等你喘氣", "你喘勻氣再講", "我喘得到氣", "喘勻氣", "……喘得到氣。", "聽得到你喘氣", "你仲喘緊氣？", "霧裏有喘息", "喘唔到氣", "喘不過氣"];
   var fails = [];
   bad.forEach(function (s) {
     if (!lintString(s).length) fails.push("self-test missed " + s);
