@@ -78,6 +78,16 @@
     return (state && state.recentBotReplies) || [];
   }
 
+  function lineSeen(line, recent) {
+    if (!line) return false;
+    if ((recent || []).indexOf(line) >= 0) return true;
+    var fn = global.__ahSpokenBlocked;
+    if (typeof fn === "function") {
+      try { if (fn(line)) return true; } catch (eSeen) {}
+    }
+    return false;
+  }
+
   function pickAnti(pool, recent) {
     var list = (pool || []).filter(Boolean);
     if (!list.length) return "";
@@ -85,7 +95,7 @@
     var i, line, head, r, clash;
     for (i = 0; i < list.length; i++) {
       line = list[(recent.length + i) % list.length];
-      if (recent.indexOf(line) >= 0) continue;
+      if (lineSeen(line, recent)) continue;
       head = String(line).slice(0, 4);
       clash = false;
       for (r = Math.max(0, recent.length - 4); r < recent.length; r++) {
@@ -95,7 +105,7 @@
     }
     for (i = 0; i < list.length; i++) {
       line = list[(recent.length + i) % list.length];
-      if (recent.indexOf(line) < 0) return line;
+      if (!lineSeen(line, recent)) return line;
     }
     return list[recent.length % list.length];
   }
@@ -135,7 +145,7 @@
     for (i = 0; i < pool.length; i++) {
       ack = pool[(recent.length + i) % pool.length];
       line = joinAckSteer(ack, steer);
-      if (recent.indexOf(line) >= 0) continue;
+      if (lineSeen(line, recent)) continue;
       if (questionCount(line) > 1) continue;
       if (line.replace(/\s/g, "").length < 8) continue;
       return line;
@@ -418,7 +428,7 @@
       if (canReflect) {
         var mAck = memoryAck(detail);
         var mLine = joinAckSteer(mAck, steerText(goal));
-        if (mAck && mLine && recent.indexOf(mLine) < 0 && questionCount(mLine) <= 1) reply = mLine;
+        if (mAck && mLine && !lineSeen(mLine, recent) && questionCount(mLine) <= 1) reply = mLine;
       }
     } catch (e) {}
 
