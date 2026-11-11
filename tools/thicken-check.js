@@ -577,6 +577,192 @@ var g2 = global.GuidePolicy.decide({
 expect(g2.reply !== g1.reply, "guide ask repeated " + g2.reply);
 expect(api.spokenBlocked(g1.reply), "ledger missed the guide line");
 
+resetSpoken();
+var coreBuckets = ["greet", "work", "sorry", "flirt", "tired", "praise", "challenge", "help", "bye", "leave", "name", "memory", "emoji", "default", "silence"];
+var coreTones = ["cold", "wary", "warmer", "sharp"];
+["morgan", "sam"].forEach(function (cast) {
+  state.storyId = cast;
+  state.story.id = cast;
+  coreBuckets.forEach(function (bucket) {
+    coreTones.forEach(function (tone) {
+      var lines = api.poolFor(bucket, tone);
+      var uniq = {};
+      lines.forEach(function (l) { uniq[l] = 1; });
+      var n = Object.keys(uniq).length;
+      expect(n >= 7, cast + " " + bucket + "." + tone + " has " + n);
+      lines.forEach(function (l) {
+        expect(!api.isTelegraphic(l), cast + " telegraphic " + l);
+        expect(/[。！？?]$/.test(l), cast + " incomplete " + l);
+      });
+    });
+  });
+});
+coreBuckets.forEach(function (bucket) {
+  coreTones.forEach(function (tone) {
+    state.storyId = "morgan";
+    state.story.id = "morgan";
+    var a = api.poolFor(bucket, tone);
+    state.storyId = "sam";
+    state.story.id = "sam";
+    var b = api.poolFor(bucket, tone);
+    a.forEach(function (l) {
+      expect(b.indexOf(l) < 0, "shared line " + bucket + " " + l);
+    });
+  });
+});
+["alex", "morgan", "sam"].forEach(function (cast) {
+  state.storyId = cast;
+  state.story.id = cast;
+  var topicBank = api.topicEchoBank();
+  var asideBank = api.sceneAsideBank();
+  ["加班", "門", "酒", "電話", "簡報", "會議", "電梯", "上司"].forEach(function (topic) {
+    coreTones.forEach(function (tone) {
+      var lines = (topicBank[topic] && topicBank[topic][tone]) || [];
+      expect(lines.length >= 4, cast + " echo " + topic + " " + tone + " " + lines.length);
+    });
+  });
+  ["office", "corridor", "pantry", "lounge", "lift", "stairs", "roof", "review", "dark", "close"].forEach(function (place) {
+    coreTones.forEach(function (tone) {
+      var lines = (asideBank[place] && asideBank[place][tone]) || [];
+      expect(lines.length >= 4, cast + " aside " + place + " " + tone + " " + lines.length);
+    });
+  });
+});
+state.storyId = "alex";
+state.story.id = "alex";
+var alexEcho = JSON.stringify(api.topicEchoBank());
+var alexAside = JSON.stringify(api.sceneAsideBank());
+state.storyId = "morgan";
+state.story.id = "morgan";
+expect(JSON.stringify(api.topicEchoBank()) !== alexEcho, "Elise echoes still shared");
+expect(JSON.stringify(api.sceneAsideBank()) !== alexAside, "Elise asides still shared");
+var eliseEcho = JSON.stringify(api.topicEchoBank());
+state.storyId = "sam";
+state.story.id = "sam";
+expect(JSON.stringify(api.topicEchoBank()) !== alexEcho, "Sammi echoes still shared");
+expect(JSON.stringify(api.topicEchoBank()) !== eliseEcho, "Sammi echoes copied Elise");
+expect(JSON.stringify(api.sceneAsideBank()) !== alexAside, "Sammi asides still shared");
+
+function lowHeatCast(cast) {
+  resetSpoken();
+  state.storyId = cast;
+  state.story.id = cast;
+  var lines = [];
+  for (var i = 0; i < 4; i++) {
+    var line = api.playerFacingReply("我鐘意你", "flirt", guideFlirt);
+    lines.push(line);
+    api.rememberSpoken(line, [line]);
+  }
+  lines.forEach(function (line) {
+    expect(line.indexOf(doorAsk) < 0, cast + " low heat dumped the door " + line);
+    expect(line.indexOf("我回你") < 0 && line.indexOf("撩") < 0, cast + " low heat jumped " + line);
+    expect(/距離|收聲|監控|而家|退|行近|界線|收起/.test(line), cast + " low heat not a boundary " + line);
+    expect(!api.isTelegraphic(line), cast + " low heat telegraphic " + line);
+  });
+}
+lowHeatCast("morgan");
+lowHeatCast("sam");
+
+resetSpoken();
+state.glueSaidKey = "n0|corridor|dressed";
+["alex", "morgan", "sam"].forEach(function (cast) {
+  state.storyId = cast;
+  state.story.id = cast;
+  state.replyLedger = {};
+  state.replyCursor = {};
+  state.recentBotReplies = [];
+  state.spokenTurns = [];
+  var seen = {};
+  for (var i = 0; i < 5; i++) {
+    var greet = api.pickGreeting();
+    expect(!api.isTelegraphic(greet), cast + " greeting telegraphic " + greet);
+    expect(greet.indexOf("在") < 0, cast + " greeting 在 " + greet);
+    seen[greet] = 1;
+  }
+  expect(Object.keys(seen).length >= 3, cast + " greeting did not rotate " + Object.keys(seen).join(" | "));
+});
+state.storyId = "morgan";
+state.story.id = "morgan";
+var eliseHello = api.greetingLines().join("\n");
+expect(/夜|杯|條款/.test(eliseHello), "Elise greeting off voice " + eliseHello);
+expect(eliseHello.indexOf("簡報") < 0 && eliseHello.indexOf("評估") < 0, "Elise greeting borrowed Vera " + eliseHello);
+state.storyId = "sam";
+state.story.id = "sam";
+var sammiHello = api.greetingLines().join("\n");
+expect(/麵|頁|燈|前輩|門禁/.test(sammiHello), "Sammi greeting off voice " + sammiHello);
+expect(sammiHello.indexOf("房卡") < 0 && sammiHello.indexOf("董事會") < 0 && sammiHello.indexOf("條款") < 0, "Sammi greeting borrowed Elise " + sammiHello);
+
+resetSpoken();
+state.sessionFirstPingSent = true;
+state.chatUserLines = ["嗯"];
+state.openPlayer = { text: "嗯", answered: false, topic: "", bucket: "default" };
+state.spokenTurns = [];
+state.chatBotLines = [];
+var rndWait = Math.random;
+Math.random = function () { return 0; };
+var followMin = api.incomingWaitMs();
+expect(followMin === 12000, "unanswered wait " + followMin);
+expect(api.incomingWindow().min === 12000, "unanswered window " + api.incomingWindow().min);
+Math.random = function () { return 0.999; };
+var followMax = api.incomingWaitMs();
+expect(followMax >= 12000 && followMax <= 18000, "unanswered wait high " + followMax);
+state.openPlayer.answered = true;
+state.spokenTurns = [{ raw: "你想坐低先講？" }];
+state.chatBotLines = ["你想坐低先講？"];
+Math.random = function () { return 0; };
+expect(api.incomingFollowDue(), "question did not arm follow-up");
+expect(api.incomingWaitMs() === 12000, "question wait " + api.incomingWaitMs());
+state.spokenTurns = [{ raw: "我聽到，你講清楚。" }];
+state.chatBotLines = ["我聽到，你講清楚。"];
+state.openPlayer = { text: "嗯", answered: true, topic: "", bucket: "default" };
+expect(!api.incomingFollowDue(), "idle still on follow-up");
+Math.random = function () { return 0; };
+expect(api.incomingWaitMs() === 32000, "idle wait " + api.incomingWaitMs());
+Math.random = function () { return 0.999; };
+var idleMax = api.incomingWaitMs();
+expect(idleMax >= 32000 && idleMax <= 48000, "idle wait high " + idleMax);
+Math.random = rndWait;
+
+resetSpoken();
+state.playerFacts = [{ id: "name", quote: "阿明", label: "你叫阿明", turn: 1, uses: 0, echoAfter: 0, rank: 0, at: Date.now() }];
+state.factTurn = 3;
+state.openPlayer = { text: "你好", answered: true, topic: "", bucket: "greet" };
+state.halfFollow = null;
+state.memories = [];
+state.chatTopics = [];
+state.story.nodes.n0.sceneGoal = { ask: "推門入去，定停低等等？" };
+state.spokenTurns = [{ raw: "推門入去，定停低等等？" }];
+expect(api.repeatsSceneAsk("你而家揀，推門入去，定停低等等？"), "scene ask not detected");
+expect(!api.repeatsSceneAsk("你而家回我一句清楚嘅。"), "safe incoming flagged");
+for (var pingN = 0; pingN < 6; pingN++) {
+  var ping = api.pickProactiveLine();
+  expect(ping.indexOf("阿明") >= 0, "incoming missed the name " + ping);
+  expect(ping.indexOf("推門入去，定停低等等") < 0, "incoming repeated the ask " + ping);
+  expect(!api.isTelegraphic(ping), "incoming telegraphic " + ping);
+}
+delete state.story.nodes.n0.sceneGoal;
+
+["我係阿明", "我嘅名係阿明", "我叫阿明", "我叫阿明呀"].forEach(function (intro) {
+  resetSpoken();
+  api.notePlayerTurn(intro);
+  var stored = (state.playerFacts || []).filter(function (f) { return f.id === "name"; })[0];
+  expect(!!stored && stored.quote === "阿明", intro + " stored " + (stored && stored.quote));
+  var immediate = api.playerFacingReply(intro, "unclear", guideFlirt);
+  expect(immediate.indexOf("你叫阿明") === 0, intro + " not immediate " + immediate);
+});
+resetSpoken();
+expect(!api.extractPlayerFact("我係唔係AI"), "AI question stored a name");
+api.notePlayerTurn("我係阿明");
+api.notePlayerTurn("你記得我叫咩");
+var still = (state.playerFacts || []).filter(function (f) { return f.id === "name"; })[0];
+expect(!!still && still.quote === "阿明", "recall overwrote the name " + (still && still.quote));
+var recallHow = api.playerFacingReply("你記得我叫咩", "ask_memory", guideFlirt);
+expect(recallHow.indexOf("你叫阿明") === 0, "叫咩 did not lead with the name " + recallHow);
+api.notePlayerTurn("你記得我名？");
+var recallName = api.playerFacingReply("你記得我名？", "ask_memory", guideFlirt);
+expect(recallName.indexOf("你叫阿明") === 0, "名 recall drifted " + recallName);
+
+resetSpoken();
 var canto = require("./cantonese-check");
 var cantoResult = canto.run();
 if (cantoResult.fails.length) {
