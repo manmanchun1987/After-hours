@@ -106,7 +106,10 @@ expect(!api.lineFitsBeat("天台風大。講完返入。", corridor), "rooftop l
 var glued = api.glueBeat("天台風大。講完返入。", corridor);
 expect(glued.indexOf("天台") < 0, "glue kept 天台: " + glued);
 expect(glued.indexOf("走廊") >= 0, "glue missed 走廊: " + glued);
-expect(glued.indexOf("衫仍齊") >= 0, "glue missed costume: " + glued);
+expect(glued.indexOf("衫仍齊") >= 0 || glued.indexOf("衫仲齊") >= 0, "glue missed costume: " + glued);
+expect(glued.indexOf("走廊。衫") < 0, "stamp prefix: " + glued);
+var gluedAgain = api.glueBeat("你再講多一句。", corridor);
+expect(gluedAgain.indexOf("我喺走廊") < 0 && gluedAgain.indexOf("走廊。") < 0, "stamp repeated: " + gluedAgain);
 
 state.nodeId = "n5";
 state.currentMood = "intimate";
@@ -133,14 +136,16 @@ state.story.id = "alex";
 state.nodeId = "n0";
 state.currentMood = "cold";
 state.heat = 20;
+state.glueSaidKey = "n0|corridor|dressed";
 expect(api.intimacyBand() === "low", "band low " + api.intimacyBand());
 var low = api.finishBeatLine("心急我知。推門入去，定停低等等？", {
   ladder: true, bucket: "flirt", userText: "我鐘意你"
 });
-expect(low.indexOf("走廊") >= 0, "low flirt left corridor: " + low);
-expect(/推門|停低/.test(low), "low flirt dropped steer: " + low);
+expect(low.indexOf("走廊。") < 0, "low flirt stamped: " + low);
+expect(low.indexOf("推門入去，定停低等等") < 0, "low flirt kept the door ask: " + low);
 expect(low.indexOf("我回你") < 0 && low.indexOf("撩得準") < 0, "low flirt reciprocated: " + low);
-expect(/距離|界線|收起|收聲|監控|而家|退/.test(low), "low flirt not a boundary: " + low);
+expect(/距離|界線|收起|收聲|監控|而家|退|行近/.test(low), "low flirt not a boundary: " + low);
+expect(low.indexOf("距離。而家") < 0, "low flirt still telegraphic: " + low);
 
 state.heat = 70;
 state.currentMood = "intimate";
@@ -149,7 +154,7 @@ var high = api.finishBeatLine("心急我知。推門入去，定停低等等？"
   ladder: true, bucket: "flirt", userText: "我鐘意你"
 });
 expect(/我回你|撩得準|危險/.test(high), "high flirt did not flirt back: " + high);
-expect(high.indexOf("走廊") >= 0, "high flirt left the corridor: " + high);
+expect(high.indexOf("走廊。衫") < 0, "high flirt stamped: " + high);
 expect(high.indexOf("天台") < 0 && high.indexOf("酒廊") < 0, "high flirt jumped place: " + high);
 
 state.heat = 20;
@@ -442,6 +447,135 @@ expect(api.portraitVideoSrc(samStory, samStory.nodes.s7).indexOf("sammi-loop.mp4
 expect(api.portraitVideoSrc(samStory, samStory.nodes.s7hot) == null, "s7hot still covered by loop");
 expect(api.portraitVideoSrc(samStory, samStory.nodes.s8r) == null, "s8r still covered by loop");
 expect(api.portraitVideoSrc(alexStory, alexStory.nodes.n0).indexOf("vera-loop.mp4") >= 0, "Vera idle left vera-loop via src");
+
+function resetSpoken() {
+  state.storyId = "alex";
+  state.story.id = "alex";
+  state.nodeId = "n0";
+  state.heat = 20;
+  state.tension = 15;
+  state.currentMood = "cold";
+  state.chatTone = "cold";
+  state.callMode = false;
+  state.chatBusy = false;
+  state.playerFacts = [];
+  state.factTurn = 0;
+  state.memories = [];
+  state.chatUserLines = [];
+  state.chatBotLines = [];
+  state.chatTopics = [];
+  state.recentBotReplies = [];
+  state.replyLedger = {};
+  state.replyCursor = {};
+  state.spokenTurns = [];
+  state.glueSaidKey = "n0|corridor|dressed";
+  state.openPlayer = null;
+  state.halfFollow = null;
+  state.lastNotedTurn = "";
+  state.lastNotedAt = 0;
+}
+var doorAsk = "推門入去，定停低等等";
+var guideFlirt = "心急我知。" + doorAsk + "？";
+resetSpoken();
+var likes = [];
+for (var li = 0; li < 4; li++) {
+  var like = api.playerFacingReply("我鐘意你", "flirt", guideFlirt);
+  likes.push(like);
+  api.rememberSpoken(like, [like]);
+}
+for (var lj = 0; lj < likes.length; lj++) {
+  expect(likes.indexOf(likes[lj]) === lj, "like-you repeat " + likes.join(" | "));
+  expect(likes[lj].indexOf(doorAsk) < 0, "like-you dumped the door " + likes[lj]);
+  expect(likes[lj].indexOf("我回你") < 0 && likes[lj].indexOf("撩") < 0, "like-you jumped heat " + likes[lj]);
+  expect(/距離|收聲|監控|而家|退|行近/.test(likes[lj]), "like-you not a boundary " + likes[lj]);
+  expect(likes[lj].indexOf("距離。而家") < 0 && likes[lj].indexOf("呢度有耳。收聲") < 0, likes[lj]);
+  expect(likes[lj].indexOf("走廊。衫") < 0, "like-you stamped " + likes[lj]);
+  expect(!api.isTelegraphic(likes[lj]), "like-you telegraphic " + likes[lj]);
+}
+
+resetSpoken();
+api.notePlayerTurn("簡報第三頁");
+state.chatUserLines.push("簡報第三頁");
+var brief = api.playerFacingReply("簡報第三頁", "unclear", guideFlirt);
+expect(/簡報/.test(brief) && brief.indexOf("第三頁") >= 0, "briefing missed the page " + brief);
+expect(brief.indexOf(doorAsk) < 0, "briefing dumped the door " + brief);
+api.rememberSpoken(brief, [brief]);
+if (state.openPlayer) state.openPlayer.answered = true;
+api.notePlayerTurn("然後呢");
+var thenNe = api.playerFacingReply("然後呢", "unclear", guideFlirt);
+expect(/簡報/.test(thenNe) && thenNe.indexOf("第三頁") >= 0, "然後呢 dropped the briefing " + thenNe);
+expect(thenNe.indexOf(doorAsk) < 0 && thenNe.indexOf("呢度有耳") < 0, "然後呢 dumped a fragment " + thenNe);
+
+resetSpoken();
+api.notePlayerTurn("簡報第三頁");
+state.chatUserLines.push("簡報第三頁");
+if (state.openPlayer) state.openPlayer.answered = true;
+api.notePlayerTurn("今日天氣點");
+var weather = api.playerFacingReply("今日天氣點", "off_topic", guideFlirt);
+expect(/簡報/.test(weather), "weather left the briefing " + weather);
+expect(weather.indexOf("天氣") < 0 && weather.indexOf("落雨") < 0 && weather.indexOf("窗外") < 0, "weather switched " + weather);
+
+resetSpoken();
+api.notePlayerTurn("我叫阿明");
+var namedNow = api.playerFacingReply("我叫阿明", "unclear", guideFlirt);
+expect(namedNow.indexOf("你叫阿明") === 0, "name not immediate " + namedNow);
+api.rememberSpoken(namedNow, [namedNow]);
+api.notePlayerTurn("你記得我名？");
+var recall = api.playerFacingReply("你記得我名？", "ask_memory", guideFlirt);
+expect(recall.indexOf("你叫阿明") === 0, "recall did not lead with the name " + recall);
+
+resetSpoken();
+var aiLine = api.playerFacingReply("你係唔係AI？", "off_topic", guideFlirt);
+expect(/上司|真人|Vera/.test(aiLine), "ai question had no character line " + aiLine);
+expect(aiLine.indexOf(doorAsk) < 0, "ai dumped the door " + aiLine);
+expect(aiLine.indexOf("距離。而家") < 0, aiLine);
+
+resetSpoken();
+var dots = api.playerFacingReply("……", "unclear", guideFlirt);
+expect(dots.indexOf("呢度有耳") < 0 && dots.indexOf(doorAsk) < 0, "silence dumped the door " + dots);
+expect(dots.indexOf("距離。而家") < 0, dots);
+expect(!api.isTelegraphic(dots), "silence still telegraphic " + dots);
+
+api.listIncomingLines().forEach(function (l) {
+  expect(!api.isTelegraphic(l), "incoming telegraphic " + l);
+  expect(l.indexOf("門口。講") < 0 && l.indexOf("距離。而家") < 0 && l.indexOf("有事？講") < 0, l);
+  expect(l.indexOf("在") < 0, "zai in incoming " + l);
+});
+expect(api.isTelegraphic("距離。而家。"), "fragment not flagged");
+expect(api.isTelegraphic("呢度有耳。收聲。"), "ear fragment not flagged");
+expect(!api.isTelegraphic("而家唔好再行近，我要你同我保持距離。"), "boundary flagged as telegraphic");
+
+state.spokenTurns = [];
+api.rememberSpoken("甲句完整講清楚。乙句都講清楚。", ["甲句完整講清楚。", "乙句都講清楚。"]);
+expect(api.spokenBlocked("甲句完整講清楚。乙句都講清楚。"), "pair not blocked");
+expect(api.spokenBlocked("甲句完整講清楚。"), "split bubble not blocked");
+expect(api.spokenBlocked("乙句都講清楚。"), "second bubble not blocked");
+
+require(path.join(__dirname, "../guide-lines.js"));
+require(path.join(__dirname, "../guide-policy.js"));
+state.spokenTurns = [];
+state.recentBotReplies = [];
+state.chatUserLines = [];
+state.chatBotLines = [];
+var guideGoal = { ask: doorAsk + "？", successIntents: ["enter_door", "wait"], maxMisses: 3 };
+var g1 = global.GuidePolicy.decide({
+  intent: { id: "unclear", text: "嗯" },
+  text: "嗯",
+  sceneGoal: guideGoal,
+  state: state,
+  missCount: 0
+});
+expect(!!(g1 && g1.reply), "guide reply missing");
+api.rememberSpoken(g1.reply, [g1.reply]);
+var g2 = global.GuidePolicy.decide({
+  intent: { id: "unclear", text: "嗯" },
+  text: "嗯",
+  sceneGoal: guideGoal,
+  state: state,
+  missCount: 0
+});
+expect(g2.reply !== g1.reply, "guide ask repeated " + g2.reply);
+expect(api.spokenBlocked(g1.reply), "ledger missed the guide line");
 
 var canto = require("./cantonese-check");
 var cantoResult = canto.run();

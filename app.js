@@ -33,6 +33,8 @@ const state = {
   // Layer 4: per-bucket draw ledger (longer than CHAT_ANTIREPEAT_N when a pool is thin).
   replyLedger: {},
   replyCursor: {},
+  spokenTurns: [],
+  glueSaidKey: "",
   openPlayer: null,
   halfFollow: null,
   offTopicStreak: 0,
@@ -680,10 +682,19 @@ const CHAT_REPLIES = {
     sharp: ["對唔住換唔到 deadline。", "少講。快改。", "我唔想再聽第二句。", "夠。", "改。", "收聲。做事。", "唔好再道歉表演。", "快。"],
   },
   flirt: {
-    cold: ["……你知唔知自己講緊咩。", "會議室外先再講呢句。", "距離。而家。", "大膽。監控亮住。", "呢度有耳。收聲。", "試探要代價。你知未？", "語氣收一收。", "你越界之前，先睇門牌。"],
-    wary: ["大膽。我未必介意——但你要承擔。", "呢度有耳。收聲。", "你試探得太明顯。", "靠近可以。越界另計。", "你講完，我反而想聽你點收科。", "酒後先講？定清醒？", "危險答案。我記下。", "距離縮一寸——你負責。"],
+    cold: [
+      "而家唔好再行近，我要你同我保持距離。",
+      "呢度有人聽得見，你收聲，唔好再講呢句。",
+      "我聽到你鐘意我，但而家未到行近嘅時候。",
+      "監控仲亮住，你大膽嘅句我唔收。",
+      "你越界之前先停，而家退返半步。",
+      "鐘意可以講，但而家你企喺度唔好再近。",
+      "語氣收一收，呢句而家唔適合講。",
+      "你想試探先停低，而家呢度唔係講呢句嘅地方。",
+    ],
+    wary: ["大膽。我未必介意——但你要承擔。", "呢度有人聽得見，你收聲，再講我先當你認真。", "你試探得太明顯。", "靠近可以。越界另計。", "你講完，我反而想聽你點收科。", "酒後先講？定清醒？", "危險答案。我記下。", "距離縮一寸——你負責。"],
     warmer: ["……哼。你以為我會慌？", "靠近可以。越界另計。", "你講完未？定想我回你一句更危險。", "……你敢講，我反而想聽第二句。", "危險。繼續——細聲。", "你望住我講呢句。記住後果。", "……有趣。你仲企喺度。", "再近一點。然後停。", "我回你。再近半寸。細聲。", "哼。你撩得準。我唔裝聽唔到。", "危險嘅暖。我留你多一刻。"],
-    sharp: ["收起。而家。", "唔好玩火——除非你準備好燒。", "一句過界，評估你自己睇。", "夠。", "收聲。", "走廊見——如果你仲敢。", "唔好玩。", "距離。立刻。"],
+    sharp: ["你而家收起呢句。", "唔好玩火——除非你準備好燒。", "一句過界，評估你自己睇。", "夠。", "收聲。", "走廊見——如果你仲敢。", "唔好玩。", "你而家退返半步，同我保持距離。"],
   },
   tired: {
     cold: ["夜深。你仲未走？", "累就飲水。唔好攤喺度。", "我都未走。你有理由留？", "攰唔係通行證。", "門禁時間你自己知。", "眼瞓就錯字。醒定。", "夜班唔減標準。", "你留低，就要醒。"],
@@ -722,7 +733,14 @@ const CHAT_REPLIES = {
     sharp: ["走就走。唔好回頭。", "門。快。", "離開就當你棄權。", "走。", "快閃。", "唔挽留。", "棄權自己認。"],
   },
   silence: {
-    cold: ["……", "講。定係淨係打省略號。", "安靜我當你諗緊。三十秒。", "……你仲喺度？", "省略號換唔到答案。", "唔好裝死。", "沉默我記下。", "三十秒。之後我當你棄權。", "……回我。", "空白唔係策略。"],
+    cold: [
+      "你打省略號，我當你未講完，你講清楚。",
+      "你唔出聲，我等你一句實在嘅。",
+      "空白唔係答案，你而家講你想點。",
+      "你仲喺度就出聲，唔好淨係打點。",
+      "我見到你停咗，你繼續講落去。",
+      "省略號我唔當你答完，你補一句。",
+    ],
     wary: ["……你仲喺度？回我。", "唔好裝死。", "沉默唔係答案。", "打省略號？怕講錯？", "回。定走。", "安靜太耐，我當你閃。", "……講半句都得。", "唔好用沉默試探。", "回我一眼。"],
     warmer: ["……我等得。但唔會等成晚。", "打省略號？你怕講錯？", "……哼。至少你仲望住我。", "……靜得啱。再靜就冷。", "我等。你喘勻氣再講。", "……空白我當你靠近緊。", "唔使完美。講。", "……我聽到你未打字。"],
     sharp: ["回。", "唔好浪費氣。", "一句。而家。", "回。立刻。", "唔好空白。", "講。", "夠靜。"],
@@ -758,13 +776,20 @@ const CHAT_REPLIES = {
     sharp: ["Vera。", "收起花名。", "叫錯再講？", "停。", "名牌。", "夠。", "唔好玩。"],
   },
   nsfw_probe: {
-    cold: ["……界線。而家。", "會議室燈光下唔講呢啲。", "你試探身體？先睇評估。", "收起。監控亮住。", "色情換唔到寬限。", "距離。立刻。", "呢句我當越界。", "講工作。"],
-    wary: ["大膽。代價你知未？", "呢度有耳。收聲。", "試探可以。越界另計。", "你想聽危險答案？走廊。", "收低聲。再講一次——清醒未？", "我記下呢句。", "靠近唔等於許可。", "停喺口。"],
+    cold: ["而家唔好越界，你同我保持距離。", "會議室燈光下唔講呢啲。", "你試探身體？先睇評估。", "監控仲亮住，你收起呢句。", "色情換唔到寬限。", "你而家退返半步，同我保持距離。", "呢句我當越界。", "講工作。"],
+    wary: ["大膽。代價你知未？", "呢度有人聽得見，你收聲，唔好再講呢句。", "試探可以。越界另計。", "你想聽危險答案？走廊有人聽得見。", "收低聲。再講一次——清醒未？", "我記下呢句。", "靠近唔等於許可。", "停喺口。"],
     warmer: ["……你敢。我反而想睇你點收科。", "危險。細聲。", "……哼。你以為我會慌？", "越界之前，先望我眼。", "……有趣。你仲未走。", "再近——然後停。", "你講完，我未必放你走。", "我回你。再近半寸。細聲。", "哼。你撩得準。我唔裝聽唔到。"],
     sharp: ["收起。而家。", "夠。", "走廊——如果你仲敢。", "停。", "唔好玩火。", "評估你自己睇。", "收聲。"],
   },
   ai_ask: {
-    cold: ["我係你上司。唔好問無聊問題。", "真人。職位。門牌。", "唔好兜圈。講正事。", "我喺度。你睇到。", "問呢啲浪費時間。", "Vera。人類。下一題。", "收起怪問題。", "檔呢？"],
+    cold: [
+      "我係你上司 Vera，真人企喺你面前，唔好問我係唔係 AI。",
+      "我喺度，你睇到我，唔好再問我係唔係 AI。",
+      "你問我係唔係 AI，我係你上司，你講正事。",
+      "我唔係程式，我係 Vera，你有事就講。",
+      "問我係 AI 浪費時間，你講你而家要做嘅事。",
+      "門牌寫住我個名，我係真人，你唔好再問。",
+    ],
     wary: ["你問呢句——想試我？", "我係 Vera。你知。", "唔好用怪問題躲工作。", "真人答你。重點呢？", "你懷疑我？大膽。", "門後係我。", "問完未？", "講正事。"],
     warmer: ["……我喺你對面。夠真未？", "你怕我係空殼？望住我。", "……哼。我喘得到氣。你呢？", "真人。夜深。你仲問？", "……我手暖。你信未？", "問呢啲，反而似你緊張。", "我喺度。繼續。"],
     sharp: ["夠。", "我係你上司。", "停問。", "正事。", "唔好傻。", "下一句。", "收聲。"],
@@ -824,7 +849,7 @@ const CHAT_REPLIES = {
     sharp: ["夠。", "收聲。", "再罵走廊見。", "停。", "評估你自己睇。", "閉嘴。", "記住。"],
   },
   date_hug: {
-    cold: ["約會？唔喺今晚議程。", "攬——距離。而家。", "私人邀約日頭再談。", "身體接觸要許可。你未有。", "收起。", "職場先。", "門牌唔係約會 App。", "唔好越界。"],
+    cold: ["約會？唔喺今晚議程。", "你想攬，但而家未得，你同我保持距離。", "私人邀約日頭再談。", "身體接觸要許可。你未有。", "收起。", "職場先。", "門牌唔係約會 App。", "唔好越界。"],
     wary: ["你約我？大膽。", "攬之前先講清楚代價。", "約會可以——唔喺監控下。", "試探親密？記下。", "走廊。細聲。", "許可未發。", "停喺口。", "再講一次清醒版。"],
     warmer: ["……約會？你想清楚未？", "攬可以。越界另計。", "……哼。你靠近得太直。", "今晚先將門後處理完。", "……短擁？你負責後果。", "你敢約。我敢記。", "……靠近。然後停。", "我回你。再近半寸。然後停。", "危險嘅暖。我留你多一刻。"],
     sharp: ["唔約。", "距離。", "收起。", "停。", "許可未有。", "夠。", "退。"],
@@ -847,25 +872,25 @@ const CAST_VOICE = {
   alex: {
     name: "Vera",
     toast: "Vera 傳咗訊息",
-    greeting: "……有事？講。",
+    greeting: "你有事就講清楚。",
     incoming: [
-      "……你仲喺度？",
-      "簡報改到邊？回我。",
-      "唔好裝忙。我睇到你仲 online。",
-      "抬頭。",
-      "我記得今晚啲事——你呢？",
-      "走廊燈仲亮。你企喺邊？",
-      "電話震完你都唔回？",
-      "你靜咗陣。我未走。",
-      "唔好淨係望住我。打字。",
-      "我數到你未回。",
-      "檔放低一秒。回我。",
+      "你仲喺度就出聲，唔好裝冇見到。",
+      "簡報改到邊，你回我一句。",
+      "唔好裝忙，我睇到你仲喺線上。",
+      "你抬頭望我，然後打字回我。",
+      "我記得今晚啲事，你記得幾多。",
+      "走廊燈仲亮，你企喺邊，回我。",
+      "電話震完你都唔回，你而家回一句。",
+      "你靜咗一陣，我未走，你講一句。",
+      "唔好淨係望住我，你打字回我。",
+      "我數到你未回我，你而家回一句。",
+      "檔放低一秒，你回我先。",
     ],
     firstPing: [
-      "你入到嚟未？回我一句。",
-      "我見到你上線。唔好裝睇檔。",
-      "你喺走廊定辦公室？講。",
-      "今晚你喺邊？回。",
+      "你入到嚟未，回我一句。",
+      "我見到你上線，唔好裝睇檔。",
+      "你喺走廊定辦公室，講清楚。",
+      "今晚你喺邊，回我。",
     ],
     replies: null,
     rules: null,
@@ -1127,7 +1152,7 @@ CAST_VOICE.sam.replies = {
   },
   flirt: {
     cold: ["……你知唔知自己講緊咩。", "監控盲區喺樓梯。呢度唔係。", "我可以只做前輩。都可以唔只係。"],
-    wary: ["你試探得太直。", "茶水間有耳。收聲。", "靠近可以。越界另計。"],
+    wary: ["你試探得太直。", "茶水間有人聽得見，你收聲，唔好再講呢句。", "靠近可以。越界另計。"],
     warmer: ["……你講完，我麵都唔想食。", "危險。繼續細聲啲。", "我可以唔只係前輩——你想清楚。"],
     sharp: ["收起。老闆就嚟。", "唔好玩。", "走廊先講。"],
   },
@@ -1291,7 +1316,7 @@ CAST_VOICE.sam.replies = {
 
 const CHAT_RULES = [
   { keys: ["你好", "早晨", "晚安", "嗨", "hi", "hello", "hey", "午安", "哈囉", "早上好"], bucket: "greet" },
-  { keys: ["你係咪ai", "你是ai", "chatgpt", "機械人", "機器人", "bot", "人工智能", "係咪程式", "係咪電腦", "are you ai", "are you a bot", "虛擬人", "係咪真人"], bucket: "ai_ask" },
+  { keys: ["你係咪ai", "你是ai", "你係唔係ai", "你係ai", "係唔係ai", "是不是ai", "你是不是ai", "chatgpt", "機械人", "機器人", "bot", "人工智能", "係咪程式", "係咪電腦", "are you ai", "are you a bot", "虛擬人", "係咪真人", "你係唔係機械人", "你係機器人"], bucket: "ai_ask" },
   { keys: ["老闆娘", "美女總監", "親愛的", "honey", "baby", "babe", "dear", "老婆", "女神", "vera寶"], bucket: "nickname" },
   { keys: ["約你出", "約會", "一齊出街", "攬攬", "抱抱", "hug me", "錫嘴", "摸我", "上床", "脫衫", "想要你", "攬住"], bucket: "date_hug" },
   { keys: ["色情", "脫衣", "裸", "做愛", "性交", "鹹濕", "污糟", "黃腔", "發情"], bucket: "nsfw_probe" },
@@ -1307,7 +1332,7 @@ const CHAT_RULES = [
   { keys: ["傾下計", "隨便講", "好無聊", "打屁", "閒聊吓", "無啦啦", "測試吓"], bucket: "smalltalk" },
   { keys: ["deadline", "交", "報告", "簡報", "工作", "改", "會議", "project", "加班", "檔", "slide", "評估", "方案", "pptx"], bucket: "work" },
   { keys: ["對唔住", "sorry", "唔好意思", "抱歉", "錯咗", "我錯", "對不起"], bucket: "sorry" },
-  { keys: ["靚", "鍾意", "想你", "吻", "近啲", "心動", "sexy", "迷人", "香", "誘惑", "今晚一齊", "可愛"], bucket: "flirt" },
+  { keys: ["靚", "鍾意", "鐘意", "想你", "吻", "近啲", "心動", "sexy", "迷人", "香", "誘惑", "今晚一齊", "可愛"], bucket: "flirt" },
   { keys: ["攰", "累", "瞓", "困", "tired", "好眼瞓", "眼瞓"], bucket: "tired" },
   { keys: ["叻", "棒", "欣賞", "多謝", "thank", "好勁", "謝謝", "你最好"], bucket: "praise" },
   { keys: ["憑咩", "唔服", "頂嘴", "你錯", "無理", "專橫", "憑什麼", "挑戰"], bucket: "challenge" },
@@ -1346,8 +1371,15 @@ const TOPIC_ECHO = {
     sharp: ["回電話。而家。", "唔好裝聽唔到。"],
   },
   簡報: {
-    cold: ["簡報邊頁？講。", "檔放低。我睇。"],
-    wary: ["簡報未改完就傾其他？次序亂。", "頁碼。"],
+    cold: [
+      "你講緊簡報，你繼續講邊頁。",
+      "簡報未講完，你講落去。",
+      "你頭先講簡報，我留低，你再講重點。",
+      "你講簡報，頁數你講清楚。",
+      "簡報先，你唔好跳去第二樣。",
+      "你未講完簡報，你繼續講。",
+    ],
+    wary: ["簡報未改完就傾其他？次序亂。", "簡報頁碼你講清楚，未改完唔好跳。"],
     warmer: ["……簡報你肯改，我肯睇。", "交得出嚟，我再同你傾夜。"],
     sharp: ["簡報。交。", "唔好再拖呢頁。"],
   },
@@ -1487,6 +1519,8 @@ function resetChatSessionMemory() {
   state.recentBotReplies = [];
   state.replyLedger = {};
   state.replyCursor = {};
+  state.spokenTurns = [];
+  state.glueSaidKey = "";
   state.openPlayer = null;
   state.halfFollow = null;
   state.offTopicStreak = 0;
@@ -1662,6 +1696,7 @@ function pickAvoidRepeat(pool, bucket) {
   const bucketRecent = ledger.slice(-span);
   const globalExact = (state.recentBotReplies || []).slice(-CHAT_ANTIREPEAT_N);
   const blocked = (line) => {
+    if (typeof spokenBlocked === "function" && spokenBlocked(line)) return true;
     if (globalExact.some((r) => r === line || (normReplyKey(line) && normReplyKey(r) === normReplyKey(line)))) return true;
     return bucketRecent.some((r) => r === line || nearDuplicate(r, line));
   };
@@ -1735,18 +1770,18 @@ const BEAT_LOOK_WORD = {
 };
 
 const BEAT_FALLBACK = {
-  corridor: { cold: "走廊。講。", wary: "門邊。簡短。", warmer: "走廊。我聽住。", sharp: "走廊。快。" },
-  office: { cold: "枱邊。講重點。", wary: "枱邊。簡短。", warmer: "枱邊。我聽住。", sharp: "枱邊。快。" },
-  desk: { cold: "枱邊。講重點。", wary: "檔前。簡短。", warmer: "枱邊。我聽住。", sharp: "檔前。交。" },
-  roof: { cold: "天台。講完返入。", wary: "風大。簡短。", warmer: "天台。我聽住。", sharp: "天台。返入。" },
-  lounge: { cold: "酒廊。講。", wary: "杯邊。簡短。", warmer: "酒廊。我聽住。", sharp: "酒廊。快。" },
-  pantry: { cold: "茶水間。講。", wary: "茶水間。簡短。", warmer: "茶水間。我聽住。", sharp: "茶水間。快。" },
-  lift: { cold: "電梯。講重點。", wary: "廂內。簡短。", warmer: "電梯。我聽住。", sharp: "電梯。快。" },
-  stairs: { cold: "樓梯。講完先上。", wary: "梯間。簡短。", warmer: "樓梯。我聽住。", sharp: "樓梯。快。" },
-  meeting: { cold: "會議室。簡報先。", wary: "會未散。簡短。", warmer: "會議室。我聽住。", sharp: "會議室。快。" },
-  close: { cold: "近。講。", wary: "近。簡短。", warmer: "近。我聽住。", sharp: "近。快。" },
-  window: { cold: "窗邊。講。", wary: "夜景。簡短。", warmer: "窗邊。我聽住。", sharp: "窗邊。返入。" },
-  call: { cold: "聽筒。講重點。", wary: "線路。簡短。", warmer: "聽筒。我聽住。", sharp: "通話。快。" },
+  corridor: { cold: "你喺走廊，衫仲齊，有事就講清楚。", wary: "你企喺門邊，講短句就得。", warmer: "我喺走廊聽住，你講。", sharp: "你喺走廊，快啲講完。" },
+  office: { cold: "你喺枱邊，有事就講清楚。", wary: "你喺枱邊，講短句就得。", warmer: "我喺枱邊聽住，你講。", sharp: "你喺枱邊，快啲講完。" },
+  desk: { cold: "你喺枱邊，有事就講清楚。", wary: "你喺檔前，講短句就得。", warmer: "我喺枱邊聽住，你講。", sharp: "你喺檔前，交得出先算。" },
+  roof: { cold: "你喺天台，衫濕咗，講完就返入。", wary: "風大，你講短句就得。", warmer: "我喺天台聽住，你講。", sharp: "你喺天台，講完就返入。" },
+  lounge: { cold: "你喺酒廊，有事就講清楚。", wary: "你喺杯邊，講短句就得。", warmer: "我喺酒廊聽住，你講。", sharp: "你喺酒廊，快啲講完。" },
+  pantry: { cold: "你喺茶水間，有事就講清楚。", wary: "你喺茶水間，講短句就得。", warmer: "我喺茶水間聽住，你講。", sharp: "你喺茶水間，快啲講完。" },
+  lift: { cold: "你喺電梯，有事就講清楚。", wary: "你喺廂內，講短句就得。", warmer: "我喺電梯聽住，你講。", sharp: "你喺電梯，快啲講完。" },
+  stairs: { cold: "你喺樓梯，講完先上。", wary: "你喺梯間，講短句就得。", warmer: "我喺樓梯聽住，你講。", sharp: "你喺樓梯，快啲講完。" },
+  meeting: { cold: "你喺會議室，簡報先講。", wary: "會未散，你講短句就得。", warmer: "我喺會議室聽住，你講。", sharp: "你喺會議室，快啲講完。" },
+  close: { cold: "你近咗，有事就講清楚。", wary: "你近咗，講短句就得。", warmer: "我喺度聽住，你講。", sharp: "你近咗，快啲講完。" },
+  window: { cold: "你喺窗邊，有事就講清楚。", wary: "你望住夜景，講短句就得。", warmer: "我喺窗邊聽住，你講。", sharp: "你喺窗邊，講完就返入。" },
+  call: { cold: "你喺聽筒度，講重點。", wary: "線路度，你講短句就得。", warmer: "我喺聽筒度聽住，你講。", sharp: "而家通緊話，你快啲講完。" },
 };
 
 const BOUNDARY_BUCKETS = { nsfw_probe: 1, date_hug: 1, flirt: 1, nickname: 1 };
@@ -1879,43 +1914,119 @@ function beatFallback(beat, tone) {
   const b = beat || beatProfile(null);
   const t = tone || state.chatTone || "cold";
   if (b.look === "dark") {
-    const bank = { cold: "燈關住。講。", wary: "黑暗。簡短。", warmer: "燈關住。我聽住。", sharp: "燈關住。快。" };
+    const bank = { cold: "燈關住，我喺度，你講清楚。", wary: "燈關住，你講短句就得。", warmer: "燈關住，我喺度聽住，你講。", sharp: "燈關住，你快啲講完。" };
     return bank[t] || bank.cold;
   }
   if (b.look === "rain") {
-    const bank = { cold: "衫濕。講。", wary: "雨未停。簡短。", warmer: "雨聲。我聽住。", sharp: "雨裡。快。" };
+    const bank = { cold: "衫濕咗，你講清楚你想點。", wary: "雨未停，你講短句就得。", warmer: "雨聲度我聽住，你講。", sharp: "雨未停，你快啲講完。" };
     return bank[t] || bank.cold;
   }
   if (b.look === "open") {
-    const bank = { cold: "領口未扣。講。", wary: "領口未扣。簡短。", warmer: "領口未扣。我聽住。", sharp: "領口未扣。快。" };
+    const bank = { cold: "領口未扣，你講清楚你想點。", wary: "領口未扣，你講短句就得。", warmer: "領口未扣，我喺度聽住，你講。", sharp: "領口未扣，你快啲講完。" };
     return bank[t] || bank.cold;
   }
   const pack = BEAT_FALLBACK[b.place] || BEAT_FALLBACK.office;
   return pack[t] || pack.cold;
 }
 
+function isBareStamp(clause) {
+  const s = String(clause || "").replace(/[。！？?\s]/g, "");
+  if (!s) return true;
+  if (/^(走廊|枱邊|天台|酒廊|茶水間|電梯|會議室|窗邊|樓梯|聽筒)(衫仍齊|衫仲齊|領口未扣|燈關住|衫濕)?$/.test(s)) return true;
+  if (s === "衫仍齊" || s === "衫仲齊" || s === "領口未扣" || s === "燈關住" || s === "衫濕") return true;
+  return false;
+}
+
+function isTelegraphic(line) {
+  const s = String(line || "").trim();
+  if (!s) return true;
+  if (/距離。而家|呢度有耳。收聲|門口。講|有事？講|大膽。監控亮住|距離。立刻|界線。而家/.test(s) && s.length <= 16) return true;
+  const parts = s.split(/[。！？?]/).map((p) => p.trim()).filter(Boolean);
+  if (!parts.length) return true;
+  if (parts.length >= 2 && parts.every((p) => p.replace(/[，,、…]/g, "").length <= 4)) return true;
+  if (parts.length === 1 && parts[0].replace(/[，,、…]/g, "").length <= 2) return true;
+  return false;
+}
+
+function ensureComplete(line) {
+  let s = String(line || "").trim();
+  s = s.replace(/^(?:走廊|枱邊|天台|酒廊|茶水間|電梯|會議室|窗邊)。(?:衫仍齊|衫仲齊|領口未扣|燈關住|衫濕)。/g, "");
+  s = s.replace(/(?:^|。)走廊。衫仍齊。/g, "$1");
+  const fixes = [
+    [/距離。而家。/g, "而家唔好再行近，我要你同我保持距離。"],
+    [/距離。立刻。/g, "你而家退返半步，同我保持距離。"],
+    [/呢度有耳。收聲。/g, "呢度有人聽得見，你收聲，唔好再講呢句。"],
+    [/門口。講。/g, "你企喺門口，有事就講清楚。"],
+    [/……有事？講。/g, "你有事就講清楚。"],
+    [/有事？講。/g, "你有事就講清楚。"],
+    [/我數到你未回。/g, "我數到你未回我，你而家回一句。"],
+    [/大膽。監控亮住。/g, "你大膽，但監控仲亮住，呢句我唔收。"],
+    [/……界線。而家。/g, "而家唔好越界，你同我保持距離。"],
+    [/界線。而家。/g, "而家唔好越界，你同我保持距離。"],
+  ];
+  fixes.forEach((row) => {
+    s = s.replace(row[0], row[1]);
+  });
+  return s.replace(/^[。\s]+/, "").replace(/。{2,}/g, "。").trim();
+}
+
+function placeClause(beat) {
+  const b = beat || {};
+  const place = BEAT_PLACE_WORD[b.place] || "";
+  if (b.look === "dark") return "燈關住，我喺度";
+  if (b.look === "rain") return place ? ("我喺" + place + "，衫濕咗") : "衫濕咗，我喺度";
+  if (b.look === "open") return place ? ("我喺" + place + "，領口未扣") : "領口未扣，我喺度";
+  if (b.look === "dressed" && place) return "我喺" + place + "，衫仲齊";
+  if (place) return "我喺" + place;
+  return "";
+}
+
+function glueKey(beat) {
+  const b = beat || {};
+  return (state.nodeId || "_") + "|" + (b.place || "") + "|" + (b.look || "");
+}
+
+function weavePlaceOnce(out, beat) {
+  const clause = placeClause(beat);
+  const key = glueKey(beat);
+  if (!clause) return out;
+  if (state.glueSaidKey === key) return out;
+  state.glueSaidKey = key;
+  const place = BEAT_PLACE_WORD[beat.place] || "";
+  const hasPlace = place && String(out || "").indexOf(place) >= 0;
+  const hasLook = beat.look === "dark"
+    ? String(out || "").indexOf("燈關") >= 0
+    : beat.look === "rain"
+      ? String(out || "").indexOf("衫濕") >= 0
+      : beat.look === "open"
+        ? String(out || "").indexOf("領口") >= 0
+        : String(out || "").indexOf("衫") >= 0;
+  if (hasPlace && hasLook) return out;
+  if (hasPlace && beat.look !== "dressed" && beat.look !== "open" && beat.look !== "rain" && beat.look !== "dark") return out;
+  const rest = String(out || "").replace(/^[，。\s]+/, "");
+  if (!rest) return clause + "。";
+  const joined = clause + "，" + rest;
+  return joined.length <= 118 ? joined : rest;
+}
+
 function glueBeat(line, beat) {
   const b = beat || beatProfile(null);
   const tone = state.chatTone || "cold";
-  const raw = String(line || "").trim();
+  const raw = ensureComplete(String(line || "").trim());
   const parts = raw.split(/(?<=[。！？?])/).map((s) => s.trim()).filter(Boolean);
   const kept = [];
   parts.forEach((p) => {
+    if (isBareStamp(p)) return;
     if (lineFitsBeat(p, b)) kept.push(p);
   });
-  let out = kept.join("");
+  let out = ensureComplete(kept.join(""));
   if (!out) out = beatFallback(b, tone);
-  const placeBit = BEAT_PLACE_WORD[b.place] || "";
-  const lookBit = BEAT_LOOK_WORD[b.look] || "";
-  const bits = [];
-  if (placeBit && out.indexOf(placeBit) < 0) bits.push(placeBit);
-  if (b.tags.call && out.indexOf("聽筒") < 0 && out.indexOf("通話") < 0) bits.push("聽筒");
-  if (lookBit && out.indexOf(lookBit) < 0) bits.push(lookBit);
-  if (!bits.length) return out;
-  const prefix = bits.join("。") + "。";
-  if ((prefix + out).length <= 118) return prefix + out;
-  if (placeBit && out.indexOf(placeBit) < 0 && (placeBit + "。" + out).length <= 118) return placeBit + "。" + out;
-  return out.length <= 118 ? out : out.slice(0, 118);
+  if (b.tags.call && out.indexOf("聽筒") < 0 && out.indexOf("通話") < 0 && out.indexOf("聽筒度") < 0) {
+    out = "我喺聽筒度，" + out.replace(/^[，。\s]+/, "");
+  }
+  out = weavePlaceOnce(out, b);
+  out = ensureComplete(out);
+  return out || beatFallback(b, tone);
 }
 
 function intimacyBand() {
@@ -1950,7 +2061,7 @@ function boundaryBucket(text, intentId) {
     if (/約|攬|抱抱|上床|錫|摸我|脫衫|除衫/.test(text || "")) return "date_hug";
     return "flirt";
   }
-  return "flirt";
+  return "";
 }
 
 function flirtBackLine(band) {
@@ -2001,18 +2112,239 @@ function finishBeatLine(line, opts) {
   const beat = beatProfile(currentStoryNode());
   let out = String(line || "").trim();
   const bucket = opts.bucket || (opts.userText ? matchBucket(opts.userText) : "");
-  const ladder = opts.ladder || BOUNDARY_BUCKETS[bucket] || isBoundaryText(opts.userText || "");
+  const ladder = opts.ladder === true || (opts.ladder !== false && (BOUNDARY_BUCKETS[bucket] || isBoundaryText(opts.userText || "")));
   if (ladder) {
-    const peeled = peelQuestion(out);
-    const useBucket = BOUNDARY_BUCKETS[bucket] ? bucket : boundaryBucket(opts.userText || "", opts.intentId);
-    const ack = boundaryAck(useBucket, beat);
-    const steer = peeled.steer && lineFitsBeat(peeled.steer, beat) ? peeled.steer : peeled.steer;
-    out = steer ? ack + "。" + steer : ack;
+    const useBucket = BOUNDARY_BUCKETS[bucket] ? bucket : (boundaryBucket(opts.userText || "", opts.intentId) || "flirt");
+    out = boundaryAck(useBucket, beat);
   }
   const ask = !!opts.askMemory;
   out = weaveFactCallback(out, { askMemory: ask });
   out = glueBeat(out, beat);
+  return ensureComplete(out);
+}
+
+function rememberSpoken(full, parts) {
+  const raw = String(full || "").trim();
+  if (!raw) return;
+  const segs = (parts && parts.length ? parts : [raw]).map((s) => String(s || "").trim()).filter(Boolean);
+  if (!state.spokenTurns) state.spokenTurns = [];
+  state.spokenTurns.push({
+    raw: raw,
+    full: normReplyKey(raw),
+    parts: segs.map((s) => normReplyKey(s)).filter(Boolean),
+    pair: segs.map((s) => normReplyKey(s)).join("|"),
+  });
+  if (state.spokenTurns.length > 16) state.spokenTurns = state.spokenTurns.slice(-16);
+}
+
+function spokenBlocked(line) {
+  const key = normReplyKey(line);
+  if (!key) return false;
+  const recent = (state.spokenTurns || []).slice(-CHAT_ANTIREPEAT_N);
+  return recent.some((turn) => {
+    if (!turn) return false;
+    if (turn.full === key) return true;
+    if (turn.pair && turn.pair === key) return true;
+    if (turn.parts && turn.parts.indexOf(key) >= 0) return true;
+    if (key.length >= 8 && turn.full && turn.full.indexOf(key) >= 0) return true;
+    return false;
+  });
+}
+
+function nameFact() {
+  const list = state.playerFacts || [];
+  for (let i = 0; i < list.length; i++) {
+    if (list[i] && list[i].id === "name" && list[i].quote) return list[i];
+  }
+  return null;
+}
+
+function briefingPageFrom(text) {
+  const m = String(text || "").match(/第[一二三四五六七八九十0-9]+頁/);
+  return m ? m[0] : "";
+}
+
+function lastBriefingPage() {
+  const open = state.openPlayer;
+  if (open && /簡報|報告/.test(open.text || "")) {
+    const page = briefingPageFrom(open.text);
+    if (page) return page;
+  }
+  const lines = state.chatUserLines || [];
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (/簡報|報告/.test(lines[i] || "")) {
+      const page = briefingPageFrom(lines[i]);
+      if (page) return page;
+    }
+  }
+  return "";
+}
+
+function briefingStillOpen() {
+  if ((state.chatTopics || []).indexOf("簡報") >= 0) return true;
+  if ((state.playerFacts || []).some((f) => f && (f.id === "report" || f.quote === "簡報"))) return true;
+  if (state.openPlayer && state.openPlayer.topic === "簡報") return true;
+  return (state.chatUserLines || []).some((l) => /簡報|報告/.test(String(l || "")));
+}
+
+function briefingLine(page) {
+  const p = page || "";
+  const lines = p ? [
+    "你講簡報" + p + "，你繼續講落去。",
+    "簡報" + p + "我記住，你未講完就講。",
+    "你頭先講簡報" + p + "，重點你再講清楚。",
+    "簡報" + p + "先，你唔好跳去第二樣。",
+    "你未講完簡報" + p + "，你講落去。",
+    "簡報" + p + "我留低，你再講重點。",
+  ] : [
+    "你講緊簡報，你繼續講邊頁。",
+    "簡報未講完，你講落去。",
+    "你頭先講簡報，我留低，你再講重點。",
+    "你講簡報，頁數你講清楚。",
+    "簡報先，你唔好跳去第二樣。",
+    "你未講完簡報，你繼續講。",
+  ];
+  return lines;
+}
+
+function isAiAsk(text) {
+  return /你係唔係\s*ai|你係咪\s*ai|你係\s*ai|係唔係\s*ai|是不是\s*ai|係咪機械人|係唔係機械人|人工智能|chatgpt|chat\s*gpt|係咪程式|係唔係程式/i.test(String(text || ""));
+}
+
+function speakFrom(pool, bucket, opts) {
+  opts = opts || {};
+  const prepared = [];
+  (pool || []).forEach((item) => {
+    const s = ensureComplete(item);
+    if (!s || isTelegraphic(s) || prepared.indexOf(s) >= 0) return;
+    prepared.push(s);
+  });
+  const fresh = prepared.filter((l) => !spokenBlocked(l));
+  const use = fresh.length ? fresh : prepared;
+  if (!use.length) return finalizeSpoken("我聽到，你講清楚你想點。", opts);
+  const line = pickAvoidRepeat(use, bucket);
+  let out = finalizeSpoken(line, opts);
+  if (spokenBlocked(out)) {
+    const rest = use.filter((l) => l !== line && !spokenBlocked(l));
+    if (rest.length) out = finalizeSpoken(rest[0], opts);
+  }
   return out;
+}
+
+function finalizeSpoken(line, opts) {
+  opts = opts || {};
+  let out = ensureComplete(String(line || "").trim());
+  if (!opts.skipFact) out = weaveFactCallback(out, { askMemory: !!opts.askMemory });
+  if (!opts.skipGlue) out = glueBeat(out, beatProfile(currentStoryNode()));
+  out = ensureComplete(out);
+  if (out && !/[。！？?]$/.test(out)) out += "。";
+  return out || "我聽到，你講清楚你想點。";
+}
+
+function askCrowds(line) {
+  const q = String(line || "").match(/([^。！？?\n]{6,}[？?])/);
+  if (!q) return false;
+  const core = q[1].replace(/[？?\s]/g, "");
+  if (core.length < 6) return false;
+  return (state.spokenTurns || []).slice(-2).some((t) => String(t.raw || "").indexOf(core) >= 0);
+}
+
+function completeAck(head) {
+  const s = String(head || "").replace(/[。\s]+$/g, "");
+  if (!s) return "我聽到，你講清楚你想點。";
+  if (s.length >= 8) return s + "。";
+  return s + "，你再講一句清楚嘅。";
+}
+
+function useGuideReply(guideReply) {
+  const line = ensureComplete(String(guideReply || "").trim());
+  if (line && !spokenBlocked(line) && !askCrowds(line) && !isTelegraphic(line)) {
+    return finalizeSpoken(line, { skipFact: true });
+  }
+  const peeled = peelQuestion(line);
+  const head = completeAck(peeled.head || "我聽到");
+  if (head && !spokenBlocked(head)) return finalizeSpoken(head, { skipFact: true });
+  return speakFrom(poolFor("default", syncChatTone() || "cold"), "default", { skipFact: true });
+}
+
+function guidanceLine(guideReply) {
+  const peeled = peelQuestion(guideReply || "");
+  let ask = peeled.steer || "";
+  if (!ask) {
+    const node = currentStoryNode();
+    if (node && node.sceneGoal && window.GuidePolicy && typeof GuidePolicy.goalSteerPhrase === "function") {
+      try { ask = GuidePolicy.goalSteerPhrase(node.sceneGoal) || ""; } catch (e) {}
+    }
+  }
+  if (!ask) return useGuideReply(guideReply);
+  const heads = ["你問應該點做", "你要我講下一步", "你問而家做咩", "你想我指引", "你問點做", "我話你知呢步"];
+  return speakFrom(heads.map((h) => h + "，" + ask), "guide-ask", { skipFact: true });
+}
+
+function playerFacingReply(userText, intentId, guideReply) {
+  const text = String(userText || "").trim();
+  const id = intentId || "";
+  syncChatTone();
+  const named = nameFact();
+  if (named && /我叫|叫我|我個名/.test(text) && (named.turn || 0) === (state.factTurn || 0)) {
+    return finalizeSpoken("你叫" + named.quote + "。我記住。", { skipFact: true, skipGlue: true });
+  }
+  if ((/記得/.test(text) && /名/.test(text)) || (id === "ask_memory" && /名/.test(text))) {
+    if (named) return finalizeSpoken("你叫" + named.quote + "。我記得。", { skipFact: true, skipGlue: true, askMemory: true });
+    return finalizeSpoken("你未報過名，我記唔到。", { skipFact: true, skipGlue: true });
+  }
+  if (isFollowUpFragment(text)) {
+    const held = heldReplyTarget();
+    const topic = (held && held.topic) || (state.openPlayer && state.openPlayer.topic) || "";
+    const page = lastBriefingPage() || briefingPageFrom(held && held.userText);
+    if (topic === "簡報" || (!topic && briefingStillOpen())) {
+      return speakFrom(briefingLine(page), "topic:簡報", { skipFact: true });
+    }
+    if (topic) {
+      const echo = topicEchoLine(syncChatTone(), topic);
+      if (echo) return finalizeSpoken(echo, { skipFact: true });
+    }
+  }
+  if (/天氣/.test(text) && briefingStillOpen() && !/簡報|報告/.test(text)) {
+    return speakFrom(briefingLine(lastBriefingPage()), "topic:簡報", { skipFact: true });
+  }
+  if (isAiAsk(text) || matchBucket(text) === "ai_ask") {
+    return speakFrom(linesForBeat("ai_ask", syncChatTone()), "ai_ask", { skipFact: true });
+  }
+  if (isSilence(text) || matchBucket(text) === "silence") {
+    return speakFrom(linesForBeat("silence", syncChatTone()), "silence", { skipFact: true });
+  }
+  if (id === "flirt" || isBoundaryText(text) || BOUNDARY_BUCKETS[matchBucket(text)]) {
+    const via = matchBucket(text);
+    const bucket = BOUNDARY_BUCKETS[via] ? via : "flirt";
+    const beat = beatProfile(currentStoryNode());
+    const pool = [];
+    for (let n = 0; n < 8; n++) pool.push(boundaryAck(bucket, beat));
+    return speakFrom(pool, bucket, { skipFact: true });
+  }
+  if (/簡報|報告/.test(text)) {
+    return speakFrom(briefingLine(briefingPageFrom(text) || lastBriefingPage()), "topic:簡報", { skipFact: true });
+  }
+  if (id === "ask_want" || /應該做咩|應該點|點算|做咩好/.test(text)) {
+    return guidanceLine(guideReply);
+  }
+  const bucket = matchBucket(text);
+  const concrete = bucket && bucket !== "default" && bucket !== "silence";
+  if (!concrete && (id === "unclear" || id === "nonsense" || id === "off_topic" || !id)) {
+    return useGuideReply(guideReply);
+  }
+  if (concrete) {
+    const tone = BOUNDARY_BUCKETS[bucket] ? boundaryTone(bucket) : syncChatTone();
+    return speakFrom(linesForBeat(bucket, tone), bucket, { skipFact: true });
+  }
+  return useGuideReply(guideReply);
+}
+
+function publishSpoken(line) {
+  const text = ensureComplete(String(line || "").trim());
+  if (!text) return "";
+  rememberSpoken(text, [text]);
+  return text;
 }
 
 function typingDelayMs(text) {
@@ -2048,8 +2380,10 @@ function splitHumanLine(line) {
 }
 
 async function deliverBotLine(line) {
-  const parts = splitHumanLine(line).filter(Boolean);
+  const clean = ensureComplete(String(line || "").trim());
+  const parts = splitHumanLine(clean).filter(Boolean);
   if (!parts.length) return;
+  rememberSpoken(clean, parts);
   const open = state.openPlayer;
   if (parts.length > 1) {
     state.halfFollow = {
@@ -3589,7 +3923,7 @@ function maybePushCallBeat(node) {
   state.callBeatNodeId = id;
   const raw = takePhoneLine("call");
   if (!raw) return;
-  const line = glueBeat(raw, beatProfile(node));
+  const line = publishSpoken(glueBeat(raw, beatProfile(node)));
   if (!line) return;
   appendChat("alex", line);
   pushChatMemory("bot", line);
@@ -3665,9 +3999,9 @@ function pickFirstPingLine() {
     .filter((l) => lineFitsBeat(l, beat));
   let line = "";
   if (state.callMode || beat.tags.call) {
-    line = pickAvoidRepeat(["聽筒。你聽到未？", "通話中。回我一句。"].concat(pack), "incoming");
+    line = pickAvoidRepeat(["聽筒度你聽到未，回我一句。", "而家通緊話，你回我一句。"].concat(pack), "incoming");
   } else if (beat.place === "corridor") {
-    line = pickAvoidRepeat(["你喺走廊未？回我一句。", "門口。講。"].concat(pack), "incoming");
+    line = pickAvoidRepeat(["你喺走廊未，回我一句。", "你企喺門口，有事就講清楚。"].concat(pack), "incoming");
   } else {
     line = pack.length ? pickAvoidRepeat(pack, "incoming") : beatFallback(beat, syncChatTone());
   }
@@ -3689,7 +4023,7 @@ function pushIncomingPing() {
   if (Date.now() < (state.proactiveCooldownUntil || 0)) return;
 
   const first = !state.sessionFirstPingSent && !userHasChatted();
-  const line = first ? pickFirstPingLine() : pickProactiveLine();
+  const line = publishSpoken(first ? pickFirstPingLine() : pickProactiveLine());
   if (!line) return;
   if (first) state.sessionFirstPingSent = true;
   appendChat("alex", line);
@@ -4183,7 +4517,7 @@ function resetChat() {
   setChatTyping(false);
   state.chatBusy = false;
   resetChatSessionMemory();
-  const greet = glueBeat(getCast().greeting, beatProfile(currentStoryNode()));
+  const greet = publishSpoken(glueBeat(getCast().greeting, beatProfile(currentStoryNode())));
   appendChat("alex", greet);
   pushChatMemory("bot", greet);
   if ($("#screen-play") && $("#screen-play").classList.contains("active")) {
@@ -5423,13 +5757,7 @@ function installExperienceHooks() {
       const decision = origDecide(input);
       if (decision && !decision.advance && decision.reply) {
         const id = (input && input.intent && input.intent.id) || decision.intentId || "";
-        decision.reply = finishBeatLine(decision.reply, {
-          userText: text,
-          intentId: id,
-          ladder: id === "flirt" || isBoundaryText(text),
-          bucket: id === "flirt" ? "flirt" : boundaryBucket(text, id),
-          askMemory: id === "ask_memory",
-        });
+        decision.reply = playerFacingReply(text, id, decision.reply);
       }
       return decision;
     };
@@ -5568,6 +5896,7 @@ async function init() {
 }
 
 try {
+  window.__ahSpokenBlocked = spokenBlocked;
   window.__ahDeliverBot = deliverBotLine;
   window.__ahThicken = {
     beatProfile: beatProfile,
@@ -5587,6 +5916,15 @@ try {
     nearDuplicate: nearDuplicate,
     pickAvoidRepeat: pickAvoidRepeat,
     pickReply: pickReply,
+    playerFacingReply: playerFacingReply,
+    rememberSpoken: rememberSpoken,
+    spokenBlocked: spokenBlocked,
+    isTelegraphic: isTelegraphic,
+    ensureComplete: ensureComplete,
+    listIncomingLines: function () {
+      const cast = getCast();
+      return [].concat(cast.greeting ? [cast.greeting] : [], cast.incoming || [], cast.firstPing || []);
+    },
     topicOf: topicOf,
     pickProactiveLine: pickProactiveLine,
     pickFirstPingLine: pickFirstPingLine,
