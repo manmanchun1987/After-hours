@@ -350,6 +350,50 @@
       }
     }
 
+    // Work / spoken-answer keys on this beat only. A fitting line such as
+    // 「第三頁數據」or「可以」can advance. Does not retarget door, wait, or refuse
+    // hits that already scored, and 「唔可以」stays a refusal.
+    if (ctx.node && Array.isArray(ctx.node.intents) && (best === "unclear" || best === "wait" || best === "off_topic" || bestScore < 0.7)) {
+      var refusedCan = /唔可以|不可以/.test(raw);
+      var contentAgree = false;
+      var contentRefuse = false;
+      for (var ci = 0; ci < ctx.node.intents.length; ci++) {
+        var cIntent = ctx.node.intents[ci];
+        var cBucket = cIntent && cIntent.bucket;
+        var cKeys = (cIntent && cIntent.keys) || [];
+        for (var ck = 0; ck < cKeys.length; ck++) {
+          var cKey = norm(cKeys[ck]);
+          if (!cKey) continue;
+          if (cKey === "唔可以" && refusedCan) contentRefuse = true;
+          if (cKey === "可以" && !refusedCan && (raw.indexOf("可以") >= 0 || nrm.indexOf("可以") >= 0)) {
+            contentAgree = true;
+          }
+          if ((cBucket === "work" || cBucket === "admit") && cKey.length >= 2 && cKey !== "可以" && cKey !== "唔可以") {
+            if (nrm.indexOf(cKey) >= 0 || raw.indexOf(cKeys[ck]) >= 0) contentAgree = true;
+          }
+          if (cBucket === "leave" && cKey.length >= 2 && (nrm.indexOf(cKey) >= 0 || raw.indexOf(cKeys[ck]) >= 0)) {
+            contentRefuse = true;
+          }
+        }
+      }
+      // 「對等」contains 等 and would otherwise look like wait. A full answer-key
+      // on this beat wins unless the player actually said 等等 / 停低.
+      var explicitWait = /等等|等陣|等吓|停低|停一停|未準備/.test(raw);
+      if (contentRefuse && !contentAgree && bestScore < 0.7) {
+        best = "refuse";
+        bestScore = Math.max(bestScore, 0.75);
+        scores.refuse = Math.max(scores.refuse || 0, 0.75);
+      } else if (contentAgree && !explicitWait && (best === "unclear" || best === "off_topic" || best === "wait" || bestScore < 0.45)) {
+        best = "agree";
+        bestScore = Math.max(bestScore, 0.75);
+        scores.agree = Math.max(scores.agree || 0, 0.75);
+      } else if (contentRefuse && bestScore < 0.7 && best !== "agree") {
+        best = "refuse";
+        bestScore = Math.max(bestScore, 0.75);
+        scores.refuse = Math.max(scores.refuse || 0, 0.75);
+      }
+    }
+
     if (bestScore <= 0) best = "unclear";
 
     // Greeting / weather / leftover unclear loses to a real scene action when both hit.
