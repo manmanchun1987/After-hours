@@ -2,9 +2,9 @@ const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
 
 const STORY_FILES = {
-  alex: "./data/alex.json?v=night20-20261111",
-  morgan: "./data/morgan.json?v=night20-20261111",
-  sam: "./data/sam.json?v=night20-20261111",
+  alex: "./data/alex.json?v=scene-sfx1b",
+  morgan: "./data/morgan.json?v=scene-sfx1b",
+  sam: "./data/sam.json?v=scene-sfx1b",
 };
 
 const state = {
