@@ -66,4 +66,4 @@
 
 ## 雨場（唔使逐節寫 ambience）
 
-`scene === "roof"` 或 `look === "rain"` 即 loop `rain`。包括 `s3r` `s3r2` `s3r3` `s3down` `s8r` `ending_s2_r` 同其他天台雨節。
+`scene === "roof"` 或 `look === "rain"` 即 loop `rain`。包括 `s3r` `s3r2` `s3r3` `s3down` `s4` `s4pre` `s4w` `s4w2` `s5` `s5w` `s5w2` `s8r` `ending_s2_r` 同其他天台雨節。
