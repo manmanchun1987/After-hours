@@ -43,3 +43,15 @@ Kenney zip（核對用，唔整包再分發）：
 
 - Sonniss GDC：環境／更細門聲（商用免署名；唔好整包再分發）
 - Freesound／OpenGameArt：只收 CC0 補洞
+
+## 場次聲效（PR：場次聲效跟劇情）
+
+策略不變：只收 CC0（Freesound）補洞。預覽檔經 ffmpeg 轉 44.1kHz stereo 128kbps mp3；雨約 −20 LUFS，叮／震約 −16 LUFS。
+
+| 檔 | 用途 | 來源 URL | 作者／曲 | 授權 |
+|---|---|---|---|---|
+| `sfx-ding.mp3` | 升降機叮 | https://freesound.org/people/XfiXy8/sounds/467299/ | XfiXy8 — Elevator Ding.wav | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `sfx-vibrate.mp3` | 電話震兩下（兩次 buzz + 短間隔） | https://freesound.org/people/Breviceps/sounds/515295/ | Breviceps — Phone vibration（作者頁註 Public Domain / CC0） | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+| `sfx-rain.mp3` | 天台／雨場 loop（裁 32s，輕 fade） | https://freesound.org/people/blurplenoise/sounds/697519/ | blurplenoise — rainonmetalroofloop2.wav | [CC0](https://creativecommons.org/publicdomain/zero/1.0/) |
+
+`sfx-ding`／`sfx-vibrate` 用 Freesound 官方 preview（CDN）；原 WAV 下載頁有時 403。授權以各聲音頁為準。

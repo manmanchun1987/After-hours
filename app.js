@@ -2,9 +2,9 @@ const STORAGE_KEY = "after-hours-v2";
 const AUDIO_KEY = "after-hours-audio-v1";
 
 const STORY_FILES = {
-  alex: "./data/alex.json?v=night20-20261111",
-  morgan: "./data/morgan.json?v=night20-20261111",
-  sam: "./data/sam.json?v=night20-20261111",
+  alex: "./data/alex.json?v=scene-sfx1c",
+  morgan: "./data/morgan.json?v=scene-sfx1c",
+  sam: "./data/sam.json?v=scene-sfx1c",
 };
 
 const state = {
@@ -99,6 +99,11 @@ const AudioEngine = (() => {
   let buffers = { bgm: null, bgmScenes: {}, click: null, choice: null, transition: null, ping: null, call: null };
   let bgmTrackKey = null;
   let loadPromise = null;
+  let rainWanted = false;
+  let rainOn = false;
+  let rainSource = null;
+  let rainGain = null;
+  let rainStopTimer = 0;
 
   function ensure() {
     if (ctx) return ctx;
@@ -134,6 +139,10 @@ const AudioEngine = (() => {
     masterGain.gain.setTargetAtTime(master, ctx.currentTime, 0.05);
     bgmGain.gain.setTargetAtTime(bgmTarget, ctx.currentTime, 0.08);
     sfxGain.gain.setTargetAtTime(audioPrefs.masterMute ? 0 : 0.55, ctx.currentTime, 0.05);
+    if (rainGain) {
+      const rainTarget = audioPrefs.masterMute || !rainWanted ? 0 : rainVolume();
+      rainGain.gain.setTargetAtTime(rainTarget, ctx.currentTime, 0.12);
+    }
   }
 
   function setBgmDuck(on) {
@@ -174,10 +183,16 @@ const AudioEngine = (() => {
             console.warn("BGM scene load failed: " + key, err);
           }
         }));
-        for (const key of ["click", "choice", "transition", "ping", "call"]) {
-          const item = manifest.sfx && manifest.sfx[key];
-          if (item && item.src) buffers[key] = await decodeUrl(bust(item.src));
-        }
+        const sfxItems = (manifest.sfx && typeof manifest.sfx === "object") ? manifest.sfx : {};
+        await Promise.all(Object.keys(sfxItems).map(async (key) => {
+          const item = sfxItems[key];
+          if (!item || !item.src) return;
+          try {
+            buffers[key] = await decodeUrl(bust(item.src));
+          } catch (err) {
+            console.warn("SFX load failed: " + key, err);
+          }
+        }));
         return true;
       } catch (err) {
         console.warn("Audio assets load failed, using synth fallback", err);
@@ -353,6 +368,7 @@ const AudioEngine = (() => {
     await loadAssets();
     applyVolumes();
     if (!audioPrefs.bgmMute && !audioPrefs.masterMute) startBgm();
+    if (rainWanted) startRain();
   }
 
   function beep({ freq = 440, dur = 0.06, type = "sine", vol = 0.4, slide = 0 } = {}) {
@@ -451,6 +467,128 @@ const AudioEngine = (() => {
     }
   }
 
+
+  const SFX_CHAIN_MS = 200;
+
+  function sfxVolume(key, fallback) {
+    const item = manifest && manifest.sfx && manifest.sfx[key];
+    return (item && typeof item.volume === "number") ? item.volume : fallback;
+  }
+
+  function playSfx(key) {
+    if (!key || typeof key !== "string") return false;
+    const buf = buffers[key];
+    if (!buf) return false;
+    return playBuffer(buf, sfxVolume(key, 0.55));
+  }
+
+  function playNodeCues(sfx) {
+    const keys = Array.isArray(sfx) ? sfx : (typeof sfx === "string" && sfx ? [sfx] : []);
+    keys.forEach((key, i) => {
+      if (typeof key !== "string" || !key) return;
+      const delay = i * SFX_CHAIN_MS;
+      if (delay <= 0) playSfx(key);
+      else setTimeout(() => playSfx(key), delay);
+    });
+  }
+
+  function rainVolume() {
+    /* Manifest rain is 0.34; scale like the night bed so rain sits under BGM. */
+    return sfxVolume("rain", 0.34) * 0.18;
+  }
+
+  function ensureRainGain() {
+    if (!ensure()) return null;
+    if (!rainGain) {
+      rainGain = ctx.createGain();
+      rainGain.gain.value = 0;
+      rainGain.connect(masterGain);
+    }
+    return rainGain;
+  }
+
+  function startRain() {
+    if (!rainWanted) return;
+    if (rainOn && rainSource) return;
+    if (!started || !ensure()) return;
+    const buf = buffers.rain;
+    const g = ensureRainGain();
+    if (!buf || !g) return;
+    if (rainStopTimer) {
+      clearTimeout(rainStopTimer);
+      rainStopTimer = 0;
+    }
+    try {
+      if (rainSource) {
+        rainSource.stop();
+        rainSource.disconnect();
+      }
+    } catch (_) {}
+    rainSource = null;
+    const src = ctx.createBufferSource();
+    src.buffer = buf;
+    src.loop = true;
+    src.connect(g);
+    const now = ctx.currentTime;
+    const target = audioPrefs.masterMute ? 0 : rainVolume();
+    try {
+      g.gain.cancelScheduledValues(now);
+      g.gain.setValueAtTime(Math.max(g.gain.value, 0.0001), now);
+      g.gain.linearRampToValueAtTime(Math.max(target, 0.0001), now + 0.6);
+    } catch (_) {
+      g.gain.value = target;
+    }
+    src.start(0);
+    rainSource = src;
+    rainOn = true;
+  }
+
+  function stopRain(fade) {
+    rainWanted = false;
+    if (!rainOn && !rainSource) {
+      if (rainGain && ctx) {
+        try {
+          const now = ctx.currentTime;
+          rainGain.gain.cancelScheduledValues(now);
+          rainGain.gain.setTargetAtTime(0, now, 0.08);
+        } catch (_) {}
+      }
+      return;
+    }
+    rainOn = false;
+    if (rainStopTimer) {
+      clearTimeout(rainStopTimer);
+      rainStopTimer = 0;
+    }
+    const src = rainSource;
+    rainSource = null;
+    const ms = fade ? 800 : 200;
+    if (ctx && rainGain) {
+      try {
+        const now = ctx.currentTime;
+        rainGain.gain.cancelScheduledValues(now);
+        rainGain.gain.setValueAtTime(Math.max(rainGain.gain.value, 0.0001), now);
+        rainGain.gain.linearRampToValueAtTime(0.0001, now + ms / 1000);
+      } catch (_) {}
+    }
+    rainStopTimer = setTimeout(() => {
+      rainStopTimer = 0;
+      if (src) {
+        try { src.stop(); } catch (_) {}
+        try { src.disconnect(); } catch (_) {}
+      }
+    }, ms + 80);
+  }
+
+  function setRain(on) {
+    if (on) {
+      rainWanted = true;
+      startRain();
+    } else {
+      stopRain(true);
+    }
+  }
+
   return {
     unlock,
     refresh,
@@ -460,6 +598,9 @@ const AudioEngine = (() => {
     sfxTransition,
     sfxPing,
     sfxCall,
+    playSfx,
+    playNodeCues,
+    setRain,
     setBgmDuck,
     setBgmScene,
     get started() { return started; },
@@ -6013,6 +6154,9 @@ function show(name) {
   if (name !== "play") setMemoryPanelOpen(false);
   if (name === "play" || name === "ending") {
     AudioEngine.sfxTransition();
+  } else {
+    try { if (AudioEngine.setRain) AudioEngine.setRain(false); } catch (_) {}
+    lastCuedNodeId = null;
   }
 }
 
@@ -6291,6 +6435,25 @@ function startAlex(fresh, entry) {
   renderNode();
 }
 
+let lastCuedNodeId = null;
+
+function nodeWantsRain(node) {
+  if (!node) return false;
+  return node.ambience === "rain" || node.scene === "roof" || node.look === "rain";
+}
+
+function cueNodeAudio(node) {
+  try {
+    if (AudioEngine.setRain) AudioEngine.setRain(nodeWantsRain(node));
+  } catch (_) {}
+  const nid = state.nodeId || "";
+  if (!nid || nid === lastCuedNodeId) return;
+  lastCuedNodeId = nid;
+  try {
+    if (node && node.sfx && AudioEngine.playNodeCues) AudioEngine.playNodeCues(node.sfx);
+  } catch (_) {}
+}
+
 function renderNode() {
   const node = state.story.nodes[state.nodeId];
   if (!node) return;
@@ -6300,6 +6463,7 @@ function renderNode() {
 
   if (node.ending) {
     applySceneLayers(state.story, node);
+    cueNodeAudio(node);
     noteStoryEnding(node);
     cancelSpeech();
     setCallMode(false);
@@ -6322,6 +6486,7 @@ function renderNode() {
   show("play");
   applyNodeMeta(node);
   applySceneLayers(state.story, node);
+  cueNodeAudio(node);
   syncPortraitVideo(state.story, node);
   $("#play-label").textContent = node.label || "";
   $("#play-text").textContent = node.text;

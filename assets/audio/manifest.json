@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "note": "Pixabay BGM + Kenney CC0 SFX batch1. Scene loops in BGM.md names; Web Audio synth remains fallback.",
   "bgm": {
     "src": "./assets/audio/bgm-loop.mp3",
@@ -21,6 +21,9 @@
     "notify": { "src": "./assets/audio/sfx-notify.mp3", "volume": 0.65 },
     "doorOpen": { "src": "./assets/audio/sfx-door-open.mp3", "volume": 0.55 },
     "doorClose": { "src": "./assets/audio/sfx-door-close.mp3", "volume": 0.55 },
-    "cloth": { "src": "./assets/audio/sfx-cloth.mp3", "volume": 0.5 }
+    "cloth": { "src": "./assets/audio/sfx-cloth.mp3", "volume": 0.5 },
+    "ding": { "src": "./assets/audio/sfx-ding.mp3", "volume": 0.62 },
+    "vibrate": { "src": "./assets/audio/sfx-vibrate.mp3", "volume": 0.6 },
+    "rain": { "src": "./assets/audio/sfx-rain.mp3", "volume": 0.34, "loop": true }
   }
 }

@@ -126,6 +126,7 @@
     },
     "n0b": {
       "id": "n0b",
+      "sfx": "doorClose",
       "label": "門後",
       "remember": [
         "door_shut"
@@ -925,6 +926,7 @@
     },
     "n5": {
       "id": "n5",
+      "sfx": "cloth",
       "portraitVideo": "./assets/video/vera-facefusion-preview.mp4?v=ff-20261101",
       "mode": "call",
       "label": "燈關之後",
@@ -1681,6 +1683,7 @@
     },
     "n0c": {
       "id": "n0c",
+      "sfx": "vibrate",
       "label": "電話震",
       "text": "你袋裏電話震兩下。Vera 仍望螢幕，聲線平：「睇完再收。而家，聽我。」\n\n震動停咗，空氣反而更靜。",
       "choices": [
@@ -3245,6 +3248,7 @@
     },
     "n0g": {
       "id": "n0g",
+      "sfx": "doorOpen",
       "label": "門半掩",
       "look": "dressed",
       "text": "房門半掩，鍵盤聲一下一下。Vera 望住螢幕打字，未抬頭。簡報檔名未出聲，星期一評核都未提。你企喺門邊，公事理由仲未攤開，你仍然可以轉身。螢幕入面只得表格，未有你個名。",
