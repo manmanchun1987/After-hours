@@ -6,9 +6,9 @@
   <title>加班之後 After Hours</title>
   <link rel="stylesheet" href="./styles.css?v=ea-shot1b-20261111" />
   <link rel="stylesheet" href="./styles-compete.css?v=continuity-rebase-20261101" />
-  <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e" />
+  <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e-chatfix-20261113" />
   <link rel="stylesheet" href="./fx.css?v=kb-mobile-20261023e" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=act2-stills-20261101" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=act2-stills-20261101-chatfix-20261113" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -35,15 +35,39 @@
     body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
     #screen-play .play-face-gap {
       height: calc(var(--app-vh) * 0.68) !important;
-      min-height: calc(var(--app-vh) * 0.60) !important;
+      min-height: 0 !important;
       max-height: calc(var(--app-vh) * 0.75) !important;
       flex: 1 1 auto !important;
     }
-    #screen-play .play-lower { max-height: calc(var(--app-vh) * 0.22) !important; }
+    #screen-play .play-lower {
+      flex-shrink: 0 !important;
+      max-height: max(calc(var(--app-vh) * 0.22), calc(170px + env(safe-area-inset-bottom))) !important;
+    }
     #screen-play .narrative-bubble { max-height: 4.8em !important; padding: 4px 8px !important; background: rgba(6,10,18,.32) !important; }
     #screen-play #play-text { font-size: .72rem !important; -webkit-line-clamp: 2 !important; display: -webkit-box !important; -webkit-box-orient: vertical !important; overflow: hidden !important; }
     #screen-play .chat-header, #screen-play .chat-messages { display: none !important; }
-    #screen-play .chat-panel { max-height: 48px !important; }
+    #screen-play .chat-panel,
+    #screen-play .chat-panel.zone-chat {
+      display: flex !important;
+      flex-shrink: 0 !important;
+      max-height: calc(56px + env(safe-area-inset-bottom)) !important;
+      min-height: calc(44px + env(safe-area-inset-bottom)) !important;
+    }
+    @media (max-height: 720px) {
+      body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
+      body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
+      #screen-play .play-face-gap {
+        height: auto !important;
+        min-height: 0 !important;
+        flex: 1 1 auto !important;
+      }
+      #screen-play .chat-panel,
+      #screen-play .chat-panel.zone-chat,
+      body.mode-play .chat-panel,
+      body.mode-play .chat-panel.zone-chat {
+        display: flex !important;
+      }
+    }
 
     /* kb-mobile-20261023e keyboard: fill space above keyboard, composer at bottom, no fixed gap */
     #screen-play #chat-input { font-size: 16px !important; }
