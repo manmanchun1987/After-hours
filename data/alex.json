@@ -137,7 +137,7 @@
       "choices": [
         {
           "label": "走去桌前",
-          "next": "n0c"
+          "next": "vEn4"
         }
       ],
       "sceneGoal": {
@@ -166,7 +166,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n0c",
+          "next": "vEn4",
           "heat": 0,
           "tension": 0,
           "bucket": "heat",
@@ -741,7 +741,7 @@
       "choices": [
         {
           "label": "留低",
-          "next": "n4d",
+          "next": "vPw1",
           "heat": 14,
           "cg": true
         },
@@ -780,7 +780,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n4d",
+          "next": "vPw1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -814,7 +814,7 @@
       "choices": [
         {
           "label": "「熄。」",
-          "next": "n4k",
+          "next": "n4x2",
           "heat": 12,
           "cg": true
         },
@@ -851,7 +851,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n4k",
+          "next": "n4x2",
           "heat": 12,
           "tension": 0,
           "bucket": "heat",
@@ -936,19 +936,19 @@
       "choices": [
         {
           "label": "「……我聽規則。」",
-          "next": "n5d",
+          "next": "vRu1",
           "heat": 12,
           "cg": true
         },
         {
           "label": "（靠近聽）",
-          "next": "n5d",
+          "next": "vRu1",
           "heat": 12,
           "cg": true
         },
         {
           "label": "「第三條係咩？」",
-          "next": "n5d",
+          "next": "vRu1",
           "tension": 4,
           "heat": 12,
           "cg": true
@@ -983,7 +983,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n5d",
+          "next": "vRu1",
           "heat": 12,
           "tension": 0,
           "bucket": "heat",
@@ -995,7 +995,7 @@
             "繼續",
             "靠近聽"
           ],
-          "next": "n5d",
+          "next": "vRu1",
           "heat": 12,
           "bucket": "heat",
           "ack": "我聽到。你繼續講。"
@@ -1006,7 +1006,7 @@
             "繼續",
             "第三條係咩"
           ],
-          "next": "n5d",
+          "next": "vRu1",
           "heat": 12,
           "bucket": "heat",
           "ack": "我聽到。你繼續講。"
@@ -1816,7 +1816,7 @@
       "choices": [
         {
           "label": "走去桌前",
-          "next": "n0h"
+          "next": "vEn6"
         }
       ],
       "sceneGoal": {
@@ -1848,7 +1848,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n0h",
+          "next": "vEn6",
           "heat": 0,
           "tension": 0,
           "bucket": "heat",
@@ -2188,7 +2188,7 @@
       "choices": [
         {
           "label": "「熄。我知。」",
-          "next": "n4l",
+          "next": "vTh1",
           "heat": 14,
           "cg": true
         },
@@ -2230,7 +2230,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n4l",
+          "next": "vTh1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -2256,7 +2256,7 @@
       "choices": [
         {
           "label": "企低唔走",
-          "next": "n4l",
+          "next": "vTh1",
           "heat": 12,
           "cg": true
         },
@@ -2296,7 +2296,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n4l",
+          "next": "vTh1",
           "heat": 12,
           "tension": 0,
           "bucket": "heat",
@@ -2329,13 +2329,13 @@
       "choices": [
         {
           "label": "「我唔反悔。」",
-          "next": "n5f",
+          "next": "vRa1",
           "heat": 14,
           "cg": true
         },
         {
           "label": "「講清楚第三條。」",
-          "next": "n5f",
+          "next": "vRa1",
           "tension": 4,
           "heat": 14,
           "cg": true
@@ -2372,7 +2372,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n5f",
+          "next": "vRa1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -2384,7 +2384,7 @@
             "繼續",
             "講清楚第三條"
           ],
-          "next": "n5f",
+          "next": "vRa1",
           "heat": 14,
           "bucket": "heat",
           "ack": "我聽到。你繼續講。"
@@ -2557,13 +2557,13 @@
       "choices": [
         {
           "label": "「唔怕。」",
-          "next": "ending_b",
+          "next": "vXb1",
           "heat": 14,
           "cg": true
         },
         {
           "label": "「私人備註寫咩？」",
-          "next": "ending_b",
+          "next": "vXb1",
           "tension": 4,
           "heat": 14,
           "cg": true
@@ -2598,7 +2598,7 @@
             "同意",
             "得啦"
           ],
-          "next": "ending_b",
+          "next": "vXb1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -2610,7 +2610,7 @@
             "繼續",
             "私人備註寫咩"
           ],
-          "next": "ending_b",
+          "next": "vXb1",
           "heat": 14,
           "bucket": "heat",
           "ack": "我聽到。你繼續講。"
@@ -2996,7 +2996,7 @@
       "choices": [
         {
           "label": "繼續",
-          "next": "n4d",
+          "next": "vPw1",
           "heat": 8,
           "cg": true
         }
@@ -3030,7 +3030,7 @@
             "同意",
             "得啦"
           ],
-          "next": "n4d",
+          "next": "vPw1",
           "heat": 8,
           "tension": 0,
           "bucket": "heat",
@@ -3201,7 +3201,7 @@
       "choices": [
         {
           "label": "入去聽佢講",
-          "next": "n0g",
+          "next": "vEn1",
           "heat": 3
         }
       ],
@@ -3219,7 +3219,7 @@
             "行過",
             "入去"
           ],
-          "next": "n0g",
+          "next": "vEn1",
           "heat": 3,
           "bucket": "work",
           "ack": "走廊仲開住。我聽到你揀。"
@@ -3363,7 +3363,7 @@
       "choices": [
         {
           "label": "封面我改",
-          "next": "n1d",
+          "next": "vBz1",
           "heat": 3
         }
       ],
@@ -3381,7 +3381,7 @@
             "簡報",
             "改"
           ],
-          "next": "n1d",
+          "next": "vBz1",
           "heat": 3,
           "bucket": "work",
           "ack": "封面我聽到。你再講內頁。"
@@ -3470,7 +3470,7 @@
       "choices": [
         {
           "label": "三點我講",
-          "next": "n1f",
+          "next": "vBz3",
           "heat": 3
         }
       ],
@@ -3488,7 +3488,7 @@
             "改咗",
             "簡報"
           ],
-          "next": "n1f",
+          "next": "vBz3",
           "heat": 3,
           "bucket": "work",
           "ack": "三點未講完。你而家講。"
@@ -3523,7 +3523,7 @@
       "choices": [
         {
           "label": "我留低等你問",
-          "next": "n1b",
+          "next": "vBz5",
           "heat": 3
         }
       ],
@@ -3541,7 +3541,7 @@
             "決定",
             "逐頁"
           ],
-          "next": "n1b",
+          "next": "vBz5",
           "heat": 3,
           "bucket": "work",
           "ack": "你留低等我問。逐頁嚟。"
@@ -3566,970 +3566,17 @@
         "office"
       ]
     },
-    "n4d": {
-      "id": "n4d",
-      "label": "行近又停",
-      "look": "dressed",
-      "text": "Vera 行近你半步，鞋跟停低。距離只剩一掌，佢又停住。「未到關燈。你個嘴仲要對住簡報。行近唔等於你可以伸手。你企定，聽我講下一頁。頁未完，手就停。你企定先再講。」",
-      "thought": "近咗，但佢叫你停。",
-      "aside": "鞋跟聲停得好乾淨。",
-      "choices": [
-        {
-          "label": "我企定聽",
-          "next": "n4e",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "企定",
-            "下一頁",
-            "簡報"
-          ],
-          "next": "n4e",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你企定。下一頁先。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你企定聽下一頁，定你想再講簡報？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4e": {
-      "id": "n4e",
-      "label": "嘴返簡報",
-      "look": "dressed",
-      "text": "佢將簡報推返你面前，聲線恢復平。「頭先嗰下唔算。你而家用嘴講第三頁，唔好用身體答。我問數據，你答數據。答完我先決定行唔行近。頁同人，你分開答。你先答個頁碼出嚟。」",
-      "thought": "佢將嘴拉返公事上面。",
-      "aside": "紙張推到你手邊。",
-      "choices": [
-        {
-          "label": "第三頁我再答",
-          "next": "n4f",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "第三頁",
-            "數據",
-            "簡報",
-            "答"
-          ],
-          "next": "n4f",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你答頁。我聽住。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "第三頁你再答一次？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4f": {
-      "id": "n4f",
-      "label": "你知後果",
-      "look": "dressed",
-      "text": "Vera 望住你，未再行近。「你留低之前，你知後果未？星期一評核會寫你交得出，定寫你今晚越咗界。你而家講你知，我先繼續。唔知，你而家都可以收聲走。知，你就講出聲，我先留你。」",
-      "thought": "後果兩個字，佢要你自己講。",
-      "aside": "評核表格仲未揭開。",
-      "choices": [
-        {
-          "label": "我知後果",
-          "next": "n4g",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "後果",
-            "星期一",
-            "知道",
-            "評核"
-          ],
-          "next": "n4g",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你話知。我先繼續。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你知星期一點算？講你知。"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4g": {
-      "id": "n4g",
-      "label": "退半步",
-      "look": "dressed",
-      "text": "佢自己退半步，手離開你袖口。「我退，係俾你時間。簡報仲喺枱面。你想追返公事，而家講頁碼。你想追我，你都要先講完頁。我唔會替你講。頁碼你自己報出嚟。我唔會再估。」",
-      "thought": "佢退開，頁仲要你講。",
-      "aside": "袖口位置空返一截。",
-      "choices": [
-        {
-          "label": "我講頁碼",
-          "next": "n4h",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "頁",
-            "頁碼",
-            "簡報",
-            "退"
-          ],
-          "next": "n4h",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "頁碼我聽到。你講落去。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你而家講邊一頁？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4h": {
-      "id": "n4h",
-      "label": "再行近",
-      "look": "dressed",
-      "text": "Vera 再行近，今次只到你椅背側。聲仍然係主管。「星期一我問你，你唔好話我未提過。你而家重複：檔你負責，夜你自己留。重複完，我先考慮關燈。重複唔出，燈就唔關。」",
-      "thought": "佢要你重複責任，先肯考慮燈。",
-      "aside": "椅背側多咗佢隻手影。",
-      "choices": [
-        {
-          "label": "檔我負責",
-          "next": "n4p",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "負責",
-            "重複",
-            "星期一",
-            "檔"
-          ],
-          "next": "n4p",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你重複咗。我聽到。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你重複：檔你負責，夜你自己留？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4p": {
-      "id": "n4p",
-      "label": "再停一次",
-      "look": "dressed",
-      "text": "佢隻手抬到一半，又放返枱邊。「停。你呼吸先。我未關燈，你未過線。你若果而家只想交檔，你講交檔。你若果留，你講留。兩個字，你揀一個講出聲。我唔幫你揀。你揀完先算。」",
-      "thought": "手放下，係再俾你揀。",
-      "aside": "枱邊木紋被掌心按住。",
-      "choices": [
-        {
-          "label": "我留",
-          "next": "n4i",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "留",
-            "交檔",
-            "停"
-          ],
-          "next": "n4i",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你講留。我未關燈。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你講交檔，定講留？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4i": {
-      "id": "n4i",
-      "label": "檔仲喺枱",
-      "look": "dressed",
-      "text": "關燈之前，簡報一疊仲攤喺枱面，筆未收。Vera 用指節壓住最後一頁。「檔仲喺度。你而家走，我當你交咗未改完嘅版本。你留，檔同你一齊過今晚。你講邊樣。筆未收，就未算完。」",
-      "thought": "檔未收，走定留都要講。",
-      "aside": "最後一頁角未齊。",
-      "choices": [
-        {
-          "label": "檔留低",
-          "next": "n4j",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "檔",
-            "簡報",
-            "留低",
-            "最後一頁"
-          ],
-          "next": "n4j",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "檔留喺枱。你都留。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "檔你而家帶走，定留低一齊過？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4j": {
-      "id": "n4j",
-      "label": "星期一點計",
-      "look": "dressed",
-      "text": "「星期一點計，你要而家聽清楚。」Vera 聲線平。「你留到關燈，評核我寫態度合格，內容你聽朝補。你而家走，我只寫交咗檔。兩種都算數。你講你要邊種。我跟你句口寫，唔跟你隻眼。」",
-      "thought": "兩種算法，佢要你揀定。",
-      "aside": "筆帽未蓋，擱喺頁邊。",
-      "choices": [
-        {
-          "label": "我要留",
-          "next": "n4x",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "星期一",
-            "評核",
-            "態度",
-            "合格"
-          ],
-          "next": "n4x",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你揀咗留。星期一我照寫。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你要態度合格，定只寫交咗檔？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4k": {
-      "id": "n4k",
-      "label": "而家走都收檔",
-      "look": "dressed",
-      "text": "Vera 隻手按住燈掣，未撳落。「最後講多次。你而家走，檔我收，星期一當你交咗。你留低睇我關燈，就唔好話我未問過。你講走，定講留。掣未落之前，兩句我都收。走，檔都算交。」",
-      "thought": "掣未落，走仍然算交檔。",
-      "aside": "燈掣冰，佢指腹未用力。",
-      "choices": [
-        {
-          "label": "我留低",
-          "next": "n4x2",
-          "heat": 3
-        },
-        {
-          "label": "我而家走",
-          "next": "ending_c"
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "留",
-            "關燈",
-            "檔"
-          ],
-          "next": "n4x2",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你留。我先碰呢個掣。"
-        },
-        {
-          "keys": [
-            "我走",
-            "走先",
-            "離開",
-            "唔入",
-            "返工位",
-            "收回",
-            "唔可以",
-            "唔要",
-            "夠喇"
-          ],
-          "next": "ending_c",
-          "bucket": "leave",
-          "ack": "你走。檔我收。星期一當你交咗。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree",
-          "refuse"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去",
-          "refuse": "而家走"
-        },
-        "ask": "你而家走，定留低睇佢關燈？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4l": {
-      "id": "n4l",
-      "label": "掣上再停",
-      "look": "dressed",
-      "text": "燈仍然全亮。Vera 指尖停喺掣上，另一隻手返到簡報最後一頁。「我未撳。你若果反口，而家講。你若果唔反口，你講你準備好。我聽到準備好，先至算你過呢一步。反口就開返燈，當改稿。」",
-      "thought": "全亮入面，佢仲肯聽反口。",
-      "aside": "最後一頁被指尖壓平。",
-      "choices": [
-        {
-          "label": "我準備好",
-          "next": "n4m",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "準備好",
-            "反口",
-            "簡報"
-          ],
-          "next": "n4m",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你話準備好。我聽到。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你準備好，定你而家反口？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4m": {
-      "id": "n4m",
-      "label": "未算過線",
-      "look": "dressed",
-      "text": "「未關燈就未算過線。」佢講得好慢。「你而家仍然係我下屬，簡報仍然係簡報。你過線之後，兩樣都仲係，但你唔可以話自己唔知。你再講一次你知。唔知就當你未留。你而家講。」",
-      "thought": "佢要你知，先肯算過線。",
-      "aside": "辦公室燈白到刺眼。",
-      "choices": [
-        {
-          "label": "我知",
-          "next": "n4n",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "我知",
-            "過線",
-            "下屬"
-          ],
-          "next": "n4n",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你知。我記低。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你再講一次你知？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4n": {
-      "id": "n4n",
-      "label": "檔先過嘴",
-      "look": "dressed",
-      "text": "佢將最後一頁編號讀出聲，等你跟住讀。「你讀得出，我先當你清醒。讀完你先講留。我唔收含糊。含糊我就當你未準備好，燈我唔關。編號錯，你重新讀一次。讀對我先收低檔。」",
-      "thought": "佢要你讀編號，先收你句留。",
-      "aside": "頁碼被讀得好清楚。",
-      "choices": [
-        {
-          "label": "頁碼我讀，我留",
-          "next": "n4o",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "頁碼",
-            "讀",
-            "留",
-            "清醒"
-          ],
-          "next": "n4o",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "頁碼你讀咗。你講留。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你跟住讀頁碼，再講留？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n4o": {
-      "id": "n4o",
-      "label": "關之前最後一句",
-      "look": "dressed",
-      "text": "Vera 望住你眼，掣仍然未落。「最後一句，你自己講。你留，係你講，唔係我拉。講完我先關燈。講唔出，你而家行出去，檔我已經收。我唔會替你講留。出口一定係你自己。」",
-      "thought": "最後一句要你自己開口。",
-      "aside": "兩個人中間只剩燈掣。",
-      "choices": [
-        {
-          "label": "我自己講留",
-          "next": "n5",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "留",
-            "我留",
-            "自己講"
-          ],
-          "next": "n5",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你自己講留。我關燈。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你自己講留，定你行出去？"
-      },
-      "tags": [
-        "office"
-      ]
-    },
-    "n5d": {
-      "id": "n5d",
-      "label": "規則一重複",
-      "look": "dark",
-      "text": "燈暗之後佢未再近。Vera 聲線貼住黑暗。「規則一，你重複：你講你想要。我未聽到你講，我唔進行規則二。你而家照講一次，唔好用點頭代替。未聽到想要兩個字，我唔行下一步。」",
-      "thought": "規則一未出口，佢唔行下一步。",
-      "aside": "黑暗入面淨係聽到佢聲。",
-      "choices": [
-        {
-          "label": "我講我想要",
-          "next": "n5e",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "規則一",
-            "想要",
-            "我講",
-            "可以"
-          ],
-          "next": "n5e",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "規則一我聽到。你想要。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講你想要"
-        },
-        "ask": "你重複規則一：你講你想要？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
-    "n5e": {
-      "id": "n5e",
-      "label": "規則二按返",
-      "look": "dark",
-      "text": "你想伸手搶規則二，話你自己決定。佢捉住你手腕，按返枱面，力度唔重，但清楚。「規則二係我決定俾唔俾。你搶唔到。你再講一次：決定喺我度。講完我先鬆。搶第二次，我當你未聽規則。」",
-      "thought": "你搶規則二，佢按返去。",
-      "aside": "手腕被按喺枱面。",
-      "choices": [
-        {
-          "label": "決定喺你度",
-          "next": "n5b",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "決定",
-            "規則二",
-            "喺你度",
-            "可以"
-          ],
-          "next": "n5b",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "決定喺我度。你講咗。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講決定喺佢度"
-        },
-        "ask": "你講：決定喺佢度？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
-    "n5f": {
-      "id": "n5f",
-      "label": "最後反口",
-      "look": "dark",
-      "text": "「規則三，你仲可以反口一次。」Vera 停住，未再貼近。「你而家講反口，我開燈，當今晚只係改簡報。你講唔反口，我先繼續。你要出聲，點頭我當聽唔到。呢次係真反口，唔係試我。」",
-      "thought": "反口呢次係真，佢等你講。",
-      "aside": "黑暗入面佢呼吸停半拍。",
-      "choices": [
-        {
-          "label": "我唔反口",
-          "next": "n5g",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "唔反口",
-            "反口",
-            "可以",
-            "繼續"
-          ],
-          "next": "n5g",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你唔反口。我聽到。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講唔反口"
-        },
-        "ask": "你反口，定你講唔反口？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
-    "n5g": {
-      "id": "n5g",
-      "label": "佢握住等",
-      "look": "dark",
-      "text": "佢握住你手腕，未拉近，亦未推開。「我握住，係等你句話穩定。你再講一次唔反口。我聽到第二次，先至算數。你急，我都唔會快過你句話。手腕我握住，身我未拉。你再講一次。」",
-      "thought": "佢握住，係等第二句。",
-      "aside": "手腕溫度停喺原位。",
-      "choices": [
-        {
-          "label": "我再講，我唔反口",
-          "next": "n5h",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "唔反口",
-            "第二次",
-            "可以"
-          ],
-          "next": "n5h",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "第二次我聽到。你唔反口。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "再講唔反口"
-        },
-        "ask": "你再講一次唔反口？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
-    "n5h": {
-      "id": "n5h",
-      "label": "未過身",
-      "look": "dark",
-      "text": "「句話我收咗。身未過。」Vera 仍然留一掌距離。「你而家若果只係講玩，你講收回。你講可以，我先將距離收埋。兩個字你揀，我跟你口，唔跟你隻手。收回，我就開燈。可以，我先收近。」",
-      "thought": "口先過，身未過。",
-      "aside": "一掌距離仍然喺度。",
-      "choices": [
-        {
-          "label": "可以",
-          "next": "n5c",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "可以",
-            "收回",
-            "我可以"
-          ],
-          "next": "n5c",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你可以。距離我先收。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講可以"
-        },
-        "ask": "你講可以，定你講收回？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
     "n6e": {
       "id": "n6e",
       "label": "佢定節奏",
       "look": "dark",
-      "text": "你講咗可以。Vera 未立刻貼埋來。「可以我收到。節奏我定。你想快，我偏慢。你而家跟我數到三，再郁。未數完，你隻手唔好郁。數完我先講下一步。你而家跟住我數落去。」",
-      "thought": "可以收咗，快慢仍然佢話事。",
-      "aside": "佢數得又慢又清楚。",
+      "text": "「可以我收到。」Vera 數到三，第三下拉你坐實張椅。窗縫開始灰。\n\n「一小時內，簡報要入我信箱。人呢段已經開始。你坐實，手放低。」",
+      "thought": "三下數完，人已經坐實。",
+      "aside": "窗縫有少少灰。",
       "choices": [
         {
-          "label": "我跟你節奏",
-          "next": "n6f",
+          "label": "我坐實",
+          "next": "vXa1",
           "heat": 6
         }
       ],
@@ -4543,61 +3590,14 @@
             "跟",
             "節奏",
             "可以",
-            "我跟"
-          ],
-          "next": "n6f",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你跟節奏。我數。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講明你嘅答案"
-        },
-        "ask": "你跟佢數，定你話跟節奏？"
-      },
-      "scene": "dark",
-      "tags": [
-        "office"
-      ]
-    },
-    "n6f": {
-      "id": "n6f",
-      "label": "唔俾你快",
-      "look": "dark",
-      "text": "你想靠近，佢掌心抵住你肩，只係一抵。「未到。我話停就停。簡報聽朝交，今晚你聽我。你再講一次：節奏你跟。講完我先放低呢隻手。搶節奏，我當你未答可以。你再講一次。」",
-      "thought": "佢抵住你，係要你再認節奏。",
-      "aside": "肩上掌心未用力推。",
-      "choices": [
-        {
-          "label": "節奏我跟",
-          "next": "n6g",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "節奏",
             "我跟",
-            "可以"
+            "坐實",
+            "信箱"
           ],
-          "next": "n6g",
+          "next": "vXa1",
           "heat": 6,
           "bucket": "admit",
-          "ack": "節奏你跟。我放低手。"
+          "ack": "你坐實。我先靠近。"
         }
       ],
       "sceneGoal": {
@@ -4611,24 +3611,3199 @@
         "hints": {
           "agree": "講明你嘅答案"
         },
-        "ask": "你再講：節奏你跟？"
+        "ask": "椅轉咗，你坐實未？"
       },
       "scene": "dark",
       "tags": [
         "office"
       ]
     },
-    "n6g": {
-      "id": "n6g",
-      "label": "窗光先見到檔",
-      "look": "dark",
-      "text": "窗縫開始有少少灰白。Vera 先望枱面個簡報，先未望你。「窗光先照到檔。聽朝一小時內，呢份要喺我信箱。你而家再講一次你交。人嘅事，我未講完。信箱見唔到檔，其餘我當冇。」",
-      "thought": "窗光先落到檔，人未講完。",
-      "aside": "灰白光只切到紙角。",
+    "vEn1": {
+      "id": "vEn1",
+      "label": "大堂鐘",
+      "look": "dressed",
+      "text": "電梯數字落到地下之後，大堂鐘跳到十一點四十一。房門仲開一條縫，Vera 未出聲。椅轆喺地毯上轉咗一下。\n\n「鐘我睇到。你行過嚟，唔好企到冷氣吹乾件衫。」",
+      "thought": "鐘先過，人未出房。",
+      "aside": "大堂得冷氣同椅轆。",
       "choices": [
         {
-          "label": "聽朝我交",
-          "next": "n6h",
+          "label": "我行過嚟",
+          "next": "vEn2",
+          "heat": 0
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "行過嚟",
+            "腳步"
+          ],
+          "next": "vEn2",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "你行緊過嚟。我聽到腳步。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你行過嚟未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "vEn2": {
+      "id": "vEn2",
+      "label": "暖機",
+      "look": "dressed",
+      "text": "走廊影印機蓋仲暖。出紙槽卡住一張封面，上面係你個名，日期仲寫住星期四。房入面鍵盤聲停一拍。\n\n「張紙你抽低。星期四呢個日期，星期一董事會唔收。」",
+      "thought": "封面卡住，日期未改。",
+      "aside": "機口有陣熱風。",
+      "choices": [
+        {
+          "label": "封面我抽低",
+          "next": "vEn3",
+          "heat": 0
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "封面",
+            "星期四"
+          ],
+          "next": "vEn3",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "封面你抽低。日期我見到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "封面你抽低未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "vEn3": {
+      "id": "vEn3",
+      "label": "拎住張紙",
+      "look": "dressed",
+      "text": "你抽出張封面，機口仲有熱風。Vera 仍然未叫你入房。\n\n「熱風係機，唔係我叫你。張紙你拎住，入到嚟先放上枱。」",
+      "thought": "張紙先拎住，枱未到。",
+      "aside": "熱風吹到指。",
+      "choices": [
+        {
+          "label": "我拎住張紙",
+          "next": "n0g",
+          "heat": 0
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "拎住",
+            "張紙"
+          ],
+          "next": "n0g",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "你拎住。入到嚟先放。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "張紙你拎住未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "vEn4": {
+      "id": "vEn4",
+      "label": "側椅",
+      "look": "dressed",
+      "text": "門已經關。Vera 用筆尾指側邊張椅，唔望你。\n\n「袋放側椅。枱面只准有簡報。水杯、電話、鎖匙，全部離開我隻眼。」",
+      "thought": "枱面要空出嚟俾套簡報。",
+      "aside": "側椅空住。",
+      "choices": [
+        {
+          "label": "袋我放側椅",
+          "next": "vEn5",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "側椅",
+            "袋"
+          ],
+          "next": "vEn5",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "袋喺側椅。枱我睇。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "袋你放低未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vEn5": {
+      "id": "vEn5",
+      "label": "灰色檔名",
+      "look": "dressed",
+      "text": "螢幕打開星期一資料夾。你個檔名係灰色，未變黑。Vera 用指節敲一下個名。\n\n「灰色即係未交。聽朝八點之前要變黑。你見到個顏色就得。」",
+      "thought": "灰色係未交，唔係已交。",
+      "aside": "檔名灰住。",
+      "choices": [
+        {
+          "label": "我見到灰色",
+          "next": "n0c",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "灰色",
+            "八點"
+          ],
+          "next": "n0c",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "灰色你見到。八點先變黑。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你見到灰色未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vEn6": {
+      "id": "vEn6",
+      "label": "冷氣一格",
+      "look": "dressed",
+      "text": "佢伸手將冷氣調低一格。百葉未拉盡，走廊光仲入到半張枱。\n\n「冷氣我調低，係想你隻手唔好震到打錯數。百葉我下一手先拉。」",
+      "thought": "冷氣先落，百葉未盡。",
+      "aside": "出風口轉弱。",
+      "choices": [
+        {
+          "label": "冷氣我感受到",
+          "next": "vEn7",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "冷氣"
+          ],
+          "next": "vEn7",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "冷氣低一格。你手穩啲。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "冷氣你感受到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vEn7": {
+      "id": "vEn7",
+      "label": "百葉第一條",
+      "look": "dressed",
+      "text": "Vera 拉第一條百葉，走廊光窄成一條線，照住你對鞋。其餘佢未郁。\n\n「一條先。其餘我自己拉。你望住條光，知外面仲行到人。」",
+      "thought": "一條光先留住。",
+      "aside": "鞋頭有條光。",
+      "choices": [
+        {
+          "label": "我望到條光",
+          "next": "n0h",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "百葉",
+            "條光"
+          ],
+          "next": "n0h",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "條光你望到。其餘我拉。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "條光你望到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vBz1": {
+      "id": "vBz1",
+      "label": "英文名",
+      "look": "dressed",
+      "text": "Vera 喺封面圈住客戶英文名，最尾一個字母同合約唔同。筆圈得又細又重。\n\n「呢個字母錯，董事會第一眼就會停。你改呢個字母，唔好同我講全頁重寫。」",
+      "thought": "錯一個字母，唔使重寫全頁。",
+      "aside": "筆圈壓住紙。",
+      "choices": [
+        {
+          "label": "字母我改",
+          "next": "vBz2",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "字母",
+            "英文名"
+          ],
+          "next": "vBz2",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "字母你改。全頁唔使重寫。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "字母你改邊個？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vBz2": {
+      "id": "vBz2",
+      "label": "頁腳",
+      "look": "dressed",
+      "text": "佢揭到頁腳。日期仍然寫星期四，地點寫錯層數。佢用間尺壓住頁腳。\n\n「日期改今日，地點改二十樓。兩樣你而家講，我先信你會改落檔。」",
+      "thought": "頁腳兩樣都未改。",
+      "aside": "間尺壓住頁腳。",
+      "choices": [
+        {
+          "label": "今日，二十樓",
+          "next": "n1d",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "二十樓",
+            "頁腳"
+          ],
+          "next": "n1d",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "今日，二十樓。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "日期同地點你點改？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vBz3": {
+      "id": "vBz3",
+      "label": "利潤格",
+      "look": "dressed",
+      "text": "第三頁中間有一格利潤，同附件差兩個百分點。Vera 用筆尖點住個格，唔點你。\n\n「財務聽朝會咬呢格。你話我知個數跟邊份表，唔好背三點總結。」",
+      "thought": "佢要個來源，唔要總結。",
+      "aside": "筆尖停喺百分點。",
+      "choices": [
+        {
+          "label": "個數跟預算表",
+          "next": "vBz4",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "利潤",
+            "預算表"
+          ],
+          "next": "vBz4",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "預算表。我寫低。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "個數跟邊份表？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vBz4": {
+      "id": "vBz4",
+      "label": "缺頁",
+      "look": "dressed",
+      "text": "附件頁碼由十二跳去十五，十三、十四唔見咗。佢將兩份紙並排。\n\n「缺頁你標出第一個。標完我先翻去結論。結論我未准你收。」",
+      "thought": "缺頁先標，結論未收。",
+      "aside": "兩份紙並排。",
+      "choices": [
+        {
+          "label": "第十三頁唔見咗",
+          "next": "n1f",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "十三",
+            "缺頁"
+          ],
+          "next": "n1f",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "十三唔見。你標咗。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "第一個缺頁係邊頁？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vBz5": {
+      "id": "vBz5",
+      "label": "紅格",
+      "look": "dressed",
+      "text": "風險頁有一格係紅，來源寫住群組截圖。Vera 將頁推到你面前。\n\n「截圖唔算來源。你換返試算表個格。換完呢頁先可以留喺套入面。」",
+      "thought": "紅格要換來源，先留得喺套。",
+      "aside": "紅格刺眼。",
+      "choices": [
+        {
+          "label": "我換返試算表",
+          "next": "n1b",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "截圖",
+            "試算表"
+          ],
+          "next": "n1b",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "試算表。截圖我當廢。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紅格你換咩？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw1": {
+      "id": "vPw1",
+      "label": "刪一頁",
+      "look": "dressed",
+      "text": "Vera 喺螢幕刪走「下一步」嗰頁。頁面一縮，套數少一頁。\n\n「董事會唔聽希望。呢頁我刪。你望住個數，唔好望我。」",
+      "thought": "希望嗰頁刪走，套數少一頁。",
+      "aside": "螢幕少一頁。",
+      "choices": [
+        {
+          "label": "呢頁刪得",
+          "next": "vPw2",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "刪",
+            "下一步"
+          ],
+          "next": "vPw2",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "頁我刪咗。你望數。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "呢頁刪得未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw2": {
+      "id": "vPw2",
+      "label": "鉛筆",
+      "look": "dressed",
+      "text": "佢喺空白邊用鉛筆寫「態度」兩個字，冇寫分數。鉛筆屑落喺頁角。\n\n「鉛筆即係我未蓋章。分數等星期一。而家你繼續改紅格。」",
+      "thought": "態度只得鉛筆，分數未落。",
+      "aside": "鉛筆屑喺頁角。",
+      "choices": [
+        {
+          "label": "紅格我改",
+          "next": "vPw3",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鉛筆",
+            "態度"
+          ],
+          "next": "vPw3",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "紅格你繼續。分數星期一。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紅格你改緊未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw3": {
+      "id": "vPw3",
+      "label": "十二分鐘",
+      "look": "dressed",
+      "text": "佢將枱鐘轉到對住你。分針仲有十二分鐘到十二點。\n\n「十二分鐘。紅格同缺頁，你揀緊要嗰樣先做。我數針，唔數你句解釋。」",
+      "thought": "鐘對住你，十二分鐘。",
+      "aside": "分針清楚。",
+      "choices": [
+        {
+          "label": "我先補缺頁",
+          "next": "vPw4",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "缺頁",
+            "十二分鐘"
+          ],
+          "next": "vPw4",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "缺頁先。我數針。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你先補邊樣？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw4": {
+      "id": "vPw4",
+      "label": "未發草稿",
+      "look": "dressed",
+      "text": "佢轉開你部機。群組有條未發草稿，寫住簡報完成。游標仲喺發送上面。\n\n「未完成就唔好寫完成。草稿你刪。刪完個群先乾淨。」",
+      "thought": "草稿未發，但字已經錯。",
+      "aside": "游標停喺發送。",
+      "choices": [
+        {
+          "label": "草稿我刪",
+          "next": "vPw5",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "草稿",
+            "群組"
+          ],
+          "next": "vPw5",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "草稿刪咗。群乾淨。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "草稿你刪未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw5": {
+      "id": "vPw5",
+      "label": "v7",
+      "look": "dressed",
+      "text": "共用碟有 v3 同 v7。v7 個檔名仲係舊客戶。佢將 v3 拉去旁邊。\n\n「v7 先係你今晚改緊嗰份。個名你改返新客戶。v3 我留低做對照，你唔准蓋。」",
+      "thought": "v7 先係今晚份，v3 只係對照。",
+      "aside": "兩個檔並排。",
+      "choices": [
+        {
+          "label": "檔名我改",
+          "next": "vPw6",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "v7",
+            "檔名"
+          ],
+          "next": "vPw6",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "檔名你改。v3 唔准蓋。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "檔名你改成邊個？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw6": {
+      "id": "vPw6",
+      "label": "椅退",
+      "look": "dressed",
+      "text": "佢用腳將你張椅退後半步，令你見到全頁，唔係淨係見到袖口。椅轆響一下。\n\n「半步。你而家望數字。袖口唔係你今晚嘅工作。」",
+      "thought": "半步係為睇全頁。",
+      "aside": "椅轆響完。",
+      "choices": [
+        {
+          "label": "我望全頁",
+          "next": "vPw7",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "全頁",
+            "半步"
+          ],
+          "next": "vPw7",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "全頁你望。袖口唔關事。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你望到全頁未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw7": {
+      "id": "vPw7",
+      "label": "再收一條",
+      "look": "dressed",
+      "text": "佢再收一條百葉。走廊聲變遠，有人拖篋經過，又行開。\n\n「條縫俾行人用。房入面嘅頁，行人睇唔到。你繼續對第十三頁。」",
+      "thought": "行人只用條縫，頁喺房入面。",
+      "aside": "篋聲行開。",
+      "choices": [
+        {
+          "label": "第十三頁我對",
+          "next": "vPw8",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第十三",
+            "百葉"
+          ],
+          "next": "vPw8",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "十三你對。縫我留。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "第十三頁你對緊未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw8": {
+      "id": "vPw8",
+      "label": "工牌",
+      "look": "dressed",
+      "text": "你張工牌本來擱喺椅背。佢拎起，掛到門後勾。工牌垂住，離張枱遠咗。\n\n「牌掛低。你仲係呢間公司嘅人。牌唔好壓住簡報。」",
+      "thought": "牌離開枱，人未離開公司。",
+      "aside": "門後勾住牌。",
+      "choices": [
+        {
+          "label": "牌我見到掛低",
+          "next": "vPw9",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "工牌",
+            "掛"
+          ],
+          "next": "vPw9",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "牌掛低。簡報唔好壓住。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "牌你見到掛低未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw9": {
+      "id": "vPw9",
+      "label": "新句",
+      "look": "dressed",
+      "text": "最後一句寫住「建議如下」。佢改成「管理層備註」，改完讀出聲。\n\n「呢句先啱。你讀新句。舊四字我當廢。」",
+      "thought": "新句先啱套，舊四字廢。",
+      "aside": "新句喺最後一行。",
+      "choices": [
+        {
+          "label": "管理層備註",
+          "next": "vPw10",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "管理層",
+            "備註"
+          ],
+          "next": "vPw10",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "管理層備註。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "新句你讀到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw10": {
+      "id": "vPw10",
+      "label": "咖啡圈",
+      "look": "dressed",
+      "text": "第四頁有個咖啡圈，圈住一個百分比。佢唔肯將有圈嗰頁交上去。\n\n「呢頁你重印。圈可以係我嘅，數字唔可以污。印完你換上。」",
+      "thought": "有圈嗰頁要換乾淨張。",
+      "aside": "咖啡圈壓住數。",
+      "choices": [
+        {
+          "label": "第四頁我重印",
+          "next": "vPw11",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "重印",
+            "第四頁"
+          ],
+          "next": "vPw11",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "第四頁你重印。污頁我唔收。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "第四頁你重印未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw11": {
+      "id": "vPw11",
+      "label": "簿名",
+      "look": "dressed",
+      "text": "紅格換咗試算表之後，佢問個工作簿叫咩名。\n\n「簿名。太短唔算。你講個檔名出嚟，我先信個格有根源。」",
+      "thought": "佢要檔名，唔係要你留定走。",
+      "aside": "紅格已經換來源。",
+      "choices": [
+        {
+          "label": "簿名叫預算總表",
+          "next": "vPw12",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "預算總表",
+            "簿名"
+          ],
+          "next": "vPw12",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "預算總表。我寫低。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "簿名係咩？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw12": {
+      "id": "vPw12",
+      "label": "收筆",
+      "look": "dressed",
+      "text": "數字頁對完，佢蓋上筆蓋。筆橫放喺套簡報側邊，唔再點頁。\n\n「數我收到。態度未寫。筆停，係因為下一樣嘢唔係字。」",
+      "thought": "數收咗，筆先停。",
+      "aside": "筆蓋合上。",
+      "choices": [
+        {
+          "label": "筆我見到你蓋",
+          "next": "vPw13",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "筆蓋"
+          ],
+          "next": "vPw13",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "筆我蓋。數收咗。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "筆你見到我蓋未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw13": {
+      "id": "vPw13",
+      "label": "入抽屜",
+      "look": "dressed",
+      "text": "佢行到牆邊，未掂燈掣。門底仲有一條走廊光，照住你鞋頭。\n\n「光仲喺度。簡報你放落抽屜，枱面清空，我先考慮掂個掣。」",
+      "thought": "掣未掂，套簡報先入抽屜。",
+      "aside": "門底有光。",
+      "choices": [
+        {
+          "label": "簡報我放抽屜",
+          "next": "vPw14",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "抽屜"
+          ],
+          "next": "vPw14",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "抽屜你放。枱清空。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "簡報你放低未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw14": {
+      "id": "vPw14",
+      "label": "空枱",
+      "look": "dressed",
+      "text": "你將套簡報放落抽屜，佢自己推實。枱面剩低枝筆同部關暗咗嘅螢幕。\n\n「空枱。星期一之前，套嘢喺我抽屜，唔喺你袋。你企喺枱側。」",
+      "thought": "套嘢入咗抽屜，枱空。",
+      "aside": "抽屜推實。",
+      "choices": [
+        {
+          "label": "我喺枱側",
+          "next": "vPw15",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "空枱"
+          ],
+          "next": "vPw15",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你喺枱側。袋冇套嘢。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你喺枱側未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw15": {
+      "id": "vPw15",
+      "label": "八點鎖",
+      "look": "dressed",
+      "text": "分針過咗十二。佢望鐘一眼。\n\n「聽朝八點，套簡報鎖入董事會包。你而家知時間。掣喺我手側，我未掂。」",
+      "thought": "八點先鎖套，掣仍然未掂。",
+      "aside": "十二點過咗。",
+      "choices": [
+        {
+          "label": "八點我知道",
+          "next": "vPw16",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "八點"
+          ],
+          "next": "vPw16",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "八點。掣我未掂。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "八點你知道未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vPw16": {
+      "id": "vPw16",
+      "label": "離掣一吋",
+      "look": "dressed",
+      "text": "佢隻手抬到掣側一吋，指腹未貼到膠。房燈仍然全亮。\n\n「下一句我先問你。而家你只需要見到我隻手喺邊。問，我只問一次。」",
+      "thought": "手離掣一吋，問題未出口。",
+      "aside": "燈仍然全亮。",
+      "choices": [
+        {
+          "label": "我見到你隻手",
+          "next": "n4x",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "一吋",
+            "隻手"
+          ],
+          "next": "n4x",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你見到。下一句我先問。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你見到我隻手未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh1": {
+      "id": "vTh1",
+      "label": "半暗",
+      "look": "dark",
+      "scene": "dark",
+      "text": "Vera 將掣撳落一半。天花燈暗一個級，枱面由白變灰。佢隻手未離開掣。\n\n「半暗。你雙眼適應。另一半我數三下先撳盡。」",
+      "thought": "燈先暗一級。",
+      "aside": "枱面變灰。",
+      "choices": [
+        {
+          "label": "我適應到半暗",
+          "next": "vTh2",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "半暗"
+          ],
+          "next": "vTh2",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "半暗你適應。我數三下。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "半暗你適應到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh2": {
+      "id": "vTh2",
+      "label": "撳盡",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢數三下，第三下將剩低嘅燈撳盡。天花全黑，只剩門底一條細光。\n\n「盡。你而家睇嘢靠門縫。簡報喺抽屜，唔使睇。」",
+      "thought": "天花全黑，門縫剩一條。",
+      "aside": "房入面只得細光。",
+      "choices": [
+        {
+          "label": "燈我見到關盡",
+          "next": "vTh3",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "關盡"
+          ],
+          "next": "vTh3",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "關盡。抽屜唔使揭。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "燈你見到關盡未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh3": {
+      "id": "vTh3",
+      "label": "屏轉開",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將螢幕轉向牆。一點藍光打喺百葉，唔打喺你面上。\n\n「塊屏我轉開。你張臉唔好靠螢幕。聽我講。」",
+      "thought": "藍光打牆，唔打臉。",
+      "aside": "百葉有一點藍。",
+      "choices": [
+        {
+          "label": "屏我見到轉開",
+          "next": "vTh4",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "螢幕",
+            "百葉"
+          ],
+          "next": "vTh4",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "屏轉開。你聽我講。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "屏你見到轉開未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh4": {
+      "id": "vTh4",
+      "label": "落鎖",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢行到門邊，自己落鎖。栓聲短，走廊腳步聲被隔開。\n\n「鎖咗。出面嘅人入唔到。你唔使再望門縫。」",
+      "thought": "栓落咗，走廊聲隔開。",
+      "aside": "栓聲短。",
+      "choices": [
+        {
+          "label": "我聽到鎖",
+          "next": "vTh5",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鎖",
+            "栓"
+          ],
+          "next": "vTh5",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "鎖你聽到。出面入唔到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "鎖你聽到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh5": {
+      "id": "vTh5",
+      "label": "電話反轉",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將你部電話反轉，放上文件櫃，離張枱遠。螢幕暗住。\n\n「震我都唔准你拈。聽朝先覆。而家部機喺櫃頂。」",
+      "thought": "電話離開枱，聽朝先覆。",
+      "aside": "櫃頂一部暗機。",
+      "choices": [
+        {
+          "label": "電話我唔拈",
+          "next": "vTh6",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "電話",
+            "櫃"
+          ],
+          "next": "vTh6",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "電話喺櫃。你唔拈。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "電話你放低未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh6": {
+      "id": "vTh6",
+      "label": "除錶",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢除下手錶，放上抽屜面。金屬敲木一聲。手腕有一圈印。\n\n「時間我除低。八點唔使你而家唸。唸，等出面先。」",
+      "thought": "錶離開手腕，時間先放下。",
+      "aside": "抽屜面有隻錶。",
+      "choices": [
+        {
+          "label": "錶我見到你除",
+          "next": "vTh7",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "手錶"
+          ],
+          "next": "vTh7",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "錶我除。你見到印。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "錶你見到我除未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh7": {
+      "id": "vTh7",
+      "label": "冷氣停",
+      "look": "dark",
+      "scene": "dark",
+      "text": "冷氣自己停咗一個循環。房入面靜到聽得見你件衫郁。\n\n「靜一靜。你呼一口氣，我先行返埋嚟。」",
+      "thought": "冷氣停一輪，房先靜。",
+      "aside": "衫料有聲。",
+      "choices": [
+        {
+          "label": "我呼一口氣",
+          "next": "vTh8",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "呼",
+            "冷氣"
+          ],
+          "next": "vTh8",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "氣你呼咗。我行返埋。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你呼咗氣未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh8": {
+      "id": "vTh8",
+      "label": "椅轉向",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將你張椅轉到對住佢，背對抽屜。簡報喺你身後，唔喺你眼前面。\n\n「轉好。數字喺身後。你面前係我。」",
+      "thought": "椅轉咗，數字喺身後。",
+      "aside": "抽屜喺椅背。",
+      "choices": [
+        {
+          "label": "我轉過嚟",
+          "next": "vTh9",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "轉椅"
+          ],
+          "next": "vTh9",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你轉過嚟。面前係我。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你轉過嚟未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh9": {
+      "id": "vTh9",
+      "label": "捲袖",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將兩隻袖都捲到肘。動作慢，燈已經唔會照到袖口。\n\n「袖我自己捲。你隻手放膝上，等我講三條之前，唔好伸過嚟。」",
+      "thought": "兩隻袖都捲到肘。",
+      "aside": "肘露出嚟。",
+      "choices": [
+        {
+          "label": "手我放膝上",
+          "next": "vTh10",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "膝",
+            "袖"
+          ],
+          "next": "vTh10",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "手喺膝。袖我捲好。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "手你放低未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh10": {
+      "id": "vTh10",
+      "label": "一指縫",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢用一指撥開百葉，出面大廈暗咗一層，又合返。風冇入到。\n\n「出面暗一層。房入面我話事。指縫已經合埋。」",
+      "thought": "出面暗一層，縫又合。",
+      "aside": "指縫合返。",
+      "choices": [
+        {
+          "label": "出面我睇過一眼",
+          "next": "vTh11",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "出面"
+          ],
+          "next": "vTh11",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你睇過。縫我合埋。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "出面你睇過未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh11": {
+      "id": "vTh11",
+      "label": "一掌",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢行到你膝前一掌就停。香水同關咗燈之後嘅熱混埋。佢未掂你。\n\n「一掌。規則我下一句先講。你而家只係見到距離。」",
+      "thought": "一掌距離，未掂。",
+      "aside": "熱同香水混埋。",
+      "choices": [
+        {
+          "label": "一掌我見到",
+          "next": "vTh12",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "一掌"
+          ],
+          "next": "vTh12",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "一掌你見到。規則下一句。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "距離你見到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vTh12": {
+      "id": "vTh12",
+      "label": "未吻",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢俯前到你個嘴前面，又停住，呼吸打喺你上唇。冇吻落。\n\n「未吻。我先講規則。你聽到第一句先算開始。」",
+      "thought": "呼吸到，吻未落。",
+      "aside": "上唇有氣。",
+      "choices": [
+        {
+          "label": "你講規則",
+          "next": "n5",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "規則",
+            "未吻"
+          ],
+          "next": "n5",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你準備聽。我講第一句。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你準備聽規則未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu1": {
+      "id": "vRu1",
+      "label": "膝一下",
+      "look": "dark",
+      "scene": "dark",
+      "text": "黑暗入面佢用膝頭碰你膝頭一下，又分開。\n\n「碰完。你知道我喺你前面。下一句先係規矩，唔係叫你講多次。」",
+      "thought": "一下膝，規矩未出口。",
+      "aside": "膝熱一下就開。",
+      "choices": [
+        {
+          "label": "我知道你喺前面",
+          "next": "vRu2",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "膝頭"
+          ],
+          "next": "vRu2",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你知道。我唔叫你講多次。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道我喺前面未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu2": {
+      "id": "vRu2",
+      "label": "兩指",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢用兩隻指頭按你手背，數到兩下就拎開。手背留低一點熱。\n\n「兩下。我決定幾時再掂。你唔好追我隻手。」",
+      "thought": "兩下就收，手你唔好追。",
+      "aside": "手背有餘熱。",
+      "choices": [
+        {
+          "label": "我隻手唔追",
+          "next": "vRu3",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "手背",
+            "兩下"
+          ],
+          "next": "vRu3",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你唔追。幾時掂我決定。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你隻手收住未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu3": {
+      "id": "vRu3",
+      "label": "一顆鈕",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢解開你領口第一顆鈕，指尖停喺第二顆，冇解。布料鬆一點。\n\n「一顆。第二顆我未准。你感覺到差一顆。」",
+      "thought": "只開一顆，第二顆未准。",
+      "aside": "領口鬆一點。",
+      "choices": [
+        {
+          "label": "第二顆未開",
+          "next": "vRu4",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第二顆",
+            "領口"
+          ],
+          "next": "vRu4",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "第二顆未開。你感覺到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "第二顆你見到未開未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu4": {
+      "id": "vRu4",
+      "label": "鍵盤",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將鍵盤推到螢幕後面。枱邊空出一塊，夠你放前臂。\n\n「鍵我推開。今晚呢塊位唔打字。你前臂放上嚟。」",
+      "thought": "鍵盤推開，前臂先有位。",
+      "aside": "枱邊空一塊。",
+      "choices": [
+        {
+          "label": "前臂我放上",
+          "next": "vRu5",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鍵盤",
+            "前臂"
+          ],
+          "next": "vRu5",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "前臂你放。鍵我推開。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "前臂你放上未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu5": {
+      "id": "vRu5",
+      "label": "高跟鞋",
+      "look": "dark",
+      "scene": "dark",
+      "text": "門底光被人影斬開一下，高跟鞋聲行過，又遠。佢眼都唔眨。\n\n「人行過。佢哋唔知房入面。你都唔使出聲。」",
+      "thought": "出面有人行過，房入面唔使出聲。",
+      "aside": "腳步聲遠咗。",
+      "choices": [
+        {
+          "label": "我唔出聲",
+          "next": "vRu6",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "高跟鞋"
+          ],
+          "next": "vRu6",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你唔出聲。人行開。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你收住聲未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu6": {
+      "id": "vRu6",
+      "label": "敲櫃",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢用指節敲抽屜一下，套簡報仲喺入面。敲完就收回手。\n\n「套嘢喺。聽朝先見光。你而家唔使揭。」",
+      "thought": "敲一聲，套嘢確認喺抽屜。",
+      "aside": "指節一聲。",
+      "choices": [
+        {
+          "label": "套嘢我知道喺抽屜",
+          "next": "vRu7",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "抽屜"
+          ],
+          "next": "vRu7",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "喺抽屜。你唔使揭。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道套嘢喺邊未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu7": {
+      "id": "vRu7",
+      "label": "壓聲",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將聲壓到同門底風聲一樣低。你要傾前少少先聽清。\n\n「我壓聲。你傾前，係為聽清，唔係為掂我。」",
+      "thought": "聲壓低，傾前先聽清。",
+      "aside": "風聲蓋住字。",
+      "choices": [
+        {
+          "label": "我傾前聽",
+          "next": "vRu8",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "傾前"
+          ],
+          "next": "vRu8",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你傾前。我壓住聲。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你聽清未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu8": {
+      "id": "vRu8",
+      "label": "裙未撩",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢坐上枱邊，裙擺垂住，未撩。膝頭離你手一吋。\n\n「裙我未撩。你望到布料停喺邊。規矩先，布後。」",
+      "thought": "裙未撩，布先停喺度。",
+      "aside": "膝離手一吋。",
+      "choices": [
+        {
+          "label": "布我見到",
+          "next": "vRu9",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "裙",
+            "枱邊"
+          ],
+          "next": "vRu9",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "布你見到。規矩先。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "布你見到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu9": {
+      "id": "vRu9",
+      "label": "一呼一吸",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢叫你跟佢呼一次、吸一次，用嚟對節奏。兩下做完就停。\n\n「一次就夠。你個肺我聽到。下一句我先列三條。」",
+      "thought": "一呼一吸，三條未列。",
+      "aside": "兩下就停。",
+      "choices": [
+        {
+          "label": "我跟咗一次",
+          "next": "vRu10",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "呼吸"
+          ],
+          "next": "vRu10",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "一次我聽到。三條我先列。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你跟咗一次未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu10": {
+      "id": "vRu10",
+      "label": "按腕",
+      "look": "dark",
+      "scene": "dark",
+      "text": "你隻手抬起一半，佢用兩指將你手腕按返膝上。力度清楚，唔痛。\n\n「按返。邊度可以郁，我話。你而家腕喺膝。」",
+      "thought": "手腕按返膝上。",
+      "aside": "力度清楚。",
+      "choices": [
+        {
+          "label": "腕我放返",
+          "next": "vRu11",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "手腕"
+          ],
+          "next": "vRu11",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "腕喺膝。郁唔郁我話。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "腕你放返未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu11": {
+      "id": "vRu11",
+      "label": "鼻尖",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢再次停喺你唇前，今次近到鼻尖相碰，仍然唔吻。\n\n「鼻尖算近。嘴未算。三條我而家先講出口。」",
+      "thought": "鼻尖相碰，嘴未算。",
+      "aside": "呼吸打埋一齊。",
+      "choices": [
+        {
+          "label": "你講三條",
+          "next": "vRu12",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鼻尖",
+            "三條"
+          ],
+          "next": "vRu12",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "三條我講。嘴未算。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你準備聽三條未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRu12": {
+      "id": "vRu12",
+      "label": "退半吋",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢退後半吋，令你聽得清每隻字。黑暗入面只得佢個輪廓。\n\n「退半吋，係為你聽清。你聽，我先數。」",
+      "thought": "退半吋，先數三條。",
+      "aside": "輪廓清楚少少。",
+      "choices": [
+        {
+          "label": "我聽得清",
+          "next": "n5b",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "半吋"
+          ],
+          "next": "n5b",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你聽得清。我數。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你聽得清未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa1": {
+      "id": "vRa1",
+      "label": "想要一次",
+      "look": "dark",
+      "scene": "dark",
+      "text": "三條講完，佢等你落一句實嘢。\n\n「規則一：你講想要邊樣。手、嘴、定我帶節奏。你揀一個，我只收一次。」",
+      "thought": "三條講完，只要一個實答。",
+      "aside": "佢等一句。",
+      "choices": [
+        {
+          "label": "我要你帶節奏",
+          "next": "vRa2",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "節奏",
+            "想要"
+          ],
+          "next": "vRa2",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "節奏。我只收一次。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你要手、嘴、定我帶節奏？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa2": {
+      "id": "vRa2",
+      "label": "三下拍",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢點一下頭，當你要佢帶節奏。佢隻手按住你膝，定一個慢拍，拍咗三下。\n\n「三下就係速度。你跟到，我就繼續。跟唔到，我慢過你。」",
+      "thought": "慢拍三下，速度定咗。",
+      "aside": "膝上三下。",
+      "choices": [
+        {
+          "label": "三下我跟到",
+          "next": "vRa3",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "三下",
+            "慢拍"
+          ],
+          "next": "vRa3",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "三下你跟到。我繼續。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "三下你跟到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa3": {
+      "id": "vRa3",
+      "label": "脈慢返",
+      "look": "dark",
+      "scene": "dark",
+      "text": "你想快半拍，佢將你手腕按住，等你隻脈慢返。\n\n「規則二。快唔快，我決定。你而家脈慢返，我先鬆半隻手指。」",
+      "thought": "快半拍被按住，脈先慢返。",
+      "aside": "手腕被按實。",
+      "choices": [
+        {
+          "label": "你決定快慢",
+          "next": "vRa4",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "快慢",
+            "脈"
+          ],
+          "next": "vRa4",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "快慢我決定。脈你慢返。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "脈你慢返未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa4": {
+      "id": "vRa4",
+      "label": "到鎖骨",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢解到第二顆鈕就停，布打開到鎖骨，第三顆仍然扣住。\n\n「到鎖骨。再落，要等我話。你望到第三顆扣住。」",
+      "thought": "開到鎖骨，第三顆仍然扣。",
+      "aside": "鎖骨露一截。",
+      "choices": [
+        {
+          "label": "第三顆我見到扣住",
+          "next": "vRa5",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鎖骨",
+            "第三顆"
+          ],
+          "next": "vRa5",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "第三顆扣住。你望到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "第三顆你見到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa5": {
+      "id": "vRa5",
+      "label": "拉近一吋",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將椅再拉近一吋。鎖骨仲係房入面最亮嘅位置。\n\n「反口嗰句我留住，未收你用。而家我只拉近一吋。你坐穩。」",
+      "thought": "反口留住未用，椅先近一吋。",
+      "aside": "椅腳再響一下。",
+      "choices": [
+        {
+          "label": "我坐穩",
+          "next": "vRa6",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "一吋",
+            "坐穩"
+          ],
+          "next": "vRa6",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你坐穩。一吋我拉咗。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你坐穩未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa6": {
+      "id": "vRa6",
+      "label": "拍櫃",
+      "look": "dark",
+      "scene": "dark",
+      "text": "你眼尾掃向抽屜，佢用掌心拍一下櫃面，抽屜唔開。\n\n「檔聽朝先見。你眼返嚟。拍完呢下，櫃我唔再拍。」",
+      "thought": "櫃拍一聲，抽屜唔開。",
+      "aside": "掌心一聲。",
+      "choices": [
+        {
+          "label": "眼我返嚟",
+          "next": "vRa7",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "櫃"
+          ],
+          "next": "vRa7",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "眼你返嚟。櫃我唔再拍。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "眼你返嚟未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa7": {
+      "id": "vRa7",
+      "label": "坐實",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢由枱邊坐實，裙擺蓋住你一邊膝。重量清楚，唔係擦過。\n\n「我坐實。你膝感覺到重量。下一問先係邊個帶頭。」",
+      "thought": "重量落喺一邊膝。",
+      "aside": "裙蓋住膝。",
+      "choices": [
+        {
+          "label": "重量我感覺到",
+          "next": "vRa8",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "重量"
+          ],
+          "next": "vRa8",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "重量你感覺到。下一問先分帶頭。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "重量你感覺到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa8": {
+      "id": "vRa8",
+      "label": "掌心向上",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢拉你一只手放到佢膝側布上面，掌心向上，唔插入裙。\n\n「掌心向上。插入未准。你停喺布面，我先問你想邊個話事。」",
+      "thought": "掌心向上，布面為止。",
+      "aside": "布暖。",
+      "choices": [
+        {
+          "label": "掌心我向上",
+          "next": "vRa9",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "掌心",
+            "布面"
+          ],
+          "next": "vRa9",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "掌心向上。布面我准。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "掌心你放好未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa9": {
+      "id": "vRa9",
+      "label": "出面半暗",
+      "look": "dark",
+      "scene": "dark",
+      "text": "走廊燈被人關咗一半，門縫由白變黃。佢唔理出面。\n\n「出面關一半。我哋唔跟出面。你望我，唔好望縫。」",
+      "thought": "門縫轉黃，佢唔跟出面。",
+      "aside": "縫由白變黃。",
+      "choices": [
+        {
+          "label": "我望你",
+          "next": "vRa10",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "門縫"
+          ],
+          "next": "vRa10",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "你望我。縫唔關事。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你望我未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vRa10": {
+      "id": "vRa10",
+      "label": "帶頭之前",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將你隻手按穩喺布面，自己先開口。\n\n「下一句先分邊個帶頭。你聽完先答。我唔會代你揀。」",
+      "thought": "手按穩，帶頭未問。",
+      "aside": "布面按實。",
+      "choices": [
+        {
+          "label": "你問",
+          "next": "n5c",
+          "heat": 4
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "帶頭"
+          ],
+          "next": "n5c",
+          "heat": 4,
+          "bucket": "admit",
+          "ack": "我問。你聽完先答。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你準備聽邊個帶頭未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXa1": {
+      "id": "vXa1",
+      "label": "椅對窗",
+      "look": "dark",
+      "scene": "dark",
+      "text": "你坐實之後，Vera 將椅轉到對住窗縫。灰光落到你膝，未落到眼。\n\n「椅轉咗。光喺膝。你眼望我，唔好望光。」",
+      "thought": "椅對住窗縫，光只到膝。",
+      "aside": "灰光一條。",
+      "choices": [
+        {
+          "label": "我望你",
+          "next": "vXa2",
           "heat": 6
         }
       ],
@@ -4636,19 +6811,19 @@
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "交",
-            "聽朝",
-            "簡報",
-            "信箱",
-            "可以"
+            "窗縫",
+            "膝"
           ],
-          "next": "n6h",
+          "next": "vXa2",
           "heat": 6,
           "bucket": "admit",
-          "ack": "聽朝你交。我聽到。"
+          "ack": "你望我。光喺膝。"
         }
       ],
       "sceneGoal": {
@@ -4656,30 +6831,31 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講一次聽朝交檔？"
+        "ask": "你望我未？"
       },
-      "scene": "dark",
       "tags": [
         "office"
       ]
     },
-    "n6h": {
-      "id": "n6h",
-      "label": "檔仍然係檔",
+    "vXa2": {
+      "id": "vXa2",
+      "label": "信箱地址",
       "look": "dark",
-      "text": "佢用兩指敲敲封面，聲好細但清楚。「檔仍然係檔。你唔好以為講咗可以，聽朝就可以交空白。你講你交完整版。講完，我先繼續我自己嘅節奏。空白頁我退返俾你。你講完整版。」",
-      "thought": "可以唔等於空白交差。",
-      "aside": "封面被兩指敲返醒。",
+      "scene": "dark",
+      "text": "佢唔掂你部電話，只係將信箱地址講出聲，講完就當交代完。\n\n「地址你聽朝自己打。我唔會再提檔。而家我只理你張椅。」",
+      "thought": "地址講完，檔唔再提。",
+      "aside": "地址短。",
       "choices": [
         {
-          "label": "我交完整版",
-          "next": "n6i",
+          "label": "地址我聽朝打",
+          "next": "vXa3",
           "heat": 6
         }
       ],
@@ -4687,18 +6863,19 @@
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "完整",
-            "交",
-            "檔",
-            "可以"
+            "地址",
+            "信箱"
           ],
-          "next": "n6i",
+          "next": "vXa3",
           "heat": 6,
           "bucket": "admit",
-          "ack": "完整版。我記低。"
+          "ack": "聽朝你打。而家我理椅。"
         }
       ],
       "sceneGoal": {
@@ -4706,30 +6883,31 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你講你交完整版？"
+        "ask": "地址你收到未？"
       },
-      "scene": "dark",
       "tags": [
         "office"
       ]
     },
-    "n6i": {
-      "id": "n6i",
-      "label": "再問一次可以",
+    "vXa3": {
+      "id": "vXa3",
+      "label": "大腿外側",
       "look": "dark",
-      "text": "灰光多咗一寸。Vera 停喺你面前，未挨低，亦未拉你。「我再問一次。可以，定到此為止，檔照交，人當未發生。你答可以，我先按我節奏行落去。你答到此，我而家停。第二次先算數。」",
-      "thought": "佢再問，係要你第二次出聲。",
-      "aside": "窗光移到佢肩側。",
+      "scene": "dark",
+      "text": "佢側身坐上你大腿外側，裙擺堆高少少，仍然隔住布。重量由側邊開始。\n\n「外側先。中間未到。你隻手繼續放低，等我移。」",
+      "thought": "重量由外側開始，中間未到。",
+      "aside": "裙擺堆高少少。",
       "choices": [
         {
-          "label": "可以",
-          "next": "n6j",
+          "label": "我隻手放低",
+          "next": "vXa4",
           "heat": 6
         }
       ],
@@ -4737,17 +6915,18 @@
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "可以",
-            "到此",
-            "我可以"
+            "外側"
           ],
-          "next": "n6j",
+          "next": "vXa4",
           "heat": 6,
           "bucket": "admit",
-          "ack": "第二次可以。我按節奏。"
+          "ack": "手放低。外側我坐住。"
         }
       ],
       "sceneGoal": {
@@ -4755,29 +6934,133 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你答可以，定到此為止？"
+        "ask": "手你放低未？"
       },
-      "scene": "dark",
       "tags": [
         "office"
       ]
     },
-    "n6j": {
-      "id": "n6j",
-      "label": "檔講完先到天光",
+    "vXa4": {
+      "id": "vXa4",
+      "label": "擋光",
       "look": "dark",
-      "text": "佢最後望一眼簡報，先望返你。「檔聽朝交，呢句先釘死。其餘我跟住落去，你跟我節奏，唔好搶。你再講可以，我就當你聽明。講完，先算天光前呢段開始。檔嗰句我唔會再改。」",
-      "thought": "檔釘死，然後先到天光前。",
-      "aside": "灰光已經夠見到封面字。",
+      "scene": "dark",
+      "text": "窗縫灰光多一寸，照到佢鎖骨同你膝。佢用身體擋住光，令光唔照到你眼。\n\n「光我擋。你唔好縮。再多一寸，先到我原本要停嘅位置。」",
+      "thought": "光多一寸，佢擋住你眼。",
+      "aside": "鎖骨被灰光照到。",
       "choices": [
         {
-          "label": "可以，我聽明",
+          "label": "我唔縮",
+          "next": "vXa5",
+          "heat": 6
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "灰光"
+          ],
+          "next": "vXa5",
+          "heat": 6,
+          "bucket": "admit",
+          "ack": "你唔縮。光我擋。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你定住未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXa5": {
+      "id": "vXa5",
+      "label": "差一層",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢只係隔住最後一層布，磨到你知道差幾遠，又停住唔入。呼吸打喺你頸側。\n\n「差一層。入唔入，我未做。你感覺到熱就得。」",
+      "thought": "差一層布，未入。",
+      "aside": "頸側有氣。",
+      "choices": [
+        {
+          "label": "熱我感覺到",
+          "next": "vXa6",
+          "heat": 6
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "一層",
+            "熱"
+          ],
+          "next": "vXa6",
+          "heat": 6,
+          "bucket": "admit",
+          "ack": "熱你感覺到。我未入。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "熱你感覺到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXa6": {
+      "id": "vXa6",
+      "label": "捧頸",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢捧住你個後頸，額貼額，未吻落。窗外又白少少。\n\n「額貼住。吻同其餘，下一陣先到。你頸我已經捧實。」",
+      "thought": "額貼住，吻未落。",
+      "aside": "後頸被捧實。",
+      "choices": [
+        {
+          "label": "頸我俾你捧",
           "next": "ending_a",
           "heat": 6
         }
@@ -4786,17 +7069,19 @@
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "可以",
-            "聽明",
-            "我可以"
+            "後頸",
+            "額"
           ],
           "next": "ending_a",
           "heat": 6,
           "bucket": "admit",
-          "ack": "你聽明。我開始。"
+          "ack": "頸我捧實。下一陣先到。"
         }
       ],
       "sceneGoal": {
@@ -4804,15 +7089,428 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講可以，當你聽明？"
+        "ask": "頸你俾我捧未？"
       },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb1": {
+      "id": "vXb1",
+      "label": "表同便條",
+      "look": "dark",
       "scene": "dark",
+      "text": "Vera 將空白評核表合上，推到枱角。私人字佢寫喺另一張小便條，唔寫喺表。\n\n「表合埋。便條先係我自己嘅。你望到兩樣分開。」",
+      "thought": "表同便條分開兩張。",
+      "aside": "表推到枱角。",
+      "choices": [
+        {
+          "label": "表同便條我分開睇",
+          "next": "vXb2",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "便條",
+            "評核表"
+          ],
+          "next": "vXb2",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "兩樣你分開睇。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "兩樣你分到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb2": {
+      "id": "vXb2",
+      "label": "四字",
+      "look": "dark",
+      "scene": "dark",
+      "text": "便條只得四個字：「唔入紙」。佢用指腹壓住張紙，等你讀。\n\n「四字。你讀完，我先講同盟點計。紙我會自己收。」",
+      "thought": "便條四字，未收入袋。",
+      "aside": "紙被指腹壓住。",
+      "choices": [
+        {
+          "label": "唔入紙，我讀到",
+          "next": "vXb3",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "唔入紙"
+          ],
+          "next": "vXb3",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "唔入紙。你讀到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "四字你讀到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb3": {
+      "id": "vXb3",
+      "label": "三秒",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢拉你手按上自己手背，十指未扣，只係掌壓掌，三秒就鬆。\n\n「三秒。對等唔係我壓你成晚。鬆手，係俾你自己決定下一寸。」",
+      "thought": "掌壓掌三秒就鬆。",
+      "aside": "熱對熱。",
+      "choices": [
+        {
+          "label": "三秒我數到",
+          "next": "vXb4",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "三秒",
+            "手背"
+          ],
+          "next": "vXb4",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "三秒。我鬆手。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "三秒你數到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb4": {
+      "id": "vXb4",
+      "label": "燒定留",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢問便條燒定留，唔叫你再講可以。\n\n「怕，你可以講。唔怕，你都講。我要個字，先決定便條燒定留。」",
+      "thought": "新問題係張紙燒定留。",
+      "aside": "便條未摺。",
+      "choices": [
+        {
+          "label": "便條你留",
+          "next": "vXb5",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "便條",
+            "留"
+          ],
+          "next": "vXb5",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "留。我聽到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "便條你要我留定燒？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb5": {
+      "id": "vXb5",
+      "label": "裙袋",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢將便條摺好，放入裙袋，唔放返表度。袋口合上。\n\n「留。燒唔燒等星期一之後。袋入面只有我摸到。」",
+      "thought": "便條入裙袋，表冇份。",
+      "aside": "袋口合上。",
+      "choices": [
+        {
+          "label": "我知道喺你袋",
+          "next": "vXb6",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "裙袋"
+          ],
+          "next": "vXb6",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "喺我袋。星期一之後先算。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道張紙喺邊未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb6": {
+      "id": "vXb6",
+      "label": "表遮光",
+      "look": "dark",
+      "scene": "dark",
+      "text": "灰光照到合埋嘅評核表，照唔到裙袋。佢用表遮住光。\n\n「表可以見光。袋唔可以。你坐埋少少，我先講同盟唔寫低嘅部分。」",
+      "thought": "表見光，袋唔見光。",
+      "aside": "灰光被表擋住。",
+      "choices": [
+        {
+          "label": "我坐埋",
+          "next": "vXb7",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "見光"
+          ],
+          "next": "vXb7",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "你坐埋。袋我遮住。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你坐埋未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb7": {
+      "id": "vXb7",
+      "label": "同盟",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢貼住你耳講一句，講完就退開一吋。\n\n「同盟：星期一我照樣評你工作。今晚呢頁，評語冇你份，亦冇我份。」",
+      "thought": "工作照評，今晚頁兩邊都冇評語。",
+      "aside": "耳邊一吋。",
+      "choices": [
+        {
+          "label": "工作你評，今晚分開",
+          "next": "vXb8",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "同盟",
+            "分開"
+          ],
+          "next": "vXb8",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "分開。我講咗。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "工作同今晚你分到未？"
+      },
+      "tags": [
+        "office"
+      ]
+    },
+    "vXb8": {
+      "id": "vXb8",
+      "label": "腰帶外",
+      "look": "dark",
+      "scene": "dark",
+      "text": "佢隻手停喺你腰帶外面，未解。額再貼一次。\n\n「腰帶未解。你知道同盟停喺布外。再入，就唔再叫同盟。」",
+      "thought": "手停喺腰帶外。",
+      "aside": "扣未解。",
+      "choices": [
+        {
+          "label": "布外我知道",
+          "next": "ending_b",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "腰帶",
+            "布外"
+          ],
+          "next": "ending_b",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "布外。同盟停喺度。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道停喺布外未？"
+      },
       "tags": [
         "office"
       ]
