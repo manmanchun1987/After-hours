@@ -63,15 +63,17 @@ body.mode-play .btn-choice {
    height after dismiss, which fights the pixel / --app-vh restore.
    The :has(#choices) selector is required: it outranks #screen-play
    .play-face-gap, so the older 55vh/72vh and 68vh rules would still win.
-   .keyboard-open below is more specific and flexes this stack while
-   the keyboard is up. */
+   min-height is 0 so the spacer yields on short and landscape screens
+   instead of pushing the composer past the viewport. Preferred height
+   stays 68% when there is room. .keyboard-open below is more specific
+   and flexes this stack while the keyboard is up. */
 body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
 body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
 body.mode-play .play-face-gap,
 #screen-play .play-face-gap {
   flex: 1 1 auto !important;
   height: calc(var(--app-vh) * 0.68) !important;
-  min-height: calc(var(--app-vh) * 0.60) !important;
+  min-height: 0 !important;
   max-height: calc(var(--app-vh) * 0.75) !important;
 }
 body.keyboard-open.mode-play:has(#choices) #screen-play .play-face-gap,
@@ -84,7 +86,10 @@ html.keyboard-open body.mode-play:has(#choices) #screen-play .play-face-gap {
 body.mode-play .play-lower,
 #screen-play .play-lower {
   flex: 0 0 auto !important;
-  max-height: calc(var(--app-vh) * 0.22) !important;
+  flex-shrink: 0 !important;
+  /* Floor covers the 2-line story strip + 42px input + home-indicator inset.
+     22% of --app-vh still wins on tall portrait phones. */
+  max-height: max(calc(var(--app-vh) * 0.22), calc(170px + env(safe-area-inset-bottom))) !important;
   min-height: 0 !important;
   gap: 3px !important;
 }
@@ -110,9 +115,28 @@ body.mode-play .play-lower,
 }
 #screen-play .chat-panel,
 #screen-play .chat-panel.zone-chat {
-  max-height: 48px !important;
-  min-height: 44px !important;
+  display: flex !important;
+  flex-shrink: 0 !important;
+  /* 42px input plus the composer safe-area padding. 48px clipped that padding. */
+  max-height: calc(56px + env(safe-area-inset-bottom)) !important;
+  min-height: calc(44px + env(safe-area-inset-bottom)) !important;
   background: rgba(6, 8, 14, 0.45) !important;
+}
+@media (max-height: 720px) {
+  body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
+  body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
+  body.mode-play .play-face-gap,
+  #screen-play .play-face-gap {
+    height: auto !important;
+    min-height: 0 !important;
+    flex: 1 1 auto !important;
+  }
+  #screen-play .chat-panel,
+  #screen-play .chat-panel.zone-chat,
+  body.mode-play .chat-panel,
+  body.mode-play .chat-panel.zone-chat {
+    display: flex !important;
+  }
 }
 #screen-play .chat-header,
 #screen-play .chat-messages,
@@ -768,7 +792,7 @@ body.mode-play .play-lower,
   box-shadow: none !important;
 }
 #screen-play .zone-chat .chat-composer {
-  padding: 0 !important;
+  padding: 0 0 env(safe-area-inset-bottom) !important;
   background: transparent !important;
   border: 0 !important;
 }
