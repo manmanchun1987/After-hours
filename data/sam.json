@@ -567,7 +567,7 @@
       "choices": [
         {
           "label": "（靠近）「咁你睇住我？」",
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 14,
           "remember": [
             "asked_watch"
@@ -575,7 +575,7 @@
         },
         {
           "label": "「帶我返工位。」",
-          "next": "s3stop",
+          "next": "sSt1",
           "tension": 4
         },
         {
@@ -626,7 +626,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -641,7 +641,7 @@
             "繼續",
             "帶我返工位"
           ],
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 0,
           "bucket": "heat",
           "ack": "我聽到。你慢慢講。"
@@ -841,17 +841,17 @@
       "choices": [
         {
           "label": "深呼吸",
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 4
         },
         {
           "label": "「……我聽。」",
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 6
         },
         {
           "label": "（對視）",
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 8,
           "cg": true
         }
@@ -885,7 +885,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 4,
           "tension": 0,
           "bucket": "heat",
@@ -897,7 +897,7 @@
             "繼續",
             "我聽"
           ],
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 6,
           "bucket": "heat",
           "ack": "我聽到。你慢慢講。"
@@ -908,7 +908,7 @@
             "繼續",
             "對視"
           ],
-          "next": "s4only",
+          "next": "sRu1",
           "heat": 8,
           "bucket": "heat",
           "ack": "我聽到。你慢慢講。"
@@ -1592,12 +1592,12 @@
       "choices": [
         {
           "label": "接過調味包",
-          "next": "s2q1",
+          "next": "sBz1",
           "heat": 6
         },
         {
           "label": "「其他係指？」",
-          "next": "s2q1",
+          "next": "sBz1",
           "heat": 8
         }
       ],
@@ -1631,7 +1631,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s2q1",
+          "next": "sBz1",
           "heat": 6,
           "tension": 0,
           "bucket": "heat",
@@ -1643,7 +1643,7 @@
             "繼續",
             "其他係指"
           ],
-          "next": "s2q1",
+          "next": "sBz1",
           "heat": 8,
           "bucket": "heat",
           "ack": "我聽到。你慢慢講。"
@@ -1657,12 +1657,12 @@
       "choices": [
         {
           "label": "「我都拍。」",
-          "next": "s2tap",
+          "next": "s2x3",
           "heat": 6
         },
         {
           "label": "笑：「你教門禁哲學？」",
-          "next": "s2tap",
+          "next": "s2x3",
           "heat": 8
         }
       ],
@@ -1697,7 +1697,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s2tap",
+          "next": "s2x3",
           "heat": 6,
           "tension": 0,
           "bucket": "heat",
@@ -1709,7 +1709,7 @@
             "繼續",
             "笑：你教門禁哲學"
           ],
-          "next": "s2tap",
+          "next": "s2x3",
           "heat": 8,
           "bucket": "heat",
           "ack": "我聽到。你慢慢講。"
@@ -2029,11 +2029,11 @@
       "id": "s4p2",
       "label": "門把雨",
       "look": "rain",
-      "text": "天台門把濕涼。Sammi 把手覆上你手，十指交扣，再整個人靠近到胸膛相貼——再抬膝輕輕頂住你腿根硬熱：\n\n「入咗防火門後——監控恢復。你仲要唔要？」要字打喺你唇上，終於成吻，深、熱、帶雨；一手扣後頸，一手探入你褲頭握住。「要——今晚可以射喺我手裏……或者更入。」",
+      "text": "天台門把濕涼。Sammi 伸手覆住你隻手，十指交扣，再整個人靠近到胸膛相貼——再抬膝輕輕頂住你腿根硬熱：\n\n「入咗防火門後——監控恢復。你仲要唔要？」要字打喺你唇上，終於成吻，深、熱、帶雨；一手扣後頸，一手探入你褲頭握住。「要——今晚可以射喺我手裏……或者更入。」",
       "choices": [
         {
           "label": "「要。」",
-          "next": "s4wait",
+          "next": "s5",
           "heat": 16,
           "requireHeat": 30,
           "cg": true
@@ -2074,7 +2074,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s4wait",
+          "next": "s5",
           "heat": 16,
           "tension": 0,
           "bucket": "heat",
@@ -2107,7 +2107,7 @@
       "choices": [
         {
           "label": "企近一格",
-          "next": "s4wait",
+          "next": "s5",
           "heat": 14,
           "requireHeat": 30,
           "cg": true
@@ -2148,7 +2148,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s4wait",
+          "next": "s5",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -2181,7 +2181,7 @@
       "choices": [
         {
           "label": "「唔只係。」",
-          "next": "s4wait",
+          "next": "s5",
           "heat": 13,
           "requireHeat": 31,
           "cg": true
@@ -2222,7 +2222,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s4wait",
+          "next": "s5",
           "heat": 13,
           "tension": 0,
           "bucket": "heat",
@@ -2255,7 +2255,7 @@
       "choices": [
         {
           "label": "「入。」",
-          "next": "s4wait",
+          "next": "s5",
           "heat": 14,
           "requireHeat": 33,
           "cg": true
@@ -2296,7 +2296,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s4wait",
+          "next": "s5",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -2399,7 +2399,7 @@
       "choices": [
         {
           "label": "「得。我提醒你。」",
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 16,
           "requireHeat": 38,
           "cg": true
@@ -2440,7 +2440,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 16,
           "tension": 0,
           "bucket": "heat",
@@ -2473,7 +2473,7 @@
       "choices": [
         {
           "label": "「我識。」",
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 13,
           "requireHeat": 36,
           "cg": true
@@ -2514,7 +2514,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 13,
           "tension": 0,
           "bucket": "heat",
@@ -2547,7 +2547,7 @@
       "choices": [
         {
           "label": "「唔只係。我留。」",
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 16,
           "requireHeat": 37,
           "cg": true
@@ -2588,7 +2588,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 16,
           "tension": 0,
           "bucket": "heat",
@@ -2771,7 +2771,7 @@
       "choices": [
         {
           "label": "「我想知。」",
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 13,
           "cg": true
         },
@@ -2811,7 +2811,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 13,
           "tension": 0,
           "bucket": "heat",
@@ -2842,7 +2842,7 @@
       "choices": [
         {
           "label": "跟上第五級",
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 13,
           "cg": true
         },
@@ -2882,7 +2882,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s3stop",
+          "next": "sSt1",
           "heat": 13,
           "tension": 0,
           "bucket": "heat",
@@ -3050,7 +3050,7 @@
         },
         {
           "label": "「我真走。」",
-          "next": "ending_s_c"
+          "next": "sLv1"
         }
       ],
       "sceneGoal": {
@@ -3103,7 +3103,7 @@
             "夠喇",
             "我真走"
           ],
-          "next": "ending_s_c",
+          "next": "sLv1",
           "bucket": "leave",
           "ack": "你要走，我聽到。投影片你自己收。"
         }
@@ -3739,7 +3739,7 @@
       "choices": [
         {
           "label": "「我知。」",
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 14,
           "requireHeat": 40,
           "cg": true
@@ -3788,7 +3788,7 @@
             "同意",
             "得啦"
           ],
-          "next": "s5tom",
+          "next": "sXa1",
           "heat": 14,
           "tension": 0,
           "bucket": "heat",
@@ -4954,7 +4954,7 @@
       "choices": [
         {
           "label": "點解叫我唔叫人",
-          "next": "s1b",
+          "next": "sEn1",
           "heat": 3
         }
       ],
@@ -4972,7 +4972,7 @@
             "叫我",
             "加班"
           ],
-          "next": "s1b",
+          "next": "sEn1",
           "heat": 3,
           "bucket": "work",
           "ack": "你想知點解。我等麵先答完。"
@@ -5062,7 +5062,7 @@
       "choices": [
         {
           "label": "第三頁同結論都要你睇",
-          "next": "s1i",
+          "next": "sSl1",
           "heat": 3
         }
       ],
@@ -5081,7 +5081,7 @@
             "封面",
             "結論"
           ],
-          "next": "s1i",
+          "next": "sSl1",
           "heat": 3,
           "bucket": "work",
           "ack": "邊頁我聽到。我可以留。"
@@ -5215,82 +5215,6 @@
         "pantry"
       ]
     },
-    "s2q1": {
-      "id": "s2q1",
-      "label": "食完可以返枱",
-      "look": "dressed",
-      "text": "杯麵空碗推到一邊。Sammi 擦下手。「食完呢步，你仍然可以返你張枱。我送到茶水間門口就停。你返枱，投影片我唔再提今晚。你跟我過影印機，我就當你想我睇頁。你講返枱，定跟。」",
-      "thought": "空碗之後，返枱仍然算數。",
-      "aside": "門口燈白，影印機喺更入。",
-      "choices": [
-        {
-          "label": "我跟你過影印機",
-          "next": "s2x",
-          "heat": 3
-        },
-        {
-          "label": "我返枱",
-          "next": "ending_s_c"
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "跟",
-            "返枱",
-            "影印",
-            "投影片"
-          ],
-          "next": "s2x",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你跟。我先帶路。"
-        },
-        {
-          "keys": [
-            "我走",
-            "走先",
-            "離開",
-            "唔入",
-            "返工位",
-            "收回",
-            "唔可以",
-            "唔要",
-            "夠喇"
-          ],
-          "next": "ending_s_c",
-          "bucket": "leave",
-          "ack": "你返枱。投影片你自己收，我唔追。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree",
-          "refuse"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去",
-          "refuse": "而家走"
-        },
-        "ask": "你返枱，定跟佢過影印機？"
-      },
-      "scene": "pantry",
-      "tags": [
-        "pantry"
-      ]
-    },
     "s2ding": {
       "id": "s2ding",
       "sfx": "ding",
@@ -5302,7 +5226,7 @@
       "choices": [
         {
           "label": "我停低等",
-          "next": "s2x2",
+          "next": "sCr1",
           "heat": 3
         }
       ],
@@ -5320,7 +5244,7 @@
             "等",
             "返"
           ],
-          "next": "s2x2",
+          "next": "sCr1",
           "heat": 3,
           "bucket": "work",
           "ack": "你停。門開過我先行。"
@@ -5340,60 +5264,6 @@
           "agree": "應承講落去"
         },
         "ask": "你停低等門，定返影印機後面？"
-      },
-      "scene": "office",
-      "tags": [
-        "corridor"
-      ]
-    },
-    "s2tap": {
-      "id": "s2tap",
-      "label": "拍卡未貼身",
-      "look": "dressed",
-      "text": "門禁紅燈。Sammi 拍自己工牌，未靠近你。「拍卡係拍卡。我唔會借拍卡貼住你。第一次紅，我再拍自己張。你要幫手，你講要。你未講要，我隻手唔會覆上你手。你而家講要，定你自己再試。」",
-      "thought": "佢將拍卡同身體分開講。",
-      "aside": "紅燈再閃一次。",
-      "choices": [
-        {
-          "label": "我要你幫手拍",
-          "next": "s2x3",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "拍卡",
-            "要",
-            "幫手",
-            "工牌"
-          ],
-          "next": "s2x3",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你要我幫。我先再拍。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你要佢幫手拍，定你自己再試？"
       },
       "scene": "office",
       "tags": [
@@ -5477,219 +5347,6 @@
         "corridor"
       ]
     },
-    "s3stop": {
-      "id": "s3stop",
-      "label": "樓梯可以停",
-      "look": "dressed",
-      "text": "樓梯第一級，Sammi 手按住欄。「上可以停。你而家停，我哋喺呢級講完投影片就散。你想上，你講上。我想你知，盲區唔係逼你上到頂。你講停喺呢級，定繼續上。我跟你揀。」",
-      "thought": "第一級就俾你停，佢講得好清楚。",
-      "aside": "欄杆有少少灰塵，佢未擦。",
-      "choices": [
-        {
-          "label": "我繼續上",
-          "next": "s3stop2",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "停",
-            "上",
-            "樓梯",
-            "投影片"
-          ],
-          "next": "s3stop2",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你繼續上。下一級我再問。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你停喺呢級，定繼續上？"
-      },
-      "scene": "lift",
-      "tags": [
-        "stairs"
-      ]
-    },
-    "s3stop2": {
-      "id": "s3stop2",
-      "label": "中間級再問",
-      "look": "dressed",
-      "text": "行到中間，佢又停。「我再問。聽朝投影片，封面同結論我可以幫你對。幫完你就可以返座，唔使上天台。你若果只想要呢種幫，你而家講，我哋落返去。你想聽埋條件，你講繼續。」",
-      "thought": "幫頁同上天台，佢拆開再問。",
-      "aside": "中間級風比下面大少少。",
-      "choices": [
-        {
-          "label": "我想聽條件",
-          "next": "s3term",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "條件",
-            "落返",
-            "對頁",
-            "繼續"
-          ],
-          "next": "s3term",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你想聽條件。我講清楚先。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你落返去只對頁，定繼續聽條件？"
-      },
-      "scene": "lift",
-      "tags": [
-        "stairs"
-      ]
-    },
-    "s3term": {
-      "id": "s3term",
-      "label": "通宵條件先講",
-      "look": "dressed",
-      "text": "防火門未推。Sammi 聲線放平。「通宵幫你改投影片，條件我而家講完。聽朝我仍然幫你對頁，呢點唔會因為你而家點答就取消。今晚邊界，你要出聲認。你若果只收聽朝嘅幫，你講只收聽朝。你想聽埋今晚，你講你想聽。」",
-      "thought": "聽朝嘅幫佢先釘死，先講今晚。",
-      "aside": "門縫有少少風，雨味未入。",
-      "choices": [
-        {
-          "label": "我想聽埋今晚",
-          "next": "s3term2",
-          "heat": 3
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "繼續",
-            "好呀",
-            "係呀",
-            "同意",
-            "得啦",
-            "聽朝",
-            "今晚",
-            "通宵",
-            "投影片",
-            "邊界"
-          ],
-          "next": "s3term2",
-          "heat": 3,
-          "bucket": "work",
-          "ack": "你想聽埋今晚。我先講邊界。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "wait",
-          "ask_want",
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "應承講落去"
-        },
-        "ask": "你只收聽朝嘅幫，定你想聽埋今晚？"
-      },
-      "scene": "lift",
-      "tags": [
-        "stairs"
-      ]
-    },
-    "s3term2": {
-      "id": "s3term2",
-      "label": "邊界講清楚",
-      "look": "dressed",
-      "text": "「邊界係：聽朝我照幫，叫你前輩都得。今晚若果過線，你要親口講唔只係。你未講，我唔推門。你而家可以講只做前輩，我都收，然後送你落樓。你講你揀邊句。兩句都要完整。」",
-      "thought": "兩句佢都肯收，但要你講全。",
-      "aside": "防火門邊未熱。",
-      "choices": [
-        {
-          "label": "我想聽清楚先",
-          "next": "s3r",
-          "heat": 6
-        }
-      ],
-      "intents": [
-        {
-          "keys": [
-            "應承",
-            "同意",
-            "我應承",
-            "我同意",
-            "只做前輩",
-            "唔只係",
-            "邊界",
-            "可以"
-          ],
-          "next": "s3r",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "我聽到你句。上到天台我再等你確認。"
-        }
-      ],
-      "sceneGoal": {
-        "successIntents": [
-          "agree"
-        ],
-        "optionalIntents": [
-          "ask_memory"
-        ],
-        "maxMisses": 3,
-        "hints": {
-          "agree": "講只做前輩，或者唔只係"
-        },
-        "ask": "你講只做前輩，定講唔只係？"
-      },
-      "scene": "lift",
-      "tags": [
-        "stairs"
-      ]
-    },
     "s3down": {
       "id": "s3down",
       "label": "雨中可以落樓",
@@ -5700,7 +5357,7 @@
       "choices": [
         {
           "label": "我出嚟聽",
-          "next": "s4",
+          "next": "sRf1",
           "heat": 3
         },
         {
@@ -5721,7 +5378,7 @@
             "雨",
             "聽朝"
           ],
-          "next": "s4",
+          "next": "sRf1",
           "heat": 3,
           "bucket": "work",
           "ack": "你出嚟聽。我企喺檐下等你講。"
@@ -5767,36 +5424,38 @@
         "roof"
       ]
     },
-    "s4only": {
-      "id": "s4only",
-      "label": "只做前輩試一次",
-      "look": "rain",
-      "text": "雨聲入面，Sammi 認真聽。「你若果想講只做前輩，你而家就講，我當你係真。我唔會笑你掃興，亦唔會立刻當你過線。你講完，我應你一句，然後先問你係咪維持。你想講，而家講。」",
-      "thought": "只做前輩，佢當係一句真話。",
-      "aside": "雨絲打喺欄杆，未打到你。",
+    "sEn1": {
+      "id": "sEn1",
+      "label": "鎖機",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "兩個綠點你睇過。Sammi 將手機反轉，鎖屏。群組唔會見到茶水間。\n\n「機我鎖。群入面只會見到你聽朝交檔。人喺度，群唔知。」",
+      "thought": "機鎖咗，群睇唔到人。",
+      "aside": "屏暗。",
       "choices": [
         {
-          "label": "我先講只做前輩",
-          "next": "s4only2",
-          "heat": 6
+          "label": "機我見到你鎖",
+          "next": "sEn2",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "只做前輩",
-            "前輩",
-            "可以",
-            "唔講"
+            "鎖屏",
+            "群"
           ],
-          "next": "s4only2",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "我當你試過講真。我應你。"
+          "next": "sEn2",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "機我鎖。群只見到檔。"
         }
       ],
       "sceneGoal": {
@@ -5804,49 +5463,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講只做前輩，或者講你唔講呢句"
+          "agree": "應承講落去"
         },
-        "ask": "你而家講只做前輩，定你唔講呢句？"
+        "ask": "機你見到我鎖未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s4only2": {
-      "id": "s4only2",
-      "label": "佢應完再等",
-      "look": "rain",
-      "text": "「只做前輩，我應到。」Sammi 點頭，雨水沿髮尾滴落。「聽朝我照幫你對投影片，稱呼我都收。你若果維持，我送你落有燈嘅樓層。你若果想改口，你先唔好改，等我問完。你而家只需要講：你聽到我應。」",
-      "thought": "佢應完，未逼你改口。",
-      "aside": "髮尾一滴水落到衣領。",
+    "sEn2": {
+      "id": "sEn2",
+      "label": "半包辣",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "佢撕開調味包，先倒自己碗，再問你要唔要辣。蒸汽沖淡咗味。\n\n「辣你自己話。我唔假設你同我一樣。包我可以分半。」",
+      "thought": "辣唔假設，可以分半。",
+      "aside": "蒸汽沖淡。",
       "choices": [
         {
-          "label": "我聽到你應",
-          "next": "s4pre",
-          "heat": 6
+          "label": "半包就得",
+          "next": "sEn3",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "聽到",
-            "只做前輩",
-            "應",
-            "可以"
+            "辣",
+            "調味"
           ],
-          "next": "s4pre",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你聽到。我先問你維持定唔維持。"
+          "next": "sEn3",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "半包。我分。"
         }
       ],
       "sceneGoal": {
@@ -5854,49 +5515,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你講你聽到佢應？"
+        "ask": "辣你要半包未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s4wait": {
-      "id": "s4wait",
-      "label": "唔只係之後等",
-      "look": "rain",
-      "text": "你若果講到唔只係，Sammi 唔即刻近。佢企喺雨同檐之間，等。「唔只係我聽到。我未郁。你要再講一次，我先當你唔係順口。你而家可以收回，返去做前輩。你再講唔只係，我先問你聽朝同今晚點一齊放。」",
-      "thought": "唔只係之後，佢等第二句。",
-      "aside": "雨聲蓋過一拍呼吸。",
+    "sEn3": {
+      "id": "sEn3",
+      "label": "柄朝你",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "佢將匙羹放你碗側，柄朝你。自己隻匙羹敲碗沿一下。\n\n「柄朝你。你攞。我敲一下，係叫你開始，唔係叫你答問題。」",
+      "thought": "柄朝你，敲一下先開始。",
+      "aside": "碗沿一聲。",
       "choices": [
         {
-          "label": "我再講，唔只係",
-          "next": "s4wait2",
-          "heat": 6
+          "label": "匙羹我攞",
+          "next": "sEn4",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "唔只係",
-            "收回",
-            "只做前輩",
-            "可以"
+            "匙羹",
+            "柄"
           ],
-          "next": "s4wait2",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "第二句我聽到。我先問點放。"
+          "next": "sEn4",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "你攞。開始食。"
         }
       ],
       "sceneGoal": {
@@ -5904,49 +5567,50 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講唔只係，定你收回做前輩？"
+        "ask": "匙羹你攞未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s4wait2": {
-      "id": "s4wait2",
-      "label": "等你答完先近",
-      "look": "rain",
-      "text": "「我仍然等。」Sammi 手插喺袋，未伸出。「聽朝投影片我幫，呢句先。今晚邊界，你再講你接受到邊。你講到只係對頁，我停。你講到唔只係，我先行近一步。未講完，我都唔會靠過嚟。」",
-      "thought": "袋入面隻手，係等你講完。",
-      "aside": "檐水滴喺佢鞋側，佢未動。",
+    "sEn4": {
+      "id": "sEn4",
+      "label": "第二口",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "你食第一口。麵未完全軟，湯係熱。Sammi 自己亦食一口，先講。\n\n「第一口熱。第二口先有味。你食完第二口，我先講點解係你。」",
+      "thought": "第二口先有味，原因未講。",
+      "aside": "湯熱。",
       "choices": [
         {
-          "label": "我講唔只係",
-          "next": "s5",
-          "heat": 6
+          "label": "第二口我食",
+          "next": "s1b",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "唔只係",
-            "對頁",
-            "接受",
-            "可以"
+            "第二口"
           ],
-          "next": "s5",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "我聽到你收到邊。我先行。"
+          "next": "s1b",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "第二口你食。我先講。"
         }
       ],
       "sceneGoal": {
@@ -5954,49 +5618,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你接受到只係對頁，定唔只係？"
+        "ask": "第二口你食未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s5tom": {
-      "id": "s5tom",
-      "label": "聽朝仍然幫",
-      "look": "rain",
-      "text": "雨細咗少少。Sammi 先講聽朝，先未講身。「聽朝我仍然幫你對投影片，封面同結論我睇。呢句唔會因為今晚收回。你而家再講一次：聽朝你要我幫。我聽到，先講今晚條邊界點寫。」",
-      "thought": "聽朝先釘，今晚先開口。",
-      "aside": "雨細到聽得到遠處冷氣。",
+    "sSl1": {
+      "id": "sSl1",
+      "label": "縮小一號",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "你話第三頁同結論都要佢睇。Sammi 開自己部機，封面個字大得誇。佢將字體縮小一號。\n\n「封面縮小。遠望先讀到。你見到一號之差。」",
+      "thought": "封面縮小一號。",
+      "aside": "字細咗。",
       "choices": [
         {
-          "label": "聽朝我要你幫",
-          "next": "s5tom2",
-          "heat": 6
+          "label": "一號我見到",
+          "next": "sSl2",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "聽朝",
-            "幫",
-            "投影片",
-            "可以"
+            "封面",
+            "字體"
           ],
-          "next": "s5tom2",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "聽朝我幫。你講咗。"
+          "next": "sSl2",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "一號你見到。遠望先讀到。"
         }
       ],
       "sceneGoal": {
@@ -6004,49 +5670,103 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講：聽朝你要佢幫？"
+        "ask": "一號你見到未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s5tom2": {
-      "id": "s5tom2",
-      "label": "頁先過口",
-      "look": "rain",
-      "text": "「第三頁數字你聽朝帶原檔。」佢講得好實。「我唔幫你估。你交得出原檔，我先對。你而家應承帶。應承完，我先講今晚我哋停喺邊一句。頁未應承，人我完全都唔會再講落去。」",
-      "thought": "原檔未應承，佢唔講人。",
-      "aside": "佢數頁嗰陣望住雨，唔望你。",
+    "sSl2": {
+      "id": "sSl2",
+      "label": "對調",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "佢數頁序，第二頁同第四頁對調咗。佢用滑鼠拖返，未儲存。\n\n「對調。我未儲。你話儲，我先儲。儲完先算你准我郁你份。」",
+      "thought": "頁序對調，未儲。",
+      "aside": "滑鼠停住。",
       "choices": [
         {
-          "label": "我應承帶原檔",
-          "next": "s5tom3",
-          "heat": 6
+          "label": "你儲",
+          "next": "sSl3",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
+            "頁序",
+            "儲存"
+          ],
+          "next": "sSl3",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "我儲。你准。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你准我儲未？"
+      },
+      "tags": [
+        "pantry"
+      ]
+    },
+    "sSl3": {
+      "id": "sSl3",
+      "label": "灰評註",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "第三頁一個數冇來源。佢用評註標「問你」，標完將顏色改成灰，唔紅。\n\n「灰評註。紅會嚇到聽朝先打開嘅人。你聽朝帶原檔，我先拆灰。」",
+      "thought": "灰評註留住，原檔聽朝先拆。",
+      "aside": "評註灰色。",
+      "choices": [
+        {
+          "label": "原檔我聽朝帶",
+          "next": "sSl4",
+          "heat": 0
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
             "原檔",
-            "第三頁",
-            "應承",
-            "可以"
+            "評註"
           ],
-          "next": "s5tom3",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "原檔你應承。我聽完先講人。"
+          "next": "sSl4",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "原檔你帶。灰我先留。"
         }
       ],
       "sceneGoal": {
@@ -6054,50 +5774,2284 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你應承聽朝帶第三頁原檔？"
+        "ask": "原檔你聽朝帶未？"
       },
-      "scene": "roof",
       "tags": [
-        "roof"
+        "pantry"
       ]
     },
-    "s5tom3": {
-      "id": "s5tom3",
-      "label": "今晚邊界先寫",
-      "look": "rain",
-      "text": "「今晚邊界我寫俾你聽。」Sammi 聲平。「聽朝照幫。稱呼可以仍然係前輩。過線嘅一句，只算你親口講過唔只係，唔算你企得近。你而家講你接受呢個寫法。你唔接受，我送你落樓，幫頁照舊。」",
-      "thought": "寫法未接受，佢仍然肯落樓。",
-      "aside": "欄杆水光，未沾到袖。",
+    "sSl4": {
+      "id": "sSl4",
+      "label": "剩一句",
+      "look": "dressed",
+      "scene": "pantry",
+      "text": "結論寫咗三句。佢刪到剩一句，讀出聲。\n\n「一句。三句係你驚。你聽完呢句，知聽朝只交一句。」",
+      "thought": "結論刪到一句。",
+      "aside": "兩句唔見。",
       "choices": [
         {
-          "label": "我接受呢個寫法",
-          "next": "s5bnd",
-          "heat": 6
+          "label": "一句我聽到",
+          "next": "s1i",
+          "heat": 0
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "接受",
-            "邊界",
+            "結論",
+            "一句"
+          ],
+          "next": "s1i",
+          "heat": 0,
+          "bucket": "work",
+          "ack": "一句你聽到。聽朝只交呢句。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "一句你聽到未？"
+      },
+      "tags": [
+        "pantry"
+      ]
+    },
+    "sLv1": {
+      "id": "sLv1",
+      "label": "你碗",
+      "look": "dressed",
+      "text": "你話真走。Sammi 將你碗推去洗盆，自己碗未洗。水喉開細。\n\n「你碗我放低。我碗我自己洗。你唔使陪我收。」",
+      "thought": "你碗先放，佢碗未洗。",
+      "aside": "水喉細。",
+      "choices": [
+        {
+          "label": "碗我知道你放",
+          "next": "sLv2",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "碗",
+            "洗盆"
+          ],
+          "next": "sLv2",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你碗我放。你唔使陪。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道碗我放未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv2": {
+      "id": "sLv2",
+      "label": "包入櫃",
+      "look": "dressed",
+      "text": "佢將未用完嘅調味包摺好，放入櫃。櫃門合上先係一下。\n\n「包我留。聽日有人加班會用。唔係留俾你。」",
+      "thought": "包留喺櫃，唔係留俾你。",
+      "aside": "櫃門一聲。",
+      "choices": [
+        {
+          "label": "包你留喺櫃",
+          "next": "sLv3",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "調味包",
+            "櫃"
+          ],
+          "next": "sLv3",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "喺櫃。唔係留俾你。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "包你知道喺邊未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv3": {
+      "id": "sLv3",
+      "label": "唔顯示",
+      "look": "dressed",
+      "text": "佢開手機，群組仍然兩個綠，佢將自己狀態改做唔顯示。\n\n「我轉做唔顯示。你行出茶水間，群唔會見到我哋一齊。」",
+      "thought": "狀態改唔顯示。",
+      "aside": "兩個綠點仲喺。",
+      "choices": [
+        {
+          "label": "狀態我見到你改",
+          "next": "sLv4",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "狀態",
+            "群"
+          ],
+          "next": "sLv4",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "狀態我改。群睇唔到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "狀態你見到我改未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv4": {
+      "id": "sLv4",
+      "label": "白燈",
+      "look": "dressed",
+      "text": "茶水間出到走廊，燈白過入面。Sammi 行喺你側前半步，工牌垂住。\n\n「白燈。我送到閘。送到閘就停，我唔落大堂。」",
+      "thought": "送到閘就停，唔落大堂。",
+      "aside": "工牌垂住。",
+      "choices": [
+        {
+          "label": "你送到閘",
+          "next": "sLv5",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "走廊",
+            "閘"
+          ],
+          "next": "sLv5",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "我送到閘。大堂我唔落。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道我送到閘未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv5": {
+      "id": "sLv5",
+      "label": "機涼",
+      "look": "dressed",
+      "text": "行過影印機，機已經涼。佢拍一下機蓋。\n\n「機涼咗。今晚你唔使印。頁你聽朝自己再對一次。」",
+      "thought": "機涼，頁聽朝自己對。",
+      "aside": "機蓋一聲。",
+      "choices": [
+        {
+          "label": "聽朝我自己對",
+          "next": "sLv6",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "影印機"
+          ],
+          "next": "sLv6",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "聽朝你自己對。今晚唔印。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "聽朝你自己對未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv6": {
+      "id": "sLv6",
+      "label": "第一下綠",
+      "look": "dressed",
+      "text": "閘前紅燈。你自己拍工牌，第一下就綠。佢唔覆你手。\n\n「綠。走嘅人第一下就得。我隻手唔放上你手。」",
+      "thought": "第一下就綠，佢手唔覆。",
+      "aside": "閘開。",
+      "choices": [
+        {
+          "label": "我自己拍開",
+          "next": "sLv7",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "工牌",
+            "綠"
+          ],
+          "next": "sLv7",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你自己拍開。我手唔放。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你自己拍開未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv7": {
+      "id": "sLv7",
+      "label": "閘入面",
+      "look": "dressed",
+      "text": "閘開。大堂玻璃出面有濕氣，未落到雨。Sammi 停喺閘入面。\n\n「我停喺入面。你出。星期一枱面見，茶水間我唔當你欠我。」",
+      "thought": "佢停喺閘入面。",
+      "aside": "玻璃有濕氣。",
+      "choices": [
+        {
+          "label": "星期一枱面見",
+          "next": "sLv8",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "玻璃"
+          ],
+          "next": "sLv8",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "星期一枱面。你出。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "星期一你知道喺邊見未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sLv8": {
+      "id": "sLv8",
+      "label": "手放下",
+      "look": "dressed",
+      "text": "你踏出閘。佢喺玻璃後面抬一下手，幅度小，工牌撞到胸口。然後手放下。\n\n「手我放低。你行。投影片你聽朝仍交得到，我就當今晚麵係麵。」",
+      "thought": "手放下，麵只係麵。",
+      "aside": "工牌撞胸口。",
+      "choices": [
+        {
+          "label": "我行喇",
+          "next": "ending_s_c",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "行喇",
+            "麵"
+          ],
+          "next": "ending_s_c",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你行。麵係麵。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你行未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz1": {
+      "id": "sBz1",
+      "label": "標題",
+      "look": "dressed",
+      "text": "碗推開。Sammi 擦手，先講頁，先未行。\n\n「行之前我講一頁。第三頁個標題同下面唔夾。你話標題留定改。」",
+      "thought": "行之前先改一個標題。",
+      "aside": "手擦乾。",
+      "choices": [
+        {
+          "label": "標題我改",
+          "next": "sBz2",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "標題",
+            "第三頁"
+          ],
+          "next": "sBz2",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "標題你改。我跟。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "標題你留定改？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz2": {
+      "id": "sBz2",
+      "label": "少四字",
+      "look": "dressed",
+      "text": "佢喺自己機改標題，改完轉畀你睇。字少咗四個。\n\n「少四個字。你讀一次新標題。讀完我先鎖機行。」",
+      "thought": "新標題少四字，未鎖機。",
+      "aside": "機轉過嚟。",
+      "choices": [
+        {
+          "label": "新標題我讀咗",
+          "next": "sBz3",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "標題",
+            "四個字"
+          ],
+          "next": "sBz3",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你讀咗。我鎖機。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "新標題你讀咗未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz3": {
+      "id": "sBz3",
+      "label": "燈留",
+      "look": "dressed",
+      "text": "佢鎖機，將機夾喺臂下。茶水間燈佢唔關。\n\n「燈留。保安唔好上嚟。你行我側後，去影印機。」",
+      "thought": "燈留住，行去影印機。",
+      "aside": "機夾喺臂下。",
+      "choices": [
+        {
+          "label": "我行你側後",
+          "next": "sBz4",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "保安",
+            "側後"
+          ],
+          "next": "sBz4",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "側後。你行。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你行側後未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz4": {
+      "id": "sBz4",
+      "label": "人哋份",
+      "look": "dressed",
+      "text": "影印機未完全涼，有人印過一沓。面頭一張唔係你份。Sammi 將張紙反轉放側。\n\n「人哋份。我反轉。你份未印。我哋只係借個影位講。」",
+      "thought": "人哋份反轉，你份未印。",
+      "aside": "機未涼。",
+      "choices": [
+        {
+          "label": "人哋份我唔掂",
+          "next": "sBz5",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "反轉"
+          ],
+          "next": "sBz5",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你唔掂。我反轉。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "人哋份你收住手未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz5": {
+      "id": "sBz5",
+      "label": "人影",
+      "look": "dressed",
+      "text": "紅燈將兩個人影疊上牆。佢指牆，唔指天花板鏡頭。\n\n「牆上見到。鏡頭我知壞咗。你望牆，知我哋疊埋。」",
+      "thought": "人影疊上牆。",
+      "aside": "紅燈。",
+      "choices": [
+        {
+          "label": "人影我見到",
+          "next": "sBz6",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "人影",
+            "紅燈"
+          ],
+          "next": "sBz6",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "人影你見到。鏡頭壞咗。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "人影你見到未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz6": {
+      "id": "sBz6",
+      "label": "抹平",
+      "look": "dressed",
+      "text": "佢由夾入面抽出第三頁打印，摺痕喺角。佢抹平。\n\n「摺痕我抹。數你指一個我未問過嘅格。唔好講封面。」",
+      "thought": "摺痕抹平，要一個新格。",
+      "aside": "紙角平咗。",
+      "choices": [
+        {
+          "label": "我指百分比嗰格",
+          "next": "sBz7",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "百分比",
+            "摺痕"
+          ],
+          "next": "sBz7",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "百分比。我見到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你指邊格？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz7": {
+      "id": "sBz7",
+      "label": "零點五",
+      "look": "dressed",
+      "text": "佢睇你指嘅格，同佢記低嘅數差零點五。佢唔笑你。\n\n「差零點五。聽朝我幫你對返預算。而家你知道差喺邊。」",
+      "thought": "差零點五，聽朝對預算。",
+      "aside": "佢唔笑。",
+      "choices": [
+        {
+          "label": "零點五我知道",
+          "next": "sBz8",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "零點五",
+            "預算"
+          ],
+          "next": "sBz8",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "零點五。聽朝我對。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "零點五你知道未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz8": {
+      "id": "sBz8",
+      "label": "圈",
+      "look": "dressed",
+      "text": "佢將筆借你，叫你喺打印上圈個格。圈完佢收筆。\n\n「圈。筆我收。紙你拎住，上樓再講條件。」",
+      "thought": "圈完，筆收回，紙你拎。",
+      "aside": "筆交返。",
+      "choices": [
+        {
+          "label": "紙我拎住",
+          "next": "sBz9",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "圈",
+            "筆"
+          ],
+          "next": "sBz9",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "紙你拎住。筆我收。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紙你拎住未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz9": {
+      "id": "sBz9",
+      "label": "繩解",
+      "look": "dressed",
+      "text": "行出影之前，佢工牌繩纏咗你袖一下，佢自己解開，冇借機留低。\n\n「纏到。我解。解完先算我冇借工牌留你。」",
+      "thought": "繩纏到又解開。",
+      "aside": "袖口鬆返。",
+      "choices": [
+        {
+          "label": "繩你解咗",
+          "next": "sBz10",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "工牌",
+            "解"
+          ],
+          "next": "sBz10",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "我解咗。冇留你。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "繩你見到我解未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sBz10": {
+      "id": "sBz10",
+      "label": "出影",
+      "look": "dressed",
+      "text": "影印機影到走廊口就斷。白燈重新分開兩個人。Sammi 聲返到正常。\n\n「出影。聲我返正常。下一截有人可能行過，我哋講頁就好。」",
+      "thought": "出影，聲返正常。",
+      "aside": "白燈分開兩個人。",
+      "choices": [
+        {
+          "label": "我哋講頁",
+          "next": "s2x",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "出影"
+          ],
+          "next": "s2x",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "講頁。聲我正常。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "我哋講頁未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr1": {
+      "id": "sCr1",
+      "label": "留位",
+      "look": "dressed",
+      "text": "電梯響完，門仍未開。Sammi 同你退到牆邊，中間留位俾可能出嚟嘅人。\n\n「留位。出嚟如果係同事，我哋講頁。你唔好望我個嘴。」",
+      "thought": "門未開，中間留位。",
+      "aside": "牆邊。",
+      "choices": [
+        {
+          "label": "我望頁",
+          "next": "sCr2",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "留位",
+            "頁"
+          ],
+          "next": "sCr2",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你望頁。嘴唔好望。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你望頁未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr2": {
+      "id": "sCr2",
+      "label": "空",
+      "look": "dressed",
+      "text": "門開，廂係空。燈閃一下又穩。冇人出。\n\n「空。我估計錯。你唔使笑。估錯都要避。」",
+      "thought": "廂係空，估錯都避咗。",
+      "aside": "燈穩返。",
+      "choices": [
+        {
+          "label": "空廂我見到",
+          "next": "sCr3",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "空"
+          ],
+          "next": "sCr3",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "空你見到。唔使笑。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "空廂你見到未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr3": {
+      "id": "sCr3",
+      "label": "收紙",
+      "look": "dressed",
+      "text": "冇人，佢先將第三頁再打開。百分比個圈你畫過。佢點頭。\n\n「圈得清楚。聽朝我跟圈對。你而家可以收紙。」",
+      "thought": "圈清楚，紙可以收。",
+      "aside": "佢點頭。",
+      "choices": [
+        {
+          "label": "紙我收",
+          "next": "sCr4",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "圈",
+            "收紙"
+          ],
+          "next": "sCr4",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "紙你收。圈我跟。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紙你收未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr4": {
+      "id": "sCr4",
+      "label": "先講紅",
+      "look": "dressed",
+      "text": "行到門禁，紅燈。Sammi 未拍，先講。\n\n「紅。我拍我自己張。你張你自己試。我唔一開始就覆你手。」",
+      "thought": "紅燈，各人先拍自己張。",
+      "aside": "燈紅住。",
+      "choices": [
+        {
+          "label": "我自己先試",
+          "next": "sCr5",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "紅燈"
+          ],
+          "next": "sCr5",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你自己試。我拍我張。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你自己先試未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr5": {
+      "id": "sCr5",
+      "label": "自己都紅",
+      "look": "dressed",
+      "text": "佢拍自己工牌，紅，再拍，仍紅。佢皺眉，唔笑。\n\n「我自己都紅。系統今晚倔。你張你試，我望住。」",
+      "thought": "佢自己都紅。",
+      "aside": "眉皺住。",
+      "choices": [
+        {
+          "label": "我試我張",
+          "next": "sCr6",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "倔",
+            "工牌"
+          ],
+          "next": "sCr6",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "你試。我望住。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你試你張未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr6": {
+      "id": "sCr6",
+      "label": "你都紅",
+      "look": "dressed",
+      "text": "你拍，紅。佢唔即刻貼過嚟。\n\n「你都紅。唔係你錯。前輩卡有時先開。我下一拍先靠近。」",
+      "thought": "你都紅，佢未貼過嚟。",
+      "aside": "兩張都紅。",
+      "choices": [
+        {
+          "label": "你下一拍",
+          "next": "sCr7",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "紅"
+          ],
+          "next": "sCr7",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "下一拍我先靠近。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道我下一拍未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr7": {
+      "id": "sCr7",
+      "label": "繩未掂",
+      "look": "dressed",
+      "text": "佢行近半步，工牌繩幾乎掂到你袖，又停。\n\n「半步。繩未掂。你知道我可以再近，我未近。」",
+      "thought": "半步，繩未掂到袖。",
+      "aside": "繩晃一下。",
+      "choices": [
+        {
+          "label": "半步我知道",
+          "next": "sCr8",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "半步",
+            "繩"
+          ],
+          "next": "sCr8",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "半步。我未近。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "半步你知道未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr8": {
+      "id": "sCr8",
+      "label": "擋風",
+      "look": "dressed",
+      "text": "門禁上冷氣直吹。佢側身擋一擋，你額前少咗陣風。\n\n「風我擋。你額涼，手先穩。穩完我先拍第二次。」",
+      "thought": "佢擋風，額前少一陣。",
+      "aside": "冷氣被身體擋住。",
+      "choices": [
+        {
+          "label": "風少咗",
+          "next": "sCr9",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "冷氣"
+          ],
+          "next": "sCr9",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "風少咗。手你穩。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "風你覺得少未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr9": {
+      "id": "sCr9",
+      "label": "壞燈",
+      "look": "dressed",
+      "text": "走廊地腳燈壞咗一格，佢行過時用鞋尖點一點，好似記低。\n\n「呢格壞咗兩個星期。行政話低優先。你見到，知邊度黑。」",
+      "thought": "地燈壞一格，低優先。",
+      "aside": "鞋尖點一下。",
+      "choices": [
+        {
+          "label": "壞燈我見到",
+          "next": "sCr10",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "地燈",
+            "低優先"
+          ],
+          "next": "sCr10",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "壞燈你見到。低優先。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "壞燈你見到未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sCr10": {
+      "id": "sCr10",
+      "label": "牌側",
+      "look": "dressed",
+      "text": "佢提起自己工牌，未覆上你手。紅燈仍亮。\n\n「我而家先拍。你手可以放喺牌側，我未包住你。」",
+      "thought": "牌提起，手未包住。",
+      "aside": "紅燈仍亮。",
+      "choices": [
+        {
+          "label": "手我放牌側",
+          "next": "s2x2",
+          "heat": 1
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "牌側"
+          ],
+          "next": "s2x2",
+          "heat": 1,
+          "bucket": "work",
+          "ack": "牌側。我未包住你。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "手你放牌側未？"
+      },
+      "tags": [
+        "corridor"
+      ]
+    },
+    "sSt1": {
+      "id": "sSt1",
+      "label": "第一級",
+      "look": "dressed",
+      "text": "Sammi 踏第一級，回頭等你。欄杆有塵，佢用手背抹開一小段。\n\n「第一級。塵我抹。你踏，我先講第二級有咩。」",
+      "thought": "第一級，塵抹開一截。",
+      "aside": "欄杆乾一截。",
+      "choices": [
+        {
+          "label": "我踏第一級",
+          "next": "sSt2",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第一級",
+            "欄"
+          ],
+          "next": "sSt2",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你踏。我講第二級。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你踏第一級未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt2": {
+      "id": "sSt2",
+      "label": "第二級",
+      "look": "dressed",
+      "text": "第二級燈閃。佢等閃完先踏。工牌撞到鈕一聲。\n\n「閃完先踏。你跟我級，唔好超前。超前會入返鏡頭。」",
+      "thought": "燈閃完先踏，唔好超前。",
+      "aside": "工牌一聲。",
+      "choices": [
+        {
+          "label": "我跟你級",
+          "next": "sSt3",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第二級"
+          ],
+          "next": "sSt3",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你跟級。唔好超前。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你跟我級未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt3": {
+      "id": "sSt3",
+      "label": "鏡頭背",
+      "look": "dressed",
+      "text": "第三級開始，天花板鏡頭角度轉走。佢指一指鏡頭背。\n\n「背對住我哋。你見到鏡頭個背，知盲區由呢級開始。」",
+      "thought": "鏡頭背對住，盲區由呢級開始。",
+      "aside": "鏡頭轉走。",
+      "choices": [
+        {
+          "label": "鏡頭背我見到",
+          "next": "sSt4",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第三級",
+            "鏡頭"
+          ],
+          "next": "sSt4",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "背你見到。盲區開始。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "鏡頭背你見到未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt4": {
+      "id": "sSt4",
+      "label": "風先到",
+      "look": "dressed",
+      "text": "樓梯井有風，由上面向落。佢講風來自天台門縫，門未到。\n\n「風先到。門未到。你覺得風，知上面開住。」",
+      "thought": "風先到，門未到。",
+      "aside": "風向下。",
+      "choices": [
+        {
+          "label": "風我覺得",
+          "next": "sSt5",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "風",
+            "門縫"
+          ],
+          "next": "sSt5",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "風你覺得。門未到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "風你覺得未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt5": {
+      "id": "sSt5",
+      "label": "紙返袋",
+      "look": "dressed",
+      "text": "第四級佢停半拍，整理你份打印，摺好放入你袋口，唔放入自己袋。\n\n「紙返你袋。我唔代你拎上頂。你份頁你自己帶。」",
+      "thought": "紙返你袋，佢唔代拎。",
+      "aside": "袋口摺好。",
+      "choices": [
+        {
+          "label": "紙入我袋",
+          "next": "sSt6",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "打印",
+            "袋"
+          ],
+          "next": "sSt6",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "入你袋。你自己帶。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紙入你袋未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt6": {
+      "id": "sSt6",
+      "label": "下面有人",
+      "look": "dressed",
+      "text": "下面有人開走廊門，聲上傳。佢豎起一根指，等門再合。\n\n「人喺下面。我哋靜。門合返，我先踏第五級。」",
+      "thought": "下面有人，先靜。",
+      "aside": "一根指。",
+      "choices": [
+        {
+          "label": "我靜",
+          "next": "sSt7",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "下面"
+          ],
+          "next": "sSt7",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你靜。門合返我先踏。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你靜未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt7": {
+      "id": "sSt7",
+      "label": "第五級",
+      "look": "dressed",
+      "text": "門合。佢踏第五級，盲區最深。佢聲先放返。\n\n「第五。鏡頭到呢度真係睇唔到。你踏埋嚟，我先講門。」",
+      "thought": "第五級，聲先放返。",
+      "aside": "盲區最深。",
+      "choices": [
+        {
+          "label": "我踏第五級",
+          "next": "sSt8",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "第五",
+            "盲區"
+          ],
+          "next": "sSt8",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你踏第五。我講門。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你踏第五級未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt8": {
+      "id": "sSt8",
+      "label": "雨味",
+      "look": "dressed",
+      "text": "佢指上面防火門，門縫有雨味。未推。\n\n「雨味。門我未推。你知道出面落緊雨，先聽條件。」",
+      "thought": "雨味到，門未推。",
+      "aside": "門縫有味。",
+      "choices": [
+        {
+          "label": "雨味我聞到",
+          "next": "sSt9",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "雨味",
+            "防火門"
+          ],
+          "next": "sSt9",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "雨味你聞到。門我未推。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "雨味你聞到未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt9": {
+      "id": "sSt9",
+      "label": "有條件",
+      "look": "dressed",
+      "text": "佢講條件會包括聽朝仍然幫你對頁，細節等門邊。而家只講有，唔收答案。\n\n「條件喺門邊。而家我只講有。你唔使答收定唔收。」",
+      "thought": "只預告有條件，未收答案。",
+      "aside": "門未到。",
+      "choices": [
+        {
+          "label": "我知道門邊先講",
+          "next": "sSt10",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "條件"
+          ],
+          "next": "sSt10",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "門邊先講。你唔使答。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你知道條件喺門邊未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt10": {
+      "id": "sSt10",
+      "label": "扶欄",
+      "look": "dressed",
+      "text": "佢手按欄，將身側留俾你。雨味更清楚。\n\n「你上到我側。欄濕。你手可以扶，扶完我先再上。」",
+      "thought": "欄濕，身側留住。",
+      "aside": "手按欄。",
+      "choices": [
+        {
+          "label": "欄我扶",
+          "next": "sSt11",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "欄",
+            "濕"
+          ],
+          "next": "sSt11",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "欄你扶。我再上。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "欄你扶未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt11": {
+      "id": "sSt11",
+      "label": "鎖芯",
+      "look": "dressed",
+      "text": "再上兩級，防火門就喺眼前。鎖芯鬆，佢未拉。\n\n「兩級。門我未拉。你見到鎖，知報修未嚟。」",
+      "thought": "鎖芯鬆，門未拉。",
+      "aside": "門就喺眼前。",
+      "choices": [
+        {
+          "label": "鎖我見到",
+          "next": "sSt12",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鎖芯"
+          ],
+          "next": "sSt12",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "鎖你見到。報修未嚟。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "鎖你見到未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sSt12": {
+      "id": "sSt12",
+      "label": "到門",
+      "look": "dressed",
+      "text": "佢停喺門前，額上有少少風。眼鏡未除。\n\n「到。我望你一眼，見到你喺側。門我下一手先推。」",
+      "thought": "到門，一眼，門未推。",
+      "aside": "眼鏡未除。",
+      "choices": [
+        {
+          "label": "我喺你側",
+          "next": "s3r",
+          "heat": 2
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "門前"
+          ],
+          "next": "s3r",
+          "heat": 2,
+          "bucket": "work",
+          "ack": "你喺側。門我下一手推。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你喺我側未？"
+      },
+      "tags": [
+        "stairs"
+      ]
+    },
+    "sRf1": {
+      "id": "sRf1",
+      "label": "肩濕",
+      "look": "rain",
+      "scene": "roof",
+      "text": "你出到門邊。雨打鐵皮，Sammi 未拉你出盡。灰外套肩頭濕一小塊。\n\n「雨。你出咗嚟。濕只係肩。我未拉你去欄。」",
+      "thought": "出到門邊，肩先濕。",
+      "aside": "鐵皮響。",
+      "choices": [
+        {
+          "label": "肩濕我見到",
+          "next": "sRf2",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "雨",
+            "肩"
+          ],
+          "next": "sRf2",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "肩濕你見到。欄未拉。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "肩你見到濕未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf2": {
+      "id": "sRf2",
+      "label": "背風",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢行到欄杆後，背風。城市燈糊。佢將乾淨嗰邊位留俾你。\n\n「背風呢邊。你過嚟，先聽得清我講前輩。」",
+      "thought": "背風位留住。",
+      "aside": "城市燈糊。",
+      "choices": [
+        {
+          "label": "我過背風",
+          "next": "sRf3",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "欄",
+            "背風"
+          ],
+          "next": "sRf3",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "背風你過嚟。我講。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你過背風未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf3": {
+      "id": "sRf3",
+      "label": "抹鏡",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢除眼鏡，抹雨水，又戴返。抹完先望你。\n\n「眼鏡我抹。抹完我先認真。你等我戴穩。」",
+      "thought": "眼鏡抹完先認真。",
+      "aside": "鏡片清一清。",
+      "choices": [
+        {
+          "label": "你戴穩我見到",
+          "next": "sRf4",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "眼鏡"
+          ],
+          "next": "sRf4",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "我戴穩。你見到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你見到我戴穩未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf4": {
+      "id": "sRf4",
+      "label": "兩樣",
+      "look": "rain",
+      "scene": "roof",
+      "text": "雨聲入面佢先提聽朝，封面同結論佢仍然會睇。語氣同茶水間一樣平。\n\n「聽朝我照睇。雨唔會取消。你知道幫頁同而家呢度係兩樣。」",
+      "thought": "聽朝照睇，同雨係兩樣。",
+      "aside": "語氣平。",
+      "choices": [
+        {
+          "label": "兩樣我分開",
+          "next": "sRf5",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
             "聽朝",
-            "唔只係",
-            "可以"
+            "封面"
           ],
-          "next": "s5bnd",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你接受呢個寫法。我再確認。"
+          "next": "sRf5",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "兩樣你分開。雨取消唔到頁。"
         }
       ],
       "sceneGoal": {
@@ -6105,48 +8059,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你接受聽朝照幫、今晚只算你親口講過？"
+        "ask": "兩樣你分到未？"
       },
-      "scene": "roof",
       "tags": [
         "roof"
       ]
     },
-    "s5bnd": {
-      "id": "s5bnd",
-      "label": "再等一句",
+    "sRf5": {
+      "id": "sRf5",
+      "label": "乾面",
       "look": "rain",
-      "text": "佢未近。「我再等一句，怕你順口。你將唔只係再講一次，或者你講返只做前輩。兩句我都收得完整。我收到邊句，聽朝我都幫你對頁。你而家揀一句講完，我先決定行唔行近你。」",
-      "thought": "再等一句，係怕你順口。",
-      "aside": "雨幾乎停，檐水仲滴。",
+      "scene": "roof",
+      "text": "佢將外套乾嘅一面揭開少少，唔披上你。\n\n「乾面喺呢邊。我未披上你。你知道我有乾面，我未借。」",
+      "thought": "乾面揭開，未披上。",
+      "aside": "外套一半濕。",
       "choices": [
         {
-          "label": "我再講唔只係",
-          "next": "s5bnd2",
-          "heat": 6
+          "label": "乾面我見到",
+          "next": "sRf6",
+          "heat": 3
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "唔只係",
-            "只做前輩",
-            "可以"
+            "外套",
+            "乾"
           ],
-          "next": "s5bnd2",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "我收到你而家呢句。我先行。"
+          "next": "sRf6",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "乾面你見到。我未借。"
         }
       ],
       "sceneGoal": {
@@ -6154,49 +8111,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講唔只係，定講返只做前輩？"
+        "ask": "乾面你見到未？"
       },
-      "scene": "roof",
       "tags": [
         "roof"
       ]
     },
-    "s5bnd2": {
-      "id": "s5bnd2",
-      "label": "幫頁唔寫入群",
+    "sRf6": {
+      "id": "sRf6",
+      "label": "牌收入",
       "look": "rain",
-      "text": "「幫你改頁，我唔會寫入加班群。」Sammi 講。「群入面只會見到檔案更新。人嘅邊界，得你同我知。你若果接受，你講接受。你若果想連頁都唔好我碰，你講，我聽朝只提醒你deadline，唔改你頁。」",
-      "thought": "群同人，佢分開講。",
-      "aside": "手機螢幕未亮，佢未打開群。",
+      "scene": "roof",
+      "text": "工牌被雨打到亮。佢將牌轉入外套入面，唔除。\n\n「牌我收入外套。人出面睇到，只係兩個同事避雨。你牌你自己收。」",
+      "thought": "牌收入外套，出面只係避雨。",
+      "aside": "牌亮一下。",
       "choices": [
         {
-          "label": "我接受，唔寫入群",
-          "next": "s5bnd3",
-          "heat": 6
+          "label": "牌我收",
+          "next": "sRf7",
+          "heat": 3
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "接受",
-            "群",
-            "改頁",
-            "可以"
+            "工牌",
+            "避雨"
           ],
-          "next": "s5bnd3",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你接受。群我唔寫人。"
+          "next": "sRf7",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "你牌你收。我牌入外套。"
         }
       ],
       "sceneGoal": {
@@ -6204,49 +8163,411 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你接受佢改頁但唔寫入群？"
+        "ask": "牌你收未？"
       },
-      "scene": "roof",
       "tags": [
         "roof"
       ]
     },
-    "s5bnd3": {
-      "id": "s5bnd3",
-      "label": "未貼近先收科",
+    "sRf7": {
+      "id": "sRf7",
+      "label": "一掌雨",
       "look": "rain",
-      "text": "距離仍然有。Sammi 先問收科，先未問近。「聽朝我幫，今晚邊界你講過。你若果到此，我送你落樓，杯麵聽日再煮。你若果想我再近，你要再講可以。未講可以，我當你收到幫頁就夠。」",
-      "thought": "可以未再講，佢就當收到幫頁。",
-      "aside": "落樓嘅樓梯口仍然開住。",
+      "scene": "roof",
+      "text": "佢同你隔一掌，雨絲喺中間。掌未合。\n\n「一掌雨。我未過嚟。你見到雨絲，知中間仲有位。」",
+      "thought": "一掌雨，中間仲有位。",
+      "aside": "雨絲清楚。",
       "choices": [
         {
-          "label": "可以",
-          "next": "s5pace",
-          "heat": 6
+          "label": "雨絲我見到",
+          "next": "sRf8",
+          "heat": 3
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "可以",
-            "到此",
+            "一掌",
+            "雨絲"
+          ],
+          "next": "sRf8",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "雨絲你見到。我未過。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "雨絲你見到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf8": {
+      "id": "sRf8",
+      "label": "十五",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢聲貼近到你先聽到，講嘅係門禁時間。\n\n「二十三點十五之後閘會麻煩。我講時間。你知道我哋仲有幾耐。」",
+      "thought": "時間先講，唔係告白。",
+      "aside": "聲貼近。",
+      "choices": [
+        {
+          "label": "時間我聽到",
+          "next": "sRf9",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "二十三點",
+            "閘"
+          ],
+          "next": "sRf9",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "時間你聽到。閘會麻煩。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "時間你聽到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf9": {
+      "id": "sRf9",
+      "label": "撥水",
+      "look": "rain",
+      "scene": "roof",
+      "text": "欄杆積水，佢用手背撥開一條，先扶。水沿腕落。\n\n「水我撥。你扶乾位。扶完我先講我可以做邊種前輩。」",
+      "thought": "水撥開，乾位先扶。",
+      "aside": "水沿腕。",
+      "choices": [
+        {
+          "label": "乾位我扶",
+          "next": "sRf10",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "積水"
+          ],
+          "next": "sRf10",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "乾位你扶。我先講。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "乾位你扶未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf10": {
+      "id": "sRf10",
+      "label": "頓一頓",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢望住雨，未望你。喉結郁一下，句話未出。\n\n「我未講。你俾我喺雨聲入面頓一頓。頓完先到嗰句。」",
+      "thought": "句話未出，雨聲入面頓。",
+      "aside": "喉結一郁。",
+      "choices": [
+        {
+          "label": "我俾你頓",
+          "next": "sRf11",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "頓",
+            "雨聲"
+          ],
+          "next": "sRf11",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "我頓。你俾我。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你俾我頓未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf11": {
+      "id": "sRf11",
+      "label": "兩對鞋",
+      "look": "rain",
+      "scene": "roof",
+      "text": "你鞋面濕。佢自己鞋亦濕。佢睇一睇兩對鞋。\n\n「兩對都濕。上到嚟就係咁。你唔使道歉。」",
+      "thought": "兩對鞋都濕。",
+      "aside": "鞋面發亮。",
+      "choices": [
+        {
+          "label": "鞋濕我知道",
+          "next": "sRf12",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "鞋"
+          ],
+          "next": "sRf12",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "鞋濕。你唔使道歉。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "鞋你知道濕未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRf12": {
+      "id": "sRf12",
+      "label": "收起笑",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢終於轉過嚟，雨絲喺眼鏡。聲線第一次收起笑。\n\n「我轉過嚟。下一句先係我可以只做前輩。你望到我收起笑。」",
+      "thought": "笑收起，下一句先講。",
+      "aside": "眼鏡有雨絲。",
+      "choices": [
+        {
+          "label": "我見到你收起笑",
+          "next": "s4",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "收起笑"
+          ],
+          "next": "s4",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "你見到。下一句我講。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你見到我收起笑未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu1": {
+      "id": "sRu1",
+      "label": "先呼吸",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢叫你先呼吸，雨打欄。佢自己亦吸一次。\n\n「先呼吸。我未聽你答案。氣順，我先將兩條路講清楚。」",
+      "thought": "先呼吸，答案未聽。",
+      "aside": "雨打欄。",
+      "choices": [
+        {
+          "label": "我吸咗一次",
+          "next": "sRu2",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "呼吸"
+          ],
+          "next": "sRu2",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "你吸咗。兩條路我講。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你吸咗一次未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu2": {
+      "id": "sRu2",
+      "label": "落樓路",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢用手指雨落大堂嘅方向。\n\n「一條路：我送你落有燈嘅樓，聽朝對頁。稱呼我收前輩。人停喺同事。」",
+      "thought": "一條路係落樓，人停喺同事。",
+      "aside": "手指大堂。",
+      "choices": [
+        {
+          "label": "落樓呢條我聽到",
+          "next": "sRu3",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
             "落樓",
-            "幫"
+            "前輩"
           ],
-          "next": "s5pace",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你講可以。我先再近少少。"
+          "next": "sRu3",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "落樓你聽到。稱呼收前輩。"
         }
       ],
       "sceneGoal": {
@@ -6254,49 +8575,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講可以，定你到此落樓？"
+        "ask": "落樓呢條你聽到未？"
       },
-      "scene": "roof",
       "tags": [
         "roof"
       ]
     },
-    "s5pace": {
-      "id": "s5pace",
-      "label": "佢仍然慢",
+    "sRu3": {
+      "id": "sRu3",
+      "label": "背風路",
       "look": "rain",
-      "text": "「可以我收到。我仍然慢。」Sammi 行近半步就停。「聽朝投影片先。你而家唔好拉我。你再講一次你跟我慢。我聽到跟，先算今晚呢句收得穩。你搶，我當你未準備好落樓或者留下。」",
-      "thought": "半步之後又停，係要你跟慢。",
-      "aside": "雨停到只剩檐水。",
+      "scene": "roof",
+      "text": "佢又指欄後背風嘅位置，唔指自己嘴。\n\n「另一條：留喺雨入面。稱呼可以變。變唔變，等你口。我而家只指位置。」",
+      "thought": "另一條只指位置，口未答。",
+      "aside": "指欄後。",
       "choices": [
         {
-          "label": "我跟你慢",
-          "next": "s5pace2",
-          "heat": 6
+          "label": "位置我見到",
+          "next": "sRu4",
+          "heat": 3
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "跟",
-            "慢",
-            "可以",
-            "聽朝"
+            "背風",
+            "位置"
           ],
-          "next": "s5pace2",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你跟慢。我先收呢句。"
+          "next": "sRu4",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "位置你見到。口未答。"
         }
       ],
       "sceneGoal": {
@@ -6304,49 +8627,51 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講你跟佢慢？"
+        "ask": "位置你見到未？"
       },
-      "scene": "roof",
       "tags": [
         "roof"
       ]
     },
-    "s5pace2": {
-      "id": "s5pace2",
-      "label": "短收科之前",
+    "sRu4": {
+      "id": "sRu4",
+      "label": "紙入袋",
       "look": "rain",
-      "text": "Sammi 最後確認，聲好細。「聽朝我幫你對投影片。今晚邊界，係你親口講過先算。其餘我唔寫低。你再講一次可以，我就當你聽明，然後先到好短嘅收科。你未講，我送你去有燈嘅樓層，幫頁一樣算。」",
-      "thought": "短收科之前，佢要最後一次可以。",
-      "aside": "有燈嘅樓層喺下面，門未關。",
+      "scene": "roof",
+      "text": "佢由袋抽出你份打印，放入自己外套內袋，拍一下。\n\n「頁我收好。聽朝我照睇。你揀邊條路，袋入面呢份都唔會掉。」",
+      "thought": "打印入內袋，邊條路都唔掉。",
+      "aside": "拍一下袋。",
       "choices": [
         {
-          "label": "可以，我聽明",
-          "next": "ending_s_a",
-          "heat": 6
+          "label": "打印你收好我見到",
+          "next": "sRu5",
+          "heat": 3
         }
       ],
       "intents": [
         {
           "keys": [
             "應承",
+            "繼續",
+            "好呀",
+            "係呀",
             "同意",
+            "得啦",
             "我應承",
-            "我同意",
-            "可以",
-            "聽明",
-            "聽朝",
-            "今晚"
+            "內袋",
+            "打印"
           ],
-          "next": "ending_s_a",
-          "heat": 6,
-          "bucket": "admit",
-          "ack": "你聽明。我先講最後一句。"
+          "next": "sRu5",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "我收好。唔會掉。"
         }
       ],
       "sceneGoal": {
@@ -6354,15 +8679,737 @@
           "agree"
         ],
         "optionalIntents": [
+          "ask_want",
           "ask_memory"
         ],
         "maxMisses": 3,
         "hints": {
-          "agree": "講明你嘅答案"
+          "agree": "應承講落去"
         },
-        "ask": "你再講可以，當你聽明聽朝同今晚？"
+        "ask": "打印你見到我收未？"
       },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu5": {
+      "id": "sRu5",
+      "label": "表面有水",
+      "look": "rain",
       "scene": "roof",
+      "text": "佢望腕錶，表面有水。二十三點零幾。\n\n「零幾。閘未趕。你唔使因為時間亂揀。我將錶轉俾你睇。」",
+      "thought": "零幾，閘未趕。",
+      "aside": "表面有水。",
+      "choices": [
+        {
+          "label": "錶我睇到",
+          "next": "sRu6",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "腕錶"
+          ],
+          "next": "sRu6",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "錶你睇到。唔使亂揀。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "錶你睇到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu6": {
+      "id": "sRu6",
+      "label": "鏡拎住",
+      "look": "rain",
+      "scene": "roof",
+      "text": "雨水又上鏡。佢再抹，今次抹完唔即刻戴，拎住。\n\n「鏡我拎住。我要清楚見到你個口。你亦見到我眼。」",
+      "thought": "鏡拎住，眼對眼。",
+      "aside": "鏡片有水。",
+      "choices": [
+        {
+          "label": "我見到你眼",
+          "next": "sRu7",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "眼鏡",
+            "眼"
+          ],
+          "next": "sRu7",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "你見到我眼。我見到你口。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你見到我眼未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu7": {
+      "id": "sRu7",
+      "label": "守一掌",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢維持一掌距離，雨喺中間未停。\n\n「一掌我守住。你未答之前，我唔過雨。」",
+      "thought": "一掌守住，雨未過。",
+      "aside": "中間有雨。",
+      "choices": [
+        {
+          "label": "一掌你守住",
+          "next": "sRu8",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "一掌"
+          ],
+          "next": "sRu8",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "我守住。你未答。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "一掌你見到我守未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu8": {
+      "id": "sRu8",
+      "label": "聲放平",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢將聲線放平，同茶水間講潛規則時一樣。\n\n「聲我放平。你聽得到同頭先杯麵一樣。我未變。」",
+      "thought": "聲同杯麵時一樣平。",
+      "aside": "雨聲底下。",
+      "choices": [
+        {
+          "label": "聲我聽得出",
+          "next": "sRu9",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "聲"
+          ],
+          "next": "sRu9",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "你聽得出。我未變。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "聲你聽得出未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu9": {
+      "id": "sRu9",
+      "label": "手喺袋",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢雙手插袋，工牌繩垂喺袋外。冇伸手。\n\n「手喺袋。你知道我可以伸，我未伸。答案出嚟我先決定伸唔伸。」",
+      "thought": "手喺袋，未伸。",
+      "aside": "繩垂喺袋外。",
+      "choices": [
+        {
+          "label": "手你未伸我見到",
+          "next": "sRu10",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "袋",
+            "手"
+          ],
+          "next": "sRu10",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "未伸你見到。答案先決定。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "手你見到未伸未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sRu10": {
+      "id": "sRu10",
+      "label": "戴返",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢戴返眼鏡，雨水立刻又沾。佢唔再抹。\n\n「我戴返。下一句你先揀。只做前輩，定唔只係。我聽你完整一句。」",
+      "thought": "眼鏡戴返，下一句先揀。",
+      "aside": "雨水又沾鏡。",
+      "choices": [
+        {
+          "label": "你問",
+          "next": "s4pre",
+          "heat": 3
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "下一句"
+          ],
+          "next": "s4pre",
+          "heat": 3,
+          "bucket": "work",
+          "ack": "我問。你揀完整一句。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "你準備揀未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa1": {
+      "id": "sXa1",
+      "label": "雨細",
+      "look": "rain",
+      "scene": "roof",
+      "text": "雨細少少。Sammi 先抹欄上雨水，再望你。\n\n「雨細。我先講聽朝，再講而家。封面同結論我仍然睇。」",
+      "thought": "雨細，聽朝仍然睇。",
+      "aside": "欄上水少咗。",
+      "choices": [
+        {
+          "label": "聽朝你睇我知道",
+          "next": "sXa2",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "雨細",
+            "封面"
+          ],
+          "next": "sXa2",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "聽朝我睇。你知道。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "聽朝你知道我睇未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa2": {
+      "id": "sXa2",
+      "label": "額先",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢額貼過嚟，雨氣涼。未吻。\n\n「額先。嘴我未落。你知道次序同我改頁一樣，先後我話。」",
+      "thought": "額先，嘴未落。",
+      "aside": "雨氣涼。",
+      "choices": [
+        {
+          "label": "額我感覺到",
+          "next": "sXa3",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "額"
+          ],
+          "next": "sXa3",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "額你感覺到。嘴未落。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "額你感覺到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa3": {
+      "id": "sXa3",
+      "label": "嘴角",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢先吻你嘴角，短，雨味。退開時眼鏡又霧。\n\n「嘴角。深吻未到。霧我唔抹，我睇到你就得。」",
+      "thought": "嘴角一下，深吻未到。",
+      "aside": "眼鏡霧。",
+      "choices": [
+        {
+          "label": "嘴角我知道",
+          "next": "sXa4",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "嘴角"
+          ],
+          "next": "sXa4",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "嘴角。深吻未到。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "嘴角你知道未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa4": {
+      "id": "sXa4",
+      "label": "腰側心跳",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢拉你手到自己腰側，隔住濕衫。心跳由布傳過嚟。\n\n「腰側。再上要我帶。你掌心知道心跳。」",
+      "thought": "掌心隔住濕衫，知道心跳。",
+      "aside": "布濕。",
+      "choices": [
+        {
+          "label": "心跳我感覺到",
+          "next": "sXa5",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "腰側",
+            "心跳"
+          ],
+          "next": "sXa5",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "心跳你感覺到。再上我帶。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "心跳你感覺到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa5": {
+      "id": "sXa5",
+      "label": "拍袋",
+      "look": "rain",
+      "scene": "roof",
+      "text": "你袋入面份打印被外套壓住。佢拍你袋一下。\n\n「紙仲喺。聽朝我拆。而家袋我拍過，你知道頁唔會跌。」",
+      "thought": "袋拍一下，頁唔會跌。",
+      "aside": "外套壓住袋。",
+      "choices": [
+        {
+          "label": "紙你拍過",
+          "next": "sXa6",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "打印",
+            "袋"
+          ],
+          "next": "sXa6",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "我拍過。頁唔會跌。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "紙你知道我拍未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa6": {
+      "id": "sXa6",
+      "label": "半掌",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢將一掌雨收成半掌。呼吸打到你唇。\n\n「半掌。再近就係另一頁。你感覺到呼吸。」",
+      "thought": "一掌收成半掌。",
+      "aside": "呼吸到唇。",
+      "choices": [
+        {
+          "label": "呼吸我感覺到",
+          "next": "sXa7",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "半掌",
+            "呼吸"
+          ],
+          "next": "sXa7",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "呼吸你感覺到。半掌。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "呼吸你感覺到未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa7": {
+      "id": "sXa7",
+      "label": "繩撥開",
+      "look": "rain",
+      "scene": "roof",
+      "text": "工牌繩碰你胸口一下，佢將繩撥到自己肩後。\n\n「繩我撥開。同事嗰面我收起。你胸口只剩雨。」",
+      "thought": "繩撥到肩後。",
+      "aside": "胸口剩雨。",
+      "choices": [
+        {
+          "label": "繩你撥開",
+          "next": "sXa8",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "工牌",
+            "繩"
+          ],
+          "next": "sXa8",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "我撥開。胸口剩雨。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "繩你見到我撥未？"
+      },
+      "tags": [
+        "roof"
+      ]
+    },
+    "sXa8": {
+      "id": "sXa8",
+      "label": "多一格",
+      "look": "rain",
+      "scene": "roof",
+      "text": "佢額再貼，聲好細，講聽日茶水間杯麵會多開一格。\n\n「多一格。我講咗。其餘寫唔入群。你知道格係留俾你。」",
+      "thought": "多一格講咗，群唔寫。",
+      "aside": "聲好細。",
+      "choices": [
+        {
+          "label": "多一格我知道",
+          "next": "ending_s_a",
+          "heat": 5
+        }
+      ],
+      "intents": [
+        {
+          "keys": [
+            "應承",
+            "繼續",
+            "好呀",
+            "係呀",
+            "同意",
+            "得啦",
+            "我應承",
+            "多一格",
+            "茶水間"
+          ],
+          "next": "ending_s_a",
+          "heat": 5,
+          "bucket": "admit",
+          "ack": "多一格。留俾你。"
+        }
+      ],
+      "sceneGoal": {
+        "successIntents": [
+          "agree"
+        ],
+        "optionalIntents": [
+          "ask_want",
+          "ask_memory"
+        ],
+        "maxMisses": 3,
+        "hints": {
+          "agree": "應承講落去"
+        },
+        "ask": "多一格你知道未？"
+      },
       "tags": [
         "roof"
       ]
