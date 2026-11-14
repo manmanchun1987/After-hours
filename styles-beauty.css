@@ -63,18 +63,20 @@ body.mode-play .btn-choice {
    height after dismiss, which fights the pixel / --app-vh restore.
    The :has(#choices) selector is required: it outranks #screen-play
    .play-face-gap, so the older 55vh/72vh and 68vh rules would still win.
-   min-height is 0 so the spacer yields on short and landscape screens
-   instead of pushing the composer past the viewport. Preferred height
-   stays 68% when there is room. .keyboard-open below is more specific
-   and flexes this stack while the keyboard is up. */
+   Basis 0 and min-height 0: the spacer only keeps leftover room, so a full
+   beat plus the composer stay inside the viewport. .keyboard-open below
+   flexes this stack while the keyboard is up. */
 body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
 body.mode-play:has(#choices:not(.freechat-hidden)) .play-face-gap,
 body.mode-play .play-face-gap,
 #screen-play .play-face-gap {
-  flex: 1 1 auto !important;
-  height: calc(var(--app-vh) * 0.68) !important;
+  /* Basis 0: the spacer yields. Leftover height stays on the portrait.
+     A 68% flex base pushed the composer past the home indicator once the
+     beat was taller than two lines. */
+  flex: 1 1 0% !important;
+  height: auto !important;
   min-height: 0 !important;
-  max-height: calc(var(--app-vh) * 0.75) !important;
+  max-height: none !important;
 }
 body.keyboard-open.mode-play:has(#choices) #screen-play .play-face-gap,
 html.keyboard-open body.mode-play:has(#choices) #screen-play .play-face-gap {
@@ -83,21 +85,36 @@ html.keyboard-open body.mode-play:has(#choices) #screen-play .play-face-gap {
   max-height: none !important;
   flex: 1 1 auto !important;
 }
+body.keyboard-open #screen-play .play-lower,
+html.keyboard-open #screen-play .play-lower {
+  min-height: 0 !important;
+  max-height: none !important;
+}
 body.mode-play .play-lower,
 #screen-play .play-lower {
+  display: flex !important;
+  flex-direction: column !important;
   flex: 0 0 auto !important;
   flex-shrink: 0 !important;
-  /* Floor covers the 2-line story strip + 42px input + home-indicator inset.
-     22% of --app-vh still wins on tall portrait phones. */
-  max-height: max(calc(var(--app-vh) * 0.22), calc(170px + env(safe-area-inset-bottom))) !important;
-  min-height: 0 !important;
+  justify-content: flex-end !important;
+  /* One full beat (~38% of --app-vh, about 8–12 lines) plus the 42px composer
+     and the home-indicator inset. min-height matches the cap so the spacer
+     cannot steal that room while the opening beat is still short.
+     The old 170px floor only fit two lines. */
+  min-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
+  max-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
   gap: 3px !important;
 }
 #screen-play .narrative-bubble,
 #screen-play .zone-story.narrative-bubble,
 #screen-play .play-card.narrative-bubble {
-  max-height: 4.8em !important;
+  max-height: min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) !important;
+  min-height: 0 !important;
+  flex: 0 0 auto !important;
   padding: 4px 8px !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
   background: rgba(6, 10, 18, 0.32) !important;
   border: 1px solid rgba(201, 164, 106, 0.18) !important;
   box-shadow: none !important;
@@ -106,12 +123,31 @@ body.mode-play .play-lower,
 }
 #screen-play .narrative-bubble .narrative,
 #screen-play #play-text {
-  font-size: 0.72rem !important;
-  line-height: 1.3 !important;
-  -webkit-line-clamp: 2 !important;
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
+  -webkit-line-clamp: none !important;
+  line-clamp: none !important;
+  display: block !important;
+  -webkit-box-orient: initial !important;
+  overflow: visible !important;
+  max-height: none !important;
+  white-space: pre-wrap !important;
+}
+/* Keyboard up: collapse the beat (JS also pins display:block). Composer stays typable.
+   Removing .keyboard-open restores the 38% beat above. */
+body.keyboard-open #screen-play .narrative-bubble,
+body.keyboard-open #screen-play .zone-story.narrative-bubble,
+body.keyboard-open #screen-play .play-card.narrative-bubble,
+html.keyboard-open #screen-play .narrative-bubble,
+html.keyboard-open #screen-play .zone-story.narrative-bubble,
+html.keyboard-open #screen-play .play-card.narrative-bubble {
+  max-height: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
   overflow: hidden !important;
+  border-width: 0 !important;
 }
 #screen-play .chat-panel,
 #screen-play .chat-panel.zone-chat {
@@ -782,9 +818,16 @@ body.mode-play .play-lower,
 }
 #screen-play .play-card.narrative-bubble.zone-story #play-text.narrative {
   color: #f7f1e6 !important;
-  font-size: 0.8rem !important;
-  line-height: 1.35 !important;
+  font-size: 0.9rem !important;
+  line-height: 1.55 !important;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+  -webkit-line-clamp: none !important;
+  line-clamp: none !important;
+  display: block !important;
+  -webkit-box-orient: initial !important;
+  overflow: visible !important;
+  max-height: none !important;
+  white-space: pre-wrap !important;
 }
 #screen-play .chat-panel.zone-chat {
   background: transparent !important;
