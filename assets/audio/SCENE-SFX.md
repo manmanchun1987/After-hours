@@ -34,8 +34,10 @@
 | `n0b` | `doorClose` | 門喺你後面筆嚟一聲。 |
 | `n0g` | `doorOpen` | 房門半掩，企喺門邊。 |
 | `n5` | `cloth` | 解開領口第一、第二顆鈕。 |
+| `vRu3` | `cloth` | 加長路線：解開領口第一顆鈕。 |
+| `vRa4` | `cloth` | 加長路線：解到第二顆鈕，布打開到鎖骨。 |
 
-`n0`／`n0f` 電梯已過去式，唔補叮。`ending_a` 完全唔動（包括唔加 sfx）。
+`n0`／`n0f` 電梯已過去式，唔補叮。`ending_a` 完全唔動（包括唔加 sfx）。`vEn4` 門已經關，唔補關門聲。`vTh4` 只係短鎖舌聲，冇 lock 檔，唔借用 `doorClose`。
 
 ### data/morgan.json（Elise）
 
@@ -48,6 +50,13 @@
 | `m3x4` | `doorOpen` | 「門開。高層走廊…」 |
 | `m4x` | `doorOpen` | 推門未入／踏過門檻。 |
 | `m8` | `cloth` | 燈關，絲衫散開。 |
+| `eLf3` | `doorOpen` | 加長路線：玻璃門自動開（唔係背景酒廊門）。 |
+| `eLf7` | `doorOpen` | 加長路線：門開，廂入面燈白。 |
+| `eLf8` | `doorClose` | 加長路線：門開始合。 |
+| `eDr1` | `ding` | 加長路線：「叮一聲」。只要叮，文案冇講門開。 |
+| `eXa4` | `cloth` | 加長路線：肩帶撥落少少，又撥返。 |
+
+`eBz3` 係背景酒廊門，唔加 `doorOpen`。`eLf6`／`eDr5` 門未發生，唔加。`eDr6` 讀卡器「未嘀」，唔係電梯 `ding`。
 
 ### data/sam.json（Sammi）
 
@@ -61,8 +70,11 @@
 | `s3r3` | `cloth` | 解開襯衫一顆鈕。 |
 | `s8` | `cloth` | 燈關，底褲撥到一邊。 |
 | `s8r` | `cloth` | 天台雨中撥開底褲。 |
+| `sCr2` | `doorOpen` | 加長路線：「門開，廂係空。」 |
+| `sSt7` | `doorClose` | 加長路線：「門合。」 |
+| `sLv7` | `doorOpen` | 加長路線：「閘開。」沿用現有 `doorOpen`。 |
 
-**禁止：** `s1`／`s1b` 微波爐「叮」唔好用 `ding`（升降機鈴）。
+**禁止：** `s1`／`s1b` 微波爐「叮」唔好用 `ding`（升降機鈴）。`sCr1` 電梯已響完（過去式），唔補叮或開門。`sLv2` 係櫃門，唔加。`sSt6` 係樓下遠處門，唔加。`sRf`／`sRu`／`sXa` 已有 `scene=roof` `look=rain`，唔再標 one-shot。
 
 ## 雨場（唔使逐節寫 ambience）
 
