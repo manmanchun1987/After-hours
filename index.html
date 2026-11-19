@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
   <title>加班之後 After Hours</title>
-  <link rel="stylesheet" href="./styles.css?v=ea-shot1b-20261111" />
+  <link rel="stylesheet" href="./styles.css?v=ea-shot1b-20261111-chatlog-20261119" />
   <link rel="stylesheet" href="./styles-compete.css?v=continuity-rebase-20261101" />
-  <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e-chatfix-20261113-narfull-20261114" />
+  <link rel="stylesheet" href="./safari-fix.css?v=kb-mobile-20261023e-chatfix-20261113-narfull-20261114-chatlog-20261119" />
   <link rel="stylesheet" href="./fx.css?v=kb-mobile-20261023e" />
-  <link rel="stylesheet" href="./styles-beauty.css?v=act2-stills-20261101-chatfix-20261113-narfull-20261114" />
+  <link rel="stylesheet" href="./styles-beauty.css?v=act2-stills-20261101-chatfix-20261113-narfull-20261114-chatlog-20261119" />
   <style>
     :root { --play-portrait: url("./assets/stills/vera-03.jpg?v=3"); }
     #l2d-canvas{display:none!important}
@@ -46,11 +46,11 @@
       flex-direction: column !important;
       flex-shrink: 0 !important;
       justify-content: flex-end !important;
-      /* Reserve a full beat plus the composer, not the old 170px two-line floor.
+      /* Reserve a full beat plus a few chat lines and the composer.
          min-height matches max-height so a short opening beat cannot give that
          room away before a later beat needs it. Capped inside the viewport chrome. */
-      min-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
-      max-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
+      min-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 186px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
+      max-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 186px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
     }
     #screen-play .narrative-bubble,
     #screen-play .zone-story.narrative-bubble,
@@ -76,13 +76,14 @@
       max-height: none !important;
       white-space: pre-wrap !important;
     }
-    #screen-play .chat-header, #screen-play .chat-messages { display: none !important; }
+    #screen-play .chat-header { display: none !important; }
     #screen-play .chat-panel,
     #screen-play .chat-panel.zone-chat {
       display: flex !important;
+      flex-direction: column !important;
       flex-shrink: 0 !important;
-      max-height: calc(56px + env(safe-area-inset-bottom)) !important;
-      min-height: calc(44px + env(safe-area-inset-bottom)) !important;
+      max-height: calc(180px + env(safe-area-inset-bottom)) !important;
+      min-height: calc(114px + env(safe-area-inset-bottom)) !important;
     }
     @media (max-height: 720px) {
       body.mode-play:has(#choices.freechat-hidden) .play-face-gap,
@@ -157,8 +158,8 @@
       border-width: 0 !important;
     }
     body.keyboard-open #screen-play .chat-panel {
-      max-height: none !important;
-      min-height: 48px !important;
+      max-height: 148px !important;
+      min-height: 96px !important;
       flex: 0 0 auto !important;
     }
     body.keyboard-open #screen-play .chat-composer {
@@ -183,6 +184,210 @@
       max-height: var(--app-vh, 100dvh) !important;
     }
 
+    /* chatlog-20261119 — recent dialogue above the composer.
+       The beat in #play-text stays unclamped. Header stays dropped.
+       Short viewports shrink the strip; keyboard-open keeps a two-line peek. */
+    #screen-play .chat-messages {
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+      justify-content: flex-start !important;
+      gap: 6px !important;
+      min-height: 64px !important;
+      max-height: 104px !important;
+      margin: 0 !important;
+      padding: 6px 8px !important;
+      overflow-x: hidden !important;
+      overflow-y: auto !important;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      scroll-behavior: auto !important;
+      background: rgba(4, 7, 14, 0.82) !important;
+      border: 1px solid rgba(232, 214, 180, 0.28) !important;
+      border-radius: 12px !important;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.4) !important;
+    }
+    #screen-play .chat-messages::before {
+      content: "" !important;
+      flex: 1 0 0px !important;
+      min-height: 0 !important;
+    }
+    #screen-play .chat-panel,
+    #screen-play .chat-panel.zone-chat {
+      gap: 4px !important;
+      padding: 4px 0 0 !important;
+      overflow: hidden !important;
+      background: transparent !important;
+    }
+    #screen-play .chat-composer {
+      flex: 0 0 auto !important;
+    }
+    #screen-play .chat-bubble {
+      flex: 0 0 auto !important;
+      max-width: 92% !important;
+      padding: 6px 10px !important;
+      border-radius: 12px !important;
+      font-size: 0.84rem !important;
+      line-height: 1.45 !important;
+      font-weight: 500 !important;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.55);
+    }
+    #screen-play .chat-bubble.alex {
+      align-self: flex-start !important;
+      background: rgba(7, 10, 18, 0.96) !important;
+      color: #f7f2ea !important;
+      border: 1px solid rgba(226, 216, 198, 0.72) !important;
+      border-bottom-left-radius: 4px !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+    #screen-play .chat-bubble.user {
+      align-self: flex-end !important;
+      background: rgba(58, 40, 14, 0.96) !important;
+      color: #fff8ec !important;
+      border: 1px solid rgba(232, 196, 122, 0.95) !important;
+      border-bottom-right-radius: 4px !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+    }
+    #screen-play .chat-typing[hidden],
+    #screen-play .incoming-toast[hidden] {
+      display: none !important;
+    }
+    #screen-play .chat-typing:not([hidden]) {
+      display: flex !important;
+      flex: 0 0 auto !important;
+      align-items: center !important;
+      gap: 5px !important;
+      height: 18px !important;
+      min-height: 18px !important;
+      margin: 0 !important;
+      padding: 0 8px !important;
+      color: #f6e7c4 !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.06em !important;
+    }
+    #screen-play .chat-typing em {
+      font-style: normal !important;
+      color: #f6e7c4 !important;
+    }
+    #screen-play .chat-typing span {
+      width: 5px !important;
+      height: 5px !important;
+      border-radius: 50% !important;
+      background: #e8c47a !important;
+      opacity: 1 !important;
+      flex: 0 0 auto !important;
+    }
+    #screen-play .incoming-toast:not([hidden]) {
+      display: flex !important;
+    }
+    body.keyboard-open #screen-play .chat-messages,
+    html.keyboard-open #screen-play .chat-messages {
+      display: flex !important;
+      min-height: 44px !important;
+      max-height: 64px !important;
+    }
+    body.keyboard-open #screen-play .chat-panel,
+    body.keyboard-open #screen-play .chat-panel.zone-chat,
+    html.keyboard-open #screen-play .chat-panel,
+    html.keyboard-open #screen-play .chat-panel.zone-chat {
+      display: flex !important;
+      flex: 0 0 auto !important;
+      min-height: 96px !important;
+      max-height: 148px !important;
+    }
+    body.keyboard-open #screen-play .chat-header,
+    html.keyboard-open #screen-play .chat-header {
+      display: none !important;
+    }
+    @media (max-height: 720px) {
+      html:not(.keyboard-open) #screen-play .narrative-bubble,
+      html:not(.keyboard-open) #screen-play .zone-story.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble {
+        max-height: min(26vh, calc(var(--app-vh, 100dvh) * 0.28)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .play-lower {
+        min-height: min(calc(min(26vh, calc(var(--app-vh, 100dvh) * 0.28)) + 164px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 100px)) !important;
+        max-height: min(calc(min(26vh, calc(var(--app-vh, 100dvh) * 0.28)) + 164px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 100px)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-messages {
+        min-height: 52px !important;
+        max-height: 84px !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-panel,
+      html:not(.keyboard-open) #screen-play .chat-panel.zone-chat {
+        min-height: calc(100px + env(safe-area-inset-bottom)) !important;
+        max-height: calc(156px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+    @media (max-height: 640px) {
+      html:not(.keyboard-open) #screen-play .narrative-bubble,
+      html:not(.keyboard-open) #screen-play .zone-story.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble {
+        max-height: min(18vh, calc(var(--app-vh, 100dvh) * 0.2)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .play-lower {
+        min-height: min(calc(min(18vh, calc(var(--app-vh, 100dvh) * 0.2)) + 148px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 88px)) !important;
+        max-height: min(calc(min(18vh, calc(var(--app-vh, 100dvh) * 0.2)) + 148px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 88px)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-messages {
+        min-height: 44px !important;
+        max-height: 68px !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-panel,
+      html:not(.keyboard-open) #screen-play .chat-panel.zone-chat {
+        min-height: calc(92px + env(safe-area-inset-bottom)) !important;
+        max-height: calc(140px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+    @media (max-height: 430px) {
+      /* Fixed mins match the final strip so the resting face lock does not
+         keep a too-tall portrait gap and push the composer past the screen.
+         Padding shrinks so a two-line beat still fits inside the bubble. */
+      html:not(.keyboard-open) #screen-play .narrative-bubble,
+      html:not(.keyboard-open) #screen-play .zone-story.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble.zone-story {
+        min-height: 88px !important;
+        max-height: 88px !important;
+        padding: 4px 10px !important;
+      }
+      html:not(.keyboard-open) #screen-play .play-lower {
+        min-height: min(calc(184px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 100px)) !important;
+        max-height: min(calc(196px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 96px)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-messages {
+        min-height: 40px !important;
+        max-height: 40px !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-panel,
+      html:not(.keyboard-open) #screen-play .chat-panel.zone-chat {
+        min-height: calc(90px + env(safe-area-inset-bottom)) !important;
+        max-height: calc(104px + env(safe-area-inset-bottom)) !important;
+      }
+    }
+    @media (max-height: 360px) {
+      html:not(.keyboard-open) #screen-play .narrative-bubble,
+      html:not(.keyboard-open) #screen-play .zone-story.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble,
+      html:not(.keyboard-open) #screen-play .play-card.narrative-bubble.zone-story {
+        min-height: 84px !important;
+        max-height: 84px !important;
+        padding: 2px 8px !important;
+      }
+      html:not(.keyboard-open) #screen-play .play-lower {
+        min-height: min(calc(176px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 80px)) !important;
+        max-height: min(calc(184px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 72px)) !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-messages {
+        min-height: 36px !important;
+        max-height: 36px !important;
+      }
+      html:not(.keyboard-open) #screen-play .chat-panel,
+      html:not(.keyboard-open) #screen-play .chat-panel.zone-chat {
+        min-height: calc(86px + env(safe-area-inset-bottom)) !important;
+        max-height: calc(96px + env(safe-area-inset-bottom)) !important;
+      }
+    }
 
   </style>
 </head>
@@ -348,7 +553,7 @@
               <div class="chat-header"><span class="chat-title">私下對白 · <span id="chat-who">Vera</span> <span id="chat-unread" hidden>1</span></span></div>
               <button type="button" id="incoming-toast" class="incoming-toast" hidden><span id="incoming-toast-text">傳咗訊息</span></button>
               <div id="chat-messages" class="chat-messages"></div>
-              <div id="chat-typing" class="chat-typing" hidden></div>
+              <div id="chat-typing" class="chat-typing" hidden><span></span><span></span><span></span><em>輸入中</em></div>
               <div class="chat-composer">
                 <form id="chat-form" class="chat-form"><input id="chat-input" type="text" maxlength="120" placeholder="對佢講…推劇" autocomplete="off" /><button class="btn btn-primary btn-send" type="submit">送</button></form>
               </div>

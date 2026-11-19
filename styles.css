@@ -2773,14 +2773,14 @@ body.mode-play .play-lower,
 }
 #screen-play .chat-panel,
 #screen-play .chat-panel.zone-chat {
-  max-height: 48px !important;
-  min-height: 44px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex-shrink: 0 !important;
+  max-height: calc(180px + env(safe-area-inset-bottom)) !important;
+  min-height: calc(114px + env(safe-area-inset-bottom)) !important;
   background: rgba(6, 8, 14, 0.45) !important;
 }
-#screen-play .chat-header,
-#screen-play .chat-messages,
-#screen-play .chat-typing,
-#screen-play .incoming-toast {
+#screen-play .chat-header {
   display: none !important;
 }
 #screen-play .play-hud .meters {
@@ -2843,8 +2843,8 @@ body.keyboard-open #screen-play .play-topbar {
 body.keyboard-open #screen-play .chat-panel,
 body.keyboard-open #screen-play .chat-panel.zone-chat {
   display: flex !important;
-  max-height: none !important;
-  min-height: 48px !important;
+  max-height: 148px !important;
+  min-height: 96px !important;
   flex: 0 0 auto !important;
 }
 body.keyboard-open #screen-play .chat-composer {
