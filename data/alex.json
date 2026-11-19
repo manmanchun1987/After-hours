@@ -5764,6 +5764,7 @@
     },
     "vRu3": {
       "id": "vRu3",
+      "sfx": "cloth",
       "label": "一顆鈕",
       "look": "dark",
       "scene": "dark",
@@ -6434,6 +6435,7 @@
     },
     "vRa4": {
       "id": "vRa4",
+      "sfx": "cloth",
       "label": "到鎖骨",
       "look": "dark",
       "scene": "dark",

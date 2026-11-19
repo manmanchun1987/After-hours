@@ -6667,6 +6667,7 @@
     },
     "eLf3": {
       "id": "eLf3",
+      "sfx": "doorOpen",
       "label": "玻璃門",
       "look": "dressed",
       "scene": "lift",
@@ -6874,6 +6875,7 @@
     },
     "eLf7": {
       "id": "eLf7",
+      "sfx": "doorOpen",
       "label": "鍵未撳",
       "look": "dressed",
       "scene": "lift",
@@ -6925,6 +6927,7 @@
     },
     "eLf8": {
       "id": "eLf8",
+      "sfx": "doorClose",
       "label": "門開始合",
       "look": "dressed",
       "scene": "lift",
@@ -6976,6 +6979,7 @@
     },
     "eDr1": {
       "id": "eDr1",
+      "sfx": "ding",
       "label": "出廂",
       "look": "dressed",
       "text": "叮一聲。Elise 先出。行政層地毯換咗深色，冷氣更乾。\n\n「出。你跟到房門，唔好喺廂口再講條件。條件酒廊講過。」",
@@ -7937,6 +7941,7 @@
     },
     "eXa4": {
       "id": "eXa4",
+      "sfx": "cloth",
       "label": "肩",
       "look": "dressed",
       "text": "佢將一邊肩帶撥落少少，又撥返。動作同酒廊轉杯一樣慢。\n\n「撥落又返。你見到我可以停喺肩。再落，我先做。」",
