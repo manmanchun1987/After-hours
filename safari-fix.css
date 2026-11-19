@@ -382,10 +382,10 @@ body.mode-play .play-lower,
   flex: 0 0 auto !important;
   flex-shrink: 0 !important;
   justify-content: flex-end !important;
-  /* One full beat (~38% of --app-vh) plus the composer and home indicator.
-     min-height matches the cap. Replaces the 170px floor that only fit two lines. */
-  min-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
-  max-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 72px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
+  /* One full beat (~38% of --app-vh) plus a few chat lines, the composer,
+     and the home indicator. min-height matches the cap. */
+  min-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 186px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
+  max-height: min(calc(min(40vh, calc(var(--app-vh, 100dvh) * 0.38)) + 186px + env(safe-area-inset-bottom)), calc(var(--app-vh, 100dvh) - 112px)) !important;
   gap: 3px !important;
 }
 #screen-play .narrative-bubble,
@@ -419,15 +419,13 @@ body.mode-play .play-lower,
 #screen-play .chat-panel,
 #screen-play .chat-panel.zone-chat {
   display: flex !important;
+  flex-direction: column !important;
   flex-shrink: 0 !important;
-  max-height: calc(56px + env(safe-area-inset-bottom)) !important;
-  min-height: calc(44px + env(safe-area-inset-bottom)) !important;
+  max-height: calc(180px + env(safe-area-inset-bottom)) !important;
+  min-height: calc(114px + env(safe-area-inset-bottom)) !important;
   background: rgba(6, 8, 14, 0.45) !important;
 }
-#screen-play .chat-header,
-#screen-play .chat-messages,
-#screen-play .chat-typing,
-#screen-play .incoming-toast {
+#screen-play .chat-header {
   display: none !important;
 }
 #screen-play .play-hud .meters {
@@ -505,8 +503,8 @@ html.keyboard-open #screen-play .play-card.narrative-bubble {
 body.keyboard-open #screen-play .chat-panel,
 body.keyboard-open #screen-play .chat-panel.zone-chat {
   display: flex !important;
-  max-height: none !important;
-  min-height: 48px !important;
+  max-height: 148px !important;
+  min-height: 96px !important;
   flex: 0 0 auto !important;
 }
 body.keyboard-open #screen-play .chat-composer {
